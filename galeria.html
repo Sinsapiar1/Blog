@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería - Mi Portafolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos específicos para la galería */
+    .gallery-container {
+      padding: 2rem 0;
+    }
+    
+    .gallery-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .gallery-intro h2 {
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+    }
+    
+    .gallery-intro p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .gallery-filter {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .gallery-filter button {
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-dark);
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-filter button:hover, 
+    .gallery-filter button.active {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      height: 300px;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+    
+    .gallery-caption h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .gallery-caption p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Menú de navegación lateral -->
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="profile-img">
+          <img src="img/perfil.jpg" alt="Foto de Perfil">
+        </div>
+        <h2>Raul Pivet</h2>
+        <p>Informático & Deportista</p>
+      </div>
+      
+      <ul class='menu'>
+        <li class='menu-item'>
+          <a href='index.html'>Inicio</a>
+        </li>
+        <li class='active menu-item'>
+          <a href='galeria.html'>Galería</a>
+        </li>
+        <li class='menu-item'>
+          <a href='sobre-mi.html'>Sobre Mí</a>
+        </li>
+        <li class='menu-item'>
+          <a href='https://sinsapiar1.github.io/Miportafolio/'>Blog</a>
+        </li>
+        <li class='menu-item'>
+          <a href='contacto.html'>Contacto</a>
+        </li>
+      </ul>
+      
+      <div class="social-links">
+        <a href="https://instagram.com/Jaimepivet" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/tu-canal" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com/tu-usuario" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </aside>
+    
+    <!-- Contenido principal -->
+    <main class="content">
+      <div class="header">
+        <h1>Galería</h1>
+        <p>Momentos capturados en imágenes</p>
+      </div>
+      
+      <section class="gallery-container">
+        <!-- Introducción a la galería -->
+        <div class="gallery-intro">
+          <h2>Mis fotografías</h2>
+          <p>Aquí comparto una colección de mis mejores capturas, desde paisajes impresionantes hasta momentos únicos en mis aventuras deportivas. Cada imagen cuenta una historia y refleja mi pasión por la fotografía y el deporte.</p>
+        </div>
+        
+        <!-- Filtro de categorías -->
+        <div class="gallery-filter">
+          <button class="active" data-filter="all">Todos</button>
+          <button data-filter="paisajes">Paisajes</button>
+          <button data-filter="deportes">Deportes</button>
+          <button data-filter="viajes">Viajes</button>
+          <button data-filter="arquitectura">Arquitectura</button>
+        </div>
+        
+        <!-- Galería de imágenes -->
+        <div class="gallery-grid">
+          <!-- Imagen 1 -->
+          <a href="img/gallery/paisaje1.jpg" class="gallery-item" data-lightbox="gallery" data-title="Amanecer en la montaña" data-category="paisajes">
+            <img src="img/gallery/paisaje1.jpg" alt="Amanecer en la montaña">
+            <div class="gallery-caption">
+              <h3>Amanecer en la montaña</h3>
+              <p>Fotografía tomada durante mi expedición a los Alpes.</p>
+            </div>
+          </a>
+          
+          <!-- Imagen 2 -->
+          <a href="img/gallery/deporte1.jpg" class="gallery-item" data-lightbox="gallery" data-title="Competencia Regional 2024" data-category="deportes">
+            <img src="img/gallery/deporte1.jpg" alt="Competencia Regional 2024">
+            <div class="gallery-caption">
+              <h3>Competencia Regional 2024</h3>
+              <p>Momento crucial durante la competencia.</p>
+            </div>
+          </a>
+          
+          <!-- Imagen 3 -->
+          <a href="img/gallery/viaje1.jpg" class="gallery-item" data-lightbox="gallery" data-title="Calles de París" data-category="viajes">
+            <img src="img/gallery/viaje1.jpg" alt="Calles de París">
+            <div class="gallery-caption">
+              <h3>Calles de París</h3>
+              <p>Explorando la ciudad de la luz durante el verano.</p>
+            </div>
+          </a>
+          
+          <!-- Imagen 4 -->
+          <a href="img/gallery/arquitectura1.jpg" class="gallery-item" data-lightbox="gallery" data-title="Catedral de Barcelona" data-category="arquitectura">
+            <img src="img/gallery/arquitectura1.jpg" alt="Catedral de Barcelona">
+            <div class="gallery-caption">
+              <h3>Catedral de Barcelona</h3>
+              <p>La majestuosidad de la Sagrada Familia.</p>
+            </div>
+          </a>
+          
+          <!-- Imagen 5 -->
+          <a href="img/gallery/paisaje2.jpg" class="gallery-item" data-lightbox="gallery" data-title="Cascada escondida" data-category="paisajes">
+            <img src="img/gallery/paisaje2.jpg" alt="Cascada escondida">
+            <div class="gallery-caption">
+              <h3>Cascada escondida</h3>
+              <p>Descubrimiento durante mi viaje a la selva.</p>
+            </div>
+          </a>
+          
+          <!-- Imagen 6 -->
+          <a href="img/gallery/deporte2.jpg" class="gallery-item" data-lightbox="gallery" data-title="Entrenamiento intensivo" data-category="deportes">
+            <img src="img/gallery/deporte2.jpg" alt="Entrenamiento intensivo">
+            <div class="gallery-caption">
+              <h3>Entrenamiento intensivo</h3>
+              <p>Preparación para el campeonato nacional.</p>
+            </div>
+          </a>
+          
+          <!-- Imagen 7 -->
+          <a href="img/gallery/viaje2.jpg" class="gallery-item" data-lightbox="gallery" data-title="Mercado local" data-category="viajes">
+            <img src="img/gallery/viaje2.jpg" alt="Mercado local">
+            <div class="gallery-caption">
+              <h3>Mercado local</h3>
+              <p>Colores y aromas de un mercado tradicional en Asia.</p>
+            </div>
+          </a>
+          
+          <!-- Imagen 8 -->
+          <a href="img/gallery/arquitectura2.jpg" class="gallery-item" data-lightbox="gallery" data-title="Rascacielos de Nueva York" data-category="arquitectura">
+            <img src="img/gallery/arquitectura2.jpg" alt="Rascacielos de Nueva York">
+            <div class="gallery-caption">
+              <h3>Rascacielos de Nueva York</h3>
+              <p>La ciudad que nunca duerme desde una perspectiva única.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Raul Pivet - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <script>
+    // Filtro de categorías
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.gallery-filter button');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Quitar clase active de todos los botones
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Añadir clase active al botón clickeado
+          this.classList.add('active');
+          
+          const filter = this.getAttribute('data-filter');
+          
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
