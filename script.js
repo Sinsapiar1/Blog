@@ -110,20 +110,20 @@ class MagicLine {
     }
   });
   // Modal para "Próximamente"
+// Modal para "Próximamente"
 document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todos los botones "Ver más"
-    const verMasButtons = document.querySelectorAll('.btn-small');
+    // Seleccionar todos los botones "Ver más" y "Leer la historia completa"
+    const allButtons = document.querySelectorAll('.btn-small, .btn.coming-soon');
     const modal = document.getElementById('comingSoonModal');
     const closeBtn = document.querySelector('.close-modal');
     
-    // Añadir evento a los botones "Ver más"
-    verMasButtons.forEach(button => {
+    // Añadir evento a todos los botones
+    allButtons.forEach(button => {
       button.addEventListener('click', function(e) {
-        // Solo mostrar el modal si el enlace tiene href="#"
-        if (this.getAttribute('href') === '#' || this.getAttribute('href') === 'galeria.html') {
-          e.preventDefault(); // Prevenir navegación
-          modal.style.display = 'block';
-        }
+        // Prevenir navegación
+        e.preventDefault();
+        // Mostrar el modal
+        modal.style.display = 'block';
       });
     });
     
