@@ -871,6 +871,11 @@
     position: relative;
     display: inline-block;
     width: 100%;
+    /* GARANTÍA DE VISIBILIDAD TOTAL - TÍTULO SIEMPRE VISIBLE */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    margin-top: 1rem;
   }
   
   .projects h2::after {
@@ -1012,6 +1017,21 @@
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
+  }
+  
+  /* TÍTULO SIEMPRE VISIBLE - OVERRIDE COMPLETO DE AOS */
+  .projects h2[data-aos] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    display: block !important;
+  }
+  
+  .projects h2[data-aos]:not(.aos-animate) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    display: block !important;
   }
   
   /* Instagram Feed - FORZAR VISIBILIDAD TOTAL */
@@ -1265,9 +1285,22 @@
     .projects h2 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
+      margin-top: 2rem !important;
       display: block !important;
       opacity: 1 !important;
       visibility: visible !important;
+      transform: none !important;
+      padding-top: 1rem;
+    }
+    
+    /* TÍTULO MÓVIL - MÁXIMA VISIBILIDAD */
+    .projects h2[data-aos] {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      display: block !important;
+      position: relative !important;
+      z-index: 100 !important;
     }
     
     /* Forzar estilos de AOS en móviles pequeños */
