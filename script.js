@@ -152,39 +152,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
   });
   
-  // Inicializar AOS (Animate On Scroll)
-  // Configuración diferente para móviles
-  const isMobile = window.innerWidth <= 768;
-  
+  // Inicializar AOS (Animate On Scroll) - CONFIGURACIÓN UNIVERSAL
   AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
+    duration: 600, // Animación más rápida
+    easing: 'ease-out',
     once: true,
-    offset: isMobile ? 20 : 100, // Offset más pequeño en móviles
-    disable: isMobile ? true : false, // Desactivar en móviles
-    delay: 0
+    offset: 50, // Offset bajo para que active pronto en TODOS los dispositivos
+    delay: 0,
+    disable: false, // NUNCA desactivar - funciona en todos lados
+    startEvent: 'DOMContentLoaded',
+    throttleDelay: 99,
+    debounceDelay: 50
   });
   
-  // Forzar visibilidad de elementos en móviles
-  if (isMobile) {
-    setTimeout(() => {
-      const projectCards = document.querySelectorAll('.project-card[data-aos]');
-      const projectsSection = document.querySelector('.projects[data-aos]');
+  // FORZAR VISIBILIDAD UNIVERSAL - Para todos los dispositivos
+  setTimeout(() => {
+    const projectCards = document.querySelectorAll('.project-card[data-aos]');
+    const projectsSection = document.querySelector('.projects');
+    
+    // Asegurar que las cards siempre sean visibles
+    projectCards.forEach((card, index) => {
+      // Forzar visibilidad inicial
+      card.style.opacity = '1';
+      card.style.visibility = 'visible';
+      card.style.display = 'block';
       
-      projectCards.forEach(card => {
-        card.style.opacity = '1';
-        card.style.transform = 'none';
-        card.style.visibility = 'visible';
-        card.style.display = 'block';
-      });
-      
-      if (projectsSection) {
-        projectsSection.style.opacity = '1';
-        projectsSection.style.transform = 'none';
-        projectsSection.style.visibility = 'visible';
+      // Si AOS no ha activado la animación, forzarla
+      if (!card.classList.contains('aos-animate')) {
+        setTimeout(() => {
+          card.classList.add('aos-animate');
+        }, index * 100); // Animación escalonada
       }
-    }, 100);
-  }
+    });
+    
+    if (projectsSection) {
+      projectsSection.style.opacity = '1';
+      projectsSection.style.visibility = 'visible';
+    }
+    
+    console.log('🎯 Visibilidad universal aplicada a', projectCards.length, 'cards');
+  }, 300);
   
   // Menú hamburguesa
   const menuToggle = document.getElementById('menuToggle');
