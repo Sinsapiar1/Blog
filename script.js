@@ -153,12 +153,38 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Inicializar AOS (Animate On Scroll)
+  // Configuración diferente para móviles
+  const isMobile = window.innerWidth <= 768;
+  
   AOS.init({
     duration: 800,
     easing: 'ease-in-out',
     once: true,
-    offset: 100
+    offset: isMobile ? 20 : 100, // Offset más pequeño en móviles
+    disable: isMobile ? true : false, // Desactivar en móviles
+    delay: 0
   });
+  
+  // Forzar visibilidad de elementos en móviles
+  if (isMobile) {
+    setTimeout(() => {
+      const projectCards = document.querySelectorAll('.project-card[data-aos]');
+      const projectsSection = document.querySelector('.projects[data-aos]');
+      
+      projectCards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+        card.style.visibility = 'visible';
+        card.style.display = 'block';
+      });
+      
+      if (projectsSection) {
+        projectsSection.style.opacity = '1';
+        projectsSection.style.transform = 'none';
+        projectsSection.style.visibility = 'visible';
+      }
+    }, 100);
+  }
   
   // Menú hamburguesa
   const menuToggle = document.getElementById('menuToggle');
