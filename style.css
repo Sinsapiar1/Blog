@@ -166,82 +166,282 @@
     backdrop-filter: blur(10px);
   }
   
-  /* Menú hamburguesa */
+  /* Menú hamburguesa - DISEÑO ULTRA MODERNO */
   .menu-toggle {
     display: none;
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1001;
-    background: var(--primary-color);
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.25), 
+      rgba(255, 255, 255, 0.1)
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    width: 56px;
+    height: 56px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: var(--transition-smooth);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 0 0 1px rgba(23, 183, 148, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+  }
+  
+  /* Efecto de brillo interno */
+  .menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+      transparent, 
+      rgba(23, 183, 148, 0.2), 
+      transparent
+    );
+    transform: rotate(45deg);
+    transition: transform 0.6s ease;
+    opacity: 0;
+  }
+  
+  .menu-toggle:hover::before {
+    transform: rotate(45deg) translate(50%, 50%);
+    opacity: 1;
   }
   
   .menu-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.08) rotate(5deg);
+    box-shadow: 
+      0 12px 40px rgba(23, 183, 148, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 2px rgba(23, 183, 148, 0.4);
+    background: linear-gradient(135deg, 
+      rgba(23, 183, 148, 0.3), 
+      rgba(255, 255, 255, 0.2)
+    );
   }
   
+  .menu-toggle:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Líneas del hamburger - diseño moderno */
   .menu-toggle span {
     display: block;
-    width: 25px;
-    height: 3px;
-    background: white;
-    margin: 5px auto;
-    transition: all 0.3s ease;
-    border-radius: 2px;
+    width: 22px;
+    height: 2.5px;
+    background: linear-gradient(90deg, 
+      rgba(23, 183, 148, 0.9), 
+      rgba(255, 255, 255, 0.9)
+    );
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .menu-toggle span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .menu-toggle:hover span::after {
+    opacity: 1;
+  }
+  
+  /* Animación cuando está activo (menú abierto) */
+  .menu-toggle.active {
+    transform: rotate(180deg);
+    background: linear-gradient(135deg, 
+      rgba(234, 88, 12, 0.3), 
+      rgba(255, 255, 255, 0.2)
+    );
+    box-shadow: 
+      0 12px 40px rgba(234, 88, 12, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 2px rgba(234, 88, 12, 0.4);
   }
   
   .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
+    background: linear-gradient(90deg, 
+      rgba(234, 88, 12, 0.9), 
+      rgba(255, 255, 255, 0.9)
+    );
   }
   
   .menu-toggle.active span:nth-child(2) {
     opacity: 0;
+    transform: scale(0);
   }
   
   .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: linear-gradient(90deg, 
+      rgba(234, 88, 12, 0.9), 
+      rgba(255, 255, 255, 0.9)
+    );
   }
   
-  /* Dark mode toggle */
+  /* Tema oscuro */
+  [data-theme="dark"] .menu-toggle {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.1), 
+      rgba(255, 255, 255, 0.05)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 0 1px rgba(23, 183, 148, 0.3);
+  }
+  
+  [data-theme="dark"] .menu-toggle:hover {
+    background: linear-gradient(135deg, 
+      rgba(23, 183, 148, 0.2), 
+      rgba(255, 255, 255, 0.1)
+    );
+    box-shadow: 
+      0 12px 40px rgba(23, 183, 148, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 0 0 2px rgba(23, 183, 148, 0.5);
+  }
+  
+  /* Dark mode toggle - MEJORADO PARA COMBINAR */
   .theme-toggle {
     position: fixed;
     top: 20px;
-    right: 80px;
+    right: 85px;
     z-index: 1001;
-    background: var(--card-bg);
-    border: 2px solid var(--primary-color);
-    border-radius: 30px;
-    width: 60px;
-    height: 30px;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.25), 
+      rgba(255, 255, 255, 0.1)
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    width: 56px;
+    height: 28px;
     cursor: pointer;
-    padding: 3px;
-    transition: var(--transition-smooth);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 2px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 0 0 1px rgba(23, 183, 148, 0.2);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+      transparent, 
+      rgba(23, 183, 148, 0.1), 
+      transparent
+    );
+    transform: rotate(45deg);
+    transition: transform 0.6s ease;
+    opacity: 0;
+  }
+  
+  .theme-toggle:hover::before {
+    transform: rotate(45deg) translate(50%, 50%);
+    opacity: 1;
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 
+      0 12px 40px rgba(23, 183, 148, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 2px rgba(23, 183, 148, 0.4);
+  }
+  
+  /* Tema oscuro para theme-toggle */
+  [data-theme="dark"] .theme-toggle {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.1), 
+      rgba(255, 255, 255, 0.05)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 0 1px rgba(23, 183, 148, 0.3);
   }
   
   .theme-toggle-ball {
     width: 22px;
     height: 22px;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, 
+      rgba(23, 183, 148, 0.9), 
+      rgba(23, 183, 148, 0.7)
+    );
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 11px;
     color: white;
+    box-shadow: 
+      0 3px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+  }
+  
+  .theme-toggle-ball::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .theme-toggle:hover .theme-toggle-ball::before {
+    opacity: 1;
   }
   
   [data-theme="dark"] .theme-toggle-ball {
-    transform: translateX(30px);
+    transform: translateX(28px);
+    background: linear-gradient(135deg, 
+      rgba(234, 88, 12, 0.9), 
+      rgba(234, 88, 12, 0.7)
+    );
+    box-shadow: 
+      0 3px 8px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
   
   .profile {
@@ -906,17 +1106,31 @@
     z-index: 1;
   }
   
-  /* Responsive - Mejorado */
+  /* Responsive - MEJORADO PARA BOTONES MODERNOS */
   @media (max-width: 992px) {
     .menu-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; /* Ya incluye flex properties del nuevo diseño */
+      top: 15px;
+      right: 15px;
+      width: 52px;
+      height: 52px;
     }
     
     .theme-toggle {
-      right: 20px;
-      top: 80px;
+      right: 75px; /* Ajustado para el nuevo diseño */
+      top: 15px;
+      width: 52px;
+      height: 26px;
+    }
+    
+    .theme-toggle-ball {
+      width: 20px;
+      height: 20px;
+      font-size: 10px;
+    }
+    
+    [data-theme="dark"] .theme-toggle-ball {
+      transform: translateX(26px);
     }
     
     .sidebar {
