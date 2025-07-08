@@ -800,6 +800,13 @@
     backdrop-filter: blur(10px);
   }
   
+  .instagram-feed h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-dark);
+  }
+
 /* En tu archivo style.css */
 .insta-grid {
     display: grid;
@@ -818,16 +825,29 @@
   .instagram-media {
     margin: 0 auto !important;
     transition: all 0.3s ease;
+    border-radius: 8px !important;
+    overflow: hidden !important;
   }
+  
+  /* Mejorar compatibilidad con modo oscuro */
+  [data-theme="dark"] .instagram-media {
+    filter: brightness(0.9) contrast(1.1);
+  }
+  
   .insta-post:hover .instagram-media {
-    transform: scale(1.01); /* Ligero aumento de tamaño */
+    transform: scale(1.02); /* Ligero aumento de tamaño */
   }
   
   .insta-post:hover {
-    transform: translateY(-5px); /* Se eleva ligeramente */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    transform: translateY(-8px); /* Se eleva ligeramente */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
   }
-  .insta-post img {
+  
+  [data-theme="dark"] .insta-post:hover {
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+  }
+  
+.insta-post img {
     width: 100%;
     height: 100%;
     object-fit: cover;

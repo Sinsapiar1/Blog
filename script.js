@@ -211,6 +211,29 @@ document.addEventListener('DOMContentLoaded', function() {
   // Inicializar la línea mágica para el menú
   window.magicLine = new MagicLine(document.querySelector('.menu'));
   
+  // Refrescar Instagram embeds
+  function refreshInstagramEmbeds() {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    } else {
+      // Si el script de Instagram no está cargado, cargarlo
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = '//www.instagram.com/embed.js';
+      document.head.appendChild(script);
+    }
+  }
+  
+  // Llamar la función después de que todo esté cargado
+  setTimeout(refreshInstagramEmbeds, 2000);
+  
+  // También refrescar cuando cambie el tema
+  const originalUpdateThemeIcon = updateThemeIcon;
+  updateThemeIcon = function(theme) {
+    originalUpdateThemeIcon(theme);
+    setTimeout(refreshInstagramEmbeds, 500);
+  };
+  
   // Añadir eventos de clic a los elementos del menú
   const menuItems = document.querySelectorAll('.menu-item a');
   menuItems.forEach(item => {
