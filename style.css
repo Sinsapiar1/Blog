@@ -794,10 +794,16 @@
   /* Instagram Feed - Mejorado */
   .instagram-feed {
     margin-bottom: 4rem;
-    padding: 3rem 0;
+    padding: 3rem 2rem;
     background: var(--glass-bg);
     border-radius: var(--border-radius);
     backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  [data-theme="dark"] .instagram-feed {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .instagram-feed h2 {
@@ -805,59 +811,142 @@
     text-align: center;
     margin-bottom: 2rem;
     color: var(--primary-dark);
+    position: relative;
+  }
+  
+  [data-theme="dark"] .instagram-feed h2 {
+    color: var(--accent-color);
+  }
+  
+  .instagram-feed h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
   }
 
-/* En tu archivo style.css */
 .insta-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
     margin-bottom: 2rem;
+    padding: 0 1rem;
   }
   
   .insta-post {
     width: 100%;
     min-height: 300px;
-    transition: all 0.3s ease; /* Esta es la línea que añade la suavidad */
-    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 12px;
     overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+  
+  [data-theme="dark"] .insta-post {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   }
   .instagram-media {
     margin: 0 auto !important;
-    transition: all 0.3s ease;
-    border-radius: 8px !important;
+    transition: all 0.4s ease;
+    border-radius: 12px !important;
     overflow: hidden !important;
+    max-width: 100% !important;
+    min-width: 280px !important;
+    background: white !important;
   }
   
   /* Mejorar compatibilidad con modo oscuro */
   [data-theme="dark"] .instagram-media {
-    filter: brightness(0.9) contrast(1.1);
+    filter: brightness(0.95) contrast(1.05) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
   }
   
   .insta-post:hover .instagram-media {
-    transform: scale(1.02); /* Ligero aumento de tamaño */
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
   
   .insta-post:hover {
-    transform: translateY(-8px); /* Se eleva ligeramente */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   }
   
   [data-theme="dark"] .insta-post:hover {
-    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(255, 255, 255, 0.1);
   }
   
-.insta-post img {
+  .insta-post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(23, 183, 148, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 12px;
+  }
+  
+  .insta-post:hover::before {
+    opacity: 1;
+  }
+  
+  .insta-post img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 12px;
   }
   
   .instagram-feed .btn {
     display: block;
-    max-width: 200px;
-    margin: 0 auto;
+    max-width: 250px;
+    margin: 2rem auto 0;
     text-align: center;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .instagram-feed .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(23, 183, 148, 0.3);
+  }
+  
+  /* Estilos para el loader de Instagram */
+  .instagram-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--text-color);
+    font-family: "Cairo", sans-serif;
+  }
+  
+  .instagram-loader .loader-circle {
+    width: 30px;
+    height: 30px;
+    border: 3px solid transparent;
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+  
+  [data-theme="dark"] .instagram-loader {
+    color: rgba(255, 255, 255, 0.8);
   }
   
   /* Footer - Mejorado */
@@ -937,6 +1026,20 @@
     
     .insta-grid {
       grid-template-columns: 1fr;
+      gap: 15px;
+      padding: 0;
+    }
+    
+    .instagram-feed {
+      padding: 2rem 1rem;
+    }
+    
+    .insta-post {
+      min-height: 280px;
+    }
+    
+    .instagram-media {
+      min-width: 250px !important;
     }
   }
   
