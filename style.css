@@ -791,14 +791,19 @@
     box-shadow: 0 5px 20px rgba(23, 183, 148, 0.3);
   }
   
-  /* Instagram Feed - Completamente Rediseñado */
+  /* Instagram Feed - FORZAR VISIBILIDAD TOTAL */
   .instagram-feed {
-    margin-bottom: 4rem;
-    padding: 3rem 2rem;
-    background: var(--glass-bg);
-    border-radius: var(--border-radius);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+    margin-bottom: 4rem !important;
+    padding: 3rem 2rem !important;
+    background: var(--glass-bg) !important;
+    border-radius: var(--border-radius) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid var(--glass-border) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
   }
   
   [data-theme="dark"] .instagram-feed {
@@ -807,11 +812,17 @@
   }
   
   .instagram-feed h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--primary-dark);
-    position: relative;
+    font-size: 2.5rem !important;
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+    color: var(--primary-color) !important;
+    position: relative !important;
+    font-weight: bold !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
   }
   
   [data-theme="dark"] .instagram-feed h2 {
@@ -831,20 +842,26 @@
   }
 
   .insta-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-    margin-bottom: 2rem;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 25px !important;
+    margin-bottom: 2rem !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .insta-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    border: 1px solid var(--glass-border);
+    background: white !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    border: 1px solid var(--glass-border) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 400px !important;
   }
   
   [data-theme="dark"] .insta-card {
