@@ -954,6 +954,37 @@
     object-fit: cover;
   }
   
+  .insta-avatar-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .insta-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+  
+  .insta-avatar-placeholder:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  }
+  
+  [data-theme="dark"] .insta-avatar-placeholder {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    box-shadow: 0 0 10px rgba(23, 183, 148, 0.3);
+  }
+  
   .insta-info h4 {
     margin: 0;
     font-size: 1rem;
@@ -1113,6 +1144,15 @@
     
     .insta-stats {
       gap: 15px;
+    }
+    
+    .insta-avatar-wrapper {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .insta-avatar-placeholder {
+      font-size: 16px;
     }
   }
   
