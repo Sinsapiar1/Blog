@@ -37,6 +37,177 @@ class MagicLine {
 
 // Inicializar MagicLine cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+  // Ocultar loader cuando la página esté cargada
+  window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500);
+    }, 500);
+  });
+  
+  // Inicializar AOS (Animate On Scroll)
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    offset: 100
+  });
+  
+  // Menú hamburguesa
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  
+  menuToggle.addEventListener('click', function() {
+    sidebar.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+  
+  // Cerrar menú al hacer clic en un enlace (móviles)
+  const menuLinks = document.querySelectorAll('.menu-item a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 992) {
+        sidebar.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
+    });
+  });
+  
+  // Dark mode toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const themeIcon = themeToggle.querySelector('i');
+  
+  // Verificar tema guardado
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  body.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme);
+  
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  });
+  
+  function updateThemeIcon(theme) {
+    themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+  }
+  
+  // Scroll indicator
+  const scrollIndicator = document.getElementById('scrollIndicator');
+  
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height);
+    
+    scrollIndicator.style.transform = `scaleX(${scrolled})`;
+  });
+  
+  // Custom cursor
+  const customCursor = document.getElementById('customCursor');
+  let cursorVisible = false;
+  
+  // Solo activar en desktop
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      if (!cursorVisible) {
+        customCursor.style.opacity = '1';
+        cursorVisible = true;
+      }
+      customCursor.style.left = e.clientX + 'px';
+      customCursor.style.top = e.clientY + 'px';
+    });
+    
+    // Efecto hover en enlaces y botones
+    const hoverElements = document.querySelectorAll('a, button, .btn, .btn-small');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => customCursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => customCursor.classList.remove('hover'));
+    });
+    
+    // Ocultar cursor cuando sale de la ventana
+    document.addEventListener('mouseleave', () => {
+      customCursor.style.opacity = '0';
+      cursorVisible = false;
+    });
+  } else {
+    customCursor.style.display = 'none';
+  }
+  
+  // Partículas de fondo
+  const particlesBg = document.getElementById('particlesBg');
+  const particleCount = 50;
+  
+  for (let i = 0; i < particleCount; i++) {
+    createParticle();
+  }
+  
+  function createParticle() {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+    particlesBg.appendChild(particle);
+  }
+  
+  // Efecto parallax
+  const parallaxElements = document.querySelectorAll('.parallax-element');
+  
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    
+    parallaxElements.forEach(element => {
+      const speed = element.getAttribute('data-speed') || 0.5;
+      const yPos = -(scrolled * speed);
+      element.style.transform = `translateY(${yPos}px)`;
+    });
+  });
+  
+  // Efecto parallax en mouse move para la imagen destacada
+  const featuredImage = document.querySelector('.featured-image');
+  if (featuredImage) {
+    featuredImage.addEventListener('mousemove', (e) => {
+      const rect = featuredImage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const moveX = (x - centerX) / centerX * 10;
+      const moveY = (y - centerY) / centerY * 10;
+      
+      const img = featuredImage.querySelector('img');
+      img.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+    });
+    
+    featuredImage.addEventListener('mouseleave', () => {
+      const img = featuredImage.querySelector('img');
+      img.style.transform = 'scale(1.1) translate(0, 0)';
+    });
+  }
+  
+  // Animación de texto gradiente
+  const gradientTexts = document.querySelectorAll('h1, h2');
+  gradientTexts.forEach(text => {
+    text.addEventListener('mouseenter', () => {
+      text.style.backgroundSize = '200% 200%';
+      text.style.animation = 'gradientShift 3s ease infinite';
+    });
+    
+    text.addEventListener('mouseleave', () => {
+      text.style.animation = 'none';
+    });
+  });
+  
   // Inicializar la línea mágica para el menú
   window.magicLine = new MagicLine(document.querySelector('.menu'));
   
