@@ -1193,3 +1193,223 @@
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
+
+/* Instagram Feed */
+.instagram-feed {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  border-radius: 20px;
+  margin: 2rem 0;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.instagram-feed h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 3rem;
+}
+
+/* Embed containers - both real embeds and fallback cards */
+.embed-container {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fallback Instagram-style cards */
+.fallback-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid var(--glass-border);
+  max-width: 400px;
+  width: 100%;
+}
+
+[data-theme="dark"] .fallback-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.fallback-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .fallback-card:hover {
+  box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+}
+
+.insta-image {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.insta-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.fallback-card:hover .insta-image img {
+  transform: scale(1.05);
+}
+
+.insta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fallback-card:hover .insta-overlay {
+  opacity: 1;
+}
+
+.insta-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3rem;
+  opacity: 0.9;
+}
+
+.insta-stats {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.insta-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.insta-content {
+  padding: 1.5rem;
+  background: inherit;
+}
+
+[data-theme="dark"] .insta-content {
+  color: var(--text-primary);
+}
+
+.insta-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.insta-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--primary);
+}
+
+.insta-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insta-info h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.insta-info span {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.insta-content p {
+  margin: 1rem 0;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.insta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.insta-link:hover {
+  color: var(--secondary);
+}
+
+.insta-link::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.insta-link:hover::after {
+  transform: translateX(5px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .insta-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .instagram-feed {
+    padding: 2rem 1rem;
+  }
+  
+  .instagram-feed h2 {
+    font-size: 2rem;
+  }
+  
+  .insta-image {
+    height: 250px;
+  }
+  
+  .insta-content {
+    padding: 1rem;
+  }
+}

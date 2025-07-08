@@ -35,19 +35,108 @@ class MagicLine {
   }
 }
 
-// Forzar refresh de embeds de Instagram
-function refreshInstagramEmbeds() {
-  // Intentar procesar los embeds de Instagram
-  if (window.instgrm) {
-    window.instgrm.Embeds.process();
+// Función legacy removida - ahora usamos el sistema híbrido
+
+// Sistema híbrido de Instagram - Detectar si embeds cargan o mostrar fallback
+function initInstagramSystem() {
+  console.log('🔍 Inicializando sistema híbrido de Instagram...');
+  
+  const embedContainers = document.querySelectorAll('.embed-container');
+  let embedsLoaded = 0;
+  let totalEmbeds = embedContainers.length;
+  
+  // Función para mostrar las cards de fallback
+  function showFallbackCard(container) {
+    const blockquote = container.querySelector('.instagram-media');
+    const fallbackCard = container.querySelector('.fallback-card');
+    
+    if (blockquote && fallbackCard) {
+      console.log('📱 Mostrando card de fallback para:', container.dataset.postId);
+      blockquote.style.display = 'none';
+      fallbackCard.style.display = 'block';
+    }
   }
   
-  // Si no está cargado, intentar después de un delay
-  setTimeout(() => {
-    if (window.instgrm) {
-      window.instgrm.Embeds.process();
+  // Función para verificar si un embed se ha cargado correctamente
+  function checkEmbedLoaded(container) {
+    const blockquote = container.querySelector('.instagram-media');
+    if (!blockquote) return false;
+    
+    // Verificar si Instagram ha procesado el embed
+    const iframe = blockquote.querySelector('iframe');
+    const processedContent = blockquote.querySelector('.instagram-media-rendered');
+    
+    // Si tiene iframe o contenido procesado, está cargado
+    if (iframe || processedContent || blockquote.offsetHeight > 100) {
+      console.log('✅ Embed cargado correctamente:', container.dataset.postId);
+      return true;
     }
-  }, 2000);
+    
+    return false;
+  }
+  
+  // Verificar cada embed después de intentos de carga
+  function checkAllEmbeds() {
+    let embedsSuccessful = 0;
+    
+    embedContainers.forEach(container => {
+      if (checkEmbedLoaded(container)) {
+        embedsSuccessful++;
+      } else {
+        showFallbackCard(container);
+      }
+    });
+    
+    console.log(`📊 Estado: ${embedsSuccessful}/${totalEmbeds} embeds cargados`);
+    
+    if (embedsSuccessful === 0) {
+      console.log('⚠️ Ningún embed cargó - Mostrando todas las cards de fallback');
+    } else if (embedsSuccessful < totalEmbeds) {
+      console.log('⚠️ Algunos embeds fallaron - Sistema híbrido activo');
+    } else {
+      console.log('🎉 Todos los embeds cargaron correctamente!');
+    }
+  }
+  
+  // Intentar procesar embeds de Instagram inmediatamente
+  if (window.instgrm && window.instgrm.Embeds) {
+    console.log('📸 Script de Instagram detectado - Procesando embeds...');
+    try {
+      window.instgrm.Embeds.process();
+    } catch (error) {
+      console.log('❌ Error procesando embeds:', error);
+    }
+  }
+  
+  // Verificar después de 3 segundos
+  setTimeout(() => {
+    console.log('⏱️ Primera verificación (3s)...');
+    checkAllEmbeds();
+  }, 3000);
+  
+  // Verificación final después de 8 segundos
+  setTimeout(() => {
+    console.log('⏱️ Verificación final (8s)...');
+    checkAllEmbeds();
+  }, 8000);
+  
+  // También verificar cuando el script de Instagram se carga
+  const embedScript = document.querySelector('script[src*="instagram.com/embed.js"]');
+  if (embedScript) {
+    embedScript.addEventListener('load', () => {
+      console.log('📜 Script de Instagram cargado - Reintentando...');
+      setTimeout(() => {
+        if (window.instgrm && window.instgrm.Embeds) {
+          try {
+            window.instgrm.Embeds.process();
+            setTimeout(checkAllEmbeds, 2000);
+          } catch (error) {
+            console.log('❌ Error en reintento:', error);
+          }
+        }
+      }, 1000);
+    });
+  }
 }
 
 // Inicializar MagicLine cuando el DOM esté completamente cargado
@@ -399,14 +488,16 @@ document.addEventListener('DOMContentLoaded', function() {
       modal.style.display = 'none';
     }
   });
+
+  // Inicializar sistema de Instagram
+  initInstagramSystem();
 });
 
-// Llamar al refresh cuando se carga la página
-document.addEventListener('DOMContentLoaded', () => {
-  refreshInstagramEmbeds();
-});
-
-// También después de que se carguen todos los recursos
-window.addEventListener('load', () => {
-  refreshInstagramEmbeds();
-});
+  // También inicializar cuando la página esté completamente cargada
+  window.addEventListener('load', () => {
+    // Reintento final después de que todo esté cargado
+    setTimeout(() => {
+      console.log('🔄 Reintento final después de load completo...');
+      initInstagramSystem();
+    }, 2000);
+  });
