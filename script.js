@@ -35,6 +35,21 @@ class MagicLine {
   }
 }
 
+// Forzar refresh de embeds de Instagram
+function refreshInstagramEmbeds() {
+  // Intentar procesar los embeds de Instagram
+  if (window.instgrm) {
+    window.instgrm.Embeds.process();
+  }
+  
+  // Si no está cargado, intentar después de un delay
+  setTimeout(() => {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  }, 2000);
+}
+
 // Inicializar MagicLine cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
   // Ocultar loader cuando la página esté cargada
@@ -384,4 +399,14 @@ document.addEventListener('DOMContentLoaded', function() {
       modal.style.display = 'none';
     }
   });
+});
+
+// Llamar al refresh cuando se carga la página
+document.addEventListener('DOMContentLoaded', () => {
+  refreshInstagramEmbeds();
+});
+
+// También después de que se carguen todos los recursos
+window.addEventListener('load', () => {
+  refreshInstagramEmbeds();
 });
