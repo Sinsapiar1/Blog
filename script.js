@@ -71,16 +71,29 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mostrar/ocultar botones según pantalla
   function updateButtons() {
     if (window.innerWidth <= 992) {
-      if (menuToggle) menuToggle.style.display = 'flex';
-      if (themeToggle) themeToggle.style.display = 'block';
+      if (menuToggle) {
+        menuToggle.style.display = 'flex';
+        menuToggle.style.zIndex = '1003';
+      }
+      if (themeToggle) {
+        themeToggle.style.display = 'block';
+        themeToggle.style.zIndex = '1003';
+      }
     } else {
       if (menuToggle) menuToggle.style.display = 'none';
-      if (themeToggle) themeToggle.style.display = 'block';
+      if (themeToggle) {
+        themeToggle.style.display = 'block';
+        themeToggle.style.zIndex = '1001';
+      }
     }
   }
   
   updateButtons();
   window.addEventListener('resize', updateButtons);
+  
+  // Asegurar que los botones estén visibles después de las animaciones
+  setTimeout(updateButtons, 100);
+  setTimeout(updateButtons, 500);
 
   // AOS
   if (typeof AOS !== 'undefined') {

@@ -193,6 +193,8 @@
     justify-content: center;
     align-items: center;
     gap: 4px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   
   /* Indicador visual para móvil */
@@ -372,6 +374,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   
   /* Desktop: botón de tema en la esquina superior derecha */
@@ -1200,8 +1204,8 @@
       display: flex !important;
       top: 15px;
       left: 15px;
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 50%;
@@ -1220,11 +1224,11 @@
       display: block !important;
       right: 15px;
       top: 15px;
-      width: 52px;
-      height: 26px;
+      width: 50px;
+      height: 25px;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      border-radius: 13px;
+      border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       z-index: 1002;
       border: 1px solid rgba(255, 255, 255, 0.3);
@@ -1261,6 +1265,7 @@
       z-index: 1000;
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
     }
     
     /* Asegurar colores consistentes en el menú móvil */
@@ -1352,44 +1357,51 @@
     .sidebar .profile {
       padding: 1.5rem 1rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      margin-bottom: 1rem;
+      margin-bottom: 0;
+      text-align: center;
     }
     
     .sidebar .profile h2 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
+      color: var(--primary-dark);
     }
     
     .sidebar .profile p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       opacity: 0.8;
+      color: #666;
     }
     
     .sidebar .menu {
-      padding: 1rem;
+      padding: 0.5rem;
       flex: 1;
     }
     
     .sidebar .menu .menu-item {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
     
     .sidebar .menu a {
       padding: 0.8rem 1rem;
-      font-size: 1rem;
+      font-size: 0.95rem;
       border-radius: 8px;
       transition: all 0.3s ease;
       display: block;
+      color: var(--primary-dark);
+      text-decoration: none;
     }
     
     .sidebar .menu a:hover {
       background-color: rgba(23, 183, 148, 0.1);
-      transform: translateX(5px);
+      transform: translateX(3px);
     }
     
     .sidebar .menu .active a {
       background-color: rgba(23, 183, 148, 0.15);
       border-left: 3px solid var(--primary-color);
+      color: var(--primary-color);
+      font-weight: 600;
     }
     
     .sidebar .social-links {
@@ -1397,6 +1409,7 @@
       justify-content: center;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       margin-top: auto;
+      gap: 1rem;
     }
     
     /* Dark mode para el menú móvil */
@@ -1453,15 +1466,20 @@
     .menu-toggle {
       display: flex !important;
       z-index: 1003;
+      width: 48px;
+      height: 48px;
     }
     
     .theme-toggle {
       display: block !important;
       z-index: 1003;
+      width: 48px;
+      height: 24px;
     }
     
     .content {
       padding: 1rem;
+      margin-left: 0;
     }
     
     .featured-text {
@@ -1536,8 +1554,8 @@
     .menu-toggle {
       display: flex !important;
       z-index: 1004;
-      width: 48px;
-      height: 48px;
+      width: 45px;
+      height: 45px;
       top: 10px;
       left: 10px;
     }
@@ -1545,8 +1563,8 @@
     .theme-toggle {
       display: block !important;
       z-index: 1004;
-      width: 48px;
-      height: 24px;
+      width: 45px;
+      height: 22px;
       top: 10px;
       right: 10px;
     }
@@ -1633,6 +1651,11 @@
     .sidebar .menu a {
       padding: 0.6rem 0.7rem;
       font-size: 0.9rem;
+    }
+    
+    /* Mejorar el overlay del menú */
+    .sidebar.active::before {
+      background: rgba(0, 0, 0, 0.5);
     }
   }
   
