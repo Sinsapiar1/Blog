@@ -199,14 +199,32 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Función para asegurar que los botones sean visibles
   function ensureButtonsVisible() {
+    const menuToggle = document.getElementById('menuToggle');
+    const themeToggle = document.getElementById('themeToggle');
+    
     if (window.innerWidth <= 992) {
-      menuToggle.style.display = 'flex';
-      menuToggle.style.zIndex = '1003';
+      if (menuToggle) {
+        menuToggle.style.display = 'flex';
+        menuToggle.style.zIndex = '1003';
+        menuToggle.style.position = 'fixed';
+        menuToggle.style.top = '15px';
+        menuToggle.style.left = '15px';
+      }
       
-      const themeToggle = document.getElementById('themeToggle');
       if (themeToggle) {
         themeToggle.style.display = 'block';
         themeToggle.style.zIndex = '1003';
+        themeToggle.style.position = 'fixed';
+        themeToggle.style.top = '15px';
+        themeToggle.style.right = '15px';
+      }
+    } else {
+      // En desktop, ocultar botones móviles
+      if (menuToggle) {
+        menuToggle.style.display = 'none';
+      }
+      if (themeToggle) {
+        themeToggle.style.display = 'none';
       }
     }
   }
@@ -214,6 +232,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Ejecutar al cargar y al cambiar tamaño de ventana
   ensureButtonsVisible();
   window.addEventListener('resize', ensureButtonsVisible);
+  
+  // Asegurar visibilidad después de las animaciones
+  setTimeout(ensureButtonsVisible, 100);
+  setTimeout(ensureButtonsVisible, 500);
+  setTimeout(ensureButtonsVisible, 1000);
+  setTimeout(ensureButtonsVisible, 2000);
   
   menuToggle.addEventListener('click', function() {
     sidebar.classList.toggle('active');
