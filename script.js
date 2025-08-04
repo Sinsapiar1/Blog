@@ -1,12 +1,13 @@
-// Esperar a que el DOM esté completamente cargado
+// Script principal - Versión simplificada y funcional
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 Inicializando script...');
+  console.log('🚀 Inicializando aplicación...');
 
   // ===== LOADER =====
   const loader = document.getElementById('loader');
   if (loader) {
+    // Ocultar loader después de 1 segundo
     setTimeout(() => {
-      loader.style.opacity = '0';
+      loader.classList.add('hidden');
       setTimeout(() => {
         loader.style.display = 'none';
       }, 500);
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ===== CUSTOM CURSOR =====
   const customCursor = document.getElementById('customCursor');
-  if (customCursor) {
+  if (customCursor && window.innerWidth > 768) {
     document.addEventListener('mousemove', (e) => {
       customCursor.style.left = e.clientX + 'px';
       customCursor.style.top = e.clientY + 'px';
@@ -71,30 +72,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
 
-  function ensureButtonsVisible() {
+  // Función para mostrar/ocultar botones según el tamaño de pantalla
+  function updateButtonVisibility() {
     if (window.innerWidth <= 992) {
-      if (menuToggle) {
-        menuToggle.style.display = 'flex';
-        menuToggle.style.zIndex = '1003';
-      }
-      if (themeToggle) {
-        themeToggle.style.display = 'block';
-        themeToggle.style.zIndex = '1003';
-      }
+      if (menuToggle) menuToggle.style.display = 'flex';
+      if (themeToggle) themeToggle.style.display = 'block';
     } else {
-      if (menuToggle) {
-        menuToggle.style.display = 'none';
-      }
-      if (themeToggle) {
-        themeToggle.style.display = 'block';
-        themeToggle.style.zIndex = '1001';
-      }
+      if (menuToggle) menuToggle.style.display = 'none';
+      if (themeToggle) themeToggle.style.display = 'block';
     }
   }
 
   // Ejecutar al cargar y al cambiar tamaño de ventana
-  ensureButtonsVisible();
-  window.addEventListener('resize', ensureButtonsVisible);
+  updateButtonVisibility();
+  window.addEventListener('resize', updateButtonVisibility);
 
   // Menú hamburguesa
   if (menuToggle && sidebar) {
@@ -253,6 +244,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // ===== GALLERY FILTERS =====
+  const galleryFilterButtons = document.querySelectorAll('.gallery-filter button');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  
+  if (galleryFilterButtons.length > 0 && galleryItems.length > 0) {
+    galleryFilterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Quitar clase active de todos los botones
+        galleryFilterButtons.forEach(btn => btn.classList.remove('active'));
+        // Añadir clase active al botón clickeado
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        
+        galleryItems.forEach((item, index) => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+            // Reiniciar animación AOS
+            setTimeout(() => {
+              item.classList.add('aos-animate');
+            }, index * 50);
+          } else {
+            item.classList.remove('aos-animate');
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+  }
+
   // ===== INSTAGRAM SYSTEM =====
   function initInstagramSystem() {
     const embedContainers = document.querySelectorAll('.embed-container');
@@ -292,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   initInstagramSystem();
 
-  console.log('✅ Script inicializado correctamente');
+  console.log('✅ Aplicación inicializada correctamente');
 });
 
 // ===== UTILITY FUNCTIONS =====

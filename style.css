@@ -1672,6 +1672,12 @@
     justify-content: center;
     z-index: 10000;
     transition: opacity 0.5s ease;
+    opacity: 1;
+  }
+  
+  .loader.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
   
   .loader-circle {
