@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🎯 Visibilidad universal aplicada a', projectCards.length, 'cards');
   }, 300);
   
-  // Menú hamburguesa
+  // Menú hamburguesa mejorado
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
   
@@ -211,6 +211,24 @@ document.addEventListener('DOMContentLoaded', function() {
         menuToggle.classList.remove('active');
       }
     });
+  });
+  
+  // Cerrar menú al hacer clic fuera del sidebar
+  document.addEventListener('click', (e) => {
+    if (sidebar.classList.contains('active')) {
+      if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
+    }
+  });
+  
+  // Cerrar menú con la tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+      sidebar.classList.remove('active');
+      menuToggle.classList.remove('active');
+    }
   });
   
   // Dark mode toggle

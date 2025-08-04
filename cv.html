@@ -186,12 +186,47 @@
     }
     
     @media screen and (max-width: 768px) {
+      .cv-container {
+        padding: 1rem;
+      }
+      
       .cv-content {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .cv-header {
+        padding: 2rem 1rem;
+        margin-bottom: 1.5rem;
       }
       
       .cv-header h1 {
         font-size: 2rem;
+      }
+      
+      .cv-header .summary {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      
+      .cv-sidebar, .cv-main {
+        padding: 1.5rem;
+      }
+      
+      .skill-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .skill-level {
+        width: 100%;
+      }
+      
+      .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
       }
       
       .download-cv {
@@ -199,6 +234,88 @@
         right: 1rem;
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
+      }
+      
+      .cv-sidebar {
+        order: 2;
+      }
+      
+      .cv-main {
+        order: 1;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .cv-header {
+        padding: 1.5rem 1rem;
+      }
+      
+      .cv-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .cv-header .title {
+        font-size: 1.1rem;
+      }
+      
+      .cv-sidebar, .cv-main {
+        padding: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .experience-title {
+        font-size: 1.1rem;
+      }
+      
+      .download-cv {
+        bottom: 0.5rem;
+        right: 0.5rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Botón volver arriba */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media screen and (max-width: 768px) {
+      .back-to-top {
+        bottom: 1rem;
+        left: 1rem;
+        width: 45px;
+        height: 45px;
       }
     }
   </style>
@@ -289,74 +406,6 @@
         </div>
         
         <div class="cv-content">
-          <!-- Sidebar con habilidades -->
-          <div class="cv-sidebar" data-aos="fade-right">
-            <h3 class="section-title">Habilidades Técnicas</h3>
-            
-            <div class="skill-item">
-              <span class="skill-name">Google Sheets</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 90%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-item">
-              <span class="skill-name">Excel</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 95%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-item">
-              <span class="skill-name">AppSheet</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 85%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-item">
-              <span class="skill-name">HTML/CSS</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 80%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-item">
-              <span class="skill-name">JavaScript</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 75%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-item">
-              <span class="skill-name">Data Analysis</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 85%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-item">
-              <span class="skill-name">Dashboard</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 90%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-item">
-              <span class="skill-name">Automatización</span>
-              <div class="skill-level">
-                <div class="skill-progress" style="width: 88%"></div>
-              </div>
-            </div>
-            
-            <h3 class="section-title" style="margin-top: 2rem;">Educación</h3>
-            <div class="education-item">
-              <h4>Administración de Empresas con Mención Logística</h4>
-              <p>IACC - Santiago de Chile</p>
-              <p>2017 - 2020</p>
-            </div>
-          </div>
-          
           <!-- Contenido principal -->
           <div class="cv-main" data-aos="fade-left">
             <h3 class="section-title">Experiencia Laboral</h3>
@@ -435,6 +484,74 @@
               </div>
             </div>
           </div>
+          
+          <!-- Sidebar con habilidades -->
+          <div class="cv-sidebar" data-aos="fade-right">
+            <h3 class="section-title">Habilidades Técnicas</h3>
+            
+            <div class="skill-item">
+              <span class="skill-name">Google Sheets</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <span class="skill-name">Excel</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 95%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <span class="skill-name">AppSheet</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <span class="skill-name">HTML/CSS</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 75%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <span class="skill-name">Data Analysis</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <span class="skill-name">Dashboard</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <span class="skill-name">Automatización</span>
+              <div class="skill-level">
+                <div class="skill-progress" style="width: 88%"></div>
+              </div>
+            </div>
+            
+            <h3 class="section-title" style="margin-top: 2rem;">Educación</h3>
+            <div class="education-item">
+              <h4>Administración de Empresas con Mención Logística</h4>
+              <p>IACC - Santiago de Chile</p>
+              <p>2017 - 2020</p>
+            </div>
+
         </div>
       </div>
     </main>
@@ -444,6 +561,11 @@
   <a href="#" class="download-cv" id="downloadCV">
     <i class="fas fa-download"></i> Descargar CV
   </a>
+  
+  <!-- Botón volver arriba -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </button>
   
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
@@ -458,6 +580,24 @@
     document.getElementById('downloadCV').addEventListener('click', function(e) {
       e.preventDefault();
       alert('Función de descarga en desarrollo. Por ahora puedes copiar el enlace de esta página para compartir tu CV.');
+    });
+    
+    // Botón volver arriba
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   </script>
 </body>
