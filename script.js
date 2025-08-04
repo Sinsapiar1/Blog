@@ -219,12 +219,16 @@ document.addEventListener('DOMContentLoaded', function() {
         themeToggle.style.right = '15px';
       }
     } else {
-      // En desktop, ocultar botones móviles
+      // En desktop, mostrar botón de tema pero ocultar menú
       if (menuToggle) {
         menuToggle.style.display = 'none';
       }
       if (themeToggle) {
-        themeToggle.style.display = 'none';
+        themeToggle.style.display = 'block';
+        themeToggle.style.zIndex = '1001';
+        themeToggle.style.position = 'fixed';
+        themeToggle.style.top = '20px';
+        themeToggle.style.right = '20px';
       }
     }
   }
@@ -239,10 +243,16 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(ensureButtonsVisible, 1000);
   setTimeout(ensureButtonsVisible, 2000);
   
-  menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-  });
+  // Menú hamburguesa
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', function() {
+      sidebar.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+  }
   
   // Cerrar menú al hacer clic en un enlace (móviles)
   const menuLinks = document.querySelectorAll('.menu-item a');
@@ -280,24 +290,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // Dark mode toggle
   const themeToggle = document.getElementById('themeToggle');
   const body = document.body;
-  const themeIcon = themeToggle.querySelector('i');
   
-  // Verificar tema guardado
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  body.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-  
-  themeToggle.addEventListener('click', function() {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  if (themeToggle) {
+    const themeIcon = themeToggle.querySelector('i');
     
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-  });
-  
-  function updateThemeIcon(theme) {
-    themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    // Verificar tema guardado
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+    
+    function updateThemeIcon(theme) {
+      if (themeIcon) {
+        themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+      }
+    }
+  }
   }
   
   // Scroll indicator
