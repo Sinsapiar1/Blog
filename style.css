@@ -674,14 +674,13 @@
     color: var(--primary-color);
   }
   
-  /* Contenido Principal - Mejorado */
+  /* Contenido Principal */
   .content {
     flex: 1;
     margin-left: 280px;
     padding: 2rem;
     min-height: 100vh;
     background: var(--bg-light);
-    position: relative;
   }
   
   /* Efecto de partículas de fondo */
@@ -1417,7 +1416,12 @@
       background-color: rgba(23, 183, 148, 0.25);
     }
     
-    .content, footer {
+    .content {
+      margin-left: 0;
+      padding: 1rem;
+    }
+    
+    footer {
       margin-left: 0;
     }
     
@@ -1671,13 +1675,6 @@
     align-items: center;
     justify-content: center;
     z-index: 10000;
-    transition: opacity 0.5s ease;
-    opacity: 1;
-  }
-  
-  .loader.hidden {
-    opacity: 0;
-    pointer-events: none;
   }
   
   .loader-circle {
