@@ -189,12 +189,10 @@
       0 0 0 1px rgba(23, 183, 148, 0.2);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 4px;
-    position: relative;
   }
   
   /* Indicador visual para móvil */
@@ -1177,9 +1175,9 @@
   /* Responsive - MEJORADO PARA BOTONES MODERNOS */
   @media (max-width: 992px) {
     .menu-toggle {
-      display: flex;
+      display: flex !important;
       top: 15px;
-      left: 15px; /* Cambiado a left para mejor accesibilidad */
+      left: 15px;
       width: 52px;
       height: 52px;
       background: rgba(255, 255, 255, 0.95);
@@ -1187,6 +1185,7 @@
       border-radius: 50%;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       z-index: 1002;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
     .menu-toggle:hover {
@@ -1196,6 +1195,7 @@
     }
     
     .theme-toggle {
+      display: block !important;
       right: 15px;
       top: 15px;
       width: 52px;
@@ -1205,6 +1205,7 @@
       border-radius: 13px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       z-index: 1002;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
     .theme-toggle:hover {
@@ -1228,6 +1229,38 @@
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(15px);
       box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+      width: 280px;
+      max-width: 85vw;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Asegurar colores consistentes en el menú móvil */
+    .sidebar .profile h2 {
+      color: var(--primary-dark) !important;
+    }
+    
+    .sidebar .profile p {
+      color: #666 !important;
+    }
+    
+    .sidebar .menu a {
+      color: var(--primary-dark) !important;
+    }
+    
+    .sidebar .menu .active a {
+      color: var(--primary-color) !important;
+    }
+    
+    .sidebar .menu a:hover {
+      color: var(--primary-color) !important;
+    }
+    
+    .sidebar .social-links a {
+      color: var(--primary-color) !important;
+    }
+    
+    .sidebar .social-links a:hover {
+      color: var(--primary-dark) !important;
     }
     
     .sidebar.active {
@@ -1244,6 +1277,37 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.3);
       z-index: -1;
+    }
+    
+    /* Mejorar responsividad del menú en móvil */
+    .sidebar .profile {
+      padding: 1.5rem 1rem;
+    }
+    
+    .sidebar .profile h2 {
+      font-size: 1.3rem;
+    }
+    
+    .sidebar .profile p {
+      font-size: 0.9rem;
+    }
+    
+    .sidebar .menu {
+      padding: 1rem;
+    }
+    
+    .sidebar .menu .menu-item {
+      margin-bottom: 0.5rem;
+    }
+    
+    .sidebar .menu a {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .sidebar .social-links {
+      padding: 1rem;
+      justify-content: center;
     }
     
     .content, footer {
@@ -1274,6 +1338,17 @@
   }
   
   @media (max-width: 768px) {
+    /* Asegurar que los botones siempre sean visibles */
+    .menu-toggle {
+      display: flex !important;
+      z-index: 1003;
+    }
+    
+    .theme-toggle {
+      display: block !important;
+      z-index: 1003;
+    }
+    
     .content {
       padding: 1rem;
     }
@@ -1323,10 +1398,48 @@
     .project-img {
       height: 200px;
     }
+    
+    /* Mejorar menú en móvil */
+    .sidebar {
+      width: 260px;
+      max-width: 90vw;
+    }
+    
+    .sidebar .profile {
+      padding: 1rem;
+    }
+    
+    .sidebar .menu {
+      padding: 0.5rem;
+    }
+    
+    .sidebar .menu a {
+      padding: 0.7rem 0.8rem;
+      font-size: 0.95rem;
+    }
   }
   
   /* MÓVILES EXTRA PEQUEÑOS */
   @media (max-width: 480px) {
+    /* Garantizar que los botones siempre estén visibles */
+    .menu-toggle {
+      display: flex !important;
+      z-index: 1004;
+      width: 48px;
+      height: 48px;
+      top: 10px;
+      left: 10px;
+    }
+    
+    .theme-toggle {
+      display: block !important;
+      z-index: 1004;
+      width: 48px;
+      height: 24px;
+      top: 10px;
+      right: 10px;
+    }
+    
     .content {
       padding: 0.75rem;
     }
@@ -1383,6 +1496,34 @@
     .featured-text h2 {
       font-size: 1.4rem;
     }
+    
+    /* Menú más compacto en móviles pequeños */
+    .sidebar {
+      width: 240px;
+      max-width: 95vw;
+    }
+    
+    .sidebar .profile {
+      padding: 0.8rem;
+    }
+    
+    .sidebar .profile h2 {
+      font-size: 1.1rem;
+    }
+    
+    .sidebar .profile p {
+      font-size: 0.8rem;
+    }
+    
+    .sidebar .menu {
+      padding: 0.3rem;
+    }
+    
+    .sidebar .menu a {
+      padding: 0.6rem 0.7rem;
+      font-size: 0.9rem;
+    }
+  }
   }
   
   /* Animaciones de scroll */

@@ -197,6 +197,24 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
   
+  // Función para asegurar que los botones sean visibles
+  function ensureButtonsVisible() {
+    if (window.innerWidth <= 992) {
+      menuToggle.style.display = 'flex';
+      menuToggle.style.zIndex = '1003';
+      
+      const themeToggle = document.getElementById('themeToggle');
+      if (themeToggle) {
+        themeToggle.style.display = 'block';
+        themeToggle.style.zIndex = '1003';
+      }
+    }
+  }
+  
+  // Ejecutar al cargar y al cambiar tamaño de ventana
+  ensureButtonsVisible();
+  window.addEventListener('resize', ensureButtonsVisible);
+  
   menuToggle.addEventListener('click', function() {
     sidebar.classList.toggle('active');
     menuToggle.classList.toggle('active');
@@ -230,6 +248,10 @@ document.addEventListener('DOMContentLoaded', function() {
       menuToggle.classList.remove('active');
     }
   });
+  
+  // Asegurar que los botones estén visibles después de las animaciones
+  setTimeout(ensureButtonsVisible, 1000);
+  setTimeout(ensureButtonsVisible, 2000);
   
   // Dark mode toggle
   const themeToggle = document.getElementById('themeToggle');
