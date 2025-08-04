@@ -171,15 +171,15 @@
     display: none;
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 20px;
     z-index: 1001;
     background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.25), 
-      rgba(255, 255, 255, 0.1)
+      rgba(255, 255, 255, 0.95), 
+      rgba(255, 255, 255, 0.9)
     );
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
+    border-radius: 50%;
     width: 56px;
     height: 56px;
     cursor: pointer;
@@ -189,12 +189,32 @@
       0 0 0 1px rgba(23, 183, 148, 0.2);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 4px;
-    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Indicador visual para móvil */
+  .menu-toggle::after {
+    content: 'Menú';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--primary-dark);
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+  
+  .menu-toggle:hover::after {
+    opacity: 1;
   }
   
   /* Efecto de brillo interno */
@@ -331,11 +351,11 @@
   .theme-toggle {
     position: fixed;
     top: 20px;
-    right: 85px;
+    right: 20px;
     z-index: 1001;
     background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.25), 
-      rgba(255, 255, 255, 0.1)
+      rgba(255, 255, 255, 0.95), 
+      rgba(255, 255, 255, 0.9)
     );
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -351,6 +371,20 @@
       0 0 0 1px rgba(23, 183, 148, 0.2);
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Desktop: botón de tema en la esquina superior derecha */
+  @media (min-width: 993px) {
+    .theme-toggle {
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+    }
   }
   
   .theme-toggle::before {
@@ -414,6 +448,17 @@
       0 3px 8px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
     position: relative;
+    transform: translateX(0);
+  }
+  
+  /* Dark mode para el botón de tema */
+  [data-theme="dark"] .theme-toggle-ball {
+    transform: translateX(28px);
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9), 
+      rgba(255, 255, 255, 0.7)
+    );
+    color: #333;
   }
   
   .theme-toggle-ball::before {
@@ -633,14 +678,13 @@
     color: var(--primary-color);
   }
   
-  /* Contenido Principal - Mejorado */
+  /* Contenido Principal */
   .content {
     flex: 1;
     margin-left: 280px;
     padding: 2rem;
     min-height: 100vh;
     background: var(--bg-light);
-    position: relative;
   }
   
   /* Efecto de partículas de fondo */
@@ -1157,18 +1201,42 @@
   /* Responsive - MEJORADO PARA BOTONES MODERNOS */
   @media (max-width: 992px) {
     .menu-toggle {
-      display: flex; /* Ya incluye flex properties del nuevo diseño */
+      display: flex !important;
       top: 15px;
-      right: 15px;
-      width: 52px;
-      height: 52px;
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      z-index: 1002;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .menu-toggle:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
     
     .theme-toggle {
-      right: 75px; /* Ajustado para el nuevo diseño */
+      display: block !important;
+      right: 15px;
       top: 15px;
-      width: 52px;
-      height: 26px;
+      width: 50px;
+      height: 25px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      z-index: 1002;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.05);
     }
     
     .theme-toggle-ball {
@@ -1183,13 +1251,190 @@
     
     .sidebar {
       transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(15px);
+      box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+      width: 280px;
+      max-width: 85vw;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    
+    /* Asegurar colores consistentes en el menú móvil */
+    .sidebar .profile h2 {
+      color: var(--primary-dark) !important;
+      font-weight: 600 !important;
+    }
+    
+    .sidebar .profile p {
+      color: #666 !important;
+      font-weight: 400 !important;
+    }
+    
+    .sidebar .menu a {
+      color: var(--primary-dark) !important;
+      font-weight: 500 !important;
+    }
+    
+    .sidebar .menu .active a {
+      color: var(--primary-color) !important;
+      font-weight: 600 !important;
+    }
+    
+    .sidebar .menu a:hover {
+      color: var(--primary-color) !important;
+      background-color: rgba(23, 183, 148, 0.1) !important;
+    }
+    
+    .sidebar .social-links a {
+      color: var(--primary-color) !important;
+      font-weight: 500 !important;
+    }
+    
+    .sidebar .social-links a:hover {
+      color: var(--primary-dark) !important;
+      transform: scale(1.1) !important;
+    }
+    
+    /* Mejorar el fondo del menú móvil */
+    .sidebar {
+      background: rgba(255, 255, 255, 0.98) !important;
+      backdrop-filter: blur(15px) !important;
+      border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Dark mode para el menú móvil */
+    [data-theme="dark"] .sidebar {
+      background: rgba(30, 30, 30, 0.98) !important;
+      border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    [data-theme="dark"] .sidebar .profile h2 {
+      color: #fff !important;
+    }
+    
+    [data-theme="dark"] .sidebar .profile p {
+      color: #ccc !important;
+    }
+    
+    [data-theme="dark"] .sidebar .menu a {
+      color: #fff !important;
+    }
+    
+    [data-theme="dark"] .sidebar .menu a:hover {
+      background-color: rgba(23, 183, 148, 0.2) !important;
+    }
+    
+    [data-theme="dark"] .sidebar .social-links a {
+      color: var(--primary-color) !important;
     }
     
     .sidebar.active {
       transform: translateX(0);
     }
     
-    .content, footer {
+    /* Overlay para cuando el menú está abierto */
+    .sidebar.active::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+    
+    /* Mejorar responsividad del menú en móvil */
+    .sidebar .profile {
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 0;
+      text-align: center;
+    }
+    
+    .sidebar .profile h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+    
+    .sidebar .profile p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      color: #666;
+    }
+    
+    .sidebar .menu {
+      padding: 0.5rem;
+      flex: 1;
+    }
+    
+    .sidebar .menu .menu-item {
+      margin-bottom: 0.3rem;
+    }
+    
+    .sidebar .menu a {
+      padding: 0.8rem 1rem;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: block;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+    
+    .sidebar .menu a:hover {
+      background-color: rgba(23, 183, 148, 0.1);
+      transform: translateX(3px);
+    }
+    
+    .sidebar .menu .active a {
+      background-color: rgba(23, 183, 148, 0.15);
+      border-left: 3px solid var(--primary-color);
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .sidebar .social-links {
+      padding: 1rem;
+      justify-content: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      margin-top: auto;
+      gap: 1rem;
+    }
+    
+    /* Dark mode para el menú móvil */
+    [data-theme="dark"] .sidebar .profile {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    [data-theme="dark"] .sidebar .social-links {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    [data-theme="dark"] .sidebar .menu a:hover {
+      background-color: rgba(23, 183, 148, 0.2);
+    }
+    
+    [data-theme="dark"] .sidebar .menu .active a {
+      background-color: rgba(23, 183, 148, 0.25);
+    }
+    
+    .content {
+      margin-left: 0;
+      padding: 1rem;
+    }
+    
+    footer {
       margin-left: 0;
     }
     
@@ -1217,8 +1462,24 @@
   }
   
   @media (max-width: 768px) {
+    /* Asegurar que los botones siempre sean visibles */
+    .menu-toggle {
+      display: flex !important;
+      z-index: 1003;
+      width: 48px;
+      height: 48px;
+    }
+    
+    .theme-toggle {
+      display: block !important;
+      z-index: 1003;
+      width: 48px;
+      height: 24px;
+    }
+    
     .content {
       padding: 1rem;
+      margin-left: 0;
     }
     
     .featured-text {
@@ -1266,10 +1527,48 @@
     .project-img {
       height: 200px;
     }
+    
+    /* Mejorar menú en móvil */
+    .sidebar {
+      width: 260px;
+      max-width: 90vw;
+    }
+    
+    .sidebar .profile {
+      padding: 1rem;
+    }
+    
+    .sidebar .menu {
+      padding: 0.5rem;
+    }
+    
+    .sidebar .menu a {
+      padding: 0.7rem 0.8rem;
+      font-size: 0.95rem;
+    }
   }
   
   /* MÓVILES EXTRA PEQUEÑOS */
   @media (max-width: 480px) {
+    /* Garantizar que los botones siempre estén visibles */
+    .menu-toggle {
+      display: flex !important;
+      z-index: 1004;
+      width: 45px;
+      height: 45px;
+      top: 10px;
+      left: 10px;
+    }
+    
+    .theme-toggle {
+      display: block !important;
+      z-index: 1004;
+      width: 45px;
+      height: 22px;
+      top: 10px;
+      right: 10px;
+    }
+    
     .content {
       padding: 0.75rem;
     }
@@ -1326,6 +1625,38 @@
     .featured-text h2 {
       font-size: 1.4rem;
     }
+    
+    /* Menú más compacto en móviles pequeños */
+    .sidebar {
+      width: 240px;
+      max-width: 95vw;
+    }
+    
+    .sidebar .profile {
+      padding: 0.8rem;
+    }
+    
+    .sidebar .profile h2 {
+      font-size: 1.1rem;
+    }
+    
+    .sidebar .profile p {
+      font-size: 0.8rem;
+    }
+    
+    .sidebar .menu {
+      padding: 0.3rem;
+    }
+    
+    .sidebar .menu a {
+      padding: 0.6rem 0.7rem;
+      font-size: 0.9rem;
+    }
+    
+    /* Mejorar el overlay del menú */
+    .sidebar.active::before {
+      background: rgba(0, 0, 0, 0.5);
+    }
   }
   
   /* Animaciones de scroll */
@@ -1367,7 +1698,6 @@
     align-items: center;
     justify-content: center;
     z-index: 10000;
-    transition: opacity 0.5s ease;
   }
   
   .loader-circle {

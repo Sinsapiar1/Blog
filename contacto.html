@@ -104,8 +104,36 @@
     }
   </style>
 </head>
-<body>
-  <div class="container">
+  <body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+      <div class="loader-circle"></div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+    
+    <!-- Particles Background -->
+    <div class="particles-bg" id="particlesBg"></div>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <div class="theme-toggle-ball">
+        <i class="fas fa-sun"></i>
+      </div>
+    </button>
+    
+    <!-- Menu Toggle -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <div class="container">
     <!-- Menú de navegación lateral -->
     <aside class="sidebar">
       <div class="profile">
@@ -127,7 +155,10 @@
           <a href='sobre-mi.html'>Sobre Mí</a>
         </li>
         <li class='menu-item'>
-            <a href='https://sinsapiar1.github.io/Miportafolio/' target="_blank" rel="noopener noreferrer">Blog</a>
+          <a href='cv.html'>CV</a>
+        </li>
+        <li class='menu-item'>
+          <a href='proyectos.html'>Proyectos</a>
         </li>
         <li class='active menu-item'>
           <a href='contacto.html'>Contacto</a>
