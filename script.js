@@ -215,5 +215,88 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Generar partículas de fondo (si hay contenedor y no reduce motion)
+  const particlesContainer = document.getElementById('particlesBg');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (particlesContainer && !prefersReduced) {
+    const particlesCount = Math.min(60, Math.floor(window.innerWidth / 20));
+    for (let i = 0; i < particlesCount; i++) {
+      const p = document.createElement('span');
+      p.className = 'particle';
+      const size = Math.random() * 3 + 2;
+      p.style.width = `${size}px`;
+      p.style.height = `${size}px`;
+      p.style.left = `${Math.random() * 100}%`;
+      p.style.top = `${Math.random() * 100}%`;
+      p.style.opacity = String(0.3 + Math.random() * 0.5);
+      p.style.animationDuration = `${12 + Math.random() * 12}s`;
+      p.style.animationDelay = `${Math.random() * 5}s`;
+      p.style.filter = `blur(${Math.random() * 1.5}px)`;
+      particlesContainer.appendChild(p);
+    }
+  }
+
+  // Cursor personalizado con seguimiento
+  const customCursor = document.getElementById('customCursor');
+  if (customCursor && !prefersReduced) {
+    let cursorX = 0, cursorY = 0;
+    let targetX = 0, targetY = 0;
+
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouch) {
+      customCursor.style.display = 'none';
+    } else {
+      const animate = () => {
+        cursorX += (targetX - cursorX) * 0.2;
+        cursorY += (targetY - cursorY) * 0.2;
+        customCursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        requestAnimationFrame(animate);
+      };
+      animate();
+
+      window.addEventListener('mousemove', (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+      });
+
+      document.querySelectorAll('a, button, .btn, .project-card').forEach(el => {
+        el.addEventListener('mouseenter', () => customCursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => customCursor.classList.remove('hover'));
+      });
+    }
+  }
+
+  // Efecto parallax suave en imagen destacada
+  const parallaxEl = document.querySelector('.parallax-element');
+  if (parallaxEl && !prefersReduced) {
+    window.addEventListener('scroll', () => {
+      const rect = parallaxEl.getBoundingClientRect();
+      const offset = (window.innerHeight - rect.top) * 0.02;
+      parallaxEl.style.transform = `translateY(${offset}px) scale(1.05)`;
+    }, { passive: true });
+  }
+
+  // Tilt 3D en tarjetas de proyecto
+  const tiltCards = document.querySelectorAll('.project-card');
+  if (tiltCards.length && !prefersReduced) {
+    tiltCards.forEach(card => {
+      let rect;
+      const reset = () => {
+        card.style.transform = '';
+      };
+      card.addEventListener('mouseenter', () => {
+        rect = card.getBoundingClientRect();
+      });
+      card.addEventListener('mousemove', (e) => {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rx = ((y / rect.height) - 0.5) * -6;
+        const ry = ((x / rect.width) - 0.5) * 6;
+        card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
+      });
+      card.addEventListener('mouseleave', reset);
+    });
+  }
+
   console.log('Script cargado correctamente');
 });
