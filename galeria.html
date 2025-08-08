@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17b794">
+  <link rel="canonical" href="https://example.com/galeria.html">
   <title>Galería - Mi Portafolio</title>
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Galería de fotos de viajes, deportes y arquitectura.">
+  <meta property="og:title" content="Galería - Raul Pivet">
+  <meta property="og:description" content="Selección de fotos de viajes, deportes y arquitectura.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/galeria.html">
+  <meta property="og:image" content="https://example.com/img/gallery/paisaje1.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Galería - Raul Pivet">
+  <meta name="twitter:description" content="Selección de fotos de viajes, deportes y arquitectura.">
+  <meta name="twitter:image" content="https://example.com/img/gallery/paisaje1.jpg">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
@@ -166,7 +185,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="profile">
         <div class="profile-img">
-          <img src="img/perfil.jpg" alt="Foto de Perfil">
+          <img src="img/perfil.jpg" alt="Foto de Perfil" loading="lazy" decoding="async">
         </div>
         <h2>Raul Pivet</h2>
         <p>Informático & Deportista</p>
