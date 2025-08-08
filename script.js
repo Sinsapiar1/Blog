@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
     menuToggle.addEventListener('click', function() {
       sidebar.classList.toggle('active');
       menuToggle.classList.toggle('active');
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', (!expanded).toString());
     });
+    // estado inicial accesible
+    menuToggle.setAttribute('aria-expanded', 'false');
   }
 
   // Cerrar menú al hacer clic en enlaces
@@ -183,6 +187,31 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
       });
+    });
+  }
+
+  // Modal "Próximamente"
+  const comingSoonButtons = document.querySelectorAll('.coming-soon');
+  const comingSoonModal = document.getElementById('comingSoonModal');
+  if (comingSoonButtons.length > 0 && comingSoonModal) {
+    const closeBtn = comingSoonModal.querySelector('.close-modal');
+    const closeModal = () => {
+      comingSoonModal.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+    comingSoonButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        comingSoonModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => {
+      if (e.target === comingSoonModal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
     });
   }
 
