@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyectos de Raul Pivet">
+  <title>Proyectos - Raul Pivet</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+  
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+  
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <div class="theme-toggle-ball">
+      <i class="fas fa-moon"></i>
+    </div>
+  </button>
+  
+  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <div class="profile">
+        <div class="profile-img">
+          <img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy">
+        </div>
+        <h2>Raul Pivet</h2>
+        <p>Informático & Deportista</p>
+      </div>
+      
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+        </li>
+        <li class="menu-item">
+          <a href="galeria.html"><i class="fas fa-images"></i> Galería</a>
+        </li>
+        <li class="menu-item">
+          <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a>
+        </li>
+        <li class="menu-item">
+          <a href="cv.html"><i class="fas fa-file-alt"></i> CV</a>
+        </li>
+        <li class="menu-item active">
+          <a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a>
+        </li>
+        <li class="menu-item">
+          <a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a>
+        </li>
+      </ul>
+      
+      <div class="social-links">
+        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </aside>
+    
+    <main class="content">
+      <header class="header" data-aos="fade-down">
+        <h1>Mis Proyectos</h1>
+        <p>Soluciones tecnológicas que transforman ideas en realidad</p>
+      </header>
+      
+      <section class="projects">
+        <div class="project-grid">
+          <!-- Project 1 -->
+          <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-img">
+              <img src="img/gallery/Proyecto1.jpg.png" alt="Control de Almacén" loading="lazy">
+            </div>
+            <h3>Control de Almacén</h3>
+            <p>Sistema completo de gestión de inventario diseñado para pequeñas y medianas empresas. Incluye seguimiento en tiempo real, alertas automáticas de stock bajo, generación de reportes detallados y dashboard administrativo.</p>
+            <div style="padding: 0 var(--spacing-lg) var(--spacing-sm); color: var(--text-tertiary); font-size: 0.875rem;">
+              <strong>Tecnologías:</strong> Python, Streamlit, SQLite, Pandas
+            </div>
+            <a href="#" class="btn-small" id="almacen-btn">Ver proyecto</a>
+          </article>
+          
+          <!-- Project 2 -->
+          <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-img">
+              <img src="img/gallery/proyecto2.jpg" alt="Menús Interactivos" loading="lazy">
+            </div>
+            <h3>Menús Digitales Interactivos</h3>
+            <p>Plataforma web para restaurantes que permite crear menús digitales elegantes con fotografías HD, descripciones detalladas, filtros por categorías, información nutricional y precios actualizables en tiempo real.</p>
+            <div style="padding: 0 var(--spacing-lg) var(--spacing-sm); color: var(--text-tertiary); font-size: 0.875rem;">
+              <strong>Tecnologías:</strong> React, Firebase, CSS3, Responsive Design
+            </div>
+            <a href="#" class="btn-small" id="menus-btn">Ver proyecto</a>
+          </article>
+          
+          <!-- Project 3 -->
+          <article class="project-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="project-img">
+              <img src="img/gallery/proyecto3.jpg" alt="Web de Servicios" loading="lazy">
+            </div>
+            <h3>Plataforma de Servicios de Transporte</h3>
+            <p>Website moderno y responsive para empresa de transporte. Incluye calculadora de tarifas en tiempo real, sistema de reservas online, testimonios de clientes, mapa interactivo de cobertura y chat de soporte.</p>
+            <div style="padding: 0 var(--spacing-lg) var(--spacing-sm); color: var(--text-tertiary); font-size: 0.875rem;">
+              <strong>Tecnologías:</strong> HTML5, CSS3, JavaScript, Google Maps API
+            </div>
+            <a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" class="btn-small">Ver proyecto en vivo</a>
+          </article>
+
+          <!-- Project 4 - Power BI -->
+          <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-img">
+              <img src="img/gallery/paisaje1.jpg" alt="Power BI Dashboard" loading="lazy">
+            </div>
+            <h3>Dashboard de Inventario Negativo</h3>
+            <p>Sistema avanzado de análisis de inventario con Power BI que procesa datos de 30+ almacenes globalmente. Incluye visualizaciones HTML personalizadas, cálculos DAX complejos y automatización con Power Automate.</p>
+            <div style="padding: 0 var(--spacing-lg) var(--spacing-sm); color: var(--text-tertiary); font-size: 0.875rem;">
+              <strong>Tecnologías:</strong> Power BI, DAX, Power Automate, TypeScript
+            </div>
+            <a href="#" class="btn-small coming-soon">Ver detalles</a>
+          </article>
+
+          <!-- Project 5 - OCR System -->
+          <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-img">
+              <img src="img/gallery/filo.png" alt="OCR System" loading="lazy">
+            </div>
+            <h3>Sistema OCR para Documentos Logísticos</h3>
+            <p>Solución de reconocimiento óptico de caracteres para digitalizar documentos logísticos manuscritos. Procesa facturas, albaranes y órdenes de compra con alta precisión usando machine learning.</p>
+            <div style="padding: 0 var(--spacing-lg) var(--spacing-sm); color: var(--text-tertiary); font-size: 0.875rem;">
+              <strong>Tecnologías:</strong> Python, Tesseract OCR, OpenCV, TensorFlow
+            </div>
+            <a href="#" class="btn-small coming-soon">Ver detalles</a>
+          </article>
+
+          <!-- Project 6 - English Learning App -->
+          <article class="project-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="project-img">
+              <img src="img/gallery/bio.png" alt="English Learning" loading="lazy">
+            </div>
+            <h3>App de Aprendizaje de Inglés</h3>
+            <p>Aplicación educativa para hispanohablantes que aprenden inglés. Incluye ejercicios interactivos, sistema de pronunciación con IA, gamificación y seguimiento de progreso personalizado.</p>
+            <div style="padding: 0 var(--spacing-lg) var(--spacing-sm); color: var(--text-tertiary); font-size: 0.875rem;">
+              <strong>Tecnologías:</strong> React, Firebase, Google Gemini AI, Web Speech API
+            </div>
+            <a href="#" class="btn-small coming-soon">Ver detalles</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="featured" data-aos="fade-up" style="margin-top: var(--spacing-2xl);">
+        <div class="featured-text" style="padding: var(--spacing-2xl); text-align: center; grid-column: 1 / -1;">
+          <h2>¿Tienes un proyecto en mente?</h2>
+          <p>Estoy siempre abierto a nuevos desafíos y colaboraciones. Si tienes una idea que quieres hacer realidad, hablemos sobre cómo puedo ayudarte.</p>
+          <a href="contacto.html" class="btn">Contáctame</a>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p>
+  </footer>
+
+  <div id="comingSoonModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-icon">
+        <i class="fas fa-tools"></i>
+      </div>
+      <h3>Proyecto en desarrollo</h3>
+      <p>Estamos trabajando en la documentación detallada de este proyecto.</p>
+      <p class="modal-date">Disponible próximamente</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
