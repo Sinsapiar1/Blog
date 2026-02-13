@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Curriculum Vitae de Raul Pivet">
+  <meta name="description" content="Curriculum Vitae de Raul Pivet - Logistics Operations Specialist">
   <title>CV - Raul Pivet</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -39,6 +39,7 @@
       font-size: 1.25rem;
       color: var(--text-secondary);
       margin-bottom: var(--spacing-lg);
+      font-weight: 500;
     }
 
     .cv-contact {
@@ -76,6 +77,13 @@
       margin-bottom: var(--spacing-lg);
       padding-bottom: var(--spacing-sm);
       border-bottom: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .cv-section h2 i {
+      color: var(--primary);
     }
 
     .cv-item {
@@ -109,6 +117,7 @@
       font-size: 1rem;
       color: var(--primary);
       margin-bottom: var(--spacing-xs);
+      font-weight: 500;
     }
 
     .cv-item-date {
@@ -131,9 +140,16 @@
       margin-bottom: var(--spacing-xs);
     }
 
+    .highlight {
+      background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1));
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: var(--spacing-md);
     }
 
@@ -143,11 +159,13 @@
       border-radius: var(--radius-md);
       text-align: center;
       transition: all var(--transition-base);
+      border: 1px solid var(--border-color);
     }
 
     .skill-item:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
+      border-color: var(--primary);
     }
 
     .skill-icon {
@@ -159,6 +177,24 @@
     .skill-name {
       font-weight: 500;
       color: var(--text-primary);
+      font-size: 0.875rem;
+    }
+
+    .language-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-sm) 0;
+    }
+
+    .language-name {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .language-level {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
     }
 
     .download-cv {
@@ -169,6 +205,13 @@
     .download-cv .btn {
       padding: 16px 32px;
       font-size: 1rem;
+    }
+
+    .profile-summary {
+      background: linear-gradient(135deg, rgba(0, 122, 255, 0.05), rgba(88, 86, 214, 0.05));
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--primary);
     }
 
     @media (max-width: 768px) {
@@ -186,7 +229,7 @@
       }
 
       .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
       }
     }
   </style>
@@ -259,7 +302,7 @@
         <!-- CV Header -->
         <div class="cv-header" data-aos="fade-down">
           <h1>Raul Jaime Pivet</h1>
-          <p class="subtitle">Especialista en Logística Administrativa & Desarrollador</p>
+          <p class="subtitle">Logistics Operations Specialist & Business Solutions Developer</p>
           <div class="cv-contact">
             <div class="cv-contact-item">
               <i class="fas fa-envelope"></i>
@@ -267,42 +310,44 @@
             </div>
             <div class="cv-contact-item">
               <i class="fas fa-phone"></i>
-              <span>+1 (305) 504-6846</span>
+              <span>+1 (305) 540-6846</span>
             </div>
             <div class="cv-contact-item">
               <i class="fas fa-map-marker-alt"></i>
-              <span>Miami, Florida, US</span>
+              <span>Cutler Bay, FL 33189</span>
             </div>
           </div>
         </div>
 
         <!-- Perfil Profesional -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-user"></i> Perfil Profesional</h2>
-          <p class="cv-item-description">
-            Profesional especializado en logística administrativa y desarrollo tecnológico con amplia experiencia en la gestión de inventarios y optimización de procesos. Experto en Microsoft Power Platform (Power BI, Power Automate, Dataverse) y desarrollo con Python. Apasionado por transformar datos en soluciones inteligentes que mejoran la eficiencia operacional.
-          </p>
+          <h2><i class="fas fa-user-tie"></i> Professional Profile</h2>
+          <div class="profile-summary">
+            <p class="cv-item-description">
+              <strong>9+ years</strong> transforming manual logistics operations into automated, data-driven solutions. Specialist in <span class="highlight">Microsoft Power Platform</span> and <span class="highlight">Python development</span>, creating tools that reduce operational costs and improve team efficiency. Proven track record reducing negative inventory through custom dashboards and predictive analytics.
+            </p>
+          </div>
         </section>
 
         <!-- Experiencia Profesional -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+          <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
           
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Logistics Administrative Professional</h3>
-                <p class="cv-item-company">Encofrados J. Alsina S.A.</p>
+                <h3 class="cv-item-title">Logistics Assistant</h3>
+                <p class="cv-item-company">Encofrados J. Alsina S.A. - Hialeah, FL</p>
               </div>
-              <span class="cv-item-date">2020 - Presente</span>
+              <span class="cv-item-date">Feb 2025 - Present</span>
             </div>
             <div class="cv-item-description">
               <ul>
-                <li>Desarrollo e implementación de sistemas automatizados de reportes de inventario usando Power BI y Power Automate</li>
-                <li>Gestión de inventarios en 30+ almacenes globalmente</li>
-                <li>Análisis avanzado de inventario negativo y optimización de performance de almacenes</li>
-                <li>Creación de dashboards interactivos con visualizaciones HTML y TypeScript personalizadas</li>
-                <li>Integración de sistemas ERP con flujos automatizados de email reporting</li>
+                <li><strong>Reduced negative inventory significantly</strong> by developing advanced analytics tools using Python (Streamlit, Pandas) and Power BI with TypeScript custom visuals</li>
+                <li>Automated daily inventory analysis dashboards, processing data from 30+ warehouses globally</li>
+                <li>Created web applications for random inventory audits and real-time stock analysis</li>
+                <li>Designed automated workflows with Power Automate for mass email reporting and ERP data integration</li>
+                <li>Managed delivery documentation, return requests, and carrier coordination through optimized processes</li>
               </ul>
             </div>
           </div>
@@ -310,17 +355,53 @@
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Desarrollador Full Stack</h3>
-                <p class="cv-item-company">Freelance</p>
+                <h3 class="cv-item-title">Logistics Coordinator</h3>
+                <p class="cv-item-company">Merflex - Doral, FL</p>
               </div>
-              <span class="cv-item-date">2018 - Presente</span>
+              <span class="cv-item-date">Mar 2024 - Jan 2025</span>
             </div>
             <div class="cv-item-description">
               <ul>
-                <li>Desarrollo de aplicaciones web con React, Firebase y Google Cloud Services</li>
-                <li>Creación de sistemas de gestión de inventario para PyMEs</li>
-                <li>Implementación de soluciones de automatización con Python y Google Apps Script</li>
-                <li>Desarrollo de aplicaciones móviles con Flutter</li>
+                <li>Coordinated international operations between China, Miami, and Bogotá for Temu/Shein products</li>
+                <li><strong>Systematized key procedures</strong>, achieving significant reductions in operational times</li>
+                <li>Developed mobile applications for merchandise reception/dispatch with automated reporting to stakeholders</li>
+                <li>Implemented mobile apps that replaced administrative tasks, optimizing human resources</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <div>
+                <h3 class="cv-item-title">Warehouse Manager</h3>
+                <p class="cv-item-company">Sodexo - Minera Collahuasi - Iquique, Chile</p>
+              </div>
+              <span class="cv-item-date">Jan 2021 - Jun 2023</span>
+            </div>
+            <div class="cv-item-description">
+              <ul>
+                <li><strong>Led team of 20 people</strong> in rotational shifts (7x7), ensuring operational and safety objectives</li>
+                <li><strong>Reduced inventory errors by 30%</strong> implementing mobile inventory control app with AppSheet</li>
+                <li><strong>Improved operational efficiency by 25%</strong> through automated reporting in Google Sheets and Excel</li>
+                <li>Designed integrated systems for data synchronization between Gmail, Google Sheets, and local databases</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <div>
+                <h3 class="cv-item-title">Administrative Specialist</h3>
+                <p class="cv-item-company">Sodexo - Minera Escondida - Antofagasta, Chile</p>
+              </div>
+              <span class="cv-item-date">Aug 2016 - Jan 2021</span>
+            </div>
+            <div class="cv-item-description">
+              <ul>
+                <li>Represented Food Warehouse in national meetings to improve logistics and supply processes</li>
+                <li>Analyzed data for weekly cost presentations, providing key insights for financial decisions</li>
+                <li>Systematized operational procedures, improving daily operations efficiency</li>
+                <li>Created mobile apps for merchandise reception, reducing registration errors</li>
               </ul>
             </div>
           </div>
@@ -328,35 +409,27 @@
 
         <!-- Educación -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-graduation-cap"></i> Educación</h2>
+          <h2><i class="fas fa-graduation-cap"></i> Education & Certifications</h2>
           
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Ingeniería en Informática</h3>
-                <p class="cv-item-company">Universidad Tecnológica</p>
+                <h3 class="cv-item-title">Business Administration (Logistics Specialization)</h3>
+                <p class="cv-item-company">IACC - Santiago, Chile</p>
               </div>
-              <span class="cv-item-date">2014 - 2018</span>
-            </div>
-            <div class="cv-item-description">
-              Especialización en Desarrollo de Software y Sistemas de Información
+              <span class="cv-item-date">2017 - 2020</span>
             </div>
           </div>
 
           <div class="cv-item">
-            <div class="cv-item-header">
-              <div>
-                <h3 class="cv-item-title">Certificaciones Profesionales</h3>
-                <p class="cv-item-company">Varias instituciones</p>
-              </div>
-              <span class="cv-item-date">2019 - 2024</span>
-            </div>
+            <h3 class="cv-item-title" style="margin-bottom: var(--spacing-sm);">Professional Certifications</h3>
             <div class="cv-item-description">
               <ul>
-                <li>Microsoft Power BI Data Analyst</li>
-                <li>Google Cloud Platform Fundamentals</li>
-                <li>Advanced Python Programming</li>
-                <li>Scrum Master Certification</li>
+                <li><strong>Python AI Development</strong> (Nov 2025) - Advanced Python, LLMs, APIs integration</li>
+                <li><strong>Microsoft Excel Expert</strong> - Advanced automation and data analysis</li>
+                <li><strong>Supply Chain Management Diploma</strong> - Logistics flow optimization</li>
+                <li><strong>Administrative Management Diploma</strong> - Business resource management</li>
+                <li><strong>Cybersecurity Introduction</strong> (Sep 2025) - Digital security fundamentals</li>
               </ul>
             </div>
           </div>
@@ -364,11 +437,31 @@
 
         <!-- Habilidades Técnicas -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-code"></i> Habilidades Técnicas</h2>
+          <h2><i class="fas fa-code"></i> Technical Skills</h2>
           <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+              <div class="skill-name">Power BI</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-cogs"></i></div>
+              <div class="skill-name">Power Automate</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-database"></i></div>
+              <div class="skill-name">Dataverse</div>
+            </div>
             <div class="skill-item">
               <div class="skill-icon"><i class="fab fa-python"></i></div>
               <div class="skill-name">Python</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-table"></i></div>
+              <div class="skill-name">Pandas/NumPy</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+              <div class="skill-name">Streamlit</div>
             </div>
             <div class="skill-item">
               <div class="skill-icon"><i class="fab fa-react"></i></div>
@@ -379,44 +472,57 @@
               <div class="skill-name">JavaScript</div>
             </div>
             <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
-              <div class="skill-name">Power BI</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-database"></i></div>
-              <div class="skill-name">SQL</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-              <div class="skill-name">Git</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-docker"></i></div>
-              <div class="skill-name">Docker</div>
+              <div class="skill-icon"><i class="fab fa-html5"></i></div>
+              <div class="skill-name">HTML/CSS</div>
             </div>
             <div class="skill-item">
               <div class="skill-icon"><i class="fab fa-google"></i></div>
-              <div class="skill-name">Google Cloud</div>
+              <div class="skill-name">Google Suite</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-fire"></i></div>
+              <div class="skill-name">Firebase</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+              <div class="skill-name">Git/GitHub</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+              <div class="skill-name">AppSheet</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-file-excel"></i></div>
+              <div class="skill-name">Excel Advanced</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-warehouse"></i></div>
+              <div class="skill-name">ERP Systems</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-boxes"></i></div>
+              <div class="skill-name">WMS</div>
             </div>
           </div>
         </section>
 
         <!-- Idiomas -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-language"></i> Idiomas</h2>
-          <div class="cv-item-description">
-            <ul>
-              <li><strong>Español:</strong> Nativo</li>
-              <li><strong>Inglés:</strong> Avanzado (C1)</li>
-              <li><strong>Portugués:</strong> Intermedio (B1)</li>
-            </ul>
+          <h2><i class="fas fa-language"></i> Languages</h2>
+          <div class="language-item">
+            <span class="language-name">Spanish</span>
+            <span class="language-level">Native</span>
+          </div>
+          <div class="language-item">
+            <span class="language-name">English</span>
+            <span class="language-level">Intermediate (B1/B2)</span>
           </div>
         </section>
 
         <!-- Descargar CV -->
         <div class="download-cv" data-aos="fade-up">
-          <a href="#" class="btn" onclick="alert('Función de descarga próximamente disponible'); return false;">
-            <i class="fas fa-download"></i> Descargar CV en PDF
+          <a href="docs/CV_Raul_Pivet.pdf" class="btn" download>
+            <i class="fas fa-download"></i> Download CV as PDF
           </a>
         </div>
       </div>
@@ -424,7 +530,7 @@
   </div>
   
   <footer>
-    <p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p>
+    <p>&copy; 2025 Raul Pivet. All rights reserved.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
