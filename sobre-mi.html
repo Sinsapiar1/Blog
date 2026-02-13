@@ -3,414 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Mí - Mi Portafolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
+  <title>Sobre Mí - Raul Pivet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Estilos específicos para la página Sobre Mí */
-    .about-container {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-    }
-    
     .bio-section {
-      display: flex;
-      gap: 2rem;
-      background: white;
-      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--spacing-xl);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .bio-image {
-      flex: 1;
-      min-width: 300px;
+      margin-bottom: var(--spacing-xl);
     }
     
     .bio-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      min-height: 400px;
     }
     
     .bio-content {
-      flex: 2;
-      padding: 2rem;
+      padding: var(--spacing-xl);
     }
     
     .bio-content h2 {
-      color: var(--primary-dark);
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
+      font-size: 1.875rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-md);
+      color: var(--text-primary);
     }
     
     .bio-content p {
-      margin-bottom: 1rem;
-      line-height: 1.8;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--spacing-md);
     }
     
     .skills-section {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
     }
     
     .skills-section h2 {
-      color: var(--primary-dark);
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: 1.875rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-lg);
       text-align: center;
-    }
-    
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 2rem;
+      color: var(--text-primary);
     }
     
     .skill-card {
+      background: var(--bg-secondary);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
       text-align: center;
-      padding: 1.5rem;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-      background: #f9f9f9;
+      transition: all var(--transition-base);
     }
     
     .skill-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
     
     .skill-icon {
       font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
+      color: var(--primary);
+      margin-bottom: var(--spacing-sm);
     }
     
     .skill-title {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      color: var(--primary-dark);
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+      color: var(--text-primary);
     }
     
     .skill-desc {
-      font-size: 0.9rem;
-      color: #777;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
     
-    .timeline-section {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .timeline-section h2 {
-      color: var(--primary-dark);
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-      text-align: center;
-    }
-    
-    .timeline {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: var(--primary-color);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
-    
-    .timeline-item {
-      padding: 10px 40px;
-      position: relative;
-      background-color: inherit;
-      width: 50%;
-    }
-    
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      right: -17px;
-      background-color: white;
-      border: 4px solid var(--primary-color);
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
-    }
-    
-    .left {
-      left: 0;
-    }
-    
-    .right {
-      left: 50%;
-    }
-    
-    .left::before {
-      content: " ";
-      height: 0;
-      position: absolute;
-      top: 22px;
-      width: 0;
-      z-index: 1;
-      right: 30px;
-      border: medium solid var(--primary-color);
-      border-width: 10px 0 10px 10px;
-      border-color: transparent transparent transparent var(--primary-color);
-    }
-    
-    .right::before {
-      content: " ";
-      height: 0;
-      position: absolute;
-      top: 22px;
-      width: 0;
-      z-index: 1;
-      left: 30px;
-      border: medium solid var(--primary-color);
-      border-width: 10px 10px 10px 0;
-      border-color: transparent var(--primary-color) transparent transparent;
-    }
-    
-    .right::after {
-      left: -16px;
-    }
-    
-    .timeline-content {
-      padding: 20px 30px;
-      background-color: #f9f9f9;
-      position: relative;
-      border-radius: 6px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .timeline-date {
-      color: var(--primary-color);
-      font-weight: bold;
-    }
-    
-    .timeline-title {
-      margin: 0.5rem 0;
-      color: var(--primary-dark);
-    }
-    
-    @media screen and (max-width: 992px) {
+    @media (max-width: 992px) {
       .bio-section {
-        flex-direction: column;
+        grid-template-columns: 1fr;
       }
       
-      .timeline::after {
-        left: 31px;
-      }
-      
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
-      
-      .timeline-item::before {
-        left: 60px;
-        border: medium solid var(--primary-color);
-        border-width: 10px 10px 10px 0;
-        border-color: transparent var(--primary-color) transparent transparent;
-      }
-      
-      .left::after, .right::after {
-        left: 15px;
-      }
-      
-      .right {
-        left: 0%;
+      .bio-image img {
+        min-height: 300px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="loader" id="loader"><div class="loader-circle"></div></div>
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+  
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
+  </button>
+  
+  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  
   <div class="container">
-    <!-- Menú de navegación lateral -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="profile">
-        <div class="profile-img">
-          <img src="img/perfil.jpg" alt="Foto de Perfil">
-        </div>
+        <div class="profile-img"><img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy"></div>
         <h2>Raul Pivet</h2>
         <p>Informático & Deportista</p>
       </div>
-      
-      <ul class='menu'>
-        <li class='menu-item'>
-          <a href='index.html'>Inicio</a>
-        </li>
-        <li class='menu-item'>
-          <a href='galeria.html'>Galería</a>
-        </li>
-        <li class='active menu-item'>
-          <a href='sobre-mi.html'>Sobre Mí</a>
-        </li>
-        <li class='menu-item'>
-            <a href='https://sinsapiar1.github.io/Miportafolio/' target="_blank" rel="noopener noreferrer">Blog</a>
-        </li>
-        <li class='menu-item'>
-          <a href='contacto.html'>Contacto</a>
-        </li>
+      <ul class="menu">
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li class="menu-item"><a href="galeria.html"><i class="fas fa-images"></i> Galería</a></li>
+        <li class="menu-item active"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
+        <li class="menu-item"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
+        <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
+        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
       </ul>
-      
       <div class="social-links">
-        <a href="https://instagram.com/Jaimepivet" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/Jaimepivet" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Sinsapiar1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
     
-    <!-- Contenido principal -->
     <main class="content">
-      <div class="header">
+      <header class="header" data-aos="fade-down">
         <h1>Sobre Mí</h1>
         <p>Conoce mi historia y pasión</p>
-      </div>
+      </header>
       
-      <div class="about-container">
-        <!-- Sección de biografía -->
-        <section class="bio-section">
-          <div class="bio-image">
-            <img src="img/gallery/filo.png" alt="Foto profesional">
-          </div>
-          <div class="bio-content">
-            
-            <h2>¡Hola! Soy Raúl Pivet</h2>
-
-            <p>Informático de profesión y deportista por pasión. Mi camino ha sido una interesante combinación de tecnología y actividad física, donde he encontrado un equilibrio perfecto entre el mundo digital y el bienestar personal.</p>
-            
-            <p>Nacido en Chile pero ciudadano del mundo, he convertido mi amor por el deporte en un estilo de vida. La constancia, disciplina y superación personal que aprendí en las pistas de atletismo las aplico diariamente en mi desarrollo profesional y personal.</p>
-            
-            <p>Mi formación en informática me ha permitido trabajar en proyectos desafiantes, mientras que mi pasión por el deporte me mantiene energizado y con una mentalidad positiva. Esta combinación única me ha permitido desarrollar soluciones tecnológicas innovadoras con un enfoque humano y centrado en el bienestar.</p>
-            
-            <p>A través de este espacio, quiero compartir contigo mis experiencias, conocimientos y proyectos. ¡Bienvenido a mi mundo donde la tecnología y el deporte se encuentran!</p></div>
-        </section>
-        
-        <!-- Sección de habilidades -->
-        <div class="skill-card">
-            <div class="skill-icon">
-              <i class="fas fa-laptop-code"></i>
-            </div>
+      <section class="bio-section" data-aos="fade-up">
+        <div class="bio-image">
+          <img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy">
+        </div>
+        <div class="bio-content">
+          <h2>¡Hola! Soy Raúl Pivet</h2>
+          <p>Informático de profesión y deportista por pasión. Mi camino ha sido una interesante combinación de tecnología y actividad física, donde he encontrado un equilibrio perfecto entre el mundo digital y el bienestar personal.</p>
+          <p>Especializado en logística administrativa y desarrollo tecnológico, trabajo en Encofrados J. Alsina S.A. gestionando inventarios globalmente y desarrollando sistemas automatizados con Power BI y Python.</p>
+          <p>Mi formación en informática me ha permitido trabajar en proyectos desafiantes, mientras que mi pasión por el deporte me mantiene energizado y con una mentalidad positiva.</p>
+        </div>
+      </section>
+      
+      <section class="skills-section" data-aos="fade-up">
+        <h2>Habilidades y Pasiones</h2>
+        <div class="project-grid">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
             <h3 class="skill-title">Desarrollo Web</h3>
-            <p class="skill-desc">Especializado en creación de sitios web responsivos, aplicaciones web y optimización de experiencia de usuario.</p>
+            <p class="skill-desc">Creación de aplicaciones web responsivas y optimizadas con React, Python y tecnologías modernas.</p>
           </div>
           
           <div class="skill-card">
-            <div class="skill-icon">
-              <i class="fas fa-running"></i>
-            </div>
+            <div class="skill-icon"><i class="fas fa-running"></i></div>
             <h3 class="skill-title">Atletismo</h3>
-            <p class="skill-desc">Corredor de media y larga distancia con experiencia en competencias nacionales e internacionales.</p>
+            <p class="skill-desc">Corredor de media y larga distancia con experiencia en competencias nacionales.</p>
           </div>
           
           <div class="skill-card">
-            <div class="skill-icon">
-              <i class="fas fa-camera"></i>
-            </div>
+            <div class="skill-icon"><i class="fas fa-camera"></i></div>
             <h3 class="skill-title">Fotografía</h3>
-            <p class="skill-desc">Captura de momentos deportivos, paisajes naturales y fotografía urbana con enfoque en composición y luz natural.</p>
+            <p class="skill-desc">Captura de momentos deportivos, paisajes naturales y fotografía urbana.</p>
           </div>
           
           <div class="skill-card">
-            <div class="skill-icon">
-              <i class="fas fa-chalkboard-teacher"></i>
-            </div>
-            <h3 class="skill-title">Formación</h3>
-            <p class="skill-desc">Instructor de tecnologías web y mentor de desarrollo personal a través del deporte.</p>
+            <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3 class="skill-title">Análisis de Datos</h3>
+            <p class="skill-desc">Experto en Power BI, análisis de inventarios y optimización de procesos.</p>
           </div>
-        </section>
-        
-        <!-- Sección de trayectoria -->
-        <section class="timeline-section">
-          <h2>Mi Trayectoria</h2>
-          <div class="timeline">
-            <!-- Evento 1 -->
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                  <span class="timeline-date">2018</span>
-                  <h3 class="timeline-title">Graduación en Ingeniería Informática</h3>
-                  <p>Obtención de mi título con especialización en desarrollo de aplicaciones web y móviles.</p>
-                </div>
-              </div>
-              
-              <div class="timeline-item right">
-                <div class="timeline-content">
-                  <span class="timeline-date">2019</span>
-                  <h3 class="timeline-title">Primera maratón internacional</h3>
-                  <p>Participación y finalización de mi primera maratón internacional, marcando un hito personal en mi carrera deportiva.</p>
-                </div>
-              </div>
-              
-              <div class="timeline-item left">
-                <div class="timeline-content">
-                  <span class="timeline-date">2020</span>
-                  <h3 class="timeline-title">Lanzamiento de proyecto freelance</h3>
-                  <p>Inicio de mi carrera como desarrollador independiente, ofreciendo soluciones web personalizadas para pequeñas y medianas empresas.</p>
-                </div>
-              </div>
-              
-              <div class="timeline-item right">
-                <div class="timeline-content">
-                  <span class="timeline-date">2022</span>
-                  <h3 class="timeline-title">Certificación en UX/UI Design</h3>
-                  <p>Ampliación de mis habilidades con especialización en experiencia de usuario y diseño de interfaces.</p>
-                </div>
-              </div>
-              
-              <div class="timeline-item left">
-                <div class="timeline-content">
-                  <span class="timeline-date">2023</span>
-                  <h3 class="timeline-title">Programa de mentorías</h3>
-                  <p>Lanzamiento de programa para ayudar a jóvenes profesionales a integrar hábitos saludables con desarrollo profesional.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="philosophy-section">
-            <h2>Mi Filosofía</h2>
-            <div class="philosophy-content">
-              <div class="philosophy-image">
-                <img src="img/gallery/bio.png" alt="Filosofía personal">
-              </div>
-              <div class="philosophy-text">
-                <p>Creo firmemente que la tecnología debe estar al servicio del bienestar humano. Mi enfoque combina innovación digital con principios de vida saludable:</p>
-                <ul>
-                  <li><strong>Equilibrio:</strong> La vida digital complementa, no reemplaza, nuestras experiencias físicas.</li>
-                  <li><strong>Constancia:</strong> El éxito, tanto en deporte como en programación, viene de la práctica diaria.</li>
-                  <li><strong>Comunidad:</strong> Compartir conocimiento y experiencias nos hace crecer a todos.</li>
-                  <li><strong>Adaptabilidad:</strong> En un mundo en constante cambio, la capacidad de adaptación es nuestra mejor herramienta.</li>
-                </ul>
-                <blockquote>"El verdadero progreso no está en correr más rápido o programar mejor, sino en crecer como persona mientras lo hacemos." - Mi lema personal</blockquote>
-              </div>
-            </div>
-          </section>
-      </div>
+        </div>
+      </section>
     </main>
   </div>
   
-  
-  <footer>
-    <p>&copy; 2025 Raul Pivet - Todos los derechos reservados</p>
-  </footer>
+  <footer><p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p></footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
