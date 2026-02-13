@@ -3,92 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto - Mi Portafolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
+  <title>Contacto - Raul Pivet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Estilos específicos para la página de contacto */
     .contact-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
     }
     
     .contact-info {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
     }
     
     .contact-info h2 {
-      color: var(--primary-dark);
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-lg);
+      color: var(--text-primary);
     }
     
     .contact-item {
       display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
+      align-items: start;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
     }
     
     .contact-icon {
-      width: 50px;
-      height: 50px;
-      background: var(--primary-color);
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.2rem;
-      margin-right: 1rem;
+      font-size: 1.125rem;
+      flex-shrink: 0;
     }
     
     .contact-text h3 {
-      margin-bottom: 0.3rem;
-      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+      color: var(--text-primary);
     }
     
-    .contact-text p, .contact-text a {
-      color: #777;
+    .contact-text p,
+    .contact-text a {
+      color: var(--text-secondary);
       text-decoration: none;
-      transition: color 0.3s ease;
+      font-size: 0.9375rem;
+      transition: color var(--transition-fast);
     }
     
     .contact-text a:hover {
-      color: var(--primary-color);
+      color: var(--primary);
     }
     
     .contact-form {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
     }
     
     .contact-form h2 {
-      color: var(--primary-dark);
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-lg);
+      color: var(--text-primary);
     }
     
     .contact-form iframe {
       width: 100%;
       min-height: 600px;
       border: none;
-      border-radius: 10px;
-      background-color: white;
+      border-radius: var(--radius-lg);
     }
     
     .map-container {
       grid-column: 1 / -1;
-      border-radius: 10px;
+      border-radius: var(--radius-xl);
       overflow: hidden;
       height: 400px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-md);
     }
     
     .map-container iframe {
@@ -97,7 +105,7 @@
       border: 0;
     }
     
-    @media screen and (max-width: 992px) {
+    @media (max-width: 992px) {
       .contact-container {
         grid-template-columns: 1fr;
       }
@@ -105,133 +113,97 @@
   </style>
 </head>
 <body>
+  <div class="loader" id="loader"><div class="loader-circle"></div></div>
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+  
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
+  </button>
+  
+  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  
   <div class="container">
-    <!-- Menú de navegación lateral -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="profile">
-        <div class="profile-img">
-          <img src="img/perfil.jpg" alt="Foto de Perfil">
-        </div>
+        <div class="profile-img"><img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy"></div>
         <h2>Raul Pivet</h2>
         <p>Informático & Deportista</p>
       </div>
-      
-      <ul class='menu'>
-        <li class='menu-item'>
-          <a href='index.html'>Inicio</a>
-        </li>
-        <li class='menu-item'>
-          <a href='galeria.html'>Galería</a>
-        </li>
-        <li class='menu-item'>
-          <a href='sobre-mi.html'>Sobre Mí</a>
-        </li>
-        <li class='menu-item'>
-            <a href='https://sinsapiar1.github.io/Miportafolio/' target="_blank" rel="noopener noreferrer">Blog</a>
-        </li>
-        <li class='active menu-item'>
-          <a href='contacto.html'>Contacto</a>
-        </li>
+      <ul class="menu">
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li class="menu-item"><a href="galeria.html"><i class="fas fa-images"></i> Galería</a></li>
+        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
+        <li class="menu-item"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
+        <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
+        <li class="menu-item active"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
       </ul>
-      
       <div class="social-links">
-        <a href="https://instagram.com/Jaimepivet" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/tu-canal" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://twitter.com/tu-usuario" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/Jaimepivet" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Sinsapiar1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
     
-    <!-- Contenido principal -->
     <main class="content">
-      <div class="header">
+      <header class="header" data-aos="fade-down">
         <h1>Contacto</h1>
         <p>¡Hablemos sobre tu próximo proyecto!</p>
-      </div>
+      </header>
       
       <div class="contact-container">
-        <!-- Información de contacto -->
-        <section class="contact-info">
-          <h2>Mis Datos de Contacto</h2>
+        <section class="contact-info" data-aos="fade-right">
+          <h2>Información de Contacto</h2>
           
-          <!-- Email -->
           <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div class="contact-text">
               <h3>Email</h3>
               <a href="mailto:jaime.pivet@gmail.com">jaime.pivet@gmail.com</a>
             </div>
           </div>
           
-          <!-- Teléfono -->
           <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
             <div class="contact-text">
               <h3>Teléfono</h3>
-              <p>+13055046846</p>
+              <p>+1 (305) 504-6846</p>
             </div>
           </div>
           
-          <!-- Ubicación -->
           <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div class="contact-text">
               <h3>Ubicación</h3>
-              <p>Miami, Estados Unidos.</p>
+              <p>Miami, Florida, Estados Unidos</p>
             </div>
           </div>
           
-          <!-- Disponibilidad -->
           <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-clock"></i>
-            </div>
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
             <div class="contact-text">
               <h3>Disponibilidad</h3>
               <p>Lunes a Viernes: 9:00 - 18:00</p>
             </div>
           </div>
-          
-          <!-- Redes Sociales -->
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-share-alt"></i>
-            </div>
-            <div class="contact-text">
-              <h3>Redes Sociales</h3>
-              <div class="mini-social-links">
-                <a href="https://instagram.com/Jaimepivet" target="_blank">Instagram</a> |
-                <a href="https://youtube.com/" target="_blank">YouTube</a> |
-                <a href="https://twitter.com/" target="_blank">Twitter</a>
-              </div>
-            </div>
-          </div>
         </section>
         
-        <!-- Formulario de contacto con Google Forms -->
-        <section class="contact-form">
+        <section class="contact-form" data-aos="fade-left">
           <h2>Envíame un Mensaje</h2>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdScEhnxIiY_EolcF8NtV0ADlRhXflY8FqHXnQz6GU_Udw7-w/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdScEhnxIiY_EolcF8NtV0ADlRhXflY8FqHXnQz6GU_Udw7-w/viewform?embedded=true"></iframe>
         </section>
         
-        <!-- Mapa (Opcional) -->
-        <section class="map-container">
-          <!-- Reemplazar con tu ubicación en Google Maps -->
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL%2C%20EE.%20UU.!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" allowfullscreen></iframe>
+        <section class="map-container" data-aos="fade-up">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" allowfullscreen loading="lazy"></iframe>
         </section>
       </div>
     </main>
   </div>
   
-  <footer>
-    <p>&copy; 2025 Raul Pivet - Todos los derechos reservados</p>
-  </footer>
+  <footer><p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p></footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
