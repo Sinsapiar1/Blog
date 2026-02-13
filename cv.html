@@ -11,6 +11,52 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
+    /* Toggle de idioma */
+    .language-toggle {
+      position: fixed;
+      top: 80px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .language-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .language-flag {
+      font-size: 1.25rem;
+    }
+
+    .language-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .language-toggle {
+        top: 70px;
+        right: 16px;
+        padding: 6px 12px;
+      }
+      
+      .language-text {
+        display: none;
+      }
+    }
+
     .cv-container {
       max-width: 1000px;
       margin: 0 auto;
@@ -246,6 +292,12 @@
       <i class="fas fa-moon"></i>
     </div>
   </button>
+
+  <!-- Language Toggle -->
+  <div class="language-toggle" id="languageToggle" aria-label="Change language">
+    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-text" id="languageText">English</span>
+  </div>
   
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span>
@@ -298,11 +350,162 @@
     </aside>
     
     <main class="content">
-      <div class="cv-container">
+      <div class="cv-container" id="cvContent">
+        <!-- El contenido se cargará dinámicamente según el idioma -->
+      </div>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Raul Pivet. <span data-lang="footer">All rights reserved</span>.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Traducciones
+    const translations = {
+      en: {
+        subtitle: "Logistics Operations Specialist & Business Solutions Developer",
+        profileTitle: "Professional Profile",
+        profileText: "<strong>9+ years</strong> transforming manual logistics operations into automated, data-driven solutions. Specialist in <span class='highlight'>Microsoft Power Platform</span> and <span class='highlight'>Python development</span>, creating tools that reduce operational costs and improve team efficiency. Proven track record reducing negative inventory through custom dashboards and predictive analytics.",
+        experienceTitle: "Work Experience",
+        job1Title: "Logistics Assistant",
+        job1Company: "Encofrados J. Alsina S.A. - Hialeah, FL",
+        job1Date: "Feb 2025 - Present",
+        job1Bullets: [
+          "<strong>Reduced negative inventory significantly</strong> by developing advanced analytics tools using Python (Streamlit, Pandas) and Power BI with TypeScript custom visuals",
+          "Automated daily inventory analysis dashboards, processing data from 30+ warehouses globally",
+          "Created web applications for random inventory audits and real-time stock analysis",
+          "Designed automated workflows with Power Automate for mass email reporting and ERP data integration",
+          "Managed delivery documentation, return requests, and carrier coordination through optimized processes"
+        ],
+        job2Title: "Logistics Coordinator",
+        job2Company: "Merflex - Doral, FL",
+        job2Date: "Mar 2024 - Jan 2025",
+        job2Bullets: [
+          "Coordinated international operations between China, Miami, and Bogotá for Temu/Shein products",
+          "<strong>Systematized key procedures</strong>, achieving significant reductions in operational times",
+          "Developed mobile applications for merchandise reception/dispatch with automated reporting to stakeholders",
+          "Implemented mobile apps that replaced administrative tasks, optimizing human resources"
+        ],
+        job3Title: "Warehouse Manager",
+        job3Company: "Sodexo - Minera Collahuasi - Iquique, Chile",
+        job3Date: "Jan 2021 - Jun 2023",
+        job3Bullets: [
+          "<strong>Led team of 20 people</strong> in rotational shifts (7x7), ensuring operational and safety objectives",
+          "<strong>Reduced inventory errors by 30%</strong> implementing mobile inventory control app with AppSheet",
+          "<strong>Improved operational efficiency by 25%</strong> through automated reporting in Google Sheets and Excel",
+          "Designed integrated systems for data synchronization between Gmail, Google Sheets, and local databases"
+        ],
+        job4Title: "Administrative Specialist",
+        job4Company: "Sodexo - Minera Escondida - Antofagasta, Chile",
+        job4Date: "Aug 2016 - Jan 2021",
+        job4Bullets: [
+          "Represented Food Warehouse in national meetings to improve logistics and supply processes",
+          "Analyzed data for weekly cost presentations, providing key insights for financial decisions",
+          "Systematized operational procedures, improving daily operations efficiency",
+          "Created mobile apps for merchandise reception, reducing registration errors"
+        ],
+        educationTitle: "Education & Certifications",
+        education1: "Business Administration (Logistics Specialization)",
+        education1Company: "IACC - Santiago, Chile",
+        education1Date: "2017 - 2020",
+        certificationsTitle: "Professional Certifications",
+        certifications: [
+          "<strong>Python AI Development</strong> (Nov 2025) - Advanced Python, LLMs, APIs integration",
+          "<strong>Microsoft Excel Expert</strong> - Advanced automation and data analysis",
+          "<strong>Supply Chain Management Diploma</strong> - Logistics flow optimization",
+          "<strong>Administrative Management Diploma</strong> - Business resource management",
+          "<strong>Cybersecurity Introduction</strong> (Sep 2025) - Digital security fundamentals"
+        ],
+        skillsTitle: "Technical Skills",
+        languagesTitle: "Languages",
+        lang1: "Spanish",
+        lang1Level: "Native",
+        lang2: "English",
+        lang2Level: "Intermediate (B1/B2)",
+        downloadBtn: "Download CV as PDF",
+        footer: "All rights reserved"
+      },
+      es: {
+        subtitle: "Especialista en Operaciones Logísticas & Desarrollador de Soluciones Empresariales",
+        profileTitle: "Perfil Profesional",
+        profileText: "<strong>9+ años</strong> transformando operaciones logísticas manuales en soluciones automatizadas basadas en datos. Especialista en <span class='highlight'>Microsoft Power Platform</span> y <span class='highlight'>desarrollo Python</span>, creando herramientas que reducen costos operativos y mejoran la eficiencia del equipo. Historial comprobado reduciendo inventario negativo mediante dashboards personalizados y análisis predictivo.",
+        experienceTitle: "Experiencia Laboral",
+        job1Title: "Asistente de Logística",
+        job1Company: "Encofrados J. Alsina S.A. - Hialeah, FL",
+        job1Date: "Feb 2025 - Presente",
+        job1Bullets: [
+          "<strong>Reducción significativa de inventario negativo</strong> mediante desarrollo de herramientas de análisis avanzado usando Python (Streamlit, Pandas) y Power BI con visuales personalizados en TypeScript",
+          "Automatización de dashboards de análisis diario de inventario, procesando datos de 30+ almacenes globalmente",
+          "Creación de aplicaciones web para auditorías aleatorias de inventario y análisis en tiempo real",
+          "Diseño de flujos automatizados con Power Automate para reportes masivos por email e integración con ERP",
+          "Gestión de documentación de entregas, solicitudes de devolución y coordinación de transportistas mediante procesos optimizados"
+        ],
+        job2Title: "Coordinador Logístico",
+        job2Company: "Merflex - Doral, FL",
+        job2Date: "Mar 2024 - Ene 2025",
+        job2Bullets: [
+          "Coordinación de operaciones internacionales entre China, Miami y Bogotá para productos Temu/Shein",
+          "<strong>Sistematización de procedimientos clave</strong>, logrando reducciones significativas en tiempos operativos",
+          "Desarrollo de aplicaciones móviles para recepción/despacho de mercadería con reportes automatizados a responsables",
+          "Implementación de apps móviles que sustituyeron tareas administrativas, optimizando recursos humanos"
+        ],
+        job3Title: "Jefe de Bodega",
+        job3Company: "Sodexo - Minera Collahuasi - Iquique, Chile",
+        job3Date: "Ene 2021 - Jun 2023",
+        job3Bullets: [
+          "<strong>Liderazgo de equipo de 20 personas</strong> en turnos rotativos (7x7), asegurando objetivos operacionales y de seguridad",
+          "<strong>Reducción del 30% en errores de inventario</strong> implementando app móvil de control con AppSheet",
+          "<strong>Mejora del 25% en eficiencia operativa</strong> mediante reportes automatizados en Google Sheets y Excel",
+          "Diseño de sistemas integrados para sincronización de datos entre Gmail, Google Sheets y bases de datos locales"
+        ],
+        job4Title: "Especialista Administrativo",
+        job4Company: "Sodexo - Minera Escondida - Antofagasta, Chile",
+        job4Date: "Ago 2016 - Ene 2021",
+        job4Bullets: [
+          "Representación de Bodega de Alimentación en reuniones nacionales para mejorar procesos logísticos y de abastecimiento",
+          "Análisis de datos para presentaciones semanales de costos, aportando insights clave para decisiones financieras",
+          "Sistematización de procedimientos operacionales, mejorando eficiencia de operaciones diarias",
+          "Creación de apps móviles para recepción de mercadería, reduciendo errores de registro"
+        ],
+        educationTitle: "Educación y Certificaciones",
+        education1: "Administración de Empresas (Especialización en Logística)",
+        education1Company: "IACC - Santiago, Chile",
+        education1Date: "2017 - 2020",
+        certificationsTitle: "Certificaciones Profesionales",
+        certifications: [
+          "<strong>Python AI Development</strong> (Nov 2025) - Python avanzado, LLMs, integración de APIs",
+          "<strong>Experto en Microsoft Excel</strong> - Automatización avanzada y análisis de datos",
+          "<strong>Diploma en Gestión de Cadena de Suministro</strong> - Optimización de flujos logísticos",
+          "<strong>Diploma en Gestión Administrativa</strong> - Gestión de recursos empresariales",
+          "<strong>Introducción a la Ciberseguridad</strong> (Sep 2025) - Fundamentos de seguridad digital"
+        ],
+        skillsTitle: "Habilidades Técnicas",
+        languagesTitle: "Idiomas",
+        lang1: "Español",
+        lang1Level: "Nativo",
+        lang2: "Inglés",
+        lang2Level: "Intermedio (B1/B2)",
+        downloadBtn: "Descargar CV en PDF",
+        footer: "Todos los derechos reservados"
+      }
+    };
+
+    // Estado del idioma
+    let currentLang = localStorage.getItem('cvLanguage') || 'en';
+
+    // Función para renderizar el CV
+    function renderCV(lang) {
+      const t = translations[lang];
+      const content = document.getElementById('cvContent');
+      
+      content.innerHTML = `
         <!-- CV Header -->
         <div class="cv-header" data-aos="fade-down">
           <h1>Raul Jaime Pivet</h1>
-          <p class="subtitle">Logistics Operations Specialist & Business Solutions Developer</p>
+          <p class="subtitle">${t.subtitle}</p>
           <div class="cv-contact">
             <div class="cv-contact-item">
               <i class="fas fa-envelope"></i>
@@ -321,33 +524,27 @@
 
         <!-- Perfil Profesional -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-user-tie"></i> Professional Profile</h2>
+          <h2><i class="fas fa-user-tie"></i> ${t.profileTitle}</h2>
           <div class="profile-summary">
-            <p class="cv-item-description">
-              <strong>9+ years</strong> transforming manual logistics operations into automated, data-driven solutions. Specialist in <span class="highlight">Microsoft Power Platform</span> and <span class="highlight">Python development</span>, creating tools that reduce operational costs and improve team efficiency. Proven track record reducing negative inventory through custom dashboards and predictive analytics.
-            </p>
+            <p class="cv-item-description">${t.profileText}</p>
           </div>
         </section>
 
         <!-- Experiencia Profesional -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+          <h2><i class="fas fa-briefcase"></i> ${t.experienceTitle}</h2>
           
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Logistics Assistant</h3>
-                <p class="cv-item-company">Encofrados J. Alsina S.A. - Hialeah, FL</p>
+                <h3 class="cv-item-title">${t.job1Title}</h3>
+                <p class="cv-item-company">${t.job1Company}</p>
               </div>
-              <span class="cv-item-date">Feb 2025 - Present</span>
+              <span class="cv-item-date">${t.job1Date}</span>
             </div>
             <div class="cv-item-description">
               <ul>
-                <li><strong>Reduced negative inventory significantly</strong> by developing advanced analytics tools using Python (Streamlit, Pandas) and Power BI with TypeScript custom visuals</li>
-                <li>Automated daily inventory analysis dashboards, processing data from 30+ warehouses globally</li>
-                <li>Created web applications for random inventory audits and real-time stock analysis</li>
-                <li>Designed automated workflows with Power Automate for mass email reporting and ERP data integration</li>
-                <li>Managed delivery documentation, return requests, and carrier coordination through optimized processes</li>
+                ${t.job1Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
               </ul>
             </div>
           </div>
@@ -355,17 +552,14 @@
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Logistics Coordinator</h3>
-                <p class="cv-item-company">Merflex - Doral, FL</p>
+                <h3 class="cv-item-title">${t.job2Title}</h3>
+                <p class="cv-item-company">${t.job2Company}</p>
               </div>
-              <span class="cv-item-date">Mar 2024 - Jan 2025</span>
+              <span class="cv-item-date">${t.job2Date}</span>
             </div>
             <div class="cv-item-description">
               <ul>
-                <li>Coordinated international operations between China, Miami, and Bogotá for Temu/Shein products</li>
-                <li><strong>Systematized key procedures</strong>, achieving significant reductions in operational times</li>
-                <li>Developed mobile applications for merchandise reception/dispatch with automated reporting to stakeholders</li>
-                <li>Implemented mobile apps that replaced administrative tasks, optimizing human resources</li>
+                ${t.job2Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
               </ul>
             </div>
           </div>
@@ -373,17 +567,14 @@
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Warehouse Manager</h3>
-                <p class="cv-item-company">Sodexo - Minera Collahuasi - Iquique, Chile</p>
+                <h3 class="cv-item-title">${t.job3Title}</h3>
+                <p class="cv-item-company">${t.job3Company}</p>
               </div>
-              <span class="cv-item-date">Jan 2021 - Jun 2023</span>
+              <span class="cv-item-date">${t.job3Date}</span>
             </div>
             <div class="cv-item-description">
               <ul>
-                <li><strong>Led team of 20 people</strong> in rotational shifts (7x7), ensuring operational and safety objectives</li>
-                <li><strong>Reduced inventory errors by 30%</strong> implementing mobile inventory control app with AppSheet</li>
-                <li><strong>Improved operational efficiency by 25%</strong> through automated reporting in Google Sheets and Excel</li>
-                <li>Designed integrated systems for data synchronization between Gmail, Google Sheets, and local databases</li>
+                ${t.job3Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
               </ul>
             </div>
           </div>
@@ -391,17 +582,14 @@
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Administrative Specialist</h3>
-                <p class="cv-item-company">Sodexo - Minera Escondida - Antofagasta, Chile</p>
+                <h3 class="cv-item-title">${t.job4Title}</h3>
+                <p class="cv-item-company">${t.job4Company}</p>
               </div>
-              <span class="cv-item-date">Aug 2016 - Jan 2021</span>
+              <span class="cv-item-date">${t.job4Date}</span>
             </div>
             <div class="cv-item-description">
               <ul>
-                <li>Represented Food Warehouse in national meetings to improve logistics and supply processes</li>
-                <li>Analyzed data for weekly cost presentations, providing key insights for financial decisions</li>
-                <li>Systematized operational procedures, improving daily operations efficiency</li>
-                <li>Created mobile apps for merchandise reception, reducing registration errors</li>
+                ${t.job4Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
               </ul>
             </div>
           </div>
@@ -409,27 +597,23 @@
 
         <!-- Educación -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-graduation-cap"></i> Education & Certifications</h2>
+          <h2><i class="fas fa-graduation-cap"></i> ${t.educationTitle}</h2>
           
           <div class="cv-item">
             <div class="cv-item-header">
               <div>
-                <h3 class="cv-item-title">Business Administration (Logistics Specialization)</h3>
-                <p class="cv-item-company">IACC - Santiago, Chile</p>
+                <h3 class="cv-item-title">${t.education1}</h3>
+                <p class="cv-item-company">${t.education1Company}</p>
               </div>
-              <span class="cv-item-date">2017 - 2020</span>
+              <span class="cv-item-date">${t.education1Date}</span>
             </div>
           </div>
 
           <div class="cv-item">
-            <h3 class="cv-item-title" style="margin-bottom: var(--spacing-sm);">Professional Certifications</h3>
+            <h3 class="cv-item-title" style="margin-bottom: var(--spacing-sm);">${t.certificationsTitle}</h3>
             <div class="cv-item-description">
               <ul>
-                <li><strong>Python AI Development</strong> (Nov 2025) - Advanced Python, LLMs, APIs integration</li>
-                <li><strong>Microsoft Excel Expert</strong> - Advanced automation and data analysis</li>
-                <li><strong>Supply Chain Management Diploma</strong> - Logistics flow optimization</li>
-                <li><strong>Administrative Management Diploma</strong> - Business resource management</li>
-                <li><strong>Cybersecurity Introduction</strong> (Sep 2025) - Digital security fundamentals</li>
+                ${t.certifications.map(cert => `<li>${cert}</li>`).join('')}
               </ul>
             </div>
           </div>
@@ -437,7 +621,7 @@
 
         <!-- Habilidades Técnicas -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-code"></i> Technical Skills</h2>
+          <h2><i class="fas fa-code"></i> ${t.skillsTitle}</h2>
           <div class="skills-grid">
             <div class="skill-item">
               <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
@@ -508,32 +692,78 @@
 
         <!-- Idiomas -->
         <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-language"></i> Languages</h2>
+          <h2><i class="fas fa-language"></i> ${t.languagesTitle}</h2>
           <div class="language-item">
-            <span class="language-name">Spanish</span>
-            <span class="language-level">Native</span>
+            <span class="language-name">${t.lang1}</span>
+            <span class="language-level">${t.lang1Level}</span>
           </div>
           <div class="language-item">
-            <span class="language-name">English</span>
-            <span class="language-level">Intermediate (B1/B2)</span>
+            <span class="language-name">${t.lang2}</span>
+            <span class="language-level">${t.lang2Level}</span>
           </div>
         </section>
 
         <!-- Descargar CV -->
         <div class="download-cv" data-aos="fade-up">
           <a href="docs/CV_Raul_Pivet.pdf" class="btn" download>
-            <i class="fas fa-download"></i> Download CV as PDF
+            <i class="fas fa-download"></i> ${t.downloadBtn}
           </a>
         </div>
-      </div>
-    </main>
-  </div>
-  
-  <footer>
-    <p>&copy; 2025 Raul Pivet. All rights reserved.</p>
-  </footer>
+      `;
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
+      // Re-inicializar animaciones AOS
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+    }
+
+    // Función para cambiar idioma
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'es' : 'en';
+      localStorage.setItem('cvLanguage', currentLang);
+      
+      // Actualizar UI del toggle
+      const flag = document.getElementById('languageFlag');
+      const text = document.getElementById('languageText');
+      
+      if (currentLang === 'en') {
+        flag.textContent = '🇺🇸';
+        text.textContent = 'English';
+      } else {
+        flag.textContent = '🇪🇸';
+        text.textContent = 'Español';
+      }
+      
+      // Renderizar CV en nuevo idioma
+      renderCV(currentLang);
+      
+      // Actualizar footer
+      const footerSpan = document.querySelector('footer span[data-lang="footer"]');
+      if (footerSpan) {
+        footerSpan.textContent = translations[currentLang].footer;
+      }
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+      // Renderizar CV inicial
+      renderCV(currentLang);
+      
+      // Configurar toggle
+      const flag = document.getElementById('languageFlag');
+      const text = document.getElementById('languageText');
+      
+      if (currentLang === 'en') {
+        flag.textContent = '🇺🇸';
+        text.textContent = 'English';
+      } else {
+        flag.textContent = '🇪🇸';
+        text.textContent = 'Español';
+      }
+      
+      // Event listener
+      document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+    });
+  </script>
 </body>
 </html>
