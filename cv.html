@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curriculum Vitae de Raul Pivet">
+  <title>CV - Raul Pivet</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .cv-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .cv-header {
+      text-align: center;
+      padding: var(--spacing-2xl) 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .cv-header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cv-header .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cv-contact {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+    }
+
+    .cv-contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+    }
+
+    .cv-contact-item i {
+      color: var(--primary);
+    }
+
+    .cv-section {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .cv-section h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-lg);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .cv-item {
+      margin-bottom: var(--spacing-lg);
+      padding-bottom: var(--spacing-lg);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cv-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .cv-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: var(--spacing-sm);
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+
+    .cv-item-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .cv-item-company {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .cv-item-date {
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    .cv-item-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .cv-item-description ul {
+      margin-top: var(--spacing-sm);
+      padding-left: var(--spacing-lg);
+    }
+
+    .cv-item-description li {
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .skill-item {
+      background: var(--bg-secondary);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+
+    .skill-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .skill-name {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .download-cv {
+      text-align: center;
+      margin-top: var(--spacing-xl);
+    }
+
+    .download-cv .btn {
+      padding: 16px 32px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .cv-header h1 {
+        font-size: 2rem;
+      }
+
+      .cv-contact {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cv-item-header {
+        flex-direction: column;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+  
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+  
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <div class="theme-toggle-ball">
+      <i class="fas fa-moon"></i>
+    </div>
+  </button>
+  
+  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <div class="profile">
+        <div class="profile-img">
+          <img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy">
+        </div>
+        <h2>Raul Pivet</h2>
+        <p>Informático & Deportista</p>
+      </div>
+      
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+        </li>
+        <li class="menu-item">
+          <a href="galeria.html"><i class="fas fa-images"></i> Galería</a>
+        </li>
+        <li class="menu-item">
+          <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a>
+        </li>
+        <li class="menu-item active">
+          <a href="cv.html"><i class="fas fa-file-alt"></i> CV</a>
+        </li>
+        <li class="menu-item">
+          <a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a>
+        </li>
+        <li class="menu-item">
+          <a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a>
+        </li>
+      </ul>
+      
+      <div class="social-links">
+        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </aside>
+    
+    <main class="content">
+      <div class="cv-container">
+        <!-- CV Header -->
+        <div class="cv-header" data-aos="fade-down">
+          <h1>Raul Jaime Pivet</h1>
+          <p class="subtitle">Especialista en Logística Administrativa & Desarrollador</p>
+          <div class="cv-contact">
+            <div class="cv-contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>jaime.pivet@gmail.com</span>
+            </div>
+            <div class="cv-contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+1 (305) 504-6846</span>
+            </div>
+            <div class="cv-contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Miami, Florida, US</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perfil Profesional -->
+        <section class="cv-section" data-aos="fade-up">
+          <h2><i class="fas fa-user"></i> Perfil Profesional</h2>
+          <p class="cv-item-description">
+            Profesional especializado en logística administrativa y desarrollo tecnológico con amplia experiencia en la gestión de inventarios y optimización de procesos. Experto en Microsoft Power Platform (Power BI, Power Automate, Dataverse) y desarrollo con Python. Apasionado por transformar datos en soluciones inteligentes que mejoran la eficiencia operacional.
+          </p>
+        </section>
+
+        <!-- Experiencia Profesional -->
+        <section class="cv-section" data-aos="fade-up">
+          <h2><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+          
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <div>
+                <h3 class="cv-item-title">Logistics Administrative Professional</h3>
+                <p class="cv-item-company">Encofrados J. Alsina S.A.</p>
+              </div>
+              <span class="cv-item-date">2020 - Presente</span>
+            </div>
+            <div class="cv-item-description">
+              <ul>
+                <li>Desarrollo e implementación de sistemas automatizados de reportes de inventario usando Power BI y Power Automate</li>
+                <li>Gestión de inventarios en 30+ almacenes globalmente</li>
+                <li>Análisis avanzado de inventario negativo y optimización de performance de almacenes</li>
+                <li>Creación de dashboards interactivos con visualizaciones HTML y TypeScript personalizadas</li>
+                <li>Integración de sistemas ERP con flujos automatizados de email reporting</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <div>
+                <h3 class="cv-item-title">Desarrollador Full Stack</h3>
+                <p class="cv-item-company">Freelance</p>
+              </div>
+              <span class="cv-item-date">2018 - Presente</span>
+            </div>
+            <div class="cv-item-description">
+              <ul>
+                <li>Desarrollo de aplicaciones web con React, Firebase y Google Cloud Services</li>
+                <li>Creación de sistemas de gestión de inventario para PyMEs</li>
+                <li>Implementación de soluciones de automatización con Python y Google Apps Script</li>
+                <li>Desarrollo de aplicaciones móviles con Flutter</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Educación -->
+        <section class="cv-section" data-aos="fade-up">
+          <h2><i class="fas fa-graduation-cap"></i> Educación</h2>
+          
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <div>
+                <h3 class="cv-item-title">Ingeniería en Informática</h3>
+                <p class="cv-item-company">Universidad Tecnológica</p>
+              </div>
+              <span class="cv-item-date">2014 - 2018</span>
+            </div>
+            <div class="cv-item-description">
+              Especialización en Desarrollo de Software y Sistemas de Información
+            </div>
+          </div>
+
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <div>
+                <h3 class="cv-item-title">Certificaciones Profesionales</h3>
+                <p class="cv-item-company">Varias instituciones</p>
+              </div>
+              <span class="cv-item-date">2019 - 2024</span>
+            </div>
+            <div class="cv-item-description">
+              <ul>
+                <li>Microsoft Power BI Data Analyst</li>
+                <li>Google Cloud Platform Fundamentals</li>
+                <li>Advanced Python Programming</li>
+                <li>Scrum Master Certification</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Habilidades Técnicas -->
+        <section class="cv-section" data-aos="fade-up">
+          <h2><i class="fas fa-code"></i> Habilidades Técnicas</h2>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-python"></i></div>
+              <div class="skill-name">Python</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-react"></i></div>
+              <div class="skill-name">React</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-js"></i></div>
+              <div class="skill-name">JavaScript</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+              <div class="skill-name">Power BI</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-database"></i></div>
+              <div class="skill-name">SQL</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+              <div class="skill-name">Git</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-docker"></i></div>
+              <div class="skill-name">Docker</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-google"></i></div>
+              <div class="skill-name">Google Cloud</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Idiomas -->
+        <section class="cv-section" data-aos="fade-up">
+          <h2><i class="fas fa-language"></i> Idiomas</h2>
+          <div class="cv-item-description">
+            <ul>
+              <li><strong>Español:</strong> Nativo</li>
+              <li><strong>Inglés:</strong> Avanzado (C1)</li>
+              <li><strong>Portugués:</strong> Intermedio (B1)</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Descargar CV -->
+        <div class="download-cv" data-aos="fade-up">
+          <a href="#" class="btn" onclick="alert('Función de descarga próximamente disponible'); return false;">
+            <i class="fas fa-download"></i> Descargar CV en PDF
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
