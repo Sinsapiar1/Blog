@@ -1,81 +1,256 @@
-// Clase para el efecto "magic line" en el menú de navegación
-class MagicLine {
-  constructor(menu) {
-    this.menu = menu;
-    if (!this.menu) {
-      return;
-    }
-    
-    // Añadir clase al menú
-    this.menu.classList.add('has-magic-line');
-    
-    // Crear el elemento "magic line"
-    this.line = document.createElement('li');
-    this.line.classList.add('magic-line');
-    this.menu.appendChild(this.line);
-    
-    // Actualizar la posición inicial
-    this.update();
-    
-    // Listener para actualizar en cambio de tamaño de ventana
-    window.addEventListener('resize', this.update.bind(this));
+/* ========================================
+   🍎 MODERN PORTFOLIO - JAVASCRIPT
+   Autor: Raul Pivet
+   Versión: 2.0 - Apple Style
+   ======================================== */
+
+// ========================================
+// 🎯 LOADER
+// ========================================
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  if (loader) {
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500);
+    }, 800);
   }
+});
+
+// ========================================
+// 📜 DOM CONTENT LOADED
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initScrollIndicator();
+  initMenu();
+  initAnimations();
+  initInstagram();
+  initModals();
+  initForms();
+  initSmoothScroll();
+});
+
+// ========================================
+// 🎨 THEME SYSTEM
+// ========================================
+function initTheme() {
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const themeIcon = themeToggle?.querySelector('i');
   
-  update() {
-    // Obtener el elemento activo
-    const activeItem = this.menu.querySelector('.active');
-    if (!activeItem) {
-      return;
-    }
+  if (!themeToggle) return;
+
+  // Cargar tema guardado
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  body.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme, themeIcon);
+
+  // Toggle tema
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
-    // Actualizar la posición y el color de la línea mágica
-    this.line.style.transform = `translateY(${activeItem.offsetTop || 0}px)`;
-    this.line.style.height = `${activeItem.offsetHeight || 0}px`;
-    this.line.style.backgroundColor = window.getComputedStyle(activeItem).getPropertyValue('background-color');
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme, themeIcon);
+    
+    // Animación suave
+    body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+  });
+
+  function updateThemeIcon(theme, icon) {
+    if (!icon) return;
+    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
   }
 }
 
-// Función legacy removida - ahora usamos el sistema híbrido
+// ========================================
+// 📊 SCROLL INDICATOR
+// ========================================
+function initScrollIndicator() {
+  const scrollIndicator = document.getElementById('scrollIndicator');
+  if (!scrollIndicator) return;
 
-// Sistema híbrido de Instagram - Detectar si embeds cargan o mostrar fallback
-function initInstagramSystem() {
-  console.log('🔍 Inicializando sistema híbrido de Instagram...');
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) : 0;
+    
+    scrollIndicator.style.transform = `scaleX(${scrolled})`;
+  }, { passive: true });
+}
+
+// ========================================
+// 🍔 MENU SYSTEM
+// ========================================
+function initMenu() {
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const menuLinks = document.querySelectorAll('.menu-item a');
+  
+  if (!menuToggle || !sidebar) return;
+
+  // Toggle menú
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Cerrar menú al hacer clic en un enlace (móvil)
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 992) {
+        sidebar.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera (móvil)
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 992 && 
+        sidebar.classList.contains('active') &&
+        !sidebar.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+      sidebar.classList.remove('active');
+      menuToggle.classList.remove('active');
+    }
+  });
+
+  // Actualizar item activo
+  updateActiveMenuItem();
+}
+
+function updateActiveMenuItem() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const menuItems = document.querySelectorAll('.menu-item');
+  
+  menuItems.forEach(item => {
+    const link = item.querySelector('a');
+    const href = link.getAttribute('href');
+    
+    if (href === currentPage || 
+        (currentPage === '' && href === 'index.html')) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
+// ========================================
+// ✨ ANIMACIONES
+// ========================================
+function initAnimations() {
+  // AOS Configuration
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100,
+      delay: 0,
+      disable: false
+    });
+    
+    // Refresh AOS después de cargar imágenes
+    window.addEventListener('load', () => {
+      AOS.refresh();
+    });
+  }
+
+  // Parallax en imágenes destacadas
+  initParallaxImages();
+  
+  // Smooth hover en cards
+  initCardHoverEffects();
+}
+
+function initParallaxImages() {
+  const featuredImages = document.querySelectorAll('.featured-image');
+  
+  featuredImages.forEach(container => {
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const moveX = (x - centerX) / centerX * 8;
+      const moveY = (y - centerY) / centerY * 8;
+      
+      const img = container.querySelector('img');
+      if (img) {
+        img.style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
+      }
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      const img = container.querySelector('img');
+      if (img) {
+        img.style.transform = 'scale(1.05) translate(0, 0)';
+      }
+    });
+  });
+}
+
+function initCardHoverEffects() {
+  const cards = document.querySelectorAll('.project-card, .fallback-card');
+  
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-8px)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+// ========================================
+// 📸 INSTAGRAM SYSTEM
+// ========================================
+function initInstagram() {
+  console.log('🔍 Inicializando sistema de Instagram...');
   
   const embedContainers = document.querySelectorAll('.embed-container');
-  let embedsLoaded = 0;
-  let totalEmbeds = embedContainers.length;
+  if (embedContainers.length === 0) return;
   
-  // Función para mostrar las cards de fallback
+  let embedsLoaded = 0;
+  const totalEmbeds = embedContainers.length;
+  
   function showFallbackCard(container) {
     const blockquote = container.querySelector('.instagram-media');
     const fallbackCard = container.querySelector('.fallback-card');
     
     if (blockquote && fallbackCard) {
-      console.log('📱 Mostrando card de fallback para:', container.dataset.postId);
+      console.log('📱 Mostrando card de fallback:', container.dataset.postId);
       blockquote.style.display = 'none';
       fallbackCard.style.display = 'block';
     }
   }
   
-  // Función para verificar si un embed se ha cargado correctamente
   function checkEmbedLoaded(container) {
     const blockquote = container.querySelector('.instagram-media');
     if (!blockquote) return false;
     
-    // Verificar si Instagram ha procesado el embed
     const iframe = blockquote.querySelector('iframe');
     const processedContent = blockquote.querySelector('.instagram-media-rendered');
     
-    // Si tiene iframe o contenido procesado, está cargado
     if (iframe || processedContent || blockquote.offsetHeight > 100) {
-      console.log('✅ Embed cargado correctamente:', container.dataset.postId);
+      console.log('✅ Embed cargado:', container.dataset.postId);
       return true;
     }
     
     return false;
   }
   
-  // Verificar cada embed después de intentos de carga
   function checkAllEmbeds() {
     let embedsSuccessful = 0;
     
@@ -88,19 +263,11 @@ function initInstagramSystem() {
     });
     
     console.log(`📊 Estado: ${embedsSuccessful}/${totalEmbeds} embeds cargados`);
-    
-    if (embedsSuccessful === 0) {
-      console.log('⚠️ Ningún embed cargó - Mostrando todas las cards de fallback');
-    } else if (embedsSuccessful < totalEmbeds) {
-      console.log('⚠️ Algunos embeds fallaron - Sistema híbrido activo');
-    } else {
-      console.log('🎉 Todos los embeds cargaron correctamente!');
-    }
   }
   
-  // Intentar procesar embeds de Instagram inmediatamente
+  // Procesar embeds
   if (window.instgrm && window.instgrm.Embeds) {
-    console.log('📸 Script de Instagram detectado - Procesando embeds...');
+    console.log('📸 Procesando embeds de Instagram...');
     try {
       window.instgrm.Embeds.process();
     } catch (error) {
@@ -108,429 +275,254 @@ function initInstagramSystem() {
     }
   }
   
-  // Verificar después de 3 segundos
-  setTimeout(() => {
-    console.log('⏱️ Primera verificación (3s)...');
-    checkAllEmbeds();
-  }, 3000);
+  // Verificaciones programadas
+  setTimeout(() => checkAllEmbeds(), 3000);
+  setTimeout(() => checkAllEmbeds(), 8000);
+}
+
+// ========================================
+// 🎭 MODALS
+// ========================================
+function initModals() {
+  const modal = document.getElementById('comingSoonModal');
+  if (!modal) return;
+
+  const closeBtn = modal.querySelector('.close-modal');
+  const allButtons = document.querySelectorAll('.btn-small, .btn.coming-soon');
   
-  // Verificación final después de 8 segundos
-  setTimeout(() => {
-    console.log('⏱️ Verificación final (8s)...');
-    checkAllEmbeds();
-  }, 8000);
-  
-  // También verificar cuando el script de Instagram se carga
-  const embedScript = document.querySelector('script[src*="instagram.com/embed.js"]');
-  if (embedScript) {
-    embedScript.addEventListener('load', () => {
-      console.log('📜 Script de Instagram cargado - Reintentando...');
-      setTimeout(() => {
-        if (window.instgrm && window.instgrm.Embeds) {
-          try {
-            window.instgrm.Embeds.process();
-            setTimeout(checkAllEmbeds, 2000);
-          } catch (error) {
-            console.log('❌ Error en reintento:', error);
-          }
-        }
-      }, 1000);
+  // Abrir modal
+  allButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      // Enlaces externos - dejar funcionar normalmente
+      if (this.hasAttribute('target') && 
+          this.getAttribute('target') === '_blank' && 
+          this.id !== 'almacen-btn') {
+        return;
+      }
+      
+      e.preventDefault();
+      openModal(this);
     });
+  });
+  
+  // Cerrar modal
+  closeBtn?.addEventListener('click', () => closeModal());
+  
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+  
+  // ESC para cerrar
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      closeModal();
+    }
+  });
+
+  function openModal(button) {
+    const modalTitle = modal.querySelector('h3');
+    const modalText = modal.querySelector('p');
+    const modalDate = modal.querySelector('.modal-date');
+    
+    // Limpiar botones anteriores
+    const oldBtnContainer = modal.querySelector('.modal-buttons');
+    if (oldBtnContainer) oldBtnContainer.remove();
+    
+    // Configurar contenido según botón
+    if (button.id === 'almacen-btn') {
+      configureAlmacenModal(modalTitle, modalText, modalDate, modal);
+    } else if (button.classList.contains('coming-soon')) {
+      configureComingSoonModal(modalTitle, modalText, modalDate);
+    } else {
+      configureDefaultModal(modalTitle, modalText, modalDate);
+    }
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function configureAlmacenModal(title, text, date, modal) {
+    title.textContent = 'Información importante';
+    text.textContent = 'Para una mejor visualización, coloca tu dispositivo en horizontal o ábrelo desde un PC.';
+    date.style.display = 'none';
+    
+    const btnContainer = document.createElement('div');
+    btnContainer.className = 'modal-buttons';
+    
+    const continueBtn = document.createElement('button');
+    continueBtn.textContent = 'Continuar al proyecto';
+    continueBtn.className = 'modal-btn modal-btn-primary';
+    continueBtn.onclick = () => {
+      window.open("https://sinsapiar1.github.io/Almacen/", "_blank");
+      closeModal();
+    };
+    
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancelar';
+    cancelBtn.className = 'modal-btn modal-btn-secondary';
+    cancelBtn.onclick = closeModal;
+    
+    btnContainer.appendChild(continueBtn);
+    btnContainer.appendChild(cancelBtn);
+    date.parentNode.insertBefore(btnContainer, date.nextSibling);
+  }
+
+  function configureComingSoonModal(title, text, date) {
+    title.textContent = 'Artículo en preparación';
+    text.textContent = 'Estamos preparando un relato detallado de esta aventura. ¡Vuelve pronto!';
+    date.style.display = 'block';
+    date.textContent = 'Publicación estimada: Mayo 2025';
+  }
+
+  function configureDefaultModal(title, text, date) {
+    title.textContent = 'Proyecto en desarrollo';
+    text.textContent = 'Estamos trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
+    date.style.display = 'block';
+    date.textContent = 'Lanzamiento estimado: Junio 2025';
   }
 }
 
-// Inicializar MagicLine cuando el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
-  // Ocultar loader cuando la página esté cargada
-  window.addEventListener('load', function() {
-    const loader = document.getElementById('loader');
-    setTimeout(() => {
-      loader.style.opacity = '0';
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 500);
-    }, 500);
-  });
-  
-  // Inicializar AOS (Animate On Scroll) - CONFIGURACIÓN UNIVERSAL
-  AOS.init({
-    duration: 600, // Animación más rápida
-    easing: 'ease-out',
-    once: true,
-    offset: 50, // Offset bajo para que active pronto en TODOS los dispositivos
-    delay: 0,
-    disable: false, // NUNCA desactivar - funciona en todos lados
-    startEvent: 'DOMContentLoaded',
-    throttleDelay: 99,
-    debounceDelay: 50
-  });
-  
-  // FORZAR VISIBILIDAD UNIVERSAL - Para todos los dispositivos
-  setTimeout(() => {
-    const projectCards = document.querySelectorAll('.project-card[data-aos]');
-    const projectsSection = document.querySelector('.projects');
-    
-    // Asegurar que las cards siempre sean visibles
-    projectCards.forEach((card, index) => {
-      // Forzar visibilidad inicial
-      card.style.opacity = '1';
-      card.style.visibility = 'visible';
-      card.style.display = 'block';
-      
-      // Si AOS no ha activado la animación, forzarla
-      if (!card.classList.contains('aos-animate')) {
-        setTimeout(() => {
-          card.classList.add('aos-animate');
-        }, index * 100); // Animación escalonada
-      }
-    });
-    
-    if (projectsSection) {
-      projectsSection.style.opacity = '1';
-      projectsSection.style.visibility = 'visible';
-    }
-    
-    console.log('🎯 Visibilidad universal aplicada a', projectCards.length, 'cards');
-  }, 300);
-  
-  // Menú hamburguesa
-  const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.getElementById('sidebar');
-  
-  menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-  });
-  
-  // Cerrar menú al hacer clic en un enlace (móviles)
-  const menuLinks = document.querySelectorAll('.menu-item a');
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 992) {
-        sidebar.classList.remove('active');
-        menuToggle.classList.remove('active');
-      }
-    });
-  });
-  
-  // Dark mode toggle
-  const themeToggle = document.getElementById('themeToggle');
-  const body = document.body;
-  const themeIcon = themeToggle.querySelector('i');
-  
-  // Verificar tema guardado
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  body.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-  
-  themeToggle.addEventListener('click', function() {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-  });
-  
-  function updateThemeIcon(theme) {
-    themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-  }
-  
-  // Scroll indicator
-  const scrollIndicator = document.getElementById('scrollIndicator');
-  
-  window.addEventListener('scroll', () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height);
-    
-    scrollIndicator.style.transform = `scaleX(${scrolled})`;
-  });
-  
-  // Custom cursor
-  const customCursor = document.getElementById('customCursor');
-  let cursorVisible = false;
-  
-  // Solo activar en desktop
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.addEventListener('mousemove', (e) => {
-      if (!cursorVisible) {
-        customCursor.style.opacity = '1';
-        cursorVisible = true;
-      }
-      customCursor.style.left = e.clientX + 'px';
-      customCursor.style.top = e.clientY + 'px';
-    });
-    
-    // Efecto hover en enlaces y botones
-    const hoverElements = document.querySelectorAll('a, button, .btn, .btn-small');
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => customCursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => customCursor.classList.remove('hover'));
-    });
-    
-    // Ocultar cursor cuando sale de la ventana
-    document.addEventListener('mouseleave', () => {
-      customCursor.style.opacity = '0';
-      cursorVisible = false;
-    });
-  } else {
-    customCursor.style.display = 'none';
-  }
-  
-  // Partículas de fondo
-  const particlesBg = document.getElementById('particlesBg');
-  const particleCount = 50;
-  
-  for (let i = 0; i < particleCount; i++) {
-    createParticle();
-  }
-  
-  function createParticle() {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.animationDelay = Math.random() * 15 + 's';
-    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-    particlesBg.appendChild(particle);
-  }
-  
-  // Efecto parallax
-  const parallaxElements = document.querySelectorAll('.parallax-element');
-  
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    
-    parallaxElements.forEach(element => {
-      const speed = element.getAttribute('data-speed') || 0.5;
-      const yPos = -(scrolled * speed);
-      element.style.transform = `translateY(${yPos}px)`;
-    });
-  });
-  
-  // Efecto parallax en mouse move para la imagen destacada
-  const featuredImage = document.querySelector('.featured-image');
-  if (featuredImage) {
-    featuredImage.addEventListener('mousemove', (e) => {
-      const rect = featuredImage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const moveX = (x - centerX) / centerX * 10;
-      const moveY = (y - centerY) / centerY * 10;
-      
-      const img = featuredImage.querySelector('img');
-      img.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
-    });
-    
-    featuredImage.addEventListener('mouseleave', () => {
-      const img = featuredImage.querySelector('img');
-      img.style.transform = 'scale(1.1) translate(0, 0)';
-    });
-  }
-  
-  // Animación de texto gradiente
-  const gradientTexts = document.querySelectorAll('h1, h2');
-  gradientTexts.forEach(text => {
-    text.addEventListener('mouseenter', () => {
-      text.style.backgroundSize = '200% 200%';
-      text.style.animation = 'gradientShift 3s ease infinite';
-    });
-    
-    text.addEventListener('mouseleave', () => {
-      text.style.animation = 'none';
-    });
-  });
-  
-  // Inicializar la línea mágica para el menú
-  window.magicLine = new MagicLine(document.querySelector('.menu'));
-  
-  // Instagram cards - Sistema simplificado
-  // Las cards de Instagram ahora funcionan con imágenes locales y enlaces directos
-  // No necesitamos código adicional ya que son elementos HTML estáticos
-  
-  // Añadir eventos de clic a los elementos del menú
-  const menuItems = document.querySelectorAll('.menu-item a');
-  menuItems.forEach(item => {
-    item.addEventListener('click', function(e) {
-      // Si no estamos navegando a otra página, prevenir el comportamiento predeterminado
-      if (this.getAttribute('href') === '#') {
-        e.preventDefault();
-      }
-      
-      // Remover la clase 'active' del elemento actualmente activo
-      const activeItem = document.querySelector('.menu-item.active');
-      if (activeItem) {
-        activeItem.classList.remove('active');
-      }
-      
-      // Añadir la clase 'active' al elemento clickeado
-      this.parentNode.classList.add('active');
-      
-      // Actualizar la línea mágica
-      window.magicLine.update();
-    });
-  });
-  
-  // Validación del formulario de contacto (si existe)
+// ========================================
+// 📝 FORMS
+// ========================================
+function initForms() {
   const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Validación básica
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
-      
-      if (name && email && subject && message) {
-        // Aquí normalmente enviarías los datos al servidor
-        alert('¡Mensaje enviado con éxito! Te contactaré pronto.');
-        this.reset();
-      } else {
-        alert('Por favor, completa todos los campos.');
-      }
-    });
-  }
-  
-  // Inicializar filtros de galería (si existen)
-  const filterButtons = document.querySelectorAll('.gallery-filter button');
-  if (filterButtons.length > 0) {
-    filterButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        // Quitar clase active de todos los botones
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Añadir clase active al botón clickeado
-        this.classList.add('active');
-        
-        const filter = this.getAttribute('data-filter');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        galleryItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-  }
-  
-  // Modal para "Próximamente"
-  const allButtons = document.querySelectorAll('.btn-small, .btn.coming-soon');
-  const modal = document.getElementById('comingSoonModal');
-  const closeBtn = document.querySelector('.close-modal');
-  
-  // Añadir evento a todos los botones
-  allButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      // Si es un enlace externo con target="_blank" diferente al del almacén, dejarlo funcionar normalmente
-      if (this.hasAttribute('target') && this.getAttribute('target') === '_blank' && this.id !== 'almacen-btn') {
-        return; // Permite que el enlace funcione normalmente
-      }
-      
-      // Prevenir navegación para los demás
-      e.preventDefault();
-      
-      // Personalizar el mensaje según el botón
-      const modalTitle = document.querySelector('#comingSoonModal h3');
-      const modalText = document.querySelector('#comingSoonModal p');
-      const modalDate = document.querySelector('.modal-date');
-      
-      // Si es el botón del Control de Almacén
-      if (this.id === 'almacen-btn') {
-        modalTitle.textContent = 'Información importante';
-        modalText.textContent = 'Para una mejor visualización de esta página, coloca tu celular en horizontal o ábrelo desde un PC.';
-        modalDate.style.display = 'none'; // Ocultar la fecha estimada
-        
-        // Añadir botones mejorados al modal
-        const btnContainer = document.createElement('div');
-        btnContainer.className = 'modal-buttons';
-        
-        const continueBtn = document.createElement('button');
-        continueBtn.textContent = 'Continuar al proyecto';
-        continueBtn.className = 'modal-btn modal-btn-primary';
-        continueBtn.onclick = function() {
-          window.open("https://sinsapiar1.github.io/Almacen/", "_blank");
-          modal.style.display = 'none';
-        };
-        
-        const cancelBtn = document.createElement('button');
-        cancelBtn.textContent = 'Cancelar';
-        cancelBtn.className = 'modal-btn modal-btn-secondary';
-        cancelBtn.onclick = function() {
-          modal.style.display = 'none';
-        };
-        
-        btnContainer.appendChild(continueBtn);
-        btnContainer.appendChild(cancelBtn);
-        
-        // Eliminar botones anteriores si existieran
-        const oldBtnContainer = document.querySelector('.modal-buttons');
-        if (oldBtnContainer) {
-          oldBtnContainer.remove();
-        }
-        
-        modalDate.parentNode.insertBefore(btnContainer, modalDate.nextSibling);
-      } 
-      // Si es el botón de leer la historia completa
-      else if (this.classList.contains('coming-soon')) {
-        modalTitle.textContent = 'Artículo en preparación';
-        modalText.textContent = 'Estamos preparando un relato detallado de esta aventura. ¡Vuelve pronto para leer la historia completa!';
-        modalDate.style.display = 'block';
-        modalDate.textContent = 'Publicación estimada: Mayo 2025';
-        
-        // Eliminar botones anteriores si existieran
-        const oldBtnContainer = document.querySelector('.modal-buttons');
-        if (oldBtnContainer) {
-          oldBtnContainer.remove();
-        }
-      }
-      // Para los otros botones, mostrar el mensaje estándar
-      else {
-        modalTitle.textContent = 'Proyecto en desarrollo';
-        modalText.textContent = 'Estamos trabajando arduamente para completar esta sección. ¡Vuelve pronto para ver los avances!';
-        modalDate.style.display = 'block';
-        modalDate.textContent = 'Lanzamiento estimado: Junio 2025';
-        
-        // Eliminar botones anteriores si existieran
-        const oldBtnContainer = document.querySelector('.modal-buttons');
-        if (oldBtnContainer) {
-          oldBtnContainer.remove();
-        }
-      }
-      
-      // Mostrar el modal
-      modal.style.display = 'block';
-    });
-  });
-  
-  // Cerrar modal al hacer clic en X
-  closeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-  });
-  
-  // Cerrar modal al hacer clic fuera del contenido
-  window.addEventListener('click', function(e) {
-    if (e.target === modal) {
-      modal.style.display = 'none';
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
+    const subject = document.getElementById('subject')?.value.trim();
+    const message = document.getElementById('message')?.value.trim();
+    
+    if (validateForm(name, email, subject, message)) {
+      // Aquí enviarías los datos al servidor
+      showSuccessMessage();
+      this.reset();
+    } else {
+      showErrorMessage('Por favor, completa todos los campos correctamente.');
     }
   });
 
-  // Inicializar sistema de Instagram
-  initInstagramSystem();
-});
+  function validateForm(name, email, subject, message) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    return name && 
+           email && 
+           emailRegex.test(email) && 
+           subject && 
+           message;
+  }
 
-  // También inicializar cuando la página esté completamente cargada
-  window.addEventListener('load', () => {
-    // Reintento final después de que todo esté cargado
-    setTimeout(() => {
-      console.log('🔄 Reintento final después de load completo...');
-      initInstagramSystem();
-    }, 2000);
+  function showSuccessMessage() {
+    alert('¡Mensaje enviado con éxito! Te contactaré pronto.');
+  }
+
+  function showErrorMessage(message) {
+    alert(message);
+  }
+}
+
+// ========================================
+// 🔄 SMOOTH SCROLL
+// ========================================
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      
+      e.preventDefault();
+      const target = document.querySelector(href);
+      
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
   });
+}
+
+// ========================================
+// 🎨 UTILIDADES
+// ========================================
+
+// Debounce para optimizar eventos
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Detectar modo oscuro del sistema
+function detectSystemTheme() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+}
+
+// Listener para cambios en el tema del sistema
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    const savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+      const newTheme = e.matches ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', newTheme);
+    }
+  });
+}
+
+// ========================================
+// 🚀 PERFORMANCE
+// ========================================
+
+// Lazy loading para imágenes
+if ('IntersectionObserver' in window) {
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          observer.unobserve(img);
+        }
+      }
+    });
+  });
+
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    imageObserver.observe(img);
+  });
+}
+
+// Preload para fuentes críticas
+const criticalFonts = [
+  '-apple-system',
+  'BlinkMacSystemFont',
+  'SF Pro Display',
+  'SF Pro Text'
+];
+
+// Log de inicialización
+console.log('✅ Portfolio moderno cargado correctamente');
+console.log('🎨 Tema actual:', document.body.getAttribute('data-theme'));
+console.log('📱 Viewport:', `${window.innerWidth}x${window.innerHeight}`);
