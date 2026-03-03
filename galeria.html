@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galería - Raul Pivet</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── Filtros ── */
     .gallery-filter {
       display: flex;
       justify-content: center;
@@ -16,7 +16,6 @@
       flex-wrap: wrap;
       gap: var(--spacing-sm);
     }
-    
     .gallery-filter button {
       padding: 10px 24px;
       background: var(--bg-secondary);
@@ -28,22 +27,21 @@
       cursor: pointer;
       transition: all var(--transition-base);
     }
-    
     .gallery-filter button:hover,
     .gallery-filter button.active {
       background: var(--primary);
       color: white;
       border-color: var(--primary);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0,122,255,0.3);
     }
-    
+
+    /* ── Grid ── */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: var(--spacing-lg);
     }
-    
     .gallery-item {
       position: relative;
       border-radius: var(--radius-xl);
@@ -51,72 +49,179 @@
       box-shadow: var(--shadow-md);
       transition: all var(--transition-base);
       height: 300px;
-      cursor: pointer;
+      cursor: zoom-in;
       background: var(--bg-secondary);
+      display: block;
+      text-decoration: none;
     }
-    
     .gallery-item:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
     }
-    
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform var(--transition-slow);
+      pointer-events: none;
     }
-    
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-    
+    .gallery-item:hover img { transform: scale(1.1); }
+
     .gallery-caption {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88), transparent);
       color: white;
       padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
       transform: translateY(100%);
       transition: transform var(--transition-base);
     }
-    
-    .gallery-item:hover .gallery-caption {
-      transform: translateY(0);
+    .gallery-item:hover .gallery-caption { transform: translateY(0); }
+    .gallery-caption h3 { margin-bottom: var(--spacing-xs); font-size: 1.125rem; font-weight: 600; }
+    .gallery-caption p  { font-size: 0.875rem; opacity: 0.9; }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      align-items: center;
+      justify-content: center;
     }
-    
-    .gallery-caption h3 {
-      margin-bottom: var(--spacing-xs);
-      font-size: 1.125rem;
-      font-weight: 600;
+    #lightbox.lb-open { display: flex; }
+
+    .lb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      backdrop-filter: blur(0px);
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+      cursor: pointer;
     }
-    
-    .gallery-caption p {
-      font-size: 0.875rem;
-      opacity: 0.9;
+    #lightbox.lb-open .lb-overlay {
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
     }
-    
+
+    .lb-box {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: min(90vw, 960px);
+      max-height: 90vh;
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    #lightbox.lb-open .lb-box {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Imagen principal */
+    .lb-img-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      max-height: 75vh;
+      display: flex;
+      align-items: center;
+      background: #111;
+    }
+    #lbImage {
+      max-width: min(88vw, 920px);
+      max-height: 75vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      transition: opacity 0.25s ease;
+    }
+    #lbImage.lb-loading { opacity: 0; }
+
+    /* Botón cerrar */
+    .lb-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 40px; height: 40px;
+      background: rgba(0,0,0,0.55);
+      border: none; border-radius: 50%;
+      color: white; font-size: 1.1rem;
+      cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background var(--transition-fast), transform var(--transition-fast);
+      z-index: 2;
+    }
+    .lb-close:hover { background: rgba(255,59,48,0.85); transform: scale(1.12); }
+
+    /* Flechas de navegación */
+    .lb-arrow {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      width: 50px; height: 50px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: white; font-size: 1.1rem;
+      cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      z-index: 2;
+    }
+    .lb-arrow:hover { background: rgba(255,255,255,0.25); transform: translateY(-50%) scale(1.1); }
+    .lb-arrow.lb-prev { left: 20px; }
+    .lb-arrow.lb-next { right: 20px; }
+    .lb-arrow:disabled { opacity: 0.25; cursor: default; }
+    .lb-arrow:disabled:hover { background: rgba(255,255,255,0.12); transform: translateY(-50%); }
+
+    /* Caption + contador */
+    .lb-info {
+      margin-top: 16px;
+      text-align: center;
+      color: white;
+    }
+    .lb-info h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+    .lb-info p  { font-size: 0.85rem; opacity: 0.7; }
+    .lb-counter {
+      margin-top: 10px;
+      display: flex; gap: 8px; justify-content: center;
+    }
+    .lb-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .lb-dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+
     @media (max-width: 768px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .lb-arrow { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="loader" id="loader"><div class="loader-circle"></div></div>
   <div class="scroll-indicator" id="scrollIndicator"></div>
-  
+
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
-  
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
-  
+
   <div class="container">
     <aside class="sidebar" id="sidebar">
       <div class="profile">
@@ -138,73 +243,203 @@
         <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
-    
+
     <main class="content">
       <header class="header" data-aos="fade-down">
         <h1>Galería</h1>
         <p>Momentos capturados en imágenes</p>
       </header>
-      
+
       <div class="gallery-filter" data-aos="fade-up">
         <button class="active" data-filter="all">Todos</button>
         <button data-filter="paisajes">Paisajes</button>
         <button data-filter="deportes">Deportes</button>
         <button data-filter="viajes">Viajes</button>
       </div>
-      
-      <div class="gallery-grid">
-        <a href="img/gallery/paisaje1.jpg" class="gallery-item" data-lightbox="gallery" data-category="paisajes" data-aos="fade-up">
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-category="paisajes" data-src="img/gallery/paisaje1.jpg" data-title="Chichén Itzá" data-desc="Maravilla del mundo maya" data-aos="fade-up">
           <img src="img/gallery/paisaje1.jpg" alt="Chichén Itzá" loading="lazy">
-          <div class="gallery-caption">
-            <h3>Chichén Itzá</h3>
-            <p>Maravilla del mundo maya</p>
-          </div>
-        </a>
-        
-        <a href="img/gallery/Proyecto1.jpg.png" class="gallery-item" data-lightbox="gallery" data-category="deportes" data-aos="fade-up" data-aos-delay="100">
+          <div class="gallery-caption"><h3>Chichén Itzá</h3><p>Maravilla del mundo maya</p></div>
+        </div>
+
+        <div class="gallery-item" data-category="deportes" data-src="img/gallery/Proyecto1.jpg.png" data-title="Innovación" data-desc="Desarrollo tecnológico" data-aos="fade-up" data-aos-delay="100">
           <img src="img/gallery/Proyecto1.jpg.png" alt="Tecnología" loading="lazy">
-          <div class="gallery-caption">
-            <h3>Innovación</h3>
-            <p>Desarrollo tecnológico</p>
-          </div>
-        </a>
-        
-        <a href="img/gallery/proyecto2.jpg" class="gallery-item" data-lightbox="gallery" data-category="viajes" data-aos="fade-up" data-aos-delay="200">
+          <div class="gallery-caption"><h3>Innovación</h3><p>Desarrollo tecnológico</p></div>
+        </div>
+
+        <div class="gallery-item" data-category="viajes" data-src="img/gallery/proyecto2.jpg" data-title="Aventura" data-desc="Explorando el mundo" data-aos="fade-up" data-aos-delay="200">
           <img src="img/gallery/proyecto2.jpg" alt="Aventura" loading="lazy">
-          <div class="gallery-caption">
-            <h3>Aventura</h3>
-            <p>Explorando el mundo</p>
-          </div>
-        </a>
-        
-        <a href="img/gallery/proyecto3.jpg" class="gallery-item" data-lightbox="gallery" data-category="deportes" data-aos="fade-up" data-aos-delay="300">
+          <div class="gallery-caption"><h3>Aventura</h3><p>Explorando el mundo</p></div>
+        </div>
+
+        <div class="gallery-item" data-category="deportes" data-src="img/gallery/proyecto3.jpg" data-title="Deporte" data-desc="Pasión y disciplina" data-aos="fade-up" data-aos-delay="300">
           <img src="img/gallery/proyecto3.jpg" alt="Deporte" loading="lazy">
-          <div class="gallery-caption">
-            <h3>Deporte</h3>
-            <p>Pasión y disciplina</p>
-          </div>
-        </a>
+          <div class="gallery-caption"><h3>Deporte</h3><p>Pasión y disciplina</p></div>
+        </div>
       </div>
     </main>
   </div>
-  
+
   <footer><p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p></footer>
 
+  <!-- ══════════ LIGHTBOX ══════════ -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imágenes">
+    <div class="lb-overlay" id="lbOverlay"></div>
+
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="lb-box">
+      <div class="lb-img-wrap">
+        <img id="lbImage" src="" alt="">
+        <button class="lb-close" id="lbClose" aria-label="Cerrar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="lb-info">
+        <h3 id="lbTitle"></h3>
+        <p id="lbDesc"></p>
+      </div>
+      <div class="lb-counter" id="lbCounter"></div>
+    </div>
+
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+  <!-- ══════════════════════════════ -->
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
   <script src="script.js"></script>
   <script>
-    document.querySelectorAll('.gallery-filter button').forEach(button => {
-      button.addEventListener('click', function() {
-        document.querySelectorAll('.gallery-filter button').forEach(btn => btn.classList.remove('active'));
+    // ── FILTRO ──────────────────────────────
+    document.querySelectorAll('.gallery-filter button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.gallery-filter button').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        
         const filter = this.dataset.filter;
         document.querySelectorAll('.gallery-item').forEach(item => {
-          item.style.display = filter === 'all' || item.dataset.category === filter ? 'block' : 'none';
+          const show = filter === 'all' || item.dataset.category === filter;
+          item.style.display = show ? 'block' : 'none';
         });
+        // Reconstruir la lista visible para el lightbox
+        buildGalleryIndex();
       });
     });
+
+    // ── LIGHTBOX ────────────────────────────
+    const lb        = document.getElementById('lightbox');
+    const lbImage   = document.getElementById('lbImage');
+    const lbTitle   = document.getElementById('lbTitle');
+    const lbDesc    = document.getElementById('lbDesc');
+    const lbCounter = document.getElementById('lbCounter');
+    const lbClose   = document.getElementById('lbClose');
+    const lbOverlay = document.getElementById('lbOverlay');
+    const lbPrev    = document.getElementById('lbPrev');
+    const lbNext    = document.getElementById('lbNext');
+
+    let galleryItems = [];  // items visibles en el momento
+    let currentIndex = 0;
+
+    function buildGalleryIndex() {
+      galleryItems = Array.from(
+        document.querySelectorAll('.gallery-item[style*="display: block"], .gallery-item:not([style])')
+      ).filter(el => el.style.display !== 'none');
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lb.style.display = 'flex';
+      requestAnimationFrame(() => requestAnimationFrame(() => lb.classList.add('lb-open')));
+      document.body.style.overflow = 'hidden';
+      loadImage(index);
+      buildDots();
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('lb-open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lb.style.display = 'none'; }, 380);
+    }
+
+    function loadImage(index) {
+      const item = galleryItems[index];
+      if (!item) return;
+
+      lbImage.classList.add('lb-loading');
+      const src = item.dataset.src;
+
+      const tmp = new Image();
+      tmp.onload = () => {
+        lbImage.src = src;
+        lbImage.alt = item.dataset.title || '';
+        lbImage.classList.remove('lb-loading');
+      };
+      tmp.src = src;
+
+      lbTitle.textContent = item.dataset.title || '';
+      lbDesc.textContent  = item.dataset.desc  || '';
+
+      // Actualizar flechas
+      lbPrev.disabled = index === 0;
+      lbNext.disabled = index === galleryItems.length - 1;
+
+      // Actualizar dots
+      document.querySelectorAll('.lb-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function buildDots() {
+      lbCounter.innerHTML = '';
+      galleryItems.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'lb-dot' + (i === currentIndex ? ' active' : '');
+        dot.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
+        dot.addEventListener('click', () => { currentIndex = i; loadImage(i); });
+        lbCounter.appendChild(dot);
+      });
+    }
+
+    // Abrir al hacer clic en cualquier item
+    document.getElementById('galleryGrid').addEventListener('click', (e) => {
+      const item = e.target.closest('.gallery-item');
+      if (!item || item.style.display === 'none') return;
+      buildGalleryIndex();
+      const index = galleryItems.indexOf(item);
+      if (index !== -1) openLightbox(index);
+    });
+
+    // Cerrar
+    lbClose.addEventListener('click', closeLightbox);
+    lbOverlay.addEventListener('click', closeLightbox);
+
+    // Flechas
+    lbPrev.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; loadImage(currentIndex); } });
+    lbNext.addEventListener('click', () => { if (currentIndex < galleryItems.length - 1) { currentIndex++; loadImage(currentIndex); } });
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('lb-open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  { if (currentIndex > 0) { currentIndex--; loadImage(currentIndex); } }
+      if (e.key === 'ArrowRight') { if (currentIndex < galleryItems.length - 1) { currentIndex++; loadImage(currentIndex); } }
+    });
+
+    // Swipe táctil (móvil)
+    let touchStartX = 0;
+    lb.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) < 50) return;
+      if (diff > 0 && currentIndex < galleryItems.length - 1) { currentIndex++; loadImage(currentIndex); }
+      if (diff < 0 && currentIndex > 0) { currentIndex--; loadImage(currentIndex); }
+    });
+
+    // Init
+    buildGalleryIndex();
   </script>
 </body>
 </html>
