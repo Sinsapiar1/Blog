@@ -1,7 +1,7 @@
 /* ========================================
    🍎 MODERN PORTFOLIO - JAVASCRIPT
    Autor: Raul Pivet
-   Versión: 2.1 - Modal Revista
+   Versión: 2.2 - Lab (era Galería)
    ======================================== */
 
 // ========================================
@@ -171,7 +171,6 @@ function initStoryModal() {
 
   function openStory() {
     modal.style.display = 'flex';
-    // Pequeño delay para que el display:flex se aplique antes de la transición
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         modal.classList.add('is-open');
@@ -183,10 +182,8 @@ function initStoryModal() {
   function closeStory() {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
-    // Esperar a que termine la animación para ocultar
     setTimeout(() => {
       modal.style.display = 'none';
-      // Resetear scroll del body del artículo
       const body = modal.querySelector('.story-body');
       if (body) body.scrollTop = 0;
     }, 480);
@@ -197,9 +194,7 @@ function initStoryModal() {
   overlay?.addEventListener('click', closeStory);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeStory();
-    }
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeStory();
   });
 }
 
@@ -207,32 +202,24 @@ function initStoryModal() {
 // 📸 INSTAGRAM SYSTEM
 // ========================================
 function initInstagram() {
-  console.log('🔍 Inicializando sistema de Instagram...');
   const embedContainers = document.querySelectorAll('.embed-container');
   if (embedContainers.length === 0) return;
 
-  // Intentar cargar thumbnail real de cada post
   embedContainers.forEach(container => {
     const postId = container.dataset.postId;
     if (!postId) return;
-
     const postUrl = `https://www.instagram.com/p/${postId}/`;
-
     fetch(`https://www.instagram.com/oembed/?url=${encodeURIComponent(postUrl)}`)
       .then(res => res.json())
       .then(data => {
         if (data && data.thumbnail_url) {
           const imgEl = container.querySelector('.fallback-card .insta-image img');
-          if (imgEl) {
-            imgEl.src = data.thumbnail_url;
-            console.log('✅ Thumbnail oEmbed cargado:', postId);
-          }
+          if (imgEl) imgEl.src = data.thumbnail_url;
         }
       })
       .catch(() => loadThumbnailViaCDN(container, postId));
   });
 
-  // Sistema de embed original
   function showFallbackCard(container) {
     const blockquote = container.querySelector('.instagram-media');
     const fallbackCard = container.querySelector('.fallback-card');
@@ -256,7 +243,7 @@ function initInstagram() {
   }
 
   if (window.instgrm?.Embeds) {
-    try { window.instgrm.Embeds.process(); } catch (e) { console.log('❌ Error embeds:', e); }
+    try { window.instgrm.Embeds.process(); } catch (e) {}
   }
 
   setTimeout(checkAllEmbeds, 3000);
@@ -326,23 +313,23 @@ function initModals() {
       modalDate.parentNode.insertBefore(btnContainer, modalDate.nextSibling);
 
     } else if (button.classList.contains('coming-soon')) {
-      modalTitle.textContent      = 'Artículo en preparación';
-      modalText.textContent       = 'Estamos preparando un relato detallado de esta aventura. ¡Vuelve pronto!';
-      modalDate.style.display     = 'block';
-      modalDate.textContent       = 'Publicación estimada: Mayo 2025';
+      modalTitle.textContent  = 'Artículo en preparación';
+      modalText.textContent   = 'Estamos preparando un relato detallado de esta aventura. ¡Vuelve pronto!';
+      modalDate.style.display = 'block';
+      modalDate.textContent   = 'Publicación estimada: Mayo 2025';
     } else {
-      modalTitle.textContent      = 'Proyecto en desarrollo';
-      modalText.textContent       = 'Estamos trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
-      modalDate.style.display     = 'block';
-      modalDate.textContent       = 'Lanzamiento estimado: Junio 2025';
+      modalTitle.textContent  = 'Proyecto en desarrollo';
+      modalText.textContent   = 'Estamos trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
+      modalDate.style.display = 'block';
+      modalDate.textContent   = 'Lanzamiento estimado: Junio 2025';
     }
 
-    modal.style.display     = 'flex';
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
-    modal.style.display          = 'none';
+    modal.style.display = 'none';
     document.body.style.overflow = '';
   }
 }
@@ -405,7 +392,6 @@ if (window.matchMedia) {
   });
 }
 
-// Lazy loading
 if ('IntersectionObserver' in window) {
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -422,6 +408,4 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
 }
 
-console.log('✅ Portfolio cargado — v2.1');
-console.log('🎨 Tema:', document.body.getAttribute('data-theme'));
-console.log('📱 Viewport:', `${window.innerWidth}x${window.innerHeight}`);
+console.log('✅ Portfolio cargado — v2.2');
