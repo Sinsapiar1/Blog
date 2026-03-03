@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería de Proyectos - Raul Pivet</title>
+  <meta name="description" content="Galería de proyectos de Raul Pivet">
+  <meta name="theme-color" content="#FF6B00">
+  <title>Galería - Raul Pivet</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
@@ -244,7 +249,6 @@
       box-shadow: 0 32px 80px rgba(0,0,0,0.6);
       background: #111;
     }
-    /* Barra de navegador falsa */
     .lb-browser-bar {
       background: #1e1e1e;
       padding: 10px 16px;
@@ -253,14 +257,8 @@
       gap: 12px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .lb-browser-dots {
-      display: flex;
-      gap: 6px;
-    }
-    .lb-browser-dots span {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-    }
+    .lb-browser-dots { display: flex; gap: 6px; }
+    .lb-browser-dots span { width: 12px; height: 12px; border-radius: 50%; }
     .lb-browser-dots span:nth-child(1) { background: #FF5F56; }
     .lb-browser-dots span:nth-child(2) { background: #FFBD2E; }
     .lb-browser-dots span:nth-child(3) { background: #27C93F; }
@@ -276,16 +274,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-    /* iframe del lightbox */
     .lb-frame-wrap iframe {
       width: 100%;
       height: 65vh;
       border: none;
       display: block;
     }
-
-    /* Botón cerrar */
     .lb-close {
       position: absolute;
       top: 52px; right: 14px;
@@ -300,8 +294,6 @@
       z-index: 2;
     }
     .lb-close:hover { background: rgba(255,59,48,0.85); transform: scale(1.12); }
-
-    /* Info y botón abrir */
     .lb-info {
       margin-top: 18px;
       text-align: center;
@@ -330,8 +322,6 @@
       flex-shrink: 0;
     }
     .lb-open-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
-
-    /* Flechas */
     .lb-arrow {
       position: fixed;
       top: 50%; transform: translateY(-50%);
@@ -351,8 +341,6 @@
     .lb-arrow.lb-next { right: 16px; }
     .lb-arrow:disabled { opacity: 0.2; cursor: default; }
     .lb-arrow:disabled:hover { background: rgba(255,255,255,0.1); transform: translateY(-50%); }
-
-    /* Dots */
     .lb-dots {
       display: flex; gap: 8px;
       justify-content: center;
@@ -425,21 +413,12 @@
       <div class="gallery-grid" id="galleryGrid">
 
         <!-- 1. Sistema de Inventario -->
-        <div class="proj-card"
-             data-category="inventario"
-             data-url="https://inventario-three-gamma.vercel.app/"
-             data-title="Sistema de Inventario Pro"
-             data-desc="Gestión de stock en tiempo real con Firebase"
-             data-aos="fade-up">
+        <div class="proj-card" data-category="inventario" data-url="https://inventario-three-gamma.vercel.app/" data-title="Sistema de Inventario Pro" data-desc="Gestión de stock en tiempo real con Firebase" data-aos="fade-up">
           <div class="proj-preview">
             <iframe src="https://inventario-three-gamma.vercel.app/" title="Sistema de Inventario Pro" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
             <div class="proj-overlay">
-              <button class="proj-overlay-btn secondary lb-trigger">
-                <i class="fas fa-expand"></i> Vista previa
-              </button>
-              <a href="https://inventario-three-gamma.vercel.app/" target="_blank" class="proj-overlay-btn primary">
-                <i class="fas fa-external-link-alt"></i> Abrir
-              </a>
+              <button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button>
+              <a href="https://inventario-three-gamma.vercel.app/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a>
             </div>
           </div>
           <div class="proj-body">
@@ -451,33 +430,19 @@
             <h3>Sistema de Inventario Pro</h3>
             <p>Aplicación web para gestión de stock con base de datos en tiempo real. Permite registrar productos, controlar entradas y salidas, y monitorear el inventario desde cualquier dispositivo.</p>
             <div class="proj-footer">
-              <div class="proj-status">
-                <div class="proj-status-dot"></div>
-                En producción
-              </div>
-              <a href="https://inventario-three-gamma.vercel.app/" target="_blank" class="proj-link">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="proj-status"><div class="proj-status-dot"></div>En producción</div>
+              <a href="https://inventario-three-gamma.vercel.app/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
 
         <!-- 2. Unir PDFs -->
-        <div class="proj-card"
-             data-category="utilidades"
-             data-url="https://sinsapiar1.github.io/unirpdfs/"
-             data-title="Unir PDFs"
-             data-desc="Fusión y compresión de PDFs 100% en el navegador"
-             data-aos="fade-up" data-aos-delay="100">
+        <div class="proj-card" data-category="utilidades" data-url="https://sinsapiar1.github.io/unirpdfs/" data-title="Unir PDFs" data-desc="Fusión y compresión de PDFs 100% en el navegador" data-aos="fade-up" data-aos-delay="100">
           <div class="proj-preview">
             <iframe src="https://sinsapiar1.github.io/unirpdfs/" title="Unir PDFs" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
             <div class="proj-overlay">
-              <button class="proj-overlay-btn secondary lb-trigger">
-                <i class="fas fa-expand"></i> Vista previa
-              </button>
-              <a href="https://sinsapiar1.github.io/unirpdfs/" target="_blank" class="proj-overlay-btn primary">
-                <i class="fas fa-external-link-alt"></i> Abrir
-              </a>
+              <button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button>
+              <a href="https://sinsapiar1.github.io/unirpdfs/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a>
             </div>
           </div>
           <div class="proj-body">
@@ -489,33 +454,19 @@
             <h3>Unir PDFs</h3>
             <p>Herramienta para combinar y comprimir archivos PDF directamente en el navegador, sin servidores ni carga de archivos a la nube. Rápido, privado y 100% gratuito.</p>
             <div class="proj-footer">
-              <div class="proj-status">
-                <div class="proj-status-dot"></div>
-                En producción
-              </div>
-              <a href="https://sinsapiar1.github.io/unirpdfs/" target="_blank" class="proj-link">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="proj-status"><div class="proj-status-dot"></div>En producción</div>
+              <a href="https://sinsapiar1.github.io/unirpdfs/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
 
         <!-- 3. Aprende HTML -->
-        <div class="proj-card"
-             data-category="educacion"
-             data-url="https://sinsapiar1.github.io/AprendeHtml/"
-             data-title="Aprende HTML"
-             data-desc="Guía interactiva de referencia para etiquetas HTML"
-             data-aos="fade-up" data-aos-delay="200">
+        <div class="proj-card" data-category="educacion" data-url="https://sinsapiar1.github.io/AprendeHtml/" data-title="Aprende HTML" data-desc="Guía interactiva de referencia para etiquetas HTML" data-aos="fade-up" data-aos-delay="200">
           <div class="proj-preview">
             <iframe src="https://sinsapiar1.github.io/AprendeHtml/" title="Aprende HTML" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
             <div class="proj-overlay">
-              <button class="proj-overlay-btn secondary lb-trigger">
-                <i class="fas fa-expand"></i> Vista previa
-              </button>
-              <a href="https://sinsapiar1.github.io/AprendeHtml/" target="_blank" class="proj-overlay-btn primary">
-                <i class="fas fa-external-link-alt"></i> Abrir
-              </a>
+              <button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button>
+              <a href="https://sinsapiar1.github.io/AprendeHtml/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a>
             </div>
           </div>
           <div class="proj-body">
@@ -527,33 +478,19 @@
             <h3>Aprende HTML</h3>
             <p>Guía interactiva con todas las etiquetas HTML organizadas por categorías, con ejemplos en vivo y buscador integrado. Pensada para quienes dan sus primeros pasos en el desarrollo web.</p>
             <div class="proj-footer">
-              <div class="proj-status">
-                <div class="proj-status-dot"></div>
-                En producción
-              </div>
-              <a href="https://sinsapiar1.github.io/AprendeHtml/" target="_blank" class="proj-link">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="proj-status"><div class="proj-status-dot"></div>En producción</div>
+              <a href="https://sinsapiar1.github.io/AprendeHtml/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
 
         <!-- 4. Generador QR -->
-        <div class="proj-card"
-             data-category="utilidades"
-             data-url="https://qrparati.netlify.app/"
-             data-title="QR Para Ti"
-             data-desc="Generador de códigos QR personalizado con colores y descarga"
-             data-aos="fade-up" data-aos-delay="300">
+        <div class="proj-card" data-category="utilidades" data-url="https://qrparati.netlify.app/" data-title="QR Para Ti" data-desc="Generador de códigos QR personalizado con colores y descarga" data-aos="fade-up" data-aos-delay="300">
           <div class="proj-preview">
             <iframe src="https://qrparati.netlify.app/" title="QR Para Ti" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
             <div class="proj-overlay">
-              <button class="proj-overlay-btn secondary lb-trigger">
-                <i class="fas fa-expand"></i> Vista previa
-              </button>
-              <a href="https://qrparati.netlify.app/" target="_blank" class="proj-overlay-btn primary">
-                <i class="fas fa-external-link-alt"></i> Abrir
-              </a>
+              <button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button>
+              <a href="https://qrparati.netlify.app/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a>
             </div>
           </div>
           <div class="proj-body">
@@ -565,33 +502,19 @@
             <h3>QR Para Ti</h3>
             <p>Generador de códigos QR con opciones de personalización de color de código y fondo, ajuste de tamaño y descarga directa. Ideal para negocios, menús digitales y eventos.</p>
             <div class="proj-footer">
-              <div class="proj-status">
-                <div class="proj-status-dot"></div>
-                En producción
-              </div>
-              <a href="https://qrparati.netlify.app/" target="_blank" class="proj-link">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="proj-status"><div class="proj-status-dot"></div>En producción</div>
+              <a href="https://qrparati.netlify.app/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
 
         <!-- 5. Test de Velocidad -->
-        <div class="proj-card"
-             data-category="utilidades"
-             data-url="https://testdevelocidad.vercel.app/"
-             data-title="Test de Velocidad"
-             data-desc="Medición de velocidad de conexión a internet en tiempo real"
-             data-aos="fade-up" data-aos-delay="400">
+        <div class="proj-card" data-category="utilidades" data-url="https://testdevelocidad.vercel.app/" data-title="Test de Velocidad" data-desc="Medición de velocidad de conexión a internet en tiempo real" data-aos="fade-up" data-aos-delay="400">
           <div class="proj-preview">
             <iframe src="https://testdevelocidad.vercel.app/" title="Test de Velocidad" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
             <div class="proj-overlay">
-              <button class="proj-overlay-btn secondary lb-trigger">
-                <i class="fas fa-expand"></i> Vista previa
-              </button>
-              <a href="https://testdevelocidad.vercel.app/" target="_blank" class="proj-overlay-btn primary">
-                <i class="fas fa-external-link-alt"></i> Abrir
-              </a>
+              <button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button>
+              <a href="https://testdevelocidad.vercel.app/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a>
             </div>
           </div>
           <div class="proj-body">
@@ -603,33 +526,19 @@
             <h3>Test de Velocidad</h3>
             <p>Aplicación construida en React que mide la velocidad de descarga y carga de tu conexión a internet. Resultados en tiempo real sin depender de servicios de terceros.</p>
             <div class="proj-footer">
-              <div class="proj-status">
-                <div class="proj-status-dot"></div>
-                En producción
-              </div>
-              <a href="https://testdevelocidad.vercel.app/" target="_blank" class="proj-link">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="proj-status"><div class="proj-status-dot"></div>En producción</div>
+              <a href="https://testdevelocidad.vercel.app/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
 
         <!-- 6. Taxi Movil -->
-        <div class="proj-card"
-             data-category="servicios"
-             data-url="https://sinsapiar1.github.io/Taximovil/"
-             data-title="Taxi Móvil"
-             data-desc="Sitio web de servicios de transporte con reservas online"
-             data-aos="fade-up" data-aos-delay="500">
+        <div class="proj-card" data-category="servicios" data-url="https://sinsapiar1.github.io/Taximovil/" data-title="Taxi Móvil" data-desc="Sitio web de servicios de transporte con reservas online" data-aos="fade-up" data-aos-delay="500">
           <div class="proj-preview">
             <iframe src="https://sinsapiar1.github.io/Taximovil/" title="Taxi Móvil" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
             <div class="proj-overlay">
-              <button class="proj-overlay-btn secondary lb-trigger">
-                <i class="fas fa-expand"></i> Vista previa
-              </button>
-              <a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" class="proj-overlay-btn primary">
-                <i class="fas fa-external-link-alt"></i> Abrir
-              </a>
+              <button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button>
+              <a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a>
             </div>
           </div>
           <div class="proj-body">
@@ -641,43 +550,30 @@
             <h3>Taxi Móvil</h3>
             <p>Plataforma web para servicios de transporte privado. Diseño moderno y responsive con sección de tarifas, mapa de cobertura y formulario de contacto. Proyecto real, actualmente en uso.</p>
             <div class="proj-footer">
-              <div class="proj-status">
-                <div class="proj-status-dot"></div>
-                En producción
-              </div>
-              <a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" class="proj-link">
-                Ver proyecto <i class="fas fa-arrow-right"></i>
-              </a>
+              <div class="proj-status"><div class="proj-status-dot"></div>En producción</div>
+              <a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
 
-      </div><!-- /gallery-grid -->
+      </div>
     </main>
   </div>
 
   <footer><p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p></footer>
 
-  <!-- ══════════ LIGHTBOX ══════════ -->
+  <!-- LIGHTBOX -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Vista previa del proyecto">
     <div class="lb-overlay" id="lbOverlay"></div>
-
-    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
     <div class="lb-box">
       <div class="lb-frame-wrap">
         <div class="lb-browser-bar">
-          <div class="lb-browser-dots">
-            <span></span><span></span><span></span>
-          </div>
+          <div class="lb-browser-dots"><span></span><span></span><span></span></div>
           <div class="lb-url-bar" id="lbUrl"></div>
         </div>
         <iframe id="lbFrame" src="" title="Vista previa" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
-        <button class="lb-close" id="lbClose" aria-label="Cerrar">
-          <i class="fas fa-times"></i>
-        </button>
+        <button class="lb-close" id="lbClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
       </div>
       <div class="lb-info">
         <div class="lb-info-text">
@@ -690,16 +586,12 @@
       </div>
       <div class="lb-dots" id="lbDots"></div>
     </div>
-
-    <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente">
-      <i class="fas fa-chevron-right"></i>
-    </button>
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
   </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
-    // ── FILTRO ──────────────────────────────────────────
     document.querySelectorAll('.gallery-filter button').forEach(btn => {
       btn.addEventListener('click', function() {
         document.querySelectorAll('.gallery-filter button').forEach(b => b.classList.remove('active'));
@@ -712,25 +604,23 @@
       });
     });
 
-    // ── LIGHTBOX ─────────────────────────────────────────
-    const lb       = document.getElementById('lightbox');
-    const lbFrame  = document.getElementById('lbFrame');
-    const lbUrl    = document.getElementById('lbUrl');
-    const lbTitle  = document.getElementById('lbTitle');
-    const lbDesc   = document.getElementById('lbDesc');
-    const lbOpenBtn= document.getElementById('lbOpenBtn');
-    const lbDots   = document.getElementById('lbDots');
-    const lbClose  = document.getElementById('lbClose');
-    const lbOverlay= document.getElementById('lbOverlay');
-    const lbPrev   = document.getElementById('lbPrev');
-    const lbNext   = document.getElementById('lbNext');
+    const lb        = document.getElementById('lightbox');
+    const lbFrame   = document.getElementById('lbFrame');
+    const lbUrl     = document.getElementById('lbUrl');
+    const lbTitle   = document.getElementById('lbTitle');
+    const lbDesc    = document.getElementById('lbDesc');
+    const lbOpenBtn = document.getElementById('lbOpenBtn');
+    const lbDots    = document.getElementById('lbDots');
+    const lbClose   = document.getElementById('lbClose');
+    const lbOverlay = document.getElementById('lbOverlay');
+    const lbPrev    = document.getElementById('lbPrev');
+    const lbNext    = document.getElementById('lbNext');
 
     let visibleCards = [];
     let currentIndex = 0;
 
     function buildVisibleList() {
-      visibleCards = Array.from(document.querySelectorAll('.proj-card'))
-        .filter(c => c.style.display !== 'none');
+      visibleCards = Array.from(document.querySelectorAll('.proj-card')).filter(c => c.style.display !== 'none');
     }
 
     function openLightbox(index) {
@@ -753,11 +643,11 @@
       const card = visibleCards[index];
       if (!card) return;
       const url = card.dataset.url;
-      lbFrame.src    = url;
+      lbFrame.src = url;
       lbUrl.textContent = url.replace(/^https?:\/\//, '');
-      lbTitle.textContent   = card.dataset.title;
-      lbDesc.textContent    = card.dataset.desc;
-      lbOpenBtn.href        = url;
+      lbTitle.textContent = card.dataset.title;
+      lbDesc.textContent  = card.dataset.desc;
+      lbOpenBtn.href      = url;
       lbPrev.disabled = index === 0;
       lbNext.disabled = index === visibleCards.length - 1;
       document.querySelectorAll('.lb-dot').forEach((d,i) => d.classList.toggle('active', i === index));
@@ -774,37 +664,31 @@
       });
     }
 
-    // Abrir desde botón "Vista previa"
     document.getElementById('galleryGrid').addEventListener('click', e => {
       const trigger = e.target.closest('.lb-trigger');
       if (!trigger) return;
       e.preventDefault();
       buildVisibleList();
-      const card = trigger.closest('.proj-card');
+      const card  = trigger.closest('.proj-card');
       const index = visibleCards.indexOf(card);
       if (index !== -1) openLightbox(index);
     });
 
-    // Cerrar
     lbClose.addEventListener('click', closeLightbox);
     lbOverlay.addEventListener('click', closeLightbox);
-
-    // Flechas
     lbPrev.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; loadProject(currentIndex); }});
     lbNext.addEventListener('click', () => { if (currentIndex < visibleCards.length-1) { currentIndex++; loadProject(currentIndex); }});
 
-    // Teclado
     document.addEventListener('keydown', e => {
       if (!lb.classList.contains('lb-open')) return;
-      if (e.key === 'Escape')     closeLightbox();
-      if (e.key === 'ArrowLeft' && currentIndex > 0)                        { currentIndex--; loadProject(currentIndex); }
-      if (e.key === 'ArrowRight' && currentIndex < visibleCards.length - 1) { currentIndex++; loadProject(currentIndex); }
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft'  && currentIndex > 0)                        { currentIndex--; loadProject(currentIndex); }
+      if (e.key === 'ArrowRight' && currentIndex < visibleCards.length - 1)  { currentIndex++; loadProject(currentIndex); }
     });
 
-    // Swipe móvil
     let touchStartX = 0;
     lb.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend', e => {
+    lb.addEventListener('touchend',   e => {
       const diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) < 50) return;
       if (diff > 0 && currentIndex < visibleCards.length-1) { currentIndex++; loadProject(currentIndex); }
