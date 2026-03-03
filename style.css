@@ -826,7 +826,7 @@ footer p {
 }
 
 /* ========================================
-   🎭 MODAL
+   🎭 MODAL GENÉRICO
    ======================================== */
 .modal {
   display: none;
@@ -852,14 +852,8 @@ footer p {
 }
 
 @keyframes modalSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .close-modal {
@@ -941,6 +935,361 @@ footer p {
 }
 
 /* ========================================
+   📖 MODAL REVISTA - Historia Completa
+   ======================================== */
+#storyModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+}
+
+#storyModal.is-open {
+  display: flex;
+}
+
+/* Overlay con animación */
+.story-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  transition: background 0.5s ease, backdrop-filter 0.5s ease;
+  cursor: pointer;
+}
+
+#storyModal.is-open .story-overlay {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+/* Contenedor principal tipo revista */
+.story-magazine {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 760px;
+  max-height: 88vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#storyModal.is-open .story-magazine {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hero foto portada */
+.story-hero {
+  position: relative;
+  height: 320px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.story-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#storyModal.is-open .story-hero img {
+  transform: scale(1);
+}
+
+/* Degradado sobre la foto */
+.story-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 30%,
+    rgba(0,0,0,0.72) 100%
+  );
+}
+
+/* Etiqueta de categoría */
+.story-tag {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  background: var(--primary);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+/* Botón cerrar */
+.story-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  backdrop-filter: blur(8px);
+}
+
+.story-close:hover {
+  background: rgba(0,0,0,0.75);
+  transform: scale(1.1);
+}
+
+/* Título superpuesto en la foto */
+.story-hero-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+}
+
+.story-hero-title h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  margin-bottom: 6px;
+}
+
+.story-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.82rem;
+}
+
+.story-hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Área de scroll del artículo */
+.story-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 32px 36px 40px;
+  scroll-behavior: smooth;
+}
+
+.story-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.story-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.story-body::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+/* Frase destacada tipo pull-quote */
+.story-pullquote {
+  border-left: 4px solid var(--primary);
+  margin: 28px 0;
+  padding: 16px 24px;
+  background: var(--bg-secondary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.story-pullquote p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+}
+
+/* Párrafos del artículo */
+.story-body p {
+  color: var(--text-secondary);
+  line-height: 1.85;
+  font-size: 1rem;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+/* Separador de sección */
+.story-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0;
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.story-divider::before,
+.story-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* Chips de lugares visitados */
+.story-places {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 28px;
+}
+
+.story-place-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.story-place-chip i {
+  color: var(--primary);
+  font-size: 0.78rem;
+}
+
+/* Sección de skills revelados */
+.story-skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0 28px;
+}
+
+.story-skill-item {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 16px 12px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.story-skill-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.story-skill-item i {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.story-skill-item span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+
+.story-skill-item small {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+/* Footer del artículo */
+.story-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 8px;
+}
+
+.story-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.story-author img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+.story-author-info strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.story-author-info small {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.story-share {
+  display: flex;
+  gap: 10px;
+}
+
+.story-share a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.story-share a:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ========================================
    📱 RESPONSIVE DESIGN
    ======================================== */
 @media (max-width: 1024px) {
@@ -998,6 +1347,18 @@ footer p {
   .instagram-feed {
     padding: var(--spacing-lg);
   }
+
+  .story-hero {
+    height: 240px;
+  }
+
+  .story-body {
+    padding: 24px 20px 32px;
+  }
+
+  .story-skills {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -1028,29 +1389,29 @@ footer p {
   [data-theme="dark"] .theme-toggle-ball {
     transform: translateX(22px);
   }
+
+  .story-skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-footer {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
 }
 
 /* ========================================
    🎨 ANIMACIONES ADICIONALES
    ======================================== */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* AOS Animations Support */
@@ -1090,17 +1451,14 @@ footer p {
   box-shadow: var(--glass-shadow);
 }
 
-/* Ocultar elementos en carga */
 .hidden {
   display: none;
 }
 
-/* Smooth transitions para todos los elementos interactivos */
 a, button, input, textarea, select {
   transition: all var(--transition-fast);
 }
 
-/* Focus visible para accesibilidad */
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
