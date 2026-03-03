@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Curriculum Vitae de Raul Pivet - Logistics Operations Specialist">
+  <meta name="theme-color" content="#FF6B00">
   <title>CV - Raul Pivet</title>
-  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
-  
   <style>
-    /* Toggle de idioma */
     .language-toggle {
       position: fixed;
       top: 80px;
@@ -29,39 +30,14 @@
       cursor: pointer;
       transition: all var(--transition-base);
     }
-
-    .language-toggle:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .language-flag {
-      font-size: 1.25rem;
-    }
-
-    .language-text {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
+    .language-toggle:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .language-flag { font-size: 1.25rem; }
+    .language-text { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
     @media (max-width: 768px) {
-      .language-toggle {
-        top: 70px;
-        right: 16px;
-        padding: 6px 12px;
-      }
-      
-      .language-text {
-        display: none;
-      }
+      .language-toggle { top: 70px; right: 16px; padding: 6px 12px; }
+      .language-text { display: none; }
     }
-
-    .cv-container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
+    .cv-container { max-width: 1000px; margin: 0 auto; }
     .cv-header {
       text-align: center;
       padding: var(--spacing-2xl) 0;
@@ -71,7 +47,6 @@
       border-radius: var(--radius-xl);
       margin-bottom: var(--spacing-xl);
     }
-
     .cv-header h1 {
       font-size: 2.5rem;
       font-weight: 600;
@@ -80,33 +55,10 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    .cv-header .subtitle {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-lg);
-      font-weight: 500;
-    }
-
-    .cv-contact {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-md);
-    }
-
-    .cv-contact-item {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
-    }
-
-    .cv-contact-item i {
-      color: var(--primary);
-    }
-
+    .cv-header .subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: var(--spacing-lg); font-weight: 500; }
+    .cv-contact { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--spacing-md); }
+    .cv-contact-item { display: flex; align-items: center; gap: var(--spacing-xs); color: var(--text-secondary); font-size: 0.9375rem; }
+    .cv-contact-item i { color: var(--primary); }
     .cv-section {
       background: var(--glass-bg);
       backdrop-filter: blur(20px) saturate(180%);
@@ -115,7 +67,6 @@
       padding: var(--spacing-xl);
       margin-bottom: var(--spacing-xl);
     }
-
     .cv-section h2 {
       font-size: 1.75rem;
       font-weight: 600;
@@ -127,641 +78,202 @@
       align-items: center;
       gap: var(--spacing-sm);
     }
-
-    .cv-section h2 i {
-      color: var(--primary);
-    }
-
-    .cv-item {
-      margin-bottom: var(--spacing-lg);
-      padding-bottom: var(--spacing-lg);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .cv-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .cv-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      margin-bottom: var(--spacing-sm);
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-    }
-
-    .cv-item-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .cv-item-company {
-      font-size: 1rem;
-      color: var(--primary);
-      margin-bottom: var(--spacing-xs);
-      font-weight: 500;
-    }
-
-    .cv-item-date {
-      font-size: 0.875rem;
-      color: var(--text-tertiary);
-      font-weight: 500;
-    }
-
-    .cv-item-description {
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    .cv-item-description ul {
-      margin-top: var(--spacing-sm);
-      padding-left: var(--spacing-lg);
-    }
-
-    .cv-item-description li {
-      margin-bottom: var(--spacing-xs);
-    }
-
-    .highlight {
-      background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1));
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: var(--spacing-md);
-    }
-
-    .skill-item {
-      background: var(--bg-secondary);
-      padding: var(--spacing-md);
-      border-radius: var(--radius-md);
-      text-align: center;
-      transition: all var(--transition-base);
-      border: 1px solid var(--border-color);
-    }
-
-    .skill-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary);
-    }
-
-    .skill-icon {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .skill-name {
-      font-weight: 500;
-      color: var(--text-primary);
-      font-size: 0.875rem;
-    }
-
-    .language-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--spacing-sm) 0;
-    }
-
-    .language-name {
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .language-level {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-    }
-
-    .download-cv {
-      text-align: center;
-      margin-top: var(--spacing-xl);
-    }
-
-    .download-cv .btn {
-      padding: 16px 32px;
-      font-size: 1rem;
-    }
-
-    .profile-summary {
-      background: linear-gradient(135deg, rgba(0, 122, 255, 0.05), rgba(88, 86, 214, 0.05));
-      padding: var(--spacing-lg);
-      border-radius: var(--radius-lg);
-      border-left: 4px solid var(--primary);
-    }
-
+    .cv-section h2 i { color: var(--primary); }
+    .cv-item { margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color); }
+    .cv-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .cv-item-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-sm); flex-wrap: wrap; gap: var(--spacing-sm); }
+    .cv-item-title { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); }
+    .cv-item-company { font-size: 1rem; color: var(--primary); margin-bottom: var(--spacing-xs); font-weight: 500; }
+    .cv-item-date { font-size: 0.875rem; color: var(--text-tertiary); font-weight: 500; }
+    .cv-item-description { color: var(--text-secondary); line-height: 1.7; }
+    .cv-item-description ul { margin-top: var(--spacing-sm); padding-left: var(--spacing-lg); }
+    .cv-item-description li { margin-bottom: var(--spacing-xs); }
+    .highlight { background: linear-gradient(135deg, rgba(0,122,255,0.1), rgba(88,86,214,0.1)); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--spacing-md); }
+    .skill-item { background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center; transition: all var(--transition-base); border: 1px solid var(--border-color); }
+    .skill-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+    .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: var(--spacing-sm); }
+    .skill-name { font-weight: 500; color: var(--text-primary); font-size: 0.875rem; }
+    .language-item { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; }
+    .language-name { font-weight: 500; color: var(--text-primary); }
+    .language-level { color: var(--text-secondary); font-size: 0.875rem; }
+    .download-cv { text-align: center; margin-top: var(--spacing-xl); }
+    .download-cv .btn { padding: 16px 32px; font-size: 1rem; }
+    .profile-summary { background: linear-gradient(135deg, rgba(0,122,255,0.05), rgba(88,86,214,0.05)); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--primary); }
     @media (max-width: 768px) {
-      .cv-header h1 {
-        font-size: 2rem;
-      }
-
-      .cv-contact {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .cv-item-header {
-        flex-direction: column;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      }
+      .cv-header h1 { font-size: 2rem; }
+      .cv-contact { flex-direction: column; align-items: center; }
+      .cv-item-header { flex-direction: column; }
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
     }
   </style>
 </head>
 <body>
-  <div class="loader" id="loader">
-    <div class="loader-circle"></div>
-  </div>
-  
+  <div class="loader" id="loader"><div class="loader-circle"></div></div>
   <div class="scroll-indicator" id="scrollIndicator"></div>
-  
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-    <div class="theme-toggle-ball">
-      <i class="fas fa-moon"></i>
-    </div>
+    <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
-
-  <!-- Language Toggle -->
   <div class="language-toggle" id="languageToggle" aria-label="Change language">
     <span class="language-flag" id="languageFlag">🇺🇸</span>
     <span class="language-text" id="languageText">English</span>
   </div>
-  
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
-  
   <div class="container">
     <aside class="sidebar" id="sidebar">
       <div class="profile">
-        <div class="profile-img">
-          <img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy">
-        </div>
+        <div class="profile-img"><img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy"></div>
         <h2>Raul Pivet</h2>
         <p>Informático & Deportista</p>
       </div>
-      
       <ul class="menu">
-        <li class="menu-item">
-          <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-        </li>
-        <li class="menu-item">
-          <a href="galeria.html"><i class="fas fa-images"></i> Galería</a>
-        </li>
-        <li class="menu-item">
-          <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a>
-        </li>
-        <li class="menu-item active">
-          <a href="cv.html"><i class="fas fa-file-alt"></i> CV</a>
-        </li>
-        <li class="menu-item">
-          <a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a>
-        </li>
-        <li class="menu-item">
-          <a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a>
-        </li>
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li class="menu-item"><a href="galeria.html"><i class="fas fa-images"></i> Galería</a></li>
+        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
+        <li class="menu-item active"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
+        <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
+        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
       </ul>
-      
       <div class="social-links">
-        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
+        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
-    
     <main class="content">
-      <div class="cv-container" id="cvContent">
-        <!-- El contenido se cargará dinámicamente según el idioma -->
-      </div>
+      <div class="cv-container" id="cvContent"></div>
     </main>
   </div>
-  
   <footer>
     <p>&copy; 2025 Raul Pivet. <span data-lang="footer">All rights reserved</span>.</p>
   </footer>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
-    // Traducciones
     const translations = {
       en: {
         subtitle: "Logistics Operations Specialist & Business Solutions Developer",
         profileTitle: "Professional Profile",
-        profileText: "<strong>9+ years</strong> transforming manual logistics operations into automated, data-driven solutions. Specialist in <span class='highlight'>Microsoft Power Platform</span> and <span class='highlight'>Python development</span>, creating tools that reduce operational costs and improve team efficiency. Proven track record reducing negative inventory through custom dashboards and predictive analytics.",
+        profileText: "<strong>9+ years</strong> transforming manual logistics operations into automated, data-driven solutions. Specialist in <span class='highlight'>Microsoft Power Platform</span> and <span class='highlight'>Python development</span>, creating tools that reduce operational costs and improve team efficiency.",
         experienceTitle: "Work Experience",
-        job1Title: "Logistics Assistant",
-        job1Company: "Encofrados J. Alsina S.A. - Hialeah, FL",
-        job1Date: "Feb 2025 - Present",
-        job1Bullets: [
-          "<strong>Reduced negative inventory significantly</strong> by developing advanced analytics tools using Python (Streamlit, Pandas) and Power BI with TypeScript custom visuals",
-          "Automated daily inventory analysis dashboards, processing data from 30+ warehouses globally",
-          "Created web applications for random inventory audits and real-time stock analysis",
-          "Designed automated workflows with Power Automate for mass email reporting and ERP data integration",
-          "Managed delivery documentation, return requests, and carrier coordination through optimized processes"
-        ],
-        job2Title: "Logistics Coordinator",
-        job2Company: "Merflex - Doral, FL",
-        job2Date: "Mar 2024 - Jan 2025",
-        job2Bullets: [
-          "Coordinated international operations between China, Miami, and Bogotá for Temu/Shein products",
-          "<strong>Systematized key procedures</strong>, achieving significant reductions in operational times",
-          "Developed mobile applications for merchandise reception/dispatch with automated reporting to stakeholders",
-          "Implemented mobile apps that replaced administrative tasks, optimizing human resources"
-        ],
-        job3Title: "Warehouse Manager",
-        job3Company: "Sodexo - Minera Collahuasi - Iquique, Chile",
-        job3Date: "Jan 2021 - Jun 2023",
-        job3Bullets: [
-          "<strong>Led team of 20 people</strong> in rotational shifts (7x7), ensuring operational and safety objectives",
-          "<strong>Reduced inventory errors by 30%</strong> implementing mobile inventory control app with AppSheet",
-          "<strong>Improved operational efficiency by 25%</strong> through automated reporting in Google Sheets and Excel",
-          "Designed integrated systems for data synchronization between Gmail, Google Sheets, and local databases"
-        ],
-        job4Title: "Administrative Specialist",
-        job4Company: "Sodexo - Minera Escondida - Antofagasta, Chile",
-        job4Date: "Aug 2016 - Jan 2021",
-        job4Bullets: [
-          "Represented Food Warehouse in national meetings to improve logistics and supply processes",
-          "Analyzed data for weekly cost presentations, providing key insights for financial decisions",
-          "Systematized operational procedures, improving daily operations efficiency",
-          "Created mobile apps for merchandise reception, reducing registration errors"
-        ],
+        job1Title: "Logistics Assistant", job1Company: "Encofrados J. Alsina S.A. - Hialeah, FL", job1Date: "Feb 2025 - Present",
+        job1Bullets: ["<strong>Reduced negative inventory significantly</strong> by developing advanced analytics tools using Python (Streamlit, Pandas) and Power BI with TypeScript custom visuals","Automated daily inventory analysis dashboards, processing data from 30+ warehouses globally","Created web applications for random inventory audits and real-time stock analysis","Designed automated workflows with Power Automate for mass email reporting and ERP data integration","Managed delivery documentation, return requests, and carrier coordination through optimized processes"],
+        job2Title: "Logistics Coordinator", job2Company: "Merflex - Doral, FL", job2Date: "Mar 2024 - Jan 2025",
+        job2Bullets: ["Coordinated international operations between China, Miami, and Bogotá for Temu/Shein products","<strong>Systematized key procedures</strong>, achieving significant reductions in operational times","Developed mobile applications for merchandise reception/dispatch with automated reporting","Implemented mobile apps that replaced administrative tasks, optimizing human resources"],
+        job3Title: "Warehouse Manager", job3Company: "Sodexo - Minera Collahuasi - Iquique, Chile", job3Date: "Jan 2021 - Jun 2023",
+        job3Bullets: ["<strong>Led team of 20 people</strong> in rotational shifts (7x7)","<strong>Reduced inventory errors by 30%</strong> implementing mobile inventory control app with AppSheet","<strong>Improved operational efficiency by 25%</strong> through automated reporting in Google Sheets and Excel","Designed integrated systems for data synchronization between Gmail, Google Sheets, and local databases"],
+        job4Title: "Administrative Specialist", job4Company: "Sodexo - Minera Escondida - Antofagasta, Chile", job4Date: "Aug 2016 - Jan 2021",
+        job4Bullets: ["Represented Food Warehouse in national meetings to improve logistics and supply processes","Analyzed data for weekly cost presentations, providing key insights for financial decisions","Systematized operational procedures, improving daily operations efficiency","Created mobile apps for merchandise reception, reducing registration errors"],
         educationTitle: "Education & Certifications",
-        education1: "Business Administration (Logistics Specialization)",
-        education1Company: "IACC - Santiago, Chile",
-        education1Date: "2017 - 2020",
+        education1: "Business Administration (Logistics Specialization)", education1Company: "IACC - Santiago, Chile", education1Date: "2017 - 2020",
         certificationsTitle: "Professional Certifications",
-        certifications: [
-          "<strong>Python AI Development</strong> (Nov 2025) - Advanced Python, LLMs, APIs integration",
-          "<strong>Microsoft Excel Expert</strong> - Advanced automation and data analysis",
-          "<strong>Supply Chain Management Diploma</strong> - Logistics flow optimization",
-          "<strong>Administrative Management Diploma</strong> - Business resource management",
-          "<strong>Cybersecurity Introduction</strong> (Sep 2025) - Digital security fundamentals"
-        ],
-        skillsTitle: "Technical Skills",
-        languagesTitle: "Languages",
-        lang1: "Spanish",
-        lang1Level: "Native",
-        lang2: "English",
-        lang2Level: "Intermediate (B1/B2)",
-        downloadBtn: "Download CV as PDF",
-        footer: "All rights reserved"
+        certifications: ["<strong>Python AI Development</strong> (Nov 2025)","<strong>Microsoft Excel Expert</strong> - Advanced automation","<strong>Supply Chain Management Diploma</strong>","<strong>Administrative Management Diploma</strong>","<strong>Cybersecurity Introduction</strong> (Sep 2025)"],
+        skillsTitle: "Technical Skills", languagesTitle: "Languages",
+        lang1: "Spanish", lang1Level: "Native", lang2: "English", lang2Level: "Intermediate (B1/B2)",
+        downloadBtn: "Download CV as PDF", footer: "All rights reserved"
       },
       es: {
         subtitle: "Especialista en Operaciones Logísticas & Desarrollador de Soluciones Empresariales",
         profileTitle: "Perfil Profesional",
-        profileText: "<strong>9+ años</strong> transformando operaciones logísticas manuales en soluciones automatizadas basadas en datos. Especialista en <span class='highlight'>Microsoft Power Platform</span> y <span class='highlight'>desarrollo Python</span>, creando herramientas que reducen costos operativos y mejoran la eficiencia del equipo. Historial comprobado reduciendo inventario negativo mediante dashboards personalizados y análisis predictivo.",
+        profileText: "<strong>9+ años</strong> transformando operaciones logísticas manuales en soluciones automatizadas. Especialista en <span class='highlight'>Microsoft Power Platform</span> y <span class='highlight'>desarrollo Python</span>, creando herramientas que reducen costos operativos y mejoran la eficiencia del equipo.",
         experienceTitle: "Experiencia Laboral",
-        job1Title: "Asistente de Logística",
-        job1Company: "Encofrados J. Alsina S.A. - Hialeah, FL",
-        job1Date: "Feb 2025 - Presente",
-        job1Bullets: [
-          "<strong>Reducción significativa de inventario negativo</strong> mediante desarrollo de herramientas de análisis avanzado usando Python (Streamlit, Pandas) y Power BI con visuales personalizados en TypeScript",
-          "Automatización de dashboards de análisis diario de inventario, procesando datos de 30+ almacenes globalmente",
-          "Creación de aplicaciones web para auditorías aleatorias de inventario y análisis en tiempo real",
-          "Diseño de flujos automatizados con Power Automate para reportes masivos por email e integración con ERP",
-          "Gestión de documentación de entregas, solicitudes de devolución y coordinación de transportistas mediante procesos optimizados"
-        ],
-        job2Title: "Coordinador Logístico",
-        job2Company: "Merflex - Doral, FL",
-        job2Date: "Mar 2024 - Ene 2025",
-        job2Bullets: [
-          "Coordinación de operaciones internacionales entre China, Miami y Bogotá para productos Temu/Shein",
-          "<strong>Sistematización de procedimientos clave</strong>, logrando reducciones significativas en tiempos operativos",
-          "Desarrollo de aplicaciones móviles para recepción/despacho de mercadería con reportes automatizados a responsables",
-          "Implementación de apps móviles que sustituyeron tareas administrativas, optimizando recursos humanos"
-        ],
-        job3Title: "Jefe de Bodega",
-        job3Company: "Sodexo - Minera Collahuasi - Iquique, Chile",
-        job3Date: "Ene 2021 - Jun 2023",
-        job3Bullets: [
-          "<strong>Liderazgo de equipo de 20 personas</strong> en turnos rotativos (7x7), asegurando objetivos operacionales y de seguridad",
-          "<strong>Reducción del 30% en errores de inventario</strong> implementando app móvil de control con AppSheet",
-          "<strong>Mejora del 25% en eficiencia operativa</strong> mediante reportes automatizados en Google Sheets y Excel",
-          "Diseño de sistemas integrados para sincronización de datos entre Gmail, Google Sheets y bases de datos locales"
-        ],
-        job4Title: "Especialista Administrativo",
-        job4Company: "Sodexo - Minera Escondida - Antofagasta, Chile",
-        job4Date: "Ago 2016 - Ene 2021",
-        job4Bullets: [
-          "Representación de Bodega de Alimentación en reuniones nacionales para mejorar procesos logísticos y de abastecimiento",
-          "Análisis de datos para presentaciones semanales de costos, aportando insights clave para decisiones financieras",
-          "Sistematización de procedimientos operacionales, mejorando eficiencia de operaciones diarias",
-          "Creación de apps móviles para recepción de mercadería, reduciendo errores de registro"
-        ],
+        job1Title: "Asistente de Logística", job1Company: "Encofrados J. Alsina S.A. - Hialeah, FL", job1Date: "Feb 2025 - Presente",
+        job1Bullets: ["<strong>Reducción significativa de inventario negativo</strong> mediante Python (Streamlit, Pandas) y Power BI con visuales en TypeScript","Automatización de dashboards de análisis diario de inventario para 30+ almacenes","Creación de apps web para auditorías aleatorias y análisis en tiempo real","Diseño de flujos automatizados con Power Automate para reportes masivos e integración ERP","Gestión de documentación, devoluciones y coordinación de transportistas"],
+        job2Title: "Coordinador Logístico", job2Company: "Merflex - Doral, FL", job2Date: "Mar 2024 - Ene 2025",
+        job2Bullets: ["Coordinación de operaciones internacionales China-Miami-Bogotá para productos Temu/Shein","<strong>Sistematización de procedimientos clave</strong> con reducciones significativas en tiempos","Desarrollo de apps móviles para recepción/despacho con reportes automatizados","Implementación de apps que sustituyeron tareas administrativas"],
+        job3Title: "Jefe de Bodega", job3Company: "Sodexo - Minera Collahuasi - Iquique, Chile", job3Date: "Ene 2021 - Jun 2023",
+        job3Bullets: ["<strong>Liderazgo de equipo de 20 personas</strong> en turnos rotativos 7x7","<strong>Reducción del 30% en errores de inventario</strong> con app móvil AppSheet","<strong>Mejora del 25% en eficiencia operativa</strong> con reportes automatizados","Diseño de sistemas integrados Gmail / Google Sheets / bases de datos locales"],
+        job4Title: "Especialista Administrativo", job4Company: "Sodexo - Minera Escondida - Antofagasta, Chile", job4Date: "Ago 2016 - Ene 2021",
+        job4Bullets: ["Representación en reuniones nacionales para mejorar procesos logísticos","Análisis de datos para presentaciones semanales de costos","Sistematización de procedimientos operacionales","Apps móviles para recepción de mercadería"],
         educationTitle: "Educación y Certificaciones",
-        education1: "Administración de Empresas (Especialización en Logística)",
-        education1Company: "IACC - Santiago, Chile",
-        education1Date: "2017 - 2020",
+        education1: "Administración de Empresas (Especialización en Logística)", education1Company: "IACC - Santiago, Chile", education1Date: "2017 - 2020",
         certificationsTitle: "Certificaciones Profesionales",
-        certifications: [
-          "<strong>Python AI Development</strong> (Nov 2025) - Python avanzado, LLMs, integración de APIs",
-          "<strong>Experto en Microsoft Excel</strong> - Automatización avanzada y análisis de datos",
-          "<strong>Diploma en Gestión de Cadena de Suministro</strong> - Optimización de flujos logísticos",
-          "<strong>Diploma en Gestión Administrativa</strong> - Gestión de recursos empresariales",
-          "<strong>Introducción a la Ciberseguridad</strong> (Sep 2025) - Fundamentos de seguridad digital"
-        ],
-        skillsTitle: "Habilidades Técnicas",
-        languagesTitle: "Idiomas",
-        lang1: "Español",
-        lang1Level: "Nativo",
-        lang2: "Inglés",
-        lang2Level: "Intermedio (B1/B2)",
-        downloadBtn: "Descargar CV en PDF",
-        footer: "Todos los derechos reservados"
+        certifications: ["<strong>Python AI Development</strong> (Nov 2025)","<strong>Experto en Microsoft Excel</strong>","<strong>Diploma en Gestión de Cadena de Suministro</strong>","<strong>Diploma en Gestión Administrativa</strong>","<strong>Introducción a la Ciberseguridad</strong> (Sep 2025)"],
+        skillsTitle: "Habilidades Técnicas", languagesTitle: "Idiomas",
+        lang1: "Español", lang1Level: "Nativo", lang2: "Inglés", lang2Level: "Intermedio (B1/B2)",
+        downloadBtn: "Descargar CV en PDF", footer: "Todos los derechos reservados"
       }
     };
 
-    // Estado del idioma
     let currentLang = localStorage.getItem('cvLanguage') || 'en';
 
-    // Función para renderizar el CV
     function renderCV(lang) {
       const t = translations[lang];
-      const content = document.getElementById('cvContent');
-      
-      content.innerHTML = `
-        <!-- CV Header -->
+      document.getElementById('cvContent').innerHTML = `
         <div class="cv-header" data-aos="fade-down">
           <h1>Raul Jaime Pivet</h1>
           <p class="subtitle">${t.subtitle}</p>
           <div class="cv-contact">
-            <div class="cv-contact-item">
-              <i class="fas fa-envelope"></i>
-              <span>jaime.pivet@gmail.com</span>
-            </div>
-            <div class="cv-contact-item">
-              <i class="fas fa-phone"></i>
-              <span>+1 (305) 540-6846</span>
-            </div>
-            <div class="cv-contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Cutler Bay, FL 33189</span>
-            </div>
+            <div class="cv-contact-item"><i class="fas fa-envelope"></i><span>jaime.pivet@gmail.com</span></div>
+            <div class="cv-contact-item"><i class="fas fa-phone"></i><span>+1 (305) 540-6846</span></div>
+            <div class="cv-contact-item"><i class="fas fa-map-marker-alt"></i><span>Cutler Bay, FL 33189</span></div>
           </div>
         </div>
-
-        <!-- Perfil Profesional -->
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-user-tie"></i> ${t.profileTitle}</h2>
-          <div class="profile-summary">
-            <p class="cv-item-description">${t.profileText}</p>
-          </div>
+          <div class="profile-summary"><p class="cv-item-description">${t.profileText}</p></div>
         </section>
-
-        <!-- Experiencia Profesional -->
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-briefcase"></i> ${t.experienceTitle}</h2>
-          
+          ${[1,2,3,4].map(n => `
           <div class="cv-item">
             <div class="cv-item-header">
-              <div>
-                <h3 class="cv-item-title">${t.job1Title}</h3>
-                <p class="cv-item-company">${t.job1Company}</p>
-              </div>
-              <span class="cv-item-date">${t.job1Date}</span>
+              <div><h3 class="cv-item-title">${t['job'+n+'Title']}</h3><p class="cv-item-company">${t['job'+n+'Company']}</p></div>
+              <span class="cv-item-date">${t['job'+n+'Date']}</span>
             </div>
-            <div class="cv-item-description">
-              <ul>
-                ${t.job1Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <div>
-                <h3 class="cv-item-title">${t.job2Title}</h3>
-                <p class="cv-item-company">${t.job2Company}</p>
-              </div>
-              <span class="cv-item-date">${t.job2Date}</span>
-            </div>
-            <div class="cv-item-description">
-              <ul>
-                ${t.job2Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <div>
-                <h3 class="cv-item-title">${t.job3Title}</h3>
-                <p class="cv-item-company">${t.job3Company}</p>
-              </div>
-              <span class="cv-item-date">${t.job3Date}</span>
-            </div>
-            <div class="cv-item-description">
-              <ul>
-                ${t.job3Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <div>
-                <h3 class="cv-item-title">${t.job4Title}</h3>
-                <p class="cv-item-company">${t.job4Company}</p>
-              </div>
-              <span class="cv-item-date">${t.job4Date}</span>
-            </div>
-            <div class="cv-item-description">
-              <ul>
-                ${t.job4Bullets.map(bullet => `<li>${bullet}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
+            <div class="cv-item-description"><ul>${t['job'+n+'Bullets'].map(b=>`<li>${b}</li>`).join('')}</ul></div>
+          </div>`).join('')}
         </section>
-
-        <!-- Educación -->
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-graduation-cap"></i> ${t.educationTitle}</h2>
-          
           <div class="cv-item">
             <div class="cv-item-header">
-              <div>
-                <h3 class="cv-item-title">${t.education1}</h3>
-                <p class="cv-item-company">${t.education1Company}</p>
-              </div>
+              <div><h3 class="cv-item-title">${t.education1}</h3><p class="cv-item-company">${t.education1Company}</p></div>
               <span class="cv-item-date">${t.education1Date}</span>
             </div>
           </div>
-
           <div class="cv-item">
-            <h3 class="cv-item-title" style="margin-bottom: var(--spacing-sm);">${t.certificationsTitle}</h3>
-            <div class="cv-item-description">
-              <ul>
-                ${t.certifications.map(cert => `<li>${cert}</li>`).join('')}
-              </ul>
-            </div>
+            <h3 class="cv-item-title" style="margin-bottom:var(--spacing-sm)">${t.certificationsTitle}</h3>
+            <div class="cv-item-description"><ul>${t.certifications.map(c=>`<li>${c}</li>`).join('')}</ul></div>
           </div>
         </section>
-
-        <!-- Habilidades Técnicas -->
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-code"></i> ${t.skillsTitle}</h2>
           <div class="skills-grid">
+            ${[['chart-bar','Power BI'],['cogs','Power Automate'],['database','Dataverse'],['python fab','Python'],['table','Pandas/NumPy'],['chart-line','Streamlit'],['react fab','React'],['js fab','JavaScript'],['html5 fab','HTML/CSS'],['google fab','Google Suite'],['fire','Firebase'],['git-alt fab','Git/GitHub'],['mobile-alt','AppSheet'],['file-excel','Excel Advanced'],['warehouse','ERP Systems'],['boxes','WMS']].map(([ic,nm])=>`
             <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
-              <div class="skill-name">Power BI</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-cogs"></i></div>
-              <div class="skill-name">Power Automate</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-database"></i></div>
-              <div class="skill-name">Dataverse</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-python"></i></div>
-              <div class="skill-name">Python</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-table"></i></div>
-              <div class="skill-name">Pandas/NumPy</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-              <div class="skill-name">Streamlit</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-react"></i></div>
-              <div class="skill-name">React</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-js"></i></div>
-              <div class="skill-name">JavaScript</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-html5"></i></div>
-              <div class="skill-name">HTML/CSS</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-google"></i></div>
-              <div class="skill-name">Google Suite</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-fire"></i></div>
-              <div class="skill-name">Firebase</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-              <div class="skill-name">Git/GitHub</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
-              <div class="skill-name">AppSheet</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-file-excel"></i></div>
-              <div class="skill-name">Excel Advanced</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-warehouse"></i></div>
-              <div class="skill-name">ERP Systems</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon"><i class="fas fa-boxes"></i></div>
-              <div class="skill-name">WMS</div>
-            </div>
+              <div class="skill-icon"><i class="${ic.includes('fab')?'fab':'fas'} fa-${ic.replace(' fab','')}"></i></div>
+              <div class="skill-name">${nm}</div>
+            </div>`).join('')}
           </div>
         </section>
-
-        <!-- Idiomas -->
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-language"></i> ${t.languagesTitle}</h2>
-          <div class="language-item">
-            <span class="language-name">${t.lang1}</span>
-            <span class="language-level">${t.lang1Level}</span>
-          </div>
-          <div class="language-item">
-            <span class="language-name">${t.lang2}</span>
-            <span class="language-level">${t.lang2Level}</span>
-          </div>
+          <div class="language-item"><span class="language-name">${t.lang1}</span><span class="language-level">${t.lang1Level}</span></div>
+          <div class="language-item"><span class="language-name">${t.lang2}</span><span class="language-level">${t.lang2Level}</span></div>
         </section>
-
-        <!-- Descargar CV -->
         <div class="download-cv" data-aos="fade-up">
-          <a href="docs/CV_Raul_Pivet.pdf" class="btn" download>
-            <i class="fas fa-download"></i> ${t.downloadBtn}
-          </a>
-        </div>
-      `;
-
-      // Re-inicializar animaciones AOS
-      if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-      }
+          <a href="docs/CV_Raul_Pivet.pdf" class="btn" download><i class="fas fa-download"></i> ${t.downloadBtn}</a>
+        </div>`;
+      if (typeof AOS !== 'undefined') AOS.refresh();
     }
 
-    // Función para cambiar idioma
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'es' : 'en';
       localStorage.setItem('cvLanguage', currentLang);
-      
-      // Actualizar UI del toggle
-      const flag = document.getElementById('languageFlag');
-      const text = document.getElementById('languageText');
-      
-      if (currentLang === 'en') {
-        flag.textContent = '🇺🇸';
-        text.textContent = 'English';
-      } else {
-        flag.textContent = '🇪🇸';
-        text.textContent = 'Español';
-      }
-      
-      // Renderizar CV en nuevo idioma
+      document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
+      document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';
       renderCV(currentLang);
-      
-      // Actualizar footer
-      const footerSpan = document.querySelector('footer span[data-lang="footer"]');
-      if (footerSpan) {
-        footerSpan.textContent = translations[currentLang].footer;
-      }
+      const footer = document.querySelector('footer span[data-lang="footer"]');
+      if (footer) footer.textContent = translations[currentLang].footer;
     }
 
-    // Inicializar
-    document.addEventListener('DOMContentLoaded', function() {
-      // Renderizar CV inicial
+    document.addEventListener('DOMContentLoaded', () => {
       renderCV(currentLang);
-      
-      // Configurar toggle
-      const flag = document.getElementById('languageFlag');
-      const text = document.getElementById('languageText');
-      
-      if (currentLang === 'en') {
-        flag.textContent = '🇺🇸';
-        text.textContent = 'English';
-      } else {
-        flag.textContent = '🇪🇸';
-        text.textContent = 'Español';
-      }
-      
-      // Event listener
+      document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
+      document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';
       document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
     });
   </script>
