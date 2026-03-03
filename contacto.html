@@ -67,12 +67,11 @@
     .success-screen.visible { display: flex; }
     .success-icon-wrap { width: 80px; height: 80px; background: linear-gradient(135deg,#34C759,#30D158); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; margin-bottom: var(--spacing-lg); box-shadow: 0 8px 24px rgba(52,199,89,0.4); animation: successPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
     @keyframes successPop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .success-screen h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; animation: fadeSlideUp 0.4s 0.2s ease both; }
-    .success-screen p  { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 340px; margin: 0 auto var(--spacing-lg); animation: fadeSlideUp 0.4s 0.3s ease both; }
-    .success-meta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; animation: fadeSlideUp 0.4s 0.4s ease both; }
+    .success-screen h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .success-screen p  { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 340px; margin: 0 auto var(--spacing-lg); }
+    .success-meta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
     .success-chip { display: flex; align-items: center; gap: 7px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-full); padding: 7px 14px; font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
     .success-chip i { color: #34C759; }
-    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .map-section { border-radius: var(--radius-xl); overflow: hidden; height: 320px; box-shadow: var(--shadow-md); }
     .map-section iframe { width: 100%; height: 100%; border: 0; display: block; }
     @media (max-width: 992px) { .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
@@ -97,7 +96,7 @@
       </div>
       <ul class="menu">
         <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-        <li class="menu-item"><a href="lab.html"><i class="fas fa-flask"></i> Lab</a></li>
+        <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
         <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
         <li class="menu-item"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
         <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
@@ -118,77 +117,32 @@
         <div class="contact-info" data-aos="fade-right">
           <div class="contact-info-card">
             <h2>Información</h2>
-            <div class="contact-item">
-              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-              <div class="contact-text"><h3>Email</h3><a href="mailto:jaime.pivet@gmail.com">jaime.pivet@gmail.com</a></div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon"><i class="fas fa-phone"></i></div>
-              <div class="contact-text"><h3>Teléfono</h3><p>+1 (305) 504-6846</p></div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div class="contact-text"><h3>Ubicación</h3><p>Miami, Florida, EE.UU.</p></div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon"><i class="fas fa-clock"></i></div>
-              <div class="contact-text"><h3>Disponibilidad</h3><p>Lun–Vie · 9:00–18:00 EST</p></div>
-            </div>
-            <div class="response-badge">
-              <div class="response-badge-dot"></div>
-              <div class="response-badge-text">
-                <strong>Respuesta automática inmediata</strong>
-                <small>Powered by Make.com + Gmail</small>
-              </div>
-            </div>
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-text"><h3>Email</h3><a href="mailto:jaime.pivet@gmail.com">jaime.pivet@gmail.com</a></div></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div class="contact-text"><h3>Teléfono</h3><p>+1 (305) 504-6846</p></div></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-text"><h3>Ubicación</h3><p>Miami, Florida, EE.UU.</p></div></div>
+            <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div class="contact-text"><h3>Disponibilidad</h3><p>Lun–Vie · 9:00–18:00 EST</p></div></div>
+            <div class="response-badge"><div class="response-badge-dot"></div><div class="response-badge-text"><strong>Respuesta automática inmediata</strong><small>Powered by Make.com + Gmail</small></div></div>
           </div>
           <div class="flow-card" data-aos="fade-right" data-aos-delay="100">
             <h3>⚡ Flujo de automatización</h3>
             <div class="flow-steps">
-              <div class="flow-step">
-                <div class="flow-step-line"><div class="flow-dot orange"><i class="fas fa-paper-plane" style="font-size:0.7rem"></i></div><div class="flow-connector"></div></div>
-                <div class="flow-content"><strong>Enviás el formulario</strong><small>Tu mensaje llega al webhook</small></div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-step-line"><div class="flow-dot blue"><i class="fas fa-bolt" style="font-size:0.7rem"></i></div><div class="flow-connector"></div></div>
-                <div class="flow-content"><strong>Make.com procesa</strong><small>El escenario se ejecuta en segundos</small></div>
-              </div>
-              <div class="flow-step">
-                <div class="flow-step-line"><div class="flow-dot green"><i class="fas fa-check" style="font-size:0.7rem"></i></div></div>
-                <div class="flow-content"><strong>Recibís respuesta en tu email</strong><small>Confirmación profesional instantánea</small></div>
-              </div>
+              <div class="flow-step"><div class="flow-step-line"><div class="flow-dot orange"><i class="fas fa-paper-plane" style="font-size:0.7rem"></i></div><div class="flow-connector"></div></div><div class="flow-content"><strong>Enviás el formulario</strong><small>Tu mensaje llega al webhook</small></div></div>
+              <div class="flow-step"><div class="flow-step-line"><div class="flow-dot blue"><i class="fas fa-bolt" style="font-size:0.7rem"></i></div><div class="flow-connector"></div></div><div class="flow-content"><strong>Make.com procesa</strong><small>El escenario se ejecuta en segundos</small></div></div>
+              <div class="flow-step"><div class="flow-step-line"><div class="flow-dot green"><i class="fas fa-check" style="font-size:0.7rem"></i></div></div><div class="flow-content"><strong>Recibís respuesta en tu email</strong><small>Confirmación profesional instantánea</small></div></div>
             </div>
           </div>
         </div>
         <div class="contact-form-card" data-aos="fade-left">
           <div id="formWrapper">
-            <div class="form-header">
-              <h2>Hablemos 👋</h2>
-              <p>Completá el formulario y recibirás una respuesta automática en segundos.</p>
-            </div>
+            <div class="form-header"><h2>Hablemos 👋</h2><p>Completá el formulario y recibirás una respuesta automática en segundos.</p></div>
             <div class="form-row">
               <div class="form-group"><label>Nombre</label><input type="text" id="fname" placeholder="Tu nombre" required></div>
               <div class="form-group"><label>Apellido</label><input type="text" id="lname" placeholder="Tu apellido"></div>
             </div>
             <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="tu@email.com" required></div>
-            <div class="form-group">
-              <label>Motivo de contacto</label>
-              <div class="select-wrapper">
-                <select id="reason">
-                  <option value="" disabled selected>Seleccioná una opción</option>
-                  <option value="trabajo">💼 Oferta de trabajo</option>
-                  <option value="freelance">🚀 Proyecto freelance</option>
-                  <option value="colaboracion">🤝 Colaboración</option>
-                  <option value="consulta">❓ Consulta técnica</option>
-                  <option value="otro">💬 Otro</option>
-                </select>
-              </div>
-            </div>
+            <div class="form-group"><label>Motivo de contacto</label><div class="select-wrapper"><select id="reason"><option value="" disabled selected>Seleccioná una opción</option><option value="trabajo">💼 Oferta de trabajo</option><option value="freelance">🚀 Proyecto freelance</option><option value="colaboracion">🤝 Colaboración</option><option value="consulta">❓ Consulta técnica</option><option value="otro">💬 Otro</option></select></div></div>
             <div class="form-group"><label>Mensaje</label><textarea id="message" placeholder="Contame en qué puedo ayudarte..." required></textarea></div>
-            <button class="btn-submit" id="submitBtn" type="button">
-              <span class="btn-text"><i class="fas fa-paper-plane"></i> Enviar mensaje</span>
-              <div class="btn-spinner"></div>
-            </button>
+            <button class="btn-submit" id="submitBtn" type="button"><span class="btn-text"><i class="fas fa-paper-plane"></i> Enviar mensaje</span><div class="btn-spinner"></div></button>
           </div>
           <div class="success-screen" id="successScreen">
             <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
@@ -216,39 +170,19 @@
     const formWrapper = document.getElementById('formWrapper');
     const successScreen = document.getElementById('successScreen');
     submitBtn.addEventListener('click', async () => {
-      const fname = document.getElementById('fname').value.trim();
-      const lname = document.getElementById('lname').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const reason = document.getElementById('reason').value;
-      const message = document.getElementById('message').value.trim();
-      let valid = true;
-      [['fname',fname],['email',email],['message',message]].forEach(([id,val]) => {
-        const el = document.getElementById(id);
-        if (!val) { el.style.borderColor='#FF3B30'; el.addEventListener('input',()=>el.style.borderColor='',{once:true}); valid=false; }
-      });
-      if (!reason) { const sel=document.getElementById('reason'); sel.style.borderColor='#FF3B30'; sel.addEventListener('change',()=>sel.style.borderColor='',{once:true}); valid=false; }
-      if (!valid) return;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) { const el=document.getElementById('email'); el.style.borderColor='#FF3B30'; el.focus(); return; }
-      submitBtn.classList.add('loading');
-      submitBtn.disabled = true;
-      const reasonLabels = { trabajo:'Oferta de trabajo', freelance:'Proyecto freelance', colaboracion:'Colaboración', consulta:'Consulta técnica', otro:'Otro' };
-      try {
-        await fetch(MAKE_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nombre:`${fname} ${lname}`.trim(), email, motivo:reasonLabels[reason]||reason, mensaje:message, fecha:new Date().toLocaleString('es-AR',{timeZone:'America/New_York'}) }),
-          mode: 'no-cors'
-        });
-        formWrapper.style.opacity = '0';
-        formWrapper.style.transform = 'translateY(-10px)';
-        formWrapper.style.transition = 'all 0.3s ease';
-        setTimeout(() => { formWrapper.style.display='none'; successScreen.classList.add('visible'); }, 300);
-      } catch(err) {
-        submitBtn.classList.remove('loading');
-        submitBtn.disabled = false;
-        alert('Problema de conexión. Escribime directo a jaime.pivet@gmail.com');
-      }
+      const fname=document.getElementById('fname').value.trim(), lname=document.getElementById('lname').value.trim(), email=document.getElementById('email').value.trim(), reason=document.getElementById('reason').value, message=document.getElementById('message').value.trim();
+      let valid=true;
+      [['fname',fname],['email',email],['message',message]].forEach(([id,val])=>{const el=document.getElementById(id);if(!val){el.style.borderColor='#FF3B30';el.addEventListener('input',()=>el.style.borderColor='',{once:true});valid=false;}});
+      if(!reason){const sel=document.getElementById('reason');sel.style.borderColor='#FF3B30';sel.addEventListener('change',()=>sel.style.borderColor='',{once:true});valid=false;}
+      if(!valid)return;
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){const el=document.getElementById('email');el.style.borderColor='#FF3B30';el.focus();return;}
+      submitBtn.classList.add('loading');submitBtn.disabled=true;
+      const reasonLabels={trabajo:'Oferta de trabajo',freelance:'Proyecto freelance',colaboracion:'Colaboración',consulta:'Consulta técnica',otro:'Otro'};
+      try{
+        await fetch(MAKE_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:`${fname} ${lname}`.trim(),email,motivo:reasonLabels[reason]||reason,mensaje:message,fecha:new Date().toLocaleString('es-AR',{timeZone:'America/New_York'})}),mode:'no-cors'});
+        formWrapper.style.opacity='0';formWrapper.style.transform='translateY(-10px)';formWrapper.style.transition='all 0.3s ease';
+        setTimeout(()=>{formWrapper.style.display='none';successScreen.classList.add('visible');},300);
+      }catch(err){submitBtn.classList.remove('loading');submitBtn.disabled=false;alert('Problema de conexión. Escribime directo a jaime.pivet@gmail.com');}
     });
   </script>
 </body>
