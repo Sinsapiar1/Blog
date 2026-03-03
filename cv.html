@@ -13,71 +13,20 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .language-toggle {
-      position: fixed;
-      top: 80px;
-      right: 24px;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      padding: 8px 16px;
-      border-radius: var(--radius-full);
-      box-shadow: var(--shadow-sm);
-      cursor: pointer;
-      transition: all var(--transition-base);
-    }
+    .language-toggle { position: fixed; top: 80px; right: 24px; z-index: 999; display: flex; align-items: center; gap: 8px; background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--transition-base); }
     .language-toggle:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .language-flag { font-size: 1.25rem; }
     .language-text { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
-    @media (max-width: 768px) {
-      .language-toggle { top: 70px; right: 16px; padding: 6px 12px; }
-      .language-text { display: none; }
-    }
+    @media (max-width: 768px) { .language-toggle { top: 70px; right: 16px; padding: 6px 12px; } .language-text { display: none; } }
     .cv-container { max-width: 1000px; margin: 0 auto; }
-    .cv-header {
-      text-align: center;
-      padding: var(--spacing-2xl) 0;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      margin-bottom: var(--spacing-xl);
-    }
-    .cv-header h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: var(--spacing-sm);
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .cv-header { text-align: center; padding: var(--spacing-2xl) 0; background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); margin-bottom: var(--spacing-xl); }
+    .cv-header h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: var(--spacing-sm); background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .cv-header .subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: var(--spacing-lg); font-weight: 500; }
     .cv-contact { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--spacing-md); }
     .cv-contact-item { display: flex; align-items: center; gap: var(--spacing-xs); color: var(--text-secondary); font-size: 0.9375rem; }
     .cv-contact-item i { color: var(--primary); }
-    .cv-section {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      padding: var(--spacing-xl);
-      margin-bottom: var(--spacing-xl);
-    }
-    .cv-section h2 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--spacing-lg);
-      padding-bottom: var(--spacing-sm);
-      border-bottom: 2px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-    }
+    .cv-section { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
+    .cv-section h2 { font-size: 1.75rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-sm); border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: var(--spacing-sm); }
     .cv-section h2 i { color: var(--primary); }
     .cv-item { margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color); }
     .cv-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
@@ -100,12 +49,7 @@
     .download-cv { text-align: center; margin-top: var(--spacing-xl); }
     .download-cv .btn { padding: 16px 32px; font-size: 1rem; }
     .profile-summary { background: linear-gradient(135deg, rgba(0,122,255,0.05), rgba(88,86,214,0.05)); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--primary); }
-    @media (max-width: 768px) {
-      .cv-header h1 { font-size: 2rem; }
-      .cv-contact { flex-direction: column; align-items: center; }
-      .cv-item-header { flex-direction: column; }
-      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-    }
+    @media (max-width: 768px) { .cv-header h1 { font-size: 2rem; } .cv-contact { flex-direction: column; align-items: center; } .cv-item-header { flex-direction: column; } .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); } }
   </style>
 </head>
 <body>
@@ -130,7 +74,7 @@
       </div>
       <ul class="menu">
         <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-        <li class="menu-item"><a href="galeria.html"><i class="fas fa-images"></i> Galería</a></li>
+        <li class="menu-item"><a href="lab.html"><i class="fas fa-flask"></i> Lab</a></li>
         <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
         <li class="menu-item active"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
         <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
@@ -146,9 +90,7 @@
       <div class="cv-container" id="cvContent"></div>
     </main>
   </div>
-  <footer>
-    <p>&copy; 2025 Raul Pivet. <span data-lang="footer">All rights reserved</span>.</p>
-  </footer>
+  <footer><p>&copy; 2025 Raul Pivet. <span data-lang="footer">All rights reserved</span>.</p></footer>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
@@ -196,9 +138,7 @@
         downloadBtn: "Descargar CV en PDF", footer: "Todos los derechos reservados"
       }
     };
-
     let currentLang = localStorage.getItem('cvLanguage') || 'en';
-
     function renderCV(lang) {
       const t = translations[lang];
       document.getElementById('cvContent').innerHTML = `
@@ -217,59 +157,32 @@
         </section>
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-briefcase"></i> ${t.experienceTitle}</h2>
-          ${[1,2,3,4].map(n => `
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <div><h3 class="cv-item-title">${t['job'+n+'Title']}</h3><p class="cv-item-company">${t['job'+n+'Company']}</p></div>
-              <span class="cv-item-date">${t['job'+n+'Date']}</span>
-            </div>
-            <div class="cv-item-description"><ul>${t['job'+n+'Bullets'].map(b=>`<li>${b}</li>`).join('')}</ul></div>
-          </div>`).join('')}
+          ${[1,2,3,4].map(n=>`<div class="cv-item"><div class="cv-item-header"><div><h3 class="cv-item-title">${t['job'+n+'Title']}</h3><p class="cv-item-company">${t['job'+n+'Company']}</p></div><span class="cv-item-date">${t['job'+n+'Date']}</span></div><div class="cv-item-description"><ul>${t['job'+n+'Bullets'].map(b=>`<li>${b}</li>`).join('')}</ul></div></div>`).join('')}
         </section>
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-graduation-cap"></i> ${t.educationTitle}</h2>
-          <div class="cv-item">
-            <div class="cv-item-header">
-              <div><h3 class="cv-item-title">${t.education1}</h3><p class="cv-item-company">${t.education1Company}</p></div>
-              <span class="cv-item-date">${t.education1Date}</span>
-            </div>
-          </div>
-          <div class="cv-item">
-            <h3 class="cv-item-title" style="margin-bottom:var(--spacing-sm)">${t.certificationsTitle}</h3>
-            <div class="cv-item-description"><ul>${t.certifications.map(c=>`<li>${c}</li>`).join('')}</ul></div>
-          </div>
+          <div class="cv-item"><div class="cv-item-header"><div><h3 class="cv-item-title">${t.education1}</h3><p class="cv-item-company">${t.education1Company}</p></div><span class="cv-item-date">${t.education1Date}</span></div></div>
+          <div class="cv-item"><h3 class="cv-item-title" style="margin-bottom:var(--spacing-sm)">${t.certificationsTitle}</h3><div class="cv-item-description"><ul>${t.certifications.map(c=>`<li>${c}</li>`).join('')}</ul></div></div>
         </section>
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-code"></i> ${t.skillsTitle}</h2>
-          <div class="skills-grid">
-            ${[['chart-bar','Power BI'],['cogs','Power Automate'],['database','Dataverse'],['python fab','Python'],['table','Pandas/NumPy'],['chart-line','Streamlit'],['react fab','React'],['js fab','JavaScript'],['html5 fab','HTML/CSS'],['google fab','Google Suite'],['fire','Firebase'],['git-alt fab','Git/GitHub'],['mobile-alt','AppSheet'],['file-excel','Excel Advanced'],['warehouse','ERP Systems'],['boxes','WMS']].map(([ic,nm])=>`
-            <div class="skill-item">
-              <div class="skill-icon"><i class="${ic.includes('fab')?'fab':'fas'} fa-${ic.replace(' fab','')}"></i></div>
-              <div class="skill-name">${nm}</div>
-            </div>`).join('')}
-          </div>
+          <div class="skills-grid">${[['chart-bar','Power BI'],['cogs','Power Automate'],['database','Dataverse'],['python fab','Python'],['table','Pandas/NumPy'],['chart-line','Streamlit'],['react fab','React'],['js fab','JavaScript'],['html5 fab','HTML/CSS'],['google fab','Google Suite'],['fire','Firebase'],['git-alt fab','Git/GitHub'],['mobile-alt','AppSheet'],['file-excel','Excel Advanced'],['warehouse','ERP Systems'],['boxes','WMS']].map(([ic,nm])=>`<div class="skill-item"><div class="skill-icon"><i class="${ic.includes('fab')?'fab':'fas'} fa-${ic.replace(' fab','')}"></i></div><div class="skill-name">${nm}</div></div>`).join('')}</div>
         </section>
         <section class="cv-section" data-aos="fade-up">
           <h2><i class="fas fa-language"></i> ${t.languagesTitle}</h2>
           <div class="language-item"><span class="language-name">${t.lang1}</span><span class="language-level">${t.lang1Level}</span></div>
           <div class="language-item"><span class="language-name">${t.lang2}</span><span class="language-level">${t.lang2Level}</span></div>
         </section>
-        <div class="download-cv" data-aos="fade-up">
-          <a href="docs/CV_Raul_Pivet.pdf" class="btn" download><i class="fas fa-download"></i> ${t.downloadBtn}</a>
-        </div>`;
+        <div class="download-cv" data-aos="fade-up"><a href="docs/CV_Raul_Pivet.pdf" class="btn" download><i class="fas fa-download"></i> ${t.downloadBtn}</a></div>`;
       if (typeof AOS !== 'undefined') AOS.refresh();
     }
-
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'es' : 'en';
       localStorage.setItem('cvLanguage', currentLang);
       document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
       document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';
       renderCV(currentLang);
-      const footer = document.querySelector('footer span[data-lang="footer"]');
-      if (footer) footer.textContent = translations[currentLang].footer;
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       renderCV(currentLang);
       document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
