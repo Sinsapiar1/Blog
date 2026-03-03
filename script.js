@@ -221,8 +221,35 @@ function initInstagram() {
   
   const embedContainers = document.querySelectorAll('.embed-container');
   if (embedContainers.length === 0) return;
-  
-  let embedsLoaded = 0;
+
+  // Cargar thumbnail real de cada post via oEmbed
+  embedContainers.forEach(container => {
+    const postId = container.dataset.postId;
+    if (!postId) return;
+
+    const postUrl = `https://www.instagram.com/p/${postId}/`;
+    const oEmbedUrl = `https://graph.facebook.com/v18.0/instagram_oembed?url=${encodeURIComponent(postUrl)}&fields=thumbnail_url,author_name&access_token=IGQWROaA`;
+
+    // Intentar cargar thumbnail via oEmbed
+    fetch(`https://www.instagram.com/oembed/?url=${encodeURIComponent(postUrl)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.thumbnail_url) {
+          const imgEl = container.querySelector('.fallback-card .insta-image img');
+          if (imgEl) {
+            imgEl.src = data.thumbnail_url;
+            console.log('✅ Thumbnail cargado para:', postId, data.thumbnail_url);
+          }
+        }
+      })
+      .catch(err => {
+        // oEmbed falló (CORS), usar thumbnail via URL directa de CDN de Instagram
+        console.log('⚠️ oEmbed bloqueado, usando URL de CDN para:', postId);
+        loadThumbnailViaCDN(container, postId);
+      });
+  });
+
+  // Sistema de embed original como intento principal
   const totalEmbeds = embedContainers.length;
   
   function showFallbackCard(container) {
@@ -278,6 +305,27 @@ function initInstagram() {
   // Verificaciones programadas
   setTimeout(() => checkAllEmbeds(), 3000);
   setTimeout(() => checkAllEmbeds(), 8000);
+}
+
+// Cargar thumbnail usando la URL pública de miniaturas de Instagram
+function loadThumbnailViaCDN(container, postId) {
+  const imgEl = container.querySelector('.fallback-card .insta-image img');
+  if (!imgEl) return;
+
+  // Instagram expone una URL de imagen previa accesible públicamente
+  // Formato: https://www.instagram.com/p/{postId}/media/?size=l
+  const thumbnailUrl = `https://www.instagram.com/p/${postId}/media/?size=l`;
+  
+  const testImg = new Image();
+  testImg.onload = () => {
+    imgEl.src = thumbnailUrl;
+    console.log('✅ Thumbnail CDN cargado para:', postId);
+  };
+  testImg.onerror = () => {
+    // Si tampoco funciona, mantener imagen local (ya está en el HTML)
+    console.log('ℹ️ Usando imagen local para:', postId);
+  };
+  testImg.src = thumbnailUrl;
 }
 
 // ========================================
@@ -513,14 +561,6 @@ if ('IntersectionObserver' in window) {
     imageObserver.observe(img);
   });
 }
-
-// Preload para fuentes críticas
-const criticalFonts = [
-  '-apple-system',
-  'BlinkMacSystemFont',
-  'SF Pro Display',
-  'SF Pro Text'
-];
 
 // Log de inicialización
 console.log('✅ Portfolio moderno cargado correctamente');
