@@ -1,7 +1,7 @@
 /* ========================================
    🍎 MODERN PORTFOLIO - JAVASCRIPT
    Autor: Raul Pivet
-   Versión: 2.0 - Apple Style
+   Versión: 2.1 - Modal Revista
    ======================================== */
 
 // ========================================
@@ -12,9 +12,7 @@ window.addEventListener('load', () => {
   if (loader) {
     setTimeout(() => {
       loader.style.opacity = '0';
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 500);
+      setTimeout(() => loader.style.display = 'none', 500);
     }, 800);
   }
 });
@@ -28,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMenu();
   initAnimations();
   initInstagram();
+  initStoryModal();
   initModals();
   initForms();
   initSmoothScroll();
@@ -40,24 +39,18 @@ function initTheme() {
   const themeToggle = document.getElementById('themeToggle');
   const body = document.body;
   const themeIcon = themeToggle?.querySelector('i');
-  
   if (!themeToggle) return;
 
-  // Cargar tema guardado
   const savedTheme = localStorage.getItem('theme') || 'light';
   body.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme, themeIcon);
 
-  // Toggle tema
   themeToggle.addEventListener('click', () => {
     const currentTheme = body.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
     body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme, themeIcon);
-    
-    // Animación suave
     body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
   });
 
@@ -78,7 +71,6 @@ function initScrollIndicator() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = height > 0 ? (winScroll / height) : 0;
-    
     scrollIndicator.style.transform = `scaleX(${scrolled})`;
   }, { passive: true });
 }
@@ -90,16 +82,13 @@ function initMenu() {
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
   const menuLinks = document.querySelectorAll('.menu-item a');
-  
   if (!menuToggle || !sidebar) return;
 
-  // Toggle menú
   menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('active');
     menuToggle.classList.toggle('active');
   });
 
-  // Cerrar menú al hacer clic en un enlace (móvil)
   menuLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 992) {
@@ -109,31 +98,24 @@ function initMenu() {
     });
   });
 
-  // Cerrar menú al hacer clic fuera (móvil)
   document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 992 && 
+    if (window.innerWidth <= 992 &&
         sidebar.classList.contains('active') &&
-        !sidebar.contains(e.target) && 
+        !sidebar.contains(e.target) &&
         !menuToggle.contains(e.target)) {
       sidebar.classList.remove('active');
       menuToggle.classList.remove('active');
     }
   });
 
-  // Actualizar item activo
   updateActiveMenuItem();
 }
 
 function updateActiveMenuItem() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  const menuItems = document.querySelectorAll('.menu-item');
-  
-  menuItems.forEach(item => {
-    const link = item.querySelector('a');
-    const href = link.getAttribute('href');
-    
-    if (href === currentPage || 
-        (currentPage === '' && href === 'index.html')) {
+  document.querySelectorAll('.menu-item').forEach(item => {
+    const href = item.querySelector('a').getAttribute('href');
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
       item.classList.add('active');
     } else {
       item.classList.remove('active');
@@ -145,71 +127,79 @@ function updateActiveMenuItem() {
 // ✨ ANIMACIONES
 // ========================================
 function initAnimations() {
-  // AOS Configuration
   if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 100,
-      delay: 0,
-      disable: false
-    });
-    
-    // Refresh AOS después de cargar imágenes
-    window.addEventListener('load', () => {
-      AOS.refresh();
-    });
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
+    window.addEventListener('load', () => AOS.refresh());
   }
-
-  // Parallax en imágenes destacadas
   initParallaxImages();
-  
-  // Smooth hover en cards
   initCardHoverEffects();
 }
 
 function initParallaxImages() {
-  const featuredImages = document.querySelectorAll('.featured-image');
-  
-  featuredImages.forEach(container => {
+  document.querySelectorAll('.featured-image').forEach(container => {
     container.addEventListener('mousemove', (e) => {
       const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const moveX = (x - centerX) / centerX * 8;
-      const moveY = (y - centerY) / centerY * 8;
-      
+      const moveX = ((e.clientX - rect.left) / rect.width - 0.5) * 16;
+      const moveY = ((e.clientY - rect.top) / rect.height - 0.5) * 16;
       const img = container.querySelector('img');
-      if (img) {
-        img.style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
-      }
+      if (img) img.style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
     });
-    
     container.addEventListener('mouseleave', () => {
       const img = container.querySelector('img');
-      if (img) {
-        img.style.transform = 'scale(1.05) translate(0, 0)';
-      }
+      if (img) img.style.transform = 'scale(1.05) translate(0, 0)';
     });
   });
 }
 
 function initCardHoverEffects() {
-  const cards = document.querySelectorAll('.project-card, .fallback-card');
-  
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-8px)';
+  document.querySelectorAll('.project-card, .fallback-card').forEach(card => {
+    card.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-8px)'; });
+    card.addEventListener('mouseleave', function() { this.style.transform = 'translateY(0)'; });
+  });
+}
+
+// ========================================
+// 📖 MODAL REVISTA — Historia Chichén Itzá
+// ========================================
+function initStoryModal() {
+  const modal    = document.getElementById('storyModal');
+  const openBtn  = document.getElementById('openStoryBtn');
+  const closeBtn = document.getElementById('closeStoryBtn');
+  const overlay  = document.getElementById('storyOverlay');
+
+  if (!modal || !openBtn) return;
+
+  function openStory() {
+    modal.style.display = 'flex';
+    // Pequeño delay para que el display:flex se aplique antes de la transición
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
     });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-    });
+  }
+
+  function closeStory() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    // Esperar a que termine la animación para ocultar
+    setTimeout(() => {
+      modal.style.display = 'none';
+      // Resetear scroll del body del artículo
+      const body = modal.querySelector('.story-body');
+      if (body) body.scrollTop = 0;
+    }, 480);
+  }
+
+  openBtn.addEventListener('click', openStory);
+  closeBtn?.addEventListener('click', closeStory);
+  overlay?.addEventListener('click', closeStory);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeStory();
+    }
   });
 }
 
@@ -218,19 +208,16 @@ function initCardHoverEffects() {
 // ========================================
 function initInstagram() {
   console.log('🔍 Inicializando sistema de Instagram...');
-  
   const embedContainers = document.querySelectorAll('.embed-container');
   if (embedContainers.length === 0) return;
 
-  // Cargar thumbnail real de cada post via oEmbed
+  // Intentar cargar thumbnail real de cada post
   embedContainers.forEach(container => {
     const postId = container.dataset.postId;
     if (!postId) return;
 
     const postUrl = `https://www.instagram.com/p/${postId}/`;
-    const oEmbedUrl = `https://graph.facebook.com/v18.0/instagram_oembed?url=${encodeURIComponent(postUrl)}&fields=thumbnail_url,author_name&access_token=IGQWROaA`;
 
-    // Intentar cargar thumbnail via oEmbed
     fetch(`https://www.instagram.com/oembed/?url=${encodeURIComponent(postUrl)}`)
       .then(res => res.json())
       .then(data => {
@@ -238,98 +225,55 @@ function initInstagram() {
           const imgEl = container.querySelector('.fallback-card .insta-image img');
           if (imgEl) {
             imgEl.src = data.thumbnail_url;
-            console.log('✅ Thumbnail cargado para:', postId, data.thumbnail_url);
+            console.log('✅ Thumbnail oEmbed cargado:', postId);
           }
         }
       })
-      .catch(err => {
-        // oEmbed falló (CORS), usar thumbnail via URL directa de CDN de Instagram
-        console.log('⚠️ oEmbed bloqueado, usando URL de CDN para:', postId);
-        loadThumbnailViaCDN(container, postId);
-      });
+      .catch(() => loadThumbnailViaCDN(container, postId));
   });
 
-  // Sistema de embed original como intento principal
-  const totalEmbeds = embedContainers.length;
-  
+  // Sistema de embed original
   function showFallbackCard(container) {
     const blockquote = container.querySelector('.instagram-media');
     const fallbackCard = container.querySelector('.fallback-card');
-    
     if (blockquote && fallbackCard) {
-      console.log('📱 Mostrando card de fallback:', container.dataset.postId);
       blockquote.style.display = 'none';
       fallbackCard.style.display = 'block';
     }
   }
-  
+
   function checkEmbedLoaded(container) {
     const blockquote = container.querySelector('.instagram-media');
     if (!blockquote) return false;
-    
     const iframe = blockquote.querySelector('iframe');
-    const processedContent = blockquote.querySelector('.instagram-media-rendered');
-    
-    if (iframe || processedContent || blockquote.offsetHeight > 100) {
-      console.log('✅ Embed cargado:', container.dataset.postId);
-      return true;
-    }
-    
-    return false;
+    return !!(iframe || blockquote.offsetHeight > 100);
   }
-  
+
   function checkAllEmbeds() {
-    let embedsSuccessful = 0;
-    
     embedContainers.forEach(container => {
-      if (checkEmbedLoaded(container)) {
-        embedsSuccessful++;
-      } else {
-        showFallbackCard(container);
-      }
+      if (!checkEmbedLoaded(container)) showFallbackCard(container);
     });
-    
-    console.log(`📊 Estado: ${embedsSuccessful}/${totalEmbeds} embeds cargados`);
   }
-  
-  // Procesar embeds
-  if (window.instgrm && window.instgrm.Embeds) {
-    console.log('📸 Procesando embeds de Instagram...');
-    try {
-      window.instgrm.Embeds.process();
-    } catch (error) {
-      console.log('❌ Error procesando embeds:', error);
-    }
+
+  if (window.instgrm?.Embeds) {
+    try { window.instgrm.Embeds.process(); } catch (e) { console.log('❌ Error embeds:', e); }
   }
-  
-  // Verificaciones programadas
-  setTimeout(() => checkAllEmbeds(), 3000);
-  setTimeout(() => checkAllEmbeds(), 8000);
+
+  setTimeout(checkAllEmbeds, 3000);
+  setTimeout(checkAllEmbeds, 8000);
 }
 
-// Cargar thumbnail usando la URL pública de miniaturas de Instagram
 function loadThumbnailViaCDN(container, postId) {
   const imgEl = container.querySelector('.fallback-card .insta-image img');
   if (!imgEl) return;
-
-  // Instagram expone una URL de imagen previa accesible públicamente
-  // Formato: https://www.instagram.com/p/{postId}/media/?size=l
   const thumbnailUrl = `https://www.instagram.com/p/${postId}/media/?size=l`;
-  
   const testImg = new Image();
-  testImg.onload = () => {
-    imgEl.src = thumbnailUrl;
-    console.log('✅ Thumbnail CDN cargado para:', postId);
-  };
-  testImg.onerror = () => {
-    // Si tampoco funciona, mantener imagen local (ya está en el HTML)
-    console.log('ℹ️ Usando imagen local para:', postId);
-  };
+  testImg.onload = () => { imgEl.src = thumbnailUrl; };
   testImg.src = thumbnailUrl;
 }
 
 // ========================================
-// 🎭 MODALS
+// 🎭 MODAL GENÉRICO (proyectos)
 // ========================================
 function initModals() {
   const modal = document.getElementById('comingSoonModal');
@@ -337,103 +281,69 @@ function initModals() {
 
   const closeBtn = modal.querySelector('.close-modal');
   const allButtons = document.querySelectorAll('.btn-small, .btn.coming-soon');
-  
-  // Abrir modal
+
   allButtons.forEach(button => {
     button.addEventListener('click', function(e) {
-      // Enlaces externos - dejar funcionar normalmente
-      if (this.hasAttribute('target') && 
-          this.getAttribute('target') === '_blank' && 
-          this.id !== 'almacen-btn') {
-        return;
-      }
-      
+      if (this.hasAttribute('target') && this.getAttribute('target') === '_blank' && this.id !== 'almacen-btn') return;
       e.preventDefault();
       openModal(this);
     });
   });
-  
-  // Cerrar modal
+
   closeBtn?.addEventListener('click', () => closeModal());
-  
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-  
-  // ESC para cerrar
+  window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display === 'flex') {
-      closeModal();
-    }
+    if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
   });
 
   function openModal(button) {
     const modalTitle = modal.querySelector('h3');
-    const modalText = modal.querySelector('p');
-    const modalDate = modal.querySelector('.modal-date');
-    
-    // Limpiar botones anteriores
-    const oldBtnContainer = modal.querySelector('.modal-buttons');
-    if (oldBtnContainer) oldBtnContainer.remove();
-    
-    // Configurar contenido según botón
+    const modalText  = modal.querySelector('p');
+    const modalDate  = modal.querySelector('.modal-date');
+    const oldBtns    = modal.querySelector('.modal-buttons');
+    if (oldBtns) oldBtns.remove();
+
     if (button.id === 'almacen-btn') {
-      configureAlmacenModal(modalTitle, modalText, modalDate, modal);
+      modalTitle.textContent = 'Información importante';
+      modalText.textContent  = 'Para una mejor visualización, coloca tu dispositivo en horizontal o ábrelo desde un PC.';
+      modalDate.style.display = 'none';
+
+      const btnContainer  = document.createElement('div');
+      btnContainer.className = 'modal-buttons';
+
+      const continueBtn = document.createElement('button');
+      continueBtn.textContent = 'Continuar al proyecto';
+      continueBtn.className   = 'modal-btn modal-btn-primary';
+      continueBtn.onclick     = () => { window.open('https://sinsapiar1.github.io/Almacen/', '_blank'); closeModal(); };
+
+      const cancelBtn = document.createElement('button');
+      cancelBtn.textContent = 'Cancelar';
+      cancelBtn.className   = 'modal-btn modal-btn-secondary';
+      cancelBtn.onclick     = closeModal;
+
+      btnContainer.appendChild(continueBtn);
+      btnContainer.appendChild(cancelBtn);
+      modalDate.parentNode.insertBefore(btnContainer, modalDate.nextSibling);
+
     } else if (button.classList.contains('coming-soon')) {
-      configureComingSoonModal(modalTitle, modalText, modalDate);
+      modalTitle.textContent      = 'Artículo en preparación';
+      modalText.textContent       = 'Estamos preparando un relato detallado de esta aventura. ¡Vuelve pronto!';
+      modalDate.style.display     = 'block';
+      modalDate.textContent       = 'Publicación estimada: Mayo 2025';
     } else {
-      configureDefaultModal(modalTitle, modalText, modalDate);
+      modalTitle.textContent      = 'Proyecto en desarrollo';
+      modalText.textContent       = 'Estamos trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
+      modalDate.style.display     = 'block';
+      modalDate.textContent       = 'Lanzamiento estimado: Junio 2025';
     }
-    
-    modal.style.display = 'flex';
+
+    modal.style.display     = 'flex';
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
-    modal.style.display = 'none';
+    modal.style.display          = 'none';
     document.body.style.overflow = '';
-  }
-
-  function configureAlmacenModal(title, text, date, modal) {
-    title.textContent = 'Información importante';
-    text.textContent = 'Para una mejor visualización, coloca tu dispositivo en horizontal o ábrelo desde un PC.';
-    date.style.display = 'none';
-    
-    const btnContainer = document.createElement('div');
-    btnContainer.className = 'modal-buttons';
-    
-    const continueBtn = document.createElement('button');
-    continueBtn.textContent = 'Continuar al proyecto';
-    continueBtn.className = 'modal-btn modal-btn-primary';
-    continueBtn.onclick = () => {
-      window.open("https://sinsapiar1.github.io/Almacen/", "_blank");
-      closeModal();
-    };
-    
-    const cancelBtn = document.createElement('button');
-    cancelBtn.textContent = 'Cancelar';
-    cancelBtn.className = 'modal-btn modal-btn-secondary';
-    cancelBtn.onclick = closeModal;
-    
-    btnContainer.appendChild(continueBtn);
-    btnContainer.appendChild(cancelBtn);
-    date.parentNode.insertBefore(btnContainer, date.nextSibling);
-  }
-
-  function configureComingSoonModal(title, text, date) {
-    title.textContent = 'Artículo en preparación';
-    text.textContent = 'Estamos preparando un relato detallado de esta aventura. ¡Vuelve pronto!';
-    date.style.display = 'block';
-    date.textContent = 'Publicación estimada: Mayo 2025';
-  }
-
-  function configureDefaultModal(title, text, date) {
-    title.textContent = 'Proyecto en desarrollo';
-    text.textContent = 'Estamos trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
-    date.style.display = 'block';
-    date.textContent = 'Lanzamiento estimado: Junio 2025';
   }
 }
 
@@ -446,38 +356,19 @@ function initForms() {
 
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    const name = document.getElementById('name')?.value.trim();
-    const email = document.getElementById('email')?.value.trim();
+    const name    = document.getElementById('name')?.value.trim();
+    const email   = document.getElementById('email')?.value.trim();
     const subject = document.getElementById('subject')?.value.trim();
     const message = document.getElementById('message')?.value.trim();
-    
-    if (validateForm(name, email, subject, message)) {
-      // Aquí enviarías los datos al servidor
-      showSuccessMessage();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (name && email && emailOk && subject && message) {
+      alert('¡Mensaje enviado con éxito! Te contactaré pronto.');
       this.reset();
     } else {
-      showErrorMessage('Por favor, completa todos los campos correctamente.');
+      alert('Por favor, completa todos los campos correctamente.');
     }
   });
-
-  function validateForm(name, email, subject, message) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    return name && 
-           email && 
-           emailRegex.test(email) && 
-           subject && 
-           message;
-  }
-
-  function showSuccessMessage() {
-    alert('¡Mensaje enviado con éxito! Te contactaré pronto.');
-  }
-
-  function showErrorMessage(message) {
-    alert(message);
-  }
 }
 
 // ========================================
@@ -488,16 +379,9 @@ function initSmoothScroll() {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href === '#') return;
-      
       e.preventDefault();
       const target = document.querySelector(href);
-      
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 }
@@ -505,44 +389,23 @@ function initSmoothScroll() {
 // ========================================
 // 🎨 UTILIDADES
 // ========================================
-
-// Debounce para optimizar eventos
 function debounce(func, wait) {
   let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
+  return function(...args) {
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    timeout = setTimeout(() => func(...args), wait);
   };
 }
 
-// Detectar modo oscuro del sistema
-function detectSystemTheme() {
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
-  return 'light';
-}
-
-// Listener para cambios en el tema del sistema
 if (window.matchMedia) {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    const savedTheme = localStorage.getItem('theme');
-    if (!savedTheme) {
-      const newTheme = e.matches ? 'dark' : 'light';
-      document.body.setAttribute('data-theme', newTheme);
+    if (!localStorage.getItem('theme')) {
+      document.body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
     }
   });
 }
 
-// ========================================
-// 🚀 PERFORMANCE
-// ========================================
-
-// Lazy loading para imágenes
+// Lazy loading
 if ('IntersectionObserver' in window) {
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -556,13 +419,9 @@ if ('IntersectionObserver' in window) {
       }
     });
   });
-
-  document.querySelectorAll('img[data-src]').forEach(img => {
-    imageObserver.observe(img);
-  });
+  document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
 }
 
-// Log de inicialización
-console.log('✅ Portfolio moderno cargado correctamente');
-console.log('🎨 Tema actual:', document.body.getAttribute('data-theme'));
+console.log('✅ Portfolio cargado — v2.1');
+console.log('🎨 Tema:', document.body.getAttribute('data-theme'));
 console.log('📱 Viewport:', `${window.innerWidth}x${window.innerHeight}`);
