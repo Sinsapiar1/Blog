@@ -8,12 +8,10 @@
   <meta name="theme-color" content="#007AFF">
   <title>Raul Pivet | Portfolio</title>
   
-  <!-- Preconnect para optimización -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://www.instagram.com">
   
-  <!-- Estilos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
@@ -54,34 +52,22 @@
       
       <ul class="menu">
         <li class="menu-item active">
-          <a href="index.html">
-            <i class="fas fa-home"></i> Inicio
-          </a>
+          <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
         </li>
         <li class="menu-item">
-          <a href="galeria.html">
-            <i class="fas fa-images"></i> Galería
-          </a>
+          <a href="galeria.html"><i class="fas fa-images"></i> Galería</a>
         </li>
         <li class="menu-item">
-          <a href="sobre-mi.html">
-            <i class="fas fa-user"></i> Sobre Mí
-          </a>
+          <a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a>
         </li>
         <li class="menu-item">
-          <a href="cv.html">
-            <i class="fas fa-file-alt"></i> CV
-          </a>
+          <a href="cv.html"><i class="fas fa-file-alt"></i> CV</a>
         </li>
         <li class="menu-item">
-          <a href="proyectos.html">
-            <i class="fas fa-code"></i> Proyectos
-          </a>
+          <a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a>
         </li>
         <li class="menu-item">
-          <a href="contacto.html">
-            <i class="fas fa-envelope"></i> Contacto
-          </a>
+          <a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a>
         </li>
       </ul>
       
@@ -114,7 +100,9 @@
         <div class="featured-text">
           <h2>Mi última aventura: Chichén Itzá</h2>
           <p>Explorando una de las maravillas del mundo en la península de Yucatán. Un viaje donde pude combinar mi pasión por el deporte, corriendo al amanecer junto a estas majestuosas ruinas mayas, y capturando momentos únicos con mi cámara.</p>
-          <a href="#" class="btn coming-soon">Leer la historia completa</a>
+          <button class="btn" id="openStoryBtn">
+            <i class="fas fa-book-open" style="margin-right: 8px;"></i> Leer la historia completa
+          </button>
         </div>
       </section>
       
@@ -122,7 +110,6 @@
       <section class="projects">
         <h2 data-aos="fade-up">Proyectos Destacados</h2>
         <div class="project-grid">
-          <!-- Project 1 -->
           <article class="project-card" data-aos="fade-up" data-aos-delay="100">
             <div class="project-img">
               <img src="img/gallery/Proyecto1.jpg.png" alt="Control de Almacén" loading="lazy">
@@ -132,7 +119,6 @@
             <a href="#" class="btn-small" id="almacen-btn">Ver proyecto</a>
           </article>
           
-          <!-- Project 2 -->
           <article class="project-card" data-aos="fade-up" data-aos-delay="200">
             <div class="project-img">
               <img src="img/gallery/proyecto2.jpg" alt="Menús Interactivos" loading="lazy">
@@ -142,7 +128,6 @@
             <a href="#" class="btn-small" id="menus-btn">Ver proyecto</a>
           </article>
           
-          <!-- Project 3 -->
           <article class="project-card" data-aos="fade-up" data-aos-delay="300">
             <div class="project-img">
               <img src="img/gallery/proyecto3.jpg" alt="Web de Servicios" loading="lazy">
@@ -166,8 +151,6 @@
                         data-instgrm-version="14"
                         style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
             </blockquote>
-            
-            <!-- Fallback Card -->
             <div class="fallback-card" style="display: none;">
               <div class="insta-image">
                 <img src="img/gallery/Proyecto1.jpg.png" alt="Proyecto Tecnológico" loading="lazy">
@@ -181,9 +164,7 @@
               </div>
               <div class="insta-content">
                 <div class="insta-header">
-                  <div class="insta-avatar">
-                    <img src="img/perfil.jpg" alt="@jaimepivet">
-                  </div>
+                  <div class="insta-avatar"><img src="img/perfil.jpg" alt="@jaimepivet"></div>
                   <div class="insta-info">
                     <h4>@jaimepivet</h4>
                     <span>Hace 1 semana</span>
@@ -203,8 +184,6 @@
                         data-instgrm-version="14"
                         style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
             </blockquote>
-            
-            <!-- Fallback Card -->
             <div class="fallback-card" style="display: none;">
               <div class="insta-image">
                 <img src="img/gallery/paisaje1.jpg" alt="Chichén Itzá" loading="lazy">
@@ -218,9 +197,7 @@
               </div>
               <div class="insta-content">
                 <div class="insta-header">
-                  <div class="insta-avatar">
-                    <img src="img/perfil.jpg" alt="@jaimepivet">
-                  </div>
+                  <div class="insta-avatar"><img src="img/perfil.jpg" alt="@jaimepivet"></div>
                   <div class="insta-info">
                     <h4>@jaimepivet</h4>
                     <span>Hace 5 días</span>
@@ -240,8 +217,6 @@
                         data-instgrm-version="14"
                         style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
             </blockquote>
-            
-            <!-- Fallback Card -->
             <div class="fallback-card" style="display: none;">
               <div class="insta-image">
                 <img src="img/gallery/proyecto2.jpg" alt="Entrenamiento deportivo" loading="lazy">
@@ -255,9 +230,7 @@
               </div>
               <div class="insta-content">
                 <div class="insta-header">
-                  <div class="insta-avatar">
-                    <img src="img/perfil.jpg" alt="@jaimepivet">
-                  </div>
+                  <div class="insta-avatar"><img src="img/perfil.jpg" alt="@jaimepivet"></div>
                   <div class="insta-info">
                     <h4>@jaimepivet</h4>
                     <span>Hace 2 días</span>
@@ -279,13 +252,120 @@
     <p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Modal -->
+  <!-- =============================================
+       📖 MODAL REVISTA — Historia Chichén Itzá
+       ============================================= -->
+  <div id="storyModal" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+    <div class="story-overlay" id="storyOverlay"></div>
+
+    <article class="story-magazine">
+      <!-- HERO con foto -->
+      <div class="story-hero">
+        <img src="img/gallery/paisaje1.jpg" alt="Chichén Itzá al amanecer">
+        <div class="story-hero-gradient"></div>
+        <span class="story-tag">✈️ Viaje &amp; Reflexión</span>
+        <button class="story-close" id="closeStoryBtn" aria-label="Cerrar">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="story-hero-title">
+          <h2 id="storyTitle">Chichén Itzá: Logística, Kilómetros y Maravillas</h2>
+          <div class="story-hero-meta">
+            <span><i class="fas fa-calendar-alt"></i> 2024</span>
+            <span><i class="fas fa-map-marker-alt"></i> Yucatán, México</span>
+            <span><i class="fas fa-clock"></i> 4 min de lectura</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUERPO del artículo -->
+      <div class="story-body">
+
+        <p>
+          Hay viajes que simplemente suceden, y hay viajes que te definen. El recorrido por la Península de Yucatán fue de esos segundos. No porque fuera perfecto, sino porque reveló algo que ya sabía pero que pocas veces me había detenido a nombrar: que la misma cabeza que optimiza rutas de almacén puede planificar una expedición familiar con la misma precisión.
+        </p>
+
+        <div class="story-pullquote">
+          <p>"El mismo cerebro que organiza almacenes planificó cada kilómetro de este viaje."</p>
+        </div>
+
+        <p>
+          La logística empezó semanas antes de subir al avión. Rutas, tiempos de traslado entre sitios, horarios de menor afluencia en las zonas arqueológicas, alojamientos estratégicamente ubicados. Para alguien que trabaja a diario con inventarios, stocks y cadenas de suministro, planificar un viaje con familia es, en esencia, el mismo problema: recursos limitados, ventanas de tiempo, variables imprevistas y el objetivo de maximizar la experiencia.
+        </p>
+
+        <div class="story-divider">Lugares visitados</div>
+
+        <div class="story-places">
+          <div class="story-place-chip"><i class="fas fa-monument"></i> Chichén Itzá</div>
+          <div class="story-place-chip"><i class="fas fa-water"></i> Cenotes de Valladolid</div>
+          <div class="story-place-chip"><i class="fas fa-umbrella-beach"></i> Tulum</div>
+          <div class="story-place-chip"><i class="fas fa-tree"></i> Selva Maya</div>
+        </div>
+
+        <p>
+          Llegar a Chichén Itzá antes de las 8 de la mañana no fue casualidad: fue planificación. La misma disciplina que me lleva a entrenar cuando todavía hay estrellas en el cielo me puso frente a El Castillo con apenas una docena de personas alrededor. Correr por esos caminos de tierra mientras el sol despuntaba sobre las ruinas fue uno de esos momentos que no se explican, solo se viven.
+        </p>
+
+        <p>
+          Los cenotes fueron otra clase de lección. Sistemas de agua subterránea interconectados que los mayas usaban con una precisión que hoy llamaríamos <em>ingeniería de datos</em>. Sabían qué pozos conectaban con cuáles, cuándo el nivel subía, cómo distribuir el recurso. Logística pura, tallada en piedra caliza hace mil años.
+        </p>
+
+        <div class="story-divider">Lo que el viaje confirmó</div>
+
+        <div class="story-skills">
+          <div class="story-skill-item">
+            <i class="fas fa-route" style="color: #007AFF;"></i>
+            <span>Planificación</span>
+            <small>Logística real aplicada</small>
+          </div>
+          <div class="story-skill-item">
+            <i class="fas fa-running" style="color: #34C759;"></i>
+            <span>Disciplina</span>
+            <small>Entrenamiento sin excusas</small>
+          </div>
+          <div class="story-skill-item">
+            <i class="fas fa-brain" style="color: #5856D6;"></i>
+            <span>Curiosidad</span>
+            <small>Tecnología en la historia</small>
+          </div>
+        </div>
+
+        <p>
+          Tulum fue el cierre perfecto. La ciudad maya sobre el acantilado, con el Caribe turquesa de fondo, tiene algo de pantalla de inicio que nunca olvidarás. Pero más que la postal, me quedé con la idea: una civilización que construyó maravillas sin computadoras, sin software de gestión, sin hojas de cálculo. Solo observación, paciencia y conocimiento acumulado. Exactamente los mismos fundamentos que hoy aplico cuando diseño un sistema de inventario o automatizo un flujo de trabajo.
+        </p>
+
+        <p>
+          Este viaje no fue una pausa de mi trabajo. Fue una extensión de él, vista desde otro ángulo. Y si algo me llevé de regreso a la oficina, fue eso: que organizar, moverse y explorar son habilidades que se llevan en el ADN, da igual si el terreno es un almacén en Florida o una pirámide en Yucatán.
+        </p>
+
+        <!-- Footer del artículo -->
+        <div class="story-footer">
+          <div class="story-author">
+            <img src="img/perfil.jpg" alt="Raul Pivet">
+            <div class="story-author-info">
+              <strong>Raul Pivet</strong>
+              <small>Informático &amp; Deportista</small>
+            </div>
+          </div>
+          <div class="story-share">
+            <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /story-body -->
+    </article>
+  </div>
+  <!-- /storyModal -->
+
+  <!-- Modal genérico (proyectos en desarrollo) -->
   <div id="comingSoonModal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <div class="modal-icon">
-        <i class="fas fa-tools"></i>
-      </div>
+      <div class="modal-icon"><i class="fas fa-tools"></i></div>
       <h3>Proyecto en desarrollo</h3>
       <p>Estamos trabajando arduamente para completar esta sección.</p>
       <p class="modal-date">Lanzamiento estimado: Junio 2025</p>
