@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#FF6B00">
   <meta property="og:title" content="Raul Pivet — Automatización & Business Intelligence">
   <meta property="og:description" content="Convierto operaciones manuales en sistemas automáticos. Power BI · Python · Make.com · Power Platform.">
-  <meta property="og:image" content="https://sinsapiar1.github.io/Blog/img/perfil.jpg">
+  <meta property="og:image" content="https://sinsapiar1.github.io/Blog/img/gallery/filo.png">
   <meta property="og:url" content="https://sinsapiar1.github.io/Blog/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -37,14 +37,11 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── LANGUAGE TOGGLE (idéntico al CV) ── */
     .language-toggle { position: fixed; top: 80px; right: 24px; z-index: 999; display: flex; align-items: center; gap: 8px; background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--transition-base); }
     .language-toggle:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .language-flag { font-size: 1.25rem; }
     .language-text { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
     @media(max-width:768px){ .language-toggle { top: 70px; right: 16px; padding: 6px 12px; } .language-text { display: none; } }
-
-    /* ── HERO ── */
     .hero { padding: 48px 0 40px; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.25); color: #FF6B00; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
     .hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 16px; }
@@ -56,21 +53,15 @@
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 2px solid var(--border-color); border-radius: 50px; color: var(--text-primary); font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; background: transparent; cursor: pointer; }
     .btn-outline:hover { border-color: #FF6B00; color: #FF6B00; }
-
-    /* ── STATS ── */
     .stats-bar { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; margin: 40px 0; }
     .stat-item { background: var(--glass-bg); padding: 24px 16px; text-align: center; transition: background 0.2s; }
     .stat-item:hover { background: rgba(255,107,0,0.04); }
     .stat-number { font-size: 2rem; font-weight: 800; color: #FF6B00; line-height: 1; display: block; margin-bottom: 6px; }
     .stat-label { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; }
     @media(max-width:600px){ .stats-bar { grid-template-columns: repeat(2,1fr); } }
-
-    /* ── SECCIONES ── */
     .section-header { margin-bottom: 28px; }
     .section-eyebrow { font-size: 11px; font-weight: 800; color: #FF6B00; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
     .section-title { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
-
-    /* ── SERVICIOS ── */
     .services { margin: 48px 0; }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 16px; }
     .service-card { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; transition: all 0.25s; position: relative; overflow: hidden; }
@@ -82,8 +73,6 @@
     .service-desc { font-size:0.875rem; color:var(--text-secondary); line-height:1.6; margin-bottom:14px; }
     .service-tags { display:flex; flex-wrap:wrap; gap:6px; }
     .service-tag { font-size:10px; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.08); padding:3px 8px; border-radius:10px; text-transform:uppercase; letter-spacing:0.05em; }
-
-    /* ── CASOS ── */
     .cases { margin: 48px 0; }
     .cases-list { display:flex; flex-direction:column; gap:14px; }
     .case-item { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:14px; padding:22px 24px; display:flex; gap:18px; align-items:flex-start; transition:all 0.2s; }
@@ -93,15 +82,11 @@
     .case-title { font-size:0.9375rem; font-weight:700; color:var(--text-primary); margin-bottom:4px; }
     .case-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
     .case-badge { font-size:10px; font-weight:800; color:#34C759; background:rgba(52,199,89,0.1); padding:3px 10px; border-radius:10px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
-
-    /* ── STACK ── */
     .stack { margin: 48px 0; }
     .stack-grid { display:flex; flex-wrap:wrap; gap:10px; }
     .stack-item { display:flex; align-items:center; gap:8px; background:var(--bg-secondary); border:1px solid var(--border-color); padding:8px 16px; border-radius:30px; font-size:13px; font-weight:600; color:var(--text-secondary); transition:all 0.2s; }
     .stack-item:hover { border-color:#FF6B00; color:#FF6B00; transform:translateY(-2px); }
     .stack-item i { font-size:14px; color:#FF6B00; }
-
-    /* ── CTA ── */
     .cta-section { margin:48px 0; background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:40px; text-align:center; }
     .cta-section h2 { font-size:1.6rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
     .cta-section p { color:var(--text-secondary); margin-bottom:24px; font-size:1rem; line-height:1.6; }
@@ -113,20 +98,17 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
-
-  <!-- BOTÓN IDIOMA (idéntico al CV) -->
   <div class="language-toggle" id="languageToggle" aria-label="Change language">
     <span class="language-flag" id="languageFlag">🇺🇸</span>
     <span class="language-text" id="languageText">English</span>
   </div>
-
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
   <div class="container">
     <aside class="sidebar" id="sidebar">
       <div class="profile">
-        <div class="profile-img"><img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy"></div>
+        <div class="profile-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
         <h2>Raul Pivet</h2>
         <p id="sidebarSubtitle">Logistics &amp; Tech Solutions</p>
       </div>
@@ -144,13 +126,10 @@
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
-    <main class="content" id="mainContent">
-      <!-- Renderizado por JS -->
-    </main>
+    <main class="content" id="mainContent"></main>
   </div>
   <footer><p>&copy; 2025 Raul Pivet — <span id="footerText">Automatización & Business Intelligence</span> · Miami, FL</p></footer>
 
-  <!-- Modales intactos -->
   <div id="storyModal" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
     <div class="story-overlay" id="storyOverlay"></div>
     <article class="story-magazine">
@@ -186,7 +165,7 @@
           <div class="story-skill-item"><i class="fas fa-brain" style="color:#5856D6"></i><span>Curiosidad</span><small>Tecnología en la historia</small></div>
         </div>
         <div class="story-footer">
-          <div class="story-author"><img src="img/perfil.jpg" alt="Raul Pivet"><div class="story-author-info"><strong>Raul Pivet</strong><small>Informático &amp; Deportista</small></div></div>
+          <div class="story-author"><img src="img/gallery/filo.png" alt="Raul Pivet"><div class="story-author-info"><strong>Raul Pivet</strong><small>Informático &amp; Deportista</small></div></div>
           <div class="story-share">
             <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
@@ -209,27 +188,21 @@
   <script async src="//www.instagram.com/embed.js"></script>
   <script src="script.js"></script>
   <script>
-  /* ══════════════════════════════════════
-     TRADUCCIONES COMPLETAS ES / EN
-  ══════════════════════════════════════ */
   const t = {
     es: {
       sidebar: "Logistics & Tech Solutions",
       nav_home: "Inicio", nav_about: "Sobre Mí", nav_projects: "Proyectos", nav_contact: "Contacto",
       footer: "Automatización & Business Intelligence",
-
       eyebrow: "📍 Miami, FL — Disponible para trabajar",
       h1a: "Convierto operaciones manuales",
       h1b: "en sistemas automáticos",
       hero_sub: "Especialista en logística con 9+ años automatizando procesos críticos en almacenes, minería y supply chain internacional. Diseño pipelines que van desde un Excel en un correo hasta 50 reportes distribuidos automáticamente — sin intervención humana, sin errores manuales.",
       tags: ["Power BI","Python","Make.com","Power Automate","AppSheet","GitHub Actions","Google Suite","Dataverse","SQLite","Streamlit"],
       btn_talk: "Hablemos", btn_cv: "Ver CV", btn_lab: "Ver Lab",
-
       stat1n: "9", stat1l: "Años de experiencia",
       stat2n: "30", stat2l: "Almacenes gestionados",
       stat3n: "50", stat3l: "Reportes automáticos",
       stat4n: "1000", stat4l: "Labels/5seg con Python",
-
       svc_eyebrow: "¿En qué puedo ayudarte?",
       svc_title: "Soluciones que construyo",
       services: [
@@ -240,84 +213,60 @@
         { icon:"fas fa-database", title:"Gestión de Datos", desc:"Dataverse con ventana temporal de 62 días y eliminación masiva automática diaria. JSON generados por GitHub Actions, SQLite como base intermedia. Pipelines que no necesitan mantenimiento.", tags:["Dataverse","SQLite","JSON","Power Platform"] },
         { icon:"fas fa-robot", title:"IA Aplicada a Procesos", desc:"Respuestas automáticas con Gemini AI en menos de 5 segundos, detección de anomalías en inventario con Python/Pandas, y agentes inteligentes que califican y responden leads 24/7.", tags:["Gemini AI","Python","Make.com","Streamlit"] }
       ],
-
       cases_eyebrow: "Casos reales",
       cases_title: "Problemas que resolví",
       cases: [
         { icon:"fas fa-envelope-open-text", title:"Excel por correo → 50 reportes distribuidos, sin tocar nada", desc:"Pipeline completo en producción: correo entrante con adjunto → Python extrae y almacena en SQLite (ventana de 32 días) → GitHub Actions genera JSON individuales → Power Automate envía a cada jefe de almacén solo sus datos. Completamente autónomo.", badge:"✓ En producción" },
-        { icon:"fas fa-chart-line", title:"Power BI + Dataverse: dashboards que se actualizan solos", desc:"Mismo Excel como fuente → Dataverse con ventana temporal de 62 días y limpieza automática en día 63 → Power BI con visuals custom desarrollados en TypeScript que funcionan como páginas web interactivas embebidas. Disponible también para Power Pages.", badge:"✓ En producción" },
+        { icon:"fas fa-chart-line", title:"Power BI + Dataverse: dashboards que se actualizan solos", desc:"Mismo Excel como fuente → Dataverse con ventana temporal de 62 días y limpieza automática en día 63 → Power BI con visuals custom desarrollados en TypeScript que funcionan como páginas web interactivas embebidas.", badge:"✓ En producción" },
         { icon:"fas fa-tags", title:"1.000 etiquetas con numeración correlativa en 5 segundos", desc:"Generador de labels desarrollado en Python. Antes el equipo invertía horas en crear etiquetas manualmente en Excel. Ahora con un clic genera hasta 1.000 labels con correlativo automático, formato profesional y listo para imprimir.", badge:"⚡ 5 segundos" },
-        { icon:"fas fa-bell", title:"Alerta matutina por WhatsApp: pendientes ordenados por antigüedad", desc:"Google Apps Script escanea correos de proveedores, extrae fechas de recepción, calcula días pendientes y envía automáticamente cada mañana una lista ordenada por urgencia. Cero posibilidad de olvidar un pendiente.", badge:"📱 Cada mañana" },
-        { icon:"fas fa-warehouse", title:"App móvil en minera: −30% errores, equipo de 20 personas", desc:"AppSheet para bodega en Minera Collahuasi, Iquique. Reemplazó completamente los registros en papel para un equipo de 20 personas en turnos rotativos 7x7. Reportes en tiempo real, trazabilidad total y reducción del 30% en errores de inventario.", badge:"↓ 30% errores" },
+        { icon:"fas fa-bell", title:"Alerta matutina por WhatsApp: pendientes ordenados por antigüedad", desc:"Google Apps Script escanea correos de proveedores, extrae fechas de recepción, calcula días pendientes y envía automáticamente cada mañana una lista ordenada por urgencia.", badge:"📱 Cada mañana" },
+        { icon:"fas fa-warehouse", title:"App móvil en minera: −30% errores, equipo de 20 personas", desc:"AppSheet para bodega en Minera Collahuasi, Iquique. Reemplazó completamente los registros en papel para un equipo de 20 personas en turnos rotativos 7x7. Reducción del 30% en errores de inventario.", badge:"↓ 30% errores" },
         { icon:"fas fa-file-invoice", title:"AppSheet que emite informes tipo factura por WhatsApp", desc:"App móvil para operaciones logísticas internacionales (Temu/Shein — China, Miami, Bogotá). Al completar una recepción o despacho, genera automáticamente un informe con formato profesional y lo envía por WhatsApp al instante.", badge:"🚀 Instantáneo" }
       ],
-
       stack_eyebrow: "Tecnologías",
       stack_title: "Mi stack",
-      stack: [
-        ["fas fa-chart-bar","Power BI"], ["fas fa-cogs","Power Automate"], ["fas fa-database","Dataverse"],
-        ["fab fa-python","Python"], ["fas fa-table","Pandas / NumPy"], ["fas fa-chart-line","Streamlit"],
-        ["fas fa-bolt","Make.com"], ["fab fa-google","Google Suite"], ["fas fa-fire","AppSheet"],
-        ["fab fa-github","GitHub Actions"], ["fas fa-file-excel","Excel Avanzado"], ["fas fa-robot","Gemini AI"],
-        ["fas fa-code","JavaScript / TypeScript"], ["fab fa-html5","HTML / CSS"], ["fas fa-warehouse","WMS / ERP"],
-        ["fas fa-cubes","SQLite"], ["fas fa-project-diagram","Power Apps"], ["fas fa-globe","Power Pages"]
-      ],
-
+      stack: [["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Excel Avanzado"],["fas fa-robot","Gemini AI"],["fas fa-code","JavaScript / TypeScript"],["fab fa-html5","HTML / CSS"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"]],
       cta_title: "¿Tenés un proceso manual que te consume horas?",
       cta_desc: "Lo analizo, lo diseño y te lo entrego funcionando.<br>Trabajo remoto · Disponible de inmediato · Miami, FL",
       cta_btn1: "Contactame ahora", cta_btn2: "Conocer más sobre mí"
     },
-
     en: {
       sidebar: "Logistics & Tech Solutions",
       nav_home: "Home", nav_about: "About Me", nav_projects: "Projects", nav_contact: "Contact",
       footer: "Automation & Business Intelligence",
-
       eyebrow: "📍 Miami, FL — Available for work",
       h1a: "I turn manual operations",
       h1b: "into automated systems",
       hero_sub: "Logistics specialist with 9+ years automating critical processes across warehouses, mining, and international supply chains. I build end-to-end pipelines — from an emailed Excel file to 50 automatically distributed reports — no human intervention, no manual errors.",
       tags: ["Power BI","Python","Make.com","Power Automate","AppSheet","GitHub Actions","Google Suite","Dataverse","SQLite","Streamlit"],
       btn_talk: "Let's talk", btn_cv: "View CV", btn_lab: "View Lab",
-
       stat1n: "9", stat1l: "Years of experience",
       stat2n: "30", stat2l: "Warehouses managed",
       stat3n: "50", stat3l: "Automated reports",
       stat4n: "1000", stat4l: "Labels/5sec with Python",
-
       svc_eyebrow: "How can I help?",
       svc_title: "Solutions I build",
       services: [
-        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Power BI dashboards with custom TypeScript visuals that work like interactive web pages, automatic refresh via advanced Query M scripts, and direct data source connections.", tags:["Power BI","DAX","Query M","TypeScript"] },
-        { icon:"fas fa-cogs", title:"Report Automation", desc:"Full pipeline: email with Excel attachment → Python processes → SQLite stores 32-day window → GitHub Actions generates JSON → Power Automate delivers to 50+ recipients, each with only their own data.", tags:["Power Automate","GitHub Actions","Python","SQLite"] },
-        { icon:"fas fa-mobile-alt", title:"Inventory Apps", desc:"Mobile AppSheet apps for inventory counts, dispatch and receiving in warehouses. Automatically generates invoice-style reports and sends them via WhatsApp instantly on completion.", tags:["AppSheet","Google Sheets","WhatsApp","Drive"] },
+        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Power BI dashboards with custom TypeScript visuals, automatic refresh via advanced Query M scripts, and direct data source connections.", tags:["Power BI","DAX","Query M","TypeScript"] },
+        { icon:"fas fa-cogs", title:"Report Automation", desc:"Full pipeline: email with Excel → Python processes → SQLite stores 32-day window → GitHub Actions generates JSON → Power Automate delivers to 50+ recipients, each with only their own data.", tags:["Power Automate","GitHub Actions","Python","SQLite"] },
+        { icon:"fas fa-mobile-alt", title:"Inventory Apps", desc:"Mobile AppSheet apps for inventory counts, dispatch and receiving. Automatically generates invoice-style reports and sends them via WhatsApp instantly.", tags:["AppSheet","Google Sheets","WhatsApp","Drive"] },
         { icon:"fas fa-plug", title:"Integrations & Flows", desc:"I connect your entire ecosystem: Gmail → Sheets → WhatsApp → Power BI. Daily automated pending alerts, real-time synchronization, and zero repetitive manual work.", tags:["Make.com","Google Suite","Microsoft 365","Webhooks"] },
         { icon:"fas fa-database", title:"Data Management", desc:"Dataverse with 62-day rolling window and automatic daily mass deletion. JSON generated by GitHub Actions, SQLite as intermediate store. Pipelines that require zero maintenance.", tags:["Dataverse","SQLite","JSON","Power Platform"] },
-        { icon:"fas fa-robot", title:"AI Applied to Processes", desc:"Automated Gemini AI responses under 5 seconds, Python/Pandas inventory anomaly detection, and intelligent agents that qualify and respond to leads 24/7 automatically.", tags:["Gemini AI","Python","Make.com","Streamlit"] }
+        { icon:"fas fa-robot", title:"AI Applied to Processes", desc:"Automated Gemini AI responses under 5 seconds, Python/Pandas inventory anomaly detection, and intelligent agents that qualify and respond to leads 24/7.", tags:["Gemini AI","Python","Make.com","Streamlit"] }
       ],
-
       cases_eyebrow: "Real cases",
       cases_title: "Problems I solved",
       cases: [
-        { icon:"fas fa-envelope-open-text", title:"Emailed Excel → 50 distributed reports, fully automated", desc:"Full production pipeline: incoming email with attachment → Python extracts and stores in SQLite (32-day window) → GitHub Actions generates individual JSON files → Power Automate delivers to each warehouse manager only their own data. Completely autonomous.", badge:"✓ In production" },
-        { icon:"fas fa-chart-line", title:"Power BI + Dataverse: self-updating dashboards", desc:"Same Excel as source → Dataverse with 62-day rolling window and automatic cleanup on day 63 → Power BI with custom TypeScript visuals that function as embedded interactive web pages. Also available for Power Pages.", badge:"✓ In production" },
-        { icon:"fas fa-tags", title:"1,000 sequential labels in 5 seconds with Python", desc:"Label generator built in Python. The team previously spent hours manually creating labels in Excel. Now with one click it generates up to 1,000 labels with automatic sequential numbering, professional formatting and print-ready output.", badge:"⚡ 5 seconds" },
-        { icon:"fas fa-bell", title:"Daily WhatsApp alert: pending items sorted by age", desc:"Google Apps Script scans supplier emails, extracts receipt dates, calculates pending days and automatically sends a priority-sorted list every morning. Zero chance of missing a pending item.", badge:"📱 Every morning" },
-        { icon:"fas fa-warehouse", title:"Mining warehouse app: −30% errors, team of 20", desc:"AppSheet for Minera Collahuasi warehouse in Iquique. Fully replaced paper records for a 20-person team on rotating 7x7 shifts. Real-time reports, full traceability and 30% reduction in inventory errors.", badge:"↓ 30% errors" },
-        { icon:"fas fa-file-invoice", title:"AppSheet that generates invoice-style WhatsApp reports", desc:"Mobile app for international logistics operations (Temu/Shein — China, Miami, Bogotá). On completing a receipt or dispatch, automatically generates a professionally formatted report and sends it via WhatsApp instantly.", badge:"🚀 Instant" }
+        { icon:"fas fa-envelope-open-text", title:"Emailed Excel → 50 distributed reports, fully automated", desc:"Full production pipeline: incoming email with attachment → Python extracts and stores in SQLite (32-day window) → GitHub Actions generates individual JSON files → Power Automate delivers to each warehouse manager only their own data.", badge:"✓ In production" },
+        { icon:"fas fa-chart-line", title:"Power BI + Dataverse: self-updating dashboards", desc:"Same Excel as source → Dataverse with 62-day rolling window → Power BI with custom TypeScript visuals that function as embedded interactive web pages.", badge:"✓ In production" },
+        { icon:"fas fa-tags", title:"1,000 sequential labels in 5 seconds with Python", desc:"Label generator built in Python. Now with one click it generates up to 1,000 labels with automatic sequential numbering, professional formatting and print-ready output.", badge:"⚡ 5 seconds" },
+        { icon:"fas fa-bell", title:"Daily WhatsApp alert: pending items sorted by age", desc:"Google Apps Script scans supplier emails, extracts receipt dates, calculates pending days and automatically sends a priority-sorted list every morning.", badge:"📱 Every morning" },
+        { icon:"fas fa-warehouse", title:"Mining warehouse app: −30% errors, team of 20", desc:"AppSheet for Minera Collahuasi warehouse. Fully replaced paper records for a 20-person team on rotating 7x7 shifts. 30% reduction in inventory errors.", badge:"↓ 30% errors" },
+        { icon:"fas fa-file-invoice", title:"AppSheet that generates invoice-style WhatsApp reports", desc:"Mobile app for international logistics operations (Temu/Shein — China, Miami, Bogotá). Automatically generates a professional report and sends it via WhatsApp instantly.", badge:"🚀 Instant" }
       ],
-
       stack_eyebrow: "Technologies",
       stack_title: "My stack",
-      stack: [
-        ["fas fa-chart-bar","Power BI"], ["fas fa-cogs","Power Automate"], ["fas fa-database","Dataverse"],
-        ["fab fa-python","Python"], ["fas fa-table","Pandas / NumPy"], ["fas fa-chart-line","Streamlit"],
-        ["fas fa-bolt","Make.com"], ["fab fa-google","Google Suite"], ["fas fa-fire","AppSheet"],
-        ["fab fa-github","GitHub Actions"], ["fas fa-file-excel","Advanced Excel"], ["fas fa-robot","Gemini AI"],
-        ["fas fa-code","JavaScript / TypeScript"], ["fab fa-html5","HTML / CSS"], ["fas fa-warehouse","WMS / ERP"],
-        ["fas fa-cubes","SQLite"], ["fas fa-project-diagram","Power Apps"], ["fas fa-globe","Power Pages"]
-      ],
-
+      stack: [["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Advanced Excel"],["fas fa-robot","Gemini AI"],["fas fa-code","JavaScript / TypeScript"],["fab fa-html5","HTML / CSS"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"]],
       cta_title: "Have a manual process eating up your team's hours?",
       cta_desc: "I analyze it, design the solution, and deliver it working.<br>Remote work · Available immediately · Miami, FL",
       cta_btn1: "Contact me now", cta_btn2: "Learn more about me"
@@ -326,26 +275,14 @@
 
   let lang = localStorage.getItem('homeLang') || 'es';
 
-  /* ── RENDER ── */
   function render() {
     const d = t[lang];
-
-    // Sidebar / nav
     document.getElementById('sidebarSubtitle').textContent = d.sidebar;
     document.getElementById('footerText').textContent = d.footer;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const k = el.getAttribute('data-i18n');
-      if (d[k]) el.textContent = d[k];
-    });
-
-    // Toggle button
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
-
-    // Main content
     document.getElementById('mainContent').innerHTML = `
-
-      <!-- HERO -->
       <section class="hero" data-aos="fade-down">
         <div class="hero-eyebrow"><i class="fas fa-map-marker-alt"></i> ${d.eyebrow}</div>
         <h1>${d.h1a}<br>en <span>${d.h1b}</span></h1>
@@ -357,63 +294,24 @@
           <a href="galeria.html" class="btn-outline"><i class="fas fa-flask"></i> ${d.btn_lab}</a>
         </div>
       </section>
-
-      <!-- STATS -->
       <div class="stats-bar" data-aos="fade-up">
         <div class="stat-item"><span class="stat-number" data-target="${d.stat1n}">0</span><span class="stat-label">${d.stat1l}</span></div>
         <div class="stat-item"><span class="stat-number" data-target="${d.stat2n}">0</span><span class="stat-label">${d.stat2l}</span></div>
         <div class="stat-item"><span class="stat-number" data-target="${d.stat3n}">0</span><span class="stat-label">${d.stat3l}</span></div>
         <div class="stat-item"><span class="stat-number" data-target="${d.stat4n}">0</span><span class="stat-label">${d.stat4l}</span></div>
       </div>
-
-      <!-- SERVICIOS -->
       <section class="services" data-aos="fade-up">
-        <div class="section-header">
-          <p class="section-eyebrow">${d.svc_eyebrow}</p>
-          <h2 class="section-title">${d.svc_title}</h2>
-        </div>
-        <div class="services-grid">
-          ${d.services.map((s,i)=>`
-          <div class="service-card" data-aos="fade-up" data-aos-delay="${50+i*50}">
-            <div class="service-icon"><i class="${s.icon}"></i></div>
-            <h3 class="service-title">${s.title}</h3>
-            <p class="service-desc">${s.desc}</p>
-            <div class="service-tags">${s.tags.map(tg=>`<span class="service-tag">${tg}</span>`).join('')}</div>
-          </div>`).join('')}
-        </div>
+        <div class="section-header"><p class="section-eyebrow">${d.svc_eyebrow}</p><h2 class="section-title">${d.svc_title}</h2></div>
+        <div class="services-grid">${d.services.map((s,i)=>`<div class="service-card" data-aos="fade-up" data-aos-delay="${50+i*50}"><div class="service-icon"><i class="${s.icon}"></i></div><h3 class="service-title">${s.title}</h3><p class="service-desc">${s.desc}</p><div class="service-tags">${s.tags.map(tg=>`<span class="service-tag">${tg}</span>`).join('')}</div></div>`).join('')}</div>
       </section>
-
-      <!-- CASOS -->
       <section class="cases" data-aos="fade-up">
-        <div class="section-header">
-          <p class="section-eyebrow">${d.cases_eyebrow}</p>
-          <h2 class="section-title">${d.cases_title}</h2>
-        </div>
-        <div class="cases-list">
-          ${d.cases.map((c,i)=>`
-          <div class="case-item" data-aos="fade-up" data-aos-delay="${50+i*40}">
-            <div class="case-icon"><i class="${c.icon}"></i></div>
-            <div class="case-content">
-              <h4 class="case-title">${c.title}</h4>
-              <p class="case-desc">${c.desc}</p>
-            </div>
-            <span class="case-badge">${c.badge}</span>
-          </div>`).join('')}
-        </div>
+        <div class="section-header"><p class="section-eyebrow">${d.cases_eyebrow}</p><h2 class="section-title">${d.cases_title}</h2></div>
+        <div class="cases-list">${d.cases.map((c,i)=>`<div class="case-item" data-aos="fade-up" data-aos-delay="${50+i*40}"><div class="case-icon"><i class="${c.icon}"></i></div><div class="case-content"><h4 class="case-title">${c.title}</h4><p class="case-desc">${c.desc}</p></div><span class="case-badge">${c.badge}</span></div>`).join('')}</div>
       </section>
-
-      <!-- STACK -->
       <section class="stack" data-aos="fade-up">
-        <div class="section-header">
-          <p class="section-eyebrow">${d.stack_eyebrow}</p>
-          <h2 class="section-title">${d.stack_title}</h2>
-        </div>
-        <div class="stack-grid">
-          ${d.stack.map(([ic,nm])=>`<div class="stack-item"><i class="${ic}"></i> ${nm}</div>`).join('')}
-        </div>
+        <div class="section-header"><p class="section-eyebrow">${d.stack_eyebrow}</p><h2 class="section-title">${d.stack_title}</h2></div>
+        <div class="stack-grid">${d.stack.map(([ic,nm])=>`<div class="stack-item"><i class="${ic}"></i> ${nm}</div>`).join('')}</div>
       </section>
-
-      <!-- CTA -->
       <section class="cta-section" data-aos="fade-up">
         <h2>${d.cta_title}</h2>
         <p>${d.cta_desc}</p>
@@ -422,13 +320,10 @@
           <a href="sobre-mi.html" class="btn-outline"><i class="fas fa-user"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
-
-    // Counters
     animateCounters();
     if (typeof AOS !== 'undefined') { AOS.init({ once: true, duration: 600 }); AOS.refresh(); }
   }
 
-  /* ── CONTADORES ── */
   function animateCounters() {
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
       const target = +el.dataset.target;
@@ -442,14 +337,12 @@
     });
   }
 
-  /* ── TOGGLE ── */
   function toggleLang() {
     lang = lang === 'es' ? 'en' : 'es';
     localStorage.setItem('homeLang', lang);
     render();
   }
 
-  /* ── INIT ── */
   document.addEventListener('DOMContentLoaded', () => {
     render();
     document.getElementById('languageToggle').addEventListener('click', toggleLang);
