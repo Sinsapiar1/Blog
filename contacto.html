@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactá a Raul Pivet — Especialista en automatización logística y Business Intelligence. Miami, FL.">
   <meta name="theme-color" content="#FF6B00">
   <title>Contacto - Raul Pivet</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -12,70 +13,93 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: var(--spacing-xl); margin-bottom: var(--spacing-xl); align-items: start; }
-    .contact-info { display: flex; flex-direction: column; gap: var(--spacing-lg); }
-    .contact-info-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--spacing-xl); }
-    .contact-info-card h2 { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--spacing-lg); letter-spacing: -0.01em; }
-    .contact-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border-color); }
-    .contact-item:last-child { border-bottom: none; }
-    .contact-icon { width: 42px; height: 42px; background: linear-gradient(135deg,#FF6B00,#FF9500); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255,107,0,0.3); }
-    .contact-text h3 { font-size: 0.78rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
-    .contact-text p, .contact-text a { color: var(--text-primary); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
-    .contact-text a:hover { color: #FF6B00; }
-    .response-badge { display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.08)); border: 1px solid rgba(255,107,0,0.2); border-radius: var(--radius-lg); padding: 14px 18px; margin-top: 4px; }
-    .response-badge-dot { width: 10px; height: 10px; border-radius: 50%; background: #FF6B00; box-shadow: 0 0 0 3px rgba(255,107,0,0.2); animation: pulse-orange 2s infinite; flex-shrink: 0; }
-    @keyframes pulse-orange { 0%,100% { box-shadow: 0 0 0 3px rgba(255,107,0,0.2); } 50% { box-shadow: 0 0 0 6px rgba(255,107,0,0.05); } }
-    .response-badge-text strong { display: block; font-size: 0.88rem; color: var(--text-primary); }
-    .response-badge-text small  { font-size: 0.78rem; color: var(--text-secondary); }
-    .flow-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--spacing-lg) var(--spacing-xl); }
-    .flow-card h3 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: 16px; }
-    .flow-steps { display: flex; flex-direction: column; }
-    .flow-step { display: flex; align-items: flex-start; gap: 14px; }
-    .flow-step-line { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
-    .flow-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
-    .flow-dot.orange { background: linear-gradient(135deg,#FF6B00,#FF9500); color: white; box-shadow: 0 3px 10px rgba(255,107,0,0.35); }
-    .flow-dot.blue   { background: linear-gradient(135deg,#007AFF,#5856D6); color: white; box-shadow: 0 3px 10px rgba(0,122,255,0.3); }
-    .flow-dot.green  { background: linear-gradient(135deg,#34C759,#30D158); color: white; box-shadow: 0 3px 10px rgba(52,199,89,0.3); }
-    .flow-connector  { width: 2px; height: 22px; background: var(--border-color); margin: 3px 0; }
-    .flow-content { padding-bottom: 20px; }
-    .flow-content strong { display: block; font-size: 0.88rem; color: var(--text-primary); margin-bottom: 2px; }
-    .flow-content small  { font-size: 0.77rem; color: var(--text-secondary); }
-    .contact-form-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl); position: relative; overflow: hidden; }
-    .contact-form-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle,rgba(255,107,0,0.08) 0%,transparent 70%); pointer-events: none; }
-    .form-header { margin-bottom: var(--spacing-xl); }
-    .form-header h2 { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 6px; }
-    .form-header p  { color: var(--text-secondary); font-size: 0.9rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
-    .form-group { margin-bottom: var(--spacing-md); position: relative; }
-    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--bg-secondary); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 13px 16px; font-size: 0.9375rem; color: var(--text-primary); font-family: inherit; transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast); outline: none; appearance: none; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #FF6B00; box-shadow: 0 0 0 3px rgba(255,107,0,0.12); background: var(--bg-primary); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-tertiary); }
-    .form-group textarea { resize: vertical; min-height: 120px; }
+    /* ── LAYOUT ── */
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.65fr; gap: 28px; align-items: start; }
+    @media(max-width:960px){ .contact-wrap { grid-template-columns:1fr; } }
+
+    /* ── PANEL IZQUIERDO ── */
+    .contact-panel { display: flex; flex-direction: column; gap: 16px; }
+
+    /* ── CARD BASE ── */
+    .c-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 28px; }
+
+    /* ── INTRO CARD ── */
+    .intro-card .intro-eyebrow { font-size: 11px; font-weight: 800; color: #FF6B00; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; }
+    .intro-card h2 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.25; }
+    .intro-card h2 span { background: linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .intro-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
+
+    /* ── DISPONIBLE BADGE ── */
+    .avail-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(52,199,89,0.08); border: 1px solid rgba(52,199,89,0.25); border-radius: 20px; padding: 7px 14px; }
+    .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #34C759; box-shadow: 0 0 0 3px rgba(52,199,89,0.2); animation: avail-pulse 2s infinite; flex-shrink: 0; }
+    @keyframes avail-pulse { 0%,100%{ box-shadow:0 0 0 3px rgba(52,199,89,0.2); } 50%{ box-shadow:0 0 0 6px rgba(52,199,89,0.05); } }
+    .avail-text { font-size: 0.8rem; font-weight: 700; color: #34C759; }
+
+    /* ── INFO ITEMS ── */
+    .info-list { display: flex; flex-direction: column; gap: 0; }
+    .info-item { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border-color); }
+    .info-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-icon { width: 38px; height: 38px; background: linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #FF6B00; font-size: 0.9rem; flex-shrink: 0; }
+    .info-label { font-size: 10px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+    .info-value { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
+    .info-value a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+    .info-value a:hover { color: #FF6B00; }
+
+    /* ── WHAT I CAN HELP ── */
+    .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .help-item { display: flex; align-items: center; gap: 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px 12px; font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); transition: all 0.2s; }
+    .help-item:hover { border-color: rgba(255,107,0,0.3); color: var(--text-primary); }
+    .help-item i { color: #FF6B00; font-size: 0.8rem; width: 14px; text-align: center; }
+    .help-title { font-size: 11px; font-weight: 800; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+
+    /* ── FORMULARIO ── */
+    .form-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 36px; position: relative; overflow: hidden; }
+    .form-card::before { content:''; position:absolute; top:-80px; right:-80px; width:240px; height:240px; background:radial-gradient(circle,rgba(255,107,0,0.06) 0%,transparent 70%); pointer-events:none; }
+    .form-header { margin-bottom: 28px; }
+    .form-header h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 6px; }
+    .form-header p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media(max-width:480px){ .form-row { grid-template-columns:1fr; } }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { width: 100%; background: var(--bg-secondary); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 13px 16px; font-size: 0.9375rem; color: var(--text-primary); font-family: inherit; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s; outline: none; appearance: none; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: #FF6B00; box-shadow: 0 0 0 3px rgba(255,107,0,0.1); background: var(--bg-primary); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-tertiary); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
     .select-wrapper { position: relative; }
-    .select-wrapper::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--text-tertiary); pointer-events: none; font-size: 0.75rem; }
-    .btn-submit { width: 100%; padding: 15px 24px; background: linear-gradient(135deg,#FF6B00,#FF9500); color: white; border: none; border-radius: var(--radius-full); font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all var(--transition-base); box-shadow: 0 6px 20px rgba(255,107,0,0.35); letter-spacing: 0.01em; position: relative; overflow: hidden; }
-    .btn-submit::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,rgba(255,255,255,0.15),transparent); opacity: 0; transition: opacity var(--transition-fast); }
+    .select-wrapper::after { content:'\f078'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--text-tertiary); pointer-events:none; font-size:0.7rem; }
+
+    /* ── SUBMIT BTN ── */
+    .btn-submit { width: 100%; padding: 15px 24px; background: linear-gradient(135deg,#FF6B00,#FF9500); color: white; border: none; border-radius: var(--radius-full); font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.22s; box-shadow: 0 6px 20px rgba(255,107,0,0.35); letter-spacing: 0.01em; position: relative; overflow: hidden; }
+    .btn-submit::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent); opacity:0; transition:opacity 0.18s; }
     .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,107,0,0.45); }
-    .btn-submit:hover::before { opacity: 1; }
+    .btn-submit:hover::before { opacity:1; }
     .btn-submit:active { transform: translateY(0); }
     .btn-submit:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
-    .btn-spinner { width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.35); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
-    .btn-submit.loading .btn-spinner { display: block; }
-    .btn-submit.loading .btn-text   { display: none; }
-    .success-screen { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--spacing-2xl) var(--spacing-xl); min-height: 380px; }
-    .success-screen.visible { display: flex; }
-    .success-icon-wrap { width: 80px; height: 80px; background: linear-gradient(135deg,#34C759,#30D158); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; margin-bottom: var(--spacing-lg); box-shadow: 0 8px 24px rgba(52,199,89,0.4); animation: successPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-    @keyframes successPop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .success-screen h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
-    .success-screen p  { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 340px; margin: 0 auto var(--spacing-lg); }
-    .success-meta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    .success-chip { display: flex; align-items: center; gap: 7px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-full); padding: 7px 14px; font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
-    .success-chip i { color: #34C759; }
-    .map-section { border-radius: var(--radius-xl); overflow: hidden; height: 320px; box-shadow: var(--shadow-md); }
-    .map-section iframe { width: 100%; height: 100%; border: 0; display: block; }
-    @media (max-width: 992px) { .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
-    @media (max-width: 480px) { .contact-form-card { padding: var(--spacing-lg); } }
+    .btn-spinner { width:18px; height:18px; border:2.5px solid rgba(255,255,255,0.35); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; display:none; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .btn-submit.loading .btn-spinner { display:block; }
+    .btn-submit.loading .btn-text { display:none; }
+
+    /* ── DISCLAIMER ── */
+    .form-disclaimer { display: flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--text-tertiary); font-size: 0.75rem; }
+    .form-disclaimer i { color: #FF6B00; font-size: 0.8rem; flex-shrink: 0; }
+
+    /* ── SUCCESS ── */
+    .success-screen { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 48px 28px; min-height: 400px; }
+    .success-screen.visible { display:flex; }
+    .success-icon-wrap { width:80px; height:80px; background:linear-gradient(135deg,#34C759,#30D158); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:white; margin-bottom:24px; box-shadow:0 8px 28px rgba(52,199,89,0.4); animation:successPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes successPop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+    .success-screen h3 { font-size:1.5rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
+    .success-screen p { color:var(--text-secondary); font-size:0.9375rem; line-height:1.65; max-width:340px; margin:0 auto 24px; }
+    .success-chips { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .success-chip { display:flex; align-items:center; gap:6px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:7px 14px; font-size:0.78rem; color:var(--text-secondary); font-weight:600; }
+    .success-chip i { color:#34C759; }
   </style>
 </head>
 <body>
@@ -87,12 +111,13 @@
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
+
   <div class="container">
     <aside class="sidebar" id="sidebar">
       <div class="profile">
         <div class="profile-img"><img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy"></div>
         <h2>Raul Pivet</h2>
-        <p>Informático & Deportista</p>
+        <p>Logistics &amp; Tech Solutions</p>
       </div>
       <ul class="menu">
         <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
@@ -103,86 +128,205 @@
         <li class="menu-item active"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
       </ul>
       <div class="social-links">
-        <a href="https://instagram.com/Jaimepivet" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/Sinsapiar1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
+
     <main class="content">
+
+      <!-- HEADER -->
       <header class="header" data-aos="fade-down">
         <h1>Contacto</h1>
-        <p>Escribime — un sistema automatizado te responde al instante</p>
+        <p>Contame tu problema — trabajamos en la solución</p>
       </header>
-      <div class="contact-grid">
-        <div class="contact-info" data-aos="fade-right">
-          <div class="contact-info-card">
-            <h2>Información</h2>
-            <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div class="contact-text"><h3>Email</h3><a href="mailto:jaime.pivet@gmail.com">jaime.pivet@gmail.com</a></div></div>
-            <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div class="contact-text"><h3>Teléfono</h3><p>+1 (305) 504-6846</p></div></div>
-            <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-text"><h3>Ubicación</h3><p>Miami, Florida, EE.UU.</p></div></div>
-            <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div class="contact-text"><h3>Disponibilidad</h3><p>Lun–Vie · 9:00–18:00 EST</p></div></div>
-            <div class="response-badge"><div class="response-badge-dot"></div><div class="response-badge-text"><strong>Respuesta automática inmediata</strong><small>Powered by Make.com + Gmail</small></div></div>
-          </div>
-          <div class="flow-card" data-aos="fade-right" data-aos-delay="100">
-            <h3>⚡ Flujo de automatización</h3>
-            <div class="flow-steps">
-              <div class="flow-step"><div class="flow-step-line"><div class="flow-dot orange"><i class="fas fa-paper-plane" style="font-size:0.7rem"></i></div><div class="flow-connector"></div></div><div class="flow-content"><strong>Enviás el formulario</strong><small>Tu mensaje llega al webhook</small></div></div>
-              <div class="flow-step"><div class="flow-step-line"><div class="flow-dot blue"><i class="fas fa-bolt" style="font-size:0.7rem"></i></div><div class="flow-connector"></div></div><div class="flow-content"><strong>Make.com procesa</strong><small>El escenario se ejecuta en segundos</small></div></div>
-              <div class="flow-step"><div class="flow-step-line"><div class="flow-dot green"><i class="fas fa-check" style="font-size:0.7rem"></i></div></div><div class="flow-content"><strong>Recibís respuesta en tu email</strong><small>Confirmación profesional instantánea</small></div></div>
+
+      <div class="contact-wrap">
+
+        <!-- PANEL IZQUIERDO -->
+        <div class="contact-panel">
+
+          <!-- INTRO -->
+          <div class="c-card intro-card" data-aos="fade-right">
+            <p class="intro-eyebrow">👋 Hola, soy Raul</p>
+            <h2>¿Tenés un proceso<br>que <span>consume tiempo</span>?</h2>
+            <p>Trabajo con empresas y equipos que necesitan automatizar operaciones, tener mejor visibilidad de sus datos o construir herramientas que funcionen solas. Si encaja, lo hacemos.</p>
+            <div class="avail-badge">
+              <div class="avail-dot"></div>
+              <span class="avail-text">Disponible para proyectos — Miami, FL &amp; Remoto</span>
             </div>
           </div>
+
+          <!-- INFO -->
+          <div class="c-card" data-aos="fade-right" data-aos-delay="80">
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div><div class="info-label">Email</div><div class="info-value"><a href="mailto:jaime.pivet@gmail.com">jaime.pivet@gmail.com</a></div></div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-phone"></i></div>
+                <div><div class="info-label">Teléfono</div><div class="info-value">+1 (305) 504-6846</div></div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div><div class="info-label">Ubicación</div><div class="info-value">Miami, Florida — EE.UU.</div></div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon"><i class="fas fa-clock"></i></div>
+                <div><div class="info-label">Disponibilidad</div><div class="info-value">Lun–Vie · 9:00–18:00 EST</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EN QUÉ PUEDO AYUDAR -->
+          <div class="c-card" data-aos="fade-right" data-aos-delay="160">
+            <p class="help-title">¿En qué puedo ayudarte?</p>
+            <div class="help-grid">
+              <div class="help-item"><i class="fas fa-chart-bar"></i> Power BI & BI</div>
+              <div class="help-item"><i class="fas fa-cogs"></i> Automatización</div>
+              <div class="help-item"><i class="fas fa-mobile-alt"></i> Apps inventario</div>
+              <div class="help-item"><i class="fas fa-plug"></i> Integraciones</div>
+              <div class="help-item"><i class="fab fa-python"></i> Python & datos</div>
+              <div class="help-item"><i class="fas fa-robot"></i> IA aplicada</div>
+            </div>
+          </div>
+
         </div>
-        <div class="contact-form-card" data-aos="fade-left">
+
+        <!-- FORMULARIO -->
+        <div class="form-card" data-aos="fade-left">
           <div id="formWrapper">
-            <div class="form-header"><h2>Hablemos 👋</h2><p>Completá el formulario y recibirás una respuesta automática en segundos.</p></div>
-            <div class="form-row">
-              <div class="form-group"><label>Nombre</label><input type="text" id="fname" placeholder="Tu nombre" required></div>
-              <div class="form-group"><label>Apellido</label><input type="text" id="lname" placeholder="Tu apellido"></div>
+            <div class="form-header">
+              <h2>Escribime 👋</h2>
+              <p>Contame de qué se trata. Te respondo personalmente.</p>
             </div>
-            <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="tu@email.com" required></div>
-            <div class="form-group"><label>Motivo de contacto</label><div class="select-wrapper"><select id="reason"><option value="" disabled selected>Seleccioná una opción</option><option value="trabajo">💼 Oferta de trabajo</option><option value="freelance">🚀 Proyecto freelance</option><option value="colaboracion">🤝 Colaboración</option><option value="consulta">❓ Consulta técnica</option><option value="otro">💬 Otro</option></select></div></div>
-            <div class="form-group"><label>Mensaje</label><textarea id="message" placeholder="Contame en qué puedo ayudarte..." required></textarea></div>
-            <button class="btn-submit" id="submitBtn" type="button"><span class="btn-text"><i class="fas fa-paper-plane"></i> Enviar mensaje</span><div class="btn-spinner"></div></button>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" id="fname" placeholder="Tu nombre" required>
+              </div>
+              <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" id="lname" placeholder="Tu apellido">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Motivo de contacto</label>
+              <div class="select-wrapper">
+                <select id="reason">
+                  <option value="" disabled selected>Seleccioná una opción</option>
+                  <option value="trabajo">💼 Oferta de trabajo</option>
+                  <option value="freelance">🚀 Proyecto freelance</option>
+                  <option value="colaboracion">🤝 Colaboración</option>
+                  <option value="consulta">❓ Consulta técnica</option>
+                  <option value="otro">💬 Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea id="message" placeholder="Contame en qué puedo ayudarte. Cuanto más detalle, mejor." required></textarea>
+            </div>
+            <button class="btn-submit" id="submitBtn" type="button">
+              <span class="btn-text"><i class="fas fa-paper-plane"></i> Enviar mensaje</span>
+              <div class="btn-spinner"></div>
+            </button>
+            <div class="form-disclaimer">
+              <i class="fas fa-lock"></i>
+              Tu información es privada. Solo la uso para responderte.
+            </div>
           </div>
+
+          <!-- SUCCESS -->
           <div class="success-screen" id="successScreen">
             <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
-            <h3>¡Mensaje enviado!</h3>
-            <p>Tu mensaje fue procesado por el sistema de automatización. Revisá tu bandeja de entrada, ya tenés una respuesta esperándote.</p>
-            <div class="success-meta">
-              <div class="success-chip"><i class="fas fa-bolt"></i> Procesado en &lt;5 seg</div>
-              <div class="success-chip"><i class="fas fa-envelope"></i> Email enviado</div>
-              <div class="success-chip"><i class="fas fa-cog"></i> Make.com</div>
+            <h3>¡Mensaje recibido!</h3>
+            <p>Ya recibí tu mensaje. Revisá tu bandeja de entrada — deberías tener una respuesta esperándote.</p>
+            <div class="success-chips">
+              <div class="success-chip"><i class="fas fa-bolt"></i> Recibido al instante</div>
+              <div class="success-chip"><i class="fas fa-envelope"></i> Respuesta enviada</div>
             </div>
           </div>
         </div>
+
       </div>
-      <div class="map-section" data-aos="fade-up">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" allowfullscreen loading="lazy"></iframe>
+
+      <!-- MAPA -->
+      <div style="border-radius:var(--radius-xl);overflow:hidden;height:300px;margin-top:28px;box-shadow:var(--shadow-md);" data-aos="fade-up">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" width="100%" height="100%" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
       </div>
+
     </main>
   </div>
-  <footer><p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p></footer>
+
+  <footer><p>&copy; 2025 Raul Pivet — Logistics &amp; Tech Solutions · Miami, FL</p></footer>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
     const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/gghchj2oc9cjxowdv4cvpxvfflymkomm';
-    const submitBtn = document.getElementById('submitBtn');
-    const formWrapper = document.getElementById('formWrapper');
+    const submitBtn    = document.getElementById('submitBtn');
+    const formWrapper  = document.getElementById('formWrapper');
     const successScreen = document.getElementById('successScreen');
+
     submitBtn.addEventListener('click', async () => {
-      const fname=document.getElementById('fname').value.trim(), lname=document.getElementById('lname').value.trim(), email=document.getElementById('email').value.trim(), reason=document.getElementById('reason').value, message=document.getElementById('message').value.trim();
-      let valid=true;
-      [['fname',fname],['email',email],['message',message]].forEach(([id,val])=>{const el=document.getElementById(id);if(!val){el.style.borderColor='#FF3B30';el.addEventListener('input',()=>el.style.borderColor='',{once:true});valid=false;}});
-      if(!reason){const sel=document.getElementById('reason');sel.style.borderColor='#FF3B30';sel.addEventListener('change',()=>sel.style.borderColor='',{once:true});valid=false;}
-      if(!valid)return;
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){const el=document.getElementById('email');el.style.borderColor='#FF3B30';el.focus();return;}
-      submitBtn.classList.add('loading');submitBtn.disabled=true;
-      const reasonLabels={trabajo:'Oferta de trabajo',freelance:'Proyecto freelance',colaboracion:'Colaboración',consulta:'Consulta técnica',otro:'Otro'};
-      try{
-        await fetch(MAKE_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:`${fname} ${lname}`.trim(),email,motivo:reasonLabels[reason]||reason,mensaje:message,fecha:new Date().toLocaleString('es-AR',{timeZone:'America/New_York'})}),mode:'no-cors'});
-        formWrapper.style.opacity='0';formWrapper.style.transform='translateY(-10px)';formWrapper.style.transition='all 0.3s ease';
-        setTimeout(()=>{formWrapper.style.display='none';successScreen.classList.add('visible');},300);
-      }catch(err){submitBtn.classList.remove('loading');submitBtn.disabled=false;alert('Problema de conexión. Escribime directo a jaime.pivet@gmail.com');}
+      const fname   = document.getElementById('fname').value.trim();
+      const lname   = document.getElementById('lname').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const reason  = document.getElementById('reason').value;
+      const message = document.getElementById('message').value.trim();
+
+      // Validación
+      let valid = true;
+      [['fname',fname],['email',email],['message',message]].forEach(([id,val]) => {
+        const el = document.getElementById(id);
+        if (!val) { el.style.borderColor='#FF3B30'; el.addEventListener('input',()=>el.style.borderColor='',{once:true}); valid=false; }
+      });
+      if (!reason) {
+        const sel = document.getElementById('reason');
+        sel.style.borderColor='#FF3B30'; sel.addEventListener('change',()=>sel.style.borderColor='',{once:true}); valid=false;
+      }
+      if (!valid) return;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        const el = document.getElementById('email'); el.style.borderColor='#FF3B30'; el.focus(); return;
+      }
+
+      submitBtn.classList.add('loading'); submitBtn.disabled = true;
+
+      const reasonLabels = { trabajo:'Oferta de trabajo', freelance:'Proyecto freelance', colaboracion:'Colaboración', consulta:'Consulta técnica', otro:'Otro' };
+
+      try {
+        await fetch(MAKE_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre: `${fname} ${lname}`.trim(),
+            email,
+            motivo: reasonLabels[reason] || reason,
+            mensaje: message,
+            fecha: new Date().toLocaleString('es-AR', { timeZone: 'America/New_York' })
+          }),
+          mode: 'no-cors'
+        });
+
+        formWrapper.style.opacity = '0';
+        formWrapper.style.transform = 'translateY(-10px)';
+        formWrapper.style.transition = 'all 0.3s ease';
+        setTimeout(() => {
+          formWrapper.style.display = 'none';
+          successScreen.classList.add('visible');
+        }, 300);
+
+      } catch(err) {
+        submitBtn.classList.remove('loading'); submitBtn.disabled = false;
+        alert('Problema de conexión. Escribime directo a jaime.pivet@gmail.com');
+      }
     });
   </script>
 </body>
