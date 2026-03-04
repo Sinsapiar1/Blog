@@ -13,14 +13,11 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── LANGUAGE TOGGLE ── */
     .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
     .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
     .language-flag { font-size:1.25rem; }
     .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
     @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
-
-    /* ── HERO BIO ── */
     .about-hero { display:grid; grid-template-columns:1fr 1.6fr; gap:32px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; margin-bottom:40px; }
     .about-hero-img { position:relative; min-height:420px; }
     .about-hero-img img { width:100%; height:100%; object-fit:cover; object-position:top; }
@@ -36,13 +33,9 @@
     .about-badge { display:flex; align-items:center; gap:6px; background:var(--bg-secondary); border:1px solid var(--border-color); padding:6px 12px; border-radius:20px; font-size:12px; font-weight:600; color:var(--text-secondary); }
     .about-badge i { color:#FF6B00; font-size:11px; }
     @media(max-width:900px){ .about-hero { grid-template-columns:1fr; } .about-hero-img { min-height:280px; } .about-hero-content { padding:28px; } .about-hero-img-overlay { background:linear-gradient(to top, var(--glass-bg) 0%, transparent 50%); } }
-
-    /* ── PULLQUOTE ── */
     .pullquote { background:linear-gradient(135deg,rgba(255,107,0,0.06),rgba(255,149,0,0.03)); border-left:4px solid #FF6B00; border-radius:0 12px 12px 0; padding:24px 28px; margin:32px 0; }
     .pullquote p { font-size:1.1rem; font-style:italic; color:var(--text-primary); line-height:1.7; margin:0; }
     .pullquote cite { display:block; font-size:0.8rem; color:var(--text-tertiary); margin-top:10px; font-style:normal; font-weight:600; }
-
-    /* ── TIMELINE ── */
     .timeline-section { margin:48px 0; }
     .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
     .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; margin-bottom:28px; }
@@ -60,8 +53,6 @@
     .timeline-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.65; }
     .timeline-highlights { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
     .timeline-highlight { font-size:10px; font-weight:700; color:#34C759; background:rgba(52,199,89,0.1); padding:3px 9px; border-radius:8px; }
-
-    /* ── VALORES ── */
     .values-section { margin:48px 0; }
     .values-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
     .value-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:26px; text-align:center; transition:all 0.25s; }
@@ -69,8 +60,6 @@
     .value-icon { width:52px; height:52px; background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08)); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:#FF6B00; margin:0 auto 14px; }
     .value-title { font-size:0.9375rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; }
     .value-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
-
-    /* ── FUERA DEL TRABAJO ── */
     .personal-section { margin:48px 0; }
     .personal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
     .personal-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:14px; padding:22px; display:flex; gap:14px; align-items:flex-start; transition:all 0.2s; }
@@ -78,8 +67,6 @@
     .personal-icon { width:38px; height:38px; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-size:0.95rem; flex-shrink:0; }
     .personal-title { font-size:0.875rem; font-weight:700; color:var(--text-primary); margin-bottom:4px; }
     .personal-desc { font-size:0.78rem; color:var(--text-secondary); line-height:1.5; }
-
-    /* ── CTA ── */
     .about-cta { margin:48px 0; background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:40px; text-align:center; }
     .about-cta h2 { font-size:1.5rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
     .about-cta p { color:var(--text-secondary); margin-bottom:24px; line-height:1.6; }
@@ -93,20 +80,17 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
-
-  <!-- BOTÓN IDIOMA -->
   <div class="language-toggle" id="languageToggle" aria-label="Change language">
     <span class="language-flag" id="languageFlag">🇺🇸</span>
     <span class="language-text" id="languageText">English</span>
   </div>
-
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
   <div class="container">
     <aside class="sidebar" id="sidebar">
       <div class="profile">
-        <div class="profile-img"><img src="img/perfil.jpg" alt="Raul Pivet" loading="lazy"></div>
+        <div class="profile-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
         <h2>Raul Pivet</h2>
         <p id="sidebarSubtitle">Logistics &amp; Tech Solutions</p>
       </div>
@@ -124,25 +108,18 @@
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
-    <main class="content" id="mainContent">
-      <!-- Renderizado por JS -->
-    </main>
+    <main class="content" id="mainContent"></main>
   </div>
   <footer><p>&copy; 2025 Raul Pivet. <span id="footerText">Todos los derechos reservados.</span></p></footer>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
-  /* ══════════════════════════════════════
-     TRADUCCIONES ES / EN
-  ══════════════════════════════════════ */
   const t = {
     es: {
       sidebar: "Logistics & Tech Solutions",
       nav_home:"Inicio", nav_about:"Sobre Mí", nav_projects:"Proyectos", nav_contact:"Contacto",
       footer: "Todos los derechos reservados.",
       page_title: "Sobre Mí - Raul Pivet",
-
       eyebrow: "👋 Hola, soy Raul",
       h1: "De las bodegas de Chile",
       h1span: "a automatizar operaciones en Miami",
@@ -150,274 +127,140 @@
       p1: "Empecé mi carrera moviendo cajas. Literalmente. En una bodega minera en el norte de Chile, a más de 2.700 metros de altura, manejando inventarios de una operación que no descansa. Ahí entendí algo que no se aprende en ningún libro: <strong>los procesos manuales matan la productividad</strong> — y que siempre hay una forma más inteligente de hacer las cosas.",
       p2: "Con el tiempo fui combinando mi experiencia en logística con herramientas tecnológicas. Primero Excel avanzado. Después Google Apps Script. Después Python, AppSheet, Power Platform. Cada solución que construí nació de un problema real que yo mismo viví operacionalmente.",
       p3: "Hoy, desde Miami, trabajo para <strong>Encofrados J. Alsina S.A.</strong> gestionando datos de 30+ almacenes globalmente, construyendo pipelines que procesan información sin intervención humana y dashboards que se actualizan solos. Lo que antes eran horas de trabajo manual, hoy son segundos.",
-      badges: [
-        { icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },
-        { icon:"fas fa-language", text:"Español / English" },
-        { icon:"fas fa-briefcase", text:"Disponible para trabajar" },
-        { icon:"fas fa-globe", text:"Trabajo remoto" }
-      ],
-
+      badges: [{ icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },{ icon:"fas fa-language", text:"Español / English" },{ icon:"fas fa-briefcase", text:"Disponible para trabajar" },{ icon:"fas fa-globe", text:"Trabajo remoto" }],
       quote: "No automatizo por automatizar. Automatizo porque viví en carne propia lo que es trabajar 12 horas haciendo algo que una máquina puede hacer en 5 segundos.",
       quote_cite: "— Raul Pivet",
-
       timeline_eyebrow: "Trayectoria",
       timeline_title: "9 años construyendo soluciones reales",
       timeline: [
-        {
-          title: "Asistente de Logística & Desarrollador de Soluciones",
-          company: "Encofrados J. Alsina S.A. — Hialeah, FL",
-          date: "Feb 2025 — Presente",
-          desc: "Gestión de datos de inventario para 30+ almacenes globalmente. Construcción de pipelines completos: correo → Python → SQLite → GitHub Actions → Power Automate → 50 reportes distribuidos. Power BI con custom visuals en TypeScript. Dataverse con ventana temporal automática de 62 días.",
-          highlights: ["Pipeline 50 reportes automáticos", "Custom visuals TypeScript", "Dataverse 62 días", "Gemini AI integrado"]
-        },
-        {
-          title: "Coordinador Logístico",
-          company: "Merflex — Doral, FL",
-          date: "Mar 2024 — Ene 2025",
-          desc: "Operaciones internacionales China → Miami → Bogotá para productos Temu/Shein. Sistematización completa de procesos operacionales. Apps móviles para recepción y despacho que generan informes tipo factura automáticamente y los envían por WhatsApp.",
-          highlights: ["Operaciones China-Miami-Bogotá", "Apps móviles con WhatsApp", "Sistematización de procesos"]
-        },
-        {
-          title: "Jefe de Bodega",
-          company: "Sodexo — Minera Collahuasi, Iquique, Chile",
-          date: "Ene 2021 — Jun 2023",
-          desc: "Liderazgo de equipo de 20 personas en turnos rotativos 7x7 en ambiente minero. Implementé app móvil con AppSheet que reemplazó completamente los registros en papel. Diseñé sistemas integrados Gmail + Google Sheets para alertas automáticas y reportes en tiempo real.",
-          highlights: ["Equipo 20 personas / 7x7", "−30% errores de inventario", "App AppSheet en producción", "+25% eficiencia operativa"]
-        },
-        {
-          title: "Especialista Administrativo",
-          company: "Sodexo — Minera Escondida, Antofagasta, Chile",
-          date: "Ago 2016 — Ene 2021",
-          desc: "Representación en reuniones nacionales de logística y supply chain. Análisis de datos para presentaciones semanales de costos. Primeras automatizaciones con Google Suite: extracción de datos de correos, alertas por WhatsApp, apps móviles para recepción de mercadería.",
-          highlights: ["Reuniones nacionales de logística", "Primeras automatizaciones Google", "Apps móviles de inventario"]
-        }
+        { title:"Asistente de Logística & Desarrollador de Soluciones", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Presente", desc:"Gestión de datos de inventario para 30+ almacenes globalmente. Pipeline completo: correo → Python → SQLite → GitHub Actions → Power Automate → 50 reportes distribuidos. Power BI con custom visuals TypeScript. Dataverse 62 días.", highlights:["Pipeline 50 reportes automáticos","Custom visuals TypeScript","Dataverse 62 días","Gemini AI integrado"] },
+        { title:"Coordinador Logístico", company:"Merflex — Doral, FL", date:"Mar 2024 — Ene 2025", desc:"Operaciones internacionales China → Miami → Bogotá para productos Temu/Shein. Apps móviles para recepción y despacho con informes automáticos por WhatsApp.", highlights:["Operaciones China-Miami-Bogotá","Apps móviles con WhatsApp","Sistematización de procesos"] },
+        { title:"Jefe de Bodega", company:"Sodexo — Minera Collahuasi, Iquique, Chile", date:"Ene 2021 — Jun 2023", desc:"Liderazgo equipo 20 personas turnos 7x7. AppSheet reemplazó registros en papel. Sistemas integrados Gmail + Google Sheets para alertas y reportes en tiempo real.", highlights:["Equipo 20 personas / 7x7","−30% errores de inventario","AppSheet en producción","+25% eficiencia operativa"] },
+        { title:"Especialista Administrativo", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Ene 2018 — Ene 2021", desc:"Reuniones nacionales de logística. Análisis de datos para presentaciones de costos. Primeras automatizaciones Google Suite: extracción de datos de correos, alertas WhatsApp, apps móviles.", highlights:["Reuniones nacionales de logística","Primeras automatizaciones Google","Apps móviles de inventario"] }
       ],
-
       values_eyebrow: "Cómo trabajo",
       values_title: "Lo que me define profesionalmente",
       values: [
-        { icon:"fas fa-search", title:"Primero entiendo el problema", desc:"Antes de escribir una línea de código, mapeo el proceso completo. La solución más elegante es la que resuelve exactamente lo que necesita ser resuelto, ni más ni menos." },
-        { icon:"fas fa-cogs", title:"Construyo para que funcione solo", desc:"Una automatización que requiere mantenimiento constante no es una solución. Diseño sistemas que operan de forma autónoma: ventanas temporales, limpieza automática, alertas de fallo." },
-        { icon:"fas fa-users", title:"Pienso en quien va a usarlo", desc:"Trabajo con operadores de bodega, jefes de almacén y directivos. Cada interfaz que construyo tiene que funcionar para alguien que no sabe nada de tecnología y para alguien que sí." },
-        { icon:"fas fa-chart-line", title:"Mido el impacto real", desc:"−30% errores, +25% eficiencia, 50 reportes que antes se hacían a mano. No hablo de tecnología por hablar — hablo de resultados concretos y medibles en operaciones reales." }
+        { icon:"fas fa-search", title:"Primero entiendo el problema", desc:"Antes de escribir una línea de código, mapeo el proceso completo. La solución más elegante es la que resuelve exactamente lo que necesita ser resuelto." },
+        { icon:"fas fa-cogs", title:"Construyo para que funcione solo", desc:"Una automatización que requiere mantenimiento constante no es una solución. Diseño sistemas autónomos con ventanas temporales, limpieza automática y alertas de fallo." },
+        { icon:"fas fa-users", title:"Pienso en quien va a usarlo", desc:"Cada interfaz tiene que funcionar para alguien que no sabe nada de tecnología y para alguien que sí. Trabajo con operadores y directivos." },
+        { icon:"fas fa-chart-line", title:"Mido el impacto real", desc:"−30% errores, +25% eficiencia, 50 reportes antes manuales. Hablo de resultados concretos y medibles en operaciones reales." }
       ],
-
       personal_eyebrow: "Fuera del trabajo",
       personal_title: "El resto de la historia",
       personal: [
-        { icon:"fas fa-running", title:"Corredor de distancia", desc:"Entreno media y larga distancia. Corrí al amanecer en Chichén Itzá. La disciplina del running y la del código son más parecidas de lo que parece." },
-        { icon:"fas fa-mountain", title:"Explorador", desc:"De las alturas de la Puna chilena a Yucatán, México. Cada viaje me enseñó que planificar bien es la mitad del camino." },
-        { icon:"fas fa-camera", title:"Fotografía", desc:"Capturo momentos en viajes y entrenamientos. Ver el detalle que otros no ven es un hábito que se aplica igual al análisis de datos." },
+        { icon:"fas fa-running", title:"Corredor de distancia", desc:"Entreno media y larga distancia. La disciplina del running y la del código son más parecidas de lo que parece." },
+        { icon:"fas fa-mountain", title:"Explorador", desc:"De las alturas de la Puna chilena a Yucatán, México. Planificar bien es la mitad del camino." },
+        { icon:"fas fa-camera", title:"Fotografía", desc:"Capturo momentos en viajes y entrenamientos. Ver el detalle que otros no ven aplica igual al análisis de datos." },
         { icon:"fas fa-shield-alt", title:"Ciberseguridad & OSINT", desc:"Certificación en ciberseguridad (2025). Curiosidad por la seguridad ofensiva y el análisis de inteligencia abierta." }
       ],
-
       cta_title: "¿Querés trabajar juntos?",
-      cta_desc: "Si tenés un proceso manual que consume tiempo de tu equipo, o necesitás visibilidad real de tus datos — hablemos. Me adapto a tu stack, a tu industria y a tu presupuesto.",
+      cta_desc: "Si tenés un proceso manual que consume tiempo de tu equipo — hablemos. Me adapto a tu stack, industria y presupuesto.",
       cta_btn1: "Contactame", cta_btn2: "Ver CV completo"
     },
-
     en: {
       sidebar: "Logistics & Tech Solutions",
       nav_home:"Home", nav_about:"About Me", nav_projects:"Projects", nav_contact:"Contact",
       footer: "All rights reserved.",
       page_title: "About Me - Raul Pivet",
-
       eyebrow: "👋 Hi, I'm Raul",
       h1: "From Chilean warehouses",
       h1span: "to automating operations in Miami",
       role: "Logistics Operations Specialist & Business Solutions Developer",
-      p1: "I started my career moving boxes. Literally. In a mining warehouse in northern Chile, at over 2,700 meters above sea level, managing inventory for an operation that never stops. That's where I learned something no book teaches: <strong>manual processes kill productivity</strong> — and there's always a smarter way to do things.",
-      p2: "Over time I combined my logistics experience with technology tools. First advanced Excel. Then Google Apps Script. Then Python, AppSheet, Power Platform. Every solution I built came from a real problem I experienced myself on the operations floor.",
-      p3: "Today, from Miami, I work for <strong>Encofrados J. Alsina S.A.</strong> managing data across 30+ global warehouses, building pipelines that process information without human intervention and dashboards that update themselves. What used to take hours of manual work now takes seconds.",
-      badges: [
-        { icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },
-        { icon:"fas fa-language", text:"Spanish / English" },
-        { icon:"fas fa-briefcase", text:"Available for work" },
-        { icon:"fas fa-globe", text:"Remote work" }
-      ],
-
+      p1: "I started my career moving boxes. Literally. In a mining warehouse in northern Chile, at over 2,700 meters above sea level. That's where I learned something no book teaches: <strong>manual processes kill productivity</strong> — and there's always a smarter way to do things.",
+      p2: "Over time I combined my logistics experience with technology tools. First advanced Excel. Then Google Apps Script. Then Python, AppSheet, Power Platform. Every solution I built came from a real problem I experienced myself.",
+      p3: "Today, from Miami, I work for <strong>Encofrados J. Alsina S.A.</strong> managing data across 30+ global warehouses, building pipelines that process information without human intervention and dashboards that update themselves.",
+      badges: [{ icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },{ icon:"fas fa-language", text:"Spanish / English" },{ icon:"fas fa-briefcase", text:"Available for work" },{ icon:"fas fa-globe", text:"Remote work" }],
       quote: "I don't automate for the sake of it. I automate because I lived firsthand what it means to spend 12 hours doing something a machine can do in 5 seconds.",
       quote_cite: "— Raul Pivet",
-
       timeline_eyebrow: "Career",
       timeline_title: "9 years building real solutions",
       timeline: [
-        {
-          title: "Logistics Assistant & Solutions Developer",
-          company: "Encofrados J. Alsina S.A. — Hialeah, FL",
-          date: "Feb 2025 — Present",
-          desc: "Managing inventory data for 30+ global warehouses. Building complete pipelines: email → Python → SQLite → GitHub Actions → Power Automate → 50 distributed reports. Power BI with TypeScript custom visuals. Dataverse with automatic 62-day rolling window.",
-          highlights: ["50 automated reports pipeline", "TypeScript custom visuals", "62-day Dataverse window", "Gemini AI integration"]
-        },
-        {
-          title: "Logistics Coordinator",
-          company: "Merflex — Doral, FL",
-          date: "Mar 2024 — Jan 2025",
-          desc: "International operations China → Miami → Bogotá for Temu/Shein products. Full systematization of operational processes. Mobile apps for receiving and dispatch that automatically generate invoice-style reports and send them via WhatsApp instantly.",
-          highlights: ["China-Miami-Bogotá operations", "WhatsApp mobile apps", "Process systematization"]
-        },
-        {
-          title: "Warehouse Manager",
-          company: "Sodexo — Minera Collahuasi, Iquique, Chile",
-          date: "Jan 2021 — Jun 2023",
-          desc: "Led a team of 20 people on rotating 7x7 shifts in a mining environment. Implemented AppSheet mobile app that fully replaced paper records. Designed integrated Gmail + Google Sheets systems for automatic alerts and real-time reports.",
-          highlights: ["20-person team / 7x7 shifts", "−30% inventory errors", "AppSheet app in production", "+25% operational efficiency"]
-        },
-        {
-          title: "Administrative Specialist",
-          company: "Sodexo — Minera Escondida, Antofagasta, Chile",
-          date: "Aug 2016 — Jan 2021",
-          desc: "Represented warehouse operations in national logistics and supply chain meetings. Data analysis for weekly cost presentations. First automations with Google Suite: email data extraction, WhatsApp alerts, mobile apps for merchandise receiving.",
-          highlights: ["National logistics meetings", "First Google automations", "Mobile inventory apps"]
-        }
+        { title:"Logistics Assistant & Solutions Developer", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Present", desc:"Managing inventory data for 30+ global warehouses. Full pipeline: email → Python → SQLite → GitHub Actions → Power Automate → 50 distributed reports. Power BI with TypeScript custom visuals. 62-day Dataverse rolling window.", highlights:["50 automated reports pipeline","TypeScript custom visuals","62-day Dataverse window","Gemini AI integration"] },
+        { title:"Logistics Coordinator", company:"Merflex — Doral, FL", date:"Mar 2024 — Jan 2025", desc:"International operations China → Miami → Bogotá for Temu/Shein products. Mobile apps for receiving and dispatch with automatic WhatsApp reports.", highlights:["China-Miami-Bogotá operations","WhatsApp mobile apps","Process systematization"] },
+        { title:"Warehouse Manager", company:"Sodexo — Minera Collahuasi, Iquique, Chile", date:"Jan 2021 — Jun 2023", desc:"Led 20-person team on rotating 7x7 shifts. AppSheet replaced all paper records. Integrated Gmail + Google Sheets systems for automatic alerts and real-time reports.", highlights:["20-person team / 7x7 shifts","−30% inventory errors","AppSheet app in production","+25% operational efficiency"] },
+        { title:"Administrative Specialist", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Jan 2018 — Jan 2021", desc:"National logistics and supply chain meetings. Data analysis for weekly cost presentations. First Google Suite automations: email data extraction, WhatsApp alerts, mobile inventory apps.", highlights:["National logistics meetings","First Google automations","Mobile inventory apps"] }
       ],
-
       values_eyebrow: "How I work",
       values_title: "What defines me professionally",
       values: [
-        { icon:"fas fa-search", title:"Understand the problem first", desc:"Before writing a single line of code, I map the complete process. The most elegant solution is the one that resolves exactly what needs to be resolved — nothing more, nothing less." },
-        { icon:"fas fa-cogs", title:"Build to run on its own", desc:"An automation that requires constant maintenance is not a solution. I design systems that operate autonomously: rolling windows, automatic cleanup, failure alerts." },
-        { icon:"fas fa-users", title:"Think about who will use it", desc:"I work with warehouse operators, managers and executives. Every interface I build must work for someone who knows nothing about technology and for someone who does." },
-        { icon:"fas fa-chart-line", title:"Measure real impact", desc:"−30% errors, +25% efficiency, 50 reports that used to be done by hand. I don't talk technology for the sake of it — I talk about concrete, measurable results in real operations." }
+        { icon:"fas fa-search", title:"Understand the problem first", desc:"Before writing a single line of code, I map the complete process. The most elegant solution resolves exactly what needs to be resolved." },
+        { icon:"fas fa-cogs", title:"Build to run on its own", desc:"An automation that requires constant maintenance is not a solution. I design autonomous systems with rolling windows, automatic cleanup and failure alerts." },
+        { icon:"fas fa-users", title:"Think about who will use it", desc:"Every interface must work for someone who knows nothing about technology and for someone who does. I work with operators and executives." },
+        { icon:"fas fa-chart-line", title:"Measure real impact", desc:"−30% errors, +25% efficiency, 50 reports previously done by hand. I talk about concrete, measurable results in real operations." }
       ],
-
       personal_eyebrow: "Outside of work",
       personal_title: "The rest of the story",
       personal: [
-        { icon:"fas fa-running", title:"Distance runner", desc:"I train mid and long distance. I ran at sunrise in Chichén Itzá. The discipline of running and coding are more similar than they seem." },
-        { icon:"fas fa-mountain", title:"Explorer", desc:"From the heights of the Chilean Puna to Yucatán, Mexico. Every trip taught me that planning well is half the journey." },
-        { icon:"fas fa-camera", title:"Photography", desc:"I capture moments on trips and training sessions. Seeing the detail others miss is a habit that applies equally to data analysis." },
-        { icon:"fas fa-shield-alt", title:"Cybersecurity & OSINT", desc:"Cybersecurity certification (2025). Curiosity for offensive security and open-source intelligence analysis." }
+        { icon:"fas fa-running", title:"Distance runner", desc:"I train mid and long distance. The discipline of running and coding are more similar than they seem." },
+        { icon:"fas fa-mountain", title:"Explorer", desc:"From the Chilean Puna to Yucatán, Mexico. Planning well is half the journey." },
+        { icon:"fas fa-camera", title:"Photography", desc:"I capture moments on trips and training. Seeing the detail others miss applies equally to data analysis." },
+        { icon:"fas fa-shield-alt", title:"Cybersecurity & OSINT", desc:"Cybersecurity certification (2025). Interest in offensive security and open-source intelligence analysis." }
       ],
-
       cta_title: "Want to work together?",
-      cta_desc: "If you have a manual process consuming your team's time, or need real visibility into your data — let's talk. I adapt to your stack, your industry and your budget.",
+      cta_desc: "If you have a manual process consuming your team's time — let's talk. I adapt to your stack, industry and budget.",
       cta_btn1: "Contact me", cta_btn2: "View full CV"
     }
   };
 
   let lang = localStorage.getItem('aboutLang') || localStorage.getItem('homeLang') || 'es';
 
-  /* ── RENDER ── */
   function render() {
     const d = t[lang];
-
     document.title = d.page_title;
     document.getElementById('sidebarSubtitle').textContent = d.sidebar;
     document.getElementById('footerText').textContent = d.footer;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const k = el.getAttribute('data-i18n');
-      if (d[k]) el.textContent = d[k];
-    });
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
-
     document.getElementById('mainContent').innerHTML = `
-
-      <!-- HERO BIO -->
       <section class="about-hero" data-aos="fade-up">
-        <div class="about-hero-img">
-          <img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy">
-          <div class="about-hero-img-overlay"></div>
-        </div>
+        <div class="about-hero-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"><div class="about-hero-img-overlay"></div></div>
         <div class="about-hero-content">
           <div class="about-eyebrow"><i class="fas fa-user"></i> ${d.eyebrow}</div>
           <h1>${d.h1}<br><span>${d.h1span}</span></h1>
           <p class="about-role">${d.role}</p>
-          <p>${d.p1}</p>
-          <p>${d.p2}</p>
-          <p>${d.p3}</p>
-          <div class="about-badges">
-            ${d.badges.map(b=>`<span class="about-badge"><i class="${b.icon}"></i>${b.text}</span>`).join('')}
-          </div>
+          <p>${d.p1}</p><p>${d.p2}</p><p>${d.p3}</p>
+          <div class="about-badges">${d.badges.map(b=>`<span class="about-badge"><i class="${b.icon}"></i>${b.text}</span>`).join('')}</div>
         </div>
       </section>
-
-      <!-- PULLQUOTE -->
-      <div class="pullquote" data-aos="fade-up">
-        <p>"${d.quote}"</p>
-        <cite>${d.quote_cite}</cite>
-      </div>
-
-      <!-- TIMELINE -->
+      <div class="pullquote" data-aos="fade-up"><p>"${d.quote}"</p><cite>${d.quote_cite}</cite></div>
       <section data-aos="fade-up">
         <p class="section-eyebrow">${d.timeline_eyebrow}</p>
         <h2 class="section-title">${d.timeline_title}</h2>
-        <div class="timeline">
-          ${d.timeline.map((item,i)=>`
+        <div class="timeline">${d.timeline.map((item,i)=>`
           <div class="timeline-item" data-aos="fade-up" data-aos-delay="${i*60}">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-              <div class="timeline-header">
-                <div>
-                  <div class="timeline-title">${item.title}</div>
-                  <div class="timeline-company">${item.company}</div>
-                </div>
-                <span class="timeline-date">${item.date}</span>
-              </div>
+              <div class="timeline-header"><div><div class="timeline-title">${item.title}</div><div class="timeline-company">${item.company}</div></div><span class="timeline-date">${item.date}</span></div>
               <p class="timeline-desc">${item.desc}</p>
-              <div class="timeline-highlights">
-                ${item.highlights.map(h=>`<span class="timeline-highlight">✓ ${h}</span>`).join('')}
-              </div>
+              <div class="timeline-highlights">${item.highlights.map(h=>`<span class="timeline-highlight">✓ ${h}</span>`).join('')}</div>
             </div>
           </div>`).join('')}
         </div>
       </section>
-
-      <!-- VALORES -->
       <section class="values-section" data-aos="fade-up">
         <p class="section-eyebrow">${d.values_eyebrow}</p>
         <h2 class="section-title">${d.values_title}</h2>
-        <div class="values-grid">
-          ${d.values.map((v,i)=>`
-          <div class="value-card" data-aos="fade-up" data-aos-delay="${i*50}">
-            <div class="value-icon"><i class="${v.icon}"></i></div>
-            <h3 class="value-title">${v.title}</h3>
-            <p class="value-desc">${v.desc}</p>
-          </div>`).join('')}
-        </div>
+        <div class="values-grid">${d.values.map((v,i)=>`<div class="value-card" data-aos="fade-up" data-aos-delay="${i*50}"><div class="value-icon"><i class="${v.icon}"></i></div><h3 class="value-title">${v.title}</h3><p class="value-desc">${v.desc}</p></div>`).join('')}</div>
       </section>
-
-      <!-- PERSONAL -->
       <section class="personal-section" data-aos="fade-up">
         <p class="section-eyebrow">${d.personal_eyebrow}</p>
         <h2 class="section-title">${d.personal_title}</h2>
-        <div class="personal-grid">
-          ${d.personal.map((p,i)=>`
-          <div class="personal-card" data-aos="fade-up" data-aos-delay="${i*50}">
-            <div class="personal-icon"><i class="${p.icon}"></i></div>
-            <div>
-              <div class="personal-title">${p.title}</div>
-              <p class="personal-desc">${p.desc}</p>
-            </div>
-          </div>`).join('')}
-        </div>
+        <div class="personal-grid">${d.personal.map((p,i)=>`<div class="personal-card" data-aos="fade-up" data-aos-delay="${i*50}"><div class="personal-icon"><i class="${p.icon}"></i></div><div><div class="personal-title">${p.title}</div><p class="personal-desc">${p.desc}</p></div></div>`).join('')}</div>
       </section>
-
-      <!-- CTA -->
       <section class="about-cta" data-aos="fade-up">
-        <h2>${d.cta_title}</h2>
-        <p>${d.cta_desc}</p>
+        <h2>${d.cta_title}</h2><p>${d.cta_desc}</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
           <a href="contacto.html" class="btn"><i class="fas fa-paper-plane"></i> ${d.cta_btn1}</a>
           <a href="cv.html" class="btn-outline"><i class="fas fa-file-alt"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
-
     if (typeof AOS !== 'undefined') { AOS.init({ once:true, duration:600 }); AOS.refresh(); }
   }
 
-  function toggleLang() {
-    lang = lang === 'es' ? 'en' : 'es';
-    localStorage.setItem('aboutLang', lang);
-    localStorage.setItem('homeLang', lang);
-    render();
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    render();
-    document.getElementById('languageToggle').addEventListener('click', toggleLang);
-  });
+  function toggleLang() { lang = lang === 'es' ? 'en' : 'es'; localStorage.setItem('aboutLang', lang); localStorage.setItem('homeLang', lang); render(); }
+  document.addEventListener('DOMContentLoaded', () => { render(); document.getElementById('languageToggle').addEventListener('click', toggleLang); });
   </script>
 </body>
 </html>
