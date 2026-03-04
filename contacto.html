@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── LANGUAGE TOGGLE ── */
+    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
+    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .language-flag { font-size:1.25rem; }
+    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
+    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
+
     /* ── LAYOUT ── */
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.65fr; gap: 28px; align-items: start; }
     @media(max-width:960px){ .contact-wrap { grid-template-columns:1fr; } }
@@ -108,6 +115,13 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
+
+  <!-- BOTÓN IDIOMA -->
+  <div class="language-toggle" id="languageToggle" aria-label="Change language">
+    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-text" id="languageText">English</span>
+  </div>
+
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -120,12 +134,12 @@
         <p>Logistics &amp; Tech Solutions</p>
       </div>
       <ul class="menu">
-        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
         <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
-        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
+        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Sobre Mí</span></a></li>
         <li class="menu-item"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
-        <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
-        <li class="menu-item active"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> <span data-i18n="nav_projects">Proyectos</span></a></li>
+        <li class="menu-item active"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
       </ul>
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -134,12 +148,148 @@
       </div>
     </aside>
 
-    <main class="content">
+    <main class="content" id="mainContent">
+      <!-- Renderizado por JS -->
+    </main>
+  </div>
+
+  <footer><p>&copy; 2025 Raul Pivet — Logistics &amp; Tech Solutions · Miami, FL</p></footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+  <script>
+  /* ══════════════════════════════════════
+     TRADUCCIONES ES / EN — CONTACTO
+  ══════════════════════════════════════ */
+  const t = {
+    es: {
+      nav_home:"Inicio", nav_about:"Sobre Mí", nav_projects:"Proyectos", nav_contact:"Contacto",
+      page_title: "Contacto - Raul Pivet",
+
+      header_h1: "Contacto",
+      header_sub: "Contame tu problema — trabajamos en la solución",
+
+      intro_eyebrow: "👋 Hola, soy Raul",
+      intro_h2a: "¿Tenés un proceso",
+      intro_h2b: "que <span>consume tiempo</span>?",
+      intro_p: "Trabajo con empresas y equipos que necesitan automatizar operaciones, tener mejor visibilidad de sus datos o construir herramientas que funcionen solas. Si encaja, lo hacemos.",
+      avail_text: "Disponible para proyectos — Miami, FL & Remoto",
+
+      info_email_label: "Email",
+      info_phone_label: "Teléfono",
+      info_loc_label: "Ubicación",
+      info_loc_value: "Miami, Florida — EE.UU.",
+      info_avail_label: "Disponibilidad",
+      info_avail_value: "Lun–Vie · 9:00–18:00 EST",
+
+      help_title: "¿En qué puedo ayudarte?",
+      help: ["Power BI & BI","Automatización","Apps inventario","Integraciones","Python & datos","IA aplicada"],
+
+      form_h2: "Escribime 👋",
+      form_sub: "Contame de qué se trata. Te respondo personalmente.",
+      label_fname: "Nombre",
+      label_lname: "Apellido",
+      label_email: "Email",
+      label_reason: "Motivo de contacto",
+      label_msg: "Mensaje",
+      ph_fname: "Tu nombre",
+      ph_lname: "Tu apellido",
+      ph_email: "tu@email.com",
+      ph_msg: "Contame en qué puedo ayudarte. Cuanto más detalle, mejor.",
+      reason_placeholder: "Seleccioná una opción",
+      reasons: [
+        { value:"trabajo",      label:"💼 Oferta de trabajo" },
+        { value:"freelance",    label:"🚀 Proyecto freelance" },
+        { value:"colaboracion", label:"🤝 Colaboración" },
+        { value:"consulta",     label:"❓ Consulta técnica" },
+        { value:"otro",         label:"💬 Otro" }
+      ],
+      btn_send: "Enviar mensaje",
+      disclaimer: "Tu información es privada. Solo la uso para responderte.",
+
+      success_h3: "¡Mensaje recibido!",
+      success_p: "Ya recibí tu mensaje. Revisá tu bandeja de entrada — deberías tener una respuesta esperándote.",
+      chip1: "Recibido al instante",
+      chip2: "Respuesta enviada"
+    },
+
+    en: {
+      nav_home:"Home", nav_about:"About Me", nav_projects:"Projects", nav_contact:"Contact",
+      page_title: "Contact - Raul Pivet",
+
+      header_h1: "Contact",
+      header_sub: "Tell me your problem — we'll work on the solution",
+
+      intro_eyebrow: "👋 Hi, I'm Raul",
+      intro_h2a: "Got a process",
+      intro_h2b: "that <span>eats up your time</span>?",
+      intro_p: "I work with companies and teams that need to automate operations, get better visibility into their data, or build tools that run on their own. If it fits, let's do it.",
+      avail_text: "Available for projects — Miami, FL & Remote",
+
+      info_email_label: "Email",
+      info_phone_label: "Phone",
+      info_loc_label: "Location",
+      info_loc_value: "Miami, Florida — USA",
+      info_avail_label: "Availability",
+      info_avail_value: "Mon–Fri · 9:00–6:00 PM EST",
+
+      help_title: "How can I help you?",
+      help: ["Power BI & BI","Automation","Inventory apps","Integrations","Python & data","Applied AI"],
+
+      form_h2: "Write to me 👋",
+      form_sub: "Tell me what it's about. I'll respond personally.",
+      label_fname: "First name",
+      label_lname: "Last name",
+      label_email: "Email",
+      label_reason: "Reason for contact",
+      label_msg: "Message",
+      ph_fname: "Your first name",
+      ph_lname: "Your last name",
+      ph_email: "you@email.com",
+      ph_msg: "Tell me how I can help. The more detail, the better.",
+      reason_placeholder: "Select an option",
+      reasons: [
+        { value:"trabajo",      label:"💼 Job offer" },
+        { value:"freelance",    label:"🚀 Freelance project" },
+        { value:"colaboracion", label:"🤝 Collaboration" },
+        { value:"consulta",     label:"❓ Technical question" },
+        { value:"otro",         label:"💬 Other" }
+      ],
+      btn_send: "Send message",
+      disclaimer: "Your information is private. I only use it to respond to you.",
+
+      success_h3: "Message received!",
+      success_p: "I got your message. Check your inbox — you should have a response waiting.",
+      chip1: "Received instantly",
+      chip2: "Reply sent"
+    }
+  };
+
+  const helpIcons = [
+    "fas fa-chart-bar","fas fa-cogs","fas fa-mobile-alt",
+    "fas fa-plug","fab fa-python","fas fa-robot"
+  ];
+
+  let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
+
+  /* ── RENDER ── */
+  function render() {
+    const d = t[lang];
+
+    document.title = d.page_title;
+    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (d[k]) el.textContent = d[k];
+    });
+
+    document.getElementById('mainContent').innerHTML = `
 
       <!-- HEADER -->
       <header class="header" data-aos="fade-down">
-        <h1>Contacto</h1>
-        <p>Contame tu problema — trabajamos en la solución</p>
+        <h1>${d.header_h1}</h1>
+        <p>${d.header_sub}</p>
       </header>
 
       <div class="contact-wrap">
@@ -149,12 +299,12 @@
 
           <!-- INTRO -->
           <div class="c-card intro-card" data-aos="fade-right">
-            <p class="intro-eyebrow">👋 Hola, soy Raul</p>
-            <h2>¿Tenés un proceso<br>que <span>consume tiempo</span>?</h2>
-            <p>Trabajo con empresas y equipos que necesitan automatizar operaciones, tener mejor visibilidad de sus datos o construir herramientas que funcionen solas. Si encaja, lo hacemos.</p>
+            <p class="intro-eyebrow">${d.intro_eyebrow}</p>
+            <h2>${d.intro_h2a}<br>${d.intro_h2b}</h2>
+            <p>${d.intro_p}</p>
             <div class="avail-badge">
               <div class="avail-dot"></div>
-              <span class="avail-text">Disponible para proyectos — Miami, FL &amp; Remoto</span>
+              <span class="avail-text">${d.avail_text}</span>
             </div>
           </div>
 
@@ -163,33 +313,28 @@
             <div class="info-list">
               <div class="info-item">
                 <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                <div><div class="info-label">Email</div><div class="info-value"><a href="mailto:jaime.pivet@gmail.com">jaime.pivet@gmail.com</a></div></div>
+                <div><div class="info-label">${d.info_email_label}</div><div class="info-value"><a href="mailto:jaime.pivet@gmail.com">jaime.pivet@gmail.com</a></div></div>
               </div>
               <div class="info-item">
                 <div class="info-icon"><i class="fas fa-phone"></i></div>
-                <div><div class="info-label">Teléfono</div><div class="info-value">+1 (305) 504-6846</div></div>
+                <div><div class="info-label">${d.info_phone_label}</div><div class="info-value">+1 (305) 504-6846</div></div>
               </div>
               <div class="info-item">
                 <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <div><div class="info-label">Ubicación</div><div class="info-value">Miami, Florida — EE.UU.</div></div>
+                <div><div class="info-label">${d.info_loc_label}</div><div class="info-value">${d.info_loc_value}</div></div>
               </div>
               <div class="info-item">
                 <div class="info-icon"><i class="fas fa-clock"></i></div>
-                <div><div class="info-label">Disponibilidad</div><div class="info-value">Lun–Vie · 9:00–18:00 EST</div></div>
+                <div><div class="info-label">${d.info_avail_label}</div><div class="info-value">${d.info_avail_value}</div></div>
               </div>
             </div>
           </div>
 
           <!-- EN QUÉ PUEDO AYUDAR -->
           <div class="c-card" data-aos="fade-right" data-aos-delay="160">
-            <p class="help-title">¿En qué puedo ayudarte?</p>
+            <p class="help-title">${d.help_title}</p>
             <div class="help-grid">
-              <div class="help-item"><i class="fas fa-chart-bar"></i> Power BI & BI</div>
-              <div class="help-item"><i class="fas fa-cogs"></i> Automatización</div>
-              <div class="help-item"><i class="fas fa-mobile-alt"></i> Apps inventario</div>
-              <div class="help-item"><i class="fas fa-plug"></i> Integraciones</div>
-              <div class="help-item"><i class="fab fa-python"></i> Python & datos</div>
-              <div class="help-item"><i class="fas fa-robot"></i> IA aplicada</div>
+              ${d.help.map((item,i)=>`<div class="help-item"><i class="${helpIcons[i]}"></i> ${item}</div>`).join('')}
             </div>
           </div>
 
@@ -199,58 +344,54 @@
         <div class="form-card" data-aos="fade-left">
           <div id="formWrapper">
             <div class="form-header">
-              <h2>Escribime 👋</h2>
-              <p>Contame de qué se trata. Te respondo personalmente.</p>
+              <h2>${d.form_h2}</h2>
+              <p>${d.form_sub}</p>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" id="fname" placeholder="Tu nombre" required>
+                <label>${d.label_fname}</label>
+                <input type="text" id="fname" placeholder="${d.ph_fname}" required>
               </div>
               <div class="form-group">
-                <label>Apellido</label>
-                <input type="text" id="lname" placeholder="Tu apellido">
+                <label>${d.label_lname}</label>
+                <input type="text" id="lname" placeholder="${d.ph_lname}">
               </div>
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" id="email" placeholder="tu@email.com" required>
+              <label>${d.label_email}</label>
+              <input type="email" id="email" placeholder="${d.ph_email}" required>
             </div>
             <div class="form-group">
-              <label>Motivo de contacto</label>
+              <label>${d.label_reason}</label>
               <div class="select-wrapper">
                 <select id="reason">
-                  <option value="" disabled selected>Seleccioná una opción</option>
-                  <option value="trabajo">💼 Oferta de trabajo</option>
-                  <option value="freelance">🚀 Proyecto freelance</option>
-                  <option value="colaboracion">🤝 Colaboración</option>
-                  <option value="consulta">❓ Consulta técnica</option>
-                  <option value="otro">💬 Otro</option>
+                  <option value="" disabled selected>${d.reason_placeholder}</option>
+                  ${d.reasons.map(r=>`<option value="${r.value}">${r.label}</option>`).join('')}
                 </select>
               </div>
             </div>
             <div class="form-group">
-              <label>Mensaje</label>
-              <textarea id="message" placeholder="Contame en qué puedo ayudarte. Cuanto más detalle, mejor." required></textarea>
+              <label>${d.label_msg}</label>
+              <textarea id="message" placeholder="${d.ph_msg}" required></textarea>
             </div>
             <button class="btn-submit" id="submitBtn" type="button">
-              <span class="btn-text"><i class="fas fa-paper-plane"></i> Enviar mensaje</span>
+              <span class="btn-text"><i class="fas fa-paper-plane"></i> ${d.btn_send}</span>
               <div class="btn-spinner"></div>
             </button>
             <div class="form-disclaimer">
               <i class="fas fa-lock"></i>
-              Tu información es privada. Solo la uso para responderte.
+              ${d.disclaimer}
             </div>
           </div>
 
           <!-- SUCCESS -->
           <div class="success-screen" id="successScreen">
             <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
-            <h3>¡Mensaje recibido!</h3>
-            <p>Ya recibí tu mensaje. Revisá tu bandeja de entrada — deberías tener una respuesta esperándote.</p>
+            <h3>${d.success_h3}</h3>
+            <p>${d.success_p}</p>
             <div class="success-chips">
-              <div class="success-chip"><i class="fas fa-bolt"></i> Recibido al instante</div>
-              <div class="success-chip"><i class="fas fa-envelope"></i> Respuesta enviada</div>
+              <div class="success-chip"><i class="fas fa-bolt"></i> ${d.chip1}</div>
+              <div class="success-chip"><i class="fas fa-envelope"></i> ${d.chip2}</div>
             </div>
           </div>
         </div>
@@ -260,20 +401,21 @@
       <!-- MAPA -->
       <div style="border-radius:var(--radius-xl);overflow:hidden;height:300px;margin-top:28px;box-shadow:var(--shadow-md);" data-aos="fade-up">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" width="100%" height="100%" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
-      </div>
+      </div>`;
 
-    </main>
-  </div>
+    // Re-bind submit button after render
+    bindSubmit();
+    if (typeof AOS !== 'undefined') { AOS.init({ once:true, duration:600 }); AOS.refresh(); }
+  }
 
-  <footer><p>&copy; 2025 Raul Pivet — Logistics &amp; Tech Solutions · Miami, FL</p></footer>
+  /* ── WEBHOOK ── */
+  const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/gghchj2oc9cjxowdv4cvpxvfflymkomm';
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
-  <script>
-    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/gghchj2oc9cjxowdv4cvpxvfflymkomm';
-    const submitBtn    = document.getElementById('submitBtn');
-    const formWrapper  = document.getElementById('formWrapper');
+  function bindSubmit() {
+    const submitBtn     = document.getElementById('submitBtn');
+    const formWrapper   = document.getElementById('formWrapper');
     const successScreen = document.getElementById('successScreen');
+    if (!submitBtn) return;
 
     submitBtn.addEventListener('click', async () => {
       const fname   = document.getElementById('fname').value.trim();
@@ -299,23 +441,26 @@
 
       submitBtn.classList.add('loading'); submitBtn.disabled = true;
 
-      const reasonLabels = { trabajo:'Oferta de trabajo', freelance:'Proyecto freelance', colaboracion:'Colaboración', consulta:'Consulta técnica', otro:'Otro' };
+      const d = t[lang];
+      const reasonLabel = (d.reasons.find(r => r.value === reason) || {}).label || reason;
+      // Remove emoji prefix for cleaner webhook payload
+      const cleanReason = reasonLabel.replace(/^[\u{1F000}-\u{1FFFF}\u2600-\u27FF]\s*/u, '').trim();
 
       try {
         await fetch(MAKE_WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            nombre: `${fname} ${lname}`.trim(),
+            nombre:  `${fname} ${lname}`.trim(),
             email,
-            motivo: reasonLabels[reason] || reason,
+            motivo:  cleanReason,
             mensaje: message,
-            fecha: new Date().toLocaleString('es-AR', { timeZone: 'America/New_York' })
+            fecha:   new Date().toLocaleString('es-AR', { timeZone: 'America/New_York' })
           }),
           mode: 'no-cors'
         });
 
-        formWrapper.style.opacity = '0';
+        formWrapper.style.opacity   = '0';
         formWrapper.style.transform = 'translateY(-10px)';
         formWrapper.style.transition = 'all 0.3s ease';
         setTimeout(() => {
@@ -328,6 +473,20 @@
         alert('Problema de conexión. Escribime directo a jaime.pivet@gmail.com');
       }
     });
+  }
+
+  /* ── TOGGLE ── */
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('homeLang', lang);
+    render();
+  }
+
+  /* ── INIT ── */
+  document.addEventListener('DOMContentLoaded', () => {
+    render();
+    document.getElementById('languageToggle').addEventListener('click', toggleLang);
+  });
   </script>
 </body>
 </html>
