@@ -116,7 +116,6 @@
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
 
-  <!-- BOTÓN IDIOMA -->
   <div class="language-toggle" id="languageToggle" aria-label="Change language">
     <span class="language-flag" id="languageFlag">🇺🇸</span>
     <span class="language-text" id="languageText">English</span>
@@ -144,13 +143,11 @@
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://linkedin.com/in/raulpivet" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
 
-    <main class="content" id="mainContent">
-      <!-- Renderizado por JS -->
-    </main>
+    <main class="content" id="mainContent"></main>
   </div>
 
   <footer><p>&copy; 2025 Raul Pivet — Logistics &amp; Tech Solutions · Miami, FL</p></footer>
@@ -176,7 +173,7 @@
       info_avail_label: "Disponibilidad",
       info_avail_value: "Lun–Vie · 9:00–18:00 EST",
       help_title: "¿En qué puedo ayudarte?",
-      help: ["Power BI & BI","Automatización","Apps inventario","Integraciones","Python & datos","IA aplicada"],
+      help: ["Dashboards Power BI","Automatización","Apps de inventario","Integraciones","Python & datos","IA aplicada"],
       form_h2: "Escribime 👋",
       form_sub: "Contame de qué se trata. Te respondo personalmente.",
       label_fname: "Nombre", label_lname: "Apellido", label_email: "Email",
@@ -211,7 +208,7 @@
       info_loc_label: "Location", info_loc_value: "Miami, Florida — USA",
       info_avail_label: "Availability", info_avail_value: "Mon–Fri · 9:00–6:00 PM EST",
       help_title: "How can I help you?",
-      help: ["Power BI & BI","Automation","Inventory apps","Integrations","Python & data","Applied AI"],
+      help: ["Power BI Dashboards","Automation","Inventory apps","Integrations","Python & data","Applied AI"],
       form_h2: "Write to me 👋",
       form_sub: "Tell me what it's about. I'll respond personally.",
       label_fname: "First name", label_lname: "Last name", label_email: "Email",
@@ -313,7 +310,6 @@
     if (typeof AOS !== 'undefined') { AOS.init({ once:true, duration:600 }); AOS.refresh(); }
   }
 
-  /* ── WEBHOOK URL ACTUALIZADA ── */
   const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/94ifqcn35od88dxw78oa9gbe1whuqmo4';
 
   function bindSubmit() {
