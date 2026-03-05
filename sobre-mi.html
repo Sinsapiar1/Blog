@@ -36,7 +36,6 @@
     .pullquote { background:linear-gradient(135deg,rgba(255,107,0,0.06),rgba(255,149,0,0.03)); border-left:4px solid #FF6B00; border-radius:0 12px 12px 0; padding:24px 28px; margin:32px 0; }
     .pullquote p { font-size:1.1rem; font-style:italic; color:var(--text-primary); line-height:1.7; margin:0; }
     .pullquote cite { display:block; font-size:0.8rem; color:var(--text-tertiary); margin-top:10px; font-style:normal; font-weight:600; }
-    .timeline-section { margin:48px 0; }
     .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
     .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; margin-bottom:28px; }
     .timeline { position:relative; padding-left:32px; }
@@ -128,17 +127,73 @@
       p1: "Empecé mi carrera moviendo cajas. Literalmente. En una bodega minera en el norte de Chile, a más de 2.700 metros de altura, manejando inventarios de una operación que no descansa. Ahí entendí algo que no se aprende en ningún libro: <strong>los procesos manuales matan la productividad</strong> — y que siempre hay una forma más inteligente de hacer las cosas.",
       p2: "Con más de <strong>10 años de experiencia</strong> fui combinando mi expertise en gestión de bodegas con herramientas tecnológicas. Primero Excel avanzado y Google Suite. Después AppSheet, Python, Power Platform. Cada solución que construí nació de un problema real que yo mismo viví operacionalmente.",
       p3: "Hoy, desde Miami, gestiono datos de <strong>30+ almacenes globalmente</strong>, construyo pipelines que procesan información sin intervención humana y dashboards que se actualizan solos. Lo que antes eran horas de trabajo manual, hoy son segundos.",
-      badges: [{ icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },{ icon:"fas fa-language", text:"Español / English" },{ icon:"fas fa-briefcase", text:"Disponible para trabajar" },{ icon:"fas fa-globe", text:"Trabajo remoto" }],
+      badges: [
+        { icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },
+        { icon:"fas fa-language", text:"Español / English" },
+        { icon:"fas fa-briefcase", text:"Disponible para trabajar" },
+        { icon:"fas fa-globe", text:"Trabajo remoto" }
+      ],
       quote: "No automatizo por automatizar. Automatizo porque viví en carne propia lo que es trabajar 12 horas haciendo algo que una máquina puede hacer en 5 segundos.",
       quote_cite: "— Raul Pivet",
       timeline_eyebrow: "Trayectoria",
       timeline_title: "10 años construyendo soluciones reales",
       timeline: [
-        { title:"Asistente de Datos & Desarrollador de Soluciones", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Presente", desc:"Gestión de datos de inventario para 30+ almacenes globalmente. Pipeline completo: correo → Python → SQLite → GitHub Actions → Power Automate → 50 reportes distribuidos. Power BI con custom visuals TypeScript.", highlights:["Pipeline 50 reportes automáticos","Custom visuals TypeScript","Dataverse 62 días","Gemini AI integrado"], origin:null },
-        { title:"Coordinador Logístico", company:"Merflex International — Doral, FL", date:"May 2024 — Ene 2025", desc:"Operaciones internacionales China → Miami → Bogotá para productos Temu/Shein. Apps móviles para recepción y despacho con informes automáticos. Sistematización de procedimientos clave.", highlights:["Operaciones China-Miami-Bogotá","Apps móviles con reportes auto","Sistematización de procesos"], origin:null },
-        { title:"Jefe de Bodega", company:"Sodexo Energy & Resources — Minera Collahuasi, Iquique, Chile", date:"Oct 2022 — Jul 2023", desc:"Liderazgo equipo 20 personas turnos 7x7. AppSheet reemplazó registros en papel. Sistemas integrados Gmail + Google Sheets para alertas y reportes en tiempo real.", highlights:["Equipo 20 personas / 7x7","−30% errores de inventario","AppSheet en producción","+25% eficiencia operativa"], origin:null },
-        { title:"Supervisor y Administrativo de Bodegas", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Ago 2021 — Dic 2022", desc:"Supervisión en una de las minas de cobre más grandes del mundo. Análisis de datos para presentaciones de costos. Primeras automatizaciones Google Suite: apps móviles de inventario y alertas automáticas.", highlights:["Minera Escondida — mayor cobre mundo","Primeras automatizaciones Google","Apps móviles de inventario"], origin:null },
-        { title:"Ayudante de Bodega", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Ago 2016 — Nov 2019", desc:"Acá empezó todo. Recepción y despacho de mercadería, control de stock, orden FIFO/FEFO, conteos de inventario. Tres años aprendiendo operaciones desde adentro en una de las mineras de cobre más grandes de Chile.", highlights:[], origin:"🌱 Donde todo comenzó" }
+        {
+          title: "Asistente de Datos & Desarrollador de Soluciones",
+          company: "Encofrados J. Alsina S.A. — Hialeah, FL",
+          date: "Feb 2025 — Presente",
+          desc: "Gestión de datos de inventario para 30+ almacenes globalmente. Pipeline completo: correo → Python → SQLite → GitHub Actions → Power Automate → 50 reportes distribuidos. Power BI con custom visuals TypeScript.",
+          highlights: ["Pipeline 50 reportes automáticos","Custom visuals TypeScript","Dataverse 62 días","Gemini AI integrado"],
+          origin: null
+        },
+        {
+          title: "Coordinador Logístico",
+          company: "Merflex International — Doral, FL",
+          date: "May 2024 — Ene 2025",
+          desc: "Operaciones internacionales China → Miami → Bogotá para productos Temu/Shein. Apps móviles para recepción y despacho con informes automáticos. Sistematización de procedimientos clave.",
+          highlights: ["Operaciones China-Miami-Bogotá","Apps móviles con reportes auto","Sistematización de procesos"],
+          origin: null
+        },
+        {
+          title: "Jefe de Bodega",
+          company: "Sodexo Energy & Resources — Minera Collahuasi, Iquique, Chile",
+          date: "Oct 2022 — Jul 2023",
+          desc: "Liderazgo equipo 20 personas turnos 7x7. AppSheet reemplazó registros en papel. Sistemas integrados Gmail + Google Sheets para alertas y reportes en tiempo real.",
+          highlights: ["Equipo 20 personas / 7x7","−30% errores de inventario","AppSheet en producción","+25% eficiencia operativa"],
+          origin: null
+        },
+        {
+          title: "Supervisor de Bodegas",
+          company: "Sodexo — Minera Escondida, Antofagasta, Chile",
+          date: "Ago 2021 — Dic 2022",
+          desc: "Supervisión en una de las minas de cobre más grandes del mundo. Análisis de datos para presentaciones de costos. Primeras automatizaciones: apps móviles de inventario y alertas automáticas.",
+          highlights: ["Minera Escondida — mayor cobre mundo","Primeras automatizaciones","Apps móviles de inventario"],
+          origin: null
+        },
+        {
+          title: "Administrativo de Bodegas",
+          company: "Sodexo — Minera Escondida, Antofagasta, Chile",
+          date: "Nov 2019 — Ago 2021",
+          desc: "Gestión documental, control de stock y recepción de mercadería. Representación de la bodega en reuniones nacionales. Análisis de datos para presentaciones semanales de costos.",
+          highlights: ["Control de stock y documentación","Análisis de costos semanal","Sistemas ERP y Office"],
+          origin: null
+        },
+        {
+          title: "Administrativo de Bodega",
+          company: "Sodexo — Minera Zaldivar, Antofagasta, Chile",
+          date: "Ene 2018 — Nov 2019",
+          desc: "Administración de bodega en operación minera de turno continuo. Control de stock, recepción y despacho de mercadería. Coordinación con áreas internas y proveedores.",
+          highlights: ["Control de inventario","Gestión documental","ERP y Microsoft Office"],
+          origin: null
+        },
+        {
+          title: "Ayudante de Bodega",
+          company: "Sodexo — Minera Zaldivar, Antofagasta, Chile",
+          date: "Ago 2016 — Ene 2018",
+          desc: "El comienzo. Recepción y despacho de mercadería, control de stock FIFO/FEFO, conteos de inventario y mantenimiento del área según estándares de seguridad minera.",
+          highlights: [],
+          origin: "🌱 Donde todo comenzó"
+        }
       ],
       values_eyebrow: "Cómo trabajo",
       values_title: "Lo que me define profesionalmente",
@@ -172,17 +227,73 @@
       p1: "I started my career moving boxes. Literally. In a mining warehouse in northern Chile, at over 2,700 meters above sea level. That's where I learned something no book teaches: <strong>manual processes kill productivity</strong> — and there's always a smarter way to do things.",
       p2: "With <strong>10+ years of experience</strong>, I combined my warehouse management expertise with technology tools. First advanced Excel and Google Suite. Then AppSheet, Python, Power Platform. Every solution I built came from a real problem I experienced myself in the field.",
       p3: "Today, from Miami, I manage data across <strong>30+ global warehouses</strong>, building pipelines that process information without human intervention and dashboards that update themselves. What used to take hours of manual work now takes seconds.",
-      badges: [{ icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },{ icon:"fas fa-language", text:"Spanish / English" },{ icon:"fas fa-briefcase", text:"Available for work" },{ icon:"fas fa-globe", text:"Remote work" }],
+      badges: [
+        { icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },
+        { icon:"fas fa-language", text:"Spanish / English" },
+        { icon:"fas fa-briefcase", text:"Available for work" },
+        { icon:"fas fa-globe", text:"Remote work" }
+      ],
       quote: "I don't automate for the sake of it. I automate because I lived firsthand what it means to spend 12 hours doing something a machine can do in 5 seconds.",
       quote_cite: "— Raul Pivet",
       timeline_eyebrow: "Career",
       timeline_title: "10 years building real solutions",
       timeline: [
-        { title:"Data Entry & Solutions Developer", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Present", desc:"Managing inventory data for 30+ global warehouses. Full pipeline: email → Python → SQLite → GitHub Actions → Power Automate → 50 distributed reports. Power BI with TypeScript custom visuals.", highlights:["50 automated reports pipeline","TypeScript custom visuals","62-day Dataverse window","Gemini AI integration"], origin:null },
-        { title:"Logistics Coordinator", company:"Merflex International — Doral, FL", date:"May 2024 — Jan 2025", desc:"International operations China → Miami → Bogotá for Temu/Shein products. Mobile apps for receiving and dispatch with automatic reports. Systematized key procedures.", highlights:["China-Miami-Bogotá operations","Mobile apps with auto reports","Process systematization"], origin:null },
-        { title:"Warehouse Manager", company:"Sodexo Energy & Resources — Minera Collahuasi, Iquique, Chile", date:"Oct 2022 — Jul 2023", desc:"Led 20-person team on rotating 7x7 shifts. AppSheet replaced all paper records. Integrated Gmail + Google Sheets for automatic alerts and real-time reports.", highlights:["20-person team / 7x7 shifts","−30% inventory errors","AppSheet in production","+25% operational efficiency"], origin:null },
-        { title:"Warehouse Supervisor & Administrator", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Aug 2021 — Dec 2022", desc:"Operations at one of the world's largest copper mines. Data analysis for weekly cost presentations. First Google Suite automations: mobile inventory apps and automatic alerts.", highlights:["Minera Escondida — world's largest copper","First Google automations","Mobile inventory apps"], origin:null },
-        { title:"Warehouse Helper", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Aug 2016 — Nov 2019", desc:"Where it all began. Receiving and dispatching goods, stock control, FIFO/FEFO ordering, inventory counts. Three years learning operations from the inside at one of Chile's largest copper mines.", highlights:[], origin:"🌱 Where it all started" }
+        {
+          title: "Data Entry & Solutions Developer",
+          company: "Encofrados J. Alsina S.A. — Hialeah, FL",
+          date: "Feb 2025 — Present",
+          desc: "Managing inventory data for 30+ global warehouses. Full pipeline: email → Python → SQLite → GitHub Actions → Power Automate → 50 distributed reports. Power BI with TypeScript custom visuals.",
+          highlights: ["50 automated reports pipeline","TypeScript custom visuals","62-day Dataverse window","Gemini AI integration"],
+          origin: null
+        },
+        {
+          title: "Logistics Coordinator",
+          company: "Merflex International — Doral, FL",
+          date: "May 2024 — Jan 2025",
+          desc: "International operations China → Miami → Bogotá for Temu/Shein products. Mobile apps for receiving and dispatch with automatic reports. Systematized key procedures.",
+          highlights: ["China-Miami-Bogotá operations","Mobile apps with auto reports","Process systematization"],
+          origin: null
+        },
+        {
+          title: "Warehouse Manager",
+          company: "Sodexo Energy & Resources — Minera Collahuasi, Iquique, Chile",
+          date: "Oct 2022 — Jul 2023",
+          desc: "Led 20-person team on rotating 7x7 shifts. AppSheet replaced all paper records. Integrated Gmail + Google Sheets for automatic alerts and real-time reports.",
+          highlights: ["20-person team / 7x7 shifts","−30% inventory errors","AppSheet in production","+25% operational efficiency"],
+          origin: null
+        },
+        {
+          title: "Warehouse Supervisor",
+          company: "Sodexo — Minera Escondida, Antofagasta, Chile",
+          date: "Aug 2021 — Dec 2022",
+          desc: "Operations at one of the world's largest copper mines. Data analysis for weekly cost presentations. First automations: mobile inventory apps and automatic alerts.",
+          highlights: ["Minera Escondida — world's largest copper","First automations","Mobile inventory apps"],
+          origin: null
+        },
+        {
+          title: "Warehouse Administrator",
+          company: "Sodexo — Minera Escondida, Antofagasta, Chile",
+          date: "Nov 2019 — Aug 2021",
+          desc: "Document management, stock control and merchandise receiving. Represented the warehouse at national meetings. Data analysis for weekly cost presentations.",
+          highlights: ["Stock control & documentation","Weekly cost analysis","ERP & Office systems"],
+          origin: null
+        },
+        {
+          title: "Warehouse Administrator",
+          company: "Sodexo — Minera Zaldivar, Antofagasta, Chile",
+          date: "Jan 2018 — Nov 2019",
+          desc: "Warehouse administration in continuous-shift mining operation. Stock control, merchandise receiving/dispatch. Coordination with internal areas and suppliers.",
+          highlights: ["Inventory control","Document management","ERP & Microsoft Office"],
+          origin: null
+        },
+        {
+          title: "Warehouse Helper",
+          company: "Sodexo — Minera Zaldivar, Antofagasta, Chile",
+          date: "Aug 2016 — Jan 2018",
+          desc: "The beginning. Receiving and dispatching goods, FIFO/FEFO stock control, inventory counts and area maintenance following mining safety standards.",
+          highlights: [],
+          origin: "🌱 Where it all started"
+        }
       ],
       values_eyebrow: "How I work",
       values_title: "What defines me professionally",
@@ -232,10 +343,16 @@
         <p class="section-eyebrow">${d.timeline_eyebrow}</p>
         <h2 class="section-title">${d.timeline_title}</h2>
         <div class="timeline">${d.timeline.map((item,i)=>`
-          <div class="timeline-item" data-aos="fade-up" data-aos-delay="${i*60}">
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="${i*50}">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-              <div class="timeline-header"><div><div class="timeline-title">${item.title}</div><div class="timeline-company">${item.company}</div></div><span class="timeline-date">${item.date}</span></div>
+              <div class="timeline-header">
+                <div>
+                  <div class="timeline-title">${item.title}</div>
+                  <div class="timeline-company">${item.company}</div>
+                </div>
+                <span class="timeline-date">${item.date}</span>
+              </div>
               <p class="timeline-desc">${item.desc}</p>
               <div class="timeline-highlights">
                 ${item.highlights.map(h=>`<span class="timeline-highlight">✓ ${h}</span>`).join('')}
