@@ -194,6 +194,15 @@
   const helpIcons = ["fas fa-chart-bar","fas fa-cogs","fas fa-mobile-alt","fas fa-plug","fab fa-python","fas fa-robot"];
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
+  // Sanitiza el mensaje eliminando comillas dobles para evitar que rompan el JSON en Make/Gemini
+  function sanitizeMessage(text) {
+    return text
+      .replace(/\u201c|\u201d|\u201e|\u201f/g, "'") // comillas tipográficas → simple
+      .replace(/"/g, "'")                            // comillas dobles → simple
+      .replace(/\\/g, ' ')                           // backslashes → espacio
+      .trim();
+  }
+
   function render() {
     const d = t[lang];
     document.title = d.page_title;
@@ -296,6 +305,7 @@
       const d = t[lang];
       const reasonLabel = (d.reasons.find(r => r.value === reason) || {}).label || reason;
       const cleanReason = reasonLabel.replace(/^[\u{1F000}-\u{1FFFF}\u2600-\u27FF]\s*/u, '').trim();
+      const cleanMessage = sanitizeMessage(message);
       try {
         await fetch(MAKE_WEBHOOK_URL, {
           method: 'POST',
@@ -304,7 +314,7 @@
             nombre:  `${fname} ${lname}`.trim(),
             email,
             motivo:  cleanReason,
-            mensaje: message,
+            mensaje: cleanMessage,
             fecha:   new Date().toLocaleString('es-AR', { timeZone: 'America/New_York' })
           }),
           mode: 'no-cors'
