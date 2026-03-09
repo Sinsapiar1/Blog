@@ -13,36 +13,23 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── LANGUAGE TOGGLE ── */
     .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
     .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
     .language-flag { font-size:1.25rem; }
     .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
     @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
-
-    /* ── LAYOUT ── */
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.65fr; gap: 28px; align-items: start; }
     @media(max-width:960px){ .contact-wrap { grid-template-columns:1fr; } }
-
-    /* ── PANEL IZQUIERDO ── */
     .contact-panel { display: flex; flex-direction: column; gap: 16px; }
-
-    /* ── CARD BASE ── */
     .c-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 28px; }
-
-    /* ── INTRO CARD ── */
     .intro-card .intro-eyebrow { font-size: 11px; font-weight: 800; color: #FF6B00; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; }
     .intro-card h2 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.25; }
     .intro-card h2 span { background: linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .intro-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
-
-    /* ── DISPONIBLE BADGE ── */
     .avail-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(52,199,89,0.08); border: 1px solid rgba(52,199,89,0.25); border-radius: 20px; padding: 7px 14px; }
     .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #34C759; box-shadow: 0 0 0 3px rgba(52,199,89,0.2); animation: avail-pulse 2s infinite; flex-shrink: 0; }
     @keyframes avail-pulse { 0%,100%{ box-shadow:0 0 0 3px rgba(52,199,89,0.2); } 50%{ box-shadow:0 0 0 6px rgba(52,199,89,0.05); } }
     .avail-text { font-size: 0.8rem; font-weight: 700; color: #34C759; }
-
-    /* ── INFO ITEMS ── */
     .info-list { display: flex; flex-direction: column; gap: 0; }
     .info-item { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border-color); }
     .info-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -51,15 +38,11 @@
     .info-value { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
     .info-value a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
     .info-value a:hover { color: #FF6B00; }
-
-    /* ── WHAT I CAN HELP ── */
     .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .help-item { display: flex; align-items: center; gap: 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px 12px; font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); transition: all 0.2s; }
     .help-item:hover { border-color: rgba(255,107,0,0.3); color: var(--text-primary); }
     .help-item i { color: #FF6B00; font-size: 0.8rem; width: 14px; text-align: center; }
     .help-title { font-size: 11px; font-weight: 800; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-
-    /* ── FORMULARIO ── */
     .form-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 36px; position: relative; overflow: hidden; }
     .form-card::before { content:''; position:absolute; top:-80px; right:-80px; width:240px; height:240px; background:radial-gradient(circle,rgba(255,107,0,0.06) 0%,transparent 70%); pointer-events:none; }
     .form-header { margin-bottom: 28px; }
@@ -69,19 +52,12 @@
     @media(max-width:480px){ .form-row { grid-template-columns:1fr; } }
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .form-group input,
-    .form-group select,
-    .form-group textarea { width: 100%; background: var(--bg-secondary); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 13px 16px; font-size: 0.9375rem; color: var(--text-primary); font-family: inherit; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s; outline: none; appearance: none; }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: #FF6B00; box-shadow: 0 0 0 3px rgba(255,107,0,0.1); background: var(--bg-primary); }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--text-tertiary); }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--bg-secondary); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 13px 16px; font-size: 0.9375rem; color: var(--text-primary); font-family: inherit; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s; outline: none; appearance: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #FF6B00; box-shadow: 0 0 0 3px rgba(255,107,0,0.1); background: var(--bg-primary); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-tertiary); }
     .form-group textarea { resize: vertical; min-height: 130px; }
     .select-wrapper { position: relative; }
     .select-wrapper::after { content:'\f078'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--text-tertiary); pointer-events:none; font-size:0.7rem; }
-
-    /* ── SUBMIT BTN ── */
     .btn-submit { width: 100%; padding: 15px 24px; background: linear-gradient(135deg,#FF6B00,#FF9500); color: white; border: none; border-radius: var(--radius-full); font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.22s; box-shadow: 0 6px 20px rgba(255,107,0,0.35); letter-spacing: 0.01em; position: relative; overflow: hidden; }
     .btn-submit::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent); opacity:0; transition:opacity 0.18s; }
     .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,107,0,0.45); }
@@ -92,12 +68,8 @@
     @keyframes spin { to { transform:rotate(360deg); } }
     .btn-submit.loading .btn-spinner { display:block; }
     .btn-submit.loading .btn-text { display:none; }
-
-    /* ── DISCLAIMER ── */
     .form-disclaimer { display: flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--text-tertiary); font-size: 0.75rem; }
     .form-disclaimer i { color: #FF6B00; font-size: 0.8rem; flex-shrink: 0; }
-
-    /* ── SUCCESS ── */
     .success-screen { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 48px 28px; min-height: 400px; }
     .success-screen.visible { display:flex; }
     .success-icon-wrap { width:80px; height:80px; background:linear-gradient(135deg,#34C759,#30D158); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:white; margin-bottom:24px; box-shadow:0 8px 28px rgba(52,199,89,0.4); animation:successPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
@@ -115,16 +87,13 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
-
   <div class="language-toggle" id="languageToggle" aria-label="Change language">
     <span class="language-flag" id="languageFlag">🇺🇸</span>
     <span class="language-text" id="languageText">English</span>
   </div>
-
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
-
   <div class="container">
     <aside class="sidebar" id="sidebar">
       <div class="profile">
@@ -146,12 +115,9 @@
         <a href="https://linkedin.com/in/raulpivet" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
-
     <main class="content" id="mainContent"></main>
   </div>
-
   <footer><p>&copy; 2025 Raul Pivet — Logistics &amp; Tech Solutions · Miami, FL</p></footer>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
@@ -166,16 +132,12 @@
       intro_h2b: "que <span>consume tiempo</span>?",
       intro_p: "Trabajo con empresas y equipos que necesitan automatizar operaciones, tener mejor visibilidad de sus datos o construir herramientas que funcionen solas. Si encaja, lo hacemos.",
       avail_text: "Disponible para proyectos — Miami, FL & Remoto",
-      info_email_label: "Email",
-      info_phone_label: "Teléfono",
-      info_loc_label: "Ubicación",
-      info_loc_value: "Miami, Florida — EE.UU.",
-      info_avail_label: "Disponibilidad",
-      info_avail_value: "Lun–Vie · 9:00–18:00 EST",
+      info_email_label: "Email", info_phone_label: "Teléfono",
+      info_loc_label: "Ubicación", info_loc_value: "Miami, Florida — EE.UU.",
+      info_avail_label: "Disponibilidad", info_avail_value: "Lun–Vie · 9:00–18:00 EST",
       help_title: "¿En qué puedo ayudarte?",
       help: ["Dashboards Power BI","Automatización","Apps de inventario","Integraciones","Python & datos","IA aplicada"],
-      form_h2: "Escribime 👋",
-      form_sub: "Contame de qué se trata. Te respondo personalmente.",
+      form_h2: "Escribime 👋", form_sub: "Contame de qué se trata. Te respondo personalmente.",
       label_fname: "Nombre", label_lname: "Apellido", label_email: "Email",
       label_reason: "Motivo de contacto", label_msg: "Mensaje",
       ph_fname: "Tu nombre", ph_lname: "Tu apellido", ph_email: "tu@email.com",
@@ -197,8 +159,7 @@
     en: {
       nav_home:"Home", nav_about:"About Me", nav_projects:"Projects", nav_contact:"Contact",
       page_title: "Contact - Raul Pivet",
-      header_h1: "Contact",
-      header_sub: "Tell me your problem — we'll work on the solution",
+      header_h1: "Contact", header_sub: "Tell me your problem — we'll work on the solution",
       intro_eyebrow: "👋 Hi, I'm Raul",
       intro_h2a: "Got a process",
       intro_h2b: "that <span>eats up your time</span>?",
@@ -209,8 +170,7 @@
       info_avail_label: "Availability", info_avail_value: "Mon–Fri · 9:00–6:00 PM EST",
       help_title: "How can I help you?",
       help: ["Power BI Dashboards","Automation","Inventory apps","Integrations","Python & data","Applied AI"],
-      form_h2: "Write to me 👋",
-      form_sub: "Tell me what it's about. I'll respond personally.",
+      form_h2: "Write to me 👋", form_sub: "Tell me what it's about. I'll respond personally.",
       label_fname: "First name", label_lname: "Last name", label_email: "Email",
       label_reason: "Reason for contact", label_msg: "Message",
       ph_fname: "Your first name", ph_lname: "Your last name", ph_email: "you@email.com",
@@ -240,11 +200,9 @@
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
     document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
-
     document.getElementById('mainContent').innerHTML = `
       <header class="header" data-aos="fade-down">
-        <h1>${d.header_h1}</h1>
-        <p>${d.header_sub}</p>
+        <h1>${d.header_h1}</h1><p>${d.header_sub}</p>
       </header>
       <div class="contact-wrap">
         <div class="contact-panel">
@@ -293,8 +251,7 @@
           </div>
           <div class="success-screen" id="successScreen">
             <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
-            <h3>${d.success_h3}</h3>
-            <p>${d.success_p}</p>
+            <h3>${d.success_h3}</h3><p>${d.success_p}</p>
             <div class="success-chips">
               <div class="success-chip"><i class="fas fa-bolt"></i> ${d.chip1}</div>
               <div class="success-chip"><i class="fas fa-envelope"></i> ${d.chip2}</div>
@@ -305,26 +262,23 @@
       <div style="border-radius:var(--radius-xl);overflow:hidden;height:300px;margin-top:28px;box-shadow:var(--shadow-md);" data-aos="fade-up">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" width="100%" height="100%" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
       </div>`;
-
     bindSubmit();
     if (typeof AOS !== 'undefined') { AOS.init({ once:true, duration:600 }); AOS.refresh(); }
   }
 
-  const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/zelazptm081nindtrqme3k4c893rbhhg';
+  const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/or4hsfd6ikn4bnby7xcomq44afvin7jf';
 
   function bindSubmit() {
     const submitBtn     = document.getElementById('submitBtn');
     const formWrapper   = document.getElementById('formWrapper');
     const successScreen = document.getElementById('successScreen');
     if (!submitBtn) return;
-
     submitBtn.addEventListener('click', async () => {
       const fname   = document.getElementById('fname').value.trim();
       const lname   = document.getElementById('lname').value.trim();
       const email   = document.getElementById('email').value.trim();
       const reason  = document.getElementById('reason').value;
       const message = document.getElementById('message').value.trim();
-
       let valid = true;
       [['fname',fname],['email',email],['message',message]].forEach(([id,val]) => {
         const el = document.getElementById(id);
@@ -338,13 +292,10 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         const el = document.getElementById('email'); el.style.borderColor='#FF3B30'; el.focus(); return;
       }
-
       submitBtn.classList.add('loading'); submitBtn.disabled = true;
-
       const d = t[lang];
       const reasonLabel = (d.reasons.find(r => r.value === reason) || {}).label || reason;
       const cleanReason = reasonLabel.replace(/^[\u{1F000}-\u{1FFFF}\u2600-\u27FF]\s*/u, '').trim();
-
       try {
         await fetch(MAKE_WEBHOOK_URL, {
           method: 'POST',
@@ -358,15 +309,13 @@
           }),
           mode: 'no-cors'
         });
-
-        formWrapper.style.opacity   = '0';
+        formWrapper.style.opacity = '0';
         formWrapper.style.transform = 'translateY(-10px)';
         formWrapper.style.transition = 'all 0.3s ease';
         setTimeout(() => {
           formWrapper.style.display = 'none';
           successScreen.classList.add('visible');
         }, 300);
-
       } catch(err) {
         submitBtn.classList.remove('loading'); submitBtn.disabled = false;
         alert('Problema de conexión. Escribime directo a jaime.pivet@gmail.com');
