@@ -62,99 +62,276 @@
     .timeline-highlight { font-size:10px; font-weight:700; color:#34C759; background:rgba(52,199,89,0.1); padding:3px 9px; border-radius:8px; }
     .timeline-origin { font-size:10px; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.1); padding:3px 9px; border-radius:8px; }
 
-    /* ── VALUE CARDS — rediseño horizontal con número ── */
+    /* ── VALUE CARDS ── */
     .values-section { margin:48px 0; }
     .values-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
-    .value-card {
-      background:var(--glass-bg);
-      border:1px solid var(--border-color);
-      border-radius:16px;
-      padding:28px 24px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      transition:all 0.25s;
-      position:relative;
-      overflow:hidden;
-    }
-    .value-card::before {
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg,rgba(255,107,0,0.04),transparent);
-      opacity:0;
-      transition:opacity 0.25s;
-    }
+    .value-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:28px 24px; display:flex; flex-direction:column; gap:14px; transition:all 0.25s; position:relative; overflow:hidden; }
+    .value-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,107,0,0.04),transparent); opacity:0; transition:opacity 0.25s; }
     .value-card:hover { border-color:rgba(255,107,0,0.35); transform:translateY(-4px); box-shadow:0 14px 36px rgba(255,107,0,0.1); }
     .value-card:hover::before { opacity:1; }
     .value-card-top { display:flex; align-items:center; gap:14px; }
-    .value-icon {
-      width:46px; height:46px;
-      background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08));
-      border-radius:12px;
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.25rem; color:#FF6B00;
-      flex-shrink:0;
-    }
-    .value-number {
-      font-size:2.2rem;
-      font-weight:800;
-      color:rgba(255,107,0,0.12);
-      line-height:1;
-      letter-spacing:-2px;
-      margin-left:auto;
-    }
+    .value-icon { width:46px; height:46px; background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; color:#FF6B00; flex-shrink:0; }
+    .value-number { font-size:2.2rem; font-weight:800; color:rgba(255,107,0,0.12); line-height:1; letter-spacing:-2px; margin-left:auto; }
     .value-title { font-size:0.9375rem; font-weight:700; color:var(--text-primary); line-height:1.3; }
-    .value-guarantee {
-      font-size:11px;
-      font-weight:700;
-      color:#FF6B00;
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-      background:rgba(255,107,0,0.08);
-      padding:3px 10px;
-      border-radius:10px;
-      width:fit-content;
-    }
+    .value-guarantee { font-size:11px; font-weight:700; color:#FF6B00; text-transform:uppercase; letter-spacing:0.08em; background:rgba(255,107,0,0.08); padding:3px 10px; border-radius:10px; width:fit-content; }
     .value-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.65; }
 
-    /* ── PERSONAL CARDS — rediseño con más presencia visual ── */
-    .personal-section { margin:48px 0; }
-    .personal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
-    .personal-card {
-      background:var(--glass-bg);
-      border:1px solid var(--border-color);
-      border-radius:16px;
-      padding:28px 22px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      transition:all 0.25s;
-      position:relative;
-      overflow:hidden;
+    /* ══════════════════════════════════════════════════════════
+       SECCIÓN PERSONAL — BITÁCORA DE EXPEDICIÓN
+       Diseño: cada card es una entrada de diario de campo
+       con coordenadas, número de entrada, frase inspiracional
+       y efecto de reveal al hover.
+    ══════════════════════════════════════════════════════════ */
+    .personal-section {
+      margin: 56px 0;
+      position: relative;
     }
-    .personal-card::after {
-      content:'';
-      position:absolute;
-      bottom:0; left:0; right:0;
-      height:2px;
-      background:linear-gradient(90deg,#FF6B00,#FF9500);
-      transform:scaleX(0);
-      transform-origin:left;
-      transition:transform 0.3s ease;
+
+    /* Fondo topográfico sutil — líneas SVG de contorno */
+    .personal-section::before {
+      content: '';
+      position: absolute;
+      inset: -20px -40px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cellipse cx='300' cy='300' rx='280' ry='180' fill='none' stroke='%23FF6B00' stroke-width='0.4' opacity='0.06'/%3E%3Cellipse cx='300' cy='300' rx='240' ry='150' fill='none' stroke='%23FF6B00' stroke-width='0.4' opacity='0.06'/%3E%3Cellipse cx='300' cy='300' rx='200' ry='120' fill='none' stroke='%23FF6B00' stroke-width='0.4' opacity='0.06'/%3E%3Cellipse cx='300' cy='300' rx='160' ry='90' fill='none' stroke='%23FF6B00' stroke-width='0.4' opacity='0.05'/%3E%3Cellipse cx='300' cy='300' rx='120' ry='60' fill='none' stroke='%23FF6B00' stroke-width='0.4' opacity='0.05'/%3E%3Cellipse cx='300' cy='300' rx='80' ry='30' fill='none' stroke='%23FF6B00' stroke-width='0.4' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 600px 600px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.8;
     }
-    .personal-card:hover { border-color:rgba(255,107,0,0.25); transform:translateY(-4px); box-shadow:0 12px 32px rgba(255,107,0,0.08); }
-    .personal-card:hover::after { transform:scaleX(1); }
-    .personal-icon-wrap {
-      width:48px; height:48px;
-      background:linear-gradient(135deg,#FF6B00,#FF9500);
-      border-radius:13px;
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.1rem; color:white;
-      box-shadow:0 6px 18px rgba(255,107,0,0.3);
+
+    .personal-section > * { position: relative; z-index: 1; }
+
+    /* Header de sección con línea decorativa */
+    .personal-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    .personal-title { font-size:1rem; font-weight:700; color:var(--text-primary); line-height:1.25; }
-    .personal-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
+
+    .personal-header-text {}
+
+    .personal-header-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,107,0,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      white-space: nowrap;
+    }
+
+    .personal-header-line::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: rgba(255,107,0,0.3);
+    }
+
+    /* Grid — 2 cols en desktop, 1 en mobile */
+    .personal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media(max-width: 700px) {
+      .personal-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── La card ── */
+    .exp-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: default;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      min-height: 240px;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(255,107,0,0.4);
+      box-shadow: 0 20px 60px rgba(255,107,0,0.12), 0 4px 16px rgba(0,0,0,0.2);
+      transform: translateY(-6px);
+    }
+
+    /* Capa frontal — siempre visible */
+    .exp-card-front {
+      padding: 28px 26px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      height: 100%;
+      transition: opacity 0.35s ease;
+    }
+
+    .exp-card:hover .exp-card-front {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Número de entrada estilo bitácora */
+    .exp-entry-num {
+      font-size: 10px;
+      font-weight: 800;
+      color: rgba(255,107,0,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .exp-entry-num::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,107,0,0.15);
+    }
+
+    /* Icono grande centrado */
+    .exp-icon-big {
+      width: 58px;
+      height: 58px;
+      background: linear-gradient(135deg, #FF6B00, #FF9500);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      box-shadow: 0 8px 24px rgba(255,107,0,0.35);
+      margin-bottom: 18px;
+    }
+
+    .exp-title-big {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Coordenadas */
+    .exp-coords {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,107,0,0.55);
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.05em;
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    /* Frase aspiracional — se muestra en el frente como preview */
+    .exp-motto-preview {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      font-style: italic;
+      line-height: 1.5;
+      margin-top: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── Capa de reveal — aparece al hover ── */
+    .exp-card-reveal {
+      position: absolute;
+      inset: 0;
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(135deg,
+        rgba(255,107,0,0.95) 0%,
+        rgba(255,80,0,0.98) 50%,
+        rgba(200,50,0,0.95) 100%
+      );
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      border-radius: 18px;
+    }
+
+    .exp-card:hover .exp-card-reveal {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .exp-reveal-tag {
+      font-size: 9px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 6px;
+    }
+
+    .exp-reveal-motto {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.5;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .exp-reveal-desc {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    .exp-reveal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .exp-reveal-coords {
+      font-family: 'Courier New', monospace;
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    .exp-reveal-icon {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── Aviso mobile: hover no disponible ── */
+    @media (hover: none) {
+      .exp-card-front { opacity: 1 !important; }
+      .exp-card-reveal {
+        position: relative;
+        opacity: 1;
+        transform: none;
+        border-radius: 0 0 18px 18px;
+        inset: unset;
+        margin-top: -4px;
+      }
+      .exp-card { min-height: unset; }
+    }
 
     /* ── CTA ── */
     .about-cta { margin:48px 0; background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:40px; text-align:center; }
@@ -214,7 +391,6 @@
       h1: "Diez años resolviendo",
       h1span: "problemas reales en logística y tecnología",
       role: "Logistics Operations Specialist & Business Solutions Developer",
-      /* ── HERO: el foco está en el valor para el cliente, no en la autobiografía ── */
       p1: "Hay algo que separa a un técnico de alguien que realmente entiende un negocio: haber vivido operacionalmente el problema. Más de <strong>10 años en operaciones mineras</strong> — desde ayudante de bodega hasta coordinador logístico — significan que cuando alguien describe un proceso manual tedioso, no hace falta explicarlo dos veces.",
       p2: "Esa experiencia operativa, combinada con <strong>Power Platform, Python, React y Firebase</strong>, es lo que permite construir soluciones que realmente se usan: no solo técnicamente correctas, sino pensadas para el operador que trabaja bajo presión y para el directivo que necesita visibilidad de datos en tiempo real.",
       p3: "El resultado es concreto: <strong>30+ almacenes con datos centralizados</strong>, pipelines que distribuyen 50 reportes automáticamente sin intervención humana, y aplicaciones web que reemplazan procesos en papel desde el primer día.",
@@ -224,7 +400,6 @@
         { icon:"fas fa-briefcase", text:"Disponible para trabajar" },
         { icon:"fas fa-globe", text:"Trabajo remoto" }
       ],
-      /* ── QUOTE: esta se queda, es auténtica y en primera persona tiene sentido ── */
       quote: "No automatizo por automatizar. Automatizo porque sé exactamente lo que es trabajar 12 horas haciendo algo que una máquina puede hacer en 5 segundos.",
       quote_cite: "— Raul Pivet",
       timeline_eyebrow: "Trayectoria",
@@ -238,64 +413,58 @@
         { title:"Administrativo de Bodega", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Ene 2018 — Nov 2019", desc:"Administración de bodega en operación minera de turno continuo. Control de stock, recepción y despacho de mercadería. Coordinación con áreas internas y proveedores.", highlights:["Control de inventario","Gestión documental","ERP y Microsoft Office"], origin:null },
         { title:"Ayudante de Bodega", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Ago 2016 — Ene 2018", desc:"El punto de partida. Recepción y despacho de mercadería, control de stock FIFO/FEFO, conteos de inventario y mantenimiento del área según estándares de seguridad minera.", highlights:[], origin:"🌱 Donde todo comenzó" }
       ],
-      /* ── VALUES: reformulados como garantías para el cliente ── */
       values_eyebrow: "Cómo trabajo",
       values_title: "Lo que podés esperar de cada proyecto",
       values: [
-        {
-          icon:"fas fa-search",
-          num:"01",
-          guarantee:"Diagnóstico primero",
-          title:"El problema se entiende antes de escribir una línea de código",
-          desc:"Cada proceso tiene historia y contexto. Antes de proponer soluciones, se mapea el flujo completo — lo que funciona, lo que falla y por qué. El resultado es más preciso y dura más."
-        },
-        {
-          icon:"fas fa-cogs",
-          num:"02",
-          guarantee:"Funciona solo",
-          title:"Las soluciones no necesitan que alguien las mantenga activas",
-          desc:"Si requiere intervención humana constante, no es una solución. Los sistemas se diseñan con ventanas temporales, limpieza automática y alertas de fallo — para que trabajen sin que nadie tenga que recordar activarlos."
-        },
-        {
-          icon:"fas fa-users",
-          num:"03",
-          guarantee:"Usable por todos",
-          title:"Funciona para el operador y para el directivo al mismo tiempo",
-          desc:"Una herramienta que solo usa quien la programó no sirve. Cada interfaz se diseña para ser intuitiva en operación bajo presión y útil para quien necesita tomar decisiones con datos."
-        },
-        {
-          icon:"fas fa-chart-line",
-          num:"04",
-          guarantee:"Impacto medible",
-          title:"Los resultados se miden en números, no en promesas",
-          desc:"−30% errores de inventario, +25% eficiencia operativa, 50 reportes distribuidos automáticamente. Cada proyecto define métricas de éxito desde el inicio para que el impacto sea verificable."
-        }
+        { icon:"fas fa-search", num:"01", guarantee:"Diagnóstico primero", title:"El problema se entiende antes de escribir una línea de código", desc:"Cada proceso tiene historia y contexto. Antes de proponer soluciones, se mapea el flujo completo — lo que funciona, lo que falla y por qué. El resultado es más preciso y dura más." },
+        { icon:"fas fa-cogs", num:"02", guarantee:"Funciona solo", title:"Las soluciones no necesitan que alguien las mantenga activas", desc:"Si requiere intervención humana constante, no es una solución. Los sistemas se diseñan con ventanas temporales, limpieza automática y alertas de fallo." },
+        { icon:"fas fa-users", num:"03", guarantee:"Usable por todos", title:"Funciona para el operador y para el directivo al mismo tiempo", desc:"Una herramienta que solo usa quien la programó no sirve. Cada interfaz se diseña para ser intuitiva bajo presión y útil para quien toma decisiones con datos." },
+        { icon:"fas fa-chart-line", num:"04", guarantee:"Impacto medible", title:"Los resultados se miden en números, no en promesas", desc:"−30% errores de inventario, +25% eficiencia operativa, 50 reportes distribuidos automáticamente. Cada proyecto define métricas de éxito desde el inicio." }
       ],
-      /* ── PERSONAL: textos más ricos, más conectados con el perfil profesional ── */
+
+      /* ── SECCIÓN PERSONAL — BITÁCORA ── */
       personal_eyebrow: "Fuera del trabajo",
-      personal_title: "El resto de la historia",
+      personal_title: "Lo que no está en el CV",
+      personal_subtitle: "Pasá el cursor para leer la entrada completa",
       personal: [
         {
-          icon:"fas fa-running",
-          title:"Corredor de distancia",
-          desc:"Media y larga distancia, en entrenamiento y en competencia. La disciplina que exige preparar una carrera — constancia, planificación, tolerancia al error — es exactamente la misma que requiere construir un sistema que funcione a largo plazo."
+          icon: "fas fa-running",
+          entry: "ENTRADA 001",
+          title: "Corredor de larga distancia",
+          coords: "25°46'N 80°11'W — Cutler Bay, FL",
+          motto: "La distancia no se corre con las piernas. Se corre con la cabeza.",
+          desc: "Cada kilómetro de entrenamiento es una negociación con el límite propio. Esa capacidad de sostener el esfuerzo cuando el cerebro pide parar — la misma que hace falta para depurar un pipeline a las 2am o rediseñar un proceso desde cero. El running no es un hobby, es un método.",
+          tag: "Disciplina & método"
         },
         {
-          icon:"fas fa-mountain",
-          title:"Explorador",
-          desc:"De la Puna chilena a Yucatán, México. Cada viaje empieza con logística real: rutas, tiempos, recursos, contingencias. El mismo cerebro que organiza almacenes planificó cada kilómetro."
+          icon: "fas fa-mountain",
+          entry: "ENTRADA 002",
+          title: "Explorador con itinerario",
+          coords: "21°29'N 87°12'W — Yucatán, México",
+          motto: "Planificar bien es llegar. Improvisar bien es sobrevivir.",
+          desc: "De la Puna chilena a los cenotes de Yucatán. Cada destino arranca con logística real: rutas, tiempos de traslado, contingencias, presupuesto. Los mismos principios que ordenan 30 almacenes también organizan una expedición de 3000 km. El contexto cambia. El método no.",
+          tag: "Logística & exploración"
         },
         {
-          icon:"fas fa-camera",
-          title:"Fotografía",
-          desc:"Capturar el momento exacto antes de que desaparezca entrena algo valioso: ver el detalle que otros no ven. Esa misma atención es la que encuentra el error en un dataset o el cuello de botella en un proceso."
+          icon: "fas fa-camera",
+          entry: "ENTRADA 003",
+          title: "Fotógrafo de momentos únicos",
+          coords: "23°38'S 70°23'W — Antofagasta, Chile",
+          motto: "Ver lo que otros no ven no es talento. Es entrenamiento.",
+          desc: "Una fotografía bien tomada y un buen análisis de datos tienen algo en común: ambos requieren encontrar la señal dentro del ruido. Encuadrar el momento exacto — descartando todo lo que sobra — es la misma habilidad que permite leer un dataset y señalar exactamente dónde está el problema.",
+          tag: "Atención & detalle"
         },
         {
-          icon:"fas fa-shield-alt",
-          title:"Ciberseguridad & OSINT",
-          desc:"Certificación en ciberseguridad (2025). Interés por la seguridad ofensiva y el análisis de inteligencia abierta — disciplinas que comparten con la logística una cosa: siempre hay más información de la que parece."
+          icon: "fas fa-shield-alt",
+          entry: "ENTRADA 004",
+          title: "Estudiante de ciberseguridad",
+          coords: "25°78'N 80°19'W — Miami, FL",
+          motto: "Entender cómo se rompen los sistemas es la única forma de construirlos bien.",
+          desc: "Certificación en ciberseguridad (2025). La seguridad ofensiva y el análisis OSINT no son un desvío — son una extensión natural del mismo pensamiento sistémico. Saber cómo falla algo es el primer paso para que no falle. Aplica en código, en procesos y en infraestructura.",
+          tag: "Seguridad & sistemas"
         }
       ],
+
       cta_title: "¿Tiene sentido trabajar juntos?",
       cta_desc: "Si tu equipo pierde tiempo en procesos manuales o necesitás visibilidad real de tus datos — eso se puede resolver. Me adapto a tu stack, industria y presupuesto.",
       cta_btn1: "Hablemos", cta_btn2: "Ver CV completo"
@@ -334,59 +503,55 @@
       values_eyebrow: "How I work",
       values_title: "What you can expect from every project",
       values: [
-        {
-          icon:"fas fa-search",
-          num:"01",
-          guarantee:"Diagnosis first",
-          title:"The problem gets understood before a single line of code is written",
-          desc:"Every process has history and context. Before proposing solutions, the full flow gets mapped — what works, what fails and why. The result is more accurate and lasts longer."
-        },
-        {
-          icon:"fas fa-cogs",
-          num:"02",
-          guarantee:"Runs on its own",
-          title:"Solutions don't need someone keeping them active",
-          desc:"If it requires constant human intervention, it's not a solution. Systems are designed with rolling windows, automatic cleanup and failure alerts — so they work without anyone having to remember to activate them."
-        },
-        {
-          icon:"fas fa-users",
-          num:"03",
-          guarantee:"Usable by everyone",
-          title:"Works for the operator and the executive at the same time",
-          desc:"A tool only used by the person who built it is useless. Every interface is designed to be intuitive under operational pressure and useful for those who need to make data-driven decisions."
-        },
-        {
-          icon:"fas fa-chart-line",
-          num:"04",
-          guarantee:"Measurable impact",
-          title:"Results are measured in numbers, not promises",
-          desc:"−30% inventory errors, +25% operational efficiency, 50 reports distributed automatically. Every project defines success metrics from the start so the impact is verifiable."
-        }
+        { icon:"fas fa-search", num:"01", guarantee:"Diagnosis first", title:"The problem gets understood before a single line of code is written", desc:"Every process has history and context. Before proposing solutions, the full flow gets mapped — what works, what fails and why. The result is more accurate and lasts longer." },
+        { icon:"fas fa-cogs", num:"02", guarantee:"Runs on its own", title:"Solutions don't need someone keeping them active", desc:"If it requires constant human intervention, it's not a solution. Systems are designed with rolling windows, automatic cleanup and failure alerts." },
+        { icon:"fas fa-users", num:"03", guarantee:"Usable by everyone", title:"Works for the operator and the executive at the same time", desc:"A tool only used by the person who built it is useless. Every interface is designed to be intuitive under pressure and useful for data-driven decisions." },
+        { icon:"fas fa-chart-line", num:"04", guarantee:"Measurable impact", title:"Results are measured in numbers, not promises", desc:"−30% inventory errors, +25% operational efficiency, 50 reports distributed automatically. Every project defines success metrics from the start." }
       ],
+
+      /* ── PERSONAL SECTION — FIELD LOG ── */
       personal_eyebrow: "Outside of work",
-      personal_title: "The rest of the story",
+      personal_title: "What's not on the CV",
+      personal_subtitle: "Hover to read the full entry",
       personal: [
         {
-          icon:"fas fa-running",
-          title:"Distance runner",
-          desc:"Mid and long distance, in training and in competition. The discipline required to prepare a race — consistency, planning, tolerance for error — is exactly the same required to build a system that works long-term."
+          icon: "fas fa-running",
+          entry: "ENTRY 001",
+          title: "Long-distance runner",
+          coords: "25°46'N 80°11'W — Cutler Bay, FL",
+          motto: "Distance isn't run with the legs. It's run with the mind.",
+          desc: "Every training kilometer is a negotiation with your own limits. That ability to sustain effort when the brain says stop — it's the same one needed to debug a pipeline at 2am or redesign a process from scratch. Running isn't a hobby. It's a method.",
+          tag: "Discipline & method"
         },
         {
-          icon:"fas fa-mountain",
-          title:"Explorer",
-          desc:"From the Chilean Puna to Yucatán, Mexico. Every trip starts with real logistics: routes, timings, resources, contingencies. The same mind that organizes warehouses planned every kilometer."
+          icon: "fas fa-mountain",
+          entry: "ENTRY 002",
+          title: "Explorer with an itinerary",
+          coords: "21°29'N 87°12'W — Yucatán, México",
+          motto: "Planning well is arriving. Improvising well is surviving.",
+          desc: "From the Chilean Puna to the cenotes of Yucatán. Every destination starts with real logistics: routes, transfer times, contingencies, budget. The same principles that organize 30 warehouses also organize a 3,000km expedition. The context changes. The method doesn't.",
+          tag: "Logistics & exploration"
         },
         {
-          icon:"fas fa-camera",
-          title:"Photography",
-          desc:"Capturing the exact moment before it disappears trains something valuable: seeing the detail others miss. That same attention is what finds the error in a dataset or the bottleneck in a process."
+          icon: "fas fa-camera",
+          entry: "ENTRY 003",
+          title: "Photographer of unique moments",
+          coords: "23°38'S 70°23'W — Antofagasta, Chile",
+          motto: "Seeing what others don't see isn't talent. It's training.",
+          desc: "A well-taken photograph and a good data analysis share something: both require finding the signal inside the noise. Framing the exact moment — discarding everything that doesn't belong — is the same skill that lets you read a dataset and pinpoint exactly where the problem is.",
+          tag: "Attention & detail"
         },
         {
-          icon:"fas fa-shield-alt",
-          title:"Cybersecurity & OSINT",
-          desc:"Cybersecurity certification (2025). Interest in offensive security and open-source intelligence analysis — disciplines that share something with logistics: there's always more information than it seems."
+          icon: "fas fa-shield-alt",
+          entry: "ENTRY 004",
+          title: "Cybersecurity student",
+          coords: "25°78'N 80°19'W — Miami, FL",
+          motto: "Understanding how systems break is the only way to build them right.",
+          desc: "Cybersecurity certification (2025). Offensive security and OSINT analysis aren't a detour — they're a natural extension of the same systems thinking. Knowing how something fails is the first step to making sure it doesn't. Applies to code, to processes and to infrastructure.",
+          tag: "Security & systems"
         }
       ],
+
       cta_title: "Does working together make sense?",
       cta_desc: "If your team is losing time to manual processes or you need real visibility into your data — that can be fixed. I adapt to your stack, industry and budget.",
       cta_btn1: "Let's talk", cta_btn2: "View full CV"
@@ -394,6 +559,32 @@
   };
 
   let lang = localStorage.getItem('aboutLang') || localStorage.getItem('homeLang') || 'es';
+
+  function buildPersonalCard(p, i) {
+    return `
+      <div class="exp-card" data-aos="fade-up" data-aos-delay="${i * 80}">
+        <!-- FRENTE -->
+        <div class="exp-card-front">
+          <div class="exp-entry-num">${p.entry}</div>
+          <div class="exp-icon-big"><i class="${p.icon}"></i></div>
+          <div class="exp-title-big">${p.title}</div>
+          <p class="exp-motto-preview">"${p.motto}"</p>
+          <div class="exp-coords">${p.coords}</div>
+        </div>
+        <!-- REVEAL -->
+        <div class="exp-card-reveal">
+          <div>
+            <div class="exp-reveal-tag">${p.tag}</div>
+            <div class="exp-reveal-motto">"${p.motto}"</div>
+            <p class="exp-reveal-desc">${p.desc}</p>
+          </div>
+          <div class="exp-reveal-footer">
+            <span class="exp-reveal-coords">${p.coords}</span>
+            <i class="${p.icon} exp-reveal-icon"></i>
+          </div>
+        </div>
+      </div>`;
+  }
 
   function render() {
     const d = t[lang];
@@ -460,15 +651,15 @@
       </section>
 
       <section class="personal-section" data-aos="fade-up">
-        <p class="section-eyebrow">${d.personal_eyebrow}</p>
-        <h2 class="section-title">${d.personal_title}</h2>
+        <div class="personal-header">
+          <div class="personal-header-text">
+            <p class="section-eyebrow">${d.personal_eyebrow}</p>
+            <h2 class="section-title" style="margin-bottom:0">${d.personal_title}</h2>
+          </div>
+          <div class="personal-header-line">${d.personal_subtitle}</div>
+        </div>
         <div class="personal-grid">
-          ${d.personal.map((p,i)=>`
-            <div class="personal-card" data-aos="fade-up" data-aos-delay="${i*60}">
-              <div class="personal-icon-wrap"><i class="${p.icon}"></i></div>
-              <div class="personal-title">${p.title}</div>
-              <p class="personal-desc">${p.desc}</p>
-            </div>`).join('')}
+          ${d.personal.map((p,i) => buildPersonalCard(p, i)).join('')}
         </div>
       </section>
 
