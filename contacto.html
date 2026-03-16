@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contactá a Raul Pivet — Especialista en automatización logística y Business Intelligence. Miami, FL.">
   <meta name="theme-color" content="#FF6B00">
+  <meta property="og:title" content="Contacto — Raul Pivet">
+  <meta property="og:description" content="Contame tu problema de automatización o datos — trabajamos en la solución. Miami, FL & Remoto.">
+  <meta property="og:url" content="https://www.raulpivet.com/contacto.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.raulpivet.com/contacto.html">
   <title>Contacto - Raul Pivet</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
@@ -117,7 +122,7 @@
     </aside>
     <main class="content" id="mainContent"></main>
   </div>
-  <footer><p>&copy; 2025 Raul Pivet — Logistics &amp; Tech Solutions · Miami, FL</p></footer>
+  <footer><p>&copy; 2026 Raul Pivet — Logistics &amp; Tech Solutions · Miami, FL</p></footer>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
@@ -194,12 +199,11 @@
   const helpIcons = ["fas fa-chart-bar","fas fa-cogs","fas fa-mobile-alt","fas fa-plug","fab fa-python","fas fa-robot"];
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
-  // Sanitiza el mensaje eliminando comillas dobles para evitar que rompan el JSON en Make/Gemini
   function sanitizeMessage(text) {
     return text
-      .replace(/\u201c|\u201d|\u201e|\u201f/g, "'") // comillas tipográficas → simple
-      .replace(/"/g, "'")                            // comillas dobles → simple
-      .replace(/\\/g, ' ')                           // backslashes → espacio
+      .replace(/\u201c|\u201d|\u201e|\u201f/g, "'")
+      .replace(/"/g, "'")
+      .replace(/\\/g, ' ')
       .trim();
   }
 
@@ -269,10 +273,10 @@
         </div>
       </div>
       <div style="border-radius:var(--radius-xl);overflow:hidden;height:300px;margin-top:28px;box-shadow:var(--shadow-md);" data-aos="fade-up">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" width="100%" height="100%" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" width="100%" height="100%" style="border:0;display:block" allowfullscreen loading="lazy" title="Miami, FL"></iframe>
       </div>`;
     bindSubmit();
-    if (typeof AOS !== 'undefined') { AOS.init({ once:true, duration:600 }); AOS.refresh(); }
+    refreshAOS();
   }
 
   const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/ivr1wib3mxpgytpn8glao7e02a51lcdy';
