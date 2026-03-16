@@ -105,12 +105,12 @@
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/raulpivet" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
     <main class="content" id="mainContent"></main>
   </div>
-  <footer><p>&copy; 2025 Raul Pivet. <span id="footerText">Todos los derechos reservados.</span></p></footer>
+  <footer><p>&copy; 2026 Raul Pivet. <span id="footerText">Todos los derechos reservados.</span></p></footer>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
@@ -281,7 +281,7 @@
           <a href="cv.html" class="btn-outline"><i class="fas fa-file-alt"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
-    if (typeof AOS !== 'undefined') { AOS.init({ once:true, duration:600 }); AOS.refresh(); }
+    refreshAOS();
   }
 
   function toggleLang() { lang = lang === 'es' ? 'en' : 'es'; localStorage.setItem('aboutLang', lang); localStorage.setItem('homeLang', lang); render(); }
