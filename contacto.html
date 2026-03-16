@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contactá a Raul Pivet — Especialista en automatización logística y Business Intelligence. Miami, FL.">
+  <meta name="description" content="Contactá a Raul Pivet — Automatización, Business Intelligence, Desarrollo Web y redes sociales. Miami, FL.">
   <meta name="theme-color" content="#FF6B00">
   <meta property="og:title" content="Contacto — Raul Pivet">
-  <meta property="og:description" content="Contame tu problema de automatización o datos — trabajamos en la solución. Miami, FL & Remoto.">
+  <meta property="og:description" content="Contame tu problema — automatización, datos, web o redes sociales. Trabajamos en la solución. Miami, FL & Remoto.">
   <meta property="og:url" content="https://www.raulpivet.com/contacto.html">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.raulpivet.com/contacto.html">
@@ -43,10 +43,11 @@
     .info-value { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
     .info-value a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
     .info-value a:hover { color: #FF6B00; }
+    /* Grid 2 columnas — se mantiene con cualquier cantidad de items */
     .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .help-item { display: flex; align-items: center; gap: 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px 12px; font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); transition: all 0.2s; }
     .help-item:hover { border-color: rgba(255,107,0,0.3); color: var(--text-primary); }
-    .help-item i { color: #FF6B00; font-size: 0.8rem; width: 14px; text-align: center; }
+    .help-item i { color: #FF6B00; font-size: 0.8rem; width: 14px; text-align: center; flex-shrink: 0; }
     .help-title { font-size: 11px; font-weight: 800; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
     .form-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 36px; position: relative; overflow: hidden; }
     .form-card::before { content:''; position:absolute; top:-80px; right:-80px; width:240px; height:240px; background:radial-gradient(circle,rgba(255,107,0,0.06) 0%,transparent 70%); pointer-events:none; }
@@ -133,15 +134,26 @@
       header_h1: "Contacto",
       header_sub: "Contame tu problema — trabajamos en la solución",
       intro_eyebrow: "👋 Hola, soy Raul",
-      intro_h2a: "¿Tenés un proceso",
-      intro_h2b: "que <span>consume tiempo</span>?",
-      intro_p: "Trabajo con empresas y equipos que necesitan automatizar operaciones, tener mejor visibilidad de sus datos o construir herramientas que funcionen solas. Si encaja, lo hacemos.",
+      intro_h2a: "¿Tenés una idea,",
+      intro_h2b: "un proceso lento o una web que <span>mejorar</span>?",
+      intro_p: "Trabajo con empresas, emprendedores y equipos que necesitan automatizar operaciones, tener mejor visibilidad de sus datos, construir su presencia web o crecer en redes sociales con sistemas que funcionan solos. Si encaja, lo hacemos.",
       avail_text: "Disponible para proyectos — Miami, FL & Remoto",
       info_email_label: "Email", info_phone_label: "Teléfono",
       info_loc_label: "Ubicación", info_loc_value: "Miami, Florida — EE.UU.",
       info_avail_label: "Disponibilidad", info_avail_value: "Lun–Vie · 9:00–18:00 EST",
       help_title: "¿En qué puedo ayudarte?",
-      help: ["Dashboards Power BI","Automatización","Apps de inventario","Integraciones","Python & datos","IA aplicada"],
+      help: [
+        { icon:"fas fa-chart-bar",    text:"Dashboards Power BI" },
+        { icon:"fas fa-cogs",         text:"Automatización" },
+        { icon:"fas fa-mobile-alt",   text:"Apps de inventario" },
+        { icon:"fas fa-plug",         text:"Integraciones" },
+        { icon:"fab fa-python",       text:"Python & datos" },
+        { icon:"fas fa-robot",        text:"IA aplicada" },
+        { icon:"fab fa-html5",        text:"Páginas web" },
+        { icon:"fab fa-react",        text:"Apps React + Firebase" },
+        { icon:"fas fa-share-alt",    text:"Redes sociales auto." },
+        { icon:"fas fa-tools",        text:"Herramientas a medida" }
+      ],
       form_h2: "Escribime 👋", form_sub: "Contame de qué se trata. Te respondo personalmente.",
       label_fname: "Nombre", label_lname: "Apellido", label_email: "Email",
       label_reason: "Motivo de contacto", label_msg: "Mensaje",
@@ -151,6 +163,8 @@
       reasons: [
         { value:"trabajo",      label:"💼 Oferta de trabajo" },
         { value:"freelance",    label:"🚀 Proyecto freelance" },
+        { value:"web",          label:"🌐 Desarrollo web" },
+        { value:"social",       label:"📱 Automatización social" },
         { value:"colaboracion", label:"🤝 Colaboración" },
         { value:"consulta",     label:"❓ Consulta técnica" },
         { value:"otro",         label:"💬 Otro" }
@@ -166,15 +180,26 @@
       page_title: "Contact - Raul Pivet",
       header_h1: "Contact", header_sub: "Tell me your problem — we'll work on the solution",
       intro_eyebrow: "👋 Hi, I'm Raul",
-      intro_h2a: "Got a process",
-      intro_h2b: "that <span>eats up your time</span>?",
-      intro_p: "I work with companies and teams that need to automate operations, get better visibility into their data, or build tools that run on their own. If it fits, let's do it.",
+      intro_h2a: "Got an idea,",
+      intro_h2b: "a slow process or a web to <span>improve</span>?",
+      intro_p: "I work with companies, entrepreneurs and teams that need to automate operations, get better data visibility, build their web presence, or grow on social media with systems that run themselves. If it fits, let's do it.",
       avail_text: "Available for projects — Miami, FL & Remote",
       info_email_label: "Email", info_phone_label: "Phone",
       info_loc_label: "Location", info_loc_value: "Miami, Florida — USA",
       info_avail_label: "Availability", info_avail_value: "Mon–Fri · 9:00–6:00 PM EST",
       help_title: "How can I help you?",
-      help: ["Power BI Dashboards","Automation","Inventory apps","Integrations","Python & data","Applied AI"],
+      help: [
+        { icon:"fas fa-chart-bar",    text:"Power BI Dashboards" },
+        { icon:"fas fa-cogs",         text:"Automation" },
+        { icon:"fas fa-mobile-alt",   text:"Inventory apps" },
+        { icon:"fas fa-plug",         text:"Integrations" },
+        { icon:"fab fa-python",       text:"Python & data" },
+        { icon:"fas fa-robot",        text:"Applied AI" },
+        { icon:"fab fa-html5",        text:"Web development" },
+        { icon:"fab fa-react",        text:"React + Firebase apps" },
+        { icon:"fas fa-share-alt",    text:"Social media auto." },
+        { icon:"fas fa-tools",        text:"Custom tools" }
+      ],
       form_h2: "Write to me 👋", form_sub: "Tell me what it's about. I'll respond personally.",
       label_fname: "First name", label_lname: "Last name", label_email: "Email",
       label_reason: "Reason for contact", label_msg: "Message",
@@ -184,6 +209,8 @@
       reasons: [
         { value:"trabajo",      label:"💼 Job offer" },
         { value:"freelance",    label:"🚀 Freelance project" },
+        { value:"web",          label:"🌐 Web development" },
+        { value:"social",       label:"📱 Social media automation" },
         { value:"colaboracion", label:"🤝 Collaboration" },
         { value:"consulta",     label:"❓ Technical question" },
         { value:"otro",         label:"💬 Other" }
@@ -196,7 +223,6 @@
     }
   };
 
-  const helpIcons = ["fas fa-chart-bar","fas fa-cogs","fas fa-mobile-alt","fas fa-plug","fab fa-python","fas fa-robot"];
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
   function sanitizeMessage(text) {
@@ -235,7 +261,7 @@
           </div>
           <div class="c-card" data-aos="fade-right" data-aos-delay="160">
             <p class="help-title">${d.help_title}</p>
-            <div class="help-grid">${d.help.map((item,i)=>`<div class="help-item"><i class="${helpIcons[i]}"></i> ${item}</div>`).join('')}</div>
+            <div class="help-grid">${d.help.map(item=>`<div class="help-item"><i class="${item.icon}"></i> ${item.text}</div>`).join('')}</div>
           </div>
         </div>
         <div class="form-card" data-aos="fade-left">
