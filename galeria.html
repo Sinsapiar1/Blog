@@ -15,29 +15,29 @@
   <style>
     .gallery-filter { display:flex; justify-content:center; margin-bottom:var(--spacing-xl); flex-wrap:wrap; gap:var(--spacing-sm); }
     .gallery-filter button { padding:10px 24px; background:var(--bg-secondary); border:1.5px solid var(--border-color); color:var(--text-primary); border-radius:var(--radius-full); font-weight:500; font-size:0.9375rem; cursor:pointer; transition:all var(--transition-base); }
-    .gallery-filter button:hover, .gallery-filter button.active { background:var(--primary); color:white; border-color:var(--primary); transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,122,255,0.3); }
+    .gallery-filter button:hover, .gallery-filter button.active { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; border-color:#FF6B00; transform:translateY(-2px); box-shadow:0 4px 12px rgba(255,107,0,0.3); }
     .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:var(--spacing-lg); }
     .proj-card { background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-md); transition:all var(--transition-base); display:flex; flex-direction:column; }
-    .proj-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-lg); }
+    .proj-card:hover { transform:translateY(-8px); box-shadow:0 20px 48px rgba(255,107,0,0.12); border-color:rgba(255,107,0,0.2); }
     .proj-preview { position:relative; width:100%; height:220px; overflow:hidden; background:#0a0a0a; cursor:zoom-in; }
     .proj-preview iframe { width:200%; height:200%; transform:scale(0.5); transform-origin:top left; border:none; pointer-events:none; border-radius:0; }
     .proj-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); display:flex; align-items:center; justify-content:center; gap:12px; opacity:0; transition:all var(--transition-base); }
     .proj-card:hover .proj-overlay { background:rgba(0,0,0,0.55); opacity:1; }
     .proj-overlay-btn { display:flex; align-items:center; gap:7px; padding:10px 18px; border-radius:var(--radius-full); font-size:0.85rem; font-weight:600; border:none; cursor:pointer; text-decoration:none; transition:all var(--transition-fast); backdrop-filter:blur(8px); }
-    .proj-overlay-btn.primary { background:var(--primary); color:white; box-shadow:0 4px 14px rgba(0,122,255,0.45); }
-    .proj-overlay-btn.primary:hover { background:var(--primary-dark); transform:scale(1.05); }
+    .proj-overlay-btn.primary { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; box-shadow:0 4px 14px rgba(255,107,0,0.45); }
+    .proj-overlay-btn.primary:hover { transform:scale(1.05); }
     .proj-overlay-btn.secondary { background:rgba(255,255,255,0.18); color:white; border:1px solid rgba(255,255,255,0.3); }
     .proj-overlay-btn.secondary:hover { background:rgba(255,255,255,0.28); transform:scale(1.05); }
     .proj-body { padding:20px 22px 22px; flex:1; display:flex; flex-direction:column; }
     .proj-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:12px; }
-    .proj-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:var(--radius-full); background:var(--bg-secondary); color:var(--primary); border:1px solid var(--border-color); }
+    .proj-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:var(--radius-full); background:rgba(255,107,0,0.08); color:#FF6B00; border:1px solid rgba(255,107,0,0.2); }
     .proj-body h3 { font-size:1.15rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; }
     .proj-body p { font-size:0.9rem; color:var(--text-secondary); line-height:1.6; flex:1; }
     .proj-footer { display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid var(--border-color); }
     .proj-status { display:flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--text-secondary); font-weight:500; }
     .proj-status-dot { width:8px; height:8px; border-radius:50%; background:var(--success); box-shadow:0 0 6px rgba(52,199,89,0.6); animation:pulse-dot 2s infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:0.4} }
-    .proj-link { display:flex; align-items:center; gap:5px; font-size:0.82rem; font-weight:600; color:var(--primary); text-decoration:none; transition:gap var(--transition-fast); }
+    .proj-link { display:flex; align-items:center; gap:5px; font-size:0.82rem; font-weight:600; color:#FF6B00; text-decoration:none; transition:gap var(--transition-fast); }
     .proj-link:hover { gap:8px; }
     #lightbox { display:none; position:fixed; inset:0; z-index:5000; align-items:center; justify-content:center; }
     #lightbox.lb-open { display:flex; }
@@ -57,8 +57,8 @@
     .lb-info { margin-top:18px; color:white; width:100%; display:flex; align-items:center; justify-content:space-between; padding:0 4px; }
     .lb-info-text h3 { font-size:1.05rem; font-weight:600; margin-bottom:2px; text-align:left; }
     .lb-info-text p { font-size:0.82rem; opacity:0.6; text-align:left; }
-    .lb-open-btn { display:flex; align-items:center; gap:7px; padding:9px 18px; background:var(--primary); color:white; border-radius:var(--radius-full); font-size:0.85rem; font-weight:600; text-decoration:none; white-space:nowrap; transition:all var(--transition-fast); flex-shrink:0; }
-    .lb-open-btn:hover { background:var(--primary-dark); transform:translateY(-2px); }
+    .lb-open-btn { display:flex; align-items:center; gap:7px; padding:9px 18px; background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; border-radius:var(--radius-full); font-size:0.85rem; font-weight:600; text-decoration:none; white-space:nowrap; transition:all var(--transition-fast); flex-shrink:0; }
+    .lb-open-btn:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(255,107,0,0.4); }
     .lb-arrow { position:fixed; top:50%; transform:translateY(-50%); width:48px; height:48px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); border-radius:50%; color:white; font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); transition:all var(--transition-base); z-index:2; }
     .lb-arrow:hover { background:rgba(255,255,255,0.22); transform:translateY(-50%) scale(1.1); }
     .lb-arrow.lb-prev { left:16px; } .lb-arrow.lb-next { right:16px; }
@@ -97,7 +97,7 @@
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
     <main class="content">
@@ -126,7 +126,7 @@
           <div class="proj-body"><div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">Educativo</span><span class="proj-tag">Referencia</span></div><h3>Aprende HTML</h3><p>Guía interactiva con todas las etiquetas HTML organizadas por categorías, con ejemplos en vivo y buscador integrado. Pensada para quienes dan sus primeros pasos en el desarrollo web.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://sinsapiar1.github.io/AprendeHtml/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
         </div>
         <div class="proj-card" data-category="utilidades" data-url="https://qrparati.netlify.app/" data-title="QR Para Ti" data-desc="Generador de códigos QR personalizado con colores y descarga" data-aos="fade-up" data-aos-delay="300">
-          <div class="proj-preview"><iframe src="https://qrparati.netlify.app/" title="QR Para Ti" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://qrparati.netlify.app/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></a></div></div>
+          <div class="proj-preview"><iframe src="https://qrparati.netlify.app/" title="QR Para Ti" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://qrparati.netlify.app/" target="_blank" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></div></div>
           <div class="proj-body"><div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">QR Code</span><span class="proj-tag">Netlify</span></div><h3>QR Para Ti</h3><p>Generador de códigos QR con opciones de personalización de color de código y fondo, ajuste de tamaño y descarga directa. Ideal para negocios, menús digitales y eventos.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://qrparati.netlify.app/" target="_blank" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
         </div>
         <div class="proj-card" data-category="utilidades" data-url="https://testdevelocidad.vercel.app/" data-title="Test de Velocidad" data-desc="Medición de velocidad de conexión a internet en tiempo real" data-aos="fade-up" data-aos-delay="400">
@@ -140,7 +140,7 @@
       </div>
     </main>
   </div>
-  <footer><p>&copy; 2025 Raul Pivet. Todos los derechos reservados.</p></footer>
+  <footer><p>&copy; 2026 Raul Pivet. Todos los derechos reservados.</p></footer>
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Vista previa del proyecto">
     <div class="lb-overlay" id="lbOverlay"></div>
     <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
