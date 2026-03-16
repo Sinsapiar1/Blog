@@ -18,6 +18,14 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── Language toggle — mismo estilo que el resto del sitio ── */
+    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
+    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .language-flag { font-size:1.25rem; }
+    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
+    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
+
+    /* ── Badges de proyecto ── */
     .project-badge { display:inline-flex; align-items:center; gap:5px; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px; margin-right:4px; }
     .badge-live    { background:rgba(52,199,89,0.12);  color:#34C759; border:1px solid rgba(52,199,89,0.3); }
     .badge-company { background:rgba(255,107,0,0.10);  color:#FF6B00; border:1px solid rgba(255,107,0,0.3); }
@@ -26,6 +34,8 @@
     .project-img img { object-fit:cover; width:100%; height:100%; }
     .project-meta { padding:0 var(--spacing-lg) var(--spacing-sm); color:var(--text-tertiary); font-size:0.875rem; }
     .project-meta-date { padding:0 var(--spacing-lg) var(--spacing-sm); color:var(--text-tertiary); font-size:0.8rem; }
+
+    /* ── Preview especial Streamlit ── */
     .ocr-preview { width:100%; height:200px; background:linear-gradient(135deg,#0e1117,#1a1f2e); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
     .ocr-preview-inner { text-align:center; color:white; }
     .ocr-preview-icon { width:64px; height:64px; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 12px; box-shadow:0 8px 24px rgba(255,107,0,0.4); }
@@ -42,6 +52,13 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
+
+  <!-- Toggle de idioma — mismo que el resto del sitio -->
+  <div class="language-toggle" id="languageToggle" aria-label="Change language">
+    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-text" id="languageText">English</span>
+  </div>
+
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -53,12 +70,12 @@
         <p>Logistics &amp; Tech Solutions</p>
       </div>
       <ul class="menu">
-        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
         <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
-        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
+        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Sobre Mí</span></a></li>
         <li class="menu-item"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
-        <li class="menu-item active"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
-        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        <li class="menu-item active"><a href="proyectos.html"><i class="fas fa-code"></i> <span data-i18n="nav_projects">Proyectos</span></a></li>
+        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
       </ul>
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -66,88 +83,208 @@
         <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
-    <main class="content">
-      <header class="header" data-aos="fade-down">
-        <h1>Mis Proyectos</h1>
-        <p>Soluciones tecnológicas que transforman ideas en realidad</p>
-      </header>
-      <section class="projects">
-        <div class="project-grid">
-          <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="project-img"><img src="img/gallery/Proyecto1.jpg.png" alt="Control de Almacén" loading="lazy"></div>
-            <div class="project-badges"><span class="project-badge badge-client"><i class="fas fa-circle" style="font-size:0.45rem"></i> Cliente</span></div>
-            <h3>Control de Almacén</h3>
-            <p>Sistema completo de gestión de inventario con seguimiento en tiempo real, alertas de stock y dashboard administrativo.</p>
-            <div class="project-meta"><strong>Tecnologías:</strong> Python, Streamlit, SQLite, Pandas</div>
-            <a href="#" class="btn-small">Ver proyecto</a>
-          </article>
-          <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-img"><img src="img/gallery/proyecto2.jpg" alt="Menús Interactivos" loading="lazy"></div>
-            <div class="project-badges"><span class="project-badge badge-client"><i class="fas fa-circle" style="font-size:0.45rem"></i> Cliente</span></div>
-            <h3>Menús Digitales Interactivos</h3>
-            <p>Plataforma web para restaurantes con menús digitales, filtros por categorías y precios actualizables en tiempo real.</p>
-            <div class="project-meta"><strong>Tecnologías:</strong> React, Firebase, CSS3</div>
-            <div class="project-meta-date"><i class="fas fa-calendar-alt" style="color:#FF6B00"></i> En desarrollo — 2026</div>
-            <a href="#" class="btn-small">Ver proyecto</a>
-          </article>
-          <article class="project-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="project-img"><img src="img/gallery/proyecto3.jpg" alt="Web de Servicios" loading="lazy"></div>
-            <div class="project-badges"><span class="project-badge badge-live"><i class="fas fa-circle" style="font-size:0.45rem"></i> En vivo</span></div>
-            <h3>Plataforma de Servicios de Transporte</h3>
-            <p>Website responsive para empresa de transporte con calculadora de tarifas, reservas online y mapa de cobertura.</p>
-            <div class="project-meta"><strong>Tecnologías:</strong> HTML5, CSS3, JavaScript, Google Maps API</div>
-            <a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" class="btn-small">Ver proyecto en vivo</a>
-          </article>
-          <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="project-img"><img src="img/gallery/dashboard-negativos.png" alt="Dashboard de Inventario Negativo" loading="lazy" style="object-position:top;"></div>
-            <div class="project-badges"><span class="project-badge badge-company"><i class="fas fa-building" style="font-size:0.55rem"></i> Corporativo</span></div>
-            <h3>Dashboard de Inventario Negativo</h3>
-            <p>Sistema de monitoreo en Power BI para 30+ almacenes con custom visuals en TypeScript. Pipeline completo: GitHub Actions genera reportes JSON nocturnos, Power Automate los procesa contra Dataverse y despacha 50+ correos diarios con adjuntos Excel a gerentes de cada sucursal.</p>
-            <div class="project-meta"><strong>Tecnologías:</strong> Power BI, DAX, TypeScript, GitHub Actions, Power Automate, Dataverse</div>
-            <a href="#" class="btn-small coming-soon">Ver detalles</a>
-          </article>
-          <article class="project-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-img">
-              <div class="ocr-preview">
-                <div class="ocr-grid"></div>
-                <div class="ocr-preview-inner">
-                  <div class="ocr-preview-icon"><i class="fas fa-chart-bar"></i></div>
-                  <h4><span class="ocr-dot"></span>App activa en Streamlit</h4>
-                  <p>Análisis de negativos · Detección de faltantes</p>
-                </div>
-              </div>
-            </div>
-            <div class="project-badges">
-              <span class="project-badge badge-live"><i class="fas fa-circle" style="font-size:0.45rem"></i> En vivo</span>
-              <span class="project-badge badge-company"><i class="fas fa-building" style="font-size:0.55rem"></i> Corporativo</span>
-            </div>
-            <h3>Análisis de Stock Negativo</h3>
-            <p>App Streamlit que cruza fotografías de almacén con el reporte nocturno de productos en stock negativo. Detecta si el negativo será resuelto durante el día según los movimientos del ERP. Si no hay cruce, alerta sobre posibles faltantes de ingreso o errores de registro.</p>
-            <div class="project-meta"><strong>Tecnologías:</strong> Python, Streamlit, Pandas, OpenCV, Computer Vision</div>
-            <a href="https://alsina-negativos-db-5xcyoodjqj6azr3xggdsds.streamlit.app/" target="_blank" class="btn-small">Ver app en vivo</a>
-          </article>
-        </div>
-      </section>
-      <section class="featured" data-aos="fade-up" style="margin-top:var(--spacing-2xl);">
-        <div class="featured-text" style="padding:var(--spacing-2xl);text-align:center;grid-column:1/-1;">
-          <h2>¿Tenés un proyecto en mente?</h2>
-          <p>Siempre abierto a nuevos desafíos y colaboraciones.</p>
-          <a href="contacto.html" class="btn">Contactame</a>
-        </div>
-      </section>
-    </main>
+
+    <!-- Contenido principal inyectado por JS para soportar i18n -->
+    <main class="content" id="mainContent"></main>
   </div>
-  <footer><p>&copy; 2026 Raul Pivet. Todos los derechos reservados.</p></footer>
+
+  <footer><p id="footerText">&copy; 2026 Raul Pivet. Todos los derechos reservados.</p></footer>
+
+  <!-- Modal "coming soon" — gestionado por initModals() en script.js -->
   <div id="comingSoonModal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
       <div class="modal-icon"><i class="fas fa-tools"></i></div>
-      <h3>Documentación en preparación</h3>
-      <p>Estoy preparando la documentación técnica detallada de este proyecto.</p>
-      <p class="modal-date">Disponible próximamente — 2026</p>
+      <h3 id="modalTitle">Documentación en preparación</h3>
+      <p id="modalBody">Estoy preparando la documentación técnica detallada de este proyecto.</p>
+      <p class="modal-date" id="modalDate">Disponible próximamente — 2026</p>
     </div>
   </div>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
+  <script>
+  /* ══════════════════════════════════════════════════════
+     TRADUCCIONES — mismo patrón que el resto del sitio
+  ══════════════════════════════════════════════════════ */
+  const proyTrans = {
+    es: {
+      nav_home:'Inicio', nav_about:'Sobre Mí', nav_projects:'Proyectos', nav_contact:'Contacto',
+      page_title: 'Proyectos - Raul Pivet',
+      header_h1: 'Mis Proyectos',
+      header_sub: 'Soluciones tecnológicas que transforman ideas en realidad',
+      footer: '© 2026 Raul Pivet. Todos los derechos reservados.',
+      badge_live:    'En vivo',
+      badge_company: 'Corporativo',
+      badge_client:  'Cliente',
+      tech_label:    'Tecnologías:',
+      dev_label:     'En desarrollo — 2026',
+      btn_view:        'Ver proyecto',
+      btn_view_live:   'Ver proyecto en vivo',
+      btn_view_app:    'Ver app en vivo',
+      btn_view_detail: 'Ver detalles',
+      streamlit_label: 'App activa en Streamlit',
+      streamlit_sub:   'Análisis de negativos · Detección de faltantes',
+      cta_h2:  '¿Tenés un proyecto en mente?',
+      cta_p:   'Siempre abierto a nuevos desafíos y colaboraciones.',
+      cta_btn: 'Contactame',
+      modal_title: 'Documentación en preparación',
+      modal_body:  'Estoy preparando la documentación técnica detallada de este proyecto.',
+      modal_date:  'Disponible próximamente — 2026',
+      projects: [
+        { delay:100, img:'img/gallery/Proyecto1.jpg.png', alt:'Control de Almacén', badge:'client', title:'Control de Almacén', desc:'Sistema completo de gestión de inventario con seguimiento en tiempo real, alertas de stock y dashboard administrativo.', tech:'Python, Streamlit, SQLite, Pandas', btn:'view', href:'#' },
+        { delay:200, img:'img/gallery/proyecto2.jpg', alt:'Menús Interactivos', badge:'client', title:'Menús Digitales Interactivos', desc:'Plataforma web para restaurantes con menús digitales, filtros por categorías y precios actualizables en tiempo real.', tech:'React, Firebase, CSS3', btn:'view', href:'#', inDev:true },
+        { delay:300, img:'img/gallery/proyecto3.jpg', alt:'Web de Servicios', badge:'live', title:'Plataforma de Servicios de Transporte', desc:'Website responsive para empresa de transporte con calculadora de tarifas, reservas online y mapa de cobertura.', tech:'HTML5, CSS3, JavaScript, Google Maps API', btn:'live', href:'https://sinsapiar1.github.io/Taximovil/' },
+        { delay:100, img:'img/gallery/dashboard-negativos.png', alt:'Dashboard de Inventario Negativo', badge:'company', title:'Dashboard de Inventario Negativo', desc:'Sistema de monitoreo en Power BI para 30+ almacenes con custom visuals en TypeScript. Pipeline completo: GitHub Actions genera reportes JSON nocturnos, Power Automate los procesa contra Dataverse y despacha 50+ correos diarios con adjuntos Excel a gerentes de cada sucursal.', tech:'Power BI, DAX, TypeScript, GitHub Actions, Power Automate, Dataverse', btn:'detail', href:'#' },
+        { delay:200, streamlit:true, badge:'live+company', title:'Análisis de Stock Negativo', desc:'App Streamlit que cruza fotografías de almacén con el reporte nocturno de productos en stock negativo. Detecta si el negativo será resuelto durante el día según los movimientos del ERP. Si no hay cruce, alerta sobre posibles faltantes de ingreso o errores de registro.', tech:'Python, Streamlit, Pandas, OpenCV, Computer Vision', btn:'app', href:'https://alsina-negativos-db-5xcyoodjqj6azr3xggdsds.streamlit.app/' }
+      ]
+    },
+    en: {
+      nav_home:'Home', nav_about:'About Me', nav_projects:'Projects', nav_contact:'Contact',
+      page_title: 'Projects - Raul Pivet',
+      header_h1: 'My Projects',
+      header_sub: 'Tech solutions that turn ideas into reality',
+      footer: '© 2026 Raul Pivet. All rights reserved.',
+      badge_live:    'Live',
+      badge_company: 'Corporate',
+      badge_client:  'Client',
+      tech_label:    'Technologies:',
+      dev_label:     'In development — 2026',
+      btn_view:        'View project',
+      btn_view_live:   'View live project',
+      btn_view_app:    'View live app',
+      btn_view_detail: 'View details',
+      streamlit_label: 'Active app on Streamlit',
+      streamlit_sub:   'Negative stock analysis · Missing item detection',
+      cta_h2:  'Got a project in mind?',
+      cta_p:   'Always open to new challenges and collaborations.',
+      cta_btn: 'Contact me',
+      modal_title: 'Documentation in preparation',
+      modal_body:  'I am preparing the detailed technical documentation for this project.',
+      modal_date:  'Available soon — 2026',
+      projects: [
+        { delay:100, img:'img/gallery/Proyecto1.jpg.png', alt:'Warehouse Control', badge:'client', title:'Warehouse Control', desc:'Complete inventory management system with real-time tracking, stock alerts and admin dashboard.', tech:'Python, Streamlit, SQLite, Pandas', btn:'view', href:'#' },
+        { delay:200, img:'img/gallery/proyecto2.jpg', alt:'Interactive Menus', badge:'client', title:'Interactive Digital Menus', desc:'Web platform for restaurants with digital menus, category filters and real-time updatable prices.', tech:'React, Firebase, CSS3', btn:'view', href:'#', inDev:true },
+        { delay:300, img:'img/gallery/proyecto3.jpg', alt:'Transport Services', badge:'live', title:'Transport Services Platform', desc:'Responsive website for a transport company with a fare calculator, online bookings and coverage map.', tech:'HTML5, CSS3, JavaScript, Google Maps API', btn:'live', href:'https://sinsapiar1.github.io/Taximovil/' },
+        { delay:100, img:'img/gallery/dashboard-negativos.png', alt:'Negative Inventory Dashboard', badge:'company', title:'Negative Inventory Dashboard', desc:'Power BI monitoring system for 30+ warehouses with TypeScript custom visuals. Full pipeline: GitHub Actions generates nightly JSON reports, Power Automate processes them against Dataverse and dispatches 50+ daily emails with Excel attachments to each branch manager.', tech:'Power BI, DAX, TypeScript, GitHub Actions, Power Automate, Dataverse', btn:'detail', href:'#' },
+        { delay:200, streamlit:true, badge:'live+company', title:'Negative Stock Analysis', desc:'Streamlit app that cross-references warehouse photos with the nightly negative-stock report. Detects whether the negative will be resolved during the day based on ERP movements. If no match, it flags potential missing entries or registration errors.', tech:'Python, Streamlit, Pandas, OpenCV, Computer Vision', btn:'app', href:'https://alsina-negativos-db-5xcyoodjqj6azr3xggdsds.streamlit.app/' }
+      ]
+    }
+  };
+
+  /* ══════════════════════════════════════════════════════
+     RENDER
+  ══════════════════════════════════════════════════════ */
+  let lang = localStorage.getItem('homeLang') || 'es';
+
+  function buildBadge(type, d) {
+    if (type === 'live')     return `<span class="project-badge badge-live"><i class="fas fa-circle" style="font-size:0.45rem"></i> ${d.badge_live}</span>`;
+    if (type === 'company')  return `<span class="project-badge badge-company"><i class="fas fa-building" style="font-size:0.55rem"></i> ${d.badge_company}</span>`;
+    if (type === 'client')   return `<span class="project-badge badge-client"><i class="fas fa-circle" style="font-size:0.45rem"></i> ${d.badge_client}</span>`;
+    if (type === 'live+company') return `<span class="project-badge badge-live"><i class="fas fa-circle" style="font-size:0.45rem"></i> ${d.badge_live}</span><span class="project-badge badge-company"><i class="fas fa-building" style="font-size:0.55rem"></i> ${d.badge_company}</span>`;
+    return '';
+  }
+
+  function buildBtn(p, d) {
+    if (p.btn === 'live')   return `<a href="${p.href}" target="_blank" rel="noopener noreferrer" class="btn-small">${d.btn_view_live}</a>`;
+    if (p.btn === 'app')    return `<a href="${p.href}" target="_blank" rel="noopener noreferrer" class="btn-small">${d.btn_view_app}</a>`;
+    if (p.btn === 'detail') return `<a href="#" class="btn-small coming-soon">${d.btn_view_detail}</a>`;
+    return `<a href="#" class="btn-small">${d.btn_view}</a>`;
+  }
+
+  function buildCard(p, d) {
+    const imgHTML = p.streamlit
+      ? `<div class="ocr-preview">
+           <div class="ocr-grid"></div>
+           <div class="ocr-preview-inner">
+             <div class="ocr-preview-icon"><i class="fas fa-chart-bar"></i></div>
+             <h4><span class="ocr-dot"></span>${d.streamlit_label}</h4>
+             <p>${d.streamlit_sub}</p>
+           </div>
+         </div>`
+      : `<img src="${p.img}" alt="${p.alt}" loading="lazy"${p.btn === 'detail' ? ' style="object-position:top;"' : ''}>`;
+
+    return `
+      <article class="project-card" data-aos="fade-up" data-aos-delay="${p.delay}">
+        <div class="project-img">${imgHTML}</div>
+        <div class="project-badges">${buildBadge(p.badge, d)}</div>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="project-meta"><strong>${d.tech_label}</strong> ${p.tech}</div>
+        ${p.inDev ? `<div class="project-meta-date"><i class="fas fa-calendar-alt" style="color:#FF6B00"></i> ${d.dev_label}</div>` : ''}
+        ${buildBtn(p, d)}
+      </article>`;
+  }
+
+  function renderProyectos() {
+    const d = proyTrans[lang];
+
+    // Meta
+    document.title = d.page_title;
+
+    // Toggle idioma
+    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
+
+    // Nav lateral traducible
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (d[k]) el.textContent = d[k];
+    });
+
+    // Footer
+    document.getElementById('footerText').textContent = d.footer;
+
+    // Textos del modal (se actualizan aquí para que initModals() en script.js
+    // los encuentre ya traducidos cuando el usuario haga clic)
+    const mTitle = document.getElementById('modalTitle');
+    const mBody  = document.getElementById('modalBody');
+    const mDate  = document.getElementById('modalDate');
+    if (mTitle) mTitle.textContent = d.modal_title;
+    if (mBody)  mBody.textContent  = d.modal_body;
+    if (mDate)  mDate.textContent  = d.modal_date;
+
+    // Inyectar contenido principal
+    document.getElementById('mainContent').innerHTML = `
+      <header class="header" data-aos="fade-down">
+        <h1>${d.header_h1}</h1>
+        <p>${d.header_sub}</p>
+      </header>
+      <section class="projects">
+        <div class="project-grid">
+          ${d.projects.map(p => buildCard(p, d)).join('')}
+        </div>
+      </section>
+      <section class="featured" data-aos="fade-up" style="margin-top:var(--spacing-2xl);">
+        <div class="featured-text" style="padding:var(--spacing-2xl);text-align:center;grid-column:1/-1;">
+          <h2>${d.cta_h2}</h2>
+          <p>${d.cta_p}</p>
+          <a href="contacto.html" class="btn">${d.cta_btn}</a>
+        </div>
+      </section>`;
+
+    // AOS refresh (no re-init, solo refresh — AOS ya fue iniciado por script.js)
+    refreshAOS();
+  }
+
+  /* ══════════════════════════════════════════════════════
+     TOGGLE DE IDIOMA
+  ══════════════════════════════════════════════════════ */
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('homeLang', lang);
+    renderProyectos();
+    // Re-inicializar initModals() de script.js sobre el nuevo DOM
+    if (typeof initModals === 'function') initModals();
+  }
+
+  /* ══════════════════════════════════════════════════════
+     INIT
+  ══════════════════════════════════════════════════════ */
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProyectos();
+    document.getElementById('languageToggle').addEventListener('click', toggleLang);
+  });
+  </script>
 </body>
 </html>
