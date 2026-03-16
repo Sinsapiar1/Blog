@@ -1,7 +1,7 @@
 /* ========================================
    🍎 MODERN PORTFOLIO - APPLE STYLE DESIGN
    Autor: Raul Pivet
-   Versión: 2.0
+   Versión: 2.1
    ======================================== */
 
 /* ========================================
@@ -9,12 +9,13 @@
    ======================================== */
 :root {
   /* Colores Base */
-  --primary: #007AFF;
-  --primary-dark: #0051D5;
-  --secondary: #5856D6;
+  --primary: #FF6B00;
+  --primary-dark: #E55A00;
+  --secondary: #FF9500;
   --accent: #FF3B30;
   --success: #34C759;
   --warning: #FF9500;
+  --blue: #007AFF;
   
   /* Tema Claro */
   --bg-primary: #FFFFFF;
@@ -107,7 +108,7 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: linear-gradient(90deg, #FF6B00, #FF9500);
   transform-origin: left;
   z-index: 9999;
   transition: transform var(--transition-fast);
@@ -132,7 +133,7 @@ body {
   width: 48px;
   height: 48px;
   border: 3px solid var(--border-color);
-  border-top-color: var(--primary);
+  border-top-color: #FF6B00;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -170,14 +171,14 @@ body {
 .theme-toggle-ball {
   width: 22px;
   height: 22px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  background: linear-gradient(135deg, #FF6B00, #E55A00);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(255, 107, 0, 0.4);
   transition: all var(--transition-base) cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -297,7 +298,7 @@ body {
   content: '';
   position: absolute;
   inset: -3px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   border-radius: 50%;
   z-index: -1;
   opacity: 0;
@@ -361,7 +362,7 @@ body {
   transform: translateY(-50%);
   width: 3px;
   height: 0;
-  background: var(--primary);
+  background: #FF6B00;
   border-radius: 0 2px 2px 0;
   transition: height var(--transition-base);
 }
@@ -369,7 +370,7 @@ body {
 .menu-item.active a,
 .menu-item a:hover {
   background: var(--bg-secondary);
-  color: var(--primary);
+  color: #FF6B00;
 }
 
 .menu-item.active a::before {
@@ -399,9 +400,10 @@ body {
 }
 
 .social-links a:hover {
-  color: var(--primary);
-  background: var(--bg-tertiary);
-  transform: translateY(-2px);
+  color: white;
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35);
 }
 
 /* ========================================
@@ -431,7 +433,7 @@ body {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   margin-bottom: var(--spacing-sm);
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -506,37 +508,54 @@ body {
 }
 
 /* ========================================
-   🎯 BUTTONS
+   🎯 BUTTONS — Naranja de marca
    ======================================== */
 .btn, .btn-small {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 12px 24px;
-  background: var(--primary);
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   color: white;
   text-decoration: none;
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: var(--radius-full);
   border: none;
   cursor: pointer;
   transition: all var(--transition-base);
-  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.35);
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before, .btn-small::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
 }
 
 .btn:hover, .btn-small:hover {
-  background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.45);
+}
+
+.btn:hover::before, .btn-small:hover::before {
+  opacity: 1;
 }
 
 .btn:active, .btn-small:active {
   transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 107, 0, 0.3);
 }
 
 .btn-small {
-  padding: 8px 16px;
+  padding: 8px 18px;
   font-size: 0.875rem;
 }
 
@@ -576,7 +595,7 @@ body {
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: linear-gradient(90deg, #FF6B00, #FF9500);
   border-radius: 2px;
 }
 
@@ -599,7 +618,8 @@ body {
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 48px rgba(255, 107, 0, 0.12);
+  border-color: rgba(255, 107, 0, 0.2);
 }
 
 .project-img {
@@ -637,14 +657,16 @@ body {
 .project-card .btn-small {
   margin: 0 var(--spacing-lg) var(--spacing-lg);
   background: transparent;
-  color: var(--primary);
-  border: 1.5px solid var(--primary);
+  color: #FF6B00;
+  border: 1.5px solid #FF6B00;
   box-shadow: none;
 }
 
 .project-card .btn-small:hover {
-  background: var(--primary);
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.35);
 }
 
 /* ========================================
@@ -770,7 +792,7 @@ body {
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--primary);
+  border: 2px solid #FF6B00;
 }
 
 .insta-avatar img {
@@ -797,7 +819,7 @@ body {
 }
 
 .insta-link {
-  color: var(--primary);
+  color: #FF6B00;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9375rem;
@@ -805,7 +827,7 @@ body {
 }
 
 .insta-link:hover {
-  color: var(--primary-dark);
+  color: #E55A00;
 }
 
 /* ========================================
@@ -871,7 +893,7 @@ footer p {
 
 .modal-icon {
   font-size: 3rem;
-  color: var(--primary);
+  color: #FF6B00;
   text-align: center;
   margin: var(--spacing-lg) 0;
 }
@@ -916,13 +938,14 @@ footer p {
 }
 
 .modal-btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
 }
 
 .modal-btn-primary:hover {
-  background: var(--primary-dark);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
 }
 
 .modal-btn-secondary {
@@ -1026,7 +1049,7 @@ footer p {
   position: absolute;
   top: 20px;
   left: 24px;
-  background: var(--primary);
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   color: white;
   font-size: 0.7rem;
   font-weight: 700;
@@ -1034,7 +1057,7 @@ footer p {
   text-transform: uppercase;
   padding: 5px 12px;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
 }
 
 /* Botón cerrar */
@@ -1118,7 +1141,7 @@ footer p {
 
 /* Frase destacada tipo pull-quote */
 .story-pullquote {
-  border-left: 4px solid var(--primary);
+  border-left: 4px solid #FF6B00;
   margin: 28px 0;
   padding: 16px 24px;
   background: var(--bg-secondary);
@@ -1185,7 +1208,7 @@ footer p {
 }
 
 .story-place-chip i {
-  color: var(--primary);
+  color: #FF6B00;
   font-size: 0.78rem;
 }
 
@@ -1250,7 +1273,7 @@ footer p {
   height: 42px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--primary);
+  border: 2px solid #FF6B00;
 }
 
 .story-author-info strong {
@@ -1284,7 +1307,7 @@ footer p {
 }
 
 .story-share a:hover {
-  background: var(--primary);
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   color: white;
   transform: translateY(-2px);
 }
@@ -1432,11 +1455,35 @@ footer p {
   transform: translateY(0);
 }
 
+[data-aos="fade-down"] {
+  transform: translateY(-20px);
+}
+
+[data-aos="fade-down"].aos-animate {
+  transform: translateY(0);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-30px);
+}
+
+[data-aos="fade-right"].aos-animate {
+  transform: translateX(0);
+}
+
+[data-aos="fade-left"] {
+  transform: translateX(30px);
+}
+
+[data-aos="fade-left"].aos-animate {
+  transform: translateX(0);
+}
+
 /* ========================================
    🎯 UTILIDADES
    ======================================== */
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, #FF6B00, #FF9500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1460,6 +1507,6 @@ a, button, input, textarea, select {
 }
 
 :focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid #FF6B00;
   outline-offset: 2px;
 }
