@@ -1,7 +1,7 @@
 /* ========================================
    🍎 MODERN PORTFOLIO - JAVASCRIPT
    Autor: Raul Pivet
-   Versión: 2.2 - Lab (era Galería)
+   Versión: 2.3
    ======================================== */
 
 // ========================================
@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
       loader.style.opacity = '0';
       setTimeout(() => loader.style.display = 'none', 500);
-    }, 800);
+    }, 600);
   }
 });
 
@@ -51,7 +51,6 @@ function initTheme() {
     body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme, themeIcon);
-    body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
   });
 
   function updateThemeIcon(theme, icon) {
@@ -124,15 +123,22 @@ function updateActiveMenuItem() {
 }
 
 // ========================================
-// ✨ ANIMACIONES
+// ✨ ANIMACIONES — AOS se inicia UNA sola vez aquí
 // ========================================
 function initAnimations() {
   if (typeof AOS !== 'undefined') {
-    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 100 });
-    window.addEventListener('load', () => AOS.refresh());
+    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 80 });
   }
   initParallaxImages();
   initCardHoverEffects();
+}
+
+// Función helper para que las páginas que renderizan contenido dinámico
+// puedan refrescar AOS sin re-inicializarlo
+function refreshAOS() {
+  if (typeof AOS !== 'undefined') {
+    AOS.refresh();
+  }
 }
 
 function initParallaxImages() {
@@ -313,15 +319,15 @@ function initModals() {
       modalDate.parentNode.insertBefore(btnContainer, modalDate.nextSibling);
 
     } else if (button.classList.contains('coming-soon')) {
-      modalTitle.textContent  = 'Artículo en preparación';
-      modalText.textContent   = 'Estamos preparando un relato detallado de esta aventura. ¡Vuelve pronto!';
+      modalTitle.textContent  = 'Documentación en preparación';
+      modalText.textContent   = 'Estoy preparando la documentación técnica detallada de este proyecto.';
       modalDate.style.display = 'block';
-      modalDate.textContent   = 'Publicación estimada: Mayo 2025';
+      modalDate.textContent   = 'Disponible próximamente — 2026';
     } else {
       modalTitle.textContent  = 'Proyecto en desarrollo';
-      modalText.textContent   = 'Estamos trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
+      modalText.textContent   = 'Estoy trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
       modalDate.style.display = 'block';
-      modalDate.textContent   = 'Lanzamiento estimado: Junio 2025';
+      modalDate.textContent   = 'Disponible próximamente — 2026';
     }
 
     modal.style.display = 'flex';
@@ -408,4 +414,4 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
 }
 
-console.log('✅ Portfolio cargado — v2.2');
+console.log('✅ Portfolio cargado — v2.3');
