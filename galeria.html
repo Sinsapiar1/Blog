@@ -13,6 +13,14 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── Language toggle — mismo estilo que el resto del sitio ── */
+    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
+    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .language-flag { font-size:1.25rem; }
+    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
+    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
+
+    /* ── Galería / Lab ── */
     .gallery-filter { display:flex; justify-content:center; margin-bottom:var(--spacing-xl); flex-wrap:wrap; gap:var(--spacing-sm); }
     .gallery-filter button { padding:10px 24px; background:var(--bg-secondary); border:1.5px solid var(--border-color); color:var(--text-primary); border-radius:var(--radius-full); font-weight:500; font-size:0.9375rem; cursor:pointer; transition:all var(--transition-base); }
     .gallery-filter button:hover, .gallery-filter button.active { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; border-color:#FF6B00; transform:translateY(-2px); box-shadow:0 4px 12px rgba(255,107,0,0.3); }
@@ -40,7 +48,7 @@
     .proj-link { display:flex; align-items:center; gap:5px; font-size:0.82rem; font-weight:600; color:#FF6B00; text-decoration:none; transition:gap var(--transition-fast); }
     .proj-link:hover { gap:8px; }
 
-    /* ── LIGHTBOX ── */
+    /* ── Lightbox ── */
     #lightbox { display:none; position:fixed; inset:0; z-index:5000; align-items:center; justify-content:center; }
     #lightbox.lb-open { display:flex; }
     .lb-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); backdrop-filter:blur(0px); transition:background 0.4s ease,backdrop-filter 0.4s ease; cursor:pointer; }
@@ -59,31 +67,9 @@
     .lb-info { margin-top:18px; color:white; width:100%; display:flex; align-items:center; justify-content:space-between; padding:0 4px; gap:16px; }
     .lb-info-text h3 { font-size:1.05rem; font-weight:600; margin-bottom:2px; text-align:left; }
     .lb-info-text p { font-size:0.82rem; opacity:0.6; text-align:left; }
-
-    /* Botón "Abrir sitio" — z-index propio para estar siempre encima */
-    .lb-open-btn {
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:11px 22px;
-      background:linear-gradient(135deg,#FF6B00,#FF9500);
-      color:white;
-      border:none;
-      border-radius:var(--radius-full);
-      font-size:0.875rem;
-      font-weight:700;
-      cursor:pointer;
-      white-space:nowrap;
-      flex-shrink:0;
-      position:relative;
-      z-index:10;
-      transition:all var(--transition-fast);
-      box-shadow:0 4px 14px rgba(255,107,0,0.4);
-      letter-spacing:0.01em;
-    }
+    .lb-open-btn { display:inline-flex; align-items:center; gap:8px; padding:11px 22px; background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; border:none; border-radius:var(--radius-full); font-size:0.875rem; font-weight:700; cursor:pointer; white-space:nowrap; flex-shrink:0; position:relative; z-index:10; transition:all var(--transition-fast); box-shadow:0 4px 14px rgba(255,107,0,0.4); letter-spacing:0.01em; }
     .lb-open-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(255,107,0,0.55); }
     .lb-open-btn:active { transform:translateY(0); }
-
     .lb-arrow { position:fixed; top:50%; transform:translateY(-50%); width:48px; height:48px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); border-radius:50%; color:white; font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px); transition:all var(--transition-base); z-index:2; }
     .lb-arrow:hover { background:rgba(255,255,255,0.22); transform:translateY(-50%) scale(1.1); }
     .lb-arrow.lb-prev { left:16px; } .lb-arrow.lb-next { right:16px; }
@@ -92,7 +78,6 @@
     .lb-dots { display:flex; gap:8px; justify-content:center; margin-top:14px; }
     .lb-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.3); border:none; cursor:pointer; transition:all var(--transition-fast); padding:0; }
     .lb-dot.active { background:white; transform:scale(1.35); }
-
     @media(max-width:768px){ .gallery-grid{grid-template-columns:1fr} .lb-arrow{display:none} .lb-frame-wrap iframe{height:52vh} }
   </style>
 </head>
@@ -102,6 +87,13 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
+
+  <!-- Toggle de idioma — mismo que el resto del sitio -->
+  <div class="language-toggle" id="languageToggle" aria-label="Change language">
+    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-text" id="languageText">English</span>
+  </div>
+
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -113,12 +105,12 @@
         <p>Logistics &amp; Tech Solutions</p>
       </div>
       <ul class="menu">
-        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
         <li class="menu-item active"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
-        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Sobre Mí</a></li>
+        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Sobre Mí</span></a></li>
         <li class="menu-item"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
-        <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> Proyectos</a></li>
-        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> <span data-i18n="nav_projects">Proyectos</span></a></li>
+        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
       </ul>
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -126,50 +118,14 @@
         <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
-    <main class="content">
-      <header class="header" data-aos="fade-down">
-        <h1>Lab</h1>
-        <p>Herramientas reales que construí para resolver problemas reales</p>
-      </header>
-      <div class="gallery-filter" data-aos="fade-up">
-        <button class="active" data-filter="all">Todos</button>
-        <button data-filter="inventario">Inventario</button>
-        <button data-filter="utilidades">Utilidades</button>
-        <button data-filter="educacion">Educación</button>
-        <button data-filter="servicios">Servicios</button>
-      </div>
-      <div class="gallery-grid" id="galleryGrid">
-        <div class="proj-card" data-category="inventario" data-url="https://inventario-three-gamma.vercel.app/" data-title="Sistema de Inventario Pro" data-desc="Gestión de stock en tiempo real con Firebase" data-aos="fade-up">
-          <div class="proj-preview"><iframe src="https://inventario-three-gamma.vercel.app/" title="Sistema de Inventario Pro" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://inventario-three-gamma.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></div></div>
-          <div class="proj-body"><div class="proj-tags"><span class="proj-tag">Firebase</span><span class="proj-tag">JavaScript</span><span class="proj-tag">Logística</span></div><h3>Sistema de Inventario Pro</h3><p>Aplicación web para gestión de stock con base de datos en tiempo real. Permite registrar productos, controlar entradas y salidas, y monitorear el inventario desde cualquier dispositivo.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://inventario-three-gamma.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
-        </div>
-        <div class="proj-card" data-category="utilidades" data-url="https://sinsapiar1.github.io/unirpdfs/" data-title="Unir PDFs" data-desc="Fusión y compresión de PDFs 100% en el navegador" data-aos="fade-up" data-aos-delay="100">
-          <div class="proj-preview"><iframe src="https://sinsapiar1.github.io/unirpdfs/" title="Unir PDFs" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://sinsapiar1.github.io/unirpdfs/" target="_blank" rel="noopener noreferrer" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></div></div>
-          <div class="proj-body"><div class="proj-tags"><span class="proj-tag">HTML/CSS/JS</span><span class="proj-tag">PDF.js</span><span class="proj-tag">Client-Side</span></div><h3>Unir PDFs</h3><p>Herramienta para combinar y comprimir archivos PDF directamente en el navegador, sin servidores ni carga de archivos a la nube. Rápido, privado y 100% gratuito.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://sinsapiar1.github.io/unirpdfs/" target="_blank" rel="noopener noreferrer" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
-        </div>
-        <div class="proj-card" data-category="educacion" data-url="https://sinsapiar1.github.io/AprendeHtml/" data-title="Aprende HTML" data-desc="Guía interactiva de referencia para etiquetas HTML" data-aos="fade-up" data-aos-delay="200">
-          <div class="proj-preview"><iframe src="https://sinsapiar1.github.io/AprendeHtml/" title="Aprende HTML" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://sinsapiar1.github.io/AprendeHtml/" target="_blank" rel="noopener noreferrer" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></div></div>
-          <div class="proj-body"><div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">Educativo</span><span class="proj-tag">Referencia</span></div><h3>Aprende HTML</h3><p>Guía interactiva con todas las etiquetas HTML organizadas por categorías, con ejemplos en vivo y buscador integrado. Pensada para quienes dan sus primeros pasos en el desarrollo web.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://sinsapiar1.github.io/AprendeHtml/" target="_blank" rel="noopener noreferrer" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
-        </div>
-        <div class="proj-card" data-category="utilidades" data-url="https://qrparati.netlify.app/" data-title="QR Para Ti" data-desc="Generador de códigos QR personalizado con colores y descarga" data-aos="fade-up" data-aos-delay="300">
-          <div class="proj-preview"><iframe src="https://qrparati.netlify.app/" title="QR Para Ti" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://qrparati.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></div></div>
-          <div class="proj-body"><div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">QR Code</span><span class="proj-tag">Netlify</span></div><h3>QR Para Ti</h3><p>Generador de códigos QR con opciones de personalización de color de código y fondo, ajuste de tamaño y descarga directa. Ideal para negocios, menús digitales y eventos.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://qrparati.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
-        </div>
-        <div class="proj-card" data-category="utilidades" data-url="https://testdevelocidad.vercel.app/" data-title="Test de Velocidad" data-desc="Medición de velocidad de conexión a internet en tiempo real" data-aos="fade-up" data-aos-delay="400">
-          <div class="proj-preview"><iframe src="https://testdevelocidad.vercel.app/" title="Test de Velocidad" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://testdevelocidad.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></div></div>
-          <div class="proj-body"><div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Vercel</span><span class="proj-tag">Red</span></div><h3>Test de Velocidad</h3><p>Aplicación construida en React que mide la velocidad de descarga y carga de tu conexión a internet. Resultados en tiempo real sin depender de servicios de terceros.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://testdevelocidad.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
-        </div>
-        <div class="proj-card" data-category="servicios" data-url="https://sinsapiar1.github.io/Taximovil/" data-title="Taxi Móvil" data-desc="Sitio web de servicios de transporte con reservas online" data-aos="fade-up" data-aos-delay="500">
-          <div class="proj-preview"><iframe src="https://sinsapiar1.github.io/Taximovil/" title="Taxi Móvil" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe><div class="proj-overlay"><button class="proj-overlay-btn secondary lb-trigger"><i class="fas fa-expand"></i> Vista previa</button><a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" rel="noopener noreferrer" class="proj-overlay-btn primary"><i class="fas fa-external-link-alt"></i> Abrir</a></div></div>
-          <div class="proj-body"><div class="proj-tags"><span class="proj-tag">HTML/CSS/JS</span><span class="proj-tag">Responsive</span><span class="proj-tag">GitHub Pages</span></div><h3>Taxi Móvil</h3><p>Plataforma web para servicios de transporte privado. Diseño moderno y responsive con sección de tarifas, mapa de cobertura y formulario de contacto. Proyecto real, actualmente en uso.</p><div class="proj-footer"><div class="proj-status"><div class="proj-status-dot"></div>En producción</div><a href="https://sinsapiar1.github.io/Taximovil/" target="_blank" rel="noopener noreferrer" class="proj-link">Ver proyecto <i class="fas fa-arrow-right"></i></a></div></div>
-        </div>
-      </div>
-    </main>
-  </div>
-  <footer><p>&copy; 2026 Raul Pivet. Todos los derechos reservados.</p></footer>
 
-  <!-- LIGHTBOX — el botón "Abrir sitio" es ahora un <button> con onclick explícito, 
-       no un <a href> que puede ser interceptado por listeners globales -->
+    <!-- El contenido principal se inyecta por JS para soportar i18n -->
+    <main class="content" id="mainContent"></main>
+  </div>
+
+  <footer><p id="footerText">&copy; 2026 Raul Pivet. Todos los derechos reservados.</p></footer>
+
+  <!-- Lightbox — botón "Abrir sitio" usa window.open() directo, sin href -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Vista previa del proyecto">
     <div class="lb-overlay" id="lbOverlay"></div>
     <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
@@ -187,10 +143,8 @@
           <h3 id="lbTitle"></h3>
           <p id="lbDesc"></p>
         </div>
-        <!-- BOTÓN CORREGIDO: type="button" + onclick con window.open() directo,
-             fuera de cualquier <a> para evitar intercepciones de listeners globales -->
         <button type="button" id="lbOpenBtn" class="lb-open-btn" onclick="lbOpenExternal()">
-          <i class="fas fa-external-link-alt"></i> Abrir sitio
+          <i class="fas fa-external-link-alt"></i> <span id="lbOpenBtnText">Abrir sitio</span>
         </button>
       </div>
       <div class="lb-dots" id="lbDots"></div>
@@ -201,20 +155,169 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
-    // URL actual del proyecto abierto en el lightbox
-    let currentProjectUrl = '';
-
-    // Función global llamada por onclick del botón — usa window.open para garantizar
-    // que ningún listener padre pueda interceptarlo
-    function lbOpenExternal() {
-      if (currentProjectUrl) {
-        window.open(currentProjectUrl, '_blank', 'noopener,noreferrer');
-      }
+  /* ══════════════════════════════════════════════════════
+     TRADUCCIONES — mismo patrón que index.html / contacto.html
+  ══════════════════════════════════════════════════════ */
+  const labTranslations = {
+    es: {
+      nav_home: 'Inicio', nav_about: 'Sobre Mí', nav_projects: 'Proyectos', nav_contact: 'Contacto',
+      page_title: 'Lab - Raul Pivet',
+      header_h1: 'Lab',
+      header_sub: 'Herramientas reales que construí para resolver problemas reales',
+      footer: '© 2026 Raul Pivet. Todos los derechos reservados.',
+      filter_all: 'Todos',
+      filter_inventario: 'Inventario',
+      filter_utilidades: 'Utilidades',
+      filter_educacion: 'Educación',
+      filter_servicios: 'Servicios',
+      status_live: 'En producción',
+      btn_preview: 'Vista previa',
+      btn_open: 'Abrir',
+      btn_open_site: 'Abrir sitio',
+      btn_view_project: 'Ver proyecto',
+      projects: [
+        { category:'inventario', url:'https://inventario-three-gamma.vercel.app/', title:'Sistema de Inventario Pro', desc_lb:'Gestión de stock en tiempo real con Firebase', tags:['Firebase','JavaScript','Logística'], desc:'Aplicación web para gestión de stock con base de datos en tiempo real. Permite registrar productos, controlar entradas y salidas, y monitorear el inventario desde cualquier dispositivo.' },
+        { category:'utilidades', url:'https://sinsapiar1.github.io/unirpdfs/', title:'Unir PDFs', desc_lb:'Fusión y compresión de PDFs 100% en el navegador', tags:['HTML/CSS/JS','PDF.js','Client-Side'], desc:'Herramienta para combinar y comprimir archivos PDF directamente en el navegador, sin servidores ni carga de archivos a la nube. Rápido, privado y 100% gratuito.' },
+        { category:'educacion', url:'https://sinsapiar1.github.io/AprendeHtml/', title:'Aprende HTML', desc_lb:'Guía interactiva de referencia para etiquetas HTML', tags:['HTML','Educativo','Referencia'], desc:'Guía interactiva con todas las etiquetas HTML organizadas por categorías, con ejemplos en vivo y buscador integrado. Pensada para quienes dan sus primeros pasos en el desarrollo web.' },
+        { category:'utilidades', url:'https://qrparati.netlify.app/', title:'QR Para Ti', desc_lb:'Generador de códigos QR personalizado con colores y descarga', tags:['JavaScript','QR Code','Netlify'], desc:'Generador de códigos QR con opciones de personalización de color de código y fondo, ajuste de tamaño y descarga directa. Ideal para negocios, menús digitales y eventos.' },
+        { category:'utilidades', url:'https://testdevelocidad.vercel.app/', title:'Test de Velocidad', desc_lb:'Medición de velocidad de conexión a internet en tiempo real', tags:['React','Vercel','Red'], desc:'Aplicación construida en React que mide la velocidad de descarga y carga de tu conexión a internet. Resultados en tiempo real sin depender de servicios de terceros.' },
+        { category:'servicios', url:'https://sinsapiar1.github.io/Taximovil/', title:'Taxi Móvil', desc_lb:'Sitio web de servicios de transporte con reservas online', tags:['HTML/CSS/JS','Responsive','GitHub Pages'], desc:'Plataforma web para servicios de transporte privado. Diseño moderno y responsive con sección de tarifas, mapa de cobertura y formulario de contacto. Proyecto real, actualmente en uso.' }
+      ]
+    },
+    en: {
+      nav_home: 'Home', nav_about: 'About Me', nav_projects: 'Projects', nav_contact: 'Contact',
+      page_title: 'Lab - Raul Pivet',
+      header_h1: 'Lab',
+      header_sub: 'Real tools I built to solve real problems',
+      footer: '© 2026 Raul Pivet. All rights reserved.',
+      filter_all: 'All',
+      filter_inventario: 'Inventory',
+      filter_utilidades: 'Utilities',
+      filter_educacion: 'Education',
+      filter_servicios: 'Services',
+      status_live: 'Live',
+      btn_preview: 'Preview',
+      btn_open: 'Open',
+      btn_open_site: 'Open site',
+      btn_view_project: 'View project',
+      projects: [
+        { category:'inventario', url:'https://inventario-three-gamma.vercel.app/', title:'Inventory Pro System', desc_lb:'Real-time stock management with Firebase', tags:['Firebase','JavaScript','Logistics'], desc:'Web application for stock management with a real-time database. Register products, track inflows and outflows, and monitor inventory from any device.' },
+        { category:'utilidades', url:'https://sinsapiar1.github.io/unirpdfs/', title:'Merge PDFs', desc_lb:'100% browser-based PDF merging and compression', tags:['HTML/CSS/JS','PDF.js','Client-Side'], desc:'Tool to combine and compress PDF files directly in the browser — no servers, no cloud uploads. Fast, private and 100% free.' },
+        { category:'educacion', url:'https://sinsapiar1.github.io/AprendeHtml/', title:'Learn HTML', desc_lb:'Interactive reference guide for HTML tags', tags:['HTML','Educational','Reference'], desc:'Interactive guide with all HTML tags organized by category, with live examples and an integrated search bar. Built for those taking their first steps in web development.' },
+        { category:'utilidades', url:'https://qrparati.netlify.app/', title:'QR For You', desc_lb:'Custom QR code generator with colors and download', tags:['JavaScript','QR Code','Netlify'], desc:'QR code generator with code and background color customization, size adjustment, and direct download. Perfect for businesses, digital menus and events.' },
+        { category:'utilidades', url:'https://testdevelocidad.vercel.app/', title:'Speed Test', desc_lb:'Real-time internet connection speed measurement', tags:['React','Vercel','Network'], desc:'React application that measures your internet download and upload speed in real time without relying on third-party services.' },
+        { category:'servicios', url:'https://sinsapiar1.github.io/Taximovil/', title:'Taxi Mobile', desc_lb:'Transport services website with online bookings', tags:['HTML/CSS/JS','Responsive','GitHub Pages'], desc:'Web platform for private transport services. Modern responsive design with fare calculator, coverage map and contact form. A real project currently in use.' }
+      ]
     }
+  };
 
-    // ── Filtro de categorías ──
+  /* ══════════════════════════════════════════════════════
+     URL actual del proyecto abierto en el lightbox
+  ══════════════════════════════════════════════════════ */
+  let currentProjectUrl = '';
+
+  // Función global para el botón "Abrir sitio" — window.open() directo
+  function lbOpenExternal() {
+    if (currentProjectUrl) window.open(currentProjectUrl, '_blank', 'noopener,noreferrer');
+  }
+
+  /* ══════════════════════════════════════════════════════
+     RENDER — genera el HTML del main según el idioma
+  ══════════════════════════════════════════════════════ */
+  let lang = localStorage.getItem('homeLang') || 'es';
+
+  function renderLab() {
+    const d = labTranslations[lang];
+
+    // Título de la pestaña
+    document.title = d.page_title;
+
+    // Bandera y texto del toggle
+    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
+
+    // Items del menú lateral traducibles
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (d[k]) el.textContent = d[k];
+    });
+
+    // Footer
+    document.getElementById('footerText').textContent = d.footer;
+
+    // Texto del botón "Abrir sitio" en el lightbox
+    document.getElementById('lbOpenBtnText').textContent = d.btn_open_site;
+
+    // Construir HTML de las tarjetas de proyectos
+    const cardsHTML = d.projects.map((p, i) => `
+      <div class="proj-card"
+           data-category="${p.category}"
+           data-url="${p.url}"
+           data-title="${p.title}"
+           data-desc="${p.desc_lb}"
+           data-aos="fade-up"
+           data-aos-delay="${i * 80}">
+        <div class="proj-preview">
+          <iframe src="${p.url}" title="${p.title}" loading="lazy"
+                  sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="proj-overlay">
+            <button class="proj-overlay-btn secondary lb-trigger">
+              <i class="fas fa-expand"></i> ${d.btn_preview}
+            </button>
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer"
+               class="proj-overlay-btn primary">
+              <i class="fas fa-external-link-alt"></i> ${d.btn_open}
+            </a>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tags">
+            ${p.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}
+          </div>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <div class="proj-footer">
+            <div class="proj-status">
+              <div class="proj-status-dot"></div>${d.status_live}
+            </div>
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="proj-link">
+              ${d.btn_view_project} <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>`).join('');
+
+    // Inyectar todo el contenido principal
+    document.getElementById('mainContent').innerHTML = `
+      <header class="header" data-aos="fade-down">
+        <h1>${d.header_h1}</h1>
+        <p>${d.header_sub}</p>
+      </header>
+      <div class="gallery-filter" data-aos="fade-up">
+        <button class="active" data-filter="all">${d.filter_all}</button>
+        <button data-filter="inventario">${d.filter_inventario}</button>
+        <button data-filter="utilidades">${d.filter_utilidades}</button>
+        <button data-filter="educacion">${d.filter_educacion}</button>
+        <button data-filter="servicios">${d.filter_servicios}</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">${cardsHTML}</div>`;
+
+    // Re-inicializar AOS sobre el nuevo contenido
+    refreshAOS();
+
+    // Re-vincular el filtro de categorías (se destruyó al reemplazar innerHTML)
+    bindFilter();
+
+    // Reconstruir la lista de tarjetas visibles para el lightbox
+    buildVisibleList();
+  }
+
+  /* ══════════════════════════════════════════════════════
+     FILTRO DE CATEGORÍAS — se llama tras cada render
+  ══════════════════════════════════════════════════════ */
+  function bindFilter() {
     document.querySelectorAll('.gallery-filter button').forEach(btn => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function () {
         document.querySelectorAll('.gallery-filter button').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
         const filter = this.dataset.filter;
@@ -225,107 +328,135 @@
       });
     });
 
-    // ── Lightbox ──
-    const lb       = document.getElementById('lightbox');
-    const lbFrame  = document.getElementById('lbFrame');
-    const lbUrl    = document.getElementById('lbUrl');
-    const lbTitle  = document.getElementById('lbTitle');
-    const lbDesc   = document.getElementById('lbDesc');
-    const lbDots   = document.getElementById('lbDots');
-    const lbClose  = document.getElementById('lbClose');
-    const lbOverlay= document.getElementById('lbOverlay');
-    const lbPrev   = document.getElementById('lbPrev');
-    const lbNext   = document.getElementById('lbNext');
+    // Delegación de clics para el botón "Vista previa" (lb-trigger)
+    // Se usa el contenedor galleryGrid para evitar múltiples listeners al re-renderizar
+    const grid = document.getElementById('galleryGrid');
+    if (grid) {
+      // Remover listener anterior si existe (clonando el nodo)
+      const newGrid = grid.cloneNode(true);
+      grid.parentNode.replaceChild(newGrid, grid);
 
-    let visibleCards = [], currentIndex = 0;
-
-    function buildVisibleList() {
-      visibleCards = Array.from(document.querySelectorAll('.proj-card')).filter(c => c.style.display !== 'none');
-    }
-
-    function openLightbox(index) {
-      currentIndex = index;
-      lb.style.display = 'flex';
-      requestAnimationFrame(() => requestAnimationFrame(() => lb.classList.add('lb-open')));
-      document.body.style.overflow = 'hidden';
-      loadProject(index);
-      buildDots();
-    }
-
-    function closeLightbox() {
-      lb.classList.remove('lb-open');
-      document.body.style.overflow = '';
-      lbFrame.src = '';
-      currentProjectUrl = '';
-      setTimeout(() => { lb.style.display = 'none'; }, 380);
-    }
-
-    function loadProject(index) {
-      const card = visibleCards[index];
-      if (!card) return;
-      const url = card.dataset.url;
-
-      // Guardamos la URL en la variable global para que lbOpenExternal() la use
-      currentProjectUrl = url;
-
-      lbFrame.src = url;
-      lbUrl.textContent = url.replace(/^https?:\/\//, '');
-      lbTitle.textContent = card.dataset.title;
-      lbDesc.textContent  = card.dataset.desc;
-      lbPrev.disabled = index === 0;
-      lbNext.disabled = index === visibleCards.length - 1;
-      document.querySelectorAll('.lb-dot').forEach((d, i) => d.classList.toggle('active', i === index));
-    }
-
-    function buildDots() {
-      lbDots.innerHTML = '';
-      visibleCards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'lb-dot' + (i === currentIndex ? ' active' : '');
-        dot.setAttribute('aria-label', `Ir al proyecto ${i + 1}`);
-        dot.addEventListener('click', () => { currentIndex = i; loadProject(i); });
-        lbDots.appendChild(dot);
+      newGrid.addEventListener('click', e => {
+        const trigger = e.target.closest('.lb-trigger');
+        if (!trigger) return;
+        e.preventDefault();
+        buildVisibleList();
+        const card  = trigger.closest('.proj-card');
+        const index = visibleCards.indexOf(card);
+        if (index !== -1) openLightbox(index);
       });
     }
+  }
 
-    // Abrir lightbox al hacer clic en "Vista previa"
-    document.getElementById('galleryGrid').addEventListener('click', e => {
-      const trigger = e.target.closest('.lb-trigger');
-      if (!trigger) return;
-      e.preventDefault();
-      buildVisibleList();
-      const card  = trigger.closest('.proj-card');
-      const index = visibleCards.indexOf(card);
-      if (index !== -1) openLightbox(index);
+  /* ══════════════════════════════════════════════════════
+     LIGHTBOX
+  ══════════════════════════════════════════════════════ */
+  const lb        = document.getElementById('lightbox');
+  const lbFrame   = document.getElementById('lbFrame');
+  const lbUrl     = document.getElementById('lbUrl');
+  const lbTitle   = document.getElementById('lbTitle');
+  const lbDesc    = document.getElementById('lbDesc');
+  const lbDots    = document.getElementById('lbDots');
+  const lbClose   = document.getElementById('lbClose');
+  const lbOverlay = document.getElementById('lbOverlay');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+
+  let visibleCards = [], currentIndex = 0;
+
+  function buildVisibleList() {
+    visibleCards = Array.from(document.querySelectorAll('.proj-card'))
+      .filter(c => c.style.display !== 'none');
+  }
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lb.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => lb.classList.add('lb-open')));
+    document.body.style.overflow = 'hidden';
+    loadProject(index);
+    buildDots();
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('lb-open');
+    document.body.style.overflow = '';
+    lbFrame.src = '';
+    currentProjectUrl = '';
+    setTimeout(() => { lb.style.display = 'none'; }, 380);
+  }
+
+  function loadProject(index) {
+    const card = visibleCards[index];
+    if (!card) return;
+    const url = card.dataset.url;
+    currentProjectUrl = url;                         // para lbOpenExternal()
+    lbFrame.src   = url;
+    lbUrl.textContent   = url.replace(/^https?:\/\//, '');
+    lbTitle.textContent = card.dataset.title;
+    lbDesc.textContent  = card.dataset.desc;
+    lbPrev.disabled = index === 0;
+    lbNext.disabled = index === visibleCards.length - 1;
+    document.querySelectorAll('.lb-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+
+  function buildDots() {
+    lbDots.innerHTML = '';
+    visibleCards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'lb-dot' + (i === currentIndex ? ' active' : '');
+      dot.setAttribute('aria-label', `Ir al proyecto ${i + 1}`);
+      dot.addEventListener('click', () => { currentIndex = i; loadProject(i); });
+      lbDots.appendChild(dot);
     });
+  }
 
-    // Cerrar: botón X y overlay — stopPropagation para que no afecte al botón Abrir
-    lbClose.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
-    lbOverlay.addEventListener('click', closeLightbox);
+  // Cerrar: X y overlay
+  lbClose.addEventListener('click',   e => { e.stopPropagation(); closeLightbox(); });
+  lbOverlay.addEventListener('click', closeLightbox);
 
-    // Navegación entre proyectos
-    lbPrev.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; loadProject(currentIndex); } });
-    lbNext.addEventListener('click', () => { if (currentIndex < visibleCards.length - 1) { currentIndex++; loadProject(currentIndex); } });
+  // Flechas de navegación
+  lbPrev.addEventListener('click', () => {
+    if (currentIndex > 0) { currentIndex--; loadProject(currentIndex); }
+  });
+  lbNext.addEventListener('click', () => {
+    if (currentIndex < visibleCards.length - 1) { currentIndex++; loadProject(currentIndex); }
+  });
 
-    // Teclado
-    document.addEventListener('keydown', e => {
-      if (!lb.classList.contains('lb-open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft'  && currentIndex > 0)                       { currentIndex--; loadProject(currentIndex); }
-      if (e.key === 'ArrowRight' && currentIndex < visibleCards.length - 1) { currentIndex++; loadProject(currentIndex); }
-    });
+  // Teclado
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('lb-open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft'  && currentIndex > 0)                       { currentIndex--; loadProject(currentIndex); }
+    if (e.key === 'ArrowRight' && currentIndex < visibleCards.length - 1) { currentIndex++; loadProject(currentIndex); }
+  });
 
-    // Swipe táctil
-    let touchStartX = 0;
-    lb.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend',   e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) < 50) return;
-      if (diff > 0 && currentIndex < visibleCards.length - 1) { currentIndex++; loadProject(currentIndex); }
-      if (diff < 0 && currentIndex > 0)                       { currentIndex--; loadProject(currentIndex); }
-    });
+  // Swipe táctil
+  let touchStartX = 0;
+  lb.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend',   e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 50) return;
+    if (diff > 0 && currentIndex < visibleCards.length - 1) { currentIndex++; loadProject(currentIndex); }
+    if (diff < 0 && currentIndex > 0)                       { currentIndex--; loadProject(currentIndex); }
+  });
 
-    buildVisibleList();
+  /* ══════════════════════════════════════════════════════
+     TOGGLE DE IDIOMA
+  ══════════════════════════════════════════════════════ */
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('homeLang', lang);   // misma clave que el resto del sitio
+    renderLab();
+  }
+
+  /* ══════════════════════════════════════════════════════
+     INIT
+  ══════════════════════════════════════════════════════ */
+  document.addEventListener('DOMContentLoaded', () => {
+    renderLab();
+    document.getElementById('languageToggle').addEventListener('click', toggleLang);
+  });
   </script>
 </body>
 </html>
