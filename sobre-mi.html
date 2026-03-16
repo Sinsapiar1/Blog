@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Raul Pivet — Especialista en automatización logística y Business Intelligence. 10+ años de trayectoria desde Chile hasta Miami, FL.">
+  <meta name="description" content="Raul Pivet — Especialista en automatización logística, desarrollo web y Business Intelligence. 10+ años de trayectoria desde Chile hasta Miami, FL.">
   <meta name="theme-color" content="#FF6B00">
   <title>Sobre Mí - Raul Pivet</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -18,6 +18,8 @@
     .language-flag { font-size:1.25rem; }
     .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
     @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
+
+    /* ── HERO ── */
     .about-hero { display:grid; grid-template-columns:1fr 1.6fr; gap:32px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; margin-bottom:40px; }
     .about-hero-img { position:relative; min-height:420px; }
     .about-hero-img img { width:100%; height:100%; object-fit:cover; object-position:top; }
@@ -33,11 +35,17 @@
     .about-badge { display:flex; align-items:center; gap:6px; background:var(--bg-secondary); border:1px solid var(--border-color); padding:6px 12px; border-radius:20px; font-size:12px; font-weight:600; color:var(--text-secondary); }
     .about-badge i { color:#FF6B00; font-size:11px; }
     @media(max-width:900px){ .about-hero { grid-template-columns:1fr; } .about-hero-img { min-height:280px; } .about-hero-content { padding:28px; } .about-hero-img-overlay { background:linear-gradient(to top, var(--glass-bg) 0%, transparent 50%); } }
+
+    /* ── PULLQUOTE ── */
     .pullquote { background:linear-gradient(135deg,rgba(255,107,0,0.06),rgba(255,149,0,0.03)); border-left:4px solid #FF6B00; border-radius:0 12px 12px 0; padding:24px 28px; margin:32px 0; }
     .pullquote p { font-size:1.1rem; font-style:italic; color:var(--text-primary); line-height:1.7; margin:0; }
     .pullquote cite { display:block; font-size:0.8rem; color:var(--text-tertiary); margin-top:10px; font-style:normal; font-weight:600; }
+
+    /* ── SECTION HEADERS ── */
     .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
     .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; margin-bottom:28px; }
+
+    /* ── TIMELINE ── */
     .timeline { position:relative; padding-left:32px; }
     .timeline::before { content:''; position:absolute; left:10px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom, #FF6B00, rgba(255,107,0,0.1)); border-radius:2px; }
     .timeline-item { position:relative; margin-bottom:32px; }
@@ -53,20 +61,102 @@
     .timeline-highlights { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
     .timeline-highlight { font-size:10px; font-weight:700; color:#34C759; background:rgba(52,199,89,0.1); padding:3px 9px; border-radius:8px; }
     .timeline-origin { font-size:10px; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.1); padding:3px 9px; border-radius:8px; }
+
+    /* ── VALUE CARDS — rediseño horizontal con número ── */
     .values-section { margin:48px 0; }
-    .values-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
-    .value-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:26px; text-align:center; transition:all 0.25s; }
-    .value-card:hover { border-color:rgba(255,107,0,0.3); transform:translateY(-4px); box-shadow:0 12px 32px rgba(255,107,0,0.08); }
-    .value-icon { width:52px; height:52px; background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08)); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:#FF6B00; margin:0 auto 14px; }
-    .value-title { font-size:0.9375rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; }
-    .value-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
+    .values-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+    .value-card {
+      background:var(--glass-bg);
+      border:1px solid var(--border-color);
+      border-radius:16px;
+      padding:28px 24px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      transition:all 0.25s;
+      position:relative;
+      overflow:hidden;
+    }
+    .value-card::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(255,107,0,0.04),transparent);
+      opacity:0;
+      transition:opacity 0.25s;
+    }
+    .value-card:hover { border-color:rgba(255,107,0,0.35); transform:translateY(-4px); box-shadow:0 14px 36px rgba(255,107,0,0.1); }
+    .value-card:hover::before { opacity:1; }
+    .value-card-top { display:flex; align-items:center; gap:14px; }
+    .value-icon {
+      width:46px; height:46px;
+      background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08));
+      border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.25rem; color:#FF6B00;
+      flex-shrink:0;
+    }
+    .value-number {
+      font-size:2.2rem;
+      font-weight:800;
+      color:rgba(255,107,0,0.12);
+      line-height:1;
+      letter-spacing:-2px;
+      margin-left:auto;
+    }
+    .value-title { font-size:0.9375rem; font-weight:700; color:var(--text-primary); line-height:1.3; }
+    .value-guarantee {
+      font-size:11px;
+      font-weight:700;
+      color:#FF6B00;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      background:rgba(255,107,0,0.08);
+      padding:3px 10px;
+      border-radius:10px;
+      width:fit-content;
+    }
+    .value-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.65; }
+
+    /* ── PERSONAL CARDS — rediseño con más presencia visual ── */
     .personal-section { margin:48px 0; }
-    .personal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
-    .personal-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:14px; padding:22px; display:flex; gap:14px; align-items:flex-start; transition:all 0.2s; }
-    .personal-card:hover { border-color:rgba(255,107,0,0.2); }
-    .personal-icon { width:38px; height:38px; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-size:0.95rem; flex-shrink:0; }
-    .personal-title { font-size:0.875rem; font-weight:700; color:var(--text-primary); margin-bottom:4px; }
-    .personal-desc { font-size:0.78rem; color:var(--text-secondary); line-height:1.5; }
+    .personal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
+    .personal-card {
+      background:var(--glass-bg);
+      border:1px solid var(--border-color);
+      border-radius:16px;
+      padding:28px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      transition:all 0.25s;
+      position:relative;
+      overflow:hidden;
+    }
+    .personal-card::after {
+      content:'';
+      position:absolute;
+      bottom:0; left:0; right:0;
+      height:2px;
+      background:linear-gradient(90deg,#FF6B00,#FF9500);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform 0.3s ease;
+    }
+    .personal-card:hover { border-color:rgba(255,107,0,0.25); transform:translateY(-4px); box-shadow:0 12px 32px rgba(255,107,0,0.08); }
+    .personal-card:hover::after { transform:scaleX(1); }
+    .personal-icon-wrap {
+      width:48px; height:48px;
+      background:linear-gradient(135deg,#FF6B00,#FF9500);
+      border-radius:13px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.1rem; color:white;
+      box-shadow:0 6px 18px rgba(255,107,0,0.3);
+    }
+    .personal-title { font-size:1rem; font-weight:700; color:var(--text-primary); line-height:1.25; }
+    .personal-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
+
+    /* ── CTA ── */
     .about-cta { margin:48px 0; background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:40px; text-align:center; }
     .about-cta h2 { font-size:1.5rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
     .about-cta p { color:var(--text-secondary); margin-bottom:24px; line-height:1.6; }
@@ -121,19 +211,21 @@
       footer: "Todos los derechos reservados.",
       page_title: "Sobre Mí - Raul Pivet",
       eyebrow: "👋 Hola, soy Raul",
-      h1: "De las bodegas de Chile",
-      h1span: "a automatizar operaciones en Miami",
+      h1: "Diez años resolviendo",
+      h1span: "problemas reales en logística y tecnología",
       role: "Logistics Operations Specialist & Business Solutions Developer",
-      p1: "Empecé mi carrera moviendo cajas. Literalmente. En una bodega minera en el norte de Chile, a más de 2.700 metros de altura, manejando inventarios de una operación que no descansa. Ahí entendí algo que no se aprende en ningún libro: <strong>los procesos manuales matan la productividad</strong> — y que siempre hay una forma más inteligente de hacer las cosas.",
-      p2: "Con más de <strong>10 años de experiencia</strong> fui combinando mi expertise en gestión de bodegas con herramientas tecnológicas. Primero Excel avanzado y Google Suite. Después AppSheet, Python, Power Platform. Cada solución que construí nació de un problema real que yo mismo viví operacionalmente.",
-      p3: "Hoy, desde Miami, gestiono datos de <strong>30+ almacenes globalmente</strong>, construyo pipelines que procesan información sin intervención humana y dashboards que se actualizan solos. Lo que antes eran horas de trabajo manual, hoy son segundos.",
+      /* ── HERO: el foco está en el valor para el cliente, no en la autobiografía ── */
+      p1: "Hay algo que separa a un técnico de alguien que realmente entiende un negocio: haber vivido operacionalmente el problema. Más de <strong>10 años en operaciones mineras</strong> — desde ayudante de bodega hasta coordinador logístico — significan que cuando alguien describe un proceso manual tedioso, no hace falta explicarlo dos veces.",
+      p2: "Esa experiencia operativa, combinada con <strong>Power Platform, Python, React y Firebase</strong>, es lo que permite construir soluciones que realmente se usan: no solo técnicamente correctas, sino pensadas para el operador que trabaja bajo presión y para el directivo que necesita visibilidad de datos en tiempo real.",
+      p3: "El resultado es concreto: <strong>30+ almacenes con datos centralizados</strong>, pipelines que distribuyen 50 reportes automáticamente sin intervención humana, y aplicaciones web que reemplazan procesos en papel desde el primer día.",
       badges: [
         { icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },
         { icon:"fas fa-language", text:"Español / English" },
         { icon:"fas fa-briefcase", text:"Disponible para trabajar" },
         { icon:"fas fa-globe", text:"Trabajo remoto" }
       ],
-      quote: "No automatizo por automatizar. Automatizo porque viví en carne propia lo que es trabajar 12 horas haciendo algo que una máquina puede hacer en 5 segundos.",
+      /* ── QUOTE: esta se queda, es auténtica y en primera persona tiene sentido ── */
+      quote: "No automatizo por automatizar. Automatizo porque sé exactamente lo que es trabajar 12 horas haciendo algo que una máquina puede hacer en 5 segundos.",
       quote_cite: "— Raul Pivet",
       timeline_eyebrow: "Trayectoria",
       timeline_title: "10 años construyendo soluciones reales",
@@ -141,30 +233,72 @@
         { title:"Asistente de Datos & Desarrollador de Soluciones", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Presente", desc:"Gestión de datos de inventario para 30+ almacenes globalmente. Pipeline completo: correo → Python → SQLite → GitHub Actions → Power Automate → 50 reportes distribuidos. Power BI con custom visuals TypeScript.", highlights:["Pipeline 50 reportes automáticos","Custom visuals TypeScript","Dataverse 62 días","Gemini AI integrado"], origin:null },
         { title:"Coordinador Logístico", company:"Merflex International — Doral, FL", date:"May 2024 — Ene 2025", desc:"Operaciones internacionales China → Miami → Bogotá para productos Temu/Shein. Apps móviles para recepción y despacho con informes automáticos. Sistematización de procedimientos clave.", highlights:["Operaciones China-Miami-Bogotá","Apps móviles con reportes auto","Sistematización de procesos"], origin:null },
         { title:"Jefe de Bodega", company:"Sodexo Energy & Resources — Minera Collahuasi, Iquique, Chile", date:"Dic 2022 — Jul 2023", desc:"Liderazgo equipo 20 personas turnos 7x7. AppSheet reemplazó registros en papel. Sistemas integrados Gmail + Google Sheets para alertas y reportes en tiempo real.", highlights:["Equipo 20 personas / 7x7","−30% errores de inventario","AppSheet en producción","+25% eficiencia operativa"], origin:null },
-        { title:"Supervisor de Bodegas", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Ago 2021 — Dic 2022", desc:"Supervisión en una de las minas de cobre más grandes del mundo. Análisis de datos para presentaciones de costos. Primeras automatizaciones: apps móviles de inventario y alertas automáticas.", highlights:["Minera Escondida — mayor cobre mundo","Primeras automatizaciones","Apps móviles de inventario"], origin:null },
+        { title:"Supervisor de Bodegas", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Ago 2021 — Dic 2022", desc:"Supervisión en una de las minas de cobre más grandes del mundo. Primeras automatizaciones: apps móviles de inventario y alertas automáticas para presentaciones de costos.", highlights:["Minera Escondida — mayor cobre mundo","Primeras automatizaciones","Apps móviles de inventario"], origin:null },
         { title:"Administrativo de Bodegas", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Nov 2019 — Jul 2021", desc:"Gestión documental, control de stock y recepción de mercadería. Representación de la bodega en reuniones nacionales. Análisis de datos para presentaciones semanales de costos.", highlights:["Control de stock y documentación","Análisis de costos semanal","Sistemas ERP y Office"], origin:null },
         { title:"Administrativo de Bodega", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Ene 2018 — Nov 2019", desc:"Administración de bodega en operación minera de turno continuo. Control de stock, recepción y despacho de mercadería. Coordinación con áreas internas y proveedores.", highlights:["Control de inventario","Gestión documental","ERP y Microsoft Office"], origin:null },
-        { title:"Ayudante de Bodega", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Ago 2016 — Ene 2018", desc:"El comienzo. Recepción y despacho de mercadería, control de stock FIFO/FEFO, conteos de inventario y mantenimiento del área según estándares de seguridad minera.", highlights:[], origin:"🌱 Donde todo comenzó" }
+        { title:"Ayudante de Bodega", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Ago 2016 — Ene 2018", desc:"El punto de partida. Recepción y despacho de mercadería, control de stock FIFO/FEFO, conteos de inventario y mantenimiento del área según estándares de seguridad minera.", highlights:[], origin:"🌱 Donde todo comenzó" }
       ],
+      /* ── VALUES: reformulados como garantías para el cliente ── */
       values_eyebrow: "Cómo trabajo",
-      values_title: "Lo que me define profesionalmente",
+      values_title: "Lo que podés esperar de cada proyecto",
       values: [
-        { icon:"fas fa-search", title:"Primero entiendo el problema", desc:"Antes de escribir una línea de código, mapeo el proceso completo. La solución más elegante es la que resuelve exactamente lo que necesita ser resuelto." },
-        { icon:"fas fa-cogs", title:"Construyo para que funcione solo", desc:"Una automatización que requiere mantenimiento constante no es una solución. Diseño sistemas autónomos con ventanas temporales, limpieza automática y alertas de fallo." },
-        { icon:"fas fa-users", title:"Pienso en quien va a usarlo", desc:"Cada interfaz tiene que funcionar para alguien que no sabe nada de tecnología y para alguien que sí. Trabajo con operadores y directivos." },
-        { icon:"fas fa-chart-line", title:"Mido el impacto real", desc:"−30% errores, +25% eficiencia, 50 reportes antes manuales. Hablo de resultados concretos y medibles en operaciones reales." }
+        {
+          icon:"fas fa-search",
+          num:"01",
+          guarantee:"Diagnóstico primero",
+          title:"El problema se entiende antes de escribir una línea de código",
+          desc:"Cada proceso tiene historia y contexto. Antes de proponer soluciones, se mapea el flujo completo — lo que funciona, lo que falla y por qué. El resultado es más preciso y dura más."
+        },
+        {
+          icon:"fas fa-cogs",
+          num:"02",
+          guarantee:"Funciona solo",
+          title:"Las soluciones no necesitan que alguien las mantenga activas",
+          desc:"Si requiere intervención humana constante, no es una solución. Los sistemas se diseñan con ventanas temporales, limpieza automática y alertas de fallo — para que trabajen sin que nadie tenga que recordar activarlos."
+        },
+        {
+          icon:"fas fa-users",
+          num:"03",
+          guarantee:"Usable por todos",
+          title:"Funciona para el operador y para el directivo al mismo tiempo",
+          desc:"Una herramienta que solo usa quien la programó no sirve. Cada interfaz se diseña para ser intuitiva en operación bajo presión y útil para quien necesita tomar decisiones con datos."
+        },
+        {
+          icon:"fas fa-chart-line",
+          num:"04",
+          guarantee:"Impacto medible",
+          title:"Los resultados se miden en números, no en promesas",
+          desc:"−30% errores de inventario, +25% eficiencia operativa, 50 reportes distribuidos automáticamente. Cada proyecto define métricas de éxito desde el inicio para que el impacto sea verificable."
+        }
       ],
+      /* ── PERSONAL: textos más ricos, más conectados con el perfil profesional ── */
       personal_eyebrow: "Fuera del trabajo",
       personal_title: "El resto de la historia",
       personal: [
-        { icon:"fas fa-running", title:"Corredor de distancia", desc:"Entreno media y larga distancia. La disciplina del running y la del código son más parecidas de lo que parece." },
-        { icon:"fas fa-mountain", title:"Explorador", desc:"De las alturas de la Puna chilena a Yucatán, México. Planificar bien es la mitad del camino." },
-        { icon:"fas fa-camera", title:"Fotografía", desc:"Capturo momentos en viajes y entrenamientos. Ver el detalle que otros no ven aplica igual al análisis de datos." },
-        { icon:"fas fa-shield-alt", title:"Ciberseguridad & OSINT", desc:"Certificación en ciberseguridad (2025). Curiosidad por la seguridad ofensiva y el análisis de inteligencia abierta." }
+        {
+          icon:"fas fa-running",
+          title:"Corredor de distancia",
+          desc:"Media y larga distancia, en entrenamiento y en competencia. La disciplina que exige preparar una carrera — constancia, planificación, tolerancia al error — es exactamente la misma que requiere construir un sistema que funcione a largo plazo."
+        },
+        {
+          icon:"fas fa-mountain",
+          title:"Explorador",
+          desc:"De la Puna chilena a Yucatán, México. Cada viaje empieza con logística real: rutas, tiempos, recursos, contingencias. El mismo cerebro que organiza almacenes planificó cada kilómetro."
+        },
+        {
+          icon:"fas fa-camera",
+          title:"Fotografía",
+          desc:"Capturar el momento exacto antes de que desaparezca entrena algo valioso: ver el detalle que otros no ven. Esa misma atención es la que encuentra el error en un dataset o el cuello de botella en un proceso."
+        },
+        {
+          icon:"fas fa-shield-alt",
+          title:"Ciberseguridad & OSINT",
+          desc:"Certificación en ciberseguridad (2025). Interés por la seguridad ofensiva y el análisis de inteligencia abierta — disciplinas que comparten con la logística una cosa: siempre hay más información de la que parece."
+        }
       ],
-      cta_title: "¿Querés trabajar juntos?",
-      cta_desc: "Si tenés un proceso manual que consume tiempo de tu equipo — hablemos. Me adapto a tu stack, industria y presupuesto.",
-      cta_btn1: "Contactame", cta_btn2: "Ver CV completo"
+      cta_title: "¿Tiene sentido trabajar juntos?",
+      cta_desc: "Si tu equipo pierde tiempo en procesos manuales o necesitás visibilidad real de tus datos — eso se puede resolver. Me adapto a tu stack, industria y presupuesto.",
+      cta_btn1: "Hablemos", cta_btn2: "Ver CV completo"
     },
     en: {
       sidebar: "Logistics & Tech Solutions",
@@ -172,19 +306,19 @@
       footer: "All rights reserved.",
       page_title: "About Me - Raul Pivet",
       eyebrow: "👋 Hi, I'm Raul",
-      h1: "From Chilean warehouses",
-      h1span: "to automating operations in Miami",
+      h1: "Ten years solving",
+      h1span: "real problems in logistics and technology",
       role: "Logistics Operations Specialist & Business Solutions Developer",
-      p1: "I started my career moving boxes. Literally. In a mining warehouse in northern Chile, at over 2,700 meters above sea level. That's where I learned something no book teaches: <strong>manual processes kill productivity</strong> — and there's always a smarter way to do things.",
-      p2: "With <strong>10+ years of experience</strong>, I combined my warehouse management expertise with technology tools. First advanced Excel and Google Suite. Then AppSheet, Python, Power Platform. Every solution I built came from a real problem I experienced myself in the field.",
-      p3: "Today, from Miami, I manage data across <strong>30+ global warehouses</strong>, building pipelines that process information without human intervention and dashboards that update themselves. What used to take hours of manual work now takes seconds.",
+      p1: "There's something that separates a technician from someone who truly understands a business: having lived the problem operationally. <strong>10+ years in mining operations</strong> — from warehouse helper to logistics coordinator — means that when someone describes a tedious manual process, no further explanation is needed.",
+      p2: "That operational experience, combined with <strong>Power Platform, Python, React and Firebase</strong>, is what makes it possible to build solutions that actually get used: not just technically correct, but designed for the operator working under pressure and the executive who needs real-time data visibility.",
+      p3: "The results are concrete: <strong>30+ warehouses with centralized data</strong>, pipelines that distribute 50 reports automatically without human intervention, and web applications that replace paper-based processes from day one.",
       badges: [
         { icon:"fas fa-map-marker-alt", text:"Miami, FL — Cutler Bay" },
         { icon:"fas fa-language", text:"Spanish / English" },
         { icon:"fas fa-briefcase", text:"Available for work" },
         { icon:"fas fa-globe", text:"Remote work" }
       ],
-      quote: "I don't automate for the sake of it. I automate because I lived firsthand what it means to spend 12 hours doing something a machine can do in 5 seconds.",
+      quote: "I don't automate for the sake of it. I automate because I know firsthand what it means to spend 12 hours doing something a machine can do in 5 seconds.",
       quote_cite: "— Raul Pivet",
       timeline_eyebrow: "Career",
       timeline_title: "10 years building real solutions",
@@ -192,30 +326,70 @@
         { title:"Data Entry & Solutions Developer", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Present", desc:"Managing inventory data for 30+ global warehouses. Full pipeline: email → Python → SQLite → GitHub Actions → Power Automate → 50 distributed reports. Power BI with TypeScript custom visuals.", highlights:["50 automated reports pipeline","TypeScript custom visuals","62-day Dataverse window","Gemini AI integration"], origin:null },
         { title:"Logistics Coordinator", company:"Merflex International — Doral, FL", date:"May 2024 — Jan 2025", desc:"International operations China → Miami → Bogotá for Temu/Shein products. Mobile apps for receiving and dispatch with automatic reports. Systematized key procedures.", highlights:["China-Miami-Bogotá operations","Mobile apps with auto reports","Process systematization"], origin:null },
         { title:"Warehouse Manager", company:"Sodexo Energy & Resources — Minera Collahuasi, Iquique, Chile", date:"Dec 2022 — Jul 2023", desc:"Led 20-person team on rotating 7x7 shifts. AppSheet replaced all paper records. Integrated Gmail + Google Sheets for automatic alerts and real-time reports.", highlights:["20-person team / 7x7 shifts","−30% inventory errors","AppSheet in production","+25% operational efficiency"], origin:null },
-        { title:"Warehouse Supervisor", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Aug 2021 — Dec 2022", desc:"Operations at one of the world's largest copper mines. Data analysis for weekly cost presentations. First automations: mobile inventory apps and automatic alerts.", highlights:["Minera Escondida — world's largest copper","First automations","Mobile inventory apps"], origin:null },
+        { title:"Warehouse Supervisor", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Aug 2021 — Dec 2022", desc:"Operations at one of the world's largest copper mines. First automations: mobile inventory apps and automatic alerts for cost presentations.", highlights:["Minera Escondida — world's largest copper","First automations","Mobile inventory apps"], origin:null },
         { title:"Warehouse Administrator", company:"Sodexo — Minera Escondida, Antofagasta, Chile", date:"Nov 2019 — Jul 2021", desc:"Document management, stock control and merchandise receiving. Represented the warehouse at national meetings. Data analysis for weekly cost presentations.", highlights:["Stock control & documentation","Weekly cost analysis","ERP & Office systems"], origin:null },
         { title:"Warehouse Administrator", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Jan 2018 — Nov 2019", desc:"Warehouse administration in continuous-shift mining operation. Stock control, merchandise receiving/dispatch. Coordination with internal areas and suppliers.", highlights:["Inventory control","Document management","ERP & Microsoft Office"], origin:null },
-        { title:"Warehouse Helper", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Aug 2016 — Jan 2018", desc:"The beginning. Receiving and dispatching goods, FIFO/FEFO stock control, inventory counts and area maintenance following mining safety standards.", highlights:[], origin:"🌱 Where it all started" }
+        { title:"Warehouse Helper", company:"Sodexo — Minera Zaldivar, Antofagasta, Chile", date:"Aug 2016 — Jan 2018", desc:"The starting point. Receiving and dispatching goods, FIFO/FEFO stock control, inventory counts and area maintenance following mining safety standards.", highlights:[], origin:"🌱 Where it all started" }
       ],
       values_eyebrow: "How I work",
-      values_title: "What defines me professionally",
+      values_title: "What you can expect from every project",
       values: [
-        { icon:"fas fa-search", title:"Understand the problem first", desc:"Before writing a single line of code, I map the complete process. The most elegant solution resolves exactly what needs to be resolved." },
-        { icon:"fas fa-cogs", title:"Build to run on its own", desc:"An automation that requires constant maintenance is not a solution. I design autonomous systems with rolling windows, automatic cleanup and failure alerts." },
-        { icon:"fas fa-users", title:"Think about who will use it", desc:"Every interface must work for someone who knows nothing about technology and for someone who does. I work with operators and executives." },
-        { icon:"fas fa-chart-line", title:"Measure real impact", desc:"−30% errors, +25% efficiency, 50 reports previously done by hand. I talk about concrete, measurable results in real operations." }
+        {
+          icon:"fas fa-search",
+          num:"01",
+          guarantee:"Diagnosis first",
+          title:"The problem gets understood before a single line of code is written",
+          desc:"Every process has history and context. Before proposing solutions, the full flow gets mapped — what works, what fails and why. The result is more accurate and lasts longer."
+        },
+        {
+          icon:"fas fa-cogs",
+          num:"02",
+          guarantee:"Runs on its own",
+          title:"Solutions don't need someone keeping them active",
+          desc:"If it requires constant human intervention, it's not a solution. Systems are designed with rolling windows, automatic cleanup and failure alerts — so they work without anyone having to remember to activate them."
+        },
+        {
+          icon:"fas fa-users",
+          num:"03",
+          guarantee:"Usable by everyone",
+          title:"Works for the operator and the executive at the same time",
+          desc:"A tool only used by the person who built it is useless. Every interface is designed to be intuitive under operational pressure and useful for those who need to make data-driven decisions."
+        },
+        {
+          icon:"fas fa-chart-line",
+          num:"04",
+          guarantee:"Measurable impact",
+          title:"Results are measured in numbers, not promises",
+          desc:"−30% inventory errors, +25% operational efficiency, 50 reports distributed automatically. Every project defines success metrics from the start so the impact is verifiable."
+        }
       ],
       personal_eyebrow: "Outside of work",
       personal_title: "The rest of the story",
       personal: [
-        { icon:"fas fa-running", title:"Distance runner", desc:"I train mid and long distance. The discipline of running and coding are more similar than they seem." },
-        { icon:"fas fa-mountain", title:"Explorer", desc:"From the Chilean Puna to Yucatán, Mexico. Planning well is half the journey." },
-        { icon:"fas fa-camera", title:"Photography", desc:"I capture moments on trips and training. Seeing the detail others miss applies equally to data analysis." },
-        { icon:"fas fa-shield-alt", title:"Cybersecurity & OSINT", desc:"Cybersecurity certification (2025). Interest in offensive security and open-source intelligence analysis." }
+        {
+          icon:"fas fa-running",
+          title:"Distance runner",
+          desc:"Mid and long distance, in training and in competition. The discipline required to prepare a race — consistency, planning, tolerance for error — is exactly the same required to build a system that works long-term."
+        },
+        {
+          icon:"fas fa-mountain",
+          title:"Explorer",
+          desc:"From the Chilean Puna to Yucatán, Mexico. Every trip starts with real logistics: routes, timings, resources, contingencies. The same mind that organizes warehouses planned every kilometer."
+        },
+        {
+          icon:"fas fa-camera",
+          title:"Photography",
+          desc:"Capturing the exact moment before it disappears trains something valuable: seeing the detail others miss. That same attention is what finds the error in a dataset or the bottleneck in a process."
+        },
+        {
+          icon:"fas fa-shield-alt",
+          title:"Cybersecurity & OSINT",
+          desc:"Cybersecurity certification (2025). Interest in offensive security and open-source intelligence analysis — disciplines that share something with logistics: there's always more information than it seems."
+        }
       ],
-      cta_title: "Want to work together?",
-      cta_desc: "If you have a manual process consuming your team's time — let's talk. I adapt to your stack, industry and budget.",
-      cta_btn1: "Contact me", cta_btn2: "View full CV"
+      cta_title: "Does working together make sense?",
+      cta_desc: "If your team is losing time to manual processes or you need real visibility into your data — that can be fixed. I adapt to your stack, industry and budget.",
+      cta_btn1: "Let's talk", cta_btn2: "View full CV"
     }
   };
 
@@ -229,6 +403,7 @@
     document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
+
     document.getElementById('mainContent').innerHTML = `
       <section class="about-hero" data-aos="fade-up">
         <div class="about-hero-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"><div class="about-hero-img-overlay"></div></div>
@@ -240,7 +415,9 @@
           <div class="about-badges">${d.badges.map(b=>`<span class="about-badge"><i class="${b.icon}"></i>${b.text}</span>`).join('')}</div>
         </div>
       </section>
+
       <div class="pullquote" data-aos="fade-up"><p>"${d.quote}"</p><cite>${d.quote_cite}</cite></div>
+
       <section data-aos="fade-up">
         <p class="section-eyebrow">${d.timeline_eyebrow}</p>
         <h2 class="section-title">${d.timeline_title}</h2>
@@ -264,28 +441,60 @@
           </div>`).join('')}
         </div>
       </section>
+
       <section class="values-section" data-aos="fade-up">
         <p class="section-eyebrow">${d.values_eyebrow}</p>
         <h2 class="section-title">${d.values_title}</h2>
-        <div class="values-grid">${d.values.map((v,i)=>`<div class="value-card" data-aos="fade-up" data-aos-delay="${i*50}"><div class="value-icon"><i class="${v.icon}"></i></div><h3 class="value-title">${v.title}</h3><p class="value-desc">${v.desc}</p></div>`).join('')}</div>
+        <div class="values-grid">
+          ${d.values.map((v,i)=>`
+            <div class="value-card" data-aos="fade-up" data-aos-delay="${i*60}">
+              <div class="value-card-top">
+                <div class="value-icon"><i class="${v.icon}"></i></div>
+                <div class="value-number">${v.num}</div>
+              </div>
+              <span class="value-guarantee">${v.guarantee}</span>
+              <h3 class="value-title">${v.title}</h3>
+              <p class="value-desc">${v.desc}</p>
+            </div>`).join('')}
+        </div>
       </section>
+
       <section class="personal-section" data-aos="fade-up">
         <p class="section-eyebrow">${d.personal_eyebrow}</p>
         <h2 class="section-title">${d.personal_title}</h2>
-        <div class="personal-grid">${d.personal.map((p,i)=>`<div class="personal-card" data-aos="fade-up" data-aos-delay="${i*50}"><div class="personal-icon"><i class="${p.icon}"></i></div><div><div class="personal-title">${p.title}</div><p class="personal-desc">${p.desc}</p></div></div>`).join('')}</div>
+        <div class="personal-grid">
+          ${d.personal.map((p,i)=>`
+            <div class="personal-card" data-aos="fade-up" data-aos-delay="${i*60}">
+              <div class="personal-icon-wrap"><i class="${p.icon}"></i></div>
+              <div class="personal-title">${p.title}</div>
+              <p class="personal-desc">${p.desc}</p>
+            </div>`).join('')}
+        </div>
       </section>
+
       <section class="about-cta" data-aos="fade-up">
-        <h2>${d.cta_title}</h2><p>${d.cta_desc}</p>
+        <h2>${d.cta_title}</h2>
+        <p>${d.cta_desc}</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
           <a href="contacto.html" class="btn"><i class="fas fa-paper-plane"></i> ${d.cta_btn1}</a>
           <a href="cv.html" class="btn-outline"><i class="fas fa-file-alt"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
+
     refreshAOS();
   }
 
-  function toggleLang() { lang = lang === 'es' ? 'en' : 'es'; localStorage.setItem('aboutLang', lang); localStorage.setItem('homeLang', lang); render(); }
-  document.addEventListener('DOMContentLoaded', () => { render(); document.getElementById('languageToggle').addEventListener('click', toggleLang); });
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('aboutLang', lang);
+    localStorage.setItem('homeLang', lang);
+    render();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    render();
+    document.getElementById('languageToggle').addEventListener('click', toggleLang);
+  });
   </script>
 </body>
 </html>
