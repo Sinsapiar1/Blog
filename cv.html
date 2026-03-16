@@ -20,36 +20,36 @@
     @media (max-width: 768px) { .language-toggle { top: 70px; right: 16px; padding: 6px 12px; } .language-text { display: none; } }
     .cv-container { max-width: 1000px; margin: 0 auto; }
     .cv-header { text-align: center; padding: var(--spacing-2xl) 0; background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); margin-bottom: var(--spacing-xl); }
-    .cv-header h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: var(--spacing-sm); background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .cv-header h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: var(--spacing-sm); background: linear-gradient(135deg, #FF6B00, #FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .cv-header .subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: var(--spacing-lg); font-weight: 500; }
     .cv-contact { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--spacing-md); }
     .cv-contact-item { display: flex; align-items: center; gap: var(--spacing-xs); color: var(--text-secondary); font-size: 0.9375rem; }
-    .cv-contact-item i { color: var(--primary); }
+    .cv-contact-item i { color: #FF6B00; }
     .cv-section { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
     .cv-section h2 { font-size: 1.75rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-sm); border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: var(--spacing-sm); }
-    .cv-section h2 i { color: var(--primary); }
+    .cv-section h2 i { color: #FF6B00; }
     .cv-item { margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color); }
     .cv-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
     .cv-item-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-sm); flex-wrap: wrap; gap: var(--spacing-sm); }
     .cv-item-title { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); }
-    .cv-item-company { font-size: 1rem; color: var(--primary); margin-bottom: var(--spacing-xs); font-weight: 500; }
+    .cv-item-company { font-size: 1rem; color: #FF6B00; margin-bottom: var(--spacing-xs); font-weight: 500; }
     .cv-item-date { font-size: 0.875rem; color: var(--text-tertiary); font-weight: 500; }
     .cv-item-description { color: var(--text-secondary); line-height: 1.7; }
     .cv-item-description ul { margin-top: var(--spacing-sm); padding-left: var(--spacing-lg); }
     .cv-item-description li { margin-bottom: var(--spacing-xs); }
-    .highlight { background: linear-gradient(135deg, rgba(0,122,255,0.1), rgba(88,86,214,0.1)); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+    .highlight { background: linear-gradient(135deg, rgba(255,107,0,0.1), rgba(255,149,0,0.08)); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
     .origin-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.3); color: #FF6B00; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 10px; vertical-align: middle; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--spacing-md); }
     .skill-item { background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center; transition: all var(--transition-base); border: 1px solid var(--border-color); }
-    .skill-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary); }
-    .skill-icon { font-size: 2rem; color: var(--primary); margin-bottom: var(--spacing-sm); }
+    .skill-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #FF6B00; }
+    .skill-icon { font-size: 2rem; color: #FF6B00; margin-bottom: var(--spacing-sm); }
     .skill-name { font-weight: 500; color: var(--text-primary); font-size: 0.875rem; }
     .language-item { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; }
     .language-name { font-weight: 500; color: var(--text-primary); }
     .language-level { color: var(--text-secondary); font-size: 0.875rem; }
     .download-cv { text-align: center; margin-top: var(--spacing-xl); }
     .download-cv .btn { padding: 16px 32px; font-size: 1rem; }
-    .profile-summary { background: linear-gradient(135deg, rgba(0,122,255,0.05), rgba(88,86,214,0.05)); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid var(--primary); }
+    .profile-summary { background: linear-gradient(135deg, rgba(255,107,0,0.05), rgba(255,149,0,0.03)); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid #FF6B00; }
     @media (max-width: 768px) { .cv-header h1 { font-size: 2rem; } .cv-contact { flex-direction: column; align-items: center; } .cv-item-header { flex-direction: column; } .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); } }
     #dlModal { display: none; position: fixed; inset: 0; z-index: 6000; align-items: center; justify-content: center; }
     #dlModal.open { display: flex; }
@@ -58,20 +58,20 @@
     @keyframes dlPop { from { opacity:0; transform:scale(0.88) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
     .dl-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border: none; border-radius: 50%; background: var(--bg-secondary); color: var(--text-secondary); cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); }
     .dl-close:hover { background: rgba(255,59,48,0.15); color: #FF3B30; transform: scale(1.1); }
-    .dl-icon { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: white; margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(0,122,255,0.35); }
+    .dl-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #FF6B00, #FF9500); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: white; margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(255,107,0,0.35); }
     .dl-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; letter-spacing: -0.02em; }
     .dl-subtitle { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.5; }
     .dl-options { display: flex; flex-direction: column; gap: 12px; }
     .dl-btn { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: var(--radius-lg); border: 1.5px solid var(--border-color); background: var(--bg-secondary); cursor: pointer; text-decoration: none; transition: all var(--transition-base); text-align: left; }
-    .dl-btn:hover { border-color: var(--primary); background: rgba(0,122,255,0.06); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .dl-btn:hover { border-color: #FF6B00; background: rgba(255,107,0,0.06); transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .dl-btn-flag { font-size: 2rem; flex-shrink: 0; line-height: 1; }
     .dl-btn-info { flex: 1; }
     .dl-btn-lang { font-size: 1rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 2px; }
     .dl-btn-desc { font-size: 0.78rem; color: var(--text-secondary); }
     .dl-btn-arrow { color: var(--text-tertiary); font-size: 0.85rem; transition: all var(--transition-fast); }
-    .dl-btn:hover .dl-btn-arrow { color: var(--primary); transform: translateX(3px); }
-    .dl-btn.primary-lang { border-color: var(--primary); background: rgba(0,122,255,0.05); }
-    .dl-btn.primary-lang .dl-btn-lang { color: var(--primary); }
+    .dl-btn:hover .dl-btn-arrow { color: #FF6B00; transform: translateX(3px); }
+    .dl-btn.primary-lang { border-color: #FF6B00; background: rgba(255,107,0,0.05); }
+    .dl-btn.primary-lang .dl-btn-lang { color: #FF6B00; }
     .dl-divider { display: flex; align-items: center; gap: 10px; color: var(--text-tertiary); font-size: 0.78rem; margin: 2px 0; }
     .dl-divider::before, .dl-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
   </style>
@@ -107,14 +107,14 @@
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/raulpivet" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </aside>
     <main class="content">
       <div class="cv-container" id="cvContent"></div>
     </main>
   </div>
-  <footer><p>&copy; 2025 Raul Pivet. <span data-lang="footer">All rights reserved</span>.</p></footer>
+  <footer><p>&copy; 2026 Raul Pivet. <span data-lang="footer">All rights reserved</span>.</p></footer>
   <div id="dlModal" role="dialog" aria-modal="true" aria-labelledby="dlTitle">
     <div class="dl-overlay" id="dlOverlay"></div>
     <div class="dl-box">
@@ -237,6 +237,8 @@
         lang2: "English", lang2Level: "Intermediate (B1/B2)",
         downloadBtn: "Download CV",
         footer: "All rights reserved",
+        linkedinUrl: "https://www.linkedin.com/in/raul-pivet-846738187",
+        linkedinDisplay: "linkedin.com/in/raul-pivet-846738187",
         dlTitle: "Download CV", dlSubtitle: "Choose your preferred language version",
         dlPrimaryFlag: "🇺🇸", dlPrimaryLang: "English", dlPrimaryDesc: "CV_Raul_Pivet_EN.pdf", dlPrimaryFile: "docs/CV_Raul_Pivet_EN.pdf",
         dlDivider: "or",
@@ -350,6 +352,8 @@
         lang2: "Inglés", lang2Level: "Intermedio (B1/B2)",
         downloadBtn: "Descargar CV",
         footer: "Todos los derechos reservados",
+        linkedinUrl: "https://www.linkedin.com/in/raul-pivet-846738187",
+        linkedinDisplay: "linkedin.com/in/raul-pivet-846738187",
         dlTitle: "Descargar CV", dlSubtitle: "Elegí la versión en tu idioma preferido",
         dlPrimaryFlag: "🇪🇸", dlPrimaryLang: "Español", dlPrimaryDesc: "CV_Raul_Pivet_ES.pdf", dlPrimaryFile: "docs/CV_Raul_Pivet_ES.pdf",
         dlDivider: "o también",
@@ -389,7 +393,7 @@
             <div class="cv-contact-item"><i class="fas fa-envelope"></i><span>jaime.pivet@gmail.com</span></div>
             <div class="cv-contact-item"><i class="fas fa-phone"></i><span>+1 (305) 504-6846</span></div>
             <div class="cv-contact-item"><i class="fas fa-map-marker-alt"></i><span>Cutler Bay, FL 33189</span></div>
-            <div class="cv-contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/raulpivet" target="_blank" style="color:inherit;text-decoration:none">linkedin.com/in/raulpivet</a></div>
+            <div class="cv-contact-item"><i class="fab fa-linkedin"></i><a href="${t.linkedinUrl}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">${t.linkedinDisplay}</a></div>
           </div>
         </div>
         <section class="cv-section" data-aos="fade-up">
@@ -428,7 +432,7 @@
         </div>`;
 
       document.getElementById('openDlModal').addEventListener('click', openDownloadModal);
-      if (typeof AOS !== 'undefined') AOS.refresh();
+      refreshAOS();
       const footer = document.querySelector('footer span[data-lang="footer"]');
       if (footer) footer.textContent = t.footer;
     }
