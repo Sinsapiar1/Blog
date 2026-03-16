@@ -10,12 +10,16 @@
   <meta name="theme-color" content="#FF6B00">
   <meta property="og:title" content="Raul Pivet — Automatización & Business Intelligence">
   <meta property="og:description" content="Convierto operaciones manuales en sistemas automáticos. Power BI · Python · Make.com · Power Platform.">
-  <meta property="og:image" content="https://www.raulpivet.com/img/gallery/filo.png">
+  <meta property="og:image" content="https://www.raulpivet.com/img/gallery/dashboard-negativos.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://www.raulpivet.com/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Raul Pivet — Automatización & Business Intelligence">
-  <meta name="twitter:description" content="Convierto operaciones manuales en sistemas automáticos.">
+  <meta name="twitter:description" content="Convierto operaciones manuales en sistemas automáticos. 10+ años en logística, Power BI y Python.">
+  <meta name="twitter:image" content="https://www.raulpivet.com/img/gallery/dashboard-negativos.png">
   <title>Raul Pivet | Automatización & Business Intelligence</title>
   <script type="application/ld+json">
   {
@@ -24,14 +28,15 @@
     "name": "Raul Pivet",
     "jobTitle": "Logistics Operations Specialist & Business Solutions Developer",
     "url": "https://www.raulpivet.com/",
-    "sameAs": ["https://github.com/Sinsapiar1", "https://instagram.com/Jaimepivet"],
+    "sameAs": ["https://github.com/Sinsapiar1", "https://instagram.com/Jaimepivet", "https://linkedin.com/in/raulpivet"],
     "knowsAbout": ["Power BI", "Python", "Make.com", "Power Automate", "AppSheet", "Google Sheets", "Logistics Automation"],
-    "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL" }
+    "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" }
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="canonical" href="https://www.raulpivet.com/">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -129,7 +134,7 @@
     </aside>
     <main class="content" id="mainContent"></main>
   </div>
-  <footer><p>&copy; 2025 Raul Pivet — <span id="footerText">Automatización & Business Intelligence</span> · Miami, FL</p></footer>
+  <footer><p>&copy; 2026 Raul Pivet — <span id="footerText">Automatización & Business Intelligence</span> · Miami, FL</p></footer>
 
   <div id="storyModal" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
     <div class="story-overlay" id="storyOverlay"></div>
@@ -181,7 +186,7 @@
       <div class="modal-icon"><i class="fas fa-tools"></i></div>
       <h3>Proyecto en desarrollo</h3>
       <p>Estamos trabajando arduamente para completar esta sección.</p>
-      <p class="modal-date">Lanzamiento estimado: Junio 2026</p>
+      <p class="modal-date">Disponible próximamente — 2026</p>
     </div>
   </div>
 
@@ -322,7 +327,7 @@
         </div>
       </section>`;
     animateCounters();
-    if (typeof AOS !== 'undefined') { AOS.init({ once: true, duration: 600 }); AOS.refresh(); }
+    refreshAOS();
   }
 
   function animateCounters() {
