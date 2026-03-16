@@ -1,7 +1,7 @@
 /* ========================================
    🍎 MODERN PORTFOLIO - JAVASCRIPT
    Autor: Raul Pivet
-   Versión: 2.3
+   Versión: 2.4
    ======================================== */
 
 // ========================================
@@ -133,8 +133,8 @@ function initAnimations() {
   initCardHoverEffects();
 }
 
-// Función helper para que las páginas que renderizan contenido dinámico
-// puedan refrescar AOS sin re-inicializarlo
+// Helper para refrescar AOS sin re-inicializarlo
+// Expuesto globalmente para que las páginas con render dinámico lo usen
 function refreshAOS() {
   if (typeof AOS !== 'undefined') {
     AOS.refresh();
@@ -267,16 +267,25 @@ function loadThumbnailViaCDN(container, postId) {
 
 // ========================================
 // 🎭 MODAL GENÉRICO (proyectos)
+// Expuesta como función global para poder re-llamarla tras cambio de idioma
 // ========================================
 function initModals() {
   const modal = document.getElementById('comingSoonModal');
   if (!modal) return;
 
-  const closeBtn = modal.querySelector('.close-modal');
+  // Limpiar listeners anteriores clonando el modal (evita duplicados al re-llamar)
+  const freshModal = modal.cloneNode(true);
+  modal.parentNode.replaceChild(freshModal, modal);
+
+  const theModal  = document.getElementById('comingSoonModal');
+  const closeBtn  = theModal.querySelector('.close-modal');
+
+  // Capturar todos los botones relevantes del DOM actual
   const allButtons = document.querySelectorAll('.btn-small, .btn.coming-soon');
 
   allButtons.forEach(button => {
     button.addEventListener('click', function(e) {
+      // Si tiene target="_blank" y NO es el botón almacen, dejar pasar
       if (this.hasAttribute('target') && this.getAttribute('target') === '_blank' && this.id !== 'almacen-btn') return;
       e.preventDefault();
       openModal(this);
@@ -284,22 +293,22 @@ function initModals() {
   });
 
   closeBtn?.addEventListener('click', () => closeModal());
-  window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  window.addEventListener('click', (e) => { if (e.target === theModal) closeModal(); });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    if (e.key === 'Escape' && theModal.style.display === 'flex') closeModal();
   });
 
   function openModal(button) {
-    const modalTitle = modal.querySelector('h3');
-    const modalText  = modal.querySelector('p');
-    const modalDate  = modal.querySelector('.modal-date');
-    const oldBtns    = modal.querySelector('.modal-buttons');
+    const modalTitle = theModal.querySelector('#modalTitle') || theModal.querySelector('h3');
+    const modalText  = theModal.querySelector('#modalBody')  || theModal.querySelector('p');
+    const modalDate  = theModal.querySelector('#modalDate')  || theModal.querySelector('.modal-date');
+    const oldBtns    = theModal.querySelector('.modal-buttons');
     if (oldBtns) oldBtns.remove();
 
     if (button.id === 'almacen-btn') {
-      modalTitle.textContent = 'Información importante';
-      modalText.textContent  = 'Para una mejor visualización, coloca tu dispositivo en horizontal o ábrelo desde un PC.';
-      modalDate.style.display = 'none';
+      if (modalTitle) modalTitle.textContent = 'Información importante';
+      if (modalText)  modalText.textContent  = 'Para una mejor visualización, coloca tu dispositivo en horizontal o ábrelo desde un PC.';
+      if (modalDate)  modalDate.style.display = 'none';
 
       const btnContainer  = document.createElement('div');
       btnContainer.className = 'modal-buttons';
@@ -316,26 +325,23 @@ function initModals() {
 
       btnContainer.appendChild(continueBtn);
       btnContainer.appendChild(cancelBtn);
-      modalDate.parentNode.insertBefore(btnContainer, modalDate.nextSibling);
+      if (modalDate) modalDate.parentNode.insertBefore(btnContainer, modalDate.nextSibling);
 
     } else if (button.classList.contains('coming-soon')) {
-      modalTitle.textContent  = 'Documentación en preparación';
-      modalText.textContent   = 'Estoy preparando la documentación técnica detallada de este proyecto.';
-      modalDate.style.display = 'block';
-      modalDate.textContent   = 'Disponible próximamente — 2026';
+      // Los textos ya fueron pre-cargados por renderProyectos() en proyectos.html
+      // Solo mostramos el modal tal cual está en el DOM
     } else {
-      modalTitle.textContent  = 'Proyecto en desarrollo';
-      modalText.textContent   = 'Estoy trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
-      modalDate.style.display = 'block';
-      modalDate.textContent   = 'Disponible próximamente — 2026';
+      if (modalTitle) modalTitle.textContent  = 'Proyecto en desarrollo';
+      if (modalText)  modalText.textContent   = 'Estoy trabajando en esta sección. ¡Vuelve pronto para ver los avances!';
+      if (modalDate)  { modalDate.style.display = 'block'; modalDate.textContent = 'Disponible próximamente — 2026'; }
     }
 
-    modal.style.display = 'flex';
+    theModal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
-    modal.style.display = 'none';
+    theModal.style.display = 'none';
     document.body.style.overflow = '';
   }
 }
@@ -414,4 +420,4 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
 }
 
-console.log('✅ Portfolio cargado — v2.3');
+console.log('✅ Portfolio cargado — v2.4');
