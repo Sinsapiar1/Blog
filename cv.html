@@ -13,68 +13,393 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .language-toggle { position: fixed; top: 80px; right: 24px; z-index: 999; display: flex; align-items: center; gap: 8px; background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--transition-base); }
-    .language-toggle:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    .language-flag { font-size: 1.25rem; }
-    .language-text { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
-    @media (max-width: 768px) { .language-toggle { top: 70px; right: 16px; padding: 6px 12px; } .language-text { display: none; } }
-    .cv-container { max-width: 1000px; margin: 0 auto; }
-    .cv-header { text-align: center; padding: var(--spacing-2xl) 0; background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); margin-bottom: var(--spacing-xl); }
-    .cv-header h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: var(--spacing-sm); background: linear-gradient(135deg, #FF6B00, #FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .cv-header .subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: var(--spacing-lg); font-weight: 500; }
-    .cv-contact { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--spacing-md); }
-    .cv-contact-item { display: flex; align-items: center; gap: var(--spacing-xs); color: var(--text-secondary); font-size: 0.9375rem; }
-    .cv-contact-item i { color: #FF6B00; }
-    .cv-section { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
-    .cv-section h2 { font-size: 1.75rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-sm); border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: var(--spacing-sm); }
-    .cv-section h2 i { color: #FF6B00; }
-    .cv-item { margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color); }
-    .cv-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .cv-item-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--spacing-sm); flex-wrap: wrap; gap: var(--spacing-sm); }
-    .cv-item-title { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); }
-    .cv-item-company { font-size: 1rem; color: #FF6B00; margin-bottom: var(--spacing-xs); font-weight: 500; }
-    .cv-item-date { font-size: 0.875rem; color: var(--text-tertiary); font-weight: 500; }
-    .cv-item-description { color: var(--text-secondary); line-height: 1.7; }
-    .cv-item-description ul { margin-top: var(--spacing-sm); padding-left: var(--spacing-lg); }
-    .cv-item-description li { margin-bottom: var(--spacing-xs); }
-    .highlight { background: linear-gradient(135deg, rgba(255,107,0,0.1), rgba(255,149,0,0.08)); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
-    .origin-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.3); color: #FF6B00; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.06em; margin-left: 10px; vertical-align: middle; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: var(--spacing-md); }
-    .skill-item { background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center; transition: all var(--transition-base); border: 1px solid var(--border-color); }
-    .skill-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #FF6B00; }
-    .skill-icon { font-size: 2rem; color: #FF6B00; margin-bottom: var(--spacing-sm); }
-    .skill-name { font-weight: 500; color: var(--text-primary); font-size: 0.875rem; }
-    .language-item { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color); }
-    .language-item:last-child { border-bottom: none; }
-    .language-name { font-weight: 500; color: var(--text-primary); }
-    .language-level { color: var(--text-secondary); font-size: 0.875rem; }
-    .download-cv { text-align: center; margin-top: var(--spacing-xl); }
-    .download-cv .btn { padding: 16px 32px; font-size: 1rem; }
-    .profile-summary { background: linear-gradient(135deg, rgba(255,107,0,0.05), rgba(255,149,0,0.03)); padding: var(--spacing-lg); border-radius: var(--radius-lg); border-left: 4px solid #FF6B00; }
-    @media (max-width: 768px) { .cv-header h1 { font-size: 2rem; } .cv-contact { flex-direction: column; align-items: center; } .cv-item-header { flex-direction: column; } .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); } }
-    #dlModal { display: none; position: fixed; inset: 0; z-index: 6000; align-items: center; justify-content: center; }
-    #dlModal.open { display: flex; }
-    .dl-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.65); backdrop-filter: blur(10px); cursor: pointer; }
-    .dl-box { position: relative; z-index: 1; background: var(--glass-bg); backdrop-filter: blur(24px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 36px 40px 40px; width: min(92vw, 460px); box-shadow: 0 32px 80px rgba(0,0,0,0.4); text-align: center; animation: dlPop 0.35s cubic-bezier(0.34,1.56,0.64,1) both; }
-    @keyframes dlPop { from { opacity:0; transform:scale(0.88) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
-    .dl-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border: none; border-radius: 50%; background: var(--bg-secondary); color: var(--text-secondary); cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); }
-    .dl-close:hover { background: rgba(255,59,48,0.15); color: #FF3B30; transform: scale(1.1); }
-    .dl-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #FF6B00, #FF9500); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: white; margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(255,107,0,0.35); }
-    .dl-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; letter-spacing: -0.02em; }
-    .dl-subtitle { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.5; }
-    .dl-options { display: flex; flex-direction: column; gap: 12px; }
-    .dl-btn { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: var(--radius-lg); border: 1.5px solid var(--border-color); background: var(--bg-secondary); cursor: pointer; text-decoration: none; transition: all var(--transition-base); text-align: left; }
-    .dl-btn:hover { border-color: #FF6B00; background: rgba(255,107,0,0.06); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    .dl-btn-flag { font-size: 2rem; flex-shrink: 0; line-height: 1; }
-    .dl-btn-info { flex: 1; }
-    .dl-btn-lang { font-size: 1rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 2px; }
-    .dl-btn-desc { font-size: 0.78rem; color: var(--text-secondary); }
-    .dl-btn-arrow { color: var(--text-tertiary); font-size: 0.85rem; transition: all var(--transition-fast); }
-    .dl-btn:hover .dl-btn-arrow { color: #FF6B00; transform: translateX(3px); }
-    .dl-btn.primary-lang { border-color: #FF6B00; background: rgba(255,107,0,0.05); }
-    .dl-btn.primary-lang .dl-btn-lang { color: #FF6B00; }
-    .dl-divider { display: flex; align-items: center; gap: 10px; color: var(--text-tertiary); font-size: 0.78rem; margin: 2px 0; }
-    .dl-divider::before, .dl-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+    /* ── Language toggle ── */
+    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
+    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .language-flag { font-size:1.25rem; }
+    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
+    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
+
+    /* ══════════════════════════════════════════
+       CV HEADER — cinematic, full-bleed
+    ══════════════════════════════════════════ */
+    .cv-header {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+    }
+    /* Fondo decorativo — malla + gradientes */
+    .cv-header-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,107,0,0.12) 0%, transparent 50%),
+        linear-gradient(315deg, rgba(255,149,0,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cv-header-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,107,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,0,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    /* Borde superior naranja */
+    .cv-header::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800, #FF9500, #FF6B00);
+      background-size: 200% 100%;
+      animation: header-stripe 4s linear infinite;
+    }
+    @keyframes header-stripe {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+    .cv-header-inner {
+      position: relative; z-index: 1;
+      padding: 52px 40px 44px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    @media(max-width:700px){ .cv-header-inner { flex-direction:column; text-align:center; padding:40px 24px 32px; gap:20px; } }
+
+    .cv-header-avatar {
+      width: 96px; height: 96px; flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#FF6B00,#FF9500);
+      padding: 3px;
+      box-shadow: 0 8px 32px rgba(255,107,0,0.4);
+    }
+    .cv-header-avatar img {
+      width: 100%; height: 100%;
+      border-radius: 50%; object-fit: cover;
+      display: block;
+    }
+    .cv-header-text { flex: 1; }
+    .cv-header-name {
+      font-size: clamp(2rem,4vw,2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg,#FF6B00,#FF9500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .cv-header-title {
+      font-size: 1rem; font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .cv-contact {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    @media(max-width:700px){ .cv-contact { justify-content:center; } }
+    .cv-contact-item {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cv-contact-item:hover { border-color:#FF6B00; color:#FF6B00; }
+    .cv-contact-item i { color:#FF6B00; font-size:0.75rem; }
+
+    /* ══════════════════════════════════════════
+       CV SECTION — card elevada con línea top
+    ══════════════════════════════════════════ */
+    .cv-section {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 36px 32px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .cv-section:hover { border-color: rgba(255,107,0,0.2); }
+    .cv-section-title {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+    }
+    .cv-section-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: linear-gradient(135deg,rgba(255,107,0,0.18),rgba(255,149,0,0.08));
+      border: 1px solid rgba(255,107,0,0.2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #FF6B00; font-size: 1rem;
+    }
+    .cv-section-label {
+      font-size: 1.25rem; font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .cv-section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,107,0,0.3), transparent);
+      margin-bottom: 28px;
+      margin-top: -12px;
+    }
+
+    /* ══════════════════════════════════════════
+       TIMELINE — experiencia laboral
+    ══════════════════════════════════════════ */
+    .cv-timeline { position: relative; padding-left: 28px; }
+    .cv-timeline::before {
+      content: '';
+      position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px;
+      background: linear-gradient(to bottom, #FF6B00, rgba(255,107,0,0.08));
+      border-radius: 2px;
+    }
+    .cv-tl-item {
+      position: relative;
+      margin-bottom: 28px;
+      transition: all 0.2s;
+    }
+    .cv-tl-item:last-child { margin-bottom: 0; }
+    .cv-tl-dot {
+      position: absolute; left: -24px; top: 14px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2.5px solid #FF6B00;
+      box-shadow: 0 0 0 3px rgba(255,107,0,0.15);
+      transition: all 0.2s;
+    }
+    .cv-tl-item:hover .cv-tl-dot {
+      background: #FF6B00;
+      box-shadow: 0 0 0 5px rgba(255,107,0,0.2);
+    }
+    .cv-tl-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 22px 18px;
+      transition: all 0.25s;
+    }
+    .cv-tl-item:hover .cv-tl-card {
+      border-color: rgba(255,107,0,0.3);
+      transform: translateX(4px);
+      box-shadow: 0 8px 28px rgba(255,107,0,0.08);
+    }
+    .cv-tl-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 12px; flex-wrap: wrap; margin-bottom: 10px;
+    }
+    .cv-tl-title {
+      font-size: 0.9375rem; font-weight: 800;
+      color: var(--text-primary); line-height: 1.3;
+    }
+    .cv-tl-company {
+      font-size: 0.8125rem; font-weight: 600;
+      color: #FF6B00; margin-top: 3px;
+    }
+    .cv-tl-date {
+      font-size: 11px; font-weight: 700;
+      color: var(--text-tertiary);
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      padding: 3px 10px; border-radius: 10px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .cv-tl-bullets {
+      margin: 0; padding: 0; list-style: none;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .cv-tl-bullets li {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .cv-tl-bullets li::before {
+      content: '›';
+      position: absolute; left: 0;
+      color: #FF6B00; font-weight: 700; font-size: 1rem; line-height: 1.4;
+    }
+    .origin-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.3);
+      color: #FF6B00; font-size: 9px; font-weight: 800;
+      padding: 2px 8px; border-radius: 10px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-left: 8px; vertical-align: middle;
+    }
+
+    /* ══════════════════════════════════════════
+       PROFILE SUMMARY
+    ══════════════════════════════════════════ */
+    .profile-summary {
+      background: linear-gradient(135deg,rgba(255,107,0,0.06),rgba(255,149,0,0.03));
+      border-left: 3px solid #FF6B00;
+      border-radius: 0 14px 14px 0;
+      padding: 20px 24px;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.78;
+    }
+    .highlight {
+      background: rgba(255,107,0,0.12);
+      padding: 1px 7px; border-radius: 4px;
+      font-weight: 600; color: var(--text-primary);
+    }
+
+    /* ══════════════════════════════════════════
+       EDUCATION / CERTIFICATIONS
+    ══════════════════════════════════════════ */
+    .cv-edu-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 12px; flex-wrap: wrap;
+      transition: all 0.2s;
+    }
+    .cv-edu-item:hover { border-color:rgba(255,107,0,0.3); transform:translateX(4px); }
+    .cv-edu-item:last-child { margin-bottom: 0; }
+    .cv-edu-title { font-size:0.9rem; font-weight:700; color:var(--text-primary); margin-bottom:3px; }
+    .cv-edu-inst { font-size:0.8rem; color:#FF6B00; font-weight:600; }
+    .cv-edu-date { font-size:11px; font-weight:700; color:var(--text-tertiary); background:var(--glass-bg); border:1px solid var(--border-color); padding:3px 10px; border-radius:10px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+    .cert-list { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+    .cert-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+    .cert-item:hover { border-color:rgba(255,107,0,0.25); }
+    .cert-item i { color:#FF6B00; margin-top:2px; flex-shrink:0; font-size:0.75rem; }
+
+    /* ══════════════════════════════════════════
+       SKILLS GRID — 3D hover + glow
+    ══════════════════════════════════════════ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+    }
+    .skill-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px 10px 14px;
+      text-align: center;
+      cursor: default;
+      transition: all 0.25s cubic-bezier(0.34,1.3,0.64,1);
+      position: relative; overflow: hidden;
+    }
+    .skill-item::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,rgba(255,107,0,0.06),transparent);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .skill-item:hover {
+      border-color: rgba(255,107,0,0.45);
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(255,107,0,0.18);
+    }
+    .skill-item:hover::before { opacity: 1; }
+    .skill-icon {
+      font-size: 1.8rem; color: #FF6B00;
+      margin-bottom: 10px;
+      display: block;
+      transition: transform 0.25s;
+    }
+    .skill-item:hover .skill-icon { transform: scale(1.15) rotate(-3deg); }
+    .skill-name {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--text-secondary);
+      line-height: 1.3;
+      transition: color 0.2s;
+    }
+    .skill-item:hover .skill-name { color: var(--text-primary); }
+
+    /* ══════════════════════════════════════════
+       IDIOMAS — barras de progreso + pills
+    ══════════════════════════════════════════ */
+    .lang-list { display: flex; flex-direction: column; gap: 16px; }
+    .lang-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px 20px;
+      transition: all 0.2s;
+    }
+    .lang-item:hover { border-color:rgba(255,107,0,0.3); }
+    .lang-top {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 10px;
+    }
+    .lang-name { font-size:0.9375rem; font-weight:800; color:var(--text-primary); }
+    .lang-pill {
+      font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em;
+      padding:3px 10px; border-radius:10px;
+      background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.25);
+      color:#FF6B00;
+    }
+    .lang-pill.native {
+      background:rgba(52,199,89,0.1); border-color:rgba(52,199,89,0.25); color:#34C759;
+    }
+    .lang-bar-track {
+      height: 5px; background: var(--border-color);
+      border-radius: 10px; overflow: hidden;
+    }
+    .lang-bar-fill {
+      height: 100%; border-radius: 10px;
+      background: linear-gradient(90deg,#FF6B00,#FF9500);
+      transition: width 1s cubic-bezier(0.25,1,0.5,1);
+    }
+    .lang-bar-fill.native-bar { background: linear-gradient(90deg,#34C759,#30D158); }
+    .lang-sublabel {
+      font-size:10px; color:var(--text-tertiary); margin-top:6px; font-style:italic;
+    }
+
+    /* Download modal */
+    #dlModal { display:none; position:fixed; inset:0; z-index:6000; align-items:center; justify-content:center; }
+    #dlModal.open { display:flex; }
+    .dl-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(10px); cursor:pointer; }
+    .dl-box { position:relative; z-index:1; background:var(--glass-bg); backdrop-filter:blur(24px) saturate(180%); border:1px solid var(--glass-border); border-radius:var(--radius-xl); padding:36px 40px 40px; width:min(92vw,460px); box-shadow:0 32px 80px rgba(0,0,0,0.4); text-align:center; animation:dlPop 0.35s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes dlPop { from{opacity:0;transform:scale(0.88) translateY(12px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .dl-close { position:absolute; top:14px; right:14px; width:32px; height:32px; border:none; border-radius:50%; background:var(--bg-secondary); color:var(--text-secondary); cursor:pointer; font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:all var(--transition-fast); }
+    .dl-close:hover { background:rgba(255,59,48,0.15); color:#FF3B30; transform:scale(1.1); }
+    .dl-icon { width:64px; height:64px; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:white; margin:0 auto 20px; box-shadow:0 8px 24px rgba(255,107,0,0.35); }
+    .dl-title { font-size:1.35rem; font-weight:700; color:var(--text-primary); margin-bottom:6px; letter-spacing:-0.02em; }
+    .dl-subtitle { font-size:0.875rem; color:var(--text-secondary); margin-bottom:28px; line-height:1.5; }
+    .dl-options { display:flex; flex-direction:column; gap:12px; }
+    .dl-btn { display:flex; align-items:center; gap:16px; padding:16px 20px; border-radius:var(--radius-lg); border:1.5px solid var(--border-color); background:var(--bg-secondary); cursor:pointer; text-decoration:none; transition:all var(--transition-base); text-align:left; }
+    .dl-btn:hover { border-color:#FF6B00; background:rgba(255,107,0,0.06); transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .dl-btn-flag { font-size:2rem; flex-shrink:0; line-height:1; }
+    .dl-btn-info { flex:1; }
+    .dl-btn-lang { font-size:1rem; font-weight:700; color:var(--text-primary); display:block; margin-bottom:2px; }
+    .dl-btn-desc { font-size:0.78rem; color:var(--text-secondary); }
+    .dl-btn-arrow { color:var(--text-tertiary); font-size:0.85rem; transition:all var(--transition-fast); }
+    .dl-btn:hover .dl-btn-arrow { color:#FF6B00; transform:translateX(3px); }
+    .dl-btn.primary-lang { border-color:#FF6B00; background:rgba(255,107,0,0.05); }
+    .dl-btn.primary-lang .dl-btn-lang { color:#FF6B00; }
+    .dl-divider { display:flex; align-items:center; gap:10px; color:var(--text-tertiary); font-size:0.78rem; margin:2px 0; }
+    .dl-divider::before,.dl-divider::after { content:''; flex:1; height:1px; background:var(--border-color); }
+
+    @media(max-width:600px){ .skills-grid { grid-template-columns:repeat(auto-fill,minmax(90px,1fr)); } .cv-section { padding:24px 20px 20px; } }
   </style>
 </head>
 <body>
@@ -112,10 +437,11 @@
       </div>
     </aside>
     <main class="content">
-      <div class="cv-container" id="cvContent"></div>
+      <div id="cvContent"></div>
     </main>
   </div>
   <footer><p>&copy; 2026 Raul Pivet. <span data-lang="footer">All rights reserved</span>.</p></footer>
+
   <div id="dlModal" role="dialog" aria-modal="true" aria-labelledby="dlTitle">
     <div class="dl-overlay" id="dlOverlay"></div>
     <div class="dl-box">
@@ -126,385 +452,263 @@
       <div class="dl-options" id="dlOptions"></div>
     </div>
   </div>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
-    const translations = {
-      en: {
-        subtitle: "Logistics Operations Specialist & Business Solutions Developer",
-        profileTitle: "Professional Profile",
-        profileText: "<strong>10+ years</strong> transforming manual logistics operations into automated, data-driven solutions. Specialist in <span class='highlight'>Microsoft Power Platform</span>, <span class='highlight'>Python development</span> and <span class='highlight'>web application development</span>, creating tools that reduce operational costs, improve team efficiency and build scalable digital products. Started from the ground up — warehouse helper, warehouse manager, logistics coordinator — building deep technical expertise alongside real operational experience across Chile and the United States.",
-        experienceTitle: "Work Experience",
-        jobs: [
-          {
-            title: "Data Entry & Logistics Solutions Developer",
-            company: "Encofrados J. Alsina S.A. — Hialeah, FL",
-            date: "Feb 2025 — Present",
-            bullets: [
-              "<strong>Reduced negative inventory significantly</strong> by developing analytics tools using Python (Streamlit, Pandas) and Power BI with TypeScript custom visuals",
-              "Automated daily inventory analysis dashboards processing data from 30+ global warehouses",
-              "Created web applications for random inventory audits and real-time stock analysis",
-              "Designed automated workflows with Power Automate for mass email reporting and ERP data integration",
-              "Managed delivery documentation, return requests, and carrier coordination through optimized processes",
-              "Developed custom tools to transform ERP database exports into actionable dashboards and web applications"
-            ]
-          },
-          {
-            title: "Logistics Coordinator",
-            company: "Merflex International — Doral, FL",
-            date: "May 2024 — Jan 2025",
-            bullets: [
-              "Coordinated international operations between China, Miami, and Bogotá for Temu/Shein products",
-              "<strong>Systematized key operational procedures</strong>, achieving significant reductions in processing times",
-              "Developed mobile applications for merchandise reception/dispatch with automated report generation",
-              "Implemented apps that replaced manual administrative tasks, optimizing human resources and workflows"
-            ]
-          },
-          {
-            title: "Warehouse Manager",
-            company: "Sodexo Energy & Resources — Minera Collahuasi — Iquique, Chile",
-            date: "Dec 2022 — Jul 2023",
-            bullets: [
-              "<strong>Led a team of 20 people</strong> on rotating 7x7 shifts in a demanding mining environment",
-              "<strong>Reduced inventory errors by 30%</strong> by implementing a mobile inventory control app with AppSheet",
-              "<strong>Improved operational efficiency by 25%</strong> through automated reporting in Google Sheets and Excel",
-              "Designed integrated systems for data synchronization between Gmail, Google Sheets, and local databases"
-            ]
-          },
-          {
-            title: "Warehouse Supervisor",
-            company: "Sodexo — Minera Escondida — Antofagasta, Chile",
-            date: "Aug 2021 — Dec 2022",
-            bullets: [
-              "Supervised warehouse operations at one of the world's largest copper mines",
-              "Analyzed data for weekly cost presentations, providing key insights for financial decisions",
-              "Systematized operational procedures, improving daily operations efficiency",
-              "Created mobile apps for merchandise reception, reducing registration errors"
-            ]
-          },
-          {
-            title: "Warehouse Administrator",
-            company: "Sodexo — Minera Escondida — Antofagasta, Chile",
-            date: "Nov 2019 — Jul 2021",
-            bullets: [
-              "Managed warehouse documentation, stock control, and merchandise receiving/dispatch",
-              "Represented the warehouse at national-level meetings to improve logistics and supply processes",
-              "Performed data entry in specialized company systems, ensuring data integrity and accuracy",
-              "Analyzed data for weekly cost presentations supporting financial decision-making"
-            ]
-          },
-          {
-            title: "Warehouse Administrator",
-            company: "Sodexo — Minera Zaldivar — Antofagasta, Chile",
-            date: "Jan 2018 — Nov 2019",
-            bullets: [
-              "Warehouse administration at Minera Zaldivar — continuous shift mining operation",
-              "Stock control, merchandise receiving/dispatch and coordination with internal areas",
-              "Data entry in management systems, ensuring accuracy of operational records",
-              "Handling Microsoft Office tools and ERP for operational reporting"
-            ]
-          },
-          {
-            title: "Warehouse Helper",
-            company: "Sodexo — Minera Zaldivar — Antofagasta, Chile",
-            date: "Aug 2016 — Jan 2018",
-            originBadge: "Where it all started",
-            bullets: [
-              "Unloading and receiving merchandise, verifying quantities against purchase orders",
-              "Stock organization applying FIFO and FEFO criteria, cycle inventory counts",
-              "Area maintenance following mining safety standards",
-              "Without knowing it — this is where I learned everything I later automated"
-            ]
-          }
-        ],
-        educationTitle: "Education & Certifications",
-        education: [
-          { title: "Business Administration — Logistics Specialization", company: "IACC — Santiago, Chile", date: "2017 — 2020" }
-        ],
-        certificationsTitle: "Professional Certifications",
-        certifications: [
-          "<strong>Python: Zero to Expert</strong> — G-Talent.net (Mar–Apr 2025)",
-          "<strong>Python AI Development</strong> (Nov 2025)",
-          "<strong>Microsoft Excel Expert</strong> — Advanced automation",
-          "<strong>Supply Chain Management Diploma</strong>",
-          "<strong>Administrative Management Diploma</strong>",
-          "<strong>Cybersecurity Introduction</strong> (Sep 2025)"
-        ],
-        skillsTitle: "Technical Skills",
-        languagesTitle: "Languages",
-        lang1: "Spanish", lang1Level: "Native",
-        lang2: "English", lang2Level: "Intermediate (B1/B2)",
-        downloadBtn: "Download CV",
-        footer: "All rights reserved",
-        linkedinUrl: "https://www.linkedin.com/in/raul-pivet-846738187",
-        linkedinDisplay: "linkedin.com/in/raul-pivet-846738187",
-        dlTitle: "Download CV", dlSubtitle: "Choose your preferred language version",
-        dlPrimaryFlag: "🇺🇸", dlPrimaryLang: "English", dlPrimaryDesc: "CV_Raul_Pivet_EN.pdf", dlPrimaryFile: "docs/CV_Raul_Pivet_EN.pdf",
-        dlDivider: "or",
-        dlSecondaryFlag: "🇪🇸", dlSecondaryLang: "Español", dlSecondaryDesc: "CV_Raul_Pivet_ES.pdf", dlSecondaryFile: "docs/CV_Raul_Pivet_ES.pdf"
-      },
-      es: {
-        subtitle: "Especialista en Operaciones Logísticas & Desarrollador de Soluciones Empresariales",
-        profileTitle: "Perfil Profesional",
-        profileText: "<strong>10+ años</strong> transformando operaciones logísticas manuales en soluciones automatizadas y basadas en datos. Especialista en <span class='highlight'>Microsoft Power Platform</span>, <span class='highlight'>desarrollo Python</span> y <span class='highlight'>desarrollo de aplicaciones web</span>, creando herramientas que reducen costos operativos, mejoran la eficiencia del equipo y construyen productos digitales escalables. Empecé desde abajo — ayudante de bodega, jefe de bodega, coordinador logístico — construyendo expertise técnico junto con experiencia operativa real en Chile y EE.UU.",
-        experienceTitle: "Experiencia Laboral",
-        jobs: [
-          {
-            title: "Asistente de Datos & Desarrollador de Soluciones Logísticas",
-            company: "Encofrados J. Alsina S.A. — Hialeah, FL",
-            date: "Feb 2025 — Presente",
-            bullets: [
-              "<strong>Reducción significativa de inventario negativo</strong> mediante Python (Streamlit, Pandas) y Power BI con custom visuals en TypeScript",
-              "Automatización de dashboards de análisis diario de inventario para 30+ almacenes globalmente",
-              "Creación de apps web para auditorías aleatorias y análisis de stock en tiempo real",
-              "Diseño de flujos automatizados con Power Automate para reportes masivos e integración ERP",
-              "Gestión de documentación de entregas, solicitudes de devolución y coordinación de transportistas",
-              "Desarrollo de herramientas personalizadas para transformar exportaciones del ERP en dashboards y aplicaciones web"
-            ]
-          },
-          {
-            title: "Coordinador Logístico",
-            company: "Merflex International — Doral, FL",
-            date: "May 2024 — Ene 2025",
-            bullets: [
-              "Coordinación de operaciones internacionales China–Miami–Bogotá para productos Temu/Shein",
-              "<strong>Sistematización de procedimientos operacionales clave</strong> con reducciones significativas en tiempos de proceso",
-              "Desarrollo de apps móviles para recepción/despacho con generación automática de reportes",
-              "Implementación de apps que sustituyeron tareas administrativas manuales, optimizando recursos humanos"
-            ]
-          },
-          {
-            title: "Jefe de Bodega",
-            company: "Sodexo Energy & Resources — Minera Collahuasi — Iquique, Chile",
-            date: "Dic 2022 — Jul 2023",
-            bullets: [
-              "<strong>Liderazgo de equipo de 20 personas</strong> en turnos rotativos 7x7 en ambiente minero exigente",
-              "<strong>Reducción del 30% en errores de inventario</strong> con app móvil de control AppSheet",
-              "<strong>Mejora del 25% en eficiencia operativa</strong> con reportes automatizados en Google Sheets y Excel",
-              "Diseño de sistemas integrados para sincronización de datos entre Gmail, Google Sheets y bases locales"
-            ]
-          },
-          {
-            title: "Supervisor de Bodegas",
-            company: "Sodexo — Minera Escondida — Antofagasta, Chile",
-            date: "Ago 2021 — Dic 2022",
-            bullets: [
-              "Supervisión de operaciones de bodega en una de las minas de cobre más grandes del mundo",
-              "Análisis de datos para presentaciones semanales de costos con insights clave para decisiones financieras",
-              "Sistematización de procedimientos operacionales, mejorando la eficiencia diaria",
-              "Creación de apps móviles para recepción de mercadería, reduciendo errores de registro"
-            ]
-          },
-          {
-            title: "Administrativo de Bodegas",
-            company: "Sodexo — Minera Escondida — Antofagasta, Chile",
-            date: "Nov 2019 — Jul 2021",
-            bullets: [
-              "Gestión documental de bodega, control de stock, recepción y despacho de mercadería",
-              "Representación de la bodega en reuniones a nivel nacional para mejorar procesos logísticos",
-              "Digitación en sistemas especializados de la empresa, asegurando integridad y precisión de datos",
-              "Análisis de datos para presentaciones semanales de costos, apoyando toma de decisiones financieras"
-            ]
-          },
-          {
-            title: "Administrativo de Bodega",
-            company: "Sodexo — Minera Zaldivar — Antofagasta, Chile",
-            date: "Ene 2018 — Nov 2019",
-            bullets: [
-              "Administración de bodega en Minera Zaldivar — operación minera de turno continuo",
-              "Control de stock, recepción y despacho de mercadería, coordinación con áreas internas",
-              "Digitación en sistemas de gestión, asegurando precisión en los registros operativos",
-              "Manejo de herramientas Microsoft Office y ERP para reportes operativos"
-            ]
-          },
-          {
-            title: "Ayudante de Bodega",
-            company: "Sodexo — Minera Zaldivar — Antofagasta, Chile",
-            date: "Ago 2016 — Ene 2018",
-            originBadge: "Donde todo comenzó",
-            bullets: [
-              "Descarga y recepción de mercadería, verificando cantidades contra órdenes de compra",
-              "Organización de stock aplicando criterios FIFO y FEFO, conteos cíclicos de inventario",
-              "Mantenimiento del área según estándares de seguridad minera",
-              "Sin saberlo — acá aprendí todo lo que después automaticé"
-            ]
-          }
-        ],
-        educationTitle: "Educación y Certificaciones",
-        education: [
-          { title: "Administración de Empresas — Especialización en Logística", company: "IACC — Santiago, Chile", date: "2017 — 2020" }
-        ],
-        certificationsTitle: "Certificaciones Profesionales",
-        certifications: [
-          "<strong>Python de Cero a Experto</strong> — G-Talent.net (Mar–Abr 2025)",
-          "<strong>Python AI Development</strong> (Nov 2025)",
-          "<strong>Experto en Microsoft Excel</strong> — Automatización avanzada",
-          "<strong>Diploma en Gestión de Cadena de Suministro</strong>",
-          "<strong>Diploma en Gestión Administrativa</strong>",
-          "<strong>Introducción a la Ciberseguridad</strong> (Sep 2025)"
-        ],
-        skillsTitle: "Habilidades Técnicas",
-        languagesTitle: "Idiomas",
-        lang1: "Español", lang1Level: "Nativo",
-        lang2: "Inglés", lang2Level: "Intermedio (B1/B2)",
-        downloadBtn: "Descargar CV",
-        footer: "Todos los derechos reservados",
-        linkedinUrl: "https://www.linkedin.com/in/raul-pivet-846738187",
-        linkedinDisplay: "linkedin.com/in/raul-pivet-846738187",
-        dlTitle: "Descargar CV", dlSubtitle: "Elegí la versión en tu idioma preferido",
-        dlPrimaryFlag: "🇪🇸", dlPrimaryLang: "Español", dlPrimaryDesc: "CV_Raul_Pivet_ES.pdf", dlPrimaryFile: "docs/CV_Raul_Pivet_ES.pdf",
-        dlDivider: "o también",
-        dlSecondaryFlag: "🇺🇸", dlSecondaryLang: "English", dlSecondaryDesc: "CV_Raul_Pivet_EN.pdf", dlSecondaryFile: "docs/CV_Raul_Pivet_EN.pdf"
-      }
-    };
+  const translations = {
+    en: {
+      subtitle: "Logistics Operations Specialist & Business Solutions Developer",
+      profileTitle: "Professional Profile",
+      profileText: "<strong>10+ years</strong> transforming manual logistics operations into automated, data-driven solutions. Specialist in <span class='highlight'>Microsoft Power Platform</span>, <span class='highlight'>Python development</span> and <span class='highlight'>web application development</span>, creating tools that reduce operational costs, improve team efficiency and build scalable digital products. Started from the ground up — warehouse helper, warehouse manager, logistics coordinator — building deep technical expertise alongside real operational experience across Chile and the United States.",
+      experienceTitle: "Work Experience",
+      jobs: [
+        { title:"Data Entry & Logistics Solutions Developer", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Present", bullets:["<strong>Reduced negative inventory significantly</strong> by developing analytics tools using Python (Streamlit, Pandas) and Power BI with TypeScript custom visuals","Automated daily inventory analysis dashboards processing data from 30+ global warehouses","Created web applications for random inventory audits and real-time stock analysis","Designed automated workflows with Power Automate for mass email reporting and ERP data integration","Managed delivery documentation, return requests, and carrier coordination through optimized processes","Developed custom tools to transform ERP database exports into actionable dashboards and web applications"] },
+        { title:"Logistics Coordinator", company:"Merflex International — Doral, FL", date:"May 2024 — Jan 2025", bullets:["Coordinated international operations between China, Miami, and Bogotá for Temu/Shein products","<strong>Systematized key operational procedures</strong>, achieving significant reductions in processing times","Developed mobile applications for merchandise reception/dispatch with automated report generation","Implemented apps that replaced manual administrative tasks, optimizing human resources and workflows"] },
+        { title:"Warehouse Manager", company:"Sodexo Energy & Resources — Minera Collahuasi — Iquique, Chile", date:"Dec 2022 — Jul 2023", bullets:["<strong>Led a team of 20 people</strong> on rotating 7x7 shifts in a demanding mining environment","<strong>Reduced inventory errors by 30%</strong> by implementing a mobile inventory control app with AppSheet","<strong>Improved operational efficiency by 25%</strong> through automated reporting in Google Sheets and Excel","Designed integrated systems for data synchronization between Gmail, Google Sheets, and local databases"] },
+        { title:"Warehouse Supervisor", company:"Sodexo — Minera Escondida — Antofagasta, Chile", date:"Aug 2021 — Dec 2022", bullets:["Supervised warehouse operations at one of the world's largest copper mines","Analyzed data for weekly cost presentations, providing key insights for financial decisions","Systematized operational procedures, improving daily operations efficiency","Created mobile apps for merchandise reception, reducing registration errors"] },
+        { title:"Warehouse Administrator", company:"Sodexo — Minera Escondida — Antofagasta, Chile", date:"Nov 2019 — Jul 2021", bullets:["Managed warehouse documentation, stock control, and merchandise receiving/dispatch","Represented the warehouse at national-level meetings to improve logistics and supply processes","Performed data entry in specialized company systems, ensuring data integrity and accuracy","Analyzed data for weekly cost presentations supporting financial decision-making"] },
+        { title:"Warehouse Administrator", company:"Sodexo — Minera Zaldivar — Antofagasta, Chile", date:"Jan 2018 — Nov 2019", bullets:["Warehouse administration at Minera Zaldivar — continuous shift mining operation","Stock control, merchandise receiving/dispatch and coordination with internal areas","Data entry in management systems, ensuring accuracy of operational records","Handling Microsoft Office tools and ERP for operational reporting"] },
+        { title:"Warehouse Helper", company:"Sodexo — Minera Zaldivar — Antofagasta, Chile", date:"Aug 2016 — Jan 2018", originBadge:"Where it all started", bullets:["Unloading and receiving merchandise, verifying quantities against purchase orders","Stock organization applying FIFO and FEFO criteria, cycle inventory counts","Area maintenance following mining safety standards","Without knowing it — this is where I learned everything I later automated"] }
+      ],
+      educationTitle: "Education & Certifications",
+      education: [{ title:"Business Administration — Logistics Specialization", company:"IACC — Santiago, Chile", date:"2017 — 2020" }],
+      certificationsTitle: "Professional Certifications",
+      certifications: ["<strong>Python: Zero to Expert</strong> — G-Talent.net (Mar–Apr 2025)","<strong>Python AI Development</strong> (Nov 2025)","<strong>Microsoft Excel Expert</strong> — Advanced automation","<strong>Supply Chain Management Diploma</strong>","<strong>Administrative Management Diploma</strong>","<strong>Cybersecurity Introduction</strong> (Sep 2025)"],
+      skillsTitle: "Technical Skills",
+      languagesTitle: "Languages",
+      languages: [
+        { name:"Spanish", level:"Native", pill:"native", bar:100, sublabel:"Native language" },
+        { name:"English", level:"Basic-Intermediate (A2/B1)", pill:"a2b1", bar:38, sublabel:"Reading & writing · Conversational progress" }
+      ],
+      downloadBtn: "Download CV",
+      footer: "All rights reserved",
+      linkedinUrl:"https://www.linkedin.com/in/raul-pivet-846738187",
+      linkedinDisplay:"linkedin.com/in/raul-pivet-846738187",
+      dlTitle:"Download CV", dlSubtitle:"Choose your preferred language version",
+      dlPrimaryFlag:"🇺🇸", dlPrimaryLang:"English", dlPrimaryDesc:"CV_Raul_Pivet_EN.pdf", dlPrimaryFile:"docs/CV_Raul_Pivet_EN.pdf",
+      dlDivider:"or",
+      dlSecondaryFlag:"🇪🇸", dlSecondaryLang:"Español", dlSecondaryDesc:"CV_Raul_Pivet_ES.pdf", dlSecondaryFile:"docs/CV_Raul_Pivet_ES.pdf"
+    },
+    es: {
+      subtitle: "Especialista en Operaciones Logísticas & Desarrollador de Soluciones Empresariales",
+      profileTitle: "Perfil Profesional",
+      profileText: "<strong>10+ años</strong> transformando operaciones logísticas manuales en soluciones automatizadas y basadas en datos. Especialista en <span class='highlight'>Microsoft Power Platform</span>, <span class='highlight'>desarrollo Python</span> y <span class='highlight'>desarrollo de aplicaciones web</span>, creando herramientas que reducen costos operativos, mejoran la eficiencia del equipo y construyen productos digitales escalables. Empecé desde abajo — ayudante de bodega, jefe de bodega, coordinador logístico — construyendo expertise técnico junto con experiencia operativa real en Chile y EE.UU.",
+      experienceTitle: "Experiencia Laboral",
+      jobs: [
+        { title:"Asistente de Datos & Desarrollador de Soluciones Logísticas", company:"Encofrados J. Alsina S.A. — Hialeah, FL", date:"Feb 2025 — Presente", bullets:["<strong>Reducción significativa de inventario negativo</strong> mediante Python (Streamlit, Pandas) y Power BI con custom visuals en TypeScript","Automatización de dashboards de análisis diario de inventario para 30+ almacenes globalmente","Creación de apps web para auditorías aleatorias y análisis de stock en tiempo real","Diseño de flujos automatizados con Power Automate para reportes masivos e integración ERP","Gestión de documentación de entregas, solicitudes de devolución y coordinación de transportistas","Desarrollo de herramientas personalizadas para transformar exportaciones del ERP en dashboards y aplicaciones web"] },
+        { title:"Coordinador Logístico", company:"Merflex International — Doral, FL", date:"May 2024 — Ene 2025", bullets:["Coordinación de operaciones internacionales China–Miami–Bogotá para productos Temu/Shein","<strong>Sistematización de procedimientos operacionales clave</strong> con reducciones significativas en tiempos de proceso","Desarrollo de apps móviles para recepción/despacho con generación automática de reportes","Implementación de apps que sustituyeron tareas administrativas manuales, optimizando recursos humanos"] },
+        { title:"Jefe de Bodega", company:"Sodexo Energy & Resources — Minera Collahuasi — Iquique, Chile", date:"Dic 2022 — Jul 2023", bullets:["<strong>Liderazgo de equipo de 20 personas</strong> en turnos rotativos 7x7 en ambiente minero exigente","<strong>Reducción del 30% en errores de inventario</strong> con app móvil de control AppSheet","<strong>Mejora del 25% en eficiencia operativa</strong> con reportes automatizados en Google Sheets y Excel","Diseño de sistemas integrados para sincronización de datos entre Gmail, Google Sheets y bases locales"] },
+        { title:"Supervisor de Bodegas", company:"Sodexo — Minera Escondida — Antofagasta, Chile", date:"Ago 2021 — Dic 2022", bullets:["Supervisión de operaciones de bodega en una de las minas de cobre más grandes del mundo","Análisis de datos para presentaciones semanales de costos con insights clave para decisiones financieras","Sistematización de procedimientos operacionales, mejorando la eficiencia diaria","Creación de apps móviles para recepción de mercadería, reduciendo errores de registro"] },
+        { title:"Administrativo de Bodegas", company:"Sodexo — Minera Escondida — Antofagasta, Chile", date:"Nov 2019 — Jul 2021", bullets:["Gestión documental de bodega, control de stock, recepción y despacho de mercadería","Representación de la bodega en reuniones a nivel nacional para mejorar procesos logísticos","Digitación en sistemas especializados de la empresa, asegurando integridad y precisión de datos","Análisis de datos para presentaciones semanales de costos, apoyando toma de decisiones financieras"] },
+        { title:"Administrativo de Bodega", company:"Sodexo — Minera Zaldivar — Antofagasta, Chile", date:"Ene 2018 — Nov 2019", bullets:["Administración de bodega en Minera Zaldivar — operación minera de turno continuo","Control de stock, recepción y despacho de mercadería, coordinación con áreas internas","Digitación en sistemas de gestión, asegurando precisión en los registros operativos","Manejo de herramientas Microsoft Office y ERP para reportes operativos"] },
+        { title:"Ayudante de Bodega", company:"Sodexo — Minera Zaldivar — Antofagasta, Chile", date:"Ago 2016 — Ene 2018", originBadge:"Donde todo comenzó", bullets:["Descarga y recepción de mercadería, verificando cantidades contra órdenes de compra","Organización de stock aplicando criterios FIFO y FEFO, conteos cíclicos de inventario","Mantenimiento del área según estándares de seguridad minera","Sin saberlo — acá aprendí todo lo que después automaticé"] }
+      ],
+      educationTitle: "Educación y Certificaciones",
+      education: [{ title:"Administración de Empresas — Especialización en Logística", company:"IACC — Santiago, Chile", date:"2017 — 2020" }],
+      certificationsTitle: "Certificaciones Profesionales",
+      certifications: ["<strong>Python de Cero a Experto</strong> — G-Talent.net (Mar–Abr 2025)","<strong>Python AI Development</strong> (Nov 2025)","<strong>Experto en Microsoft Excel</strong> — Automatización avanzada","<strong>Diploma en Gestión de Cadena de Suministro</strong>","<strong>Diploma en Gestión Administrativa</strong>","<strong>Introducción a la Ciberseguridad</strong> (Sep 2025)"],
+      skillsTitle: "Habilidades Técnicas",
+      languagesTitle: "Idiomas",
+      languages: [
+        { name:"Español", level:"Nativo", pill:"native", bar:100, sublabel:"Idioma nativo" },
+        { name:"Inglés", level:"Básico-Intermedio (A2/B1)", pill:"a2b1", bar:38, sublabel:"Lectura y escritura · Conversación en progreso" }
+      ],
+      downloadBtn: "Descargar CV",
+      footer: "Todos los derechos reservados",
+      linkedinUrl:"https://www.linkedin.com/in/raul-pivet-846738187",
+      linkedinDisplay:"linkedin.com/in/raul-pivet-846738187",
+      dlTitle:"Descargar CV", dlSubtitle:"Elegí la versión en tu idioma preferido",
+      dlPrimaryFlag:"🇪🇸", dlPrimaryLang:"Español", dlPrimaryDesc:"CV_Raul_Pivet_ES.pdf", dlPrimaryFile:"docs/CV_Raul_Pivet_ES.pdf",
+      dlDivider:"o también",
+      dlSecondaryFlag:"🇺🇸", dlSecondaryLang:"English", dlSecondaryDesc:"CV_Raul_Pivet_EN.pdf", dlSecondaryFile:"docs/CV_Raul_Pivet_EN.pdf"
+    }
+  };
 
-    /* ── Skills sincronizadas con el PDF + nuevas habilidades web/social ── */
-    const skillItems = [
-      ['chart-bar','Power BI'],
-      ['cogs','Power Automate'],
-      ['database','Dataverse'],
-      ['python fab','Python'],
-      ['table','Pandas/NumPy'],
-      ['chart-line','Streamlit'],
-      ['bolt','Make.com'],
-      ['google fab','Google Suite'],
-      ['fire','AppSheet'],
-      ['git-alt fab','Git/GitHub'],
-      ['file-excel','Excel Avanzado'],
-      ['robot','Gemini AI'],
-      ['js fab','JavaScript'],
-      ['html5 fab','HTML/CSS'],
-      ['react fab','React'],
-      ['fire-alt','Firebase'],
-      ['code','TypeScript'],
-      ['warehouse','ERP/WMS'],
-      ['cubes','SQLite'],
-      ['share-alt','Social Automation'],
-      ['instagram fab','Instagram API'],
-      ['shield-alt','Ciberseguridad']
-    ];
+  const skillItems = [
+    ['chart-bar','Power BI'],['cogs','Power Automate'],['database','Dataverse'],
+    ['python fab','Python'],['table','Pandas/NumPy'],['chart-line','Streamlit'],
+    ['bolt','Make.com'],['google fab','Google Suite'],['fire','AppSheet'],
+    ['git-alt fab','Git/GitHub'],['file-excel','Excel Avanzado'],['robot','Gemini AI'],
+    ['js fab','JavaScript'],['html5 fab','HTML/CSS'],['react fab','React'],
+    ['fire-alt','Firebase'],['code','TypeScript'],['warehouse','ERP/WMS'],
+    ['cubes','SQLite'],['share-alt','Social Automation'],['instagram fab','Instagram API'],
+    ['shield-alt','Ciberseguridad']
+  ];
 
-    let currentLang = localStorage.getItem('cvLanguage') || localStorage.getItem('homeLang') || 'es';
+  let currentLang = localStorage.getItem('cvLanguage') || localStorage.getItem('homeLang') || 'es';
 
-    function renderCV(lang) {
-      const t = translations[lang];
+  function renderCV(lang) {
+    const t = translations[lang];
 
-      const jobsHTML = t.jobs.map(job => `
-        <div class="cv-item">
-          <div class="cv-item-header">
+    const jobsHTML = t.jobs.map((job,i) => `
+      <div class="cv-tl-item" data-aos="fade-up" data-aos-delay="${i*40}">
+        <div class="cv-tl-dot"></div>
+        <div class="cv-tl-card">
+          <div class="cv-tl-header">
             <div>
-              <h3 class="cv-item-title">${job.title}${job.originBadge ? ` <span class="origin-badge"><i class="fas fa-seedling"></i> ${job.originBadge}</span>` : ''}</h3>
-              <p class="cv-item-company">${job.company}</p>
+              <div class="cv-tl-title">${job.title}${job.originBadge ? ` <span class="origin-badge"><i class="fas fa-seedling"></i> ${job.originBadge}</span>` : ''}</div>
+              <div class="cv-tl-company">${job.company}</div>
             </div>
-            <span class="cv-item-date">${job.date}</span>
+            <span class="cv-tl-date">${job.date}</span>
           </div>
-          <div class="cv-item-description"><ul>${job.bullets.map(b => `<li>${b}</li>`).join('')}</ul></div>
-        </div>`).join('');
+          <ul class="cv-tl-bullets">${job.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+        </div>
+      </div>`).join('');
 
-      const educationHTML = t.education.map(ed => `
-        <div class="cv-item">
-          <div class="cv-item-header">
-            <div><h3 class="cv-item-title">${ed.title}</h3><p class="cv-item-company">${ed.company}</p></div>
-            <span class="cv-item-date">${ed.date}</span>
-          </div>
-        </div>`).join('');
+    const eduHTML = t.education.map(ed => `
+      <div class="cv-edu-item">
+        <div><div class="cv-edu-title">${ed.title}</div><div class="cv-edu-inst">${ed.company}</div></div>
+        <span class="cv-edu-date">${ed.date}</span>
+      </div>`).join('');
 
-      const skillsHTML = skillItems.map(([ic, nm]) => {
-        const isFab = ic.includes('fab');
-        const iconClass = isFab ? `fab fa-${ic.replace(' fab','')}` : `fas fa-${ic}`;
-        return `<div class="skill-item">
-          <div class="skill-icon"><i class="${iconClass}"></i></div>
-          <div class="skill-name">${nm}</div>
-        </div>`;
-      }).join('');
+    const certHTML = `<div class="cert-list">${t.certifications.map(c=>`
+      <div class="cert-item"><i class="fas fa-certificate"></i><span>${c}</span></div>`).join('')}</div>`;
 
-      document.getElementById('cvContent').innerHTML = `
-        <div class="cv-header" data-aos="fade-down">
-          <h1>Raul Pivet</h1>
-          <p class="subtitle">${t.subtitle}</p>
-          <div class="cv-contact">
-            <div class="cv-contact-item"><i class="fas fa-envelope"></i><span>jaime.pivet@gmail.com</span></div>
-            <div class="cv-contact-item"><i class="fas fa-phone"></i><span>+1 (305) 504-6846</span></div>
-            <div class="cv-contact-item"><i class="fas fa-map-marker-alt"></i><span>Cutler Bay, FL 33189</span></div>
-            <div class="cv-contact-item"><i class="fab fa-linkedin"></i><a href="${t.linkedinUrl}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">${t.linkedinDisplay}</a></div>
-            <div class="cv-contact-item"><i class="fab fa-github"></i><a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">github.com/Sinsapiar1</a></div>
+    const skillsHTML = skillItems.map(([ic,nm]) => {
+      const isFab = ic.includes('fab');
+      const iconClass = isFab ? `fab fa-${ic.replace(' fab','')}` : `fas fa-${ic}`;
+      return `<div class="skill-item"><i class="skill-icon ${iconClass}"></i><div class="skill-name">${nm}</div></div>`;
+    }).join('');
+
+    const langsHTML = t.languages.map(l => `
+      <div class="lang-item">
+        <div class="lang-top">
+          <span class="lang-name">${l.name}</span>
+          <span class="lang-pill ${l.pill === 'native' ? 'native' : ''}">${l.level}</span>
+        </div>
+        <div class="lang-bar-track">
+          <div class="lang-bar-fill ${l.pill === 'native' ? 'native-bar' : ''}" style="width:0" data-width="${l.bar}"></div>
+        </div>
+        <div class="lang-sublabel">${l.sublabel}</div>
+      </div>`).join('');
+
+    document.getElementById('cvContent').innerHTML = `
+      <div class="cv-header" data-aos="fade-down">
+        <div class="cv-header-bg"></div>
+        <div class="cv-header-inner">
+          <div class="cv-header-avatar"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
+          <div class="cv-header-text">
+            <div class="cv-header-name">Raul Pivet</div>
+            <div class="cv-header-title">${t.subtitle}</div>
+            <div class="cv-contact">
+              <a class="cv-contact-item" href="mailto:jaime.pivet@gmail.com"><i class="fas fa-envelope"></i> jaime.pivet@gmail.com</a>
+              <span class="cv-contact-item"><i class="fas fa-phone"></i> +1 (305) 504-6846</span>
+              <span class="cv-contact-item"><i class="fas fa-map-marker-alt"></i> Cutler Bay, FL</span>
+              <a class="cv-contact-item" href="${t.linkedinUrl}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+              <a class="cv-contact-item" href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+            </div>
           </div>
         </div>
-        <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-user-tie"></i> ${t.profileTitle}</h2>
-          <div class="profile-summary"><p class="cv-item-description">${t.profileText}</p></div>
-        </section>
-        <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-briefcase"></i> ${t.experienceTitle}</h2>
-          ${jobsHTML}
-        </section>
-        <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-graduation-cap"></i> ${t.educationTitle}</h2>
-          ${educationHTML}
-          <div class="cv-item">
-            <h3 class="cv-item-title" style="margin-bottom:var(--spacing-sm)">${t.certificationsTitle}</h3>
-            <div class="cv-item-description"><ul>${t.certifications.map(c => `<li>${c}</li>`).join('')}</ul></div>
-          </div>
-        </section>
-        <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-code"></i> ${t.skillsTitle}</h2>
-          <div class="skills-grid">${skillsHTML}</div>
-        </section>
-        <section class="cv-section" data-aos="fade-up">
-          <h2><i class="fas fa-language"></i> ${t.languagesTitle}</h2>
-          <div class="language-item"><span class="language-name">${t.lang1}</span><span class="language-level">${t.lang1Level}</span></div>
-          <div class="language-item"><span class="language-name">${t.lang2}</span><span class="language-level">${t.lang2Level}</span></div>
-        </section>
-        <div class="download-cv" data-aos="fade-up">
-          <button class="btn" id="openDlModal"><i class="fas fa-download"></i> ${t.downloadBtn}</button>
-        </div>`;
+      </div>
 
-      document.getElementById('openDlModal').addEventListener('click', openDownloadModal);
-      refreshAOS();
-      const footer = document.querySelector('footer span[data-lang="footer"]');
-      if (footer) footer.textContent = t.footer;
-    }
+      <div class="cv-section" data-aos="fade-up">
+        <div class="cv-section-title">
+          <div class="cv-section-icon"><i class="fas fa-user-tie"></i></div>
+          <span class="cv-section-label">${t.profileTitle}</span>
+        </div>
+        <div class="cv-section-divider"></div>
+        <div class="profile-summary">${t.profileText}</div>
+      </div>
 
-    function openDownloadModal() {
-      const t = translations[currentLang];
-      document.getElementById('dlTitle').textContent = t.dlTitle;
-      document.getElementById('dlSubtitle').textContent = t.dlSubtitle;
-      document.getElementById('dlOptions').innerHTML = `
-        <a href="${t.dlPrimaryFile}" download class="dl-btn primary-lang">
-          <span class="dl-btn-flag">${t.dlPrimaryFlag}</span>
-          <span class="dl-btn-info"><span class="dl-btn-lang">${t.dlPrimaryLang}</span><span class="dl-btn-desc">${t.dlPrimaryDesc}</span></span>
-          <i class="fas fa-arrow-down dl-btn-arrow"></i>
-        </a>
-        <div class="dl-divider">${t.dlDivider}</div>
-        <a href="${t.dlSecondaryFile}" download class="dl-btn">
-          <span class="dl-btn-flag">${t.dlSecondaryFlag}</span>
-          <span class="dl-btn-info"><span class="dl-btn-lang">${t.dlSecondaryLang}</span><span class="dl-btn-desc">${t.dlSecondaryDesc}</span></span>
-          <i class="fas fa-arrow-down dl-btn-arrow"></i>
-        </a>`;
-      document.getElementById('dlModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+      <div class="cv-section" data-aos="fade-up">
+        <div class="cv-section-title">
+          <div class="cv-section-icon"><i class="fas fa-briefcase"></i></div>
+          <span class="cv-section-label">${t.experienceTitle}</span>
+        </div>
+        <div class="cv-section-divider"></div>
+        <div class="cv-timeline">${jobsHTML}</div>
+      </div>
 
-    function closeDownloadModal() { document.getElementById('dlModal').classList.remove('open'); document.body.style.overflow = ''; }
-    document.getElementById('dlClose').addEventListener('click', closeDownloadModal);
-    document.getElementById('dlOverlay').addEventListener('click', closeDownloadModal);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDownloadModal(); });
+      <div class="cv-section" data-aos="fade-up">
+        <div class="cv-section-title">
+          <div class="cv-section-icon"><i class="fas fa-graduation-cap"></i></div>
+          <span class="cv-section-label">${t.educationTitle}</span>
+        </div>
+        <div class="cv-section-divider"></div>
+        ${eduHTML}
+        <div style="margin-top:20px">
+          <div style="font-size:0.8rem;font-weight:800;color:#FF6B00;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px">${t.certificationsTitle}</div>
+          ${certHTML}
+        </div>
+      </div>
 
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'es' : 'en';
-      localStorage.setItem('cvLanguage', currentLang);
-      localStorage.setItem('homeLang', currentLang);
-      document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
-      document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';
-      renderCV(currentLang);
-    }
+      <div class="cv-section" data-aos="fade-up">
+        <div class="cv-section-title">
+          <div class="cv-section-icon"><i class="fas fa-code"></i></div>
+          <span class="cv-section-label">${t.skillsTitle}</span>
+        </div>
+        <div class="cv-section-divider"></div>
+        <div class="skills-grid">${skillsHTML}</div>
+      </div>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCV(currentLang);
-      document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
-      document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';
-      document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+      <div class="cv-section" data-aos="fade-up">
+        <div class="cv-section-title">
+          <div class="cv-section-icon"><i class="fas fa-language"></i></div>
+          <span class="cv-section-label">${t.languagesTitle}</span>
+        </div>
+        <div class="cv-section-divider"></div>
+        <div class="lang-list">${langsHTML}</div>
+      </div>
+
+      <div style="text-align:center;margin:32px 0 8px" data-aos="fade-up">
+        <button class="btn" id="openDlModal" style="padding:16px 36px;font-size:1rem"><i class="fas fa-download"></i> ${t.downloadBtn}</button>
+      </div>`;
+
+    document.getElementById('openDlModal').addEventListener('click', openDownloadModal);
+
+    /* Animar barras de idioma */
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.lang-bar-fill[data-width]').forEach(el => {
+        setTimeout(() => { el.style.width = el.dataset.width + '%'; }, 200);
+      });
     });
+
+    refreshAOS();
+    const footer = document.querySelector('footer span[data-lang="footer"]');
+    if (footer) footer.textContent = t.footer;
+  }
+
+  function openDownloadModal() {
+    const t = translations[currentLang];
+    document.getElementById('dlTitle').textContent = t.dlTitle;
+    document.getElementById('dlSubtitle').textContent = t.dlSubtitle;
+    document.getElementById('dlOptions').innerHTML = `
+      <a href="${t.dlPrimaryFile}" download class="dl-btn primary-lang">
+        <span class="dl-btn-flag">${t.dlPrimaryFlag}</span>
+        <span class="dl-btn-info"><span class="dl-btn-lang">${t.dlPrimaryLang}</span><span class="dl-btn-desc">${t.dlPrimaryDesc}</span></span>
+        <i class="fas fa-arrow-down dl-btn-arrow"></i>
+      </a>
+      <div class="dl-divider">${t.dlDivider}</div>
+      <a href="${t.dlSecondaryFile}" download class="dl-btn">
+        <span class="dl-btn-flag">${t.dlSecondaryFlag}</span>
+        <span class="dl-btn-info"><span class="dl-btn-lang">${t.dlSecondaryLang}</span><span class="dl-btn-desc">${t.dlSecondaryDesc}</span></span>
+        <i class="fas fa-arrow-down dl-btn-arrow"></i>
+      </a>`;
+    document.getElementById('dlModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDownloadModal() { document.getElementById('dlModal').classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('dlClose').addEventListener('click', closeDownloadModal);
+  document.getElementById('dlOverlay').addEventListener('click', closeDownloadModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDownloadModal(); });
+
+  function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    localStorage.setItem('cvLanguage', currentLang);
+    localStorage.setItem('homeLang', currentLang);
+    document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';
+    renderCV(currentLang);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCV(currentLang);
+    document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';
+    document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+  });
   </script>
 </body>
 </html>
