@@ -43,114 +43,204 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .language-toggle { position: fixed; top: 80px; right: 24px; z-index: 999; display: flex; align-items: center; gap: 8px; background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); cursor: pointer; transition: all var(--transition-base); }
-    .language-toggle:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    .language-flag { font-size: 1.25rem; }
-    .language-text { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
-    @media(max-width:768px){ .language-toggle { top: 70px; right: 16px; padding: 6px 12px; } .language-text { display: none; } }
+    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
+    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .language-flag { font-size:1.25rem; }
+    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
+    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
 
-    .hero { padding: 48px 0 40px; }
+    .hero { padding:48px 0 40px; }
 
-    /* ── EYEBROW REDISEÑADO — propuesta de valor, no disponibilidad ── */
+    /* ══════════════════════════════════════════
+       EYEBROW — NEXT GENERATION
+       Banner full-width con texto rotativo typewriter
+       + glow pulsante + borde degradado animado
+    ══════════════════════════════════════════ */
+    .hero-eyebrow-wrap {
+      margin-bottom: 28px;
+    }
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,149,0,0.08));
-      border: 1px solid rgba(255,107,0,0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      position: relative;
+    }
+    /* Píldora izquierda — "¿SABÍAS QUE?" fija */
+    .eyebrow-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: linear-gradient(135deg, #FF6B00, #FF9500);
+      color: white; font-size: 10px; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      padding: 7px 14px; border-radius: 30px;
+      white-space: nowrap; flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(255,107,0,0.45);
+      animation: pill-glow 2.5s ease-in-out infinite;
+    }
+    @keyframes pill-glow {
+      0%,100% { box-shadow: 0 4px 16px rgba(255,107,0,0.45); }
+      50%      { box-shadow: 0 4px 28px rgba(255,107,0,0.75), 0 0 0 4px rgba(255,107,0,0.12); }
+    }
+    .eyebrow-pill i { font-size: 0.75rem; }
+
+    /* Texto rotativo */
+    .eyebrow-rotating {
+      font-size: 0.9375rem;
+      font-weight: 700;
       color: var(--text-primary);
-      font-size: 13px; font-weight: 700;
-      padding: 10px 18px; border-radius: 30px; margin-bottom: 20px;
-      box-shadow: 0 2px 16px rgba(255,107,0,0.12);
-      position: relative; overflow: hidden;
+      min-height: 1.4em;
+      display: flex; align-items: center;
     }
-    .hero-eyebrow::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,149,0,0.06), transparent);
-      animation: eyebrow-shimmer 3s infinite;
+    .eyebrow-rotating .rotate-text {
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
-    @keyframes eyebrow-shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+    .eyebrow-rotating .rotate-text.fade-out { opacity: 0; }
+    .eyebrow-rotating .highlight { color: #FF6B00; }
+
+    /* Cursor parpadeante */
+    .eyebrow-cursor {
+      display: inline-block;
+      width: 2px; height: 1.1em;
+      background: #FF6B00;
+      margin-left: 3px;
+      border-radius: 2px;
+      animation: blink-cursor 0.9s step-end infinite;
+      vertical-align: middle;
+      flex-shrink: 0;
     }
-    .hero-eyebrow-icon {
-      width: 26px; height: 26px; flex-shrink: 0;
-      background: linear-gradient(135deg,#FF6B00,#FF9500);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; color: white;
-    }
-    .hero-eyebrow-text { color: var(--text-primary); }
-    .hero-eyebrow-text strong { color: #FF6B00; }
-    .hero-eyebrow-arrow {
-      margin-left: 4px; color: #FF6B00; font-size: 0.75rem;
-      animation: arrow-pulse 1.5s ease-in-out infinite;
-    }
-    @keyframes arrow-pulse {
-      0%,100% { transform: translateX(0); opacity:1; }
-      50% { transform: translateX(4px); opacity:0.6; }
+    @keyframes blink-cursor {
+      0%,100% { opacity:1; }
+      50%      { opacity:0; }
     }
 
-    .hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 16px; }
-    .hero h1 span { background: linear-gradient(135deg, #FF6B00, #FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-sub { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; max-width: 580px; margin-bottom: 28px; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-    .hero-tag { background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-secondary); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 20px; transition: all 0.2s; }
-    .hero-tag:hover { border-color: #FF6B00; color: #FF6B00; }
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 2px solid var(--border-color); border-radius: 50px; color: var(--text-primary); font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; background: transparent; cursor: pointer; }
-    .btn-outline:hover { border-color: #FF6B00; color: #FF6B00; }
+    /* Puntos indicadores */
+    .eyebrow-dots {
+      display: flex; gap: 5px; align-items: center; margin-left: 4px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--border-color);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .eyebrow-dot.active {
+      background: #FF6B00;
+      transform: scale(1.4);
+    }
 
-    /* ── STATS BAR REDISEÑADA ── */
+    .hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800; line-height:1.15; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:16px; }
+    .hero h1 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hero-sub { font-size:1.05rem; color:var(--text-secondary); line-height:1.7; max-width:580px; margin-bottom:28px; }
+    .hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+    .hero-tag { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-secondary); font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; transition:all 0.2s; }
+    .hero-tag:hover { border-color:#FF6B00; color:#FF6B00; }
+    .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border:2px solid var(--border-color); border-radius:50px; color:var(--text-primary); font-weight:600; font-size:14px; text-decoration:none; transition:all 0.2s; background:transparent; cursor:pointer; }
+    .btn-outline:hover { border-color:#FF6B00; color:#FF6B00; }
+
+    /* ══════════════════════════════════════════
+       STATS BAR — PREMIUM REDESIGN
+       Cards con icono grande, número destacado,
+       barra de progreso visual y sublabel
+    ══════════════════════════════════════════ */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(4,1fr);
-      gap: 12px;
+      gap: 14px;
       margin: 40px 0;
     }
     @media(max-width:700px){ .stats-bar { grid-template-columns: repeat(2,1fr); } }
     @media(max-width:400px){ .stats-bar { grid-template-columns: 1fr; } }
+
     .stat-item {
       background: var(--glass-bg);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 22px 18px 18px;
-      display: flex; flex-direction: column; gap: 6px;
-      transition: all 0.25s;
+      border-radius: 20px;
+      padding: 24px 20px 20px;
+      display: flex; flex-direction: column;
       position: relative; overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.34,1.3,0.64,1);
+      cursor: default;
     }
-    .stat-item::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    /* Fondo decorativo — número fantasma grande */
+    .stat-item::before {
+      content: attr(data-ghost);
+      position: absolute;
+      right: -8px; bottom: -14px;
+      font-size: 5rem; font-weight: 900;
+      color: rgba(255,107,0,0.05);
+      line-height: 1;
+      pointer-events: none;
+      transition: color 0.3s;
+    }
+    .stat-item:hover {
+      border-color: rgba(255,107,0,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(255,107,0,0.15);
+    }
+    .stat-item:hover::before { color: rgba(255,107,0,0.09); }
+
+    /* Barra superior de color */
+    .stat-item-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, #FF6B00, #FF9500);
       transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
+      border-radius: 20px 20px 0 0;
     }
-    .stat-item:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-4px); box-shadow: 0 10px 32px rgba(255,107,0,0.1); }
-    .stat-item:hover::after { transform: scaleX(1); }
-    .stat-icon {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08));
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; color: #FF6B00; margin-bottom: 4px;
-    }
-    .stat-number { font-size: 1.9rem; font-weight: 800; color: #FF6B00; line-height: 1; }
-    .stat-label { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.4; }
-    .stat-sublabel { font-size: 10px; color: var(--text-tertiary); opacity: 0.7; font-style: italic; margin-top: 2px; }
+    .stat-item:hover .stat-item-bar { transform: scaleX(1); }
 
-    .section-header { margin-bottom: 28px; }
-    .section-eyebrow { font-size: 11px; font-weight: 800; color: #FF6B00; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
-    .section-title { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
-    .services { margin: 48px 0; }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 16px; }
-    .service-card { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; transition: all 0.25s; position: relative; overflow: hidden; }
+    .stat-icon-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .stat-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.18), rgba(255,149,0,0.08));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: #FF6B00;
+      border: 1px solid rgba(255,107,0,0.15);
+    }
+    .stat-trend {
+      font-size: 9px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #34C759;
+      background: rgba(52,199,89,0.1); border: 1px solid rgba(52,199,89,0.2);
+      padding: 3px 8px; border-radius: 10px;
+    }
+    .stat-number {
+      font-size: 2.2rem; font-weight: 900; color: #FF6B00;
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.8125rem; font-weight: 700;
+      color: var(--text-primary); line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .stat-sublabel {
+      font-size: 11px; color: var(--text-tertiary);
+      line-height: 1.4; font-style: italic;
+    }
+
+    /* ── Resto del sitio sin cambios ── */
+    .section-header { margin-bottom:28px; }
+    .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
+    .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; }
+    .services { margin:48px 0; }
+    .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+    .service-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:28px; transition:all 0.25s; position:relative; overflow:hidden; }
     .service-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,107,0,0.04),transparent); opacity:0; transition:opacity 0.25s; }
-    .service-card:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(255,107,0,0.1); }
+    .service-card:hover { border-color:rgba(255,107,0,0.3); transform:translateY(-4px); box-shadow:0 12px 40px rgba(255,107,0,0.1); }
     .service-card:hover::before { opacity:1; }
     .service-icon { width:48px; height:48px; background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.1)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:#FF6B00; margin-bottom:16px; }
     .service-title { font-size:1rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; }
     .service-desc { font-size:0.875rem; color:var(--text-secondary); line-height:1.6; margin-bottom:14px; }
     .service-tags { display:flex; flex-wrap:wrap; gap:6px; }
     .service-tag { font-size:10px; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.08); padding:3px 8px; border-radius:10px; text-transform:uppercase; letter-spacing:0.05em; }
-    .cases { margin: 48px 0; }
+    .cases { margin:48px 0; }
     .cases-list { display:flex; flex-direction:column; gap:14px; }
     .case-item { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:14px; padding:22px 24px; display:flex; gap:18px; align-items:flex-start; transition:all 0.2s; }
     .case-item:hover { border-color:rgba(255,107,0,0.25); transform:translateX(4px); }
@@ -159,7 +249,7 @@
     .case-title { font-size:0.9375rem; font-weight:700; color:var(--text-primary); margin-bottom:4px; }
     .case-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
     .case-badge { font-size:10px; font-weight:800; color:#34C759; background:rgba(52,199,89,0.1); padding:3px 10px; border-radius:10px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
-    .stack { margin: 48px 0; }
+    .stack { margin:48px 0; }
     .stack-grid { display:flex; flex-wrap:wrap; gap:10px; }
     .stack-item { display:flex; align-items:center; gap:8px; background:var(--bg-secondary); border:1px solid var(--border-color); padding:8px 16px; border-radius:30px; font-size:13px; font-weight:600; color:var(--text-secondary); transition:all 0.2s; }
     .stack-item:hover { border-color:#FF6B00; color:#FF6B00; transform:translateY(-2px); }
@@ -167,28 +257,26 @@
     .cta-section { margin:48px 0; background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:40px; text-align:center; }
     .cta-section h2 { font-size:1.6rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
     .cta-section p { color:var(--text-secondary); margin-bottom:24px; font-size:1rem; line-height:1.6; }
-
-    /* ── SECCIÓN: DE CERO A SISTEMA ── */
-    .zero-to-system { margin: 48px 0; }
-    .zts-card { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; position: relative; }
-    .zts-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800); }
-    .zts-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-    @media(max-width: 860px) { .zts-inner { grid-template-columns: 1fr; } }
-    .zts-left { padding: 40px 36px; border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center; }
-    @media(max-width: 860px) { .zts-left { border-right: none; border-bottom: 1px solid var(--border-color); } }
-    .zts-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.25); color: #FF6B00; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 5px 12px; border-radius: 20px; margin-bottom: 18px; width: fit-content; }
-    .zts-title { font-size: clamp(1.25rem, 2.5vw, 1.7rem); font-weight: 800; color: var(--text-primary); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px; }
-    .zts-title span { background: linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .zts-desc { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 24px; }
-    .zts-proof { display: inline-flex; align-items: center; gap: 8px; background: rgba(52,199,89,0.08); border: 1px solid rgba(52,199,89,0.2); border-radius: 10px; padding: 10px 14px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; }
-    .zts-proof i { color: #34C759; font-size: 1rem; flex-shrink: 0; }
-    .zts-proof strong { color: var(--text-primary); }
-    .zts-right { padding: 40px 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
-    .zts-step { display: flex; align-items: flex-start; gap: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px 20px; transition: border-color 0.2s, transform 0.2s; }
-    .zts-step:hover { border-color: rgba(255,107,0,0.3); transform: translateX(4px); }
-    .zts-step-num { width: 32px; height: 32px; flex-shrink: 0; background: linear-gradient(135deg,#FF6B00,#FF9500); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: white; }
-    .zts-step-title { font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
-    .zts-step-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.55; }
+    .zero-to-system { margin:48px 0; }
+    .zts-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:20px; overflow:hidden; position:relative; }
+    .zts-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500,#FFB800); }
+    .zts-inner { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+    @media(max-width:860px){ .zts-inner { grid-template-columns:1fr; } }
+    .zts-left { padding:40px 36px; border-right:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:center; }
+    @media(max-width:860px){ .zts-left { border-right:none; border-bottom:1px solid var(--border-color); } }
+    .zts-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.25); color:#FF6B00; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; padding:5px 12px; border-radius:20px; margin-bottom:18px; width:fit-content; }
+    .zts-title { font-size:clamp(1.25rem,2.5vw,1.7rem); font-weight:800; color:var(--text-primary); line-height:1.2; letter-spacing:-0.02em; margin-bottom:14px; }
+    .zts-title span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .zts-desc { font-size:0.9375rem; color:var(--text-secondary); line-height:1.75; margin-bottom:24px; }
+    .zts-proof { display:inline-flex; align-items:center; gap:8px; background:rgba(52,199,89,0.08); border:1px solid rgba(52,199,89,0.2); border-radius:10px; padding:10px 14px; font-size:0.8125rem; color:var(--text-secondary); line-height:1.5; }
+    .zts-proof i { color:#34C759; font-size:1rem; flex-shrink:0; }
+    .zts-proof strong { color:var(--text-primary); }
+    .zts-right { padding:40px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; }
+    .zts-step { display:flex; align-items:flex-start; gap:16px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:14px; padding:18px 20px; transition:border-color 0.2s,transform 0.2s; }
+    .zts-step:hover { border-color:rgba(255,107,0,0.3); transform:translateX(4px); }
+    .zts-step-num { width:32px; height:32px; flex-shrink:0; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:800; color:white; }
+    .zts-step-title { font-size:0.875rem; font-weight:700; color:var(--text-primary); margin-bottom:3px; }
+    .zts-step-desc { font-size:0.8rem; color:var(--text-secondary); line-height:1.55; }
   </style>
 </head>
 <body>
@@ -290,36 +378,38 @@
   const t = {
     es: {
       sidebar: "Logistics & Tech Solutions",
-      nav_home: "Inicio", nav_about: "Sobre Mí", nav_projects: "Proyectos", nav_contact: "Contacto",
+      nav_home:"Inicio", nav_about:"Sobre Mí", nav_projects:"Proyectos", nav_contact:"Contacto",
       footer: "Automatización & Business Intelligence",
-      eyebrow_icon: "fas fa-bolt",
-      eyebrow_msg: "¿Tus procesos siguen siendo <strong>manuales</strong>? Eso tiene solución.",
+      eyebrow_pill: "⚡ Para vos si",
+      eyebrow_phrases: [
+        "¿Tus procesos siguen siendo <span class='highlight'>manuales</span>? Eso tiene solución.",
+        "¿Tu equipo pierde horas en tareas <span class='highlight'>repetitivas</span>? Eso se automatiza.",
+        "¿Tus datos llegan <span class='highlight'>tarde o desactualizados</span>? Eso se conecta.",
+        "¿No tenés ningún sistema? <span class='highlight'>Arrancamos desde cero.</span>"
+      ],
       h1a: "Automatización, datos",
       h1b: "y soluciones web a medida",
       hero_sub: "De la logística al código. 10+ años automatizando operaciones, construyendo dashboards que se actualizan solos, desarrollando herramientas web con React, Firebase y Python, y creando sistemas que trabajan por vos en redes sociales — todo en uno.",
       tags: ["Power BI","Python","HTML/CSS/JS","React","Firebase","Make.com","Power Automate","AppSheet","GitHub Actions","Streamlit","Google Suite","SEO Técnico"],
-      btn_talk: "Hablemos", btn_cv: "Ver CV", btn_lab: "Ver Lab",
+      btn_talk:"Hablemos", btn_cv:"Ver CV", btn_lab:"Ver Lab",
       stats: [
-        { icon:"fas fa-layer-group",  num:"10", label:"Años de trayectoria", sub:"Logística + tecnología" },
-        { icon:"fas fa-clock",         num:"80", label:"% Menos tiempo manual", sub:"En procesos automatizados" },
-        { icon:"fas fa-project-diagram",num:"0",  label:"Sistemas desde cero", sub:"Si no tenés nada, arrancamos" },
-        { icon:"fas fa-check-double",  num:"100", label:"% Orientado a resultados", sub:"Nada que no funcione" }
+        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Años de trayectoria",       sub:"Logística + tecnología",          trend:"Real" },
+        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Menos tiempo manual",       sub:"En procesos automatizados",        trend:"Probado" },
+        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"Sistema desde cero",         sub:"Si no tenés nada, arrancamos",     trend:"Sí, cero" },
+        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"Orientado a resultados",     sub:"Nada que no funcione",             trend:"Siempre" }
       ],
-
       zts_eyebrow: "🏗️ Punto de partida cero",
       zts_title_a: "Si tu operación no tiene ningún sistema,",
       zts_title_b: "ese es exactamente el punto de partida.",
       zts_desc: "Muchas empresas manejan su inventario en papel, en planillas sueltas o en la memoria de las personas. Eso no es un problema técnico — es una oportunidad. Con las herramientas correctas y la experiencia operativa para entender el negocio desde adentro, es posible construir un sistema completo, ordenado y que el equipo realmente use, sin reemplazar lo que ya funciona.",
       zts_proof_text: "Sistema completo de inventario para alimentación construido con AppSheet: maestro de códigos, entradas, salidas y exportación automática de documentos — implementado en operación real.",
       zts_steps: [
-        { num: "01", title: "Diagnóstico del flujo real", desc: "Se mapea cómo opera el negocio hoy — qué se registra, cómo, quién lo usa y dónde están los puntos de falla." },
-        { num: "02", title: "Maestro de productos y códigos", desc: "Se crea la base de datos centralizada: cada ítem con su código único, categoría, unidad de medida y parámetros de control." },
-        { num: "03", title: "Control de entradas y salidas", desc: "App móvil para que el equipo registre movimientos en tiempo real, con validaciones automáticas y sin papel." },
-        { num: "04", title: "Reportes y documentos automáticos", desc: "El sistema genera y exporta los informes que la empresa necesita — en el formato correcto, sin que nadie tenga que armarlo a mano." }
+        { num:"01", title:"Diagnóstico del flujo real", desc:"Se mapea cómo opera el negocio hoy — qué se registra, cómo, quién lo usa y dónde están los puntos de falla." },
+        { num:"02", title:"Maestro de productos y códigos", desc:"Se crea la base de datos centralizada: cada ítem con su código único, categoría, unidad de medida y parámetros de control." },
+        { num:"03", title:"Control de entradas y salidas", desc:"App móvil para que el equipo registre movimientos en tiempo real, con validaciones automáticas y sin papel." },
+        { num:"04", title:"Reportes y documentos automáticos", desc:"El sistema genera y exporta los informes que la empresa necesita — en el formato correcto, sin que nadie tenga que armarlo a mano." }
       ],
-
-      svc_eyebrow: "¿En qué puedo ayudarte?",
-      svc_title: "Soluciones que construyo",
+      svc_eyebrow:"¿En qué puedo ayudarte?", svc_title:"Soluciones que construyo",
       services: [
         { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Dashboards Power BI con custom visuals tipo webapp, actualización automática vía Query M avanzado y DAX. Conecto directamente tus fuentes de datos para que el reporte se actualice solo.", tags:["Power BI","DAX","Query M","TypeScript"] },
         { icon:"fas fa-cogs", title:"Automatización de Reportes", desc:"Pipeline completo: correo con Excel → Python procesa → SQLite almacena 32 días → GitHub Actions genera JSON → Power Automate distribuye a 50+ destinatarios cada uno con solo sus datos.", tags:["Power Automate","GitHub Actions","Python","SQLite"] },
@@ -330,8 +420,7 @@
         { icon:"fab fa-html5", title:"Desarrollo Web + SEO Técnico", desc:"Sitios web y aplicaciones completas desde cero: HTML, CSS, JavaScript, React y Firebase. Cada sitio se entrega con SEO técnico configurado — estructura de metadatos, Google Search Console, sitemap, schema.org y indexación correcta para que aparezcas en Google desde el primer día.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
         { icon:"fas fa-share-alt", title:"Automatización de Redes Sociales", desc:"Herramientas que publican, responden, recopilan métricas y gestionan tu presencia en Instagram, LinkedIn y más — de forma automática. Flujos con Make.com que conectan tu contenido con tu audiencia sin intervención manual.", tags:["Make.com","Instagram API","Webhooks","Python"] }
       ],
-      cases_eyebrow: "Para que te identifiques",
-      cases_title: "¿Alguna de estas situaciones te resulta familiar?",
+      cases_eyebrow:"Para que te identifiques", cases_title:"¿Alguna de estas situaciones te resulta familiar?",
       cases: [
         { icon:"fas fa-envelope-open-text", title:"Tu equipo pierde horas enviando el mismo reporte a 50 personas distintas", desc:"Cada semana, alguien descarga un Excel, lo filtra manualmente y lo reenvía a cada destinatario. Es tiempo perdido que se repite sin parar. Con un pipeline automatizado, ese proceso completo sucede solo — correo entrante → Python → SQLite → GitHub Actions → Power Automate → cada jefe de almacén recibe exactamente sus datos, sin intervención humana.", badge:"✓ En producción" },
         { icon:"fas fa-chart-line", title:"Tus datos están desactualizados justo cuando más los necesitás", desc:"Cada vez que alguien quiere ver el estado real del negocio, tiene que pedir el archivo, esperar que alguien lo actualice y rezar para que los números sean correctos. Un dashboard conectado directamente a la fuente, con ventana temporal de 62 días y limpieza automática, se actualiza solo — sin que nadie tenga que hacer nada.", badge:"✓ En producción" },
@@ -340,56 +429,47 @@
         { icon:"fas fa-warehouse", title:"Los errores de inventario en papel te cuestan dinero y credibilidad", desc:"Con registros manuales en papel, los errores son inevitables — y en operaciones de turno continuo se multiplican. Una app móvil con AppSheet reemplazó completamente el papel en una operación minera de 20 personas en turnos 7x7, reduciendo los errores de inventario un 30% desde el primer mes.", badge:"↓ 30% errores" },
         { icon:"fas fa-search", title:"Tu negocio existe, pero nadie lo encuentra en Google", desc:"Sin SEO técnico, un sitio web no aparece aunque esté bien diseñado. Estructura de metadatos, schema.org, sitemap, Google Search Console y configuración correcta de indexación son la diferencia entre existir en internet y aparecer cuando alguien te busca. Este mismo sitio aparece en el puesto #1 de Google para 'Raul Pivet' — con configuración técnica, no con magia.", badge:"🔍 #1 en Google" }
       ],
-      stack_eyebrow: "Tecnologías",
-      stack_title: "Mi stack",
-      stack: [
-        ["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],
-        ["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],
-        ["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],
-        ["fab fa-github","GitHub Actions"],["fas fa-file-excel","Excel Avanzado"],["fas fa-robot","Gemini AI"],
-        ["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],
-        ["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],
-        ["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],
-        ["fab fa-instagram","Instagram API"],["fas fa-share-alt","Social Automation"],
-        ["fas fa-search","SEO Técnico"]
-      ],
-      cta_title: "¿Te identificaste con alguna de esas situaciones?",
-      cta_desc: "Puedo analizar tu caso, diseñar la solución y entregártela funcionando — sea un dashboard, una web, un bot o un flujo automático.<br>Trabajo remoto · Disponible de inmediato · Miami, FL",
-      cta_btn1: "Hablemos", cta_btn2: "Conocer más sobre mí"
+      stack_eyebrow:"Tecnologías", stack_title:"Mi stack",
+      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Excel Avanzado"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fab fa-instagram","Instagram API"],["fas fa-share-alt","Social Automation"],["fas fa-search","SEO Técnico"]],
+      cta_title:"¿Te identificaste con alguna de esas situaciones?",
+      cta_desc:"Puedo analizar tu caso, diseñar la solución y entregártela funcionando — sea un dashboard, una web, un bot o un flujo automático.<br>Trabajo remoto · Disponible de inmediato · Miami, FL",
+      cta_btn1:"Hablemos", cta_btn2:"Conocer más sobre mí"
     },
     en: {
-      sidebar: "Logistics & Tech Solutions",
-      nav_home: "Home", nav_about: "About Me", nav_projects: "Projects", nav_contact: "Contact",
-      footer: "Automation & Business Intelligence",
-      eyebrow_icon: "fas fa-bolt",
-      eyebrow_msg: "Are your processes still <strong>manual</strong>? That's fixable.",
-      h1a: "Automation, data",
-      h1b: "and custom web solutions",
-      hero_sub: "From logistics to code. 10+ years automating operations, building self-updating dashboards, developing web tools with React, Firebase and Python, and creating systems that work for you on social media — all in one.",
-      tags: ["Power BI","Python","HTML/CSS/JS","React","Firebase","Make.com","Power Automate","AppSheet","GitHub Actions","Streamlit","Google Suite","Technical SEO"],
-      btn_talk: "Let's talk", btn_cv: "View CV", btn_lab: "View Lab",
+      sidebar:"Logistics & Tech Solutions",
+      nav_home:"Home", nav_about:"About Me", nav_projects:"Projects", nav_contact:"Contact",
+      footer:"Automation & Business Intelligence",
+      eyebrow_pill: "⚡ For you if",
+      eyebrow_phrases: [
+        "Your processes are still <span class='highlight'>manual</span>? That's fixable.",
+        "Your team wastes hours on <span class='highlight'>repetitive tasks</span>? That can be automated.",
+        "Your data arrives <span class='highlight'>late or outdated</span>? That can be connected.",
+        "No system at all? <span class='highlight'>We start from zero.</span>"
+      ],
+      h1a:"Automation, data",
+      h1b:"and custom web solutions",
+      hero_sub:"From logistics to code. 10+ years automating operations, building self-updating dashboards, developing web tools with React, Firebase and Python, and creating systems that work for you on social media — all in one.",
+      tags:["Power BI","Python","HTML/CSS/JS","React","Firebase","Make.com","Power Automate","AppSheet","GitHub Actions","Streamlit","Google Suite","Technical SEO"],
+      btn_talk:"Let's talk", btn_cv:"View CV", btn_lab:"View Lab",
       stats: [
-        { icon:"fas fa-layer-group",   num:"10", label:"Years in the field", sub:"Logistics + technology" },
-        { icon:"fas fa-clock",          num:"80", label:"% Less manual work", sub:"In automated processes" },
-        { icon:"fas fa-project-diagram",num:"0",  label:"Systems from scratch", sub:"No system? We start there" },
-        { icon:"fas fa-check-double",   num:"100", label:"% Results-driven", sub:"Nothing that doesn't work" }
+        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Years in the field",         sub:"Logistics + technology",           trend:"Real" },
+        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Less manual work",           sub:"In automated processes",           trend:"Proven" },
+        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"System from scratch",         sub:"No system? We start there",        trend:"Yes, zero" },
+        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"Results-driven",             sub:"Nothing that doesn't work",         trend:"Always" }
       ],
-
-      zts_eyebrow: "🏗️ Starting from zero",
-      zts_title_a: "If your operation has no system in place,",
-      zts_title_b: "that's exactly the right starting point.",
-      zts_desc: "Many businesses manage their inventory on paper, scattered spreadsheets, or in people's heads. That's not a technical problem — it's an opportunity. With the right tools and the operational experience to understand the business from the inside, it's possible to build a complete, organized system that the team actually uses, without replacing what already works.",
-      zts_proof_text: "Complete food inventory system built with AppSheet: product master, entries, exits and automatic document export — implemented in a real operation.",
-      zts_steps: [
-        { num: "01", title: "Map the real workflow", desc: "We map how the business operates today — what gets recorded, how, who uses it and where the failure points are." },
-        { num: "02", title: "Product and code master", desc: "A centralized database is created: each item with its unique code, category, unit of measure and control parameters." },
-        { num: "03", title: "Entries and exits control", desc: "A mobile app lets the team record movements in real time, with automatic validations and no paper." },
-        { num: "04", title: "Automatic reports and documents", desc: "The system generates and exports the reports the company needs — in the right format, without anyone having to build them manually." }
+      zts_eyebrow:"🏗️ Starting from zero",
+      zts_title_a:"If your operation has no system in place,",
+      zts_title_b:"that's exactly the right starting point.",
+      zts_desc:"Many businesses manage their inventory on paper, scattered spreadsheets, or in people's heads. That's not a technical problem — it's an opportunity. With the right tools and the operational experience to understand the business from the inside, it's possible to build a complete, organized system that the team actually uses, without replacing what already works.",
+      zts_proof_text:"Complete food inventory system built with AppSheet: product master, entries, exits and automatic document export — implemented in a real operation.",
+      zts_steps:[
+        { num:"01", title:"Map the real workflow", desc:"We map how the business operates today — what gets recorded, how, who uses it and where the failure points are." },
+        { num:"02", title:"Product and code master", desc:"A centralized database is created: each item with its unique code, category, unit of measure and control parameters." },
+        { num:"03", title:"Entries and exits control", desc:"A mobile app lets the team record movements in real time, with automatic validations and no paper." },
+        { num:"04", title:"Automatic reports and documents", desc:"The system generates and exports the reports the company needs — in the right format, without anyone having to build them manually." }
       ],
-
-      svc_eyebrow: "How can I help?",
-      svc_title: "Solutions I build",
-      services: [
+      svc_eyebrow:"How can I help?", svc_title:"Solutions I build",
+      services:[
         { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Power BI dashboards with custom TypeScript visuals, automatic refresh via advanced Query M scripts, and direct data source connections.", tags:["Power BI","DAX","Query M","TypeScript"] },
         { icon:"fas fa-cogs", title:"Report Automation", desc:"Full pipeline: email with Excel → Python processes → SQLite stores 32-day window → GitHub Actions generates JSON → Power Automate delivers to 50+ recipients, each with only their own data.", tags:["Power Automate","GitHub Actions","Python","SQLite"] },
         { icon:"fas fa-mobile-alt", title:"Inventory Apps", desc:"Mobile AppSheet apps for inventory counts, dispatch and receiving. Automatically generates invoice-style reports and sends them via WhatsApp instantly.", tags:["AppSheet","Google Sheets","WhatsApp","Drive"] },
@@ -399,9 +479,8 @@
         { icon:"fab fa-html5", title:"Web Development + Technical SEO", desc:"Complete websites and applications from scratch: HTML, CSS, JavaScript, React and Firebase. Every site is delivered with technical SEO configured — metadata structure, Google Search Console, sitemap, schema.org and correct indexation so you show up on Google from day one.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
         { icon:"fas fa-share-alt", title:"Social Media Automation", desc:"Tools that automatically post, respond, collect metrics and manage your presence on Instagram, LinkedIn and more. Make.com flows that connect your content with your audience — hands-free.", tags:["Make.com","Instagram API","Webhooks","Python"] }
       ],
-      cases_eyebrow: "Sound familiar?",
-      cases_title: "Do any of these situations hit close to home?",
-      cases: [
+      cases_eyebrow:"Sound familiar?", cases_title:"Do any of these situations hit close to home?",
+      cases:[
         { icon:"fas fa-envelope-open-text", title:"Your team wastes hours sending the same report to 50 different people", desc:"Every week, someone downloads an Excel file, manually filters it and forwards it to each recipient. It's wasted time that repeats endlessly. With an automated pipeline, the whole process runs by itself — incoming email → Python → SQLite → GitHub Actions → Power Automate → each warehouse manager gets exactly their own data, no human intervention required.", badge:"✓ In production" },
         { icon:"fas fa-chart-line", title:"Your data is always out of date when you need it most", desc:"Every time someone wants to see the real state of the business, they have to ask for the file, wait for someone to update it and hope the numbers are right. A dashboard connected directly to the source, with a 62-day rolling window and automatic cleanup, updates itself — without anyone having to do anything.", badge:"✓ In production" },
         { icon:"fas fa-tags", title:"Creating sequential labels in Excel takes your team half the morning", desc:"Numbering, formatting, printing — a process that should take seconds turns into a task that eats up hours. A Python tool does exactly the same thing in 5 seconds: up to 1,000 labels with automatic numbering, professional formatting and print-ready output.", badge:"⚡ 5 seconds" },
@@ -409,26 +488,51 @@
         { icon:"fas fa-warehouse", title:"Paper-based inventory records cost you money and credibility", desc:"With manual paper records, errors are inevitable — and in continuous-shift operations they multiply. A mobile AppSheet app fully replaced paper in a 20-person mining operation on 7x7 rotating shifts, reducing inventory errors by 30% from the very first month.", badge:"↓ 30% errors" },
         { icon:"fas fa-search", title:"Your business exists, but nobody finds it on Google", desc:"Without technical SEO, a website won't show up even if it's well designed. Metadata structure, schema.org, sitemap, Google Search Console and correct indexation are the difference between existing on the internet and appearing when someone searches for you. This very site ranks #1 on Google for 'Raul Pivet' — through technical configuration, not luck.", badge:"🔍 #1 on Google" }
       ],
-      stack_eyebrow: "Technologies",
-      stack_title: "My stack",
-      stack: [
-        ["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],
-        ["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],
-        ["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],
-        ["fab fa-github","GitHub Actions"],["fas fa-file-excel","Advanced Excel"],["fas fa-robot","Gemini AI"],
-        ["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],
-        ["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],
-        ["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],
-        ["fab fa-instagram","Instagram API"],["fas fa-share-alt","Social Automation"],
-        ["fas fa-search","Technical SEO"]
-      ],
-      cta_title: "Did any of those situations sound familiar?",
-      cta_desc: "I can analyze your case, design the solution and deliver it working — whether it's a dashboard, a website, a bot or an automated flow.<br>Remote work · Available immediately · Miami, FL",
-      cta_btn1: "Let's talk", cta_btn2: "Learn more about me"
+      stack_eyebrow:"Technologies", stack_title:"My stack",
+      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Advanced Excel"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fab fa-instagram","Instagram API"],["fas fa-share-alt","Social Automation"],["fas fa-search","Technical SEO"]],
+      cta_title:"Did any of those situations sound familiar?",
+      cta_desc:"I can analyze your case, design the solution and deliver it working — whether it's a dashboard, a website, a bot or an automated flow.<br>Remote work · Available immediately · Miami, FL",
+      cta_btn1:"Let's talk", cta_btn2:"Learn more about me"
     }
   };
 
   let lang = localStorage.getItem('homeLang') || 'es';
+
+  /* ── Typewriter rotativo ── */
+  let rotateIdx = 0;
+  let rotateTimer = null;
+
+  function startRotator(phrases) {
+    const textEl  = document.getElementById('eyebrowText');
+    const dotsEl  = document.getElementById('eyebrowDots');
+    if (!textEl || !dotsEl) return;
+    clearInterval(rotateTimer);
+    rotateIdx = 0;
+
+    function updateDots() {
+      dotsEl.querySelectorAll('.eyebrow-dot').forEach((d,i) => {
+        d.classList.toggle('active', i === rotateIdx);
+      });
+    }
+
+    function typewrite(html, callback) {
+      textEl.classList.add('fade-out');
+      setTimeout(() => {
+        textEl.innerHTML = html;
+        textEl.classList.remove('fade-out');
+        if (callback) callback();
+      }, 320);
+    }
+
+    typewrite(phrases[0]);
+    updateDots();
+
+    rotateTimer = setInterval(() => {
+      rotateIdx = (rotateIdx + 1) % phrases.length;
+      typewrite(phrases[rotateIdx]);
+      updateDots();
+    }, 3600);
+  }
 
   function render() {
     const d = t[lang];
@@ -437,12 +541,22 @@
     document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
+
+    const dotsHTML = d.eyebrow_phrases.map((_,i) =>
+      `<span class="eyebrow-dot${i===0?' active':''}"></span>`
+    ).join('');
+
     document.getElementById('mainContent').innerHTML = `
       <section class="hero" data-aos="fade-down">
-        <div class="hero-eyebrow">
-          <div class="hero-eyebrow-icon"><i class="${d.eyebrow_icon}"></i></div>
-          <span class="hero-eyebrow-text">${d.eyebrow_msg}</span>
-          <i class="fas fa-arrow-right hero-eyebrow-arrow"></i>
+        <div class="hero-eyebrow-wrap">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-pill">${d.eyebrow_pill}</span>
+            <div class="eyebrow-rotating">
+              <span class="rotate-text" id="eyebrowText">${d.eyebrow_phrases[0]}</span>
+              <span class="eyebrow-cursor"></span>
+            </div>
+            <div class="eyebrow-dots" id="eyebrowDots">${dotsHTML}</div>
+          </div>
         </div>
         <h1>${d.h1a}<br><span>${d.h1b}</span></h1>
         <p class="hero-sub">${d.hero_sub}</p>
@@ -456,9 +570,13 @@
 
       <div class="stats-bar" data-aos="fade-up">
         ${d.stats.map(s=>`
-          <div class="stat-item">
-            <div class="stat-icon"><i class="${s.icon}"></i></div>
-            <span class="stat-number" data-target="${s.num}">0</span>
+          <div class="stat-item" data-ghost="${s.num}${s.suffix}">
+            <div class="stat-item-bar"></div>
+            <div class="stat-icon-row">
+              <div class="stat-icon"><i class="${s.icon}"></i></div>
+              <span class="stat-trend">${s.trend}</span>
+            </div>
+            <span class="stat-number" data-target="${s.num}" data-suffix="${s.suffix}">0</span>
             <span class="stat-label">${s.label}</span>
             <span class="stat-sublabel">${s.sub}</span>
           </div>`).join('')}
@@ -477,7 +595,7 @@
               </div>
             </div>
             <div class="zts-right">
-              ${d.zts_steps.map((s,i) => `
+              ${d.zts_steps.map((s,i)=>`
                 <div class="zts-step" data-aos="fade-left" data-aos-delay="${i*80}">
                   <div class="zts-step-num">${s.num}</div>
                   <div class="zts-step-body">
@@ -510,19 +628,22 @@
           <a href="sobre-mi.html" class="btn-outline"><i class="fas fa-user"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
+
     animateCounters();
     refreshAOS();
+    startRotator(d.eyebrow_phrases);
   }
 
   function animateCounters() {
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-      const target = +el.dataset.target;
+      const target  = +el.dataset.target;
+      const suffix  = el.dataset.suffix || '';
       if (target === 0) { el.textContent = '0'; return; }
       let current = 0;
       const step = Math.ceil(target / 40);
       const timer = setInterval(() => {
         current = Math.min(current + step, target);
-        el.textContent = current.toLocaleString() + (target === 100 ? '%' : '+');
+        el.textContent = current.toLocaleString() + suffix;
         if (current >= target) clearInterval(timer);
       }, 30);
     });
