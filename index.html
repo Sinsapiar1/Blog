@@ -48,8 +48,47 @@
     .language-flag { font-size: 1.25rem; }
     .language-text { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
     @media(max-width:768px){ .language-toggle { top: 70px; right: 16px; padding: 6px 12px; } .language-text { display: none; } }
+
     .hero { padding: 48px 0 40px; }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.25); color: #FF6B00; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
+
+    /* ── EYEBROW REDISEÑADO — propuesta de valor, no disponibilidad ── */
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,149,0,0.08));
+      border: 1px solid rgba(255,107,0,0.35);
+      color: var(--text-primary);
+      font-size: 13px; font-weight: 700;
+      padding: 10px 18px; border-radius: 30px; margin-bottom: 20px;
+      box-shadow: 0 2px 16px rgba(255,107,0,0.12);
+      position: relative; overflow: hidden;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,149,0,0.06), transparent);
+      animation: eyebrow-shimmer 3s infinite;
+    }
+    @keyframes eyebrow-shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .hero-eyebrow-icon {
+      width: 26px; height: 26px; flex-shrink: 0;
+      background: linear-gradient(135deg,#FF6B00,#FF9500);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: white;
+    }
+    .hero-eyebrow-text { color: var(--text-primary); }
+    .hero-eyebrow-text strong { color: #FF6B00; }
+    .hero-eyebrow-arrow {
+      margin-left: 4px; color: #FF6B00; font-size: 0.75rem;
+      animation: arrow-pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes arrow-pulse {
+      0%,100% { transform: translateX(0); opacity:1; }
+      50% { transform: translateX(4px); opacity:0.6; }
+    }
+
     .hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 16px; }
     .hero h1 span { background: linear-gradient(135deg, #FF6B00, #FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-sub { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; max-width: 580px; margin-bottom: 28px; }
@@ -59,12 +98,44 @@
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 2px solid var(--border-color); border-radius: 50px; color: var(--text-primary); font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; background: transparent; cursor: pointer; }
     .btn-outline:hover { border-color: #FF6B00; color: #FF6B00; }
-    .stats-bar { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; margin: 40px 0; }
-    .stat-item { background: var(--glass-bg); padding: 24px 16px; text-align: center; transition: background 0.2s; }
-    .stat-item:hover { background: rgba(255,107,0,0.04); }
-    .stat-number { font-size: 2rem; font-weight: 800; color: #FF6B00; line-height: 1; display: block; margin-bottom: 6px; }
-    .stat-label { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; }
-    @media(max-width:600px){ .stats-bar { grid-template-columns: repeat(2,1fr); } }
+
+    /* ── STATS BAR REDISEÑADA ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 12px;
+      margin: 40px 0;
+    }
+    @media(max-width:700px){ .stats-bar { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:400px){ .stats-bar { grid-template-columns: 1fr; } }
+    .stat-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 22px 18px 18px;
+      display: flex; flex-direction: column; gap: 6px;
+      transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .stat-item::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #FF6B00, #FF9500);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .stat-item:hover { border-color: rgba(255,107,0,0.3); transform: translateY(-4px); box-shadow: 0 10px 32px rgba(255,107,0,0.1); }
+    .stat-item:hover::after { transform: scaleX(1); }
+    .stat-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08));
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: #FF6B00; margin-bottom: 4px;
+    }
+    .stat-number { font-size: 1.9rem; font-weight: 800; color: #FF6B00; line-height: 1; }
+    .stat-label { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.4; }
+    .stat-sublabel { font-size: 10px; color: var(--text-tertiary); opacity: 0.7; font-style: italic; margin-top: 2px; }
+
     .section-header { margin-bottom: 28px; }
     .section-eyebrow { font-size: 11px; font-weight: 800; color: #FF6B00; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
     .section-title { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
@@ -99,74 +170,23 @@
 
     /* ── SECCIÓN: DE CERO A SISTEMA ── */
     .zero-to-system { margin: 48px 0; }
-    .zts-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-    }
-    .zts-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800);
-    }
-    .zts-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
+    .zts-card { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; position: relative; }
+    .zts-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800); }
+    .zts-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
     @media(max-width: 860px) { .zts-inner { grid-template-columns: 1fr; } }
-    .zts-left {
-      padding: 40px 36px;
-      border-right: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .zts-left { padding: 40px 36px; border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center; }
     @media(max-width: 860px) { .zts-left { border-right: none; border-bottom: 1px solid var(--border-color); } }
-    .zts-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.25);
-      color: #FF6B00; font-size: 11px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.12em;
-      padding: 5px 12px; border-radius: 20px; margin-bottom: 18px; width: fit-content;
-    }
-    .zts-title {
-      font-size: clamp(1.25rem, 2.5vw, 1.7rem);
-      font-weight: 800; color: var(--text-primary);
-      line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px;
-    }
+    .zts-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.25); color: #FF6B00; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 5px 12px; border-radius: 20px; margin-bottom: 18px; width: fit-content; }
+    .zts-title { font-size: clamp(1.25rem, 2.5vw, 1.7rem); font-weight: 800; color: var(--text-primary); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px; }
     .zts-title span { background: linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .zts-desc {
-      font-size: 0.9375rem; color: var(--text-secondary);
-      line-height: 1.75; margin-bottom: 24px;
-    }
-    .zts-proof {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(52,199,89,0.08); border: 1px solid rgba(52,199,89,0.2);
-      border-radius: 10px; padding: 10px 14px;
-      font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5;
-    }
+    .zts-desc { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 24px; }
+    .zts-proof { display: inline-flex; align-items: center; gap: 8px; background: rgba(52,199,89,0.08); border: 1px solid rgba(52,199,89,0.2); border-radius: 10px; padding: 10px 14px; font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; }
     .zts-proof i { color: #34C759; font-size: 1rem; flex-shrink: 0; }
     .zts-proof strong { color: var(--text-primary); }
     .zts-right { padding: 40px 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
-    .zts-step {
-      display: flex; align-items: flex-start; gap: 16px;
-      background: var(--bg-secondary); border: 1px solid var(--border-color);
-      border-radius: 14px; padding: 18px 20px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .zts-step { display: flex; align-items: flex-start; gap: 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px 20px; transition: border-color 0.2s, transform 0.2s; }
     .zts-step:hover { border-color: rgba(255,107,0,0.3); transform: translateX(4px); }
-    .zts-step-num {
-      width: 32px; height: 32px; flex-shrink: 0;
-      background: linear-gradient(135deg,#FF6B00,#FF9500);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 800; color: white;
-    }
-    .zts-step-body {}
+    .zts-step-num { width: 32px; height: 32px; flex-shrink: 0; background: linear-gradient(135deg,#FF6B00,#FF9500); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: white; }
     .zts-step-title { font-size: 0.875rem; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
     .zts-step-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.55; }
   </style>
@@ -272,18 +292,20 @@
       sidebar: "Logistics & Tech Solutions",
       nav_home: "Inicio", nav_about: "Sobre Mí", nav_projects: "Proyectos", nav_contact: "Contacto",
       footer: "Automatización & Business Intelligence",
-      eyebrow: "📍 Miami, FL — Disponible para trabajar",
+      eyebrow_icon: "fas fa-bolt",
+      eyebrow_msg: "¿Tus procesos siguen siendo <strong>manuales</strong>? Eso tiene solución.",
       h1a: "Automatización, datos",
       h1b: "y soluciones web a medida",
       hero_sub: "De la logística al código. 10+ años automatizando operaciones, construyendo dashboards que se actualizan solos, desarrollando herramientas web con React, Firebase y Python, y creando sistemas que trabajan por vos en redes sociales — todo en uno.",
       tags: ["Power BI","Python","HTML/CSS/JS","React","Firebase","Make.com","Power Automate","AppSheet","GitHub Actions","Streamlit","Google Suite","SEO Técnico"],
       btn_talk: "Hablemos", btn_cv: "Ver CV", btn_lab: "Ver Lab",
-      stat1n: "10", stat1l: "Años de experiencia",
-      stat2n: "30", stat2l: "Almacenes gestionados",
-      stat3n: "50", stat3l: "Reportes automáticos",
-      stat4n: "1000", stat4l: "Labels/5seg con Python",
+      stats: [
+        { icon:"fas fa-layer-group",  num:"10", label:"Años de trayectoria", sub:"Logística + tecnología" },
+        { icon:"fas fa-clock",         num:"80", label:"% Menos tiempo manual", sub:"En procesos automatizados" },
+        { icon:"fas fa-project-diagram",num:"0",  label:"Sistemas desde cero", sub:"Si no tenés nada, arrancamos" },
+        { icon:"fas fa-check-double",  num:"100", label:"% Orientado a resultados", sub:"Nada que no funcione" }
+      ],
 
-      /* ── SECCIÓN: DE CERO A SISTEMA ── */
       zts_eyebrow: "🏗️ Punto de partida cero",
       zts_title_a: "Si tu operación no tiene ningún sistema,",
       zts_title_b: "ese es exactamente el punto de partida.",
@@ -311,12 +333,12 @@
       cases_eyebrow: "Para que te identifiques",
       cases_title: "¿Alguna de estas situaciones te resulta familiar?",
       cases: [
-        { icon: "fas fa-envelope-open-text", title: "Tu equipo pierde horas enviando el mismo reporte a 50 personas distintas", desc: "Cada semana, alguien descarga un Excel, lo filtra manualmente y lo reenvía a cada destinatario. Es tiempo perdido que se repite sin parar. Con un pipeline automatizado, ese proceso completo sucede solo — correo entrante → Python → SQLite → GitHub Actions → Power Automate → cada jefe de almacén recibe exactamente sus datos, sin intervención humana.", badge: "✓ En producción" },
-        { icon: "fas fa-chart-line", title: "Tus datos están desactualizados justo cuando más los necesitás", desc: "Cada vez que alguien quiere ver el estado real del negocio, tiene que pedir el archivo, esperar que alguien lo actualice y rezar para que los números sean correctos. Un dashboard conectado directamente a la fuente, con ventana temporal de 62 días y limpieza automática, se actualiza solo — sin que nadie tenga que hacer nada.", badge: "✓ En producción" },
-        { icon: "fas fa-tags", title: "Crear etiquetas correlativas en Excel le lleva horas a tu equipo", desc: "Numerar, formatear, imprimir — un proceso que debería durar segundos se convierte en una tarea que consume la mañana. Una herramienta en Python hace exactamente lo mismo en 5 segundos: hasta 1.000 etiquetas con numeración automática, formato profesional y listas para imprimir.", badge: "⚡ 5 segundos" },
-        { icon: "fas fa-bell", title: "Nadie sabe qué está pendiente hasta que ya es tarde para actuar", desc: "Los pendientes se acumulan en correos sin leer y nadie tiene visibilidad de lo más urgente hasta que el problema ya está encima. Un sistema con Google Apps Script escanea correos de proveedores, calcula días de antigüedad y envía cada mañana una lista ordenada por urgencia — directo al WhatsApp del equipo.", badge: "📱 Cada mañana" },
-        { icon: "fas fa-warehouse", title: "Los errores de inventario en papel te cuestan dinero y credibilidad", desc: "Con registros manuales en papel, los errores son inevitables — y en operaciones de turno continuo se multiplican. Una app móvil con AppSheet reemplazó completamente el papel en una operación minera de 20 personas en turnos 7x7, reduciendo los errores de inventario un 30% desde el primer mes.", badge: "↓ 30% errores" },
-        { icon: "fas fa-search", title: "Tu negocio existe, pero nadie lo encuentra en Google", desc: "Sin SEO técnico, un sitio web no aparece aunque esté bien diseñado. Estructura de metadatos, schema.org, sitemap, Google Search Console y configuración correcta de indexación son la diferencia entre existir en internet y aparecer cuando alguien te busca. Este mismo sitio aparece en el puesto #1 de Google para 'Raul Pivet' — con configuración técnica, no con magia.", badge: "🔍 #1 en Google" }
+        { icon:"fas fa-envelope-open-text", title:"Tu equipo pierde horas enviando el mismo reporte a 50 personas distintas", desc:"Cada semana, alguien descarga un Excel, lo filtra manualmente y lo reenvía a cada destinatario. Es tiempo perdido que se repite sin parar. Con un pipeline automatizado, ese proceso completo sucede solo — correo entrante → Python → SQLite → GitHub Actions → Power Automate → cada jefe de almacén recibe exactamente sus datos, sin intervención humana.", badge:"✓ En producción" },
+        { icon:"fas fa-chart-line", title:"Tus datos están desactualizados justo cuando más los necesitás", desc:"Cada vez que alguien quiere ver el estado real del negocio, tiene que pedir el archivo, esperar que alguien lo actualice y rezar para que los números sean correctos. Un dashboard conectado directamente a la fuente, con ventana temporal de 62 días y limpieza automática, se actualiza solo — sin que nadie tenga que hacer nada.", badge:"✓ En producción" },
+        { icon:"fas fa-tags", title:"Crear etiquetas correlativas en Excel le lleva horas a tu equipo", desc:"Numerar, formatear, imprimir — un proceso que debería durar segundos se convierte en una tarea que consume la mañana. Una herramienta en Python hace exactamente lo mismo en 5 segundos: hasta 1.000 etiquetas con numeración automática, formato profesional y listas para imprimir.", badge:"⚡ 5 segundos" },
+        { icon:"fas fa-bell", title:"Nadie sabe qué está pendiente hasta que ya es tarde para actuar", desc:"Los pendientes se acumulan en correos sin leer y nadie tiene visibilidad de lo más urgente hasta que el problema ya está encima. Un sistema con Google Apps Script escanea correos de proveedores, calcula días de antigüedad y envía cada mañana una lista ordenada por urgencia — directo al WhatsApp del equipo.", badge:"📱 Cada mañana" },
+        { icon:"fas fa-warehouse", title:"Los errores de inventario en papel te cuestan dinero y credibilidad", desc:"Con registros manuales en papel, los errores son inevitables — y en operaciones de turno continuo se multiplican. Una app móvil con AppSheet reemplazó completamente el papel en una operación minera de 20 personas en turnos 7x7, reduciendo los errores de inventario un 30% desde el primer mes.", badge:"↓ 30% errores" },
+        { icon:"fas fa-search", title:"Tu negocio existe, pero nadie lo encuentra en Google", desc:"Sin SEO técnico, un sitio web no aparece aunque esté bien diseñado. Estructura de metadatos, schema.org, sitemap, Google Search Console y configuración correcta de indexación son la diferencia entre existir en internet y aparecer cuando alguien te busca. Este mismo sitio aparece en el puesto #1 de Google para 'Raul Pivet' — con configuración técnica, no con magia.", badge:"🔍 #1 en Google" }
       ],
       stack_eyebrow: "Tecnologías",
       stack_title: "Mi stack",
@@ -339,18 +361,20 @@
       sidebar: "Logistics & Tech Solutions",
       nav_home: "Home", nav_about: "About Me", nav_projects: "Projects", nav_contact: "Contact",
       footer: "Automation & Business Intelligence",
-      eyebrow: "📍 Miami, FL — Available for work",
+      eyebrow_icon: "fas fa-bolt",
+      eyebrow_msg: "Are your processes still <strong>manual</strong>? That's fixable.",
       h1a: "Automation, data",
       h1b: "and custom web solutions",
       hero_sub: "From logistics to code. 10+ years automating operations, building self-updating dashboards, developing web tools with React, Firebase and Python, and creating systems that work for you on social media — all in one.",
       tags: ["Power BI","Python","HTML/CSS/JS","React","Firebase","Make.com","Power Automate","AppSheet","GitHub Actions","Streamlit","Google Suite","Technical SEO"],
       btn_talk: "Let's talk", btn_cv: "View CV", btn_lab: "View Lab",
-      stat1n: "10", stat1l: "Years of experience",
-      stat2n: "30", stat2l: "Warehouses managed",
-      stat3n: "50", stat3l: "Automated reports",
-      stat4n: "1000", stat4l: "Labels/5sec with Python",
+      stats: [
+        { icon:"fas fa-layer-group",   num:"10", label:"Years in the field", sub:"Logistics + technology" },
+        { icon:"fas fa-clock",          num:"80", label:"% Less manual work", sub:"In automated processes" },
+        { icon:"fas fa-project-diagram",num:"0",  label:"Systems from scratch", sub:"No system? We start there" },
+        { icon:"fas fa-check-double",   num:"100", label:"% Results-driven", sub:"Nothing that doesn't work" }
+      ],
 
-      /* ── SECTION: FROM ZERO TO SYSTEM ── */
       zts_eyebrow: "🏗️ Starting from zero",
       zts_title_a: "If your operation has no system in place,",
       zts_title_b: "that's exactly the right starting point.",
@@ -378,12 +402,12 @@
       cases_eyebrow: "Sound familiar?",
       cases_title: "Do any of these situations hit close to home?",
       cases: [
-        { icon: "fas fa-envelope-open-text", title: "Your team wastes hours sending the same report to 50 different people", desc: "Every week, someone downloads an Excel file, manually filters it and forwards it to each recipient. It's wasted time that repeats endlessly. With an automated pipeline, the whole process runs by itself — incoming email → Python → SQLite → GitHub Actions → Power Automate → each warehouse manager gets exactly their own data, no human intervention required.", badge: "✓ In production" },
-        { icon: "fas fa-chart-line", title: "Your data is always out of date when you need it most", desc: "Every time someone wants to see the real state of the business, they have to ask for the file, wait for someone to update it and hope the numbers are right. A dashboard connected directly to the source, with a 62-day rolling window and automatic cleanup, updates itself — without anyone having to do anything.", badge: "✓ In production" },
-        { icon: "fas fa-tags", title: "Creating sequential labels in Excel takes your team half the morning", desc: "Numbering, formatting, printing — a process that should take seconds turns into a task that eats up hours. A Python tool does exactly the same thing in 5 seconds: up to 1,000 labels with automatic numbering, professional formatting and print-ready output.", badge: "⚡ 5 seconds" },
-        { icon: "fas fa-bell", title: "Nobody knows what's pending until it's already too late to act", desc: "Pending items pile up in unread emails and nobody has visibility of what's most urgent until the problem is already on top of them. A Google Apps Script system scans supplier emails, calculates how many days each item has been pending, and sends a priority-sorted list to the team's WhatsApp every morning.", badge: "📱 Every morning" },
-        { icon: "fas fa-warehouse", title: "Paper-based inventory records cost you money and credibility", desc: "With manual paper records, errors are inevitable — and in continuous-shift operations they multiply. A mobile AppSheet app fully replaced paper in a 20-person mining operation on 7x7 rotating shifts, reducing inventory errors by 30% from the very first month.", badge: "↓ 30% errors" },
-        { icon: "fas fa-search", title: "Your business exists, but nobody finds it on Google", desc: "Without technical SEO, a website won't show up even if it's well designed. Metadata structure, schema.org, sitemap, Google Search Console and correct indexation are the difference between existing on the internet and appearing when someone searches for you. This very site ranks #1 on Google for 'Raul Pivet' — through technical configuration, not luck.", badge: "🔍 #1 on Google" }
+        { icon:"fas fa-envelope-open-text", title:"Your team wastes hours sending the same report to 50 different people", desc:"Every week, someone downloads an Excel file, manually filters it and forwards it to each recipient. It's wasted time that repeats endlessly. With an automated pipeline, the whole process runs by itself — incoming email → Python → SQLite → GitHub Actions → Power Automate → each warehouse manager gets exactly their own data, no human intervention required.", badge:"✓ In production" },
+        { icon:"fas fa-chart-line", title:"Your data is always out of date when you need it most", desc:"Every time someone wants to see the real state of the business, they have to ask for the file, wait for someone to update it and hope the numbers are right. A dashboard connected directly to the source, with a 62-day rolling window and automatic cleanup, updates itself — without anyone having to do anything.", badge:"✓ In production" },
+        { icon:"fas fa-tags", title:"Creating sequential labels in Excel takes your team half the morning", desc:"Numbering, formatting, printing — a process that should take seconds turns into a task that eats up hours. A Python tool does exactly the same thing in 5 seconds: up to 1,000 labels with automatic numbering, professional formatting and print-ready output.", badge:"⚡ 5 seconds" },
+        { icon:"fas fa-bell", title:"Nobody knows what's pending until it's already too late to act", desc:"Pending items pile up in unread emails and nobody has visibility of what's most urgent until the problem is already on top of them. A Google Apps Script system scans supplier emails, calculates how many days each item has been pending, and sends a priority-sorted list to the team's WhatsApp every morning.", badge:"📱 Every morning" },
+        { icon:"fas fa-warehouse", title:"Paper-based inventory records cost you money and credibility", desc:"With manual paper records, errors are inevitable — and in continuous-shift operations they multiply. A mobile AppSheet app fully replaced paper in a 20-person mining operation on 7x7 rotating shifts, reducing inventory errors by 30% from the very first month.", badge:"↓ 30% errors" },
+        { icon:"fas fa-search", title:"Your business exists, but nobody finds it on Google", desc:"Without technical SEO, a website won't show up even if it's well designed. Metadata structure, schema.org, sitemap, Google Search Console and correct indexation are the difference between existing on the internet and appearing when someone searches for you. This very site ranks #1 on Google for 'Raul Pivet' — through technical configuration, not luck.", badge:"🔍 #1 on Google" }
       ],
       stack_eyebrow: "Technologies",
       stack_title: "My stack",
@@ -415,7 +439,11 @@
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
     document.getElementById('mainContent').innerHTML = `
       <section class="hero" data-aos="fade-down">
-        <div class="hero-eyebrow"><i class="fas fa-map-marker-alt"></i> ${d.eyebrow}</div>
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-icon"><i class="${d.eyebrow_icon}"></i></div>
+          <span class="hero-eyebrow-text">${d.eyebrow_msg}</span>
+          <i class="fas fa-arrow-right hero-eyebrow-arrow"></i>
+        </div>
         <h1>${d.h1a}<br><span>${d.h1b}</span></h1>
         <p class="hero-sub">${d.hero_sub}</p>
         <div class="hero-tags">${d.tags.map(tg=>`<span class="hero-tag">${tg}</span>`).join('')}</div>
@@ -425,11 +453,15 @@
           <a href="galeria.html" class="btn-outline"><i class="fas fa-flask"></i> ${d.btn_lab}</a>
         </div>
       </section>
+
       <div class="stats-bar" data-aos="fade-up">
-        <div class="stat-item"><span class="stat-number" data-target="${d.stat1n}">0</span><span class="stat-label">${d.stat1l}</span></div>
-        <div class="stat-item"><span class="stat-number" data-target="${d.stat2n}">0</span><span class="stat-label">${d.stat2l}</span></div>
-        <div class="stat-item"><span class="stat-number" data-target="${d.stat3n}">0</span><span class="stat-label">${d.stat3l}</span></div>
-        <div class="stat-item"><span class="stat-number" data-target="${d.stat4n}">0</span><span class="stat-label">${d.stat4l}</span></div>
+        ${d.stats.map(s=>`
+          <div class="stat-item">
+            <div class="stat-icon"><i class="${s.icon}"></i></div>
+            <span class="stat-number" data-target="${s.num}">0</span>
+            <span class="stat-label">${s.label}</span>
+            <span class="stat-sublabel">${s.sub}</span>
+          </div>`).join('')}
       </div>
 
       <section class="zero-to-system" data-aos="fade-up">
@@ -485,11 +517,12 @@
   function animateCounters() {
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
       const target = +el.dataset.target;
+      if (target === 0) { el.textContent = '0'; return; }
       let current = 0;
       const step = Math.ceil(target / 40);
       const timer = setInterval(() => {
         current = Math.min(current + step, target);
-        el.textContent = current.toLocaleString() + '+';
+        el.textContent = current.toLocaleString() + (target === 100 ? '%' : '+');
         if (current >= target) clearInterval(timer);
       }, 30);
     });
