@@ -21,46 +21,180 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── Language toggle — mismo estilo que el resto del sitio ── */
+    /* ── Language toggle ── */
     .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
     .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
     .language-flag { font-size:1.25rem; }
     .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
     @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
 
-    /* ── Section headers ── */
+    /* ── Shared section header ── */
     .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
     .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; }
 
-    /* ── Intro banner ── */
-    .demos-intro {
-      background: linear-gradient(135deg, rgba(255,107,0,0.08), rgba(255,149,0,0.04));
-      border: 1px solid rgba(255,107,0,0.2);
-      border-radius: 20px;
-      padding: 36px 40px;
-      margin-bottom: 48px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
+    /* ── Btn secondary outline — explicit colors, no variables ── */
+    .demos-btn-outline {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 2px solid rgba(255,107,0,0.45);
+      border-radius: 50px;
+      color: #FF6B00 !important;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none !important;
+      transition: all 0.2s;
+      background: transparent;
+      cursor: pointer;
     }
-    @media(max-width:640px){ .demos-intro { grid-template-columns:1fr; padding:24px; } }
-    .demos-intro-text h2 { font-size: clamp(1.25rem,2.5vw,1.6rem); font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
-    .demos-intro-text h2 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .demos-intro-text p { font-size:0.9375rem; color:var(--text-secondary); line-height:1.7; }
-    .demos-intro-badge { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; border-radius:16px; padding:20px 28px; text-align:center; flex-shrink:0; box-shadow:0 8px 24px rgba(255,107,0,0.35); }
-    .demos-intro-badge .badge-icon { font-size:2rem; }
-    .demos-intro-badge .badge-num { font-size:2rem; font-weight:900; line-height:1; }
-    .demos-intro-badge .badge-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; opacity:0.9; }
+    .demos-btn-outline:hover {
+      border-color: #FF6B00;
+      background: rgba(255,107,0,0.06);
+      transform: translateY(-2px);
+    }
 
-    /* ── Video grid ── */
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .demos-hero { padding: 48px 0 40px; }
+
+    .demos-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .demos-eyebrow-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: linear-gradient(135deg, #FF6B00, #FF9500);
+      color: white; font-size: 10px; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      padding: 7px 14px; border-radius: 30px; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(255,107,0,0.45);
+      animation: pill-glow 2.5s ease-in-out infinite;
+    }
+    @keyframes pill-glow {
+      0%,100% { box-shadow: 0 4px 16px rgba(255,107,0,0.45); }
+      50%      { box-shadow: 0 4px 28px rgba(255,107,0,0.75), 0 0 0 4px rgba(255,107,0,0.12); }
+    }
+    .demos-eyebrow-pill i { font-size: 0.75rem; }
+    .demos-eyebrow-sub {
+      font-size: 0.875rem; font-weight: 600; color: var(--text-secondary);
+    }
+
+    .demos-hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800; line-height:1.15; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:16px; }
+    .demos-hero h1 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .demos-hero-sub { font-size:1.05rem; color:var(--text-secondary); line-height:1.7; max-width:560px; margin-bottom:28px; }
+    .demos-hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+    .demos-hero-tag { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-secondary); font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; transition:all 0.2s; }
+    .demos-hero-tag:hover { border-color:#FF6B00; color:#FF6B00; }
+
+    /* ══════════════════════════════════════════
+       STATS BAR — mismo estilo que index.html
+    ══════════════════════════════════════════ */
+    .demos-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 0 0 48px;
+    }
+    @media(max-width:640px){ .demos-stats { grid-template-columns: 1fr; } }
+    @media(max-width:900px) and (min-width:641px){ .demos-stats { grid-template-columns: repeat(3,1fr); } }
+
+    .demos-stat {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px 20px 20px;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.34,1.3,0.64,1);
+    }
+    .demos-stat::before {
+      content: attr(data-ghost);
+      position: absolute; right: -8px; bottom: -14px;
+      font-size: 4.5rem; font-weight: 900;
+      color: rgba(255,107,0,0.05); line-height: 1;
+      pointer-events: none; transition: color 0.3s;
+    }
+    .demos-stat:hover { border-color:rgba(255,107,0,0.4); transform:translateY(-6px); box-shadow:0 16px 40px rgba(255,107,0,0.15); }
+    .demos-stat:hover::before { color:rgba(255,107,0,0.09); }
+    .demos-stat-bar { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:20px 20px 0 0; }
+    .demos-stat:hover .demos-stat-bar { transform:scaleX(1); }
+    .demos-stat-icon-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+    .demos-stat-icon { width:40px; height:40px; background:linear-gradient(135deg,rgba(255,107,0,0.18),rgba(255,149,0,0.08)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1rem; color:#FF6B00; border:1px solid rgba(255,107,0,0.15); }
+    .demos-stat-trend { font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:#34C759; background:rgba(52,199,89,0.1); border:1px solid rgba(52,199,89,0.2); padding:3px 8px; border-radius:10px; }
+    .demos-stat-number { font-size:2.2rem; font-weight:900; color:#FF6B00; line-height:1; letter-spacing:-0.03em; margin-bottom:6px; }
+    .demos-stat-label { font-size:0.8125rem; font-weight:700; color:var(--text-primary); line-height:1.3; margin-bottom:4px; }
+    .demos-stat-sub { font-size:11px; color:var(--text-tertiary); line-height:1.4; font-style:italic; }
+
+    /* ══════════════════════════════════════════
+       INTRO CARD — "Aplicaciones reales"
+    ══════════════════════════════════════════ */
+    .demos-intro-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 48px;
+    }
+    .demos-intro-card::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800);
+    }
+    .demos-intro-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media(max-width:800px){ .demos-intro-inner { grid-template-columns:1fr; } }
+    .demos-intro-left {
+      padding: 36px 40px;
+      border-right: 1px solid var(--border-color);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    @media(max-width:800px){ .demos-intro-left { border-right:none; border-bottom:1px solid var(--border-color); } }
+    .demos-intro-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.25); color:#FF6B00; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; padding:5px 12px; border-radius:20px; margin-bottom:18px; width:fit-content; }
+    .demos-intro-left h2 { font-size:clamp(1.2rem,2vw,1.55rem); font-weight:800; color:var(--text-primary); line-height:1.25; letter-spacing:-0.02em; margin-bottom:14px; }
+    .demos-intro-left h2 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .demos-intro-left p { font-size:0.9375rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px; }
+    .demos-proof { display:inline-flex; align-items:center; gap:8px; background:rgba(52,199,89,0.08); border:1px solid rgba(52,199,89,0.2); border-radius:10px; padding:10px 14px; font-size:0.8125rem; color:var(--text-secondary); line-height:1.5; }
+    .demos-proof i { color:#34C759; font-size:1rem; flex-shrink:0; }
+    .demos-proof strong { color:var(--text-primary); }
+
+    .demos-intro-right {
+      padding: 36px 40px;
+      display: flex; flex-direction: column; gap: 14px; justify-content: center;
+    }
+    .demos-feature {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--bg-secondary); border:1px solid var(--border-color);
+      border-radius: 14px; padding: 16px 18px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .demos-feature:hover { border-color:rgba(255,107,0,0.3); transform:translateX(4px); }
+    .demos-feature-icon { width:32px; height:32px; flex-shrink:0; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:white; }
+    .demos-feature-title { font-size:0.875rem; font-weight:700; color:var(--text-primary); margin-bottom:3px; }
+    .demos-feature-desc { font-size:0.8rem; color:var(--text-secondary); line-height:1.55; }
+
+    /* ══════════════════════════════════════════
+       VIDEO SECTION HEADER
+    ══════════════════════════════════════════ */
+    .demos-section-header { margin-bottom:28px; }
+
+    /* ══════════════════════════════════════════
+       VIDEO GRID
+    ══════════════════════════════════════════ */
     .demos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 28px;
       margin-bottom: 56px;
     }
-    @media(max-width:520px){ .demos-grid { grid-template-columns:1fr; } }
+    @media(max-width:480px){ .demos-grid { grid-template-columns:1fr; } }
 
     /* ── Video card ── */
     .demo-card {
@@ -72,72 +206,63 @@
       overflow: hidden;
       transition: all var(--transition-base);
       box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
+      position: relative;
     }
+    .demo-card::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg,#FF6B00,#FF9500);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      z-index: 1;
+    }
+    .demo-card:hover::before { transform: scaleX(1); }
     .demo-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(255,107,0,0.14);
-      border-color: rgba(255,107,0,0.25);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 56px rgba(255,107,0,0.16);
+      border-color: rgba(255,107,0,0.3);
     }
 
-    /* ── YouTube embed wrapper (16:9) ── */
+    /* YouTube embed 16:9 */
     .demo-video-wrap {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 */
-      background: #000;
-      overflow: hidden;
+      position: relative; width: 100%; padding-top: 56.25%;
+      background: #000; overflow: hidden;
     }
     .demo-video-wrap iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
+      position: absolute; top:0; left:0;
+      width:100%; height:100%; border:none;
     }
-    /* Overlay play-button visible antes de que el usuario interactúe */
-    .demo-video-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 2;
-      background: rgba(0,0,0,0.28);
-      transition: background var(--transition-base);
-    }
-    .demo-video-overlay:hover { background: rgba(0,0,0,0.12); }
-    .demo-video-overlay.hidden { display: none; }
-    .play-btn {
-      width: 68px; height: 68px;
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 28px rgba(255,107,0,0.55);
-      transition: transform var(--transition-base), box-shadow var(--transition-base);
-    }
-    .demo-video-overlay:hover .play-btn { transform: scale(1.1); box-shadow: 0 12px 36px rgba(255,107,0,0.7); }
-    .play-btn i { font-size: 1.6rem; color: white; margin-left: 4px; }
 
-    /* ── Card body ── */
-    .demo-card-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+    /* Card body */
+    .demo-card-body { padding: 22px 24px 24px; flex:1; display:flex; flex-direction:column; }
     .demo-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
     .demo-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:var(--radius-full); background:rgba(255,107,0,0.08); color:#FF6B00; border:1px solid rgba(255,107,0,0.2); }
-    .demo-card-body h3 { font-size:1.1rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; }
+    .demo-card-body h3 { font-size:1.15rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; }
     .demo-card-body p { font-size:0.875rem; color:var(--text-secondary); line-height:1.65; flex:1; margin-bottom:16px; }
     .demo-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:14px; border-top:1px solid var(--border-color); margin-top:auto; }
     .demo-status { display:flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--text-secondary); font-weight:500; }
     .demo-status-dot { width:8px; height:8px; border-radius:50%; background:var(--success); box-shadow:0 0 6px rgba(52,199,89,0.6); animation:pulse-dot 2s infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:0.4} }
-    .demo-yt-link { display:flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:600; color:#FF6B00; text-decoration:none; transition:gap var(--transition-fast), color var(--transition-fast); }
-    .demo-yt-link:hover { gap:9px; color:#E55A00; }
+    .demo-yt-link { display:inline-flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:7px 14px; border-radius:20px; text-decoration:none; box-shadow:0 4px 12px rgba(255,107,0,0.3); transition:all var(--transition-fast); }
+    .demo-yt-link:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,107,0,0.45); }
 
-    /* ── CTA final ── */
-    .demos-cta { margin:8px 0 48px; background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:40px; text-align:center; }
-    .demos-cta h2 { font-size:1.5rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
-    .demos-cta p { color:var(--text-secondary); margin-bottom:24px; font-size:1rem; line-height:1.6; }
+    /* ══════════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════════ */
+    .demos-cta {
+      margin: 8px 0 48px;
+      background: linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04));
+      border: 1px solid rgba(255,107,0,0.2);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .demos-cta h2 { font-size:1.6rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
+    .demos-cta p { color:var(--text-secondary); margin-bottom:32px; font-size:1rem; line-height:1.6; max-width:480px; margin-left:auto; margin-right:auto; }
     .demos-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    @media(max-width:480px){ .demos-cta { padding:32px 24px; } .demos-cta-btns { flex-direction:column; align-items:center; } }
   </style>
 </head>
 <body>
@@ -184,28 +309,54 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
-  /* ══════════════════════════════════════════════════════
-     TRADUCCIONES — mismo patrón que el resto del sitio
-  ══════════════════════════════════════════════════════ */
   const demosTrans = {
     es: {
       nav_home:'Inicio', nav_about:'Sobre Mí', nav_projects:'Proyectos',
       nav_contact:'Contacto', nav_demos:'AppSheet Demos',
       page_title: 'AppSheet Demos - Raul Pivet',
       footer: '© 2026 Raul Pivet. Todos los derechos reservados.',
-      eyebrow: 'Demos en video',
-      header_h1: 'AppSheet en Acción',
-      header_sub: 'Aplicaciones móviles reales para gestión de inventario, almacén y operaciones logísticas.',
-      intro_h2_a: 'Aplicaciones que',
-      intro_h2_b: 'funcionan en producción',
-      intro_p: 'Cada demo muestra una aplicación real construida con AppSheet y Google Sheets. No son prototipos ni mockups — son sistemas que equipos reales usan en su operación diaria.',
-      badge_label: 'En producción',
+
+      /* Hero */
+      hero_pill: '📱 Demos en vivo',
+      hero_pill_sub: 'Aplicaciones reales · Sin mockups',
+      h1a: 'AppSheet',
+      h1b: 'en Acción',
+      hero_sub: 'Aplicaciones móviles construidas con AppSheet y Google Sheets, funcionando en operaciones reales. Cada video muestra un sistema que equipos reales usan todos los días.',
+      hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventario', 'Logística', 'WhatsApp', 'Drive'],
+
+      /* Stats */
+      stats: [
+        { icon:'fas fa-mobile-alt', num:'100', suffix:'%', label:'Apps en producción', sub:'Ningún prototipo, todo real', trend:'Real', ghost:'100' },
+        { icon:'fas fa-users',      num:'0',   suffix:'',  label:'Papel reemplazado', sub:'Registro digital, sin errores', trend:'Cero papel', ghost:'0' },
+        { icon:'fas fa-bolt',       num:'30',  suffix:'%', label:'Menos errores',     sub:'Desde el primer mes de uso', trend:'Probado', ghost:'30' }
+      ],
+
+      /* Intro card */
+      intro_eyebrow: '🏗️ Sin código complejo',
+      intro_h2a: 'Si tu equipo sigue usando papel',
+      intro_h2b: 'eso se puede resolver.',
+      intro_p: 'AppSheet permite construir apps móviles conectadas a Google Sheets en días, no meses. El equipo las usa desde el celular, los datos quedan centralizados y los documentos se generan solos.',
+      proof_text: 'Sistema de inventario implementado en operación minera real: 20 personas, turno 7x7, cero papel desde el primer mes.',
+      features: [
+        { icon:'fas fa-mobile-alt', title:'App móvil, sin instalar nada', desc:'Funciona desde el navegador del celular. Sin Play Store ni App Store.' },
+        { icon:'fas fa-table',      title:'Google Sheets como base de datos', desc:'Los datos quedan en tu propio Drive. Siempre accesibles.' },
+        { icon:'fas fa-file-export', title:'Documentos generados automáticamente', desc:'El sistema exporta informes, facturas y reportes en el formato que necesités.' }
+      ],
+
+      /* Video section */
+      videos_eyebrow: 'Demos disponibles',
+      videos_title: 'Mirá cómo funciona en la práctica',
+
+      /* Cards */
       status_live: 'Activo',
       watch_yt: 'Ver en YouTube',
+
+      /* CTA */
       cta_h2: '¿Necesitás una app así para tu operación?',
-      cta_p: 'Puedo analizar tu flujo actual y construir una solución a medida con AppSheet. Rápido, sin código complejo y que tu equipo realmente use.',
+      cta_p: 'Puedo analizar tu flujo actual y construir una solución a medida. Rápido, sin código complejo y que tu equipo realmente use desde el día uno.',
       cta_btn1: 'Hablemos',
       cta_btn2: 'Ver todos los proyectos',
+
       videos: [
         {
           id: 'ghiOKoppKp4',
@@ -215,24 +366,48 @@
         }
       ]
     },
+
     en: {
       nav_home:'Home', nav_about:'About Me', nav_projects:'Projects',
       nav_contact:'Contact', nav_demos:'AppSheet Demos',
       page_title: 'AppSheet Demos - Raul Pivet',
       footer: '© 2026 Raul Pivet. All rights reserved.',
-      eyebrow: 'Video demos',
-      header_h1: 'AppSheet in Action',
-      header_sub: 'Real mobile applications for inventory management, warehouse and logistics operations.',
-      intro_h2_a: 'Apps that actually',
-      intro_h2_b: 'run in production',
-      intro_p: 'Each demo shows a real application built with AppSheet and Google Sheets. These are not prototypes or mockups — they are live systems that real teams use in their day-to-day operations.',
-      badge_label: 'In production',
+
+      hero_pill: '📱 Live demos',
+      hero_pill_sub: 'Real apps · No mockups',
+      h1a: 'AppSheet',
+      h1b: 'in Action',
+      hero_sub: 'Mobile applications built with AppSheet and Google Sheets, running in real operations. Every video shows a system that real teams use every single day.',
+      hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventory', 'Logistics', 'WhatsApp', 'Drive'],
+
+      stats: [
+        { icon:'fas fa-mobile-alt', num:'100', suffix:'%', label:'Apps in production', sub:'No prototypes, all real', trend:'Real', ghost:'100' },
+        { icon:'fas fa-users',      num:'0',   suffix:'',  label:'Paper replaced', sub:'Digital records, no errors', trend:'Zero paper', ghost:'0' },
+        { icon:'fas fa-bolt',       num:'30',  suffix:'%', label:'Fewer errors', sub:'From the very first month', trend:'Proven', ghost:'30' }
+      ],
+
+      intro_eyebrow: '🏗️ No complex code',
+      intro_h2a: 'If your team still uses paper',
+      intro_h2b: 'that can be fixed.',
+      intro_p: 'AppSheet lets you build mobile apps connected to Google Sheets in days, not months. The team uses them from their phones, data is centralized, and documents are generated automatically.',
+      proof_text: 'Inventory system deployed in a real mining operation: 20 people, 7x7 shifts, zero paper from month one.',
+      features: [
+        { icon:'fas fa-mobile-alt', title:'Mobile app, nothing to install', desc:'Runs from the phone browser. No Play Store or App Store required.' },
+        { icon:'fas fa-table',      title:'Google Sheets as the database', desc:'Data lives in your own Drive. Always accessible.' },
+        { icon:'fas fa-file-export', title:'Documents generated automatically', desc:'The system exports reports, invoices, and summaries in the format you need.' }
+      ],
+
+      videos_eyebrow: 'Available demos',
+      videos_title: 'See how it works in practice',
+
       status_live: 'Live',
       watch_yt: 'Watch on YouTube',
+
       cta_h2: 'Need an app like this for your operation?',
-      cta_p: 'I can analyze your current workflow and build a custom AppSheet solution. Fast, no complex code, and something your team will actually use.',
+      cta_p: 'I can analyze your current workflow and build a custom solution. Fast, no complex code, and something your team will actually use from day one.',
       cta_btn1: "Let's talk",
       cta_btn2: 'See all projects',
+
       videos: [
         {
           id: 'ghiOKoppKp4',
@@ -268,7 +443,7 @@
               ${d.status_live}
             </span>
             <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer" class="demo-yt-link">
-              <i class="fab fa-youtube"></i> ${d.watch_yt} <i class="fas fa-arrow-right"></i>
+              <i class="fab fa-youtube"></i> ${d.watch_yt}
             </a>
           </div>
         </div>
@@ -288,37 +463,78 @@
       if (d[k]) el.textContent = d[k];
     });
 
-    const videoCount = d.videos.length;
-
     document.getElementById('mainContent').innerHTML = `
-      <header class="header" data-aos="fade-down">
-        <p class="section-eyebrow">${d.eyebrow}</p>
-        <h1>${d.header_h1}</h1>
-        <p>${d.header_sub}</p>
-      </header>
 
-      <div class="demos-intro" data-aos="fade-up">
-        <div class="demos-intro-text">
-          <h2>${d.intro_h2_a} <span>${d.intro_h2_b}</span></h2>
-          <p>${d.intro_p}</p>
+      <!-- ── HERO ── -->
+      <section class="demos-hero" data-aos="fade-down">
+        <div class="demos-hero-eyebrow">
+          <span class="demos-eyebrow-pill"><i class="fab fa-youtube"></i> ${d.hero_pill}</span>
+          <span class="demos-eyebrow-sub">${d.hero_pill_sub}</span>
         </div>
-        <div class="demos-intro-badge">
-          <span class="badge-icon"><i class="fas fa-mobile-alt"></i></span>
-          <span class="badge-num">${videoCount}</span>
-          <span class="badge-label">${d.badge_label}</span>
+        <h1>${d.h1a}<br><span>${d.h1b}</span></h1>
+        <p class="demos-hero-sub">${d.hero_sub}</p>
+        <div class="demos-hero-tags">
+          ${d.hero_tags.map(t => `<span class="demos-hero-tag">${t}</span>`).join('')}
         </div>
+      </section>
+
+      <!-- ── STATS ── -->
+      <div class="demos-stats" data-aos="fade-up">
+        ${d.stats.map(s => `
+          <div class="demos-stat" data-ghost="${s.ghost}${s.suffix}">
+            <div class="demos-stat-bar"></div>
+            <div class="demos-stat-icon-row">
+              <div class="demos-stat-icon"><i class="${s.icon}"></i></div>
+              <span class="demos-stat-trend">${s.trend}</span>
+            </div>
+            <span class="demos-stat-number">${s.num}${s.suffix}</span>
+            <span class="demos-stat-label">${s.label}</span>
+            <span class="demos-stat-sub">${s.sub}</span>
+          </div>`).join('')}
+      </div>
+
+      <!-- ── INTRO CARD ── -->
+      <div class="demos-intro-card" data-aos="fade-up">
+        <div class="demos-intro-inner">
+          <div class="demos-intro-left">
+            <span class="demos-intro-eyebrow">${d.intro_eyebrow}</span>
+            <h2>${d.intro_h2a}<br><span>${d.intro_h2b}</span></h2>
+            <p>${d.intro_p}</p>
+            <div class="demos-proof">
+              <i class="fas fa-check-circle"></i>
+              <span><strong>Caso real:</strong> ${d.proof_text}</span>
+            </div>
+          </div>
+          <div class="demos-intro-right">
+            ${d.features.map((f, i) => `
+              <div class="demos-feature" data-aos="fade-left" data-aos-delay="${i * 80}">
+                <div class="demos-feature-icon"><i class="${f.icon}"></i></div>
+                <div>
+                  <div class="demos-feature-title">${f.title}</div>
+                  <div class="demos-feature-desc">${f.desc}</div>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── VIDEOS ── -->
+      <div class="demos-section-header" data-aos="fade-up">
+        <p class="section-eyebrow">${d.videos_eyebrow}</p>
+        <h2 class="section-title">${d.videos_title}</h2>
       </div>
 
       <div class="demos-grid">
         ${d.videos.map((v, i) => buildVideoCard(v, d, i)).join('')}
       </div>
 
+      <!-- ── CTA ── -->
       <section class="demos-cta" data-aos="fade-up">
         <h2>${d.cta_h2}</h2>
         <p>${d.cta_p}</p>
         <div class="demos-cta-btns">
           <a href="contacto.html" class="btn"><i class="fas fa-paper-plane"></i> ${d.cta_btn1}</a>
-          <a href="proyectos.html" class="btn-outline"><i class="fas fa-code"></i> ${d.cta_btn2}</a>
+          <a href="proyectos.html" class="demos-btn-outline"><i class="fas fa-code"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
 
