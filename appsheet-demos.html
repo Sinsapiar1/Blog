@@ -299,7 +299,7 @@
       text-align: center;
     }
     .demos-cta h2 { font-size:1.6rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
-    .demos-cta p { color:var(--text-secondary); margin-bottom:32px; font-size:1rem; line-height:1.6; max-width:480px; margin-left:auto; margin-right:auto; }
+    .demos-cta p { color:var(--text-secondary); margin-bottom:32px; font-size:1rem; line-height:1.6; max-width:520px; margin-left:auto; margin-right:auto; }
     .demos-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
     @media(max-width:480px){ .demos-cta { padding:32px 24px; } .demos-cta-btns { flex-direction:column; align-items:center; } }
 
@@ -516,6 +516,31 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
+  // ══════════════════════════════════════════════════════════════════════
+  // ✨ CONFIGURACIÓN DE DEMOS - EDITA AQUÍ PARA AGREGAR NUEVOS VIDEOS
+  // ══════════════════════════════════════════════════════════════════════
+  // 
+  // INSTRUCCIONES PARA AGREGAR UN NUEVO DEMO:
+  // 
+  // 1. Sube tus screenshots a Imgur (https://imgur.com/upload)
+  // 2. Copia los "Direct Links" (URLs que terminan en .png o .jpg)
+  // 3. Agrega un nuevo objeto al array "videos" en AMBOS idiomas (es/en)
+  // 4. El carrusel se actualiza automáticamente según cantidad de screenshots
+  // 
+  // FORMATO:
+  // {
+  //   id: 'VIDEO_ID_DE_YOUTUBE',      // Solo el ID (ej: 'ghiOKoppKp4')
+  //   title: 'Título del demo',
+  //   desc: 'Descripción corta para el card',
+  //   desc_long: 'Descripción detallada para el modal',
+  //   tags: ['Tag1', 'Tag2'],         // 3-5 tags relevantes
+  //   screenshots: [                   // URLs de Imgur (Direct Links)
+  //     'https://i.imgur.com/EJEMPLO.png'
+  //   ]
+  // }
+  // 
+  // ══════════════════════════════════════════════════════════════════════
+
   const demosTrans = {
     es: {
       nav_home:'Inicio', nav_about:'Sobre Mí', nav_projects:'Proyectos',
@@ -531,14 +556,14 @@
       hero_sub: 'Aplicaciones móviles construidas con AppSheet y Google Sheets, funcionando en operaciones reales. Cada video muestra un sistema que equipos reales usan todos los días.',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventario', 'Logística', 'WhatsApp', 'Drive'],
 
-      /* Stats */
+      /* Stats - Copy mejorado para conversión */
       stats: [
         { icon:'fas fa-mobile-alt', num:'100', suffix:'%', label:'Apps en producción', sub:'Ningún prototipo, todo real', trend:'Real', ghost:'100' },
-        { icon:'fas fa-users',      num:'0',   suffix:'',  label:'Papel reemplazado', sub:'Registro digital, sin errores', trend:'Cero papel', ghost:'0' },
-        { icon:'fas fa-bolt',       num:'30',  suffix:'%', label:'Menos errores',     sub:'Desde el primer mes de uso', trend:'Probado', ghost:'30' }
+        { icon:'fas fa-ban',        num:'0',   suffix:'',  label:'Papel en operación', sub:'Digital desde el primer día', trend:'Cero papel', ghost:'0' },
+        { icon:'fas fa-rocket',     num:'72',  suffix:'h', label:'Primer resultado',   sub:'De idea a app funcionando', trend:'Rápido', ghost:'72' }
       ],
 
-      /* Intro card */
+      /* Intro card - Copy mejorado */
       intro_eyebrow: '🏗️ Sin código complejo',
       intro_h2a: 'Si tu equipo sigue usando papel',
       intro_h2b: 'eso se puede resolver.',
@@ -559,26 +584,48 @@
       watch_yt: 'Ver en YouTube',
       view_details: 'Ver Detalles',
 
-      /* CTA */
+      /* CTA - Más específico y urgente */
       cta_h2: '¿Necesitás una app así para tu operación?',
-      cta_p: 'Puedo analizar tu flujo actual y construir una solución a medida. Rápido, sin código complejo y que tu equipo realmente use desde el día uno.',
-      cta_btn1: 'Hablemos',
+      cta_p: 'Podemos analizar tu flujo actual y construir una solución a medida. Rápido, sin código complejo y que tu equipo realmente use desde el primer día.',
+      cta_btn1: 'Agenda 15 min gratis',
       cta_btn2: 'Ver todos los proyectos',
 
       /* Lightbox */
       lb_contact: 'Contactar',
 
+      // ──────────────────────────────────────────────────────────────────
+      // 📹 LISTA DE DEMOS EN ESPAÑOL
+      // ──────────────────────────────────────────────────────────────────
       videos: [
         {
           id: 'ghiOKoppKp4',
-          title: 'Sistema de Control de Almacén',
-          desc: 'App móvil completa para gestión de inventario: entradas, salidas, maestro de productos y exportación automática de documentos. Implementada en operación real con turno continuo.',
-          desc_long: 'Sistema WMS construido con AppSheet y Google Sheets para operación de alimentos. Incluye recepción de camiones con validación de temperatura, control de lotes y vencimientos, trazabilidad completa, generación automática de documentos PDF y Excel, alertas de stock crítico y dashboard de rentabilidad con PMP.',
-          tags: ['AppSheet', 'Google Sheets', 'Inventario', 'Drive'],
+          title: 'WMS Recepción de Camiones',
+          desc: 'Sistema completo de gestión de almacén para operaciones de alimentos. Recepción, salidas, control de stock, vencimientos y trazabilidad total.',
+          desc_long: 'Sistema WMS construido con AppSheet y Google Sheets para operación de alimentos en Hialeah, FL. Incluye:\n\n• Recepción de camiones con validación de temperatura y checklist digital\n• Control automático de lotes y fechas de vencimiento\n• Alertas por email cuando hay productos próximos a vencer\n• Generación automática de documentos PDF (etiquetas, informes de trazabilidad)\n• Dashboard de rentabilidad con cálculo de PMP (Precio Medio Ponderado)\n• Exportación de reportes a Excel para análisis\n• 100% funcional desde celular, sin instalación de apps\n\nImplementado en operación real con 20+ usuarios, turno 7x7, CERO papel desde el primer mes.',
+          tags: ['AppSheet', 'Google Sheets', 'WMS', 'Inventario'],
           screenshots: [
-            'https://i.imgur.com/bBYwgRi.png'
+            'https://i.imgur.com/bBYwgRi.png'  // Menú principal
+            // ⬇️ Agrega más screenshots acá cuando los tengas en Imgur:
+            // 'https://i.imgur.com/EJEMPLO2.png',  // Formulario recepción
+            // 'https://i.imgur.com/EJEMPLO3.png',  // Dashboard
+            // 'https://i.imgur.com/EJEMPLO4.png',  // Control vencimientos
           ]
         }
+        
+        // ⬇️ Descomenta y completa este bloque cuando tengas tu segundo demo:
+        /*
+        ,{
+          id: 'TU_VIDEO_ID_AQUI',
+          title: 'App de Toma de Inventario',
+          desc: 'App móvil simple para conteo físico de inventario con escaneo de código de barras.',
+          desc_long: 'Aplicación diseñada específicamente para la toma física de inventario:\n\n• Escaneo de código de barras con cámara del celular\n• Registro de ubicación de cada producto\n• Conteo por lotes con validación en tiempo real\n• Exportación automática a Excel para reconciliación\n• Funciona offline, sincroniza al conectarse\n• Ideal para cierres de mes y auditorías',
+          tags: ['AppSheet', 'Inventario', 'Código de Barras'],
+          screenshots: [
+            'https://i.imgur.com/EJEMPLO1.png',
+            'https://i.imgur.com/EJEMPLO2.png'
+          ]
+        }
+        */
       ]
     },
 
@@ -597,8 +644,8 @@
 
       stats: [
         { icon:'fas fa-mobile-alt', num:'100', suffix:'%', label:'Apps in production', sub:'No prototypes, all real', trend:'Real', ghost:'100' },
-        { icon:'fas fa-users',      num:'0',   suffix:'',  label:'Paper replaced', sub:'Digital records, no errors', trend:'Zero paper', ghost:'0' },
-        { icon:'fas fa-bolt',       num:'30',  suffix:'%', label:'Fewer errors', sub:'From the very first month', trend:'Proven', ghost:'30' }
+        { icon:'fas fa-ban',        num:'0',   suffix:'',  label:'Paper in operation', sub:'Digital from day one', trend:'Zero paper', ghost:'0' },
+        { icon:'fas fa-rocket',     num:'72',  suffix:'h', label:'First result',       sub:'From idea to working app', trend:'Fast', ghost:'72' }
       ],
 
       intro_eyebrow: '🏗️ No complex code',
@@ -620,26 +667,52 @@
       view_details: 'View Details',
 
       cta_h2: 'Need an app like this for your operation?',
-      cta_p: 'I can analyze your current workflow and build a custom solution. Fast, no complex code, and something your team will actually use from day one.',
-      cta_btn1: "Let's talk",
+      cta_p: 'We can analyze your current workflow and build a custom solution. Fast, no complex code, and something your team will actually use from day one.',
+      cta_btn1: 'Schedule 15 min free',
       cta_btn2: 'See all projects',
 
       lb_contact: 'Contact',
 
+      // ──────────────────────────────────────────────────────────────────
+      // 📹 DEMO LIST IN ENGLISH
+      // ──────────────────────────────────────────────────────────────────
       videos: [
         {
           id: 'ghiOKoppKp4',
-          title: 'Warehouse Management System',
-          desc: 'Full mobile app for inventory management: entries, exits, product master and automatic document export. Deployed in a real continuous-shift operation.',
-          desc_long: 'WMS system built with AppSheet and Google Sheets for food operations. Includes truck reception with temperature validation, batch and expiration control, full traceability, automatic PDF and Excel document generation, critical stock alerts, and profitability dashboard with weighted average price.',
-          tags: ['AppSheet', 'Google Sheets', 'Inventory', 'Drive'],
+          title: 'Truck Reception WMS',
+          desc: 'Complete warehouse management system for food operations. Reception, exits, stock control, expiration tracking and full traceability.',
+          desc_long: 'WMS system built with AppSheet and Google Sheets for food operations in Hialeah, FL. Includes:\n\n• Truck reception with temperature validation and digital checklist\n• Automatic batch and expiration date control\n• Email alerts for products nearing expiration\n• Automatic PDF document generation (labels, traceability reports)\n• Profitability dashboard with weighted average price calculation\n• Excel report export for analysis\n• 100% functional from mobile, no app installation required\n\nDeployed in real operation with 20+ users, 7x7 shifts, ZERO paper from month one.',
+          tags: ['AppSheet', 'Google Sheets', 'WMS', 'Inventory'],
           screenshots: [
-            'https://i.imgur.com/bBYwgRi.png'
+            'https://i.imgur.com/bBYwgRi.png'  // Main menu
+            // ⬇️ Add more screenshots here when you have them on Imgur:
+            // 'https://i.imgur.com/EXAMPLE2.png',  // Reception form
+            // 'https://i.imgur.com/EXAMPLE3.png',  // Dashboard
+            // 'https://i.imgur.com/EXAMPLE4.png',  // Expiration control
           ]
         }
+        
+        // ⬇️ Uncomment and complete this block when you have your second demo:
+        /*
+        ,{
+          id: 'YOUR_VIDEO_ID_HERE',
+          title: 'Inventory Count App',
+          desc: 'Simple mobile app for physical inventory count with barcode scanning.',
+          desc_long: 'App designed specifically for physical inventory counting:\n\n• Barcode scanning with phone camera\n• Location recording for each product\n• Batch counting with real-time validation\n• Automatic Excel export for reconciliation\n• Works offline, syncs when connected\n• Ideal for month-end closings and audits',
+          tags: ['AppSheet', 'Inventory', 'Barcode'],
+          screenshots: [
+            'https://i.imgur.com/EXAMPLE1.png',
+            'https://i.imgur.com/EXAMPLE2.png'
+          ]
+        }
+        */
       ]
     }
   };
+
+  // ══════════════════════════════════════════════════════════════════════
+  // SISTEMA DINÁMICO - NO EDITES ABAJO DE ESTA LÍNEA
+  // ══════════════════════════════════════════════════════════════════════
 
   let lang = localStorage.getItem('homeLang') || 'es';
   let currentCarouselIndex = 0;
@@ -766,7 +839,7 @@
         <h2>${d.cta_h2}</h2>
         <p>${d.cta_p}</p>
         <div class="demos-cta-btns">
-          <a href="contacto.html" class="btn"><i class="fas fa-paper-plane"></i> ${d.cta_btn1}</a>
+          <a href="contacto.html" class="btn"><i class="fas fa-calendar-check"></i> ${d.cta_btn1}</a>
           <a href="proyectos.html" class="demos-btn-outline"><i class="fas fa-code"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
