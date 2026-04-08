@@ -55,6 +55,280 @@
     }
 
     /* ══════════════════════════════════════════
+       "¿QUÉ ES APPSHEET?" BUTTON
+    ══════════════════════════════════════════ */
+    .what-is-appsheet-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(255,107,0,0.08);
+      border: 1.5px solid rgba(255,107,0,0.3);
+      border-radius: 50px;
+      color: #FF6B00;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-bottom: 24px;
+    }
+    .what-is-appsheet-btn:hover {
+      background: rgba(255,107,0,0.15);
+      border-color: #FF6B00;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255,107,0,0.2);
+    }
+    .what-is-appsheet-btn i {
+      font-size: 1rem;
+    }
+
+    /* ══════════════════════════════════════════
+       "¿QUÉ ES APPSHEET?" MODAL
+    ══════════════════════════════════════════ */
+    #appsheetInfoModal { 
+      display:none; 
+      position:fixed; 
+      inset:0; 
+      z-index:5001; 
+      align-items:center; 
+      justify-content:center; 
+    }
+    #appsheetInfoModal.modal-open { display:flex; }
+    
+    .modal-overlay { 
+      position:absolute; 
+      inset:0; 
+      background:rgba(0,0,0,0); 
+      backdrop-filter:blur(0px); 
+      transition:background 0.4s ease, backdrop-filter 0.4s ease; 
+      cursor:pointer; 
+    }
+    #appsheetInfoModal.modal-open .modal-overlay { 
+      background:rgba(0,0,0,0.92); 
+      backdrop-filter:blur(14px); 
+    }
+    
+    .modal-content-wrapper { 
+      position:relative; 
+      z-index:1; 
+      width:min(90vw, 800px); 
+      max-height:85vh; 
+      opacity:0; 
+      transform:scale(0.93); 
+      transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1); 
+    }
+    #appsheetInfoModal.modal-open .modal-content-wrapper { 
+      opacity:1; 
+      transform:scale(1); 
+    }
+    
+    .modal-frame { 
+      position:relative; 
+      border-radius:var(--radius-xl); 
+      overflow:hidden; 
+      box-shadow:0 32px 80px rgba(0,0,0,0.7); 
+      background:#0a0a0a; 
+    }
+    
+    .modal-browser-bar { 
+      background:#1e1e1e; 
+      padding:12px 18px; 
+      display:flex; 
+      align-items:center; 
+      gap:14px; 
+      border-bottom:1px solid rgba(255,255,255,0.06); 
+    }
+    .modal-browser-dots { display:flex; gap:7px; }
+    .modal-browser-dots span { width:12px; height:12px; border-radius:50%; }
+    .modal-browser-dots span:nth-child(1){background:#FF5F56}
+    .modal-browser-dots span:nth-child(2){background:#FFBD2E}
+    .modal-browser-dots span:nth-child(3){background:#27C93F}
+    .modal-url-bar { 
+      flex:1; 
+      background:rgba(255,255,255,0.08); 
+      border-radius:6px; 
+      padding:6px 14px; 
+      font-size:0.8rem; 
+      color:rgba(255,255,255,0.6); 
+      font-family:monospace; 
+    }
+    
+    .modal-body { 
+      background:var(--bg-primary); 
+      padding:40px; 
+      max-height:70vh; 
+      overflow-y:auto; 
+    }
+    
+    .modal-close-btn { 
+      position:absolute; 
+      top:56px; 
+      right:16px; 
+      width:40px; 
+      height:40px; 
+      background:rgba(0,0,0,0.6); 
+      border:none; 
+      border-radius:50%; 
+      color:white; 
+      font-size:1.05rem; 
+      cursor:pointer; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      backdrop-filter:blur(8px); 
+      transition:background 0.2s, transform 0.2s; 
+      z-index:20; 
+    }
+    .modal-close-btn:hover { 
+      background:rgba(255,59,48,0.9); 
+      transform:scale(1.12); 
+    }
+    
+    .modal-header { 
+      text-align:center; 
+      margin-bottom:32px; 
+    }
+    .modal-google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #4285F4, #34A853);
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    }
+    .modal-header h2 { 
+      font-size:clamp(1.6rem, 3vw, 2.2rem); 
+      font-weight:800; 
+      color:var(--text-primary); 
+      margin-bottom:12px; 
+      letter-spacing:-0.02em; 
+    }
+    .modal-header h2 span { 
+      background:linear-gradient(135deg,#FF6B00,#FF9500); 
+      -webkit-background-clip:text; 
+      -webkit-text-fill-color:transparent; 
+    }
+    .modal-header p { 
+      font-size:1.05rem; 
+      color:var(--text-secondary); 
+      line-height:1.6; 
+      max-width:600px; 
+      margin:0 auto; 
+    }
+    
+    .modal-section { 
+      margin-bottom:32px; 
+    }
+    .modal-section-title { 
+      font-size:1.1rem; 
+      font-weight:700; 
+      color:var(--text-primary); 
+      margin-bottom:16px; 
+      display:flex; 
+      align-items:center; 
+      gap:10px; 
+    }
+    .modal-section-title i { 
+      color:#FF6B00; 
+      font-size:1.2rem; 
+    }
+    
+    .modal-grid { 
+      display:grid; 
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); 
+      gap:16px; 
+      margin-bottom:24px; 
+    }
+    .modal-feature-card { 
+      background:var(--bg-secondary); 
+      border:1px solid var(--border-color); 
+      border-radius:14px; 
+      padding:20px; 
+      transition:all 0.2s; 
+    }
+    .modal-feature-card:hover { 
+      border-color:rgba(255,107,0,0.3); 
+      transform:translateY(-2px); 
+    }
+    .modal-feature-icon { 
+      width:40px; 
+      height:40px; 
+      background:linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,149,0,0.08)); 
+      border-radius:10px; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      color:#FF6B00; 
+      font-size:1.1rem; 
+      margin-bottom:12px; 
+    }
+    .modal-feature-card h4 { 
+      font-size:0.95rem; 
+      font-weight:700; 
+      color:var(--text-primary); 
+      margin-bottom:6px; 
+    }
+    .modal-feature-card p { 
+      font-size:0.85rem; 
+      color:var(--text-secondary); 
+      line-height:1.5; 
+    }
+    
+    .modal-integrations { 
+      display:flex; 
+      flex-wrap:wrap; 
+      gap:10px; 
+      margin-bottom:24px; 
+    }
+    .modal-integration-badge { 
+      background:var(--bg-secondary); 
+      border:1px solid var(--border-color); 
+      color:var(--text-secondary); 
+      font-size:0.85rem; 
+      font-weight:600; 
+      padding:8px 14px; 
+      border-radius:20px; 
+      display:inline-flex; 
+      align-items:center; 
+      gap:6px; 
+    }
+    .modal-integration-badge i { 
+      color:#FF6B00; 
+    }
+    
+    .modal-cta-box { 
+      background:linear-gradient(135deg, rgba(255,107,0,0.1), rgba(255,149,0,0.05)); 
+      border:1px solid rgba(255,107,0,0.25); 
+      border-radius:16px; 
+      padding:28px; 
+      text-align:center; 
+    }
+    .modal-cta-box h3 { 
+      font-size:1.25rem; 
+      font-weight:800; 
+      color:var(--text-primary); 
+      margin-bottom:10px; 
+    }
+    .modal-cta-box p { 
+      color:var(--text-secondary); 
+      margin-bottom:20px; 
+      font-size:0.95rem; 
+    }
+    
+    @media(max-width:768px){ 
+      .modal-body { padding:28px 24px; } 
+      .modal-grid { grid-template-columns:1fr; } 
+    }
+
+    /* ══════════════════════════════════════════
        HERO
     ══════════════════════════════════════════ */
     .demos-hero { padding: 48px 0 40px; }
@@ -479,6 +753,23 @@
 
   <footer><p id="footerText">&copy; 2026 Raul Pivet. Todos los derechos reservados.</p></footer>
 
+  <!-- Modal "¿Qué es AppSheet?" -->
+  <div id="appsheetInfoModal" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-content-wrapper">
+      <div class="modal-frame">
+        <div class="modal-browser-bar">
+          <div class="modal-browser-dots"><span></span><span></span><span></span></div>
+          <div class="modal-url-bar" id="modalUrl">appsheet.google.com</div>
+        </div>
+        <div class="modal-body">
+          <!-- Se rellena dinámicamente con JavaScript -->
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+  </div>
+
   <!-- Lightbox Modal MAC con Carrusel -->
   <div id="demoLightbox" role="dialog" aria-modal="true" aria-label="Vista detallada del demo">
     <div class="lb-overlay" id="lbOverlay"></div>
@@ -519,34 +810,16 @@
   // ══════════════════════════════════════════════════════════════════════
   // ✨ CONFIGURACIÓN DE DEMOS - EDITA AQUÍ PARA AGREGAR NUEVOS VIDEOS
   // ══════════════════════════════════════════════════════════════════════
-  // 
-  // INSTRUCCIONES PARA AGREGAR UN NUEVO DEMO:
-  // 
-  // 1. Sube tus screenshots a Imgur (https://imgur.com/upload)
-  // 2. Copia los "Direct Links" (URLs que terminan en .png o .jpg)
-  // 3. Agrega un nuevo objeto al array "videos" en AMBOS idiomas (es/en)
-  // 4. El carrusel se actualiza automáticamente según cantidad de screenshots
-  // 
-  // FORMATO:
-  // {
-  //   id: 'VIDEO_ID_DE_YOUTUBE',      // Solo el ID (ej: 'ghiOKoppKp4')
-  //   title: 'Título del demo',
-  //   desc: 'Descripción corta para el card',
-  //   desc_long: 'Descripción detallada para el modal',
-  //   tags: ['Tag1', 'Tag2'],         // 3-5 tags relevantes
-  //   screenshots: [                   // URLs de Imgur (Direct Links)
-  //     'https://i.imgur.com/EJEMPLO.png'
-  //   ]
-  // }
-  // 
-  // ══════════════════════════════════════════════════════════════════════
-
+  
   const demosTrans = {
     es: {
       nav_home:'Inicio', nav_about:'Sobre Mí', nav_projects:'Proyectos',
       nav_contact:'Contacto', nav_demos:'AppSheet Demos',
       page_title: 'AppSheet Demos - Raul Pivet',
       footer: '© 2026 Raul Pivet. Todos los derechos reservados.',
+
+      /* Botón modal */
+      what_is_btn: '¿Qué es AppSheet?',
 
       /* Hero */
       hero_pill: '📱 Demos en vivo',
@@ -556,14 +829,14 @@
       hero_sub: 'Aplicaciones móviles construidas con AppSheet y Google Sheets, funcionando en operaciones reales. Cada video muestra un sistema que equipos reales usan todos los días.',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventario', 'Logística', 'WhatsApp', 'Drive'],
 
-      /* Stats - Copy mejorado para conversión */
+      /* Stats */
       stats: [
         { icon:'fas fa-mobile-alt', num:'100', suffix:'%', label:'Apps en producción', sub:'Ningún prototipo, todo real', trend:'Real', ghost:'100' },
         { icon:'fas fa-ban',        num:'0',   suffix:'',  label:'Papel en operación', sub:'Digital desde el primer día', trend:'Cero papel', ghost:'0' },
         { icon:'fas fa-rocket',     num:'72',  suffix:'h', label:'Primer resultado',   sub:'De idea a app funcionando', trend:'Rápido', ghost:'72' }
       ],
 
-      /* Intro card - Copy mejorado */
+      /* Intro card */
       intro_eyebrow: '🏗️ Sin código complejo',
       intro_h2a: 'Si tu equipo sigue usando papel',
       intro_h2b: 'eso se puede resolver.',
@@ -584,7 +857,7 @@
       watch_yt: 'Ver en YouTube',
       view_details: 'Ver Detalles',
 
-      /* CTA - Más específico y urgente */
+      /* CTA */
       cta_h2: '¿Necesitás una app así para tu operación?',
       cta_p: 'Podemos analizar tu flujo actual y construir una solución a medida. Rápido, sin código complejo y que tu equipo realmente use desde el primer día.',
       cta_btn1: 'Agenda 15 min gratis',
@@ -593,9 +866,46 @@
       /* Lightbox */
       lb_contact: 'Contactar',
 
-      // ──────────────────────────────────────────────────────────────────
-      // 📹 LISTA DE DEMOS EN ESPAÑOL
-      // ──────────────────────────────────────────────────────────────────
+      /* MODAL "¿QUÉ ES APPSHEET?" */
+      modal_google_badge: 'Powered by Google',
+      modal_title: '¿Qué es ',
+      modal_title_span: 'AppSheet',
+      modal_title_end: '?',
+      modal_subtitle: 'Plataforma no-code de Google para crear aplicaciones móviles profesionales conectadas a tus datos empresariales, sin escribir una línea de código.',
+      
+      modal_benefits_title: 'Beneficios para tu empresa',
+      modal_benefits: [
+        { icon:'fas fa-bolt', title:'Desarrollo ultrarrápido', desc:'De idea a app funcional en 72 horas. Sin esperas de meses ni equipos de desarrollo.' },
+        { icon:'fas fa-shield-alt', title:'Infraestructura Google', desc:'Tus datos quedan en Google Cloud. Seguridad, escalabilidad y cumplimiento enterprise.' },
+        { icon:'fas fa-dollar-sign', title:'ROI inmediato', desc:'Costos predecibles, sin licencias por usuario. Reducción del 90% en gastos vs desarrollo tradicional.' },
+        { icon:'fas fa-users', title:'Adopción garantizada', desc:'Interfaz intuitiva que tu equipo usa desde el primer día. Cero curva de aprendizaje.' }
+      ],
+      
+      modal_integrations_title: 'Conecta con lo que ya usás',
+      modal_integrations: [
+        { icon:'fab fa-google-drive', label:'Google Drive' },
+        { icon:'fas fa-table', label:'Google Sheets' },
+        { icon:'fas fa-database', label:'SQL Server' },
+        { icon:'fas fa-cloud', label:'Salesforce' },
+        { icon:'fas fa-envelope', label:'Gmail' },
+        { icon:'fab fa-dropbox', label:'Dropbox' },
+        { icon:'fas fa-file-excel', label:'Excel Online' },
+        { icon:'fas fa-layer-group', label:'APIs REST' }
+      ],
+      
+      modal_usecases_title: 'Casos de uso en empresas',
+      modal_usecases: [
+        { icon:'fas fa-boxes', title:'Gestión de inventario', desc:'Control de stock en tiempo real, alertas automáticas, trazabilidad completa.' },
+        { icon:'fas fa-clipboard-check', title:'Inspecciones y auditorías', desc:'Checklists digitales, captura de fotos, reportes PDF automáticos.' },
+        { icon:'fas fa-truck', title:'Logística y transporte', desc:'Seguimiento de envíos, validación de entregas, documentación digital.' },
+        { icon:'fas fa-hard-hat', title:'Gestión de proyectos', desc:'Asignación de tareas, timesheet, control de avances con geolocalización.' }
+      ],
+      
+      modal_cta_title: '¿Listo para digitalizar tu operación?',
+      modal_cta_desc: 'Agenda una consulta gratuita de 15 minutos. Te mostramos cómo AppSheet puede resolver tu caso específico.',
+      modal_cta_btn: 'Agendar consulta gratis',
+
+      // ── LISTA DE DEMOS ──
       videos: [
         {
           id: 'ghiOKoppKp4',
@@ -604,29 +914,11 @@
           desc_long: 'Sistema WMS construido con AppSheet y Google Sheets para operación de alimentos en Hialeah, FL. Incluye:\n\n• Recepción de camiones con validación de temperatura y checklist digital\n• Control automático de lotes y fechas de vencimiento\n• Alertas por email cuando hay productos próximos a vencer\n• Generación automática de documentos PDF (etiquetas, informes de trazabilidad)\n• Dashboard de rentabilidad con cálculo de PMP (Precio Medio Ponderado)\n• Exportación de reportes a Excel para análisis\n• 100% funcional desde celular, sin instalación de apps\n\nImplementado en operación real con 20+ usuarios, turno 7x7, CERO papel desde el primer mes.',
           tags: ['AppSheet', 'Google Sheets', 'WMS', 'Inventario'],
           screenshots: [
-            'https://i.imgur.com/bBYwgRi.png', // Menú principal
-            'https://i.imgur.com/1msYd37.png',  // prximos vencimientos
-            'https://i.imgur.com/zkth1n7.png'   // Dashboard
-            // ⬇️ Agrega más screenshots acá cuando los tengas en Imgur:
-            // 'https://i.imgur.com/EJEMPLO2.png',  // Formulario recepción
-            // 'https://i.imgur.com/EJEMPLO3.png',  // Control vencimientos
+            'https://i.imgur.com/bBYwgRi.png',
+            'https://i.imgur.com/1msYd37.png',
+            'https://i.imgur.com/zkth1n7.png'
           ]
         }
-        
-        // ⬇️ Descomenta y completa este bloque cuando tengas tu segundo demo:
-        /*
-        ,{
-          id: 'TU_VIDEO_ID_AQUI',
-          title: 'App de Toma de Inventario',
-          desc: 'App móvil simple para conteo físico de inventario con escaneo de código de barras.',
-          desc_long: 'Aplicación diseñada específicamente para la toma física de inventario:\n\n• Escaneo de código de barras con cámara del celular\n• Registro de ubicación de cada producto\n• Conteo por lotes con validación en tiempo real\n• Exportación automática a Excel para reconciliación\n• Funciona offline, sincroniza al conectarse\n• Ideal para cierres de mes y auditorías',
-          tags: ['AppSheet', 'Inventario', 'Código de Barras'],
-          screenshots: [
-            'https://i.imgur.com/EJEMPLO1.png',
-            'https://i.imgur.com/EJEMPLO2.png'
-          ]
-        }
-        */
       ]
     },
 
@@ -635,6 +927,8 @@
       nav_contact:'Contact', nav_demos:'AppSheet Demos',
       page_title: 'AppSheet Demos - Raul Pivet',
       footer: '© 2026 Raul Pivet. All rights reserved.',
+
+      what_is_btn: 'What is AppSheet?',
 
       hero_pill: '📱 Live demos',
       hero_pill_sub: 'Real apps · No mockups',
@@ -674,9 +968,45 @@
 
       lb_contact: 'Contact',
 
-      // ──────────────────────────────────────────────────────────────────
-      // 📹 DEMO LIST IN ENGLISH
-      // ──────────────────────────────────────────────────────────────────
+      /* MODAL EN INGLÉS */
+      modal_google_badge: 'Powered by Google',
+      modal_title: 'What is ',
+      modal_title_span: 'AppSheet',
+      modal_title_end: '?',
+      modal_subtitle: 'Google\'s no-code platform for creating professional mobile applications connected to your business data, without writing a single line of code.',
+      
+      modal_benefits_title: 'Benefits for your business',
+      modal_benefits: [
+        { icon:'fas fa-bolt', title:'Ultra-fast development', desc:'From idea to working app in 72 hours. No months of waiting or development teams.' },
+        { icon:'fas fa-shield-alt', title:'Google infrastructure', desc:'Your data stays on Google Cloud. Enterprise security, scalability, and compliance.' },
+        { icon:'fas fa-dollar-sign', title:'Immediate ROI', desc:'Predictable costs, no per-user licenses. 90% cost reduction vs traditional development.' },
+        { icon:'fas fa-users', title:'Guaranteed adoption', desc:'Intuitive interface your team uses from day one. Zero learning curve.' }
+      ],
+      
+      modal_integrations_title: 'Connect with what you already use',
+      modal_integrations: [
+        { icon:'fab fa-google-drive', label:'Google Drive' },
+        { icon:'fas fa-table', label:'Google Sheets' },
+        { icon:'fas fa-database', label:'SQL Server' },
+        { icon:'fas fa-cloud', label:'Salesforce' },
+        { icon:'fas fa-envelope', label:'Gmail' },
+        { icon:'fab fa-dropbox', label:'Dropbox' },
+        { icon:'fas fa-file-excel', label:'Excel Online' },
+        { icon:'fas fa-layer-group', label:'REST APIs' }
+      ],
+      
+      modal_usecases_title: 'Enterprise use cases',
+      modal_usecases: [
+        { icon:'fas fa-boxes', title:'Inventory management', desc:'Real-time stock control, automatic alerts, complete traceability.' },
+        { icon:'fas fa-clipboard-check', title:'Inspections & audits', desc:'Digital checklists, photo capture, automatic PDF reports.' },
+        { icon:'fas fa-truck', title:'Logistics & transport', desc:'Shipment tracking, delivery validation, digital documentation.' },
+        { icon:'fas fa-hard-hat', title:'Project management', desc:'Task assignment, timesheets, progress control with geolocation.' }
+      ],
+      
+      modal_cta_title: 'Ready to digitize your operation?',
+      modal_cta_desc: 'Schedule a free 15-minute consultation. We\'ll show you how AppSheet can solve your specific case.',
+      modal_cta_btn: 'Schedule free consultation',
+
       videos: [
         {
           id: 'ghiOKoppKp4',
@@ -685,34 +1015,17 @@
           desc_long: 'WMS system built with AppSheet and Google Sheets for food operations in Hialeah, FL. Includes:\n\n• Truck reception with temperature validation and digital checklist\n• Automatic batch and expiration date control\n• Email alerts for products nearing expiration\n• Automatic PDF document generation (labels, traceability reports)\n• Profitability dashboard with weighted average price calculation\n• Excel report export for analysis\n• 100% functional from mobile, no app installation required\n\nDeployed in real operation with 20+ users, 7x7 shifts, ZERO paper from month one.',
           tags: ['AppSheet', 'Google Sheets', 'WMS', 'Inventory'],
           screenshots: [
-            'https://i.imgur.com/bBYwgRi.png',  // Main menu
-            'https://i.imgur.com/zkth1n7.png'   // Dashboard
-            // ⬇️ Add more screenshots here when you have them on Imgur:
-            // 'https://i.imgur.com/EXAMPLE2.png',  // Reception form
-            // 'https://i.imgur.com/EXAMPLE3.png',  // Expiration control
+            'https://i.imgur.com/bBYwgRi.png',
+            'https://i.imgur.com/1msYd37.png',
+            'https://i.imgur.com/zkth1n7.png'
           ]
         }
-        
-        // ⬇️ Uncomment and complete this block when you have your second demo:
-        /*
-        ,{
-          id: 'YOUR_VIDEO_ID_HERE',
-          title: 'Inventory Count App',
-          desc: 'Simple mobile app for physical inventory count with barcode scanning.',
-          desc_long: 'App designed specifically for physical inventory counting:\n\n• Barcode scanning with phone camera\n• Location recording for each product\n• Batch counting with real-time validation\n• Automatic Excel export for reconciliation\n• Works offline, syncs when connected\n• Ideal for month-end closings and audits',
-          tags: ['AppSheet', 'Inventory', 'Barcode'],
-          screenshots: [
-            'https://i.imgur.com/EXAMPLE1.png',
-            'https://i.imgur.com/EXAMPLE2.png'
-          ]
-        }
-        */
       ]
     }
   };
 
   // ══════════════════════════════════════════════════════════════════════
-  // SISTEMA DINÁMICO - NO EDITES ABAJO DE ESTA LÍNEA
+  // SISTEMA DINÁMICO
   // ══════════════════════════════════════════════════════════════════════
 
   let lang = localStorage.getItem('homeLang') || 'es';
@@ -766,13 +1079,10 @@
       if (d[k]) el.textContent = d[k];
     });
 
-    // Actualizar textos del lightbox
     document.getElementById('lbYtText').textContent = d.watch_yt;
     document.getElementById('lbContactText').textContent = d.lb_contact;
 
     document.getElementById('mainContent').innerHTML = `
-
-      <!-- ── HERO ── -->
       <section class="demos-hero" data-aos="fade-down">
         <div class="demos-hero-eyebrow">
           <span class="demos-eyebrow-pill"><i class="fab fa-youtube"></i> ${d.hero_pill}</span>
@@ -783,9 +1093,12 @@
         <div class="demos-hero-tags">
           ${d.hero_tags.map(t => `<span class="demos-hero-tag">${t}</span>`).join('')}
         </div>
+        <button class="what-is-appsheet-btn" id="whatIsBtn" data-aos="fade-up" data-aos-delay="100">
+          <i class="fab fa-google"></i>
+          ${d.what_is_btn}
+        </button>
       </section>
 
-      <!-- ── STATS ── -->
       <div class="demos-stats" data-aos="fade-up">
         ${d.stats.map(s => `
           <div class="demos-stat" data-ghost="${s.ghost}${s.suffix}">
@@ -800,7 +1113,6 @@
           </div>`).join('')}
       </div>
 
-      <!-- ── INTRO CARD ── -->
       <div class="demos-intro-card" data-aos="fade-up">
         <div class="demos-intro-inner">
           <div class="demos-intro-left">
@@ -825,7 +1137,6 @@
         </div>
       </div>
 
-      <!-- ── VIDEOS ── -->
       <div class="demos-section-header" data-aos="fade-up">
         <p class="section-eyebrow">${d.videos_eyebrow}</p>
         <h2 class="section-title">${d.videos_title}</h2>
@@ -835,7 +1146,6 @@
         ${d.videos.map((v, i) => buildVideoCard(v, d, i)).join('')}
       </div>
 
-      <!-- ── CTA ── -->
       <section class="demos-cta" data-aos="fade-up">
         <h2>${d.cta_h2}</h2>
         <p>${d.cta_p}</p>
@@ -847,17 +1157,14 @@
 
     refreshAOS();
     bindDemoCards();
+    bindWhatIsButton();
+    renderModalContent();
   }
 
-  /* ══════════════════════════════════════════════════════
-     BIND DEMO CARDS — abrir lightbox al hacer clic
-  ══════════════════════════════════════════════════════ */
   function bindDemoCards() {
     document.querySelectorAll('.demo-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        // Evitar abrir si se clickeó el link de YouTube directamente
         if (e.target.closest('.demo-yt-link')) return;
-        
         const idx = parseInt(card.dataset.demoIdx);
         openDemoLightbox(idx);
       });
@@ -865,7 +1172,102 @@
   }
 
   /* ══════════════════════════════════════════════════════
-     LIGHTBOX MODAL
+     MODAL "¿QUÉ ES APPSHEET?"
+  ══════════════════════════════════════════════════════ */
+  function bindWhatIsButton() {
+    const btn = document.getElementById('whatIsBtn');
+    if (btn) {
+      btn.addEventListener('click', openAppSheetModal);
+    }
+  }
+
+  function renderModalContent() {
+    const d = demosTrans[lang];
+    const modalBody = document.querySelector('#appsheetInfoModal .modal-body');
+    
+    modalBody.innerHTML = `
+      <div class="modal-header">
+        <div class="modal-google-badge">
+          <i class="fab fa-google"></i>
+          ${d.modal_google_badge}
+        </div>
+        <h2>${d.modal_title}<span>${d.modal_title_span}</span>${d.modal_title_end}</h2>
+        <p>${d.modal_subtitle}</p>
+      </div>
+
+      <div class="modal-section">
+        <h3 class="modal-section-title">
+          <i class="fas fa-rocket"></i>
+          ${d.modal_benefits_title}
+        </h3>
+        <div class="modal-grid">
+          ${d.modal_benefits.map(b => `
+            <div class="modal-feature-card">
+              <div class="modal-feature-icon"><i class="${b.icon}"></i></div>
+              <h4>${b.title}</h4>
+              <p>${b.desc}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h3 class="modal-section-title">
+          <i class="fas fa-plug"></i>
+          ${d.modal_integrations_title}
+        </h3>
+        <div class="modal-integrations">
+          ${d.modal_integrations.map(i => `
+            <span class="modal-integration-badge">
+              <i class="${i.icon}"></i>
+              ${i.label}
+            </span>`).join('')}
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h3 class="modal-section-title">
+          <i class="fas fa-briefcase"></i>
+          ${d.modal_usecases_title}
+        </h3>
+        <div class="modal-grid">
+          ${d.modal_usecases.map(u => `
+            <div class="modal-feature-card">
+              <div class="modal-feature-icon"><i class="${u.icon}"></i></div>
+              <h4>${u.title}</h4>
+              <p>${u.desc}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="modal-cta-box">
+        <h3>${d.modal_cta_title}</h3>
+        <p>${d.modal_cta_desc}</p>
+        <a href="contacto.html" class="btn">
+          <i class="fas fa-calendar-check"></i>
+          ${d.modal_cta_btn}
+        </a>
+      </div>
+    `;
+  }
+
+  function openAppSheetModal() {
+    const modal = document.getElementById('appsheetInfoModal');
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => modal.classList.add('modal-open'));
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAppSheetModal() {
+    const modal = document.getElementById('appsheetInfoModal');
+    modal.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    setTimeout(() => { modal.style.display = 'none'; }, 400);
+  }
+
+  /* ══════════════════════════════════════════════════════
+     LIGHTBOX DEMOS
   ══════════════════════════════════════════════════════ */
   const demoLb = document.getElementById('demoLightbox');
   const lbOverlay = document.getElementById('lbOverlay');
@@ -886,18 +1288,13 @@
     currentDemoData = demo;
     currentCarouselIndex = 0;
 
-    // Construir slides del carrusel: video + screenshots
-    const slides = [
-      { type: 'video', id: demo.id }
-    ];
-    
+    const slides = [{ type: 'video', id: demo.id }];
     if (demo.screenshots && demo.screenshots.length > 0) {
       demo.screenshots.forEach(url => {
         slides.push({ type: 'image', url });
       });
     }
 
-    // Renderizar slides
     carouselInner.innerHTML = slides.map((slide, i) => {
       if (slide.type === 'video') {
         return `
@@ -917,24 +1314,20 @@
       }
     }).join('');
 
-    // Renderizar indicadores
     carouselIndicators.innerHTML = slides.map((_, i) => 
       `<button class="lb-carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></button>`
     ).join('');
 
-    // Bind indicadores
     document.querySelectorAll('.lb-carousel-dot').forEach(dot => {
       dot.addEventListener('click', () => {
         goToSlide(parseInt(dot.dataset.slide));
       });
     });
 
-    // Info del demo
     lbTitle.textContent = demo.title;
     lbDesc.textContent = demo.desc_long || demo.desc;
     lbYtBtn.href = `https://www.youtube.com/watch?v=${demo.id}`;
 
-    // Abrir modal
     demoLb.style.display = 'flex';
     requestAnimationFrame(() => requestAnimationFrame(() => demoLb.classList.add('lb-open')));
     document.body.style.overflow = 'hidden';
@@ -955,7 +1348,6 @@
     currentCarouselIndex = index;
     carouselInner.style.transform = `translateX(-${index * 100}%)`;
     
-    // Actualizar indicadores
     document.querySelectorAll('.lb-carousel-dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
     });
@@ -982,20 +1374,20 @@
     if (currentCarouselIndex < slides.length - 1) goToSlide(currentCarouselIndex + 1);
   });
 
-  // Teclado
   document.addEventListener('keydown', e => {
-    if (!demoLb.classList.contains('lb-open')) return;
-    if (e.key === 'Escape') closeDemoLightbox();
-    if (e.key === 'ArrowLeft') {
-      if (currentCarouselIndex > 0) goToSlide(currentCarouselIndex - 1);
+    if (demoLb.classList.contains('lb-open')) {
+      if (e.key === 'Escape') closeDemoLightbox();
+      if (e.key === 'ArrowLeft' && currentCarouselIndex > 0) goToSlide(currentCarouselIndex - 1);
+      if (e.key === 'ArrowRight') {
+        const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
+        if (currentCarouselIndex < slides.length - 1) goToSlide(currentCarouselIndex + 1);
+      }
     }
-    if (e.key === 'ArrowRight') {
-      const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
-      if (currentCarouselIndex < slides.length - 1) goToSlide(currentCarouselIndex + 1);
+    if (document.getElementById('appsheetInfoModal').classList.contains('modal-open')) {
+      if (e.key === 'Escape') closeAppSheetModal();
     }
   });
 
-  // Swipe táctil
   let touchStartX = 0;
   carouselInner.addEventListener('touchstart', e => { 
     touchStartX = e.changedTouches[0].clientX; 
@@ -1013,9 +1405,10 @@
     }
   });
 
-  /* ══════════════════════════════════════════════════════
-     TOGGLE DE IDIOMA
-  ══════════════════════════════════════════════════════ */
+  // Modal close
+  document.getElementById('modalCloseBtn').addEventListener('click', closeAppSheetModal);
+  document.getElementById('modalOverlay').addEventListener('click', closeAppSheetModal);
+
   function toggleLang() {
     lang = lang === 'es' ? 'en' : 'es';
     localStorage.setItem('homeLang', lang);
