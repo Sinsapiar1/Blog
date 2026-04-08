@@ -208,6 +208,7 @@
       box-shadow: var(--shadow-sm);
       display: flex; flex-direction: column;
       position: relative;
+      cursor: pointer;
     }
     .demo-card::before {
       content: '';
@@ -233,6 +234,44 @@
     .demo-video-wrap iframe {
       position: absolute; top:0; left:0;
       width:100%; height:100%; border:none;
+      pointer-events: none;
+    }
+
+    /* Overlay "Ver Detalles" */
+    .demo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all var(--transition-base);
+      z-index: 2;
+    }
+    .demo-card:hover .demo-overlay {
+      background: rgba(0,0,0,0.7);
+      opacity: 1;
+    }
+    .demo-overlay-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg,#FF6B00,#FF9500);
+      color: white;
+      border: none;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255,107,0,0.4);
+      transition: all var(--transition-fast);
+      backdrop-filter: blur(8px);
+    }
+    .demo-overlay-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 32px rgba(255,107,0,0.6);
     }
 
     /* Card body */
@@ -263,6 +302,140 @@
     .demos-cta p { color:var(--text-secondary); margin-bottom:32px; font-size:1rem; line-height:1.6; max-width:480px; margin-left:auto; margin-right:auto; }
     .demos-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
     @media(max-width:480px){ .demos-cta { padding:32px 24px; } .demos-cta-btns { flex-direction:column; align-items:center; } }
+
+    /* ══════════════════════════════════════════
+       LIGHTBOX MODAL — estilo MAC (igual galeria.html)
+    ══════════════════════════════════════════ */
+    #demoLightbox { display:none; position:fixed; inset:0; z-index:5000; align-items:center; justify-content:center; }
+    #demoLightbox.lb-open { display:flex; }
+    .lb-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); backdrop-filter:blur(0px); transition:background 0.4s ease,backdrop-filter 0.4s ease; cursor:pointer; }
+    #demoLightbox.lb-open .lb-overlay { background:rgba(0,0,0,0.92); backdrop-filter:blur(14px); }
+    .lb-box { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; width:min(92vw,1200px); max-height:90vh; opacity:0; transform:scale(0.93); transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1),transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+    #demoLightbox.lb-open .lb-box { opacity:1; transform:scale(1); }
+    .lb-frame-wrap { position:relative; width:100%; border-radius:var(--radius-xl); overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,0.7); background:#0a0a0a; }
+    .lb-browser-bar { background:#1e1e1e; padding:12px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .lb-browser-dots { display:flex; gap:7px; }
+    .lb-browser-dots span { width:12px; height:12px; border-radius:50%; }
+    .lb-browser-dots span:nth-child(1){background:#FF5F56} .lb-browser-dots span:nth-child(2){background:#FFBD2E} .lb-browser-dots span:nth-child(3){background:#27C93F}
+    .lb-url-bar { flex:1; background:rgba(255,255,255,0.08); border-radius:6px; padding:6px 14px; font-size:0.8rem; color:rgba(255,255,255,0.6); font-family:monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    
+    /* Carrusel de imágenes */
+    .lb-carousel-wrap {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-carousel-inner {
+      display: flex;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      width: 100%;
+    }
+    .lb-carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    .lb-carousel-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .lb-carousel-slide iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* Controles del carrusel */
+    .lb-carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      z-index: 10;
+    }
+    .lb-carousel-arrow:hover {
+      background: rgba(255,107,0,0.8);
+      border-color: #FF6B00;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .lb-carousel-arrow.lb-prev { left: 16px; }
+    .lb-carousel-arrow.lb-next { right: 16px; }
+    .lb-carousel-arrow:disabled {
+      opacity: 0.2;
+      cursor: default;
+    }
+    .lb-carousel-arrow:disabled:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-50%);
+    }
+    
+    /* Indicadores del carrusel */
+    .lb-carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 16px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+    .lb-carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      padding: 0;
+    }
+    .lb-carousel-dot.active {
+      background: #FF6B00;
+      transform: scale(1.4);
+    }
+
+    .lb-close { position:absolute; top:56px; right:16px; width:40px; height:40px; background:rgba(0,0,0,0.6); border:none; border-radius:50%; color:white; font-size:1.05rem; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px); transition:background var(--transition-fast),transform var(--transition-fast); z-index:20; }
+    .lb-close:hover { background:rgba(255,59,48,0.9); transform:scale(1.12); }
+    .lb-info { margin-top:20px; color:white; width:100%; display:flex; align-items:flex-start; justify-content:space-between; padding:0 6px; gap:20px; }
+    .lb-info-text { flex: 1; }
+    .lb-info-text h3 { font-size:1.2rem; font-weight:700; margin-bottom:6px; text-align:left; }
+    .lb-info-text p { font-size:0.9rem; opacity:0.75; text-align:left; line-height:1.6; }
+    .lb-actions { display:flex; gap:10px; flex-shrink:0; }
+    .lb-action-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border:none; border-radius:var(--radius-full); font-size:0.9rem; font-weight:700; cursor:pointer; white-space:nowrap; transition:all var(--transition-fast); text-decoration:none; }
+    .lb-action-btn.primary { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; box-shadow:0 4px 16px rgba(255,107,0,0.45); }
+    .lb-action-btn.primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,107,0,0.6); }
+    .lb-action-btn.secondary { background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.25); }
+    .lb-action-btn.secondary:hover { background:rgba(255,255,255,0.25); transform:translateY(-2px); }
+    @media(max-width:768px){ .lb-carousel-wrap{height:55vh} .lb-carousel-arrow{width:36px;height:36px;font-size:0.9rem} .lb-info{flex-direction:column;gap:14px} .lb-actions{width:100%;justify-content:center} }
   </style>
 </head>
 <body>
@@ -305,6 +478,40 @@
   </div>
 
   <footer><p id="footerText">&copy; 2026 Raul Pivet. Todos los derechos reservados.</p></footer>
+
+  <!-- Lightbox Modal MAC con Carrusel -->
+  <div id="demoLightbox" role="dialog" aria-modal="true" aria-label="Vista detallada del demo">
+    <div class="lb-overlay" id="lbOverlay"></div>
+    <div class="lb-box">
+      <div class="lb-frame-wrap">
+        <div class="lb-browser-bar">
+          <div class="lb-browser-dots"><span></span><span></span><span></span></div>
+          <div class="lb-url-bar" id="lbUrl">AppSheet WMS Demo</div>
+        </div>
+        <div class="lb-carousel-wrap">
+          <div class="lb-carousel-inner" id="carouselInner"></div>
+          <button class="lb-carousel-arrow lb-prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+          <button class="lb-carousel-arrow lb-next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+          <div class="lb-carousel-indicators" id="carouselIndicators"></div>
+        </div>
+        <button class="lb-close" id="lbClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="lb-info">
+        <div class="lb-info-text">
+          <h3 id="lbTitle"></h3>
+          <p id="lbDesc"></p>
+        </div>
+        <div class="lb-actions">
+          <a href="#" id="lbYtBtn" target="_blank" rel="noopener noreferrer" class="lb-action-btn primary">
+            <i class="fab fa-youtube"></i> <span id="lbYtText">Ver en YouTube</span>
+          </a>
+          <a href="contacto.html" class="lb-action-btn secondary">
+            <i class="fas fa-paper-plane"></i> <span id="lbContactText">Contactar</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
@@ -350,6 +557,7 @@
       /* Cards */
       status_live: 'Activo',
       watch_yt: 'Ver en YouTube',
+      view_details: 'Ver Detalles',
 
       /* CTA */
       cta_h2: '¿Necesitás una app así para tu operación?',
@@ -357,12 +565,21 @@
       cta_btn1: 'Hablemos',
       cta_btn2: 'Ver todos los proyectos',
 
+      /* Lightbox */
+      lb_contact: 'Contactar',
+
       videos: [
         {
           id: 'ghiOKoppKp4',
           title: 'Sistema de Control de Almacén',
           desc: 'App móvil completa para gestión de inventario: entradas, salidas, maestro de productos y exportación automática de documentos. Implementada en operación real con turno continuo.',
-          tags: ['AppSheet', 'Google Sheets', 'Inventario', 'Drive']
+          desc_long: 'Sistema WMS construido con AppSheet y Google Sheets para operación de alimentos. Incluye recepción de camiones con validación de temperatura, control de lotes y vencimientos, trazabilidad completa, generación automática de documentos PDF y Excel, alertas de stock crítico y dashboard de rentabilidad con PMP.',
+          tags: ['AppSheet', 'Google Sheets', 'Inventario', 'Drive'],
+          screenshots: [
+            // IMPORTANTE: Agregá acá las URLs de tus screenshots de la app
+            // Ejemplo: 'https://i.imgur.com/ejemplo1.png',
+            // Por ahora dejamos el video como primer slide
+          ]
         }
       ]
     },
@@ -402,28 +619,39 @@
 
       status_live: 'Live',
       watch_yt: 'Watch on YouTube',
+      view_details: 'View Details',
 
       cta_h2: 'Need an app like this for your operation?',
       cta_p: 'I can analyze your current workflow and build a custom solution. Fast, no complex code, and something your team will actually use from day one.',
       cta_btn1: "Let's talk",
       cta_btn2: 'See all projects',
 
+      lb_contact: 'Contact',
+
       videos: [
         {
           id: 'ghiOKoppKp4',
           title: 'Warehouse Management System',
           desc: 'Full mobile app for inventory management: entries, exits, product master and automatic document export. Deployed in a real continuous-shift operation.',
-          tags: ['AppSheet', 'Google Sheets', 'Inventory', 'Drive']
+          desc_long: 'WMS system built with AppSheet and Google Sheets for food operations. Includes truck reception with temperature validation, batch and expiration control, full traceability, automatic PDF and Excel document generation, critical stock alerts, and profitability dashboard with weighted average price.',
+          tags: ['AppSheet', 'Google Sheets', 'Inventory', 'Drive'],
+          screenshots: [
+            // IMPORTANT: Add your app screenshot URLs here
+            // Example: 'https://i.imgur.com/example1.png',
+            // For now we leave the video as the first slide
+          ]
         }
       ]
     }
   };
 
   let lang = localStorage.getItem('homeLang') || 'es';
+  let currentCarouselIndex = 0;
+  let currentDemoData = null;
 
   function buildVideoCard(v, d, idx) {
     return `
-      <article class="demo-card" data-aos="fade-up" data-aos-delay="${100 + idx * 80}">
+      <article class="demo-card" data-demo-idx="${idx}" data-aos="fade-up" data-aos-delay="${100 + idx * 80}">
         <div class="demo-video-wrap">
           <iframe
             src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1"
@@ -432,6 +660,11 @@
             allowfullscreen
             loading="lazy"
           ></iframe>
+          <div class="demo-overlay">
+            <button class="demo-overlay-btn">
+              <i class="fas fa-search-plus"></i> ${d.view_details}
+            </button>
+          </div>
         </div>
         <div class="demo-card-body">
           <div class="demo-tags">${v.tags.map(t => `<span class="demo-tag">${t}</span>`).join('')}</div>
@@ -442,7 +675,7 @@
               <span class="demo-status-dot"></span>
               ${d.status_live}
             </span>
-            <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer" class="demo-yt-link">
+            <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer" class="demo-yt-link" onclick="event.stopPropagation()">
               <i class="fab fa-youtube"></i> ${d.watch_yt}
             </a>
           </div>
@@ -462,6 +695,10 @@
       const k = el.getAttribute('data-i18n');
       if (d[k]) el.textContent = d[k];
     });
+
+    // Actualizar textos del lightbox
+    document.getElementById('lbYtText').textContent = d.watch_yt;
+    document.getElementById('lbContactText').textContent = d.lb_contact;
 
     document.getElementById('mainContent').innerHTML = `
 
@@ -539,8 +776,176 @@
       </section>`;
 
     refreshAOS();
+    bindDemoCards();
   }
 
+  /* ══════════════════════════════════════════════════════
+     BIND DEMO CARDS — abrir lightbox al hacer clic
+  ══════════════════════════════════════════════════════ */
+  function bindDemoCards() {
+    document.querySelectorAll('.demo-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        // Evitar abrir si se clickeó el link de YouTube directamente
+        if (e.target.closest('.demo-yt-link')) return;
+        
+        const idx = parseInt(card.dataset.demoIdx);
+        openDemoLightbox(idx);
+      });
+    });
+  }
+
+  /* ══════════════════════════════════════════════════════
+     LIGHTBOX MODAL
+  ══════════════════════════════════════════════════════ */
+  const demoLb = document.getElementById('demoLightbox');
+  const lbOverlay = document.getElementById('lbOverlay');
+  const lbClose = document.getElementById('lbClose');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbDesc = document.getElementById('lbDesc');
+  const lbYtBtn = document.getElementById('lbYtBtn');
+  const carouselInner = document.getElementById('carouselInner');
+  const carouselPrev = document.getElementById('carouselPrev');
+  const carouselNext = document.getElementById('carouselNext');
+  const carouselIndicators = document.getElementById('carouselIndicators');
+
+  function openDemoLightbox(idx) {
+    const d = demosTrans[lang];
+    const demo = d.videos[idx];
+    if (!demo) return;
+
+    currentDemoData = demo;
+    currentCarouselIndex = 0;
+
+    // Construir slides del carrusel: video + screenshots
+    const slides = [
+      { type: 'video', id: demo.id }
+    ];
+    
+    if (demo.screenshots && demo.screenshots.length > 0) {
+      demo.screenshots.forEach(url => {
+        slides.push({ type: 'image', url });
+      });
+    }
+
+    // Renderizar slides
+    carouselInner.innerHTML = slides.map((slide, i) => {
+      if (slide.type === 'video') {
+        return `
+          <div class="lb-carousel-slide">
+            <iframe
+              src="https://www.youtube.com/embed/${slide.id}?rel=0&modestbranding=1&autoplay=0"
+              title="${demo.title}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>`;
+      } else {
+        return `
+          <div class="lb-carousel-slide">
+            <img src="${slide.url}" alt="Screenshot ${i}" loading="lazy">
+          </div>`;
+      }
+    }).join('');
+
+    // Renderizar indicadores
+    carouselIndicators.innerHTML = slides.map((_, i) => 
+      `<button class="lb-carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></button>`
+    ).join('');
+
+    // Bind indicadores
+    document.querySelectorAll('.lb-carousel-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(parseInt(dot.dataset.slide));
+      });
+    });
+
+    // Info del demo
+    lbTitle.textContent = demo.title;
+    lbDesc.textContent = demo.desc_long || demo.desc;
+    lbYtBtn.href = `https://www.youtube.com/watch?v=${demo.id}`;
+
+    // Abrir modal
+    demoLb.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => demoLb.classList.add('lb-open')));
+    document.body.style.overflow = 'hidden';
+
+    updateCarouselButtons();
+  }
+
+  function closeDemoLightbox() {
+    demoLb.classList.remove('lb-open');
+    document.body.style.overflow = '';
+    setTimeout(() => { demoLb.style.display = 'none'; }, 380);
+  }
+
+  function goToSlide(index) {
+    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
+    if (index < 0 || index >= slides.length) return;
+    
+    currentCarouselIndex = index;
+    carouselInner.style.transform = `translateX(-${index * 100}%)`;
+    
+    // Actualizar indicadores
+    document.querySelectorAll('.lb-carousel-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+    
+    updateCarouselButtons();
+  }
+
+  function updateCarouselButtons() {
+    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
+    carouselPrev.disabled = currentCarouselIndex === 0;
+    carouselNext.disabled = currentCarouselIndex === slides.length - 1;
+  }
+
+  // Event listeners
+  lbClose.addEventListener('click', (e) => { e.stopPropagation(); closeDemoLightbox(); });
+  lbOverlay.addEventListener('click', closeDemoLightbox);
+  
+  carouselPrev.addEventListener('click', () => {
+    if (currentCarouselIndex > 0) goToSlide(currentCarouselIndex - 1);
+  });
+  
+  carouselNext.addEventListener('click', () => {
+    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
+    if (currentCarouselIndex < slides.length - 1) goToSlide(currentCarouselIndex + 1);
+  });
+
+  // Teclado
+  document.addEventListener('keydown', e => {
+    if (!demoLb.classList.contains('lb-open')) return;
+    if (e.key === 'Escape') closeDemoLightbox();
+    if (e.key === 'ArrowLeft') {
+      if (currentCarouselIndex > 0) goToSlide(currentCarouselIndex - 1);
+    }
+    if (e.key === 'ArrowRight') {
+      const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
+      if (currentCarouselIndex < slides.length - 1) goToSlide(currentCarouselIndex + 1);
+    }
+  });
+
+  // Swipe táctil
+  let touchStartX = 0;
+  carouselInner.addEventListener('touchstart', e => { 
+    touchStartX = e.changedTouches[0].clientX; 
+  }, { passive: true });
+  
+  carouselInner.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 50) return;
+    
+    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
+    if (diff > 0 && currentCarouselIndex < slides.length - 1) {
+      goToSlide(currentCarouselIndex + 1);
+    } else if (diff < 0 && currentCarouselIndex > 0) {
+      goToSlide(currentCarouselIndex - 1);
+    }
+  });
+
+  /* ══════════════════════════════════════════════════════
+     TOGGLE DE IDIOMA
+  ══════════════════════════════════════════════════════ */
   function toggleLang() {
     lang = lang === 'es' ? 'en' : 'es';
     localStorage.setItem('homeLang', lang);
