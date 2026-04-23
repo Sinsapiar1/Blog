@@ -577,27 +577,103 @@
     .demos-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
     @media(max-width:480px){ .demos-cta { padding:32px 24px; } .demos-cta-btns { flex-direction:column; align-items:center; } }
 
-    /* ══════════════════════════════════════════
-       LIGHTBOX MODAL — estilo MAC (igual galeria.html)
-    ══════════════════════════════════════════ */
-    #demoLightbox { display:none; position:fixed; inset:0; z-index:5000; align-items:center; justify-content:center; }
+    /* ══════════════════════════════════════════════════════════════════════
+       LIGHTBOX MODAL — REDISEÑO RESPONSIVE v3
+       Arquitectura: flex column, carrusel flex:1, info con scroll interno
+       Usa dvh (dynamic viewport) con fallback a vh para mobile real
+    ══════════════════════════════════════════════════════════════════════ */
+    #demoLightbox { 
+      display:none; 
+      position:fixed; 
+      inset:0; 
+      z-index:5000; 
+      align-items:center; 
+      justify-content:center; 
+      padding: 16px;
+      box-sizing: border-box;
+    }
     #demoLightbox.lb-open { display:flex; }
-    .lb-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); backdrop-filter:blur(0px); transition:background 0.4s ease,backdrop-filter 0.4s ease; cursor:pointer; }
-    #demoLightbox.lb-open .lb-overlay { background:rgba(0,0,0,0.92); backdrop-filter:blur(14px); }
-    .lb-box { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; width:min(92vw,1200px); max-height:90vh; opacity:0; transform:scale(0.93); transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1),transform 0.35s cubic-bezier(0.16,1,0.3,1); }
-    #demoLightbox.lb-open .lb-box { opacity:1; transform:scale(1); }
-    .lb-frame-wrap { position:relative; width:100%; border-radius:var(--radius-xl); overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,0.7); background:#0a0a0a; }
-    .lb-browser-bar { background:#1e1e1e; padding:12px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,0.06); }
-    .lb-browser-dots { display:flex; gap:7px; }
-    .lb-browser-dots span { width:12px; height:12px; border-radius:50%; }
-    .lb-browser-dots span:nth-child(1){background:#FF5F56} .lb-browser-dots span:nth-child(2){background:#FFBD2E} .lb-browser-dots span:nth-child(3){background:#27C93F}
-    .lb-url-bar { flex:1; background:rgba(255,255,255,0.08); border-radius:6px; padding:6px 14px; font-size:0.8rem; color:rgba(255,255,255,0.6); font-family:monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     
-    /* Carrusel de imágenes */
+    .lb-overlay { 
+      position:absolute; 
+      inset:0; 
+      background:rgba(0,0,0,0); 
+      backdrop-filter:blur(0px); 
+      transition:background 0.4s ease,backdrop-filter 0.4s ease; 
+      cursor:pointer; 
+    }
+    #demoLightbox.lb-open .lb-overlay { 
+      background:rgba(0,0,0,0.92); 
+      backdrop-filter:blur(14px); 
+    }
+    
+    /* Caja principal — flex column con altura dinámica */
+    .lb-box { 
+      position:relative; 
+      z-index:1; 
+      display:flex; 
+      flex-direction:column; 
+      width:min(94vw, 1200px); 
+      max-height: 94vh;
+      max-height: 94dvh;
+      opacity:0; 
+      transform:scale(0.93); 
+      transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1),transform 0.35s cubic-bezier(0.16,1,0.3,1); 
+    }
+    #demoLightbox.lb-open .lb-box { opacity:1; transform:scale(1); }
+    
+    /* Frame del "navegador" — ahora con flex para que el carrusel tome espacio */
+    .lb-frame-wrap { 
+      position:relative; 
+      width:100%; 
+      border-radius: clamp(12px, 2vw, 20px);
+      overflow:hidden; 
+      box-shadow:0 32px 80px rgba(0,0,0,0.7); 
+      background:#0a0a0a; 
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0; /* crítico para que flex children respeten overflow */
+    }
+    
+    /* Browser bar — compacta en mobile */
+    .lb-browser-bar { 
+      background:#1e1e1e; 
+      padding: clamp(8px, 1.5vw, 12px) clamp(12px, 2vw, 18px); 
+      display:flex; 
+      align-items:center; 
+      gap: clamp(8px, 1.5vw, 14px); 
+      border-bottom:1px solid rgba(255,255,255,0.06); 
+      flex-shrink: 0;
+    }
+    .lb-browser-dots { display:flex; gap: 7px; flex-shrink: 0; }
+    .lb-browser-dots span { width: clamp(9px, 1.2vw, 12px); height: clamp(9px, 1.2vw, 12px); border-radius:50%; }
+    .lb-browser-dots span:nth-child(1){background:#FF5F56} 
+    .lb-browser-dots span:nth-child(2){background:#FFBD2E} 
+    .lb-browser-dots span:nth-child(3){background:#27C93F}
+    .lb-url-bar { 
+      flex:1; 
+      background:rgba(255,255,255,0.08); 
+      border-radius:6px; 
+      padding: clamp(4px, 0.8vw, 6px) clamp(10px, 1.5vw, 14px); 
+      font-size: clamp(0.7rem, 1.5vw, 0.8rem); 
+      color:rgba(255,255,255,0.6); 
+      font-family:monospace; 
+      white-space:nowrap; 
+      overflow:hidden; 
+      text-overflow:ellipsis; 
+    }
+    
+    /* ──────────── CARRUSEL ──────────── 
+       flex: 1 para tomar el espacio disponible
+       min-height evita colapso, max-height evita desbordar */
     .lb-carousel-wrap {
       position: relative;
       width: 100%;
-      height: 65vh;
+      flex: 1;
+      min-height: 260px;
+      max-height: 70vh;
+      max-height: 70dvh;
       background: #000;
       overflow: hidden;
       display: flex;
@@ -617,7 +693,7 @@
       align-items: center;
       justify-content: center;
       background: #000;
-      padding: 32px 72px;
+      padding: clamp(16px, 3vw, 32px) clamp(56px, 7vw, 80px);
       box-sizing: border-box;
     }
     .lb-carousel-slide img {
@@ -627,6 +703,7 @@
       user-select: none;
       -webkit-user-select: none;
       border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
     .lb-carousel-slide iframe {
       width: 100%;
@@ -635,57 +712,63 @@
       border-radius: 8px;
     }
     
-    /* Controles del carrusel */
+    /* Flechas — tamaño fluido, siempre touch-friendly */
     .lb-carousel-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
+      width: clamp(40px, 5vw, 48px);
+      height: clamp(40px, 5vw, 48px);
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.25);
       border-radius: 50%;
       color: white;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 1.3vw, 1.1rem);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       transition: all var(--transition-base);
       z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     .lb-carousel-arrow:hover {
-      background: rgba(255,107,0,0.8);
+      background: rgba(255,107,0,0.85);
       border-color: #FF6B00;
       transform: translateY(-50%) scale(1.1);
     }
-    .lb-carousel-arrow.lb-prev { left: 16px; }
-    .lb-carousel-arrow.lb-next { right: 16px; }
-    .lb-carousel-arrow:disabled {
-      opacity: 0.2;
-      cursor: default;
+    .lb-carousel-arrow:active {
+      transform: translateY(-50%) scale(0.95);
     }
-    .lb-carousel-arrow:disabled:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.2);
-      transform: translateY(-50%);
+    .lb-carousel-arrow.lb-prev { left: clamp(8px, 1.5vw, 16px); }
+    .lb-carousel-arrow.lb-next { right: clamp(8px, 1.5vw, 16px); }
+    .lb-carousel-arrow:disabled {
+      opacity: 0.25;
+      cursor: default;
+      pointer-events: none;
     }
     
-    /* Indicadores del carrusel */
+    /* Indicadores — con flex-wrap y scroll horizontal si hay muchos */
     .lb-carousel-indicators {
       position: absolute;
-      bottom: 20px;
+      bottom: clamp(12px, 2vw, 20px);
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       gap: 8px;
-      background: rgba(0,0,0,0.5);
-      padding: 8px 16px;
+      background: rgba(0,0,0,0.6);
+      padding: clamp(6px, 1vw, 8px) clamp(10px, 1.5vw, 16px);
       border-radius: 20px;
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       z-index: 10;
+      max-width: calc(100% - 120px); /* deja espacio a las flechas */
+      overflow-x: auto;
+      scrollbar-width: none;
     }
+    .lb-carousel-indicators::-webkit-scrollbar { display: none; }
     .lb-carousel-dot {
       width: 8px;
       height: 8px;
@@ -695,30 +778,197 @@
       cursor: pointer;
       transition: all var(--transition-fast);
       padding: 0;
+      flex-shrink: 0;
     }
     .lb-carousel-dot.active {
       background: #FF6B00;
       transform: scale(1.4);
     }
 
-    .lb-close { position:absolute; top:56px; right:16px; width:40px; height:40px; background:rgba(0,0,0,0.6); border:none; border-radius:50%; color:white; font-size:1.05rem; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px); transition:background var(--transition-fast),transform var(--transition-fast); z-index:20; }
+    /* Close button */
+    .lb-close { 
+      position:absolute; 
+      top: clamp(56px, 8vw, 64px); 
+      right: clamp(8px, 1.5vw, 16px); 
+      width: clamp(36px, 5vw, 42px); 
+      height: clamp(36px, 5vw, 42px); 
+      background:rgba(0,0,0,0.7); 
+      border:none; 
+      border-radius:50%; 
+      color:white; 
+      font-size:clamp(0.9rem, 1.3vw, 1.05rem); 
+      cursor:pointer; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      backdrop-filter:blur(8px); 
+      -webkit-backdrop-filter:blur(8px);
+      transition:background var(--transition-fast),transform var(--transition-fast); 
+      z-index:20; 
+    }
     .lb-close:hover { background:rgba(255,59,48,0.9); transform:scale(1.12); }
-    .lb-info { margin-top:20px; color:white; width:100%; display:flex; align-items:flex-start; justify-content:space-between; padding:0 6px; gap:20px; }
-    .lb-info-text { flex: 1; }
-    .lb-info-text h3 { font-size:1.2rem; font-weight:700; margin-bottom:6px; text-align:left; }
-    .lb-info-text p { font-size:0.9rem; opacity:0.75; text-align:left; line-height:1.6; }
-    .lb-actions { display:flex; gap:10px; flex-shrink:0; }
-    .lb-action-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border:none; border-radius:var(--radius-full); font-size:0.9rem; font-weight:700; cursor:pointer; white-space:nowrap; transition:all var(--transition-fast); text-decoration:none; }
-    .lb-action-btn.primary { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; box-shadow:0 4px 16px rgba(255,107,0,0.45); }
+    
+    /* ──────────── INFO (título, descripción, botones) ──────────── 
+       Caja separada debajo del frame con su propio scroll */
+    .lb-info { 
+      margin-top: clamp(12px, 2vw, 20px); 
+      color:white; 
+      width:100%; 
+      display:flex; 
+      align-items:flex-start; 
+      justify-content:space-between; 
+      padding: 0 clamp(4px, 1vw, 6px); 
+      gap: clamp(12px, 2vw, 20px); 
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+    .lb-info-text { 
+      flex: 1; 
+      min-width: 0; /* permite overflow de texto largo */
+    }
+    .lb-info-text h3 { 
+      font-size: clamp(1rem, 2vw, 1.2rem); 
+      font-weight:700; 
+      margin-bottom:6px; 
+      text-align:left; 
+      line-height: 1.3;
+    }
+    .lb-info-text p { 
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem); 
+      opacity:0.75; 
+      text-align:left; 
+      line-height:1.6; 
+      max-height: 100px;
+      overflow-y: auto;
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.3) transparent;
+    }
+    .lb-info-text p::-webkit-scrollbar { width: 4px; }
+    .lb-info-text p::-webkit-scrollbar-track { background: transparent; }
+    .lb-info-text p::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
+    
+    .lb-actions { 
+      display:flex; 
+      gap: clamp(8px, 1.5vw, 10px); 
+      flex-shrink:0; 
+    }
+    .lb-action-btn { 
+      display:inline-flex; 
+      align-items:center; 
+      gap: 8px; 
+      padding: clamp(10px, 1.5vw, 12px) clamp(16px, 2.5vw, 24px); 
+      border:none; 
+      border-radius:var(--radius-full); 
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem); 
+      font-weight:700; 
+      cursor:pointer; 
+      white-space:nowrap; 
+      transition:all var(--transition-fast); 
+      text-decoration:none; 
+    }
+    .lb-action-btn.primary { 
+      background:linear-gradient(135deg,#FF6B00,#FF9500); 
+      color:white; 
+      box-shadow:0 4px 16px rgba(255,107,0,0.45); 
+    }
     .lb-action-btn.primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,107,0,0.6); }
-    .lb-action-btn.secondary { background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.25); }
+    .lb-action-btn.secondary { 
+      background:rgba(255,255,255,0.15); 
+      color:white; 
+      border:1px solid rgba(255,255,255,0.25); 
+    }
     .lb-action-btn.secondary:hover { background:rgba(255,255,255,0.25); transform:translateY(-2px); }
-    @media(max-width:768px){ 
-      .lb-carousel-wrap{height:50vh} 
-      .lb-carousel-slide{padding:16px 48px}
-      .lb-carousel-arrow{width:36px;height:36px;font-size:0.9rem} 
-      .lb-info{flex-direction:column;gap:14px} 
-      .lb-actions{width:100%;justify-content:center} 
+    
+    /* ══════════════════════════════════════════
+       MOBILE OPTIMIZATIONS (≤ 768px)
+       Prioridad: carrusel visible, controles grandes, todo navegable
+    ══════════════════════════════════════════ */
+    @media(max-width: 768px){ 
+      #demoLightbox { padding: 8px; }
+      
+      .lb-box { 
+        width: 100%;
+        max-height: 96vh;
+        max-height: 96dvh;
+      }
+      
+      .lb-carousel-wrap { 
+        min-height: 240px;
+        max-height: 55vh;
+        max-height: 55dvh;
+      } 
+      
+      .lb-carousel-slide { 
+        padding: 10px 50px;
+      }
+      
+      .lb-carousel-indicators {
+        bottom: 8px;
+        padding: 5px 12px;
+      }
+      .lb-carousel-dot {
+        width: 7px;
+        height: 7px;
+      }
+      
+      /* Info: layout vertical, título/desc arriba, botones full-width abajo */
+      .lb-info {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .lb-info-text p {
+        max-height: 72px; /* ~4 líneas en mobile, evita que coma pantalla */
+      }
+      .lb-actions { 
+        width: 100%; 
+        flex-direction: row;
+        gap: 8px;
+      }
+      .lb-action-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 11px 12px;
+        font-size: 0.82rem;
+      }
+      
+      .lb-close { 
+        top: 52px;
+        right: 8px;
+      }
+    }
+    
+    /* Pantallas muy pequeñas (≤ 420px) — compactación extra */
+    @media(max-width: 420px){
+      .lb-carousel-wrap {
+        min-height: 220px;
+        max-height: 50vh;
+        max-height: 50dvh;
+      }
+      .lb-carousel-slide {
+        padding: 8px 44px;
+      }
+      .lb-info-text p {
+        max-height: 64px;
+      }
+      /* Ocultar texto de los botones en pantallas súper chicas, dejar solo iconos */
+      .lb-action-btn {
+        padding: 10px 8px;
+        font-size: 0.75rem;
+      }
+    }
+    
+    /* Pantallas anchas pero bajas (landscape mobile) */
+    @media(max-height: 500px) and (orientation: landscape){
+      .lb-carousel-wrap {
+        min-height: 200px;
+        max-height: 65vh;
+        max-height: 65dvh;
+      }
+      .lb-info-text p {
+        max-height: 48px;
+      }
     }
   </style>
 </head>
@@ -791,8 +1041,8 @@
         </div>
         <div class="lb-carousel-wrap">
           <div class="lb-carousel-inner" id="carouselInner"></div>
-          <button class="lb-carousel-arrow lb-prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
-          <button class="lb-carousel-arrow lb-next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+          <button class="lb-carousel-arrow lb-prev" id="carouselPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+          <button class="lb-carousel-arrow lb-next" id="carouselNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
           <div class="lb-carousel-indicators" id="carouselIndicators"></div>
         </div>
         <button class="lb-close" id="lbClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
@@ -1357,7 +1607,7 @@
     }).join('');
 
     carouselIndicators.innerHTML = slides.map((_, i) => 
-      `<button class="lb-carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></button>`
+      `<button class="lb-carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}" aria-label="Ir al slide ${i + 1}"></button>`
     ).join('');
 
     document.querySelectorAll('.lb-carousel-dot').forEach(dot => {
