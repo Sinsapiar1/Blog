@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Demos en video de aplicaciones AppSheet por Raul Pivet — Sistemas de inventario, gestión de almacén y más, desarrollados con AppSheet y Google Sheets.">
   <meta name="keywords" content="AppSheet, demos, aplicaciones móviles, inventario, gestión almacén, Google Sheets, Raul Pivet, automatización">
   <meta name="author" content="Raul Pivet">
@@ -32,21 +32,17 @@
     .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
     .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; }
 
-    /* ── Btn secondary outline — explicit colors, no variables ── */
+    /* ── Btn secondary outline ── */
     .demos-btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       padding: 12px 24px;
       border: 2px solid rgba(255,107,0,0.45);
       border-radius: 50px;
       color: #FF6B00 !important;
-      font-weight: 600;
-      font-size: 14px;
+      font-weight: 600; font-size: 14px;
       text-decoration: none !important;
       transition: all 0.2s;
-      background: transparent;
-      cursor: pointer;
+      background: transparent; cursor: pointer;
     }
     .demos-btn-outline:hover {
       border-color: #FF6B00;
@@ -58,18 +54,14 @@
        "¿QUÉ ES APPSHEET?" BUTTON
     ══════════════════════════════════════════ */
     .what-is-appsheet-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       padding: 10px 20px;
       background: rgba(255,107,0,0.08);
       border: 1.5px solid rgba(255,107,0,0.3);
       border-radius: 50px;
       color: #FF6B00;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none; cursor: pointer;
       transition: all 0.25s;
       margin-bottom: 24px;
     }
@@ -79,284 +71,65 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(255,107,0,0.2);
     }
-    .what-is-appsheet-btn i {
-      font-size: 1rem;
-    }
+    .what-is-appsheet-btn i { font-size: 1rem; }
 
     /* ══════════════════════════════════════════
-       "¿QUÉ ES APPSHEET?" MODAL
+       MODAL "¿QUÉ ES APPSHEET?"
     ══════════════════════════════════════════ */
-    #appsheetInfoModal { 
-      display:none; 
-      position:fixed; 
-      inset:0; 
-      z-index:5001; 
-      align-items:center; 
-      justify-content:center; 
-    }
+    #appsheetInfoModal { display:none; position:fixed; inset:0; z-index:5001; align-items:center; justify-content:center; }
     #appsheetInfoModal.modal-open { display:flex; }
-    
-    .modal-overlay { 
-      position:absolute; 
-      inset:0; 
-      background:rgba(0,0,0,0); 
-      backdrop-filter:blur(0px); 
-      transition:background 0.4s ease, backdrop-filter 0.4s ease; 
-      cursor:pointer; 
-    }
-    #appsheetInfoModal.modal-open .modal-overlay { 
-      background:rgba(0,0,0,0.92); 
-      backdrop-filter:blur(14px); 
-    }
-    
-    .modal-content-wrapper { 
-      position:relative; 
-      z-index:1; 
-      width:min(90vw, 800px); 
-      max-height:85vh; 
-      opacity:0; 
-      transform:scale(0.93); 
-      transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1); 
-    }
-    #appsheetInfoModal.modal-open .modal-content-wrapper { 
-      opacity:1; 
-      transform:scale(1); 
-    }
-    
-    .modal-frame { 
-      position:relative; 
-      border-radius:var(--radius-xl); 
-      overflow:hidden; 
-      box-shadow:0 32px 80px rgba(0,0,0,0.7); 
-      background:#0a0a0a; 
-    }
-    
-    .modal-browser-bar { 
-      background:#1e1e1e; 
-      padding:12px 18px; 
-      display:flex; 
-      align-items:center; 
-      gap:14px; 
-      border-bottom:1px solid rgba(255,255,255,0.06); 
-    }
+    .modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); backdrop-filter:blur(0px); transition:background 0.4s ease, backdrop-filter 0.4s ease; cursor:pointer; }
+    #appsheetInfoModal.modal-open .modal-overlay { background:rgba(0,0,0,0.92); backdrop-filter:blur(14px); }
+    .modal-content-wrapper { position:relative; z-index:1; width:min(90vw, 800px); max-height:85vh; opacity:0; transform:scale(0.93); transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+    #appsheetInfoModal.modal-open .modal-content-wrapper { opacity:1; transform:scale(1); }
+    .modal-frame { position:relative; border-radius:var(--radius-xl); overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,0.7); background:#0a0a0a; }
+    .modal-browser-bar { background:#1e1e1e; padding:12px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,0.06); }
     .modal-browser-dots { display:flex; gap:7px; }
     .modal-browser-dots span { width:12px; height:12px; border-radius:50%; }
     .modal-browser-dots span:nth-child(1){background:#FF5F56}
     .modal-browser-dots span:nth-child(2){background:#FFBD2E}
     .modal-browser-dots span:nth-child(3){background:#27C93F}
-    .modal-url-bar { 
-      flex:1; 
-      background:rgba(255,255,255,0.08); 
-      border-radius:6px; 
-      padding:6px 14px; 
-      font-size:0.8rem; 
-      color:rgba(255,255,255,0.6); 
-      font-family:monospace; 
-    }
-    
-    .modal-body { 
-      background:var(--bg-primary); 
-      padding:40px; 
-      max-height:70vh; 
-      overflow-y:auto; 
-    }
-    
-    .modal-close-btn { 
-      position:absolute; 
-      top:56px; 
-      right:16px; 
-      width:40px; 
-      height:40px; 
-      background:rgba(0,0,0,0.6); 
-      border:none; 
-      border-radius:50%; 
-      color:white; 
-      font-size:1.05rem; 
-      cursor:pointer; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      backdrop-filter:blur(8px); 
-      transition:background 0.2s, transform 0.2s; 
-      z-index:20; 
-    }
-    .modal-close-btn:hover { 
-      background:rgba(255,59,48,0.9); 
-      transform:scale(1.12); 
-    }
-    
-    .modal-header { 
-      text-align:center; 
-      margin-bottom:32px; 
-    }
-    .modal-google-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, #4285F4, #34A853);
-      color: white;
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
-    }
-    .modal-header h2 { 
-      font-size:clamp(1.6rem, 3vw, 2.2rem); 
-      font-weight:800; 
-      color:var(--text-primary); 
-      margin-bottom:12px; 
-      letter-spacing:-0.02em; 
-    }
-    .modal-header h2 span { 
-      background:linear-gradient(135deg,#FF6B00,#FF9500); 
-      -webkit-background-clip:text; 
-      -webkit-text-fill-color:transparent; 
-    }
-    .modal-header p { 
-      font-size:1.05rem; 
-      color:var(--text-secondary); 
-      line-height:1.6; 
-      max-width:600px; 
-      margin:0 auto; 
-    }
-    
-    .modal-section { 
-      margin-bottom:32px; 
-    }
-    .modal-section-title { 
-      font-size:1.1rem; 
-      font-weight:700; 
-      color:var(--text-primary); 
-      margin-bottom:16px; 
-      display:flex; 
-      align-items:center; 
-      gap:10px; 
-    }
-    .modal-section-title i { 
-      color:#FF6B00; 
-      font-size:1.2rem; 
-    }
-    
-    .modal-grid { 
-      display:grid; 
-      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); 
-      gap:16px; 
-      margin-bottom:24px; 
-    }
-    .modal-feature-card { 
-      background:var(--bg-secondary); 
-      border:1px solid var(--border-color); 
-      border-radius:14px; 
-      padding:20px; 
-      transition:all 0.2s; 
-    }
-    .modal-feature-card:hover { 
-      border-color:rgba(255,107,0,0.3); 
-      transform:translateY(-2px); 
-    }
-    .modal-feature-icon { 
-      width:40px; 
-      height:40px; 
-      background:linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,149,0,0.08)); 
-      border-radius:10px; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      color:#FF6B00; 
-      font-size:1.1rem; 
-      margin-bottom:12px; 
-    }
-    .modal-feature-card h4 { 
-      font-size:0.95rem; 
-      font-weight:700; 
-      color:var(--text-primary); 
-      margin-bottom:6px; 
-    }
-    .modal-feature-card p { 
-      font-size:0.85rem; 
-      color:var(--text-secondary); 
-      line-height:1.5; 
-    }
-    
-    .modal-integrations { 
-      display:flex; 
-      flex-wrap:wrap; 
-      gap:10px; 
-      margin-bottom:24px; 
-    }
-    .modal-integration-badge { 
-      background:var(--bg-secondary); 
-      border:1px solid var(--border-color); 
-      color:var(--text-secondary); 
-      font-size:0.85rem; 
-      font-weight:600; 
-      padding:8px 14px; 
-      border-radius:20px; 
-      display:inline-flex; 
-      align-items:center; 
-      gap:6px; 
-    }
-    .modal-integration-badge i { 
-      color:#FF6B00; 
-    }
-    
-    .modal-cta-box { 
-      background:linear-gradient(135deg, rgba(255,107,0,0.1), rgba(255,149,0,0.05)); 
-      border:1px solid rgba(255,107,0,0.25); 
-      border-radius:16px; 
-      padding:28px; 
-      text-align:center; 
-    }
-    .modal-cta-box h3 { 
-      font-size:1.25rem; 
-      font-weight:800; 
-      color:var(--text-primary); 
-      margin-bottom:10px; 
-    }
-    .modal-cta-box p { 
-      color:var(--text-secondary); 
-      margin-bottom:20px; 
-      font-size:0.95rem; 
-    }
-    
-    @media(max-width:768px){ 
-      .modal-body { padding:28px 24px; } 
-      .modal-grid { grid-template-columns:1fr; } 
+    .modal-url-bar { flex:1; background:rgba(255,255,255,0.08); border-radius:6px; padding:6px 14px; font-size:0.8rem; color:rgba(255,255,255,0.6); font-family:monospace; }
+    .modal-body { background:var(--bg-primary); padding:40px; max-height:70vh; overflow-y:auto; }
+    .modal-close-btn { position:absolute; top:56px; right:16px; width:40px; height:40px; background:rgba(0,0,0,0.6); border:none; border-radius:50%; color:white; font-size:1.05rem; cursor:pointer; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(8px); transition:background 0.2s, transform 0.2s; z-index:20; }
+    .modal-close-btn:hover { background:rgba(255,59,48,0.9); transform:scale(1.12); }
+    .modal-header { text-align:center; margin-bottom:32px; }
+    .modal-google-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4285F4, #34A853); color: white; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.12em; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3); }
+    .modal-header h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:800; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; }
+    .modal-header h2 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .modal-header p { font-size:1.05rem; color:var(--text-secondary); line-height:1.6; max-width:600px; margin:0 auto; }
+    .modal-section { margin-bottom:32px; }
+    .modal-section-title { font-size:1.1rem; font-weight:700; color:var(--text-primary); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+    .modal-section-title i { color:#FF6B00; font-size:1.2rem; }
+    .modal-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:24px; }
+    .modal-feature-card { background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:14px; padding:20px; transition:all 0.2s; }
+    .modal-feature-card:hover { border-color:rgba(255,107,0,0.3); transform:translateY(-2px); }
+    .modal-feature-icon { width:40px; height:40px; background:linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,149,0,0.08)); border-radius:10px; display:flex; align-items:center; justify-content:center; color:#FF6B00; font-size:1.1rem; margin-bottom:12px; }
+    .modal-feature-card h4 { font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:6px; }
+    .modal-feature-card p { font-size:0.85rem; color:var(--text-secondary); line-height:1.5; }
+    .modal-integrations { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px; }
+    .modal-integration-badge { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-secondary); font-size:0.85rem; font-weight:600; padding:8px 14px; border-radius:20px; display:inline-flex; align-items:center; gap:6px; }
+    .modal-integration-badge i { color:#FF6B00; }
+    .modal-cta-box { background:linear-gradient(135deg, rgba(255,107,0,0.1), rgba(255,149,0,0.05)); border:1px solid rgba(255,107,0,0.25); border-radius:16px; padding:28px; text-align:center; }
+    .modal-cta-box h3 { font-size:1.25rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; }
+    .modal-cta-box p { color:var(--text-secondary); margin-bottom:20px; font-size:0.95rem; }
+    @media(max-width:768px){
+      .modal-body { padding:28px 24px; }
+      .modal-grid { grid-template-columns:1fr; }
     }
 
     /* ══════════════════════════════════════════
        HERO
     ══════════════════════════════════════════ */
     .demos-hero { padding: 48px 0 40px; }
-
-    .demos-hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .demos-eyebrow-pill {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      color: white; font-size: 10px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.15em;
-      padding: 7px 14px; border-radius: 30px; white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(255,107,0,0.45);
-      animation: pill-glow 2.5s ease-in-out infinite;
-    }
+    .demos-hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+    .demos-eyebrow-pill { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg, #FF6B00, #FF9500); color: white; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 7px 14px; border-radius: 30px; white-space: nowrap; box-shadow: 0 4px 16px rgba(255,107,0,0.45); animation: pill-glow 2.5s ease-in-out infinite; }
     @keyframes pill-glow {
       0%,100% { box-shadow: 0 4px 16px rgba(255,107,0,0.45); }
-      50%      { box-shadow: 0 4px 28px rgba(255,107,0,0.75), 0 0 0 4px rgba(255,107,0,0.12); }
+      50%     { box-shadow: 0 4px 28px rgba(255,107,0,0.75), 0 0 0 4px rgba(255,107,0,0.12); }
     }
     .demos-eyebrow-pill i { font-size: 0.75rem; }
-    .demos-eyebrow-sub {
-      font-size: 0.875rem; font-weight: 600; color: var(--text-secondary);
-    }
-
+    .demos-eyebrow-sub { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); }
     .demos-hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800; line-height:1.15; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:16px; }
     .demos-hero h1 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .demos-hero-sub { font-size:1.05rem; color:var(--text-secondary); line-height:1.7; max-width:560px; margin-bottom:28px; }
@@ -364,34 +137,12 @@
     .demos-hero-tag { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-secondary); font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; transition:all 0.2s; }
     .demos-hero-tag:hover { border-color:#FF6B00; color:#FF6B00; }
 
-    /* ══════════════════════════════════════════
-       STATS BAR — mismo estilo que index.html
-    ══════════════════════════════════════════ */
-    .demos-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 0 0 48px;
-    }
+    /* ══════════════════════════════════════════ STATS ══════════════════════════════════════════ */
+    .demos-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0 0 48px; }
     @media(max-width:640px){ .demos-stats { grid-template-columns: 1fr; } }
     @media(max-width:900px) and (min-width:641px){ .demos-stats { grid-template-columns: repeat(3,1fr); } }
-
-    .demos-stat {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 24px 20px 20px;
-      display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.34,1.3,0.64,1);
-    }
-    .demos-stat::before {
-      content: attr(data-ghost);
-      position: absolute; right: -8px; bottom: -14px;
-      font-size: 4.5rem; font-weight: 900;
-      color: rgba(255,107,0,0.05); line-height: 1;
-      pointer-events: none; transition: color 0.3s;
-    }
+    .demos-stat { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px 20px 20px; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.34,1.3,0.64,1); }
+    .demos-stat::before { content: attr(data-ghost); position: absolute; right: -8px; bottom: -14px; font-size: 4.5rem; font-weight: 900; color: rgba(255,107,0,0.05); line-height: 1; pointer-events: none; transition: color 0.3s; }
     .demos-stat:hover { border-color:rgba(255,107,0,0.4); transform:translateY(-6px); box-shadow:0 16px 40px rgba(255,107,0,0.15); }
     .demos-stat:hover::before { color:rgba(255,107,0,0.09); }
     .demos-stat-bar { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:20px 20px 0 0; }
@@ -403,33 +154,12 @@
     .demos-stat-label { font-size:0.8125rem; font-weight:700; color:var(--text-primary); line-height:1.3; margin-bottom:4px; }
     .demos-stat-sub { font-size:11px; color:var(--text-tertiary); line-height:1.4; font-style:italic; }
 
-    /* ══════════════════════════════════════════
-       INTRO CARD — "Aplicaciones reales"
-    ══════════════════════════════════════════ */
-    .demos-intro-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      margin-bottom: 48px;
-    }
-    .demos-intro-card::before {
-      content: '';
-      position: absolute; top:0; left:0; right:0; height:3px;
-      background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800);
-    }
-    .demos-intro-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
+    /* ══════════════════════════════════════════ INTRO CARD ══════════════════════════════════════════ */
+    .demos-intro-card { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; position: relative; margin-bottom: 48px; }
+    .demos-intro-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800); }
+    .demos-intro-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
     @media(max-width:800px){ .demos-intro-inner { grid-template-columns:1fr; } }
-    .demos-intro-left {
-      padding: 36px 40px;
-      border-right: 1px solid var(--border-color);
-      display: flex; flex-direction: column; justify-content: center;
-    }
+    .demos-intro-left { padding: 36px 40px; border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center; }
     @media(max-width:800px){ .demos-intro-left { border-right:none; border-bottom:1px solid var(--border-color); } }
     .demos-intro-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.25); color:#FF6B00; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; padding:5px 12px; border-radius:20px; margin-bottom:18px; width:fit-content; }
     .demos-intro-left h2 { font-size:clamp(1.2rem,2vw,1.55rem); font-weight:800; color:var(--text-primary); line-height:1.25; letter-spacing:-0.02em; margin-bottom:14px; }
@@ -438,117 +168,27 @@
     .demos-proof { display:inline-flex; align-items:center; gap:8px; background:rgba(52,199,89,0.08); border:1px solid rgba(52,199,89,0.2); border-radius:10px; padding:10px 14px; font-size:0.8125rem; color:var(--text-secondary); line-height:1.5; }
     .demos-proof i { color:#34C759; font-size:1rem; flex-shrink:0; }
     .demos-proof strong { color:var(--text-primary); }
-
-    .demos-intro-right {
-      padding: 36px 40px;
-      display: flex; flex-direction: column; gap: 14px; justify-content: center;
-    }
-    .demos-feature {
-      display: flex; align-items: flex-start; gap: 14px;
-      background: var(--bg-secondary); border:1px solid var(--border-color);
-      border-radius: 14px; padding: 16px 18px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .demos-intro-right { padding: 36px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+    .demos-feature { display: flex; align-items: flex-start; gap: 14px; background: var(--bg-secondary); border:1px solid var(--border-color); border-radius: 14px; padding: 16px 18px; transition: border-color 0.2s, transform 0.2s; }
     .demos-feature:hover { border-color:rgba(255,107,0,0.3); transform:translateX(4px); }
     .demos-feature-icon { width:32px; height:32px; flex-shrink:0; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:white; }
     .demos-feature-title { font-size:0.875rem; font-weight:700; color:var(--text-primary); margin-bottom:3px; }
     .demos-feature-desc { font-size:0.8rem; color:var(--text-secondary); line-height:1.55; }
 
-    /* ══════════════════════════════════════════
-       VIDEO SECTION HEADER
-    ══════════════════════════════════════════ */
+    /* ══════════════════════════════════════════ VIDEO GRID ══════════════════════════════════════════ */
     .demos-section-header { margin-bottom:28px; }
-
-    /* ══════════════════════════════════════════
-       VIDEO GRID
-    ══════════════════════════════════════════ */
-    .demos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 28px;
-      margin-bottom: 56px;
-    }
+    .demos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; margin-bottom: 56px; }
     @media(max-width:480px){ .demos-grid { grid-template-columns:1fr; } }
-
-    /* ── Video card ── */
-    .demo-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      transition: all var(--transition-base);
-      box-shadow: var(--shadow-sm);
-      display: flex; flex-direction: column;
-      position: relative;
-      cursor: pointer;
-    }
-    .demo-card::before {
-      content: '';
-      position: absolute; top:0; left:0; right:0; height:3px;
-      background: linear-gradient(90deg,#FF6B00,#FF9500);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
-      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-      z-index: 1;
-    }
+    .demo-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition-base); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative; cursor: pointer; }
+    .demo-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg,#FF6B00,#FF9500); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; border-radius: var(--radius-xl) var(--radius-xl) 0 0; z-index: 1; }
     .demo-card:hover::before { transform: scaleX(1); }
-    .demo-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 56px rgba(255,107,0,0.16);
-      border-color: rgba(255,107,0,0.3);
-    }
-
-    /* YouTube embed 16:9 */
-    .demo-video-wrap {
-      position: relative; width: 100%; padding-top: 56.25%;
-      background: #000; overflow: hidden;
-    }
-    .demo-video-wrap iframe {
-      position: absolute; top:0; left:0;
-      width:100%; height:100%; border:none;
-      pointer-events: none;
-    }
-
-    /* Overlay "Ver Detalles" */
-    .demo-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: all var(--transition-base);
-      z-index: 2;
-    }
-    .demo-card:hover .demo-overlay {
-      background: rgba(0,0,0,0.7);
-      opacity: 1;
-    }
-    .demo-overlay-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: linear-gradient(135deg,#FF6B00,#FF9500);
-      color: white;
-      border: none;
-      border-radius: var(--radius-full);
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(255,107,0,0.4);
-      transition: all var(--transition-fast);
-      backdrop-filter: blur(8px);
-    }
-    .demo-overlay-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 12px 32px rgba(255,107,0,0.6);
-    }
-
-    /* Card body */
+    .demo-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(255,107,0,0.16); border-color: rgba(255,107,0,0.3); }
+    .demo-video-wrap { position: relative; width: 100%; padding-top: 56.25%; background: #000; overflow: hidden; }
+    .demo-video-wrap iframe { position: absolute; top:0; left:0; width:100%; height:100%; border:none; pointer-events: none; }
+    .demo-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; opacity: 0; transition: all var(--transition-base); z-index: 2; }
+    .demo-card:hover .demo-overlay { background: rgba(0,0,0,0.7); opacity: 1; }
+    .demo-overlay-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg,#FF6B00,#FF9500); color: white; border: none; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 24px rgba(255,107,0,0.4); transition: all var(--transition-fast); backdrop-filter: blur(8px); }
+    .demo-overlay-btn:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(255,107,0,0.6); }
     .demo-card-body { padding: 22px 24px 24px; flex:1; display:flex; flex-direction:column; }
     .demo-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
     .demo-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:var(--radius-full); background:rgba(255,107,0,0.08); color:#FF6B00; border:1px solid rgba(255,107,0,0.2); }
@@ -561,131 +201,114 @@
     .demo-yt-link { display:inline-flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:7px 14px; border-radius:20px; text-decoration:none; box-shadow:0 4px 12px rgba(255,107,0,0.3); transition:all var(--transition-fast); }
     .demo-yt-link:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,107,0,0.45); }
 
-    /* ══════════════════════════════════════════
-       CTA FINAL
-    ══════════════════════════════════════════ */
-    .demos-cta {
-      margin: 8px 0 48px;
-      background: linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04));
-      border: 1px solid rgba(255,107,0,0.2);
-      border-radius: 20px;
-      padding: 48px 40px;
-      text-align: center;
-    }
+    /* ══════════════════════════════════════════ CTA FINAL ══════════════════════════════════════════ */
+    .demos-cta { margin: 8px 0 48px; background: linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border: 1px solid rgba(255,107,0,0.2); border-radius: 20px; padding: 48px 40px; text-align: center; }
     .demos-cta h2 { font-size:1.6rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
     .demos-cta p { color:var(--text-secondary); margin-bottom:32px; font-size:1rem; line-height:1.6; max-width:520px; margin-left:auto; margin-right:auto; }
     .demos-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
     @media(max-width:480px){ .demos-cta { padding:32px 24px; } .demos-cta-btns { flex-direction:column; align-items:center; } }
 
-    /* ══════════════════════════════════════════════════════════════════════
-       LIGHTBOX MODAL — REDISEÑO RESPONSIVE v3
-       Arquitectura: flex column, carrusel flex:1, info con scroll interno
-       Usa dvh (dynamic viewport) con fallback a vh para mobile real
-    ══════════════════════════════════════════════════════════════════════ */
-    #demoLightbox { 
-      display:none; 
-      position:fixed; 
-      inset:0; 
-      z-index:5000; 
-      align-items:center; 
-      justify-content:center; 
-      padding: 16px;
+    /* ══════════════════════════════════════════════════════════════════════════
+       LIGHTBOX — ARQUITECTURA FLEX RESPONSIVA DINÁMICA
+       Funciona en TODOS los dispositivos sin hardcodear alturas.
+       El carrusel se adapta al espacio disponible automáticamente.
+    ══════════════════════════════════════════════════════════════════════════ */
+
+    #demoLightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(8px, 2vw, 24px);
       box-sizing: border-box;
     }
-    #demoLightbox.lb-open { display:flex; }
-    
-    .lb-overlay { 
-      position:absolute; 
-      inset:0; 
-      background:rgba(0,0,0,0); 
-      backdrop-filter:blur(0px); 
-      transition:background 0.4s ease,backdrop-filter 0.4s ease; 
-      cursor:pointer; 
+    #demoLightbox.lb-open { display: flex; }
+
+    .lb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      backdrop-filter: blur(0px);
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+      cursor: pointer;
     }
-    #demoLightbox.lb-open .lb-overlay { 
-      background:rgba(0,0,0,0.92); 
-      backdrop-filter:blur(14px); 
+    #demoLightbox.lb-open .lb-overlay {
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(14px);
     }
-    
-    /* Caja principal — flex column con altura dinámica */
-    .lb-box { 
-      position:relative; 
-      z-index:1; 
-      display:flex; 
-      flex-direction:column; 
-      width:min(94vw, 1200px); 
-      max-height: 94vh;
-      max-height: 94dvh;
-      opacity:0; 
-      transform:scale(0.93); 
-      transition:opacity 0.35s cubic-bezier(0.16,1,0.3,1),transform 0.35s cubic-bezier(0.16,1,0.3,1); 
-    }
-    #demoLightbox.lb-open .lb-box { opacity:1; transform:scale(1); }
-    
-    /* Frame del "navegador" — ahora con flex para que el carrusel tome espacio */
-    .lb-frame-wrap { 
-      position:relative; 
-      width:100%; 
-      border-radius: clamp(12px, 2vw, 20px);
-      overflow:hidden; 
-      box-shadow:0 32px 80px rgba(0,0,0,0.7); 
-      background:#0a0a0a; 
+
+    /* Contenedor principal: FLEX COLUMN con altura controlada */
+    .lb-box {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
-      flex: 1;
-      min-height: 0; /* crítico para que flex children respeten overflow */
+      width: 100%;
+      max-width: 1200px;
+      height: 100%;
+      max-height: 100vh;
+      max-height: 100dvh; /* dynamic viewport height - evita problemas con barra de nav mobile */
+      opacity: 0;
+      transform: scale(0.93);
+      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1);
+      gap: 16px;
     }
-    
-    /* Browser bar — compacta en mobile */
-    .lb-browser-bar { 
-      background:#1e1e1e; 
-      padding: clamp(8px, 1.5vw, 12px) clamp(12px, 2vw, 18px); 
-      display:flex; 
-      align-items:center; 
-      gap: clamp(8px, 1.5vw, 14px); 
-      border-bottom:1px solid rgba(255,255,255,0.06); 
+    #demoLightbox.lb-open .lb-box {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Frame con la barra de navegador + carrusel.
+       flex: 1 = toma todo el espacio disponible después del .lb-info */
+    .lb-frame-wrap {
+      position: relative;
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 0; /* ← CRÍTICO: permite que el frame respete el tamaño flex */
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+      background: #0a0a0a;
+    }
+
+    .lb-browser-bar {
       flex-shrink: 0;
+      background: #1e1e1e;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .lb-browser-dots { display:flex; gap: 7px; flex-shrink: 0; }
-    .lb-browser-dots span { width: clamp(9px, 1.2vw, 12px); height: clamp(9px, 1.2vw, 12px); border-radius:50%; }
-    .lb-browser-dots span:nth-child(1){background:#FF5F56} 
-    .lb-browser-dots span:nth-child(2){background:#FFBD2E} 
+    .lb-browser-dots { display:flex; gap:6px; flex-shrink: 0; }
+    .lb-browser-dots span { width:11px; height:11px; border-radius:50%; }
+    .lb-browser-dots span:nth-child(1){background:#FF5F56}
+    .lb-browser-dots span:nth-child(2){background:#FFBD2E}
     .lb-browser-dots span:nth-child(3){background:#27C93F}
-    .lb-url-bar { 
-      flex:1; 
-      background:rgba(255,255,255,0.08); 
-      border-radius:6px; 
-      padding: clamp(4px, 0.8vw, 6px) clamp(10px, 1.5vw, 14px); 
-      font-size: clamp(0.7rem, 1.5vw, 0.8rem); 
-      color:rgba(255,255,255,0.6); 
-      font-family:monospace; 
-      white-space:nowrap; 
-      overflow:hidden; 
-      text-overflow:ellipsis; 
-    }
-    
-    /* ──────────── CARRUSEL ──────────── 
-       flex: 1 para tomar el espacio disponible
-       min-height evita colapso, max-height evita desbordar */
+    .lb-url-bar { flex:1; background:rgba(255,255,255,0.08); border-radius:6px; padding:5px 12px; font-size:0.75rem; color:rgba(255,255,255,0.6); font-family:monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+    /* ─── CARRUSEL ─── */
     .lb-carousel-wrap {
       position: relative;
       width: 100%;
-      flex: 1;
-      min-height: 260px;
-      max-height: 70vh;
-      max-height: 70dvh;
+      flex: 1 1 auto;
+      min-height: 0; /* idem, crítico */
       background: #000;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
+
     .lb-carousel-inner {
       display: flex;
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       height: 100%;
       width: 100%;
+      touch-action: pan-y pinch-zoom; /* permite scroll vertical de la página y zoom, pero no interfiere con swipe horizontal */
     }
+
     .lb-carousel-slide {
       min-width: 100%;
       height: 100%;
@@ -693,85 +316,101 @@
       align-items: center;
       justify-content: center;
       background: #000;
-      padding: clamp(16px, 3vw, 32px) clamp(56px, 7vw, 80px);
       box-sizing: border-box;
     }
-    .lb-carousel-slide img {
+
+    /* Slide con IMAGEN: padding generoso para que no toque bordes ni flechas */
+    .lb-carousel-slide--image {
+      padding: clamp(20px, 4vw, 48px) clamp(56px, 8vw, 88px);
+    }
+    .lb-carousel-slide--image img {
       max-width: 100%;
       max-height: 100%;
+      width: auto;
+      height: auto;
       object-fit: contain;
       user-select: none;
       -webkit-user-select: none;
-      border-radius: 8px;
+      -webkit-user-drag: none;
+      border-radius: 6px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
-    .lb-carousel-slide iframe {
+
+    /* Slide con VIDEO: sin padding, ocupa todo el espacio en 16:9 */
+    .lb-carousel-slide--video {
+      padding: 0;
+    }
+    .lb-carousel-slide--video .lb-video-holder {
       width: 100%;
       height: 100%;
-      border: none;
-      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
     }
-    
-    /* Flechas — tamaño fluido, siempre touch-friendly */
+    .lb-carousel-slide--video iframe {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      display: block;
+    }
+
+    /* Flechas de navegación: posicionadas dentro del carrusel pero con padding para NO solapar la imagen */
     .lb-carousel-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: clamp(40px, 5vw, 48px);
-      height: clamp(40px, 5vw, 48px);
-      background: rgba(255,255,255,0.15);
-      border: 1.5px solid rgba(255,255,255,0.25);
+      width: clamp(36px, 5vw, 48px);
+      height: clamp(36px, 5vw, 48px);
+      background: rgba(20,20,20,0.75);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 50%;
       color: white;
-      font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: all var(--transition-base);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
       z-index: 10;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      padding: 0;
     }
-    .lb-carousel-arrow:hover {
+    .lb-carousel-arrow:hover:not(:disabled) {
       background: rgba(255,107,0,0.85);
       border-color: #FF6B00;
-      transform: translateY(-50%) scale(1.1);
-    }
-    .lb-carousel-arrow:active {
-      transform: translateY(-50%) scale(0.95);
+      transform: translateY(-50%) scale(1.08);
     }
     .lb-carousel-arrow.lb-prev { left: clamp(8px, 1.5vw, 16px); }
     .lb-carousel-arrow.lb-next { right: clamp(8px, 1.5vw, 16px); }
-    .lb-carousel-arrow:disabled {
-      opacity: 0.25;
-      cursor: default;
-      pointer-events: none;
-    }
-    
-    /* Indicadores — con flex-wrap y scroll horizontal si hay muchos */
+    .lb-carousel-arrow:disabled { opacity: 0.25; cursor: default; }
+
+    /* Indicadores (dots) - flotantes abajo */
     .lb-carousel-indicators {
       position: absolute;
-      bottom: clamp(12px, 2vw, 20px);
+      bottom: clamp(10px, 2vw, 18px);
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 8px;
+      gap: 7px;
       background: rgba(0,0,0,0.6);
-      padding: clamp(6px, 1vw, 8px) clamp(10px, 1.5vw, 16px);
+      padding: 7px 13px;
       border-radius: 20px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       z-index: 10;
-      max-width: calc(100% - 120px); /* deja espacio a las flechas */
+      max-width: calc(100% - 120px);
       overflow-x: auto;
       scrollbar-width: none;
     }
     .lb-carousel-indicators::-webkit-scrollbar { display: none; }
     .lb-carousel-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: rgba(255,255,255,0.4);
       border: none;
@@ -782,193 +421,261 @@
     }
     .lb-carousel-dot.active {
       background: #FF6B00;
-      transform: scale(1.4);
+      transform: scale(1.5);
     }
 
-    /* Close button */
-    .lb-close { 
-      position:absolute; 
-      top: clamp(56px, 8vw, 64px); 
-      right: clamp(8px, 1.5vw, 16px); 
-      width: clamp(36px, 5vw, 42px); 
-      height: clamp(36px, 5vw, 42px); 
-      background:rgba(0,0,0,0.7); 
-      border:none; 
-      border-radius:50%; 
-      color:white; 
-      font-size:clamp(0.9rem, 1.3vw, 1.05rem); 
-      cursor:pointer; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      backdrop-filter:blur(8px); 
-      -webkit-backdrop-filter:blur(8px);
-      transition:background var(--transition-fast),transform var(--transition-fast); 
-      z-index:20; 
+    /* Contador de slide (ej: "3 / 7") - mejora UX cuando hay muchas imágenes */
+    .lb-slide-counter {
+      position: absolute;
+      top: clamp(8px, 1.5vw, 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      font-family: monospace;
+      z-index: 10;
+      letter-spacing: 0.05em;
     }
-    .lb-close:hover { background:rgba(255,59,48,0.9); transform:scale(1.12); }
-    
-    /* ──────────── INFO (título, descripción, botones) ──────────── 
-       Caja separada debajo del frame con su propio scroll */
-    .lb-info { 
-      margin-top: clamp(12px, 2vw, 20px); 
-      color:white; 
-      width:100%; 
-      display:flex; 
-      align-items:flex-start; 
-      justify-content:space-between; 
-      padding: 0 clamp(4px, 1vw, 6px); 
-      gap: clamp(12px, 2vw, 20px); 
+
+    /* Botón cerrar — flotante fuera del frame */
+    .lb-close {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 38px;
+      height: 38px;
+      background: rgba(20,20,20,0.95);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s, transform 0.2s;
+      z-index: 25;
+      padding: 0;
+    }
+    .lb-close:hover { background: rgba(255,59,48,0.9); transform: scale(1.1); }
+
+    /* Info inferior: título + descripción + botones */
+    .lb-info {
       flex-shrink: 0;
-      box-sizing: border-box;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 4px;
+      max-height: 40%; /* nunca más del 40% del viewport */
     }
-    .lb-info-text { 
-      flex: 1; 
-      min-width: 0; /* permite overflow de texto largo */
+    .lb-info-text {
+      flex: 1;
+      min-width: 0; /* permite que el texto trunque sin desbordar */
     }
-    .lb-info-text h3 { 
-      font-size: clamp(1rem, 2vw, 1.2rem); 
-      font-weight:700; 
-      margin-bottom:6px; 
-      text-align:left; 
+    .lb-info-text h3 {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      font-weight: 700;
+      margin: 0 0 6px;
+      text-align: left;
+      letter-spacing: -0.01em;
       line-height: 1.3;
     }
-    .lb-info-text p { 
-      font-size: clamp(0.8rem, 1.5vw, 0.9rem); 
-      opacity:0.75; 
-      text-align:left; 
-      line-height:1.6; 
-      max-height: 100px;
+    .lb-info-text p {
+      font-size: clamp(0.82rem, 1.5vw, 0.92rem);
+      opacity: 0.78;
+      text-align: left;
+      line-height: 1.55;
+      margin: 0;
+      white-space: pre-line; /* respeta los \n de las descripciones */
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* "Leer más" — truncado a 3 líneas en mobile, completo en desktop */
+    .lb-info-text.collapsed p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .lb-info-text.expanded p {
+      max-height: 25vh;
       overflow-y: auto;
       padding-right: 6px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.3) transparent;
     }
-    .lb-info-text p::-webkit-scrollbar { width: 4px; }
-    .lb-info-text p::-webkit-scrollbar-track { background: transparent; }
-    .lb-info-text p::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
-    
-    .lb-actions { 
-      display:flex; 
-      gap: clamp(8px, 1.5vw, 10px); 
-      flex-shrink:0; 
+    .lb-info-text.expanded p::-webkit-scrollbar { width: 4px; }
+    .lb-info-text.expanded p::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.5); border-radius: 2px; }
+
+    .lb-read-more {
+      display: none; /* se muestra solo en mobile via @media */
+      background: transparent;
+      border: none;
+      color: #FF9500;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 0 0;
+      cursor: pointer;
+      text-align: left;
     }
-    .lb-action-btn { 
-      display:inline-flex; 
-      align-items:center; 
-      gap: 8px; 
-      padding: clamp(10px, 1.5vw, 12px) clamp(16px, 2.5vw, 24px); 
-      border:none; 
-      border-radius:var(--radius-full); 
-      font-size: clamp(0.8rem, 1.5vw, 0.9rem); 
-      font-weight:700; 
-      cursor:pointer; 
-      white-space:nowrap; 
-      transition:all var(--transition-fast); 
-      text-decoration:none; 
+    .lb-read-more:hover { color: #FF6B00; text-decoration: underline; }
+
+    .lb-actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+      align-items: center;
     }
-    .lb-action-btn.primary { 
-      background:linear-gradient(135deg,#FF6B00,#FF9500); 
-      color:white; 
-      box-shadow:0 4px 16px rgba(255,107,0,0.45); 
+    .lb-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border: none;
+      border-radius: var(--radius-full);
+      font-size: clamp(0.82rem, 1.5vw, 0.9rem);
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      box-sizing: border-box;
     }
-    .lb-action-btn.primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,107,0,0.6); }
-    .lb-action-btn.secondary { 
-      background:rgba(255,255,255,0.15); 
-      color:white; 
-      border:1px solid rgba(255,255,255,0.25); 
+    .lb-action-btn.primary {
+      background: linear-gradient(135deg,#FF6B00,#FF9500);
+      color: white;
+      box-shadow: 0 4px 16px rgba(255,107,0,0.45);
     }
-    .lb-action-btn.secondary:hover { background:rgba(255,255,255,0.25); transform:translateY(-2px); }
-    
-    /* ══════════════════════════════════════════
-       MOBILE OPTIMIZATIONS (≤ 768px)
-       Prioridad: carrusel visible, controles grandes, todo navegable
-    ══════════════════════════════════════════ */
-    @media(max-width: 768px){ 
-      #demoLightbox { padding: 8px; }
-      
-      .lb-box { 
-        width: 100%;
-        max-height: 96vh;
-        max-height: 96dvh;
-      }
-      
-      .lb-carousel-wrap { 
-        min-height: 240px;
-        max-height: 55vh;
-        max-height: 55dvh;
-      } 
-      
-      .lb-carousel-slide { 
-        padding: 10px 50px;
-      }
-      
-      .lb-carousel-indicators {
-        bottom: 8px;
-        padding: 5px 12px;
-      }
-      .lb-carousel-dot {
-        width: 7px;
-        height: 7px;
-      }
-      
-      /* Info: layout vertical, título/desc arriba, botones full-width abajo */
+    .lb-action-btn.primary:hover { transform:translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,0,0.6); }
+    .lb-action-btn.secondary {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .lb-action-btn.secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+    /* ═══════════════════════════════════════════════════════
+       TABLET (≤900px): Info se reorganiza vertical
+    ═══════════════════════════════════════════════════════ */
+    @media(max-width: 900px) {
       .lb-info {
         flex-direction: column;
-        gap: 12px;
-        margin-top: 12px;
+        gap: 14px;
+        max-height: 45%;
+      }
+      .lb-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       MOBILE (≤640px): Layout optimizado
+    ═══════════════════════════════════════════════════════ */
+    @media(max-width: 640px) {
+      #demoLightbox {
+        padding: 8px;
+      }
+      .lb-box {
+        gap: 10px;
+      }
+      .lb-browser-bar {
+        padding: 8px 12px;
+        gap: 8px;
+      }
+      .lb-browser-dots span { width: 9px; height: 9px; }
+      .lb-url-bar { font-size: 0.7rem; padding: 4px 10px; }
+
+      .lb-close {
+        top: 2px;
+        right: 2px;
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
+      }
+
+      /* Flechas más juntas al borde en mobile */
+      .lb-carousel-arrow.lb-prev { left: 6px; }
+      .lb-carousel-arrow.lb-next { right: 6px; }
+
+      /* En mobile, las imágenes pueden ocupar más espacio (menos padding lateral) */
+      .lb-carousel-slide--image {
+        padding: 14px 48px;
+      }
+
+      .lb-info {
+        gap: 10px;
+        max-height: 50%;
+      }
+      .lb-info-text h3 {
+        font-size: 1rem;
+        margin-bottom: 4px;
       }
       .lb-info-text p {
-        max-height: 72px; /* ~4 líneas en mobile, evita que coma pantalla */
+        font-size: 0.82rem;
+        line-height: 1.5;
       }
-      .lb-actions { 
-        width: 100%; 
-        flex-direction: row;
+
+      /* "Leer más" aparece solo en mobile */
+      .lb-read-more { display: inline-block; }
+
+      .lb-actions {
+        width: 100%;
         gap: 8px;
       }
       .lb-action-btn {
         flex: 1;
         justify-content: center;
-        padding: 11px 12px;
+        padding: 10px 14px;
         font-size: 0.82rem;
       }
-      
-      .lb-close { 
-        top: 52px;
-        right: 8px;
+
+      .lb-slide-counter {
+        font-size: 0.7rem;
+        padding: 3px 10px;
       }
+
+      .lb-carousel-indicators {
+        padding: 5px 10px;
+        gap: 6px;
+        bottom: 10px;
+      }
+      .lb-carousel-dot { width: 6px; height: 6px; }
     }
-    
-    /* Pantallas muy pequeñas (≤ 420px) — compactación extra */
-    @media(max-width: 420px){
-      .lb-carousel-wrap {
-        min-height: 220px;
-        max-height: 50vh;
-        max-height: 50dvh;
-      }
-      .lb-carousel-slide {
-        padding: 8px 44px;
+
+    /* ═══════════════════════════════════════════════════════
+       MOBILE EXTRA-SMALL (≤380px): iPhone SE y similares
+    ═══════════════════════════════════════════════════════ */
+    @media(max-width: 380px) {
+      .lb-actions { flex-direction: column; }
+      .lb-action-btn { width: 100%; }
+      .lb-carousel-slide--image { padding: 10px 42px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       LANDSCAPE MOBILE (altura baja): prioridad al carrusel
+    ═══════════════════════════════════════════════════════ */
+    @media(max-height: 500px) and (orientation: landscape) {
+      .lb-info {
+        max-height: 35%;
+        flex-direction: row;
       }
       .lb-info-text p {
-        max-height: 64px;
+        font-size: 0.78rem;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
       }
-      /* Ocultar texto de los botones en pantallas súper chicas, dejar solo iconos */
-      .lb-action-btn {
-        padding: 10px 8px;
-        font-size: 0.75rem;
-      }
-    }
-    
-    /* Pantallas anchas pero bajas (landscape mobile) */
-    @media(max-height: 500px) and (orientation: landscape){
-      .lb-carousel-wrap {
-        min-height: 200px;
-        max-height: 65vh;
-        max-height: 65dvh;
-      }
-      .lb-info-text p {
-        max-height: 48px;
-      }
+      .lb-actions { flex-direction: row; width: auto; }
+      .lb-action-btn { flex: 0 0 auto; }
     }
   </style>
 </head>
@@ -1022,24 +729,23 @@
           <div class="modal-browser-dots"><span></span><span></span><span></span></div>
           <div class="modal-url-bar" id="modalUrl">appsheet.google.com</div>
         </div>
-        <div class="modal-body">
-          <!-- Se rellena dinámicamente con JavaScript -->
-        </div>
+        <div class="modal-body"></div>
         <button class="modal-close-btn" id="modalCloseBtn"><i class="fas fa-times"></i></button>
       </div>
     </div>
   </div>
 
-  <!-- Lightbox Modal MAC con Carrusel -->
+  <!-- Lightbox Modal con Carrusel Responsivo -->
   <div id="demoLightbox" role="dialog" aria-modal="true" aria-label="Vista detallada del demo">
     <div class="lb-overlay" id="lbOverlay"></div>
     <div class="lb-box">
       <div class="lb-frame-wrap">
         <div class="lb-browser-bar">
           <div class="lb-browser-dots"><span></span><span></span><span></span></div>
-          <div class="lb-url-bar" id="lbUrl">AppSheet WMS Demo</div>
+          <div class="lb-url-bar" id="lbUrl">AppSheet Demo</div>
         </div>
         <div class="lb-carousel-wrap">
+          <div class="lb-slide-counter" id="lbSlideCounter">1 / 1</div>
           <div class="lb-carousel-inner" id="carouselInner"></div>
           <button class="lb-carousel-arrow lb-prev" id="carouselPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
           <button class="lb-carousel-arrow lb-next" id="carouselNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
@@ -1048,9 +754,10 @@
         <button class="lb-close" id="lbClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
       </div>
       <div class="lb-info">
-        <div class="lb-info-text">
+        <div class="lb-info-text collapsed" id="lbInfoText">
           <h3 id="lbTitle"></h3>
           <p id="lbDesc"></p>
+          <button class="lb-read-more" id="lbReadMore">Leer más</button>
         </div>
         <div class="lb-actions">
           <a href="#" id="lbYtBtn" target="_blank" rel="noopener noreferrer" class="lb-action-btn primary">
@@ -1068,35 +775,25 @@
   <script src="script.js"></script>
   <script>
   // ══════════════════════════════════════════════════════════════════════
-  // ✨ CONFIGURACIÓN DE DEMOS - EDITA AQUÍ PARA AGREGAR NUEVOS VIDEOS
+  // CONFIGURACIÓN DE DEMOS
   // ══════════════════════════════════════════════════════════════════════
-  
   const demosTrans = {
     es: {
       nav_home:'Inicio', nav_about:'Sobre Mí', nav_projects:'Proyectos',
       nav_contact:'Contacto', nav_demos:'AppSheet Demos',
       page_title: 'AppSheet Demos - Raul Pivet',
       footer: '© 2026 Raul Pivet. Todos los derechos reservados.',
-
-      /* Botón modal */
       what_is_btn: '¿Qué es AppSheet?',
-
-      /* Hero */
       hero_pill: '📱 Demos en vivo',
       hero_pill_sub: 'Aplicaciones reales · Sin mockups',
-      h1a: 'AppSheet',
-      h1b: 'en Acción',
+      h1a: 'AppSheet', h1b: 'en Acción',
       hero_sub: 'Aplicaciones móviles construidas con AppSheet y Google Sheets, funcionando en operaciones reales. Cada video muestra un sistema que equipos reales usan todos los días.',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventario', 'Logística', 'WhatsApp', 'Drive'],
-
-      /* Stats */
       stats: [
         { icon:'fas fa-mobile-alt', num:'100', suffix:'%', label:'Apps en producción', sub:'Ningún prototipo, todo real', trend:'Real', ghost:'100' },
         { icon:'fas fa-ban',        num:'0',   suffix:'',  label:'Papel en operación', sub:'Digital desde el primer día', trend:'Cero papel', ghost:'0' },
         { icon:'fas fa-rocket',     num:'72',  suffix:'h', label:'Primer resultado',   sub:'De idea a app funcionando', trend:'Rápido', ghost:'72' }
       ],
-
-      /* Intro card */
       intro_eyebrow: '🏗️ Sin código complejo',
       intro_h2a: 'Si tu equipo sigue usando papel',
       intro_h2b: 'eso se puede resolver.',
@@ -1107,32 +804,16 @@
         { icon:'fas fa-table',      title:'Google Sheets como base de datos', desc:'Los datos quedan en tu propio Drive. Siempre accesibles.' },
         { icon:'fas fa-file-export', title:'Documentos generados automáticamente', desc:'El sistema exporta informes, facturas y reportes en el formato que necesités.' }
       ],
-
-      /* Video section */
       videos_eyebrow: 'Demos disponibles',
       videos_title: 'Mirá cómo funciona en la práctica',
-
-      /* Cards */
-      status_live: 'Activo',
-      watch_yt: 'Ver en YouTube',
-      view_details: 'Ver Detalles',
-
-      /* CTA */
+      status_live: 'Activo', watch_yt: 'Ver en YouTube', view_details: 'Ver Detalles',
       cta_h2: '¿Necesitás una app así para tu operación?',
       cta_p: 'Podemos analizar tu flujo actual y construir una solución a medida. Rápido, sin código complejo y que tu equipo realmente use desde el primer día.',
-      cta_btn1: 'Agenda 15 min gratis',
-      cta_btn2: 'Ver todos los proyectos',
-
-      /* Lightbox */
-      lb_contact: 'Contactar',
-
-      /* MODAL "¿QUÉ ES APPSHEET?" */
+      cta_btn1: 'Agenda 15 min gratis', cta_btn2: 'Ver todos los proyectos',
+      lb_contact: 'Contactar', read_more: 'Leer más', read_less: 'Leer menos',
       modal_google_badge: 'Powered by Google',
-      modal_title: '¿Qué es ',
-      modal_title_span: 'AppSheet',
-      modal_title_end: '?',
+      modal_title: '¿Qué es ', modal_title_span: 'AppSheet', modal_title_end: '?',
       modal_subtitle: 'Plataforma no-code de Google para crear aplicaciones móviles profesionales conectadas a tus datos empresariales, sin escribir una línea de código.',
-      
       modal_benefits_title: 'Beneficios para tu empresa',
       modal_benefits: [
         { icon:'fas fa-bolt', title:'Desarrollo ultrarrápido', desc:'De idea a app funcional en 72 horas. Sin esperas de meses ni equipos de desarrollo.' },
@@ -1140,7 +821,6 @@
         { icon:'fas fa-dollar-sign', title:'ROI inmediato', desc:'Costos predecibles, sin licencias por usuario. Reducción del 90% en gastos vs desarrollo tradicional.' },
         { icon:'fas fa-users', title:'Adopción garantizada', desc:'Interfaz intuitiva que tu equipo usa desde el primer día. Cero curva de aprendizaje.' }
       ],
-      
       modal_integrations_title: 'Conecta con lo que ya usás',
       modal_integrations: [
         { icon:'fab fa-google-drive', label:'Google Drive' },
@@ -1152,7 +832,6 @@
         { icon:'fas fa-file-excel', label:'Excel Online' },
         { icon:'fas fa-layer-group', label:'APIs REST' }
       ],
-      
       modal_usecases_title: 'Casos de uso en empresas',
       modal_usecases: [
         { icon:'fas fa-boxes', title:'Gestión de inventario', desc:'Control de stock en tiempo real, alertas automáticas, trazabilidad completa.' },
@@ -1160,12 +839,11 @@
         { icon:'fas fa-truck', title:'Logística y transporte', desc:'Seguimiento de envíos, validación de entregas, documentación digital.' },
         { icon:'fas fa-hard-hat', title:'Gestión de proyectos', desc:'Asignación de tareas, timesheet, control de avances con geolocalización.' }
       ],
-      
       modal_cta_title: '¿Listo para digitalizar tu operación?',
       modal_cta_desc: 'Agenda una consulta gratuita de 15 minutos. Te mostramos cómo AppSheet puede resolver tu caso específico.',
       modal_cta_btn: 'Agendar consulta gratis',
 
-      // ── LISTA DE DEMOS ──
+      // ── DEMOS ──
       videos: [
         {
           id: 'ghiOKoppKp4',
@@ -1203,22 +881,17 @@
       nav_contact:'Contact', nav_demos:'AppSheet Demos',
       page_title: 'AppSheet Demos - Raul Pivet',
       footer: '© 2026 Raul Pivet. All rights reserved.',
-
       what_is_btn: 'What is AppSheet?',
-
       hero_pill: '📱 Live demos',
       hero_pill_sub: 'Real apps · No mockups',
-      h1a: 'AppSheet',
-      h1b: 'in Action',
+      h1a: 'AppSheet', h1b: 'in Action',
       hero_sub: 'Mobile applications built with AppSheet and Google Sheets, running in real operations. Every video shows a system that real teams use every single day.',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventory', 'Logistics', 'WhatsApp', 'Drive'],
-
       stats: [
         { icon:'fas fa-mobile-alt', num:'100', suffix:'%', label:'Apps in production', sub:'No prototypes, all real', trend:'Real', ghost:'100' },
         { icon:'fas fa-ban',        num:'0',   suffix:'',  label:'Paper in operation', sub:'Digital from day one', trend:'Zero paper', ghost:'0' },
         { icon:'fas fa-rocket',     num:'72',  suffix:'h', label:'First result',       sub:'From idea to working app', trend:'Fast', ghost:'72' }
       ],
-
       intro_eyebrow: '🏗️ No complex code',
       intro_h2a: 'If your team still uses paper',
       intro_h2b: 'that can be fixed.',
@@ -1229,28 +902,16 @@
         { icon:'fas fa-table',      title:'Google Sheets as the database', desc:'Data lives in your own Drive. Always accessible.' },
         { icon:'fas fa-file-export', title:'Documents generated automatically', desc:'The system exports reports, invoices, and summaries in the format you need.' }
       ],
-
       videos_eyebrow: 'Available demos',
       videos_title: 'See how it works in practice',
-
-      status_live: 'Live',
-      watch_yt: 'Watch on YouTube',
-      view_details: 'View Details',
-
+      status_live: 'Live', watch_yt: 'Watch on YouTube', view_details: 'View Details',
       cta_h2: 'Need an app like this for your operation?',
       cta_p: 'We can analyze your current workflow and build a custom solution. Fast, no complex code, and something your team will actually use from day one.',
-      cta_btn1: 'Schedule 15 min free',
-      cta_btn2: 'See all projects',
-
-      lb_contact: 'Contact',
-
-      /* MODAL EN INGLÉS */
+      cta_btn1: 'Schedule 15 min free', cta_btn2: 'See all projects',
+      lb_contact: 'Contact', read_more: 'Read more', read_less: 'Read less',
       modal_google_badge: 'Powered by Google',
-      modal_title: 'What is ',
-      modal_title_span: 'AppSheet',
-      modal_title_end: '?',
+      modal_title: 'What is ', modal_title_span: 'AppSheet', modal_title_end: '?',
       modal_subtitle: 'Google\'s no-code platform for creating professional mobile applications connected to your business data, without writing a single line of code.',
-      
       modal_benefits_title: 'Benefits for your business',
       modal_benefits: [
         { icon:'fas fa-bolt', title:'Ultra-fast development', desc:'From idea to working app in 72 hours. No months of waiting or development teams.' },
@@ -1258,7 +919,6 @@
         { icon:'fas fa-dollar-sign', title:'Immediate ROI', desc:'Predictable costs, no per-user licenses. 90% cost reduction vs traditional development.' },
         { icon:'fas fa-users', title:'Guaranteed adoption', desc:'Intuitive interface your team uses from day one. Zero learning curve.' }
       ],
-      
       modal_integrations_title: 'Connect with what you already use',
       modal_integrations: [
         { icon:'fab fa-google-drive', label:'Google Drive' },
@@ -1270,7 +930,6 @@
         { icon:'fas fa-file-excel', label:'Excel Online' },
         { icon:'fas fa-layer-group', label:'REST APIs' }
       ],
-      
       modal_usecases_title: 'Enterprise use cases',
       modal_usecases: [
         { icon:'fas fa-boxes', title:'Inventory management', desc:'Real-time stock control, automatic alerts, complete traceability.' },
@@ -1278,11 +937,9 @@
         { icon:'fas fa-truck', title:'Logistics & transport', desc:'Shipment tracking, delivery validation, digital documentation.' },
         { icon:'fas fa-hard-hat', title:'Project management', desc:'Task assignment, timesheets, progress control with geolocation.' }
       ],
-      
       modal_cta_title: 'Ready to digitize your operation?',
       modal_cta_desc: 'Schedule a free 15-minute consultation. We\'ll show you how AppSheet can solve your specific case.',
       modal_cta_btn: 'Schedule free consultation',
-
       videos: [
         {
           id: 'ghiOKoppKp4',
@@ -1317,28 +974,20 @@
   };
 
   // ══════════════════════════════════════════════════════════════════════
-  // SISTEMA DINÁMICO
+  // SISTEMA DE RENDERING DINÁMICO
   // ══════════════════════════════════════════════════════════════════════
-
   let lang = localStorage.getItem('homeLang') || 'es';
   let currentCarouselIndex = 0;
+  let currentSlidesCount = 0;
   let currentDemoData = null;
 
   function buildVideoCard(v, d, idx) {
     return `
       <article class="demo-card" data-demo-idx="${idx}" data-aos="fade-up" data-aos-delay="${100 + idx * 80}">
         <div class="demo-video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1"
-            title="${v.title}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+          <iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1" title="${v.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
           <div class="demo-overlay">
-            <button class="demo-overlay-btn">
-              <i class="fas fa-search-plus"></i> ${d.view_details}
-            </button>
+            <button class="demo-overlay-btn"><i class="fas fa-search-plus"></i> ${d.view_details}</button>
           </div>
         </div>
         <div class="demo-card-body">
@@ -1346,10 +995,7 @@
           <h3>${v.title}</h3>
           <p>${v.desc}</p>
           <div class="demo-card-footer">
-            <span class="demo-status">
-              <span class="demo-status-dot"></span>
-              ${d.status_live}
-            </span>
+            <span class="demo-status"><span class="demo-status-dot"></span>${d.status_live}</span>
             <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer" class="demo-yt-link" onclick="event.stopPropagation()">
               <i class="fab fa-youtube"></i> ${d.watch_yt}
             </a>
@@ -1360,17 +1006,14 @@
 
   function renderDemos() {
     const d = demosTrans[lang];
-
     document.title = d.page_title;
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
     document.getElementById('footerText').textContent = d.footer;
-
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const k = el.getAttribute('data-i18n');
       if (d[k]) el.textContent = d[k];
     });
-
     document.getElementById('lbYtText').textContent = d.watch_yt;
     document.getElementById('lbContactText').textContent = d.lb_contact;
 
@@ -1382,12 +1025,9 @@
         </div>
         <h1>${d.h1a}<br><span>${d.h1b}</span></h1>
         <p class="demos-hero-sub">${d.hero_sub}</p>
-        <div class="demos-hero-tags">
-          ${d.hero_tags.map(t => `<span class="demos-hero-tag">${t}</span>`).join('')}
-        </div>
+        <div class="demos-hero-tags">${d.hero_tags.map(t => `<span class="demos-hero-tag">${t}</span>`).join('')}</div>
         <button class="what-is-appsheet-btn" id="whatIsBtn" data-aos="fade-up" data-aos-delay="100">
-          <i class="fab fa-google"></i>
-          ${d.what_is_btn}
+          <i class="fab fa-google"></i> ${d.what_is_btn}
         </button>
       </section>
 
@@ -1434,9 +1074,7 @@
         <h2 class="section-title">${d.videos_title}</h2>
       </div>
 
-      <div class="demos-grid">
-        ${d.videos.map((v, i) => buildVideoCard(v, d, i)).join('')}
-      </div>
+      <div class="demos-grid">${d.videos.map((v, i) => buildVideoCard(v, d, i)).join('')}</div>
 
       <section class="demos-cta" data-aos="fade-up">
         <h2>${d.cta_h2}</h2>
@@ -1447,7 +1085,7 @@
         </div>
       </section>`;
 
-    refreshAOS();
+    if (typeof refreshAOS === 'function') refreshAOS();
     bindDemoCards();
     bindWhatIsButton();
     renderModalContent();
@@ -1463,91 +1101,62 @@
     });
   }
 
-  /* ══════════════════════════════════════════════════════
-     MODAL "¿QUÉ ES APPSHEET?"
-  ══════════════════════════════════════════════════════ */
+  // ══════════════════════════════════════════════════════
+  // MODAL "¿QUÉ ES APPSHEET?"
+  // ══════════════════════════════════════════════════════
   function bindWhatIsButton() {
     const btn = document.getElementById('whatIsBtn');
-    if (btn) {
-      btn.addEventListener('click', openAppSheetModal);
-    }
+    if (btn) btn.addEventListener('click', openAppSheetModal);
   }
 
   function renderModalContent() {
     const d = demosTrans[lang];
     const modalBody = document.querySelector('#appsheetInfoModal .modal-body');
-    
     modalBody.innerHTML = `
       <div class="modal-header">
-        <div class="modal-google-badge">
-          <i class="fab fa-google"></i>
-          ${d.modal_google_badge}
-        </div>
+        <div class="modal-google-badge"><i class="fab fa-google"></i> ${d.modal_google_badge}</div>
         <h2>${d.modal_title}<span>${d.modal_title_span}</span>${d.modal_title_end}</h2>
         <p>${d.modal_subtitle}</p>
       </div>
-
       <div class="modal-section">
-        <h3 class="modal-section-title">
-          <i class="fas fa-rocket"></i>
-          ${d.modal_benefits_title}
-        </h3>
+        <h3 class="modal-section-title"><i class="fas fa-rocket"></i> ${d.modal_benefits_title}</h3>
         <div class="modal-grid">
           ${d.modal_benefits.map(b => `
             <div class="modal-feature-card">
               <div class="modal-feature-icon"><i class="${b.icon}"></i></div>
-              <h4>${b.title}</h4>
-              <p>${b.desc}</p>
+              <h4>${b.title}</h4><p>${b.desc}</p>
             </div>`).join('')}
         </div>
       </div>
-
       <div class="modal-section">
-        <h3 class="modal-section-title">
-          <i class="fas fa-plug"></i>
-          ${d.modal_integrations_title}
-        </h3>
+        <h3 class="modal-section-title"><i class="fas fa-plug"></i> ${d.modal_integrations_title}</h3>
         <div class="modal-integrations">
-          ${d.modal_integrations.map(i => `
-            <span class="modal-integration-badge">
-              <i class="${i.icon}"></i>
-              ${i.label}
-            </span>`).join('')}
+          ${d.modal_integrations.map(i => `<span class="modal-integration-badge"><i class="${i.icon}"></i> ${i.label}</span>`).join('')}
         </div>
       </div>
-
       <div class="modal-section">
-        <h3 class="modal-section-title">
-          <i class="fas fa-briefcase"></i>
-          ${d.modal_usecases_title}
-        </h3>
+        <h3 class="modal-section-title"><i class="fas fa-briefcase"></i> ${d.modal_usecases_title}</h3>
         <div class="modal-grid">
           ${d.modal_usecases.map(u => `
             <div class="modal-feature-card">
               <div class="modal-feature-icon"><i class="${u.icon}"></i></div>
-              <h4>${u.title}</h4>
-              <p>${u.desc}</p>
+              <h4>${u.title}</h4><p>${u.desc}</p>
             </div>`).join('')}
         </div>
       </div>
-
       <div class="modal-cta-box">
         <h3>${d.modal_cta_title}</h3>
         <p>${d.modal_cta_desc}</p>
         <a href="contacto.html" class="btn">
-          <i class="fas fa-calendar-check"></i>
-          ${d.modal_cta_btn}
+          <i class="fas fa-calendar-check"></i> ${d.modal_cta_btn}
         </a>
-      </div>
-    `;
+      </div>`;
   }
 
   function openAppSheetModal() {
     const modal = document.getElementById('appsheetInfoModal');
     modal.style.display = 'flex';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => modal.classList.add('modal-open'));
-    });
+    requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('modal-open')));
     document.body.style.overflow = 'hidden';
   }
 
@@ -1558,15 +1167,18 @@
     setTimeout(() => { modal.style.display = 'none'; }, 400);
   }
 
-  /* ══════════════════════════════════════════════════════
-     LIGHTBOX DEMOS
-  ══════════════════════════════════════════════════════ */
+  // ══════════════════════════════════════════════════════
+  // LIGHTBOX DEMOS (responsivo y dinámico)
+  // ══════════════════════════════════════════════════════
   const demoLb = document.getElementById('demoLightbox');
   const lbOverlay = document.getElementById('lbOverlay');
   const lbClose = document.getElementById('lbClose');
   const lbTitle = document.getElementById('lbTitle');
   const lbDesc = document.getElementById('lbDesc');
   const lbYtBtn = document.getElementById('lbYtBtn');
+  const lbInfoText = document.getElementById('lbInfoText');
+  const lbReadMore = document.getElementById('lbReadMore');
+  const lbSlideCounter = document.getElementById('lbSlideCounter');
   const carouselInner = document.getElementById('carouselInner');
   const carouselPrev = document.getElementById('carouselPrev');
   const carouselNext = document.getElementById('carouselNext');
@@ -1580,124 +1192,188 @@
     currentDemoData = demo;
     currentCarouselIndex = 0;
 
+    // Construye lista de slides: primer el video, luego las imágenes
     const slides = [{ type: 'video', id: demo.id }];
     if (demo.screenshots && demo.screenshots.length > 0) {
-      demo.screenshots.forEach(url => {
-        slides.push({ type: 'image', url });
-      });
+      demo.screenshots.forEach(url => slides.push({ type: 'image', url }));
     }
+    currentSlidesCount = slides.length;
 
+    // Renderiza slides con clase diferenciada (video vs image)
     carouselInner.innerHTML = slides.map((slide, i) => {
       if (slide.type === 'video') {
         return `
-          <div class="lb-carousel-slide">
-            <iframe
-              src="https://www.youtube.com/embed/${slide.id}?rel=0&modestbranding=1&autoplay=0"
-              title="${demo.title}"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+          <div class="lb-carousel-slide lb-carousel-slide--video" data-type="video">
+            <div class="lb-video-holder">
+              <iframe src="https://www.youtube.com/embed/${slide.id}?rel=0&modestbranding=1&autoplay=0" title="${demo.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
           </div>`;
       } else {
         return `
-          <div class="lb-carousel-slide">
-            <img src="${slide.url}" alt="Screenshot ${i}" loading="lazy">
+          <div class="lb-carousel-slide lb-carousel-slide--image" data-type="image">
+            <img src="${slide.url}" alt="Screenshot ${i}" loading="lazy" draggable="false">
           </div>`;
       }
     }).join('');
 
-    carouselIndicators.innerHTML = slides.map((_, i) => 
-      `<button class="lb-carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}" aria-label="Ir al slide ${i + 1}"></button>`
+    // Indicadores (dots)
+    carouselIndicators.innerHTML = slides.map((_, i) =>
+      `<button class="lb-carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}" aria-label="Ir al slide ${i+1}"></button>`
     ).join('');
-
     document.querySelectorAll('.lb-carousel-dot').forEach(dot => {
-      dot.addEventListener('click', () => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
         goToSlide(parseInt(dot.dataset.slide));
       });
     });
 
+    // Título, descripción, link de YouTube
     lbTitle.textContent = demo.title;
     lbDesc.textContent = demo.desc_long || demo.desc;
     lbYtBtn.href = `https://www.youtube.com/watch?v=${demo.id}`;
 
+    // Reset estado "leer más" (empieza colapsado en mobile)
+    lbInfoText.classList.remove('expanded');
+    lbInfoText.classList.add('collapsed');
+    lbReadMore.textContent = d.read_more;
+
+    // Solo mostrar botón "leer más" si el texto realmente es largo
+    // (en desktop el CSS ya lo oculta, pero por si acaso)
+    updateReadMoreVisibility();
+
+    // Abrir modal
     demoLb.style.display = 'flex';
     requestAnimationFrame(() => requestAnimationFrame(() => demoLb.classList.add('lb-open')));
     document.body.style.overflow = 'hidden';
 
-    updateCarouselButtons();
+    updateCarouselUI();
+  }
+
+  function updateReadMoreVisibility() {
+    // En desktop (>640px) el CSS oculta el botón. En mobile siempre visible.
+    // Pero si el texto es corto y no se trunca, tampoco tiene sentido mostrarlo.
+    // Usamos timeout para que el DOM se pinte antes de medir.
+    setTimeout(() => {
+      const p = lbDesc;
+      if (!p) return;
+      const isTruncated = p.scrollHeight > p.clientHeight + 2;
+      lbReadMore.style.display = isTruncated ? '' : 'none';
+    }, 50);
   }
 
   function closeDemoLightbox() {
     demoLb.classList.remove('lb-open');
     document.body.style.overflow = '';
-    setTimeout(() => { demoLb.style.display = 'none'; }, 380);
+    setTimeout(() => {
+      demoLb.style.display = 'none';
+      // Limpiar iframe para detener cualquier video que siga reproduciendo
+      carouselInner.innerHTML = '';
+    }, 380);
   }
 
   function goToSlide(index) {
-    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
-    if (index < 0 || index >= slides.length) return;
-    
+    if (index < 0 || index >= currentSlidesCount) return;
     currentCarouselIndex = index;
     carouselInner.style.transform = `translateX(-${index * 100}%)`;
-    
+    updateCarouselUI();
+  }
+
+  function updateCarouselUI() {
+    // Contador
+    lbSlideCounter.textContent = `${currentCarouselIndex + 1} / ${currentSlidesCount}`;
+    lbSlideCounter.style.display = currentSlidesCount > 1 ? '' : 'none';
+
+    // Dots activos
     document.querySelectorAll('.lb-carousel-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
+      dot.classList.toggle('active', i === currentCarouselIndex);
     });
-    
-    updateCarouselButtons();
-  }
 
-  function updateCarouselButtons() {
-    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
+    // Flechas enabled/disabled
     carouselPrev.disabled = currentCarouselIndex === 0;
-    carouselNext.disabled = currentCarouselIndex === slides.length - 1;
+    carouselNext.disabled = currentCarouselIndex === currentSlidesCount - 1;
+
+    // Ocultar flechas e indicadores si solo hay 1 slide
+    const showControls = currentSlidesCount > 1;
+    carouselPrev.style.display = showControls ? '' : 'none';
+    carouselNext.style.display = showControls ? '' : 'none';
+    carouselIndicators.style.display = showControls ? '' : 'none';
   }
 
-  // Event listeners
+  // Event listeners - cierre
   lbClose.addEventListener('click', (e) => { e.stopPropagation(); closeDemoLightbox(); });
   lbOverlay.addEventListener('click', closeDemoLightbox);
-  
-  carouselPrev.addEventListener('click', () => {
+
+  // Event listeners - navegación
+  carouselPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (currentCarouselIndex > 0) goToSlide(currentCarouselIndex - 1);
   });
-  
-  carouselNext.addEventListener('click', () => {
-    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
-    if (currentCarouselIndex < slides.length - 1) goToSlide(currentCarouselIndex + 1);
+  carouselNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentCarouselIndex < currentSlidesCount - 1) goToSlide(currentCarouselIndex + 1);
   });
 
+  // "Leer más"
+  lbReadMore.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const d = demosTrans[lang];
+    const isExpanded = lbInfoText.classList.contains('expanded');
+    if (isExpanded) {
+      lbInfoText.classList.remove('expanded');
+      lbInfoText.classList.add('collapsed');
+      lbReadMore.textContent = d.read_more;
+    } else {
+      lbInfoText.classList.remove('collapsed');
+      lbInfoText.classList.add('expanded');
+      lbReadMore.textContent = d.read_less;
+    }
+  });
+
+  // Teclado
   document.addEventListener('keydown', e => {
     if (demoLb.classList.contains('lb-open')) {
       if (e.key === 'Escape') closeDemoLightbox();
       if (e.key === 'ArrowLeft' && currentCarouselIndex > 0) goToSlide(currentCarouselIndex - 1);
-      if (e.key === 'ArrowRight') {
-        const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
-        if (currentCarouselIndex < slides.length - 1) goToSlide(currentCarouselIndex + 1);
-      }
+      if (e.key === 'ArrowRight' && currentCarouselIndex < currentSlidesCount - 1) goToSlide(currentCarouselIndex + 1);
     }
     if (document.getElementById('appsheetInfoModal').classList.contains('modal-open')) {
       if (e.key === 'Escape') closeAppSheetModal();
     }
   });
 
+  // Swipe táctil (mobile) — solo si el touch empieza fuera del iframe del video
   let touchStartX = 0;
-  carouselInner.addEventListener('touchstart', e => { 
-    touchStartX = e.changedTouches[0].clientX; 
+  let touchStartY = 0;
+  let touchTarget = null;
+  carouselInner.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+    touchTarget = e.target;
   }, { passive: true });
-  
+
   carouselInner.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) < 50) return;
-    
-    const slides = carouselInner.querySelectorAll('.lb-carousel-slide');
-    if (diff > 0 && currentCarouselIndex < slides.length - 1) {
+    // No interferir con el iframe del video (YouTube maneja su propio swipe)
+    if (touchTarget && touchTarget.tagName === 'IFRAME') return;
+    const diffX = touchStartX - e.changedTouches[0].clientX;
+    const diffY = touchStartY - e.changedTouches[0].clientY;
+    // Solo cambiar slide si el gesto fue predominantemente horizontal
+    if (Math.abs(diffX) < 50 || Math.abs(diffY) > Math.abs(diffX)) return;
+    if (diffX > 0 && currentCarouselIndex < currentSlidesCount - 1) {
       goToSlide(currentCarouselIndex + 1);
-    } else if (diff < 0 && currentCarouselIndex > 0) {
+    } else if (diffX < 0 && currentCarouselIndex > 0) {
       goToSlide(currentCarouselIndex - 1);
     }
   });
 
-  // Modal close
+  // Recalcular "leer más" al cambiar tamaño de ventana
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    if (!demoLb.classList.contains('lb-open')) return;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateReadMoreVisibility, 150);
+  });
+
+  // Modal cerrar
   document.getElementById('modalCloseBtn').addEventListener('click', closeAppSheetModal);
   document.getElementById('modalOverlay').addEventListener('click', closeAppSheetModal);
 
