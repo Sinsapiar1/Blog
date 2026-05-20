@@ -376,11 +376,16 @@ function initForms() {
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+      // Re-read href at click time: dynamic code (e.g. lightbox) may have
+      // replaced the initial "#" with a real URL after bind time.
       const href = this.getAttribute('href');
-      if (href === '#') return;
+      if (!href || !href.startsWith('#')) return;   // not a hash link → let browser handle it
+      if (href === '#') return;                      // bare "#" → no target, nothing to scroll
       e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try {
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (_) {}
     });
   });
 }
