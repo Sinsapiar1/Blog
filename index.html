@@ -323,7 +323,6 @@
         <li class="menu-item active"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
         <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
         <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Sobre Mí</span></a></li>
-        <li class="menu-item"><a href="cv.html"><i class="fas fa-file-alt"></i> CV</a></li>
         <li class="menu-item"><a href="proyectos.html"><i class="fas fa-code"></i> <span data-i18n="nav_projects">Proyectos</span></a></li>
         <li class="menu-item"><a href="appsheet-demos.html"><i class="fab fa-youtube"></i> <span data-i18n="nav_demos">AppSheet Demos</span></a></li>
         <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
@@ -401,87 +400,107 @@
   <script>
   const t = {
     es: {
-      sidebar: "Logistics & Tech Solutions",
-      nav_home:"Inicio", nav_about:"Sobre Mí", nav_projects:"Proyectos", nav_contact:"Contacto", nav_demos:"AppSheet Demos",
+      sidebar: "Consultoría Digital",
+      nav_home:"Inicio", nav_about:"Nosotros", nav_projects:"Proyectos", nav_contact:"Contacto", nav_demos:"AppSheet Demos",
       footer: "Automatización & Business Intelligence",
-      eyebrow_pill: "⚡ Para vos si",
+      eyebrow_pill: "🏢 PIVET DIGITAL AUTOMATIONS LLC",
       eyebrow_phrases: [
-        "¿Tus procesos siguen siendo <span class='highlight'>manuales</span>? Eso tiene solución.",
-        "¿Tu equipo pierde horas en tareas <span class='highlight'>repetitivas</span>? Eso se automatiza.",
-        "¿Tus datos llegan <span class='highlight'>tarde o desactualizados</span>? Eso se conecta.",
-        "¿No tenés ningún sistema? <span class='highlight'>Arrancamos desde cero.</span>"
+        "¿Su inventario aún se cierra con <span class='highlight'>Excel</span>? Lo digitalizamos.",
+        "¿Sus reportes llegan cuando <span class='highlight'>ya es tarde</span>? Los automatizamos.",
+        "¿Su equipo pierde horas en tareas <span class='highlight'>repetitivas</span>? Lo resolvemos.",
+        "¿Necesita conectar su bodega con su <span class='highlight'>ERP</span>? Lo integramos."
       ],
-      h1a: "Automatización, datos",
-      h1b: "y soluciones web a medida",
-      hero_sub: "De la logística al código. 10+ años automatizando operaciones, construyendo dashboards que se actualizan solos, desarrollando herramientas web con React, Firebase y Python, y creando sistemas que trabajan por vos en redes sociales — todo en uno.",
-      tags: ["Power BI","Python","HTML/CSS/JS","React","Firebase","Make.com","Power Automate","AppSheet","GitHub Actions","Streamlit","Google Suite","SEO Técnico"],
-      btn_talk:"Hablemos", btn_cv:"Ver CV", btn_lab:"Ver Lab",
+      h1a: "Automatización Logística",
+      h1b: "& Operativa",
+      hero_sub: "Convertimos operaciones manuales en sistemas automáticos. Documentos que tardan horas → entregados en segundos. Apps de inventario, pipelines de datos y flujos inteligentes — para empresas que no pueden permitirse errores ni demoras.",
+      tags: ["WMS Móvil","Power BI","Python","AppSheet","ERP / SAP","Make.com","Power Automate","GitHub Actions","Streamlit","Google Suite","IA Aplicada","SEO Técnico"],
+      btn_talk:"Agendar Demostración", btn_cv:"Casos de Éxito", btn_lab:"Ver Apps en Vivo",
       stats: [
-        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Años de trayectoria",       sub:"Logística + tecnología",          trend:"Real" },
-        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Menos tiempo manual",       sub:"En procesos automatizados",        trend:"Probado" },
-        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"Sistema desde cero",         sub:"Si no tenés nada, arrancamos",     trend:"Sí, cero" },
-        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"Orientado a resultados",     sub:"Nada que no funcione",             trend:"Siempre" }
+        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Años en operaciones logísticas",   sub:"Minería, distribución y logística",     trend:"Trayectoria" },
+        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Reducción de trabajo manual",       sub:"En procesos automatizados",              trend:"Probado" },
+        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"Sistema desde cero (si aplica)",    sub:"Sin sistema previo, arrancamos ahí",     trend:"Sí, podemos" },
+        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"Orientado a ROI",                   sub:"Nada que no genere resultados reales",   trend:"Siempre" }
       ],
-      zts_eyebrow: "🏗️ Punto de partida cero",
-      zts_title_a: "Si tu operación no tiene ningún sistema,",
+      zts_eyebrow: "🏗️ Sin sistema previo? No es problema",
+      zts_title_a: "Si su operación no tiene ningún sistema,",
       zts_title_b: "ese es exactamente el punto de partida.",
       zts_desc: "Muchas empresas manejan su inventario en papel, en planillas sueltas o en la memoria de las personas. Eso no es un problema técnico — es una oportunidad. Con las herramientas correctas y la experiencia operativa para entender el negocio desde adentro, es posible construir un sistema completo, ordenado y que el equipo realmente use, sin reemplazar lo que ya funciona.",
-      zts_proof_text: "Sistema completo de inventario para alimentación construido con AppSheet: maestro de códigos, entradas, salidas y exportación automática de documentos — implementado en operación real.",
+      zts_proof_text: "Sistema completo de inventario para operación alimentaria construido con AppSheet: maestro de códigos, entradas, salidas y exportación automática de documentos — implementado en operación real.",
       zts_steps: [
         { num:"01", title:"Diagnóstico del flujo real", desc:"Se mapea cómo opera el negocio hoy — qué se registra, cómo, quién lo usa y dónde están los puntos de falla." },
         { num:"02", title:"Maestro de productos y códigos", desc:"Se crea la base de datos centralizada: cada ítem con su código único, categoría, unidad de medida y parámetros de control." },
         { num:"03", title:"Control de entradas y salidas", desc:"App móvil para que el equipo registre movimientos en tiempo real, con validaciones automáticas y sin papel." },
         { num:"04", title:"Reportes y documentos automáticos", desc:"El sistema genera y exporta los informes que la empresa necesita — en el formato correcto, sin que nadie tenga que armarlo a mano." }
       ],
-      svc_eyebrow:"¿En qué puedo ayudarte?", svc_title:"Soluciones que construyo",
+      svc_eyebrow:"Nuestras Soluciones", svc_title:"¿Qué construimos para su empresa?",
       services: [
-        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Dashboards Power BI con custom visuals tipo webapp, actualización automática vía Query M avanzado y DAX. Conecto directamente tus fuentes de datos para que el reporte se actualice solo.", tags:["Power BI","DAX","Query M","TypeScript"] },
-        { icon:"fas fa-cogs", title:"Automatización de Reportes", desc:"Pipeline completo: correo con Excel → Python procesa → SQLite almacena 32 días → GitHub Actions genera JSON → Power Automate distribuye a 50+ destinatarios cada uno con solo sus datos.", tags:["Power Automate","GitHub Actions","Python","SQLite"] },
-        { icon:"fas fa-mobile-alt", title:"Apps de Inventario", desc:"Aplicaciones móviles con AppSheet para toma de inventario, despacho y recepción en bodegas. Genera informes tipo factura y los envía automáticamente por WhatsApp al instante.", tags:["AppSheet","Google Sheets","WhatsApp","Drive"] },
-        { icon:"fas fa-plug", title:"Integraciones & Flujos", desc:"Conecto tu ecosistema completo: Gmail → Sheets → WhatsApp → Power BI. Alertas automáticas de pendientes cada mañana, sincronización en tiempo real y cero trabajo manual repetitivo.", tags:["Make.com","Google Suite","Microsoft 365","Webhooks"] },
-        { icon:"fas fa-database", title:"Gestión de Datos", desc:"Dataverse con ventana temporal de 62 días y eliminación masiva automática diaria. JSON generados por GitHub Actions, SQLite como base intermedia. Pipelines que no necesitan mantenimiento.", tags:["Dataverse","SQLite","JSON","Power Platform"] },
-        { icon:"fas fa-robot", title:"IA Aplicada a Procesos", desc:"Respuestas automáticas con Gemini AI en menos de 5 segundos, detección de anomalías en inventario con Python/Pandas, y agentes inteligentes que califican y responden leads 24/7.", tags:["Gemini AI","Python","Make.com","Streamlit"] },
-        { icon:"fab fa-html5", title:"Desarrollo Web + SEO Técnico", desc:"Sitios web y aplicaciones completas desde cero: HTML, CSS, JavaScript, React y Firebase. Cada sitio se entrega con SEO técnico configurado — estructura de metadatos, Google Search Console, sitemap, schema.org y indexación correcta para que aparezcas en Google desde el primer día.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
-        { icon:"fas fa-share-alt", title:"Automatización de Redes Sociales", desc:"Herramientas que publican, responden, recopilan métricas y gestionan tu presencia en Instagram, LinkedIn y más — de forma automática. Flujos con Make.com que conectan tu contenido con tu audiencia sin intervención manual.", tags:["Make.com","Instagram API","Webhooks","Python"] }
+        { icon:"fas fa-mobile-alt", title:"Sistema WMS Móvil", desc:"Apps de inventario de grado corporativo en AppSheet. Escaneo en modo ráfaga, validación automática por bodega y reportes listos para ERP. Sin instalación — cualquier smartphone.", tags:["AppSheet","Google Sheets","WMS","ERP"] },
+        { icon:"fas fa-file-alt", title:"Automatización Documental", desc:"Eliminamos la emisión manual de documentos logísticos. Órdenes de compra, guías de despacho, informes de recepción — generados y distribuidos automáticamente en segundos.", tags:["Apps Script","Power Automate","Gmail API","PDF"] },
+        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Dashboards Power BI con actualización automática vía Query M avanzado y DAX. Conectamos directamente sus fuentes de datos para que el reporte se actualice solo, sin intervención.", tags:["Power BI","DAX","Query M","TypeScript"] },
+        { icon:"fas fa-plug", title:"Integración con ERP / SAP / Oracle", desc:"Conectamos su ecosistema completo: bodega, ERP, CRM, Gmail y Power BI en un solo flujo. Datos que se mueven entre sistemas sin re-digitación ni pérdida de información.", tags:["Make.com","Webhooks","APIs REST","Power Platform"] },
+        { icon:"fas fa-robot", title:"IA Aplicada a Operaciones", desc:"Agentes de IA que detectan anomalías, califican leads, responden consultas y generan alertas proactivas. Automatización cognitiva sin reemplazar al equipo humano.", tags:["Gemini AI","Python","Make.com","Streamlit"] },
+        { icon:"fas fa-database", title:"Pipelines de Datos", desc:"Pipeline completo: correo con Excel → Python procesa → SQLite almacena → GitHub Actions genera → Power Automate distribuye a 50+ destinatarios, cada uno con solo sus datos.", tags:["Python","SQLite","GitHub Actions","Dataverse"] },
+        { icon:"fab fa-html5", title:"Presencia Web Corporativa", desc:"Sitios y landing pages B2B desde cero con SEO técnico desde el día uno. Schema.org, sitemap y Google Search Console para que su empresa aparezca cuando el cliente la busca.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
+        { icon:"fas fa-cogs", title:"Automatización de Procesos", desc:"Cualquier tarea repetitiva que hoy realiza una persona puede automatizarse. Análisis del flujo, diseño del pipeline y entrega funcionando — en semanas, no meses.", tags:["Power Automate","Make.com","Python","GitHub Actions"] }
       ],
-      cases_eyebrow:"Para que te identifiques", cases_title:"¿Alguna de estas situaciones te resulta familiar?",
+      cases_eyebrow:"Resultados reales", cases_title:"Problemas que resolvemos en producción",
       cases: [
-        { icon:"fas fa-envelope-open-text", title:"Tu equipo pierde horas enviando el mismo reporte a 50 personas distintas", desc:"Cada semana, alguien descarga un Excel, lo filtra manualmente y lo reenvía a cada destinatario. Es tiempo perdido que se repite sin parar. Con un pipeline automatizado, ese proceso completo sucede solo — correo entrante → Python → SQLite → GitHub Actions → Power Automate → cada jefe de almacén recibe exactamente sus datos, sin intervención humana.", badge:"✓ En producción" },
-        { icon:"fas fa-chart-line", title:"Tus datos están desactualizados justo cuando más los necesitás", desc:"Cada vez que alguien quiere ver el estado real del negocio, tiene que pedir el archivo, esperar que alguien lo actualice y rezar para que los números sean correctos. Un dashboard conectado directamente a la fuente, con ventana temporal de 62 días y limpieza automática, se actualiza solo — sin que nadie tenga que hacer nada.", badge:"✓ En producción" },
-        { icon:"fas fa-tags", title:"Crear etiquetas correlativas en Excel le lleva horas a tu equipo", desc:"Numerar, formatear, imprimir — un proceso que debería durar segundos se convierte en una tarea que consume la mañana. Una herramienta en Python hace exactamente lo mismo en 5 segundos: hasta 1.000 etiquetas con numeración automática, formato profesional y listas para imprimir.", badge:"⚡ 5 segundos" },
-        { icon:"fas fa-bell", title:"Nadie sabe qué está pendiente hasta que ya es tarde para actuar", desc:"Los pendientes se acumulan en correos sin leer y nadie tiene visibilidad de lo más urgente hasta que el problema ya está encima. Un sistema con Google Apps Script escanea correos de proveedores, calcula días de antigüedad y envía cada mañana una lista ordenada por urgencia — directo al WhatsApp del equipo.", badge:"📱 Cada mañana" },
-        { icon:"fas fa-warehouse", title:"Los errores de inventario en papel te cuestan dinero y credibilidad", desc:"Con registros manuales en papel, los errores son inevitables — y en operaciones de turno continuo se multiplican. Una app móvil con AppSheet reemplazó completamente el papel en una operación minera de 20 personas en turnos 7x7, reduciendo los errores de inventario un 30% desde el primer mes.", badge:"↓ 30% errores" },
-        { icon:"fas fa-search", title:"Tu negocio existe, pero nadie lo encuentra en Google", desc:"Sin SEO técnico, un sitio web no aparece aunque esté bien diseñado. Estructura de metadatos, schema.org, sitemap, Google Search Console y configuración correcta de indexación son la diferencia entre existir en internet y aparecer cuando alguien te busca. Este mismo sitio aparece en el puesto #1 de Google para 'Raul Pivet' — con configuración técnica, no con magia.", badge:"🔍 #1 en Google" }
+        { icon:"fas fa-envelope-open-text", title:"Su equipo pierde horas enviando el mismo reporte a 50 destinatarios distintos", desc:"Cada semana, alguien descarga un Excel, lo filtra manualmente y lo reenvía. Es tiempo que se repite sin parar. Con un pipeline automatizado, ese proceso ocurre solo — correo entrante → Python → SQLite → GitHub Actions → Power Automate → cada jefe de almacén recibe exactamente sus datos, sin intervención humana.", badge:"✓ En producción" },
+        { icon:"fas fa-chart-line", title:"Los datos están desactualizados justo cuando más se necesitan", desc:"Cada vez que alguien quiere ver el estado real del negocio, tiene que pedir el archivo y esperar. Un dashboard conectado directamente a la fuente, con ventana temporal de 62 días y limpieza automática, se actualiza solo — sin que nadie tenga que hacer nada.", badge:"✓ En producción" },
+        { icon:"fas fa-tags", title:"Crear etiquetas correlativas en Excel le cuesta horas a su equipo", desc:"Un proceso que debería durar segundos se convierte en una tarea que consume la mañana. Una herramienta en Python hace lo mismo en 5 segundos: hasta 1.000 etiquetas con numeración automática, formato profesional y listas para imprimir.", badge:"⚡ 5 segundos" },
+        { icon:"fas fa-bell", title:"Nadie sabe qué está pendiente hasta que ya es tarde para actuar", desc:"Los pendientes se acumulan en correos sin leer. Un sistema con Google Apps Script escanea correos de proveedores, calcula días de antigüedad y envía cada mañana una lista ordenada por urgencia — directo al WhatsApp del equipo.", badge:"📱 Cada mañana" },
+        { icon:"fas fa-warehouse", title:"Los errores de inventario en papel generan pérdidas y problemas de trazabilidad", desc:"Con registros manuales, los errores son inevitables y en operaciones de turno continuo se multiplican. Una app móvil con AppSheet reemplazó completamente el papel en una operación de 20 personas en turnos 7x7, reduciendo errores un 30% desde el primer mes.", badge:"↓ 30% errores" },
+        { icon:"fas fa-search", title:"La empresa existe, pero no aparece en Google cuando un cliente la busca", desc:"Sin SEO técnico, un sitio web no aparece aunque esté bien diseñado. Estructura de metadatos, schema.org, sitemap y Google Search Console son la diferencia entre existir en internet y aparecer cuando alguien busca su servicio.", badge:"🔍 #1 en Google" }
       ],
-      stack_eyebrow:"Tecnologías", stack_title:"Mi stack",
-      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Excel Avanzado"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fab fa-instagram","Instagram API"],["fas fa-share-alt","Social Automation"],["fas fa-search","SEO Técnico"]],
-      cta_title:"¿Te identificaste con alguna de esas situaciones?",
-      cta_desc:"Puedo analizar tu caso, diseñar la solución y entregártela funcionando — sea un dashboard, una web, un bot o un flujo automático.<br>PIVET DIGITAL AUTOMATIONS LLC · Trabajo remoto · Disponible de inmediato · Miami, FL",
-      cta_btn1:"Hablemos", cta_btn2:"Conocer más sobre mí"
+      stack_eyebrow:"Tecnologías", stack_title:"Nuestro stack",
+      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Excel Avanzado"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fas fa-plug","APIs REST"],["fas fa-share-alt","Automatización"],["fas fa-search","SEO Técnico"]],
+      trust_eyebrow:"Confianza & Cumplimiento", trust_title:"Trabajamos bajo estándares corporativos",
+      trust_items:[
+        { icon:"fas fa-file-contract", label:"NDA / Confidencialidad", sub:"Firmamos acuerdo de confidencialidad antes de iniciar cualquier proyecto" },
+        { icon:"fas fa-handshake", label:"SLA Documentado", sub:"Tiempos de respuesta y entregables acordados por contrato" },
+        { icon:"fas fa-building", label:"Entidad Legal — Florida", sub:"PIVET DIGITAL AUTOMATIONS LLC, registrada en el Estado de Florida, EE.UU." },
+        { icon:"fab fa-google", label:"Infraestructura Google Cloud", sub:"Datos en la nube del cliente. Nunca en servidores de terceros no autorizados" },
+        { icon:"fas fa-globe", label:"100% Remoto", sub:"Operamos desde Miami, FL para toda América y EE.UU." },
+        { icon:"fas fa-rocket", label:"Disponibilidad Inmediata", sub:"Proyectos que arrancan en días, no en meses" }
+      ],
+      case_study: {
+        badge:"CASO DE ÉXITO",
+        name:"WMS Móvil para Operación de Distribución Alimentaria",
+        sector:"🏭 Sector Alimentario · Hialeah, FL",
+        metrics:[ { num:"↓30%", label:"Errores de inventario" }, { num:"<30s", label:"Cierre de inventario" }, { num:"0", label:"Papel en operación" } ],
+        problem:"Registro manual en papel. Errores de lote y trazabilidad. Horas cruzando datos en Excel para que el ERP cuadre al cierre de cada turno.",
+        solution:"WMS Móvil con AppSheet + Google Sheets. Escaneo en modo ráfaga, validación automática por bodega, dashboard de auditoría en tiempo real.",
+        result:"20 operadores en turno 7x7. Cero papel desde el primer mes. Cierre del inventario en segundos, listo para inyectar al ERP.",
+        tech:["AppSheet","Google Sheets","Apps Script","Gmail API"],
+        cta:"Ver Demo en Video"
+      },
+      cta_title:"¿Agendamos 30 minutos sin costo?",
+      cta_desc:"Le mostramos exactamente cómo solucionamos su caso con tecnología real, no propuestas genéricas.<br>Trabajo remoto · Disponible de inmediato · Miami, FL · <strong>PIVET DIGITAL AUTOMATIONS LLC</strong>",
+      cta_btn1:"Agendar Demostración", cta_btn2:"Ver Demos en Vivo"
     },
     en: {
-      sidebar:"Logistics & Tech Solutions",
-      nav_home:"Home", nav_about:"About Me", nav_projects:"Projects", nav_contact:"Contact", nav_demos:"AppSheet Demos",
+      sidebar:"Digital Consulting",
+      nav_home:"Home", nav_about:"About Us", nav_projects:"Projects", nav_contact:"Contact", nav_demos:"AppSheet Demos",
       footer:"Automation & Business Intelligence",
-      eyebrow_pill: "⚡ For you if",
+      eyebrow_pill: "🏢 PIVET DIGITAL AUTOMATIONS LLC",
       eyebrow_phrases: [
-        "Your processes are still <span class='highlight'>manual</span>? That's fixable.",
-        "Your team wastes hours on <span class='highlight'>repetitive tasks</span>? That can be automated.",
-        "Your data arrives <span class='highlight'>late or outdated</span>? That can be connected.",
-        "No system at all? <span class='highlight'>We start from zero.</span>"
+        "Is your inventory still closed with <span class='highlight'>Excel</span>? We digitize it.",
+        "Do your reports arrive when it's <span class='highlight'>already too late</span>? We automate them.",
+        "Is your team wasting hours on <span class='highlight'>repetitive tasks</span>? We solve that.",
+        "Need to connect your warehouse to your <span class='highlight'>ERP</span>? We integrate it."
       ],
-      h1a:"Automation, data",
-      h1b:"and custom web solutions",
-      hero_sub:"From logistics to code. 10+ years automating operations, building self-updating dashboards, developing web tools with React, Firebase and Python, and creating systems that work for you on social media — all in one.",
-      tags:["Power BI","Python","HTML/CSS/JS","React","Firebase","Make.com","Power Automate","AppSheet","GitHub Actions","Streamlit","Google Suite","Technical SEO"],
-      btn_talk:"Let's talk", btn_cv:"View CV", btn_lab:"View Lab",
+      h1a:"Logistics & Operations",
+      h1b:"Automation",
+      hero_sub:"We transform manual operations into automated systems. Documents that take hours → delivered in seconds. Inventory apps, data pipelines and intelligent flows — for companies that can't afford errors or delays.",
+      tags:["Mobile WMS","Power BI","Python","AppSheet","ERP / SAP","Make.com","Power Automate","GitHub Actions","Streamlit","Google Suite","Applied AI","Technical SEO"],
+      btn_talk:"Schedule a Demo", btn_cv:"Case Studies", btn_lab:"See Live Apps",
       stats: [
-        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Years in the field",         sub:"Logistics + technology",           trend:"Real" },
-        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Less manual work",           sub:"In automated processes",           trend:"Proven" },
-        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"System from scratch",         sub:"No system? We start there",        trend:"Yes, zero" },
-        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"Results-driven",             sub:"Nothing that doesn't work",         trend:"Always" }
+        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Years in logistics operations",    sub:"Mining, distribution & logistics",      trend:"Track record" },
+        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Manual work reduction",            sub:"In automated processes",                trend:"Proven" },
+        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"System from scratch (if needed)",  sub:"No system? That's where we start",      trend:"Yes, we can" },
+        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"ROI-driven",                       sub:"Nothing that doesn't generate results",  trend:"Always" }
       ],
-      zts_eyebrow:"🏗️ Starting from zero",
+      zts_eyebrow:"🏗️ No system yet? Not a problem",
       zts_title_a:"If your operation has no system in place,",
       zts_title_b:"that's exactly the right starting point.",
       zts_desc:"Many businesses manage their inventory on paper, scattered spreadsheets, or in people's heads. That's not a technical problem — it's an opportunity. With the right tools and the operational experience to understand the business from the inside, it's possible to build a complete, organized system that the team actually uses, without replacing what already works.",
@@ -492,31 +511,51 @@
         { num:"03", title:"Entries and exits control", desc:"A mobile app lets the team record movements in real time, with automatic validations and no paper." },
         { num:"04", title:"Automatic reports and documents", desc:"The system generates and exports the reports the company needs — in the right format, without anyone having to build them manually." }
       ],
-      svc_eyebrow:"How can I help?", svc_title:"Solutions I build",
+      svc_eyebrow:"Our Solutions", svc_title:"What we build for your company",
       services:[
-        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Power BI dashboards with custom TypeScript visuals, automatic refresh via advanced Query M scripts, and direct data source connections.", tags:["Power BI","DAX","Query M","TypeScript"] },
-        { icon:"fas fa-cogs", title:"Report Automation", desc:"Full pipeline: email with Excel → Python processes → SQLite stores 32-day window → GitHub Actions generates JSON → Power Automate delivers to 50+ recipients, each with only their own data.", tags:["Power Automate","GitHub Actions","Python","SQLite"] },
-        { icon:"fas fa-mobile-alt", title:"Inventory Apps", desc:"Mobile AppSheet apps for inventory counts, dispatch and receiving. Automatically generates invoice-style reports and sends them via WhatsApp instantly.", tags:["AppSheet","Google Sheets","WhatsApp","Drive"] },
-        { icon:"fas fa-plug", title:"Integrations & Flows", desc:"I connect your entire ecosystem: Gmail → Sheets → WhatsApp → Power BI. Daily automated pending alerts, real-time synchronization, and zero repetitive manual work.", tags:["Make.com","Google Suite","Microsoft 365","Webhooks"] },
-        { icon:"fas fa-database", title:"Data Management", desc:"Dataverse with 62-day rolling window and automatic daily mass deletion. JSON generated by GitHub Actions, SQLite as intermediate store. Pipelines that require zero maintenance.", tags:["Dataverse","SQLite","JSON","Power Platform"] },
-        { icon:"fas fa-robot", title:"AI Applied to Processes", desc:"Automated Gemini AI responses under 5 seconds, Python/Pandas inventory anomaly detection, and intelligent agents that qualify and respond to leads 24/7.", tags:["Gemini AI","Python","Make.com","Streamlit"] },
-        { icon:"fab fa-html5", title:"Web Development + Technical SEO", desc:"Complete websites and applications from scratch: HTML, CSS, JavaScript, React and Firebase. Every site is delivered with technical SEO configured — metadata structure, Google Search Console, sitemap, schema.org and correct indexation so you show up on Google from day one.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
-        { icon:"fas fa-share-alt", title:"Social Media Automation", desc:"Tools that automatically post, respond, collect metrics and manage your presence on Instagram, LinkedIn and more. Make.com flows that connect your content with your audience — hands-free.", tags:["Make.com","Instagram API","Webhooks","Python"] }
+        { icon:"fas fa-mobile-alt", title:"Mobile WMS System", desc:"Corporate-grade inventory apps on AppSheet. Burst-mode scanning, automatic warehouse validation and ERP-ready reports. No installation — any smartphone.", tags:["AppSheet","Google Sheets","WMS","ERP"] },
+        { icon:"fas fa-file-alt", title:"Document Automation", desc:"We eliminate manual logistics document generation. Purchase orders, dispatch guides, receiving reports — automatically generated and distributed in seconds.", tags:["Apps Script","Power Automate","Gmail API","PDF"] },
+        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Power BI dashboards with automatic refresh via advanced Query M and DAX. We connect directly to your data sources so the report updates itself without intervention.", tags:["Power BI","DAX","Query M","TypeScript"] },
+        { icon:"fas fa-plug", title:"ERP / SAP / Oracle Integration", desc:"We connect your entire ecosystem: warehouse, ERP, CRM, Gmail and Power BI in one flow. Data that moves between systems without re-entry or information loss.", tags:["Make.com","Webhooks","REST APIs","Power Platform"] },
+        { icon:"fas fa-robot", title:"AI Applied to Operations", desc:"AI agents that detect anomalies, qualify leads, respond to queries and generate proactive alerts. Cognitive automation without replacing your team.", tags:["Gemini AI","Python","Make.com","Streamlit"] },
+        { icon:"fas fa-database", title:"Data Pipelines", desc:"Full pipeline: email with Excel → Python processes → SQLite stores → GitHub Actions generates → Power Automate delivers to 50+ recipients, each with only their own data.", tags:["Python","SQLite","GitHub Actions","Dataverse"] },
+        { icon:"fab fa-html5", title:"Corporate Web Presence", desc:"B2B websites and landing pages from scratch with technical SEO from day one. Schema.org, sitemap, Google Search Console — your company appears when the client searches.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
+        { icon:"fas fa-cogs", title:"Process Automation", desc:"Any repetitive task someone does today can be automated. Flow analysis, pipeline design and working delivery — in weeks, not months.", tags:["Power Automate","Make.com","Python","GitHub Actions"] }
       ],
-      cases_eyebrow:"Sound familiar?", cases_title:"Do any of these situations hit close to home?",
+      cases_eyebrow:"Real results", cases_title:"Problems we solve in production",
       cases:[
-        { icon:"fas fa-envelope-open-text", title:"Your team wastes hours sending the same report to 50 different people", desc:"Every week, someone downloads an Excel file, manually filters it and forwards it to each recipient. It's wasted time that repeats endlessly. With an automated pipeline, the whole process runs by itself — incoming email → Python → SQLite → GitHub Actions → Power Automate → each warehouse manager gets exactly their own data, no human intervention required.", badge:"✓ In production" },
-        { icon:"fas fa-chart-line", title:"Your data is always out of date when you need it most", desc:"Every time someone wants to see the real state of the business, they have to ask for the file, wait for someone to update it and hope the numbers are right. A dashboard connected directly to the source, with a 62-day rolling window and automatic cleanup, updates itself — without anyone having to do anything.", badge:"✓ In production" },
-        { icon:"fas fa-tags", title:"Creating sequential labels in Excel takes your team half the morning", desc:"Numbering, formatting, printing — a process that should take seconds turns into a task that eats up hours. A Python tool does exactly the same thing in 5 seconds: up to 1,000 labels with automatic numbering, professional formatting and print-ready output.", badge:"⚡ 5 seconds" },
-        { icon:"fas fa-bell", title:"Nobody knows what's pending until it's already too late to act", desc:"Pending items pile up in unread emails and nobody has visibility of what's most urgent until the problem is already on top of them. A Google Apps Script system scans supplier emails, calculates how many days each item has been pending, and sends a priority-sorted list to the team's WhatsApp every morning.", badge:"📱 Every morning" },
-        { icon:"fas fa-warehouse", title:"Paper-based inventory records cost you money and credibility", desc:"With manual paper records, errors are inevitable — and in continuous-shift operations they multiply. A mobile AppSheet app fully replaced paper in a 20-person mining operation on 7x7 rotating shifts, reducing inventory errors by 30% from the very first month.", badge:"↓ 30% errors" },
-        { icon:"fas fa-search", title:"Your business exists, but nobody finds it on Google", desc:"Without technical SEO, a website won't show up even if it's well designed. Metadata structure, schema.org, sitemap, Google Search Console and correct indexation are the difference between existing on the internet and appearing when someone searches for you. This very site ranks #1 on Google for 'Raul Pivet' — through technical configuration, not luck.", badge:"🔍 #1 on Google" }
+        { icon:"fas fa-envelope-open-text", title:"Your team wastes hours sending the same report to 50 different recipients", desc:"Every week, someone downloads an Excel file, manually filters it and forwards it to each recipient. With an automated pipeline, the whole process runs by itself — incoming email → Python → SQLite → GitHub Actions → Power Automate → each warehouse manager gets exactly their own data, no human intervention required.", badge:"✓ In production" },
+        { icon:"fas fa-chart-line", title:"Data is always out of date when you need it most", desc:"Every time someone wants to see the real state of the business, they have to ask for the file and wait. A dashboard connected directly to the source, with a 62-day rolling window and automatic cleanup, updates itself — without anyone having to do anything.", badge:"✓ In production" },
+        { icon:"fas fa-tags", title:"Creating sequential labels in Excel takes your team half the morning", desc:"A process that should take seconds turns into a task that eats up hours. A Python tool does exactly the same thing in 5 seconds: up to 1,000 labels with automatic numbering, professional formatting and print-ready output.", badge:"⚡ 5 seconds" },
+        { icon:"fas fa-bell", title:"Nobody knows what's pending until it's already too late to act", desc:"Pending items pile up in unread emails. A Google Apps Script system scans supplier emails, calculates how many days each item has been pending, and sends a priority-sorted list to the team's WhatsApp every morning.", badge:"📱 Every morning" },
+        { icon:"fas fa-warehouse", title:"Paper-based inventory records generate losses and traceability issues", desc:"With manual paper records, errors are inevitable and multiply in shift-based operations. A mobile AppSheet app fully replaced paper in a 20-person operation on 7x7 rotating shifts, reducing inventory errors by 30% from the very first month.", badge:"↓ 30% errors" },
+        { icon:"fas fa-search", title:"Your company exists, but nobody finds it on Google when a client searches", desc:"Without technical SEO, a website won't show up even if it's well designed. Metadata structure, schema.org, sitemap and Google Search Console are the difference between existing and appearing when someone searches for your service.", badge:"🔍 #1 on Google" }
       ],
-      stack_eyebrow:"Technologies", stack_title:"My stack",
-      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Advanced Excel"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fab fa-instagram","Instagram API"],["fas fa-share-alt","Social Automation"],["fas fa-search","Technical SEO"]],
-      cta_title:"Did any of those situations sound familiar?",
-      cta_desc:"I can analyze your case, design the solution and deliver it working — whether it's a dashboard, a website, a bot or an automated flow.<br>PIVET DIGITAL AUTOMATIONS LLC · Remote work · Available immediately · Miami, FL",
-      cta_btn1:"Let's talk", cta_btn2:"Learn more about me"
+      stack_eyebrow:"Technologies", stack_title:"Our stack",
+      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Advanced Excel"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fas fa-plug","REST APIs"],["fas fa-share-alt","Automation"],["fas fa-search","Technical SEO"]],
+      trust_eyebrow:"Trust & Compliance", trust_title:"We work under corporate standards",
+      trust_items:[
+        { icon:"fas fa-file-contract", label:"NDA / Confidentiality", sub:"We sign a confidentiality agreement before starting any project" },
+        { icon:"fas fa-handshake", label:"Documented SLA", sub:"Response times and deliverables agreed in writing by contract" },
+        { icon:"fas fa-building", label:"Legal Entity — Florida", sub:"PIVET DIGITAL AUTOMATIONS LLC, registered in the State of Florida, USA" },
+        { icon:"fab fa-google", label:"Google Cloud Infrastructure", sub:"Data stays in the client's cloud. Never on unauthorized third-party servers" },
+        { icon:"fas fa-globe", label:"100% Remote", sub:"Operating from Miami, FL for all of the Americas and the US" },
+        { icon:"fas fa-rocket", label:"Immediate Availability", sub:"Projects that start in days, not months" }
+      ],
+      case_study: {
+        badge:"CASE STUDY",
+        name:"Mobile WMS for Food Distribution Operation",
+        sector:"🏭 Food & Beverage · Hialeah, FL",
+        metrics:[ { num:"↓30%", label:"Inventory errors" }, { num:"<30s", label:"Inventory close" }, { num:"0", label:"Paper in operation" } ],
+        problem:"Manual paper records. Batch and traceability errors. Hours crossing data in Excel so the ERP closes correctly at end of shift.",
+        solution:"Mobile WMS with AppSheet + Google Sheets. Burst scanning, automatic warehouse validation, real-time audit dashboard.",
+        result:"20 operators on 7x7 shifts. Zero paper from month one. Inventory close in seconds, ready to inject into the ERP.",
+        tech:["AppSheet","Google Sheets","Apps Script","Gmail API"],
+        cta:"Watch Video Demo"
+      },
+      cta_title:"Ready to talk about your operation?",
+      cta_desc:"We'll show you exactly how we solve your case with real technology, not generic proposals.<br>Remote work · Available immediately · Miami, FL · <strong>PIVET DIGITAL AUTOMATIONS LLC</strong>",
+      cta_btn1:"Schedule a Demo", cta_btn2:"See Live Demos"
     }
   };
 
@@ -586,8 +625,8 @@
         <p class="hero-sub">${d.hero_sub}</p>
         <div class="hero-tags">${d.tags.map(tg=>`<span class="hero-tag">${tg}</span>`).join('')}</div>
         <div class="hero-cta">
-          <a href="contacto.html" class="btn"><i class="fas fa-paper-plane"></i> ${d.btn_talk}</a>
-          <a href="cv.html" class="btn-outline"><i class="fas fa-file-alt"></i> ${d.btn_cv}</a>
+          <a href="contacto.html" class="btn"><i class="fas fa-calendar-check"></i> ${d.btn_talk}</a>
+          <a href="appsheet-demos.html" class="btn-outline"><i class="fas fa-play-circle"></i> ${d.btn_cv}</a>
           <a href="galeria.html" class="btn-outline"><i class="fas fa-flask"></i> ${d.btn_lab}</a>
         </div>
       </section>
@@ -605,6 +644,39 @@
             <span class="stat-sublabel">${s.sub}</span>
           </div>`).join('')}
       </div>
+
+      <section class="featured-case" data-aos="fade-up">
+        <div class="featured-case-card">
+          <div class="featured-case-header">
+            <span class="featured-case-badge"><i class="fas fa-check-circle"></i> ${d.case_study.badge}</span>
+            <div class="featured-case-name">${d.case_study.name}</div>
+            <div class="featured-case-sector">${d.case_study.sector}</div>
+          </div>
+          <div class="featured-case-body">
+            <div class="featured-case-metrics">
+              ${d.case_study.metrics.map(m=>`<div class="case-metric"><div class="case-metric-num">${m.num}</div><div class="case-metric-label">${m.label}</div></div>`).join('')}
+            </div>
+            <div class="featured-case-col">
+              <div class="case-col-label">${lang==='es'?'El Problema':'The Problem'}</div>
+              <p class="case-col-text">${d.case_study.problem}</p>
+            </div>
+            <div class="featured-case-col">
+              <div class="case-col-label">${lang==='es'?'La Solución':'The Solution'}</div>
+              <p class="case-col-text">${d.case_study.solution}</p>
+            </div>
+            <div class="featured-case-col">
+              <div class="case-col-label">${lang==='es'?'El Resultado':'The Result'}</div>
+              <p class="case-col-text">${d.case_study.result}</p>
+            </div>
+          </div>
+          <div class="featured-case-footer">
+            <div class="featured-case-stack">
+              ${d.case_study.tech.map(t=>`<span class="featured-case-tech">${t}</span>`).join('')}
+            </div>
+            <a href="appsheet-demos.html" class="btn-outline"><i class="fas fa-play"></i> ${d.case_study.cta}</a>
+          </div>
+        </div>
+      </section>
 
       <section class="zero-to-system" data-aos="fade-up">
         <div class="zts-card">
@@ -636,6 +708,17 @@
         <div class="section-header"><p class="section-eyebrow">${d.svc_eyebrow}</p><h2 class="section-title">${d.svc_title}</h2></div>
         <div class="services-grid">${d.services.map((s,i)=>`<div class="service-card" data-aos="fade-up" data-aos-delay="${50+i*40}"><div class="service-icon"><i class="${s.icon}"></i></div><h3 class="service-title">${s.title}</h3><p class="service-desc">${s.desc}</p><div class="service-tags">${s.tags.map(tg=>`<span class="service-tag">${tg}</span>`).join('')}</div></div>`).join('')}</div>
       </section>
+      <section class="trust-section" data-aos="fade-up">
+        <div class="section-header"><p class="section-eyebrow">${d.trust_eyebrow}</p><h2 class="section-title">${d.trust_title}</h2></div>
+        <div class="trust-grid">
+          ${d.trust_items.map(item=>`
+            <div class="trust-item">
+              <div class="trust-icon"><i class="${item.icon}"></i></div>
+              <div><div class="trust-label">${item.label}</div><div class="trust-sub">${item.sub}</div></div>
+            </div>`).join('')}
+        </div>
+      </section>
+
       <section class="cases" data-aos="fade-up">
         <div class="section-header"><p class="section-eyebrow">${d.cases_eyebrow}</p><h2 class="section-title">${d.cases_title}</h2></div>
         <div class="cases-list">${d.cases.map((c,i)=>`<div class="case-item" data-aos="fade-up" data-aos-delay="${50+i*40}"><div class="case-icon"><i class="${c.icon}"></i></div><div class="case-content"><h4 class="case-title">${c.title}</h4><p class="case-desc">${c.desc}</p></div><span class="case-badge">${c.badge}</span></div>`).join('')}</div>
@@ -648,8 +731,8 @@
         <h2>${d.cta_title}</h2>
         <p>${d.cta_desc}</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="contacto.html" class="btn"><i class="fas fa-paper-plane"></i> ${d.cta_btn1}</a>
-          <a href="sobre-mi.html" class="btn-outline"><i class="fas fa-user"></i> ${d.cta_btn2}</a>
+          <a href="contacto.html" class="btn"><i class="fas fa-calendar-check"></i> ${d.cta_btn1}</a>
+          <a href="appsheet-demos.html" class="btn-outline"><i class="fas fa-play-circle"></i> ${d.cta_btn2}</a>
         </div>
       </section>`;
 

@@ -1688,3 +1688,233 @@ footer .footer-registered {
                 var(--shadow-lg);
   }
 }
+
+/* ========================================
+   📌 FEATURED CASE STUDY — B2B
+   ======================================== */
+.featured-case { margin: 48px 0; }
+
+.featured-case-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow var(--transition-base);
+}
+
+.featured-case-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #34C759, #30D158, #27C93F);
+}
+
+.featured-case-card:hover {
+  box-shadow: 0 16px 48px rgba(52, 199, 89, 0.12);
+}
+
+.featured-case-header {
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex; align-items: center;
+  gap: 14px; flex-wrap: wrap;
+}
+
+.featured-case-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(52, 199, 89, 0.1);
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  color: #34C759;
+  font-size: 10px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+}
+
+.featured-case-name {
+  font-size: 0.9375rem; font-weight: 700; color: var(--text-primary);
+}
+
+.featured-case-sector {
+  font-size: 0.8rem; color: var(--text-tertiary);
+  margin-left: auto; white-space: nowrap;
+}
+
+.featured-case-body {
+  display: grid;
+  grid-template-columns: 126px 1fr 1fr 1fr;
+}
+
+@media(max-width: 800px) { .featured-case-body { grid-template-columns: 1fr; } }
+
+.featured-case-metrics {
+  padding: 20px 16px;
+  border-right: 1px solid var(--border-color);
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 18px;
+  background: rgba(52, 199, 89, 0.03);
+}
+
+@media(max-width: 800px) {
+  .featured-case-metrics {
+    flex-direction: row; flex-wrap: wrap;
+    border-right: none; border-bottom: 1px solid var(--border-color);
+    padding: 16px 24px;
+  }
+}
+
+.case-metric { text-align: center; }
+
+.case-metric-num {
+  font-size: 1.3rem; font-weight: 900; color: #34C759;
+  line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em;
+}
+
+.case-metric-label {
+  font-size: 0.68rem; color: var(--text-tertiary); line-height: 1.3;
+}
+
+.featured-case-col {
+  padding: 20px 22px;
+  border-right: 1px solid var(--border-color);
+}
+
+.featured-case-col:last-child { border-right: none; }
+
+@media(max-width: 800px) {
+  .featured-case-col { border-right: none; border-bottom: 1px solid var(--border-color); }
+  .featured-case-col:last-child { border-bottom: none; }
+}
+
+.case-col-label {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px;
+}
+
+.case-col-text {
+  font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.65;
+}
+
+.featured-case-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-color);
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+
+.featured-case-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.featured-case-tech {
+  font-size: 0.7rem; font-weight: 700; color: #FF6B00;
+  background: rgba(255, 107, 0, 0.08);
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  padding: 3px 8px; border-radius: 8px;
+}
+
+/* ========================================
+   🏢 TRUST SECTION — Compliance & Authority
+   ======================================== */
+.trust-section {
+  margin: 48px 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 36px 40px;
+  position: relative; overflow: hidden;
+}
+
+.trust-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800);
+}
+
+.trust-section::after {
+  content: '';
+  position: absolute; bottom: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.trust-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px; padding: 14px 16px;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.trust-item:hover {
+  border-color: rgba(255, 107, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.trust-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(255, 149, 0, 0.08));
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  color: #FF6B00; font-size: 0.8rem; flex-shrink: 0;
+}
+
+.trust-label {
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--text-primary); margin-bottom: 2px;
+}
+
+.trust-sub { font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; }
+
+@media(max-width: 768px) { .trust-section { padding: 28px 24px; } }
+
+/* ========================================
+   🏭 SECTORES ATENDIDOS — About page
+   ======================================== */
+.sectors-section { margin: 48px 0; }
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.sector-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: all 0.25s;
+  position: relative; overflow: hidden;
+}
+.sector-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.04), transparent);
+  opacity: 0; transition: opacity 0.25s;
+}
+.sector-card:hover {
+  border-color: rgba(255, 107, 0, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(255, 107, 0, 0.1);
+}
+.sector-card:hover::before { opacity: 1; }
+.sector-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(255, 149, 0, 0.08));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: #FF6B00;
+}
+.sector-name {
+  font-size: 0.9rem; font-weight: 700; color: var(--text-primary);
+}
+.sector-desc {
+  font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5;
+}
