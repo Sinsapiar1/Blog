@@ -28,722 +28,197 @@
   <meta property="og:url" content="https://www.raulpivet.com/pivettrack.html">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PivetTrack WMS — Control Total de tu Bodega">
-  <meta name="twitter:description" content="WMS SaaS blindado para empresas logísticas. Kardex inmutable, auditorías wall-to-wall, bilingüe EN/ES y marca blanca.">
   <link rel="canonical" href="https://www.raulpivet.com/pivettrack.html">
   <title>PivetTrack WMS — Control Total de tu Bodega | PIVET DIGITAL AUTOMATIONS LLC</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ── Language toggle (mismo estilo que index.html / contacto.html) ── */
+    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
+    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .language-flag { font-size:1.25rem; }
+    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
+    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
+
     /* ══════════════════════════════════════════════════
        PIVETTRACK — LANDING PAGE STYLES
-       Mantiene variables y componentes de style.css
     ══════════════════════════════════════════════════ */
 
-    /* ─────────────────────────────────────────────────
-       SECCIÓN HERO
-    ───────────────────────────────────────────────── */
-    .pt-hero {
-      position: relative;
-      padding: 56px 0 48px;
-      overflow: hidden;
-    }
-    .pt-hero::before {
-      content: '';
-      position: absolute;
-      top: -140px; right: -140px;
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 68%);
-      pointer-events: none;
-    }
-    .pt-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px; left: -100px;
-      width: 360px; height: 360px;
-      background: radial-gradient(circle, rgba(255,149,0,0.05) 0%, transparent 68%);
-      pointer-events: none;
-    }
+    /* ─── HERO ─── */
+    .pt-hero { position:relative; padding:56px 0 48px; overflow:hidden; }
+    .pt-hero::before { content:''; position:absolute; top:-140px; right:-140px; width:520px; height:520px; background:radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 68%); pointer-events:none; }
+    .pt-hero::after  { content:''; position:absolute; bottom:-100px; left:-100px; width:360px; height:360px; background:radial-gradient(circle, rgba(255,149,0,0.05) 0%, transparent 68%); pointer-events:none; }
 
-    .pt-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, rgba(255,107,0,0.12), rgba(255,149,0,0.06));
-      border: 1px solid rgba(255,107,0,0.3);
-      color: #FF6B00;
-      font-size: 10px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 6px 16px;
-      border-radius: 30px;
-      margin-bottom: 24px;
-      animation: pill-glow 2.8s ease-in-out infinite;
-    }
-    @keyframes pill-glow {
-      0%,100% { box-shadow: 0 0 0 0 rgba(255,107,0,0); }
-      50%      { box-shadow: 0 0 0 4px rgba(255,107,0,0.1), 0 4px 18px rgba(255,107,0,0.2); }
-    }
+    .pt-eyebrow { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,rgba(255,107,0,0.12),rgba(255,149,0,0.06)); border:1px solid rgba(255,107,0,0.3); color:#FF6B00; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:0.15em; padding:6px 16px; border-radius:30px; margin-bottom:24px; animation:pill-glow 2.8s ease-in-out infinite; }
+    @keyframes pill-glow { 0%,100%{ box-shadow:0 0 0 0 rgba(255,107,0,0); } 50%{ box-shadow:0 0 0 4px rgba(255,107,0,0.1),0 4px 18px rgba(255,107,0,0.2); } }
 
-    .pt-h1 {
-      font-size: clamp(2.1rem, 5vw, 3.5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-      color: var(--text-primary);
-      margin-bottom: 22px;
-    }
-    .pt-h1 .accent {
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .pt-h1 { font-size:clamp(2.1rem,5vw,3.5rem); font-weight:900; line-height:1.1; letter-spacing:-0.04em; color:var(--text-primary); margin-bottom:22px; }
+    .pt-h1 .accent { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .pt-subtitle { font-size:1.0625rem; color:var(--text-secondary); line-height:1.78; max-width:640px; margin-bottom:36px; }
+    .pt-subtitle strong { color:var(--text-primary); }
+    .pt-cta-group { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:32px; }
+    .btn-lg { font-size:1rem !important; padding:15px 34px !important; }
+    .pt-trust-row { display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:48px; }
+    .pt-trust-item { display:flex; align-items:center; gap:6px; font-size:0.8125rem; color:var(--text-tertiary); }
+    .pt-trust-item i { color:#34C759; font-size:0.875rem; }
 
-    .pt-subtitle {
-      font-size: 1.0625rem;
-      color: var(--text-secondary);
-      line-height: 1.78;
-      max-width: 640px;
-      margin-bottom: 36px;
-    }
-    .pt-subtitle strong { color: var(--text-primary); }
+    /* Dashboard mock */
+    .pt-hero-visual { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:20px; overflow:hidden; position:relative; }
+    .pt-hero-visual::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500,#FFB800); }
+    .pt-db-bar { display:flex; align-items:center; gap:7px; padding:12px 20px; border-bottom:1px solid var(--border-color); background:var(--bg-secondary); }
+    .pt-db-dot { width:10px; height:10px; border-radius:50%; }
+    .pt-db-dot.red { background:#FF3B30; } .pt-db-dot.yellow { background:#FF9500; } .pt-db-dot.green { background:#34C759; }
+    .pt-db-title { font-size:11px; font-weight:600; color:var(--text-tertiary); margin-left:8px; }
+    .pt-db-live { margin-left:auto; display:flex; align-items:center; gap:5px; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:#34C759; background:rgba(52,199,89,0.1); border:1px solid rgba(52,199,89,0.2); padding:3px 10px; border-radius:10px; }
+    .pt-db-live-dot { width:5px; height:5px; border-radius:50%; background:#34C759; animation:blink-dot 1.2s step-end infinite; }
+    @keyframes blink-dot { 0%,100%{ opacity:1; } 50%{ opacity:0; } }
+    .pt-kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; padding:22px 24px; }
+    @media(max-width:700px){ .pt-kpi-grid { grid-template-columns:repeat(2,1fr); } }
+    .pt-kpi-card { background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px; padding:16px 14px; position:relative; overflow:hidden; transition:border-color 0.25s; }
+    .pt-kpi-card:hover { border-color:rgba(255,107,0,0.3); }
+    .pt-kpi-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-tertiary); margin-bottom:8px; }
+    .pt-kpi-num { font-size:1.65rem; font-weight:900; line-height:1; letter-spacing:-0.03em; margin-bottom:4px; }
+    .pt-kpi-num.orange { color:#FF6B00; } .pt-kpi-num.green { color:#34C759; } .pt-kpi-num.blue { color:#007AFF; } .pt-kpi-num.amber { color:#FF9500; }
+    .pt-kpi-sub { font-size:10px; color:var(--text-tertiary); line-height:1.35; }
+    .pt-kpi-bar { position:absolute; bottom:0; left:0; right:0; height:3px; border-radius:0 0 12px 12px; }
+    .pt-kpi-bar.orange { background:linear-gradient(90deg,#FF6B00,#FF9500); } .pt-kpi-bar.green { background:linear-gradient(90deg,#34C759,#30D158); } .pt-kpi-bar.blue { background:linear-gradient(90deg,#007AFF,#5AC8FA); } .pt-kpi-bar.amber { background:linear-gradient(90deg,#FF9500,#FFB800); }
+    .pt-ledger { padding:0 24px 22px; }
+    .pt-ledger-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .pt-ledger-ttl { font-size:11px; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.08em; }
+    .pt-immutable-badge { display:flex; align-items:center; gap:5px; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:#FF6B00; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.2); padding:3px 10px; border-radius:10px; }
+    .pt-row { display:grid; grid-template-columns:56px 1fr 72px 72px 76px; gap:8px; padding:9px 12px; border-radius:8px; font-size:11px; margin-bottom:4px; align-items:center; }
+    .pt-row.hdr { background:var(--bg-secondary); color:var(--text-tertiary); font-weight:800; text-transform:uppercase; letter-spacing:0.07em; font-size:9px; }
+    .pt-row.data { background:var(--glass-bg); border:1px solid var(--border-color); color:var(--text-secondary); transition:border-color 0.2s; }
+    .pt-row.data:hover { border-color:rgba(255,107,0,0.25); }
+    .hash-txt { font-family:monospace; font-size:9px; color:var(--text-tertiary); }
+    .in-qty { color:#34C759; font-weight:700; } .out-qty { color:#FF3B30; font-weight:700; }
+    .sealed { display:flex; align-items:center; gap:4px; color:#FF6B00; font-size:9px; font-weight:700; }
+    @media(max-width:640px){ .pt-row { grid-template-columns:1fr 1fr; } .pt-row span:nth-child(n+4){ display:none; } }
 
-    .pt-cta-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-    .btn-lg {
-      font-size: 1rem !important;
-      padding: 15px 34px !important;
-    }
+    /* ─── PAIN ─── */
+    .pt-pain { margin:60px 0; }
+    .pt-section-hdr { text-align:center; margin-bottom:40px; }
+    .pt-section-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-tertiary); margin-bottom:12px; }
+    .pt-section-title { font-size:clamp(1.5rem,3vw,2.15rem); font-weight:800; letter-spacing:-0.03em; color:var(--text-primary); line-height:1.2; }
+    .pt-section-title .accent { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .pt-pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    @media(max-width:900px){ .pt-pain-grid { grid-template-columns:1fr; } }
+    @media(max-width:1180px) and (min-width:901px){ .pt-pain-grid { grid-template-columns:1fr 1fr; } }
+    .pt-pain-card { background:var(--glass-bg); border:1px solid rgba(255,59,48,0.15); border-radius:20px; padding:30px; position:relative; overflow:hidden; transition:all 0.3s cubic-bezier(0.34,1.1,0.64,1); }
+    .pt-pain-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF3B30,#FF6B00); }
+    .pt-pain-card:hover { border-color:rgba(255,59,48,0.4); transform:translateY(-5px); box-shadow:0 18px 44px rgba(255,59,48,0.1); }
+    .pt-pain-bg-num { font-size:4.5rem; font-weight:900; line-height:1; letter-spacing:-0.05em; color:rgba(255,59,48,0.06); position:absolute; top:12px; right:18px; pointer-events:none; }
+    .pt-pain-icon { width:52px; height:52px; background:linear-gradient(135deg,rgba(255,59,48,0.12),rgba(255,107,0,0.07)); border:1px solid rgba(255,59,48,0.2); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:#FF3B30; margin-bottom:18px; }
+    .pt-pain-tag { font-size:9.5px; font-weight:900; text-transform:uppercase; letter-spacing:0.13em; color:#FF3B30; margin-bottom:9px; }
+    .pt-pain-title { font-size:1rem; font-weight:800; color:var(--text-primary); line-height:1.3; margin-bottom:12px; }
+    .pt-pain-desc { font-size:0.875rem; color:var(--text-secondary); line-height:1.7; }
 
-    .pt-trust-row {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-    .pt-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8125rem;
-      color: var(--text-tertiary);
-    }
-    .pt-trust-item i { color: #34C759; font-size: 0.875rem; }
+    /* ─── SOLUTIONS ─── */
+    .pt-solutions { margin:60px 0; }
+    .pt-feature-list { display:flex; flex-direction:column; gap:24px; }
+    .pt-feature-item { display:grid; grid-template-columns:1fr 1fr; background:var(--glass-bg); border:1px solid var(--border-color); border-radius:24px; overflow:hidden; position:relative; transition:box-shadow 0.3s,border-color 0.3s; }
+    .pt-feature-item::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); }
+    .pt-feature-item:hover { border-color:rgba(255,107,0,0.3); box-shadow:0 18px 52px rgba(255,107,0,0.1); }
+    @media(max-width:860px){ .pt-feature-item { grid-template-columns:1fr; } .pt-feature-item.reverse .pt-feat-text { order:0; } .pt-feature-item.reverse .pt-feat-visual { order:1; } }
+    .pt-feature-item.reverse .pt-feat-text { order:2; } .pt-feature-item.reverse .pt-feat-visual { order:1; }
+    .pt-feat-text { padding:42px 46px; display:flex; flex-direction:column; justify-content:center; }
+    @media(max-width:768px){ .pt-feat-text { padding:28px 24px; } }
+    .pt-feat-step { font-size:9.5px; font-weight:900; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,107,0,0.35); margin-bottom:16px; }
+    .pt-feat-icon { width:54px; height:54px; background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08)); border:1px solid rgba(255,107,0,0.22); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.45rem; color:#FF6B00; margin-bottom:20px; }
+    .pt-feat-label { font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:0.15em; color:#FF6B00; margin-bottom:10px; }
+    .pt-feat-title { font-size:clamp(1.15rem,2.2vw,1.55rem); font-weight:800; letter-spacing:-0.025em; color:var(--text-primary); line-height:1.22; margin-bottom:14px; }
+    .pt-feat-desc { font-size:0.9375rem; color:var(--text-secondary); line-height:1.77; margin-bottom:22px; }
+    .pt-feat-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .pt-feat-tag { font-size:10px; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.16); padding:4px 10px; border-radius:12px; text-transform:uppercase; letter-spacing:0.05em; }
+    .pt-feat-visual { background:var(--bg-secondary); border-left:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; padding:36px; min-height:290px; position:relative; overflow:hidden; }
+    .pt-feature-item.reverse .pt-feat-visual { border-left:none; border-right:1px solid var(--border-color); }
+    @media(max-width:860px){ .pt-feat-visual { border-left:none; border-right:none; border-top:1px solid var(--border-color); min-height:220px; } .pt-feature-item.reverse .pt-feat-visual { border-right:none; } }
 
-    /* Dashboard Mock */
-    .pt-hero-visual {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-    }
-    .pt-hero-visual::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800);
-    }
-    .pt-db-bar {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 12px 20px;
-      border-bottom: 1px solid var(--border-color);
-      background: var(--bg-secondary);
-    }
-    .pt-db-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-    }
-    .pt-db-dot.red    { background: #FF3B30; }
-    .pt-db-dot.yellow { background: #FF9500; }
-    .pt-db-dot.green  { background: #34C759; }
-    .pt-db-title {
-      font-size: 11px; font-weight: 600;
-      color: var(--text-tertiary); margin-left: 8px;
-    }
-    .pt-db-live {
-      margin-left: auto;
-      display: flex; align-items: center; gap: 5px;
-      font-size: 9px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: #34C759;
-      background: rgba(52,199,89,0.1);
-      border: 1px solid rgba(52,199,89,0.2);
-      padding: 3px 10px; border-radius: 10px;
-    }
-    .pt-db-live-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%; background: #34C759;
-      animation: blink-dot 1.2s step-end infinite;
-    }
-    @keyframes blink-dot {
-      0%,100% { opacity: 1; }
-      50%      { opacity: 0; }
-    }
+    /* Viz: Immutable */
+    .viz-immutable { display:flex; flex-direction:column; gap:8px; width:100%; max-width:285px; }
+    .viz-row { display:flex; align-items:center; gap:8px; background:var(--glass-bg); border:1px solid var(--border-color); border-radius:10px; padding:10px 14px; font-size:11.5px; color:var(--text-secondary); transition:border-color 0.2s; }
+    .viz-row:hover { border-color:rgba(255,107,0,0.3); }
+    .viz-lock { color:#FF6B00; font-size:0.7rem; flex-shrink:0; }
+    .viz-hash { font-family:monospace; font-size:9px; color:var(--text-tertiary); margin-left:auto; }
+    .viz-in { color:#34C759; font-weight:700; } .viz-out { color:#FF3B30; font-weight:700; }
+    .viz-sealed-badge { display:flex; align-items:center; gap:6px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.1em; color:#FF6B00; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:5px 14px; align-self:flex-start; margin-top:4px; }
 
-    .pt-kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      padding: 22px 24px;
-    }
-    @media(max-width: 700px) { .pt-kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* Viz: Audit */
+    .viz-audit { display:flex; flex-direction:column; align-items:center; gap:14px; width:100%; max-width:265px; }
+    .viz-gauge-wrap { position:relative; width:104px; height:104px; }
+    .viz-gauge-wrap svg { width:100%; height:100%; }
+    .viz-gauge-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .viz-gauge-num { font-size:1.5rem; font-weight:900; color:#34C759; letter-spacing:-0.03em; }
+    .viz-gauge-lbl { font-size:8px; color:var(--text-tertiary); text-transform:uppercase; }
+    .viz-audit-steps { display:flex; flex-direction:column; gap:7px; width:100%; }
+    .viz-audit-step { display:flex; align-items:center; gap:8px; background:var(--glass-bg); border:1px solid var(--border-color); border-radius:9px; padding:8px 12px; font-size:11px; color:var(--text-secondary); }
+    .viz-audit-step i { font-size:0.75rem; flex-shrink:0; }
+    .viz-audit-step.done i { color:#34C759; }
+    .viz-audit-step.active { border-color:rgba(255,107,0,0.3); }
+    .viz-audit-step.active i { color:#FF6B00; }
 
-    .pt-kpi-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 16px 14px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.25s;
-    }
-    .pt-kpi-card:hover { border-color: rgba(255,107,0,0.3); }
-    .pt-kpi-label {
-      font-size: 9px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--text-tertiary); margin-bottom: 8px;
-    }
-    .pt-kpi-num {
-      font-size: 1.65rem; font-weight: 900;
-      line-height: 1; letter-spacing: -0.03em;
-      margin-bottom: 4px;
-    }
-    .pt-kpi-num.orange { color: #FF6B00; }
-    .pt-kpi-num.green  { color: #34C759; }
-    .pt-kpi-num.blue   { color: #007AFF; }
-    .pt-kpi-num.amber  { color: #FF9500; }
-    .pt-kpi-sub { font-size: 10px; color: var(--text-tertiary); line-height: 1.35; }
-    .pt-kpi-bar {
-      position: absolute;
-      bottom: 0; left: 0; right: 0; height: 3px;
-      border-radius: 0 0 12px 12px;
-    }
-    .pt-kpi-bar.orange { background: linear-gradient(90deg, #FF6B00, #FF9500); }
-    .pt-kpi-bar.green  { background: linear-gradient(90deg, #34C759, #30D158); }
-    .pt-kpi-bar.blue   { background: linear-gradient(90deg, #007AFF, #5AC8FA); }
-    .pt-kpi-bar.amber  { background: linear-gradient(90deg, #FF9500, #FFB800); }
+    /* Viz: Multilang */
+    .viz-multilang { display:flex; flex-direction:column; gap:10px; width:100%; max-width:280px; align-items:center; }
+    .viz-lang-toggle { background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:20px; padding:5px 6px; display:flex; gap:3px; }
+    .viz-lang-btn { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.08em; padding:5px 14px; border-radius:15px; color:var(--text-tertiary); }
+    .viz-lang-btn.on { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; box-shadow:0 2px 8px rgba(255,107,0,0.35); }
+    .viz-lang-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:12px; padding:14px 18px; display:flex; align-items:center; gap:12px; width:100%; transition:border-color 0.2s; }
+    .viz-lang-card.active { border-color:rgba(255,107,0,0.3); }
+    .viz-lang-flag { font-size:1.6rem; flex-shrink:0; }
+    .viz-lang-name { font-size:11px; font-weight:700; color:var(--text-primary); margin-bottom:2px; }
+    .viz-lang-sample { font-size:10px; color:var(--text-tertiary); line-height:1.4; }
+    .viz-lang-dot { margin-left:auto; width:8px; height:8px; border-radius:50%; background:#34C759; flex-shrink:0; box-shadow:0 0 0 3px rgba(52,199,89,0.2); }
 
-    /* Kardex table */
-    .pt-ledger {
-      padding: 0 24px 22px;
-    }
-    .pt-ledger-hdr {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .pt-ledger-ttl {
-      font-size: 11px; font-weight: 700;
-      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    .pt-immutable-badge {
-      display: flex; align-items: center; gap: 5px;
-      font-size: 9px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: #FF6B00;
-      background: rgba(255,107,0,0.08);
-      border: 1px solid rgba(255,107,0,0.2);
-      padding: 3px 10px; border-radius: 10px;
-    }
-    .pt-row {
-      display: grid;
-      grid-template-columns: 56px 1fr 72px 72px 76px;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 8px;
-      font-size: 11px;
-      margin-bottom: 4px;
-      align-items: center;
-    }
-    .pt-row.hdr {
-      background: var(--bg-secondary);
-      color: var(--text-tertiary);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      font-size: 9px;
-    }
-    .pt-row.data {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      transition: border-color 0.2s;
-    }
-    .pt-row.data:hover { border-color: rgba(255,107,0,0.25); }
-    .hash-txt { font-family: monospace; font-size: 9px; color: var(--text-tertiary); }
-    .in-qty  { color: #34C759; font-weight: 700; }
-    .out-qty { color: #FF3B30; font-weight: 700; }
-    .sealed  {
-      display: flex; align-items: center; gap: 4px;
-      color: #FF6B00; font-size: 9px; font-weight: 700;
-    }
-    @media(max-width: 640px) {
-      .pt-row { grid-template-columns: 1fr 1fr; }
-      .pt-row span:nth-child(n+4) { display: none; }
-    }
+    /* Viz: Branding */
+    .viz-branding { display:flex; flex-direction:column; gap:10px; width:100%; max-width:280px; }
+    .viz-brand-doc { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:14px; overflow:hidden; transition:border-color 0.2s; }
+    .viz-brand-doc:hover { border-color:rgba(255,107,0,0.3); }
+    .viz-brand-doc-top { background:var(--bg-secondary); border-bottom:1px solid var(--border-color); padding:10px 16px; display:flex; align-items:center; gap:8px; }
+    .viz-logo-box { width:28px; height:28px; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; color:white; font-weight:900; }
+    .viz-company-name { font-size:11px; font-weight:700; color:var(--text-primary); }
+    .viz-doc-type { margin-left:auto; font-size:9px; font-weight:800; color:#FF3B30; text-transform:uppercase; letter-spacing:0.1em; }
+    .viz-brand-doc-body { padding:12px 16px; }
+    .viz-line { height:5px; border-radius:3px; background:var(--border-color); margin-bottom:7px; }
+    .viz-line.w85 { width:85%; } .viz-line.w65 { width:65%; } .viz-line.w45 { width:45%; background:rgba(255,107,0,0.25); }
+    .viz-pdf-badges { display:flex; gap:8px; flex-wrap:wrap; }
+    .viz-pdf-badge { display:flex; align-items:center; gap:5px; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#FF3B30; background:rgba(255,59,48,0.08); border:1px solid rgba(255,59,48,0.2); padding:4px 10px; border-radius:9px; }
 
-    /* ─────────────────────────────────────────────────
-       SECCIÓN PROBLEMA / AGITACIÓN
-    ───────────────────────────────────────────────── */
-    .pt-pain { margin: 60px 0; }
-    .pt-section-hdr { text-align: center; margin-bottom: 40px; }
-    .pt-section-eyebrow {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 10px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.15em;
-      color: var(--text-tertiary); margin-bottom: 12px;
-    }
-    .pt-section-title {
-      font-size: clamp(1.5rem, 3vw, 2.15rem);
-      font-weight: 800; letter-spacing: -0.03em;
-      color: var(--text-primary); line-height: 1.2;
-    }
-    .pt-section-title .accent {
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .pt-pain-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    @media(max-width: 900px) { .pt-pain-grid { grid-template-columns: 1fr; } }
-    @media(max-width: 1180px) and (min-width: 901px) { .pt-pain-grid { grid-template-columns: 1fr 1fr; } }
-
-    .pt-pain-card {
-      background: var(--glass-bg);
-      border: 1px solid rgba(255,59,48,0.15);
-      border-radius: 20px;
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.34,1.1,0.64,1);
-    }
-    .pt-pain-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #FF3B30, #FF6B00);
-    }
-    .pt-pain-card:hover {
-      border-color: rgba(255,59,48,0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 18px 44px rgba(255,59,48,0.1);
-    }
-    .pt-pain-bg-num {
-      font-size: 4.5rem; font-weight: 900;
-      line-height: 1; letter-spacing: -0.05em;
-      color: rgba(255,59,48,0.06);
-      position: absolute;
-      top: 12px; right: 18px;
-      pointer-events: none;
-    }
-    .pt-pain-icon {
-      width: 52px; height: 52px;
-      background: linear-gradient(135deg, rgba(255,59,48,0.12), rgba(255,107,0,0.07));
-      border: 1px solid rgba(255,59,48,0.2);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; color: #FF3B30;
-      margin-bottom: 18px;
-    }
-    .pt-pain-tag {
-      font-size: 9.5px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.13em;
-      color: #FF3B30; margin-bottom: 9px;
-    }
-    .pt-pain-title {
-      font-size: 1rem; font-weight: 800;
-      color: var(--text-primary); line-height: 1.3;
-      margin-bottom: 12px;
-    }
-    .pt-pain-desc {
-      font-size: 0.875rem; color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    /* ─────────────────────────────────────────────────
-       SECCIÓN SOLUCIONES — 4 FUNCIONALIDADES
-    ───────────────────────────────────────────────── */
-    .pt-solutions { margin: 60px 0; }
-
-    .pt-feature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .pt-feature-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-      transition: box-shadow 0.3s, border-color 0.3s;
-    }
-    .pt-feature-item::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #FF6B00, #FF9500);
-    }
-    .pt-feature-item:hover {
-      border-color: rgba(255,107,0,0.3);
-      box-shadow: 0 18px 52px rgba(255,107,0,0.1);
-    }
-    @media(max-width: 860px) {
-      .pt-feature-item { grid-template-columns: 1fr; }
-      .pt-feature-item.reverse .pt-feat-text   { order: 0; }
-      .pt-feature-item.reverse .pt-feat-visual { order: 1; }
-    }
-    .pt-feature-item.reverse .pt-feat-text   { order: 2; }
-    .pt-feature-item.reverse .pt-feat-visual { order: 1; }
-
-    .pt-feat-text {
-      padding: 42px 46px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    @media(max-width: 768px) { .pt-feat-text { padding: 28px 24px; } }
-
-    .pt-feat-step {
-      font-size: 9.5px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.2em;
-      color: rgba(255,107,0,0.35); margin-bottom: 16px;
-    }
-    .pt-feat-icon {
-      width: 54px; height: 54px;
-      background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,149,0,0.08));
-      border: 1px solid rgba(255,107,0,0.22);
-      border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.45rem; color: #FF6B00;
-      margin-bottom: 20px;
-    }
-    .pt-feat-label {
-      font-size: 11px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.15em;
-      color: #FF6B00; margin-bottom: 10px;
-    }
-    .pt-feat-title {
-      font-size: clamp(1.15rem, 2.2vw, 1.55rem);
-      font-weight: 800; letter-spacing: -0.025em;
-      color: var(--text-primary); line-height: 1.22;
-      margin-bottom: 14px;
-    }
-    .pt-feat-desc {
-      font-size: 0.9375rem; color: var(--text-secondary);
-      line-height: 1.77; margin-bottom: 22px;
-    }
-    .pt-feat-tags {
-      display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .pt-feat-tag {
-      font-size: 10px; font-weight: 700;
-      color: #FF6B00;
-      background: rgba(255,107,0,0.08);
-      border: 1px solid rgba(255,107,0,0.16);
-      padding: 4px 10px; border-radius: 12px;
-      text-transform: uppercase; letter-spacing: 0.05em;
-    }
-
-    .pt-feat-visual {
-      background: var(--bg-secondary);
-      border-left: 1px solid var(--border-color);
-      display: flex; align-items: center; justify-content: center;
-      padding: 36px;
-      min-height: 290px;
-      position: relative; overflow: hidden;
-    }
-    .pt-feature-item.reverse .pt-feat-visual {
-      border-left: none;
-      border-right: 1px solid var(--border-color);
-    }
-    @media(max-width: 860px) {
-      .pt-feat-visual {
-        border-left: none;
-        border-right: none;
-        border-top: 1px solid var(--border-color);
-        min-height: 220px;
-      }
-      .pt-feature-item.reverse .pt-feat-visual { border-right: none; }
-    }
-
-    /* ── Visual 1: Kardex Inmutable ── */
-    .viz-immutable {
-      display: flex; flex-direction: column; gap: 8px;
-      width: 100%; max-width: 285px;
-    }
-    .viz-row {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 10px; padding: 10px 14px;
-      font-size: 11.5px; color: var(--text-secondary);
-      transition: border-color 0.2s;
-    }
-    .viz-row:hover { border-color: rgba(255,107,0,0.3); }
-    .viz-lock { color: #FF6B00; font-size: 0.7rem; flex-shrink: 0; }
-    .viz-hash { font-family: monospace; font-size: 9px; color: var(--text-tertiary); margin-left: auto; }
-    .viz-in  { color: #34C759; font-weight: 700; }
-    .viz-out { color: #FF3B30; font-weight: 700; }
-    .viz-sealed-badge {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 9px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: #FF6B00;
-      background: rgba(255,107,0,0.08);
-      border: 1px solid rgba(255,107,0,0.2);
-      border-radius: 20px; padding: 5px 14px;
-      align-self: flex-start; margin-top: 4px;
-    }
-
-    /* ── Visual 2: Auditoría Wall-to-Wall ── */
-    .viz-audit {
-      display: flex; flex-direction: column; align-items: center; gap: 14px;
-      width: 100%; max-width: 265px;
-    }
-    .viz-gauge-wrap {
-      position: relative; width: 104px; height: 104px;
-    }
-    .viz-gauge-wrap svg { width: 100%; height: 100%; }
-    .viz-gauge-center {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-    }
-    .viz-gauge-num {
-      font-size: 1.5rem; font-weight: 900;
-      color: #34C759; letter-spacing: -0.03em;
-    }
-    .viz-gauge-lbl { font-size: 8px; color: var(--text-tertiary); text-transform: uppercase; }
-    .viz-audit-steps { display: flex; flex-direction: column; gap: 7px; width: 100%; }
-    .viz-audit-step {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 9px; padding: 8px 12px;
-      font-size: 11px; color: var(--text-secondary);
-      transition: border-color 0.2s;
-    }
-    .viz-audit-step i { font-size: 0.75rem; flex-shrink: 0; }
-    .viz-audit-step.done i { color: #34C759; }
-    .viz-audit-step.active { border-color: rgba(255,107,0,0.3); }
-    .viz-audit-step.active i { color: #FF6B00; }
-
-    /* ── Visual 3: Multiidioma ── */
-    .viz-multilang {
-      display: flex; flex-direction: column; gap: 10px;
-      width: 100%; max-width: 280px; align-items: center;
-    }
-    .viz-lang-toggle {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 20px; padding: 5px 6px;
-      display: flex; gap: 3px;
-    }
-    .viz-lang-btn {
-      font-size: 9px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      padding: 5px 14px; border-radius: 15px;
-      color: var(--text-tertiary);
-    }
-    .viz-lang-btn.on {
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      color: white;
-      box-shadow: 0 2px 8px rgba(255,107,0,0.35);
-    }
-    .viz-lang-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px; padding: 14px 18px;
-      display: flex; align-items: center; gap: 12px;
-      width: 100%; transition: border-color 0.2s;
-    }
-    .viz-lang-card.active { border-color: rgba(255,107,0,0.3); }
-    .viz-lang-flag { font-size: 1.6rem; flex-shrink: 0; }
-    .viz-lang-name { font-size: 11px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
-    .viz-lang-sample { font-size: 10px; color: var(--text-tertiary); line-height: 1.4; }
-    .viz-lang-dot {
-      margin-left: auto; width: 8px; height: 8px;
-      border-radius: 50%; background: #34C759; flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(52,199,89,0.2);
-    }
-
-    /* ── Visual 4: Custom Branding ── */
-    .viz-branding {
-      display: flex; flex-direction: column; gap: 10px;
-      width: 100%; max-width: 280px;
-    }
-    .viz-brand-doc {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 14px; overflow: hidden;
-      transition: border-color 0.2s;
-    }
-    .viz-brand-doc:hover { border-color: rgba(255,107,0,0.3); }
-    .viz-brand-doc-top {
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border-color);
-      padding: 10px 16px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .viz-logo-box {
-      width: 28px; height: 28px;
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      border-radius: 7px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; color: white; font-weight: 900;
-    }
-    .viz-company-name { font-size: 11px; font-weight: 700; color: var(--text-primary); }
-    .viz-doc-type {
-      margin-left: auto;
-      font-size: 9px; font-weight: 800;
-      color: #FF3B30; text-transform: uppercase; letter-spacing: 0.1em;
-    }
-    .viz-brand-doc-body { padding: 12px 16px; }
-    .viz-line {
-      height: 5px; border-radius: 3px;
-      background: var(--border-color);
-      margin-bottom: 7px;
-    }
-    .viz-line.w85 { width: 85%; }
-    .viz-line.w65 { width: 65%; }
-    .viz-line.w45 { width: 45%; background: rgba(255,107,0,0.25); }
-    .viz-pdf-badges {
-      display: flex; gap: 8px; flex-wrap: wrap;
-    }
-    .viz-pdf-badge {
-      display: flex; align-items: center; gap: 5px;
-      font-size: 9px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.06em;
-      color: #FF3B30;
-      background: rgba(255,59,48,0.08);
-      border: 1px solid rgba(255,59,48,0.2);
-      padding: 4px 10px; border-radius: 9px;
-    }
-
-    /* ─────────────────────────────────────────────────
-       BOTTOM CTA BANNER
-    ───────────────────────────────────────────────── */
-    .pt-bottom-cta {
-      margin: 60px 0 24px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      background: linear-gradient(135deg,
-        rgba(255,107,0,0.11) 0%,
-        rgba(255,149,0,0.06) 50%,
-        rgba(255,184,0,0.03) 100%);
-      border: 1px solid rgba(255,107,0,0.22);
-      padding: 64px 52px;
-      text-align: center;
-    }
-    .pt-bottom-cta::before {
-      content: '';
-      position: absolute;
-      top: -120px; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 350px;
-      background: radial-gradient(ellipse, rgba(255,107,0,0.08) 0%, transparent 68%);
-      pointer-events: none;
-    }
-    .pt-bottom-cta::after {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(circle at 8% 50%, rgba(255,107,0,0.04) 0%, transparent 50%),
-        radial-gradient(circle at 92% 50%, rgba(255,149,0,0.04) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .pt-cta-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 10px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.18em;
-      color: #FF6B00; margin-bottom: 20px;
-      position: relative; z-index: 1;
-    }
-
-    .pt-cta-h2 {
-      font-size: clamp(1.8rem, 4vw, 2.9rem);
-      font-weight: 900; letter-spacing: -0.035em;
-      color: var(--text-primary); line-height: 1.12;
-      margin-bottom: 18px;
-      position: relative; z-index: 1;
-    }
-    .pt-cta-h2 .accent {
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .pt-cta-sub {
-      font-size: 1rem; color: var(--text-secondary);
-      line-height: 1.72; max-width: 580px;
-      margin: 0 auto 34px;
-      position: relative; z-index: 1;
-    }
-
-    .pt-cta-actions {
-      display: flex; align-items: center; justify-content: center;
-      gap: 14px; flex-wrap: wrap;
-      position: relative; z-index: 1;
-      margin-bottom: 30px;
-    }
-    .btn-xl {
-      font-size: 1.0625rem !important;
-      padding: 17px 44px !important;
-      box-shadow: 0 10px 36px rgba(255,107,0,0.42) !important;
-    }
-
-    .pt-cta-trust {
-      display: flex; align-items: center; justify-content: center;
-      gap: 22px; flex-wrap: wrap;
-      position: relative; z-index: 1;
-    }
-    .pt-cta-trust-item {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.8125rem; color: var(--text-tertiary);
-    }
-    .pt-cta-trust-item i { color: #34C759; }
-
-    @media(max-width: 768px) {
-      .pt-bottom-cta { padding: 44px 28px; }
-    }
-    @media(max-width: 480px) {
-      .pt-bottom-cta { padding: 36px 20px; border-radius: 20px; }
-    }
+    /* ─── BOTTOM CTA ─── */
+    .pt-bottom-cta { margin:60px 0 24px; position:relative; overflow:hidden; border-radius:28px; background:linear-gradient(135deg,rgba(255,107,0,0.11) 0%,rgba(255,149,0,0.06) 50%,rgba(255,184,0,0.03) 100%); border:1px solid rgba(255,107,0,0.22); padding:64px 52px; text-align:center; }
+    .pt-bottom-cta::before { content:''; position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:600px; height:350px; background:radial-gradient(ellipse,rgba(255,107,0,0.08) 0%,transparent 68%); pointer-events:none; }
+    .pt-bottom-cta::after { content:''; position:absolute; inset:0; background:radial-gradient(circle at 8% 50%,rgba(255,107,0,0.04) 0%,transparent 50%),radial-gradient(circle at 92% 50%,rgba(255,149,0,0.04) 0%,transparent 50%); pointer-events:none; }
+    .pt-cta-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:0.18em; color:#FF6B00; margin-bottom:20px; position:relative; z-index:1; }
+    .pt-cta-h2 { font-size:clamp(1.8rem,4vw,2.9rem); font-weight:900; letter-spacing:-0.035em; color:var(--text-primary); line-height:1.12; margin-bottom:18px; position:relative; z-index:1; }
+    .pt-cta-h2 .accent { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .pt-cta-sub { font-size:1rem; color:var(--text-secondary); line-height:1.72; max-width:580px; margin:0 auto 34px; position:relative; z-index:1; }
+    .pt-cta-actions { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; position:relative; z-index:1; margin-bottom:30px; }
+    .btn-xl { font-size:1.0625rem !important; padding:17px 44px !important; box-shadow:0 10px 36px rgba(255,107,0,0.42) !important; }
+    .pt-cta-trust { display:flex; align-items:center; justify-content:center; gap:22px; flex-wrap:wrap; position:relative; z-index:1; }
+    .pt-cta-trust-item { display:flex; align-items:center; gap:6px; font-size:0.8125rem; color:var(--text-tertiary); }
+    .pt-cta-trust-item i { color:#34C759; }
+    @media(max-width:768px){ .pt-bottom-cta { padding:44px 28px; } }
+    @media(max-width:480px){ .pt-bottom-cta { padding:36px 20px; border-radius:20px; } }
   </style>
 </head>
 <body>
   <div class="loader" id="loader"><div class="loader-circle"></div></div>
   <div class="scroll-indicator" id="scrollIndicator"></div>
+
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
+
+  <!-- Language toggle — mismo elemento que en el resto del sitio -->
+  <div class="language-toggle" id="languageToggle" aria-label="Change language">
+    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-text" id="languageText">English</span>
+  </div>
+
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -761,12 +236,12 @@
         </span>
       </div>
       <ul class="menu">
-        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
         <li class="menu-item active"><a href="pivettrack.html"><i class="fas fa-warehouse"></i> PivetTrack WMS</a></li>
         <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
-        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> Nosotros</a></li>
-        <li class="menu-item"><a href="appsheet-demos.html"><i class="fab fa-youtube"></i> AppSheet Demos</a></li>
-        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Nosotros</span></a></li>
+        <li class="menu-item"><a href="appsheet-demos.html"><i class="fab fa-youtube"></i> <span data-i18n="nav_demos">AppSheet Demos</span></a></li>
+        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
       </ul>
       <div class="social-links">
         <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -775,404 +250,481 @@
       </div>
     </aside>
 
-    <main class="content" id="mainContent">
+    <!-- mainContent is populated entirely by JS render() below -->
+    <main class="content" id="mainContent"></main>
+  </div>
 
-      <!-- ═══════════════════════════════════════════════════════
-           1. HERO SECTION — EL GANCHO
-      ═══════════════════════════════════════════════════════ -->
+  <footer>
+    <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
+    <p class="footer-registered" id="footerText">PivetTrack WMS — Warehouse Management System · Miami, FL · Registered LLC — Florida</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+  <script>
+  /* ══════════════════════════════════════════════════════════
+     PIVETTRACK — BILINGUAL CONTENT (ES / EN)
+     Mismo patrón que index.html y contacto.html
+  ══════════════════════════════════════════════════════════ */
+  const t = {
+    es: {
+      /* ── Nav ── */
+      nav_home: 'Inicio', nav_about: 'Nosotros', nav_demos: 'AppSheet Demos', nav_contact: 'Contacto',
+      page_title: 'PivetTrack WMS — Control Total de tu Bodega | PIVET DIGITAL AUTOMATIONS LLC',
+      footer_text: 'PivetTrack WMS — Warehouse Management System · Miami, FL · Registered LLC — Florida',
+
+      /* ── Hero ── */
+      hero_eyebrow: 'WMS SaaS · PIVET DIGITAL AUTOMATIONS LLC',
+      hero_h1a: 'Control Total de tu Bodega.',
+      hero_h1b: 'Sin Fugas, Sin Errores.',
+      hero_sub: '<strong>PivetTrack</strong> es un WMS (Warehouse Management System) SaaS blindado, diseñado para empresas logísticas que necesitan <strong>precisión contable y operativa impecable</strong>. Cada movimiento queda registrado, trazado y sellado — permanentemente.',
+      hero_cta1: 'Agendar Demostración',
+      hero_cta2: 'Ver Funcionalidades',
+      trust: ['Sin instalación requerida', 'Bilingüe EN / ES nativo', 'Marca blanca disponible', 'NDA antes de cualquier demo'],
+
+      /* ── Dashboard mock ── */
+      db_title: 'PivetTrack WMS — Kardex Operativo · Bodega Principal',
+      db_live: 'Sistema Activo',
+      kpi: [
+        { label: 'Stock Actual',          num: '4,812',   sub: 'unidades en bodega',       color: 'orange' },
+        { label: 'Precisión Inventario',  num: '99.8%',   sub: 'exactitud contable',        color: 'green'  },
+        { label: 'Movimientos Hoy',       num: '247',     sub: 'entradas + salidas',        color: 'blue'   },
+        { label: 'Mermas sin resolver',   num: '$0',      sub: 'ajuste automático activo',  color: 'amber'  },
+      ],
+      ledger_title: 'Kardex de Movimientos',
+      immutable_lbl: 'Inmutable · Solo Lectura',
+      ledger_cols: ['ID', 'Producto', 'Entrada', 'Salida', 'Estado'],
+      ledger_rows: [
+        { hash: '#a3f7', product: 'SKU-0042 · Caja Ref. A', qty_in: '+150', qty_out: '—',  sealed: 'Sellado' },
+        { hash: '#b91c', product: 'SKU-0017 · Paleta B',    qty_in: '—',    qty_out: '-30', sealed: 'Sellado' },
+        { hash: '#c44e', product: 'SKU-0089 · Drum C',      qty_in: '+75',  qty_out: '—',  sealed: 'Sellado' },
+      ],
+
+      /* ── Pain section ── */
+      pain_eyebrow: 'El Costo Real del Desorden',
+      pain_title: '¿Tu bodega pierde dinero',
+      pain_accent: 'en silencio?',
+      pain_cards: [
+        {
+          num: '01', icon: 'fas fa-file-excel',
+          tag: 'Dolor #1 · Control de Inventario',
+          title: 'Kardex vulnerables en Excel donde los números "cambian solos"',
+          desc: 'Tu operación descansa sobre planillas que cualquier usuario puede editar, borrar o sobrescribir sin dejar rastro. Un error de turno, una fórmula rota o una simple tecla de más — y el historial contable desaparece para siempre. No es un problema técnico: es un riesgo financiero que crece cada día.',
+        },
+        {
+          num: '02', icon: 'fas fa-random',
+          tag: 'Dolor #2 · Auditorías e Inventarios',
+          title: 'Inventarios caóticos por no poder congelar la operación',
+          desc: 'Realizar un inventario general exige detener la bodega. Mientras cuentas, siguen entrando y saliendo mercancías. El resultado: diferencias imposibles de cerrar, mermas que nadie justifica y un cierre contable que se extiende por días enteros, bloqueando el negocio.',
+        },
+        {
+          num: '03', icon: 'fas fa-language',
+          tag: 'Dolor #3 · Comunicación Operativa',
+          title: 'Barreras de idioma entre la gerencia y los operarios de almacén',
+          desc: 'En South Florida, tu equipo de bodega trabaja en español. Tu gerencia y clientes corporativos necesitan reportes en inglés. Un sistema monolingüe genera errores de transcripción, retrasos en reportes y una barrera invisible que nadie menciona — pero que todos padecen.',
+        },
+      ],
+
+      /* ── Solutions section ── */
+      sol_eyebrow: 'El Blindaje PivetTrack',
+      sol_title: '4 Funcionalidades',
+      sol_accent: 'Asesinas',
+      features: [
+        {
+          step: 'Funcionalidad 01 / 04', icon: 'fas fa-lock', label: 'Inmutabilidad Contable',
+          title: 'El Kardex que no se borra ni se edita — todo movimiento es trazable y auditable',
+          desc: 'Cada movimiento de inventario se registra con un identificador de integridad único, timestamp inmutable y el usuario responsable. Una vez confirmado, ningún operario, supervisor ni administrador puede alterar el registro. La trazabilidad es total y el historial contable, indestructible.',
+          tags: ['Auditoría Total', 'Registro Inmutable', 'Trazabilidad Completa', 'Sin edición posible'],
+          viz_no_edit: 'Sin edición posible — solo lectura',
+          audit_steps: ['Conteo físico completado', '3 diferencias detectadas automáticamente', 'Asientos de ajuste generados', 'Mermas sin resolver → $0'],
+          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
+          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
+          pdf_badges: ['Orden de Recepción', 'Guía de Despacho', 'Reporte de Inventario'],
+        },
+        {
+          step: 'Funcionalidad 02 / 04', icon: 'fas fa-sync-alt', label: 'Auditorías Wall-to-Wall',
+          title: 'Motor de auto-conciliación que ajusta automáticamente a cero las mermas no detectadas',
+          desc: 'El módulo de inventario general permite ejecutar un conteo Wall-to-Wall sin detener la operación. Al finalizar, el motor de conciliación compara stock teórico vs. físico, identifica todas las diferencias y genera los asientos de ajuste automáticos — llevando el sistema a saldo real sin papeles ni horas de cruce manual.',
+          tags: ['Wall-to-Wall', 'Auto-conciliación', 'Cierre Express', 'Mermas $0'],
+          viz_no_edit: '',
+          audit_steps: ['Conteo físico completado', '3 diferencias detectadas automáticamente', 'Asientos de ajuste generados', 'Mermas sin resolver → $0'],
+          lang_en: '', lang_es: '', pdf_badges: [],
+        },
+        {
+          step: 'Funcionalidad 03 / 04', icon: 'fas fa-globe-americas', label: 'Nativo Multiidioma',
+          title: 'Interfaz bilingüe Inglés / Español, ideal para la fuerza laboral del sur de Florida',
+          desc: 'El sistema cambia de idioma en tiempo real sin reinicios ni recargas. Tu operario en el almacén trabaja cómodamente en español. Tu director de operaciones y clientes corporativos reciben todos los reportes y documentos en inglés. Un solo sistema, dos idiomas, cero fricciones ni errores de transcripción.',
+          tags: ['English', 'Español', 'South Florida Ready', 'Cambio en tiempo real'],
+          viz_no_edit: '',
+          audit_steps: [],
+          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
+          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
+          pdf_badges: [],
+        },
+        {
+          step: 'Funcionalidad 04 / 04', icon: 'fas fa-paint-brush', label: 'Custom Branding — Marca Blanca',
+          title: 'Documentación técnica y comprobantes PDF exportables con el logotipo corporativo del cliente',
+          desc: 'Toda la documentación generada por el sistema — órdenes de recepción, guías de despacho, reportes de inventario, comprobantes de ajuste — se exporta en PDF con el logotipo corporativo y los colores de tu empresa. Tu marca, tu operación, tu identidad en cada documento.',
+          tags: ['Exportación PDF', 'Logo Corporativo', 'White Label', 'Marca Blanca'],
+          viz_no_edit: '', audit_steps: [], lang_en: '', lang_es: '',
+          pdf_badges: ['Orden de Recepción', 'Guía de Despacho', 'Reporte de Inventario'],
+        },
+      ],
+
+      /* ── Bottom CTA ── */
+      cta_eyebrow: 'Digitaliza tu Operación Hoy',
+      cta_h2a: 'Tu bodega merece un sistema',
+      cta_h2b: 'a la altura de tu negocio.',
+      cta_sub: 'PivetTrack no es un template genérico — es un WMS construido desde las operaciones logísticas reales. Agendemos 30 minutos sin costo y te mostramos exactamente cómo blindamos tu inventario hoy mismo.',
+      cta_btn1: 'Agendar Demostración',
+      cta_btn2: 'Enviar Consulta',
+      cta_trust: ['Demo en vivo sin compromiso', 'NDA firmado antes del inicio', 'Disponibilidad inmediata', 'Miami, FL · 100% Remoto'],
+    },
+
+    en: {
+      /* ── Nav ── */
+      nav_home: 'Home', nav_about: 'About Us', nav_demos: 'AppSheet Demos', nav_contact: 'Contact',
+      page_title: 'PivetTrack WMS — Total Warehouse Control | PIVET DIGITAL AUTOMATIONS LLC',
+      footer_text: 'PivetTrack WMS — Warehouse Management System · Miami, FL · Registered LLC — Florida',
+
+      /* ── Hero ── */
+      hero_eyebrow: 'WMS SaaS · PIVET DIGITAL AUTOMATIONS LLC',
+      hero_h1a: 'Total Control Over Your Warehouse.',
+      hero_h1b: 'No Leaks, No Errors.',
+      hero_sub: '<strong>PivetTrack</strong> is a hardened WMS (Warehouse Management System) SaaS, built for logistics companies that demand <strong>flawless accounting and operational precision</strong>. Every movement is recorded, traced, and sealed — permanently.',
+      hero_cta1: 'Schedule a Demo',
+      hero_cta2: 'See Features',
+      trust: ['No installation required', 'Bilingual EN / ES native', 'White-label available', 'NDA before any demo'],
+
+      /* ── Dashboard mock ── */
+      db_title: 'PivetTrack WMS — Operational Log · Main Warehouse',
+      db_live: 'System Active',
+      kpi: [
+        { label: 'Current Stock',         num: '4,812',   sub: 'units in warehouse',        color: 'orange' },
+        { label: 'Inventory Accuracy',    num: '99.8%',   sub: 'accounting precision',       color: 'green'  },
+        { label: 'Movements Today',       num: '247',     sub: 'entries + exits',            color: 'blue'   },
+        { label: 'Unresolved Shrinkage',  num: '$0',      sub: 'auto-adjustment active',     color: 'amber'  },
+      ],
+      ledger_title: 'Movement Log',
+      immutable_lbl: 'Immutable · Read Only',
+      ledger_cols: ['ID', 'Product', 'Entry', 'Exit', 'Status'],
+      ledger_rows: [
+        { hash: '#a3f7', product: 'SKU-0042 · Box Ref. A', qty_in: '+150', qty_out: '—',  sealed: 'Sealed' },
+        { hash: '#b91c', product: 'SKU-0017 · Pallet B',   qty_in: '—',    qty_out: '-30', sealed: 'Sealed' },
+        { hash: '#c44e', product: 'SKU-0089 · Drum C',     qty_in: '+75',  qty_out: '—',  sealed: 'Sealed' },
+      ],
+
+      /* ── Pain section ── */
+      pain_eyebrow: 'The Real Cost of Disorder',
+      pain_title: 'Is your warehouse losing money',
+      pain_accent: 'silently?',
+      pain_cards: [
+        {
+          num: '01', icon: 'fas fa-file-excel',
+          tag: 'Pain #1 · Inventory Control',
+          title: 'Vulnerable Excel spreadsheets where numbers "change on their own"',
+          desc: 'Your operation relies on spreadsheets that any user can edit, delete, or overwrite without a trace. One shift error, a broken formula, or a stray keystroke — and your accounting history disappears forever. It\'s not a technical problem: it\'s a financial risk that grows every day.',
+        },
+        {
+          num: '02', icon: 'fas fa-random',
+          tag: 'Pain #2 · Audits & Inventory',
+          title: 'Chaotic inventories because you can\'t freeze operations',
+          desc: 'Running a full inventory count means stopping the warehouse. While you count, goods keep moving in and out. The result: unexplainable discrepancies, unaccounted shrinkage, and an accounting close that drags on for days — blocking the entire business.',
+        },
+        {
+          num: '03', icon: 'fas fa-language',
+          tag: 'Pain #3 · Operational Communication',
+          title: 'Language barriers between management and warehouse staff',
+          desc: 'In South Florida, your warehouse team works in Spanish. Your management and corporate clients need reports in English. A monolingual system creates transcription errors, delayed reports, and an invisible barrier that nobody talks about — but everyone suffers.',
+        },
+      ],
+
+      /* ── Solutions section ── */
+      sol_eyebrow: 'The PivetTrack Shield',
+      sol_title: '4 Killer',
+      sol_accent: 'Features',
+      features: [
+        {
+          step: 'Feature 01 / 04', icon: 'fas fa-lock', label: 'Accounting Immutability',
+          title: 'The Kardex that can\'t be deleted or edited — every movement is traceable and auditable',
+          desc: 'Every inventory movement is recorded with a unique integrity hash, an immutable timestamp, and the responsible user. Once confirmed, no operator, supervisor, or admin can alter the record. Traceability is total and the accounting history, indestructible.',
+          tags: ['Full Audit Trail', 'Immutable Record', 'Complete Traceability', 'No editing possible'],
+          viz_no_edit: 'No editing possible — read only',
+          audit_steps: ['Physical count completed', '3 discrepancies detected automatically', 'Adjustment entries generated', 'Unresolved shrinkage → $0'],
+          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
+          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
+          pdf_badges: ['Receiving Order', 'Dispatch Guide', 'Inventory Report'],
+        },
+        {
+          step: 'Feature 02 / 04', icon: 'fas fa-sync-alt', label: 'Wall-to-Wall Audits',
+          title: 'Auto-reconciliation engine that automatically zeros out undetected shrinkage',
+          desc: 'The general inventory module lets you run a Wall-to-Wall count without stopping operations. When done, the reconciliation engine compares theoretical vs. physical stock, identifies all discrepancies, and automatically generates adjustment entries — bringing the system to real balance with no manual cross-referencing.',
+          tags: ['Wall-to-Wall', 'Auto-Reconciliation', 'Express Close', 'Zero Shrinkage'],
+          viz_no_edit: '',
+          audit_steps: ['Physical count completed', '3 discrepancies detected automatically', 'Adjustment entries generated', 'Unresolved shrinkage → $0'],
+          lang_en: '', lang_es: '', pdf_badges: [],
+        },
+        {
+          step: 'Feature 03 / 04', icon: 'fas fa-globe-americas', label: 'Native Multilingual',
+          title: 'Bilingual English / Spanish interface, ideal for the South Florida workforce',
+          desc: 'The system switches languages in real time without restarts or reloads. Your warehouse staff works comfortably in Spanish. Your operations director and corporate clients receive all reports and documents in English. One system, two languages, zero friction or transcription errors.',
+          tags: ['English', 'Español', 'South Florida Ready', 'Real-time switch'],
+          viz_no_edit: '',
+          audit_steps: [],
+          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
+          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
+          pdf_badges: [],
+        },
+        {
+          step: 'Feature 04 / 04', icon: 'fas fa-paint-brush', label: 'Custom Branding — White Label',
+          title: 'Technical documentation and PDF receipts exported with the client\'s corporate logo',
+          desc: 'All documentation generated by the system — receiving orders, dispatch guides, inventory reports, adjustment receipts — is exported as PDF with the client\'s corporate logo and brand colors. Your brand, your operation, your identity on every document.',
+          tags: ['PDF Export', 'Corporate Logo', 'White Label', 'Custom Brand'],
+          viz_no_edit: '', audit_steps: [], lang_en: '', lang_es: '',
+          pdf_badges: ['Receiving Order', 'Dispatch Guide', 'Inventory Report'],
+        },
+      ],
+
+      /* ── Bottom CTA ── */
+      cta_eyebrow: 'Digitize Your Operations Today',
+      cta_h2a: 'Your warehouse deserves a system',
+      cta_h2b: 'that matches your business.',
+      cta_sub: 'PivetTrack is not a generic template — it\'s a WMS built from real logistics operations. Let\'s schedule a free 30-minute call and show you exactly how we protect your inventory today.',
+      cta_btn1: 'Schedule a Demo',
+      cta_btn2: 'Send Inquiry',
+      cta_trust: ['Live demo, no commitment', 'NDA signed before start', 'Immediate availability', 'Miami, FL · 100% Remote'],
+    }
+  };
+
+  let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
+
+  /* ── Render helper: feature visual by index ── */
+  function renderViz(f, idx) {
+    if (idx === 0) {
+      return `
+        <div class="viz-immutable">
+          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0042 · ${lang === 'es' ? 'Entrada' : 'Entry'} <span class="viz-in">+150 u.</span><span class="viz-hash">#a3f7c2</span></div>
+          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0017 · ${lang === 'es' ? 'Salida' : 'Exit'} <span class="viz-out">-30 u.</span><span class="viz-hash">#b91c44</span></div>
+          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0089 · ${lang === 'es' ? 'Entrada' : 'Entry'} <span class="viz-in">+75 u.</span><span class="viz-hash">#c44e81</span></div>
+          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0003 · ${lang === 'es' ? 'Salida' : 'Exit'} <span class="viz-out">-12 u.</span><span class="viz-hash">#d52a09</span></div>
+          <div class="viz-sealed-badge"><i class="fas fa-ban"></i> ${f.viz_no_edit}</div>
+        </div>`;
+    }
+    if (idx === 1) {
+      const stepClasses = ['done', 'done', 'done', 'active'];
+      return `
+        <div class="viz-audit">
+          <div class="viz-gauge-wrap">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="var(--border-color)" stroke-width="8"/>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#34C759" stroke-width="8"
+                stroke-dasharray="238 251" stroke-dashoffset="63" stroke-linecap="round"/>
+            </svg>
+            <div class="viz-gauge-center">
+              <span class="viz-gauge-num">98%</span>
+              <span class="viz-gauge-lbl">Match</span>
+            </div>
+          </div>
+          <div class="viz-audit-steps">
+            ${f.audit_steps.map((s,i) => `<div class="viz-audit-step ${stepClasses[i]}"><i class="fas fa-check-circle"></i> ${s}</div>`).join('')}
+          </div>
+        </div>`;
+    }
+    if (idx === 2) {
+      return `
+        <div class="viz-multilang">
+          <div class="viz-lang-toggle">
+            <span class="viz-lang-btn on">EN</span>
+            <span class="viz-lang-btn">ES</span>
+          </div>
+          <div class="viz-lang-card active">
+            <span class="viz-lang-flag">🇺🇸</span>
+            <div>
+              <div class="viz-lang-name">English</div>
+              <div class="viz-lang-sample">${f.lang_en}</div>
+            </div>
+            <div class="viz-lang-dot"></div>
+          </div>
+          <div class="viz-lang-card" style="opacity:0.58">
+            <span class="viz-lang-flag">🇪🇸</span>
+            <div>
+              <div class="viz-lang-name">Español</div>
+              <div class="viz-lang-sample">${f.lang_es}</div>
+            </div>
+          </div>
+        </div>`;
+    }
+    if (idx === 3) {
+      return `
+        <div class="viz-branding">
+          <div class="viz-brand-doc">
+            <div class="viz-brand-doc-top">
+              <div class="viz-logo-box">AB</div>
+              <span class="viz-company-name">ACME Logistics Corp.</span>
+              <span class="viz-doc-type"><i class="fas fa-file-pdf"></i> PDF</span>
+            </div>
+            <div class="viz-brand-doc-body">
+              <div class="viz-line w85"></div>
+              <div class="viz-line w65"></div>
+              <div class="viz-line w45"></div>
+            </div>
+          </div>
+          <div class="viz-pdf-badges">
+            ${f.pdf_badges.map(b => `<span class="viz-pdf-badge"><i class="fas fa-file-pdf"></i> ${b}</span>`).join('')}
+          </div>
+        </div>`;
+    }
+    return '';
+  }
+
+  /* ── Main render function ── */
+  function render() {
+    const d = t[lang];
+    document.title = d.page_title;
+    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageText').textContent  = lang === 'es' ? 'English' : 'Español';
+    document.getElementById('footerText').textContent    = d.footer_text;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (d[k]) el.textContent = d[k];
+    });
+
+    document.getElementById('mainContent').innerHTML = `
+
+      <!-- ═══ 1. HERO ═══ -->
       <section class="pt-hero" data-aos="fade-down">
-
-        <div class="pt-eyebrow">
-          <i class="fas fa-warehouse"></i>
-          WMS SaaS · PIVET DIGITAL AUTOMATIONS LLC
-        </div>
-
+        <div class="pt-eyebrow"><i class="fas fa-warehouse"></i> ${d.hero_eyebrow}</div>
         <h1 class="pt-h1">
-          Control Total de tu Bodega.<br>
-          <span class="accent">Sin Fugas, Sin Errores.</span>
+          ${d.hero_h1a}<br>
+          <span class="accent">${d.hero_h1b}</span>
         </h1>
-
-        <p class="pt-subtitle">
-          <strong>PivetTrack</strong> es un WMS (Warehouse Management System) SaaS
-          blindado, diseñado para empresas logísticas que necesitan
-          <strong>precisión contable y operativa impecable</strong>.
-          Cada movimiento queda registrado, trazado y sellado — permanentemente.
-        </p>
-
+        <p class="pt-subtitle">${d.hero_sub}</p>
         <div class="pt-cta-group">
           <a href="contacto.html" class="btn btn-lg">
-            <i class="fas fa-calendar-check"></i> Agendar Demostración
+            <i class="fas fa-calendar-check"></i> ${d.hero_cta1}
           </a>
           <a href="#pt-solutions" class="btn-outline">
-            <i class="fas fa-arrow-down"></i> Ver Funcionalidades
+            <i class="fas fa-arrow-down"></i> ${d.hero_cta2}
           </a>
         </div>
-
         <div class="pt-trust-row">
-          <span class="pt-trust-item"><i class="fas fa-check-circle"></i> Sin instalación requerida</span>
-          <span class="pt-trust-item"><i class="fas fa-check-circle"></i> Bilingüe EN / ES nativo</span>
-          <span class="pt-trust-item"><i class="fas fa-check-circle"></i> Marca blanca disponible</span>
-          <span class="pt-trust-item"><i class="fas fa-check-circle"></i> NDA antes de cualquier demo</span>
+          ${d.trust.map(item => `<span class="pt-trust-item"><i class="fas fa-check-circle"></i> ${item}</span>`).join('')}
         </div>
 
-        <!-- Dashboard Mock — PivetTrack UI preview -->
+        <!-- Dashboard mock -->
         <div class="pt-hero-visual" data-aos="fade-up" data-aos-delay="100">
           <div class="pt-db-bar">
             <span class="pt-db-dot red"></span>
             <span class="pt-db-dot yellow"></span>
             <span class="pt-db-dot green"></span>
-            <span class="pt-db-title">PivetTrack WMS — Kardex Operativo · Bodega Principal</span>
-            <span class="pt-db-live"><span class="pt-db-live-dot"></span> Sistema Activo</span>
+            <span class="pt-db-title">${d.db_title}</span>
+            <span class="pt-db-live"><span class="pt-db-live-dot"></span> ${d.db_live}</span>
           </div>
-
           <div class="pt-kpi-grid">
-            <div class="pt-kpi-card">
-              <div class="pt-kpi-label">Stock Actual</div>
-              <div class="pt-kpi-num orange">4,812</div>
-              <div class="pt-kpi-sub">unidades en bodega</div>
-              <div class="pt-kpi-bar orange"></div>
-            </div>
-            <div class="pt-kpi-card">
-              <div class="pt-kpi-label">Precisión Inventario</div>
-              <div class="pt-kpi-num green">99.8%</div>
-              <div class="pt-kpi-sub">exactitud contable</div>
-              <div class="pt-kpi-bar green"></div>
-            </div>
-            <div class="pt-kpi-card">
-              <div class="pt-kpi-label">Movimientos Hoy</div>
-              <div class="pt-kpi-num blue">247</div>
-              <div class="pt-kpi-sub">entradas + salidas</div>
-              <div class="pt-kpi-bar blue"></div>
-            </div>
-            <div class="pt-kpi-card">
-              <div class="pt-kpi-label">Mermas sin resolver</div>
-              <div class="pt-kpi-num amber">$0</div>
-              <div class="pt-kpi-sub">ajuste automático activo</div>
-              <div class="pt-kpi-bar amber"></div>
-            </div>
+            ${d.kpi.map(k => `
+              <div class="pt-kpi-card">
+                <div class="pt-kpi-label">${k.label}</div>
+                <div class="pt-kpi-num ${k.color}">${k.num}</div>
+                <div class="pt-kpi-sub">${k.sub}</div>
+                <div class="pt-kpi-bar ${k.color}"></div>
+              </div>`).join('')}
           </div>
-
           <div class="pt-ledger">
             <div class="pt-ledger-hdr">
-              <span class="pt-ledger-ttl">Kardex de Movimientos</span>
-              <span class="pt-immutable-badge"><i class="fas fa-lock"></i> Inmutable · Solo Lectura</span>
+              <span class="pt-ledger-ttl">${d.ledger_title}</span>
+              <span class="pt-immutable-badge"><i class="fas fa-lock"></i> ${d.immutable_lbl}</span>
             </div>
             <div class="pt-row hdr">
-              <span>ID</span><span>Producto</span><span>Entrada</span><span>Salida</span><span>Estado</span>
+              ${d.ledger_cols.map(c => `<span>${c}</span>`).join('')}
             </div>
-            <div class="pt-row data">
-              <span class="hash-txt">#a3f7</span>
-              <span>SKU-0042 · Caja Ref. A</span>
-              <span class="in-qty">+150</span>
-              <span>—</span>
-              <span class="sealed"><i class="fas fa-lock"></i> Sellado</span>
-            </div>
-            <div class="pt-row data">
-              <span class="hash-txt">#b91c</span>
-              <span>SKU-0017 · Paleta B</span>
-              <span>—</span>
-              <span class="out-qty">-30</span>
-              <span class="sealed"><i class="fas fa-lock"></i> Sellado</span>
-            </div>
-            <div class="pt-row data">
-              <span class="hash-txt">#c44e</span>
-              <span>SKU-0089 · Drum C</span>
-              <span class="in-qty">+75</span>
-              <span>—</span>
-              <span class="sealed"><i class="fas fa-lock"></i> Sellado</span>
-            </div>
+            ${d.ledger_rows.map(r => `
+              <div class="pt-row data">
+                <span class="hash-txt">${r.hash}</span>
+                <span>${r.product}</span>
+                <span class="${r.qty_in !== '—' ? 'in-qty' : ''}">${r.qty_in}</span>
+                <span class="${r.qty_out !== '—' ? 'out-qty' : ''}">${r.qty_out}</span>
+                <span class="sealed"><i class="fas fa-lock"></i> ${r.sealed}</span>
+              </div>`).join('')}
           </div>
         </div>
       </section>
 
-      <!-- ═══════════════════════════════════════════════════════
-           2. SECCIÓN PROBLEMA / AGITACIÓN — EL DOLOR
-      ═══════════════════════════════════════════════════════ -->
+      <!-- ═══ 2. PAIN / AGITATION ═══ -->
       <section class="pt-pain" data-aos="fade-up">
         <div class="pt-section-hdr">
-          <div class="pt-section-eyebrow">
-            <i class="fas fa-exclamation-triangle" style="color:#FF3B30"></i>
-            El Costo Real del Desorden
-          </div>
-          <h2 class="pt-section-title">
-            ¿Tu bodega pierde dinero <span class="accent">en silencio?</span>
-          </h2>
+          <div class="pt-section-eyebrow"><i class="fas fa-exclamation-triangle" style="color:#FF3B30"></i> ${d.pain_eyebrow}</div>
+          <h2 class="pt-section-title">${d.pain_title} <span class="accent">${d.pain_accent}</span></h2>
         </div>
-
         <div class="pt-pain-grid">
-
-          <!-- Pain 1: Excel Kardex -->
-          <div class="pt-pain-card" data-aos="fade-up" data-aos-delay="0">
-            <span class="pt-pain-bg-num">01</span>
-            <div class="pt-pain-icon"><i class="fas fa-file-excel"></i></div>
-            <div class="pt-pain-tag">Dolor #1 · Control de Inventario</div>
-            <h3 class="pt-pain-title">
-              Kardex vulnerables en Excel donde los números "cambian solos"
-            </h3>
-            <p class="pt-pain-desc">
-              Tu operación descansa sobre planillas que cualquier usuario puede editar, borrar o sobrescribir sin dejar rastro. Un error de turno, una fórmula rota o una simple tecla de más — y el historial contable desaparece para siempre. No es un problema técnico: es un riesgo financiero que crece cada día.
-            </p>
-          </div>
-
-          <!-- Pain 2: Chaotic inventory -->
-          <div class="pt-pain-card" data-aos="fade-up" data-aos-delay="90">
-            <span class="pt-pain-bg-num">02</span>
-            <div class="pt-pain-icon"><i class="fas fa-random"></i></div>
-            <div class="pt-pain-tag">Dolor #2 · Auditorías e Inventarios</div>
-            <h3 class="pt-pain-title">
-              Inventarios caóticos por no poder congelar la operación
-            </h3>
-            <p class="pt-pain-desc">
-              Realizar un inventario general exige detener la bodega. Mientras cuentas, siguen entrando y saliendo mercancías. El resultado: diferencias imposibles de cerrar, mermas que nadie justifica y un cierre contable que se extiende por días enteros, bloqueando el negocio.
-            </p>
-          </div>
-
-          <!-- Pain 3: Language barrier -->
-          <div class="pt-pain-card" data-aos="fade-up" data-aos-delay="180">
-            <span class="pt-pain-bg-num">03</span>
-            <div class="pt-pain-icon"><i class="fas fa-language"></i></div>
-            <div class="pt-pain-tag">Dolor #3 · Comunicación Operativa</div>
-            <h3 class="pt-pain-title">
-              Barreras de idioma entre la gerencia y los operarios de almacén
-            </h3>
-            <p class="pt-pain-desc">
-              En South Florida, tu equipo de bodega trabaja en español. Tu gerencia y clientes corporativos necesitan reportes en inglés. Un sistema monolingüe genera errores de transcripción, retrasos en reportes y una barrera invisible que nadie menciona — pero que todos padecen.
-            </p>
-          </div>
-
+          ${d.pain_cards.map((c, i) => `
+            <div class="pt-pain-card" data-aos="fade-up" data-aos-delay="${i * 90}">
+              <span class="pt-pain-bg-num">${c.num}</span>
+              <div class="pt-pain-icon"><i class="${c.icon}"></i></div>
+              <div class="pt-pain-tag">${c.tag}</div>
+              <h3 class="pt-pain-title">${c.title}</h3>
+              <p class="pt-pain-desc">${c.desc}</p>
+            </div>`).join('')}
         </div>
       </section>
 
-      <!-- ═══════════════════════════════════════════════════════
-           3. SECCIÓN SOLUCIÓN — EL BLINDAJE PIVETTRACK
-      ═══════════════════════════════════════════════════════ -->
+      <!-- ═══ 3. SOLUTIONS — 4 FEATURES ═══ -->
       <section class="pt-solutions" id="pt-solutions" data-aos="fade-up">
         <div class="pt-section-hdr">
-          <div class="pt-section-eyebrow">
-            <i class="fas fa-shield-alt" style="color:#FF6B00"></i>
-            El Blindaje PivetTrack
-          </div>
-          <h2 class="pt-section-title">
-            4 Funcionalidades <span class="accent">Asesinas</span>
-          </h2>
+          <div class="pt-section-eyebrow"><i class="fas fa-shield-alt" style="color:#FF6B00"></i> ${d.sol_eyebrow}</div>
+          <h2 class="pt-section-title">${d.sol_title} <span class="accent">${d.sol_accent}</span></h2>
         </div>
-
         <div class="pt-feature-list">
-
-          <!-- ── Feature 1: Inmutabilidad Contable ── -->
-          <div class="pt-feature-item" data-aos="fade-up">
-            <div class="pt-feat-text">
-              <span class="pt-feat-step">Funcionalidad 01 / 04</span>
-              <div class="pt-feat-icon"><i class="fas fa-lock"></i></div>
-              <div class="pt-feat-label">Inmutabilidad Contable</div>
-              <h3 class="pt-feat-title">El Kardex que no se borra ni se edita — todo movimiento es trazable y auditable</h3>
-              <p class="pt-feat-desc">
-                Cada movimiento de inventario se registra con un identificador de integridad único, timestamp inmutable y el usuario responsable. Una vez confirmado, ningún operario, supervisor ni administrador puede alterar el registro. La trazabilidad es total y el historial contable, indestructible.
-              </p>
-              <div class="pt-feat-tags">
-                <span class="pt-feat-tag">Auditoría Total</span>
-                <span class="pt-feat-tag">Registro Inmutable</span>
-                <span class="pt-feat-tag">Trazabilidad Completa</span>
-                <span class="pt-feat-tag">Sin edición posible</span>
+          ${d.features.map((f, idx) => `
+            <div class="pt-feature-item${idx % 2 === 1 ? ' reverse' : ''}" data-aos="fade-up">
+              <div class="pt-feat-text">
+                <span class="pt-feat-step">${f.step}</span>
+                <div class="pt-feat-icon"><i class="${f.icon}"></i></div>
+                <div class="pt-feat-label">${f.label}</div>
+                <h3 class="pt-feat-title">${f.title}</h3>
+                <p class="pt-feat-desc">${f.desc}</p>
+                <div class="pt-feat-tags">${f.tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>
               </div>
-            </div>
-            <div class="pt-feat-visual">
-              <div class="viz-immutable">
-                <div class="viz-row">
-                  <i class="fas fa-lock viz-lock"></i>
-                  SKU-0042 · Entrada <span class="viz-in">+150 u.</span>
-                  <span class="viz-hash">#a3f7c2</span>
-                </div>
-                <div class="viz-row">
-                  <i class="fas fa-lock viz-lock"></i>
-                  SKU-0017 · Salida <span class="viz-out">-30 u.</span>
-                  <span class="viz-hash">#b91c44</span>
-                </div>
-                <div class="viz-row">
-                  <i class="fas fa-lock viz-lock"></i>
-                  SKU-0089 · Entrada <span class="viz-in">+75 u.</span>
-                  <span class="viz-hash">#c44e81</span>
-                </div>
-                <div class="viz-row">
-                  <i class="fas fa-lock viz-lock"></i>
-                  SKU-0003 · Salida <span class="viz-out">-12 u.</span>
-                  <span class="viz-hash">#d52a09</span>
-                </div>
-                <div class="viz-sealed-badge">
-                  <i class="fas fa-ban"></i> Sin edición posible — solo lectura
-                </div>
+              <div class="pt-feat-visual">
+                ${renderViz(f, idx)}
               </div>
-            </div>
-          </div>
-
-          <!-- ── Feature 2: Auditorías Wall-to-Wall ── -->
-          <div class="pt-feature-item reverse" data-aos="fade-up">
-            <div class="pt-feat-text">
-              <span class="pt-feat-step">Funcionalidad 02 / 04</span>
-              <div class="pt-feat-icon"><i class="fas fa-sync-alt"></i></div>
-              <div class="pt-feat-label">Auditorías Wall-to-Wall</div>
-              <h3 class="pt-feat-title">Motor de auto-conciliación que ajusta automáticamente a cero las mermas no detectadas</h3>
-              <p class="pt-feat-desc">
-                El módulo de inventario general permite ejecutar un conteo Wall-to-Wall sin detener la operación. Al finalizar, el motor de conciliación compara stock teórico vs. físico, identifica todas las diferencias y genera los asientos de ajuste automáticos — llevando el sistema a saldo real sin papeles ni horas de cruce manual.
-              </p>
-              <div class="pt-feat-tags">
-                <span class="pt-feat-tag">Wall-to-Wall</span>
-                <span class="pt-feat-tag">Auto-conciliación</span>
-                <span class="pt-feat-tag">Cierre Express</span>
-                <span class="pt-feat-tag">Mermas $0</span>
-              </div>
-            </div>
-            <div class="pt-feat-visual">
-              <div class="viz-audit">
-                <div class="viz-gauge-wrap">
-                  <svg viewBox="0 0 100 100" aria-hidden="true">
-                    <circle cx="50" cy="50" r="40" fill="none"
-                      stroke="var(--border-color)" stroke-width="8"/>
-                    <circle cx="50" cy="50" r="40" fill="none"
-                      stroke="#34C759" stroke-width="8"
-                      stroke-dasharray="238 251"
-                      stroke-dashoffset="63"
-                      stroke-linecap="round"/>
-                  </svg>
-                  <div class="viz-gauge-center">
-                    <span class="viz-gauge-num">98%</span>
-                    <span class="viz-gauge-lbl">Match</span>
-                  </div>
-                </div>
-                <div class="viz-audit-steps">
-                  <div class="viz-audit-step done"><i class="fas fa-check-circle"></i> Conteo físico completado</div>
-                  <div class="viz-audit-step done"><i class="fas fa-check-circle"></i> 3 diferencias detectadas automáticamente</div>
-                  <div class="viz-audit-step done"><i class="fas fa-check-circle"></i> Asientos de ajuste generados</div>
-                  <div class="viz-audit-step active"><i class="fas fa-check-circle"></i> Mermas sin resolver → $0</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ── Feature 3: Nativo Multiidioma ── -->
-          <div class="pt-feature-item" data-aos="fade-up">
-            <div class="pt-feat-text">
-              <span class="pt-feat-step">Funcionalidad 03 / 04</span>
-              <div class="pt-feat-icon"><i class="fas fa-globe-americas"></i></div>
-              <div class="pt-feat-label">Nativo Multiidioma</div>
-              <h3 class="pt-feat-title">Interfaz bilingüe Inglés / Español, ideal para la fuerza laboral del sur de Florida</h3>
-              <p class="pt-feat-desc">
-                El sistema cambia de idioma en tiempo real sin reinicios ni recargas. Tu operario en el almacén trabaja cómodamente en español. Tu director de operaciones y clientes corporativos reciben todos los reportes y documentos en inglés. Un solo sistema, dos idiomas, cero fricciones ni errores de transcripción.
-              </p>
-              <div class="pt-feat-tags">
-                <span class="pt-feat-tag">English</span>
-                <span class="pt-feat-tag">Español</span>
-                <span class="pt-feat-tag">South Florida Ready</span>
-                <span class="pt-feat-tag">Cambio en tiempo real</span>
-              </div>
-            </div>
-            <div class="pt-feat-visual">
-              <div class="viz-multilang">
-                <div class="viz-lang-toggle">
-                  <span class="viz-lang-btn on">EN</span>
-                  <span class="viz-lang-btn">ES</span>
-                </div>
-                <div class="viz-lang-card active">
-                  <span class="viz-lang-flag">🇺🇸</span>
-                  <div>
-                    <div class="viz-lang-name">English</div>
-                    <div class="viz-lang-sample">"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"</div>
-                  </div>
-                  <div class="viz-lang-dot"></div>
-                </div>
-                <div class="viz-lang-card" style="opacity:0.58">
-                  <span class="viz-lang-flag">🇪🇸</span>
-                  <div>
-                    <div class="viz-lang-name">Español</div>
-                    <div class="viz-lang-sample">"Recepción" · "Traslado de Stock" · "Guía de Despacho"</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ── Feature 4: Custom Branding / Marca Blanca ── -->
-          <div class="pt-feature-item reverse" data-aos="fade-up">
-            <div class="pt-feat-text">
-              <span class="pt-feat-step">Funcionalidad 04 / 04</span>
-              <div class="pt-feat-icon"><i class="fas fa-paint-brush"></i></div>
-              <div class="pt-feat-label">Custom Branding — Marca Blanca</div>
-              <h3 class="pt-feat-title">Documentación técnica y comprobantes PDF exportables con el logotipo corporativo del cliente</h3>
-              <p class="pt-feat-desc">
-                Toda la documentación generada por el sistema — órdenes de recepción, guías de despacho, reportes de inventario, comprobantes de ajuste — se exporta en PDF con el logotipo corporativo y los colores de tu empresa. Tu marca, tu operación, tu identidad en cada documento.
-              </p>
-              <div class="pt-feat-tags">
-                <span class="pt-feat-tag">Exportación PDF</span>
-                <span class="pt-feat-tag">Logo Corporativo</span>
-                <span class="pt-feat-tag">White Label</span>
-                <span class="pt-feat-tag">Marca Blanca</span>
-              </div>
-            </div>
-            <div class="pt-feat-visual">
-              <div class="viz-branding">
-                <div class="viz-brand-doc">
-                  <div class="viz-brand-doc-top">
-                    <div class="viz-logo-box">AB</div>
-                    <span class="viz-company-name">ACME Logistics Corp.</span>
-                    <span class="viz-doc-type"><i class="fas fa-file-pdf"></i> PDF</span>
-                  </div>
-                  <div class="viz-brand-doc-body">
-                    <div class="viz-line w85"></div>
-                    <div class="viz-line w65"></div>
-                    <div class="viz-line w45"></div>
-                  </div>
-                </div>
-                <div class="viz-pdf-badges">
-                  <span class="viz-pdf-badge"><i class="fas fa-file-pdf"></i> Orden de Recepción</span>
-                  <span class="viz-pdf-badge"><i class="fas fa-file-pdf"></i> Guía de Despacho</span>
-                  <span class="viz-pdf-badge"><i class="fas fa-file-pdf"></i> Reporte de Inventario</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
+            </div>`).join('')}
         </div>
       </section>
 
-      <!-- ═══════════════════════════════════════════════════════
-           4. CIERRE — BOTTOM CTA BANNER
-      ═══════════════════════════════════════════════════════ -->
+      <!-- ═══ 4. BOTTOM CTA BANNER ═══ -->
       <section class="pt-bottom-cta" data-aos="fade-up">
-        <div class="pt-cta-eyebrow"><i class="fas fa-rocket"></i> Digitaliza tu Operación Hoy</div>
+        <div class="pt-cta-eyebrow"><i class="fas fa-rocket"></i> ${d.cta_eyebrow}</div>
         <h2 class="pt-cta-h2">
-          Tu bodega merece un sistema<br>
-          <span class="accent">a la altura de tu negocio.</span>
+          ${d.cta_h2a}<br>
+          <span class="accent">${d.cta_h2b}</span>
         </h2>
-        <p class="pt-cta-sub">
-          PivetTrack no es un template genérico — es un WMS construido desde las operaciones
-          logísticas reales. Agendemos 30 minutos sin costo y te mostramos exactamente
-          cómo blindamos tu inventario hoy mismo.
-        </p>
+        <p class="pt-cta-sub">${d.cta_sub}</p>
         <div class="pt-cta-actions">
           <a href="contacto.html" class="btn btn-xl">
-            <i class="fas fa-calendar-check"></i> Agendar Demostración
+            <i class="fas fa-calendar-check"></i> ${d.cta_btn1}
           </a>
           <a href="contacto.html" class="btn-outline">
-            <i class="fas fa-envelope"></i> Enviar Consulta
+            <i class="fas fa-envelope"></i> ${d.cta_btn2}
           </a>
         </div>
         <div class="pt-cta-trust">
-          <span class="pt-cta-trust-item"><i class="fas fa-check-circle"></i> Demo en vivo sin compromiso</span>
-          <span class="pt-cta-trust-item"><i class="fas fa-check-circle"></i> NDA firmado antes del inicio</span>
-          <span class="pt-cta-trust-item"><i class="fas fa-check-circle"></i> Disponibilidad inmediata</span>
-          <span class="pt-cta-trust-item"><i class="fas fa-check-circle"></i> Miami, FL · 100% Remoto</span>
+          ${d.cta_trust.map(item => `<span class="pt-cta-trust-item"><i class="fas fa-check-circle"></i> ${item}</span>`).join('')}
         </div>
-      </section>
+      </section>`;
 
-    </main>
-  </div>
+    refreshAOS();
+  }
 
-  <footer>
-    <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
-    <p class="footer-registered">PivetTrack WMS &mdash; Warehouse Management System &copy; 2026 · Miami, FL · Registered LLC — Florida</p>
-  </footer>
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('homeLang', lang);
+    render();
+  }
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
+  document.addEventListener('DOMContentLoaded', () => {
+    render();
+    document.getElementById('languageToggle').addEventListener('click', toggleLang);
+  });
+  </script>
 </body>
 </html>
