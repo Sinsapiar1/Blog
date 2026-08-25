@@ -203,6 +203,112 @@
     .pt-cta-trust-item i { color:#34C759; }
     @media(max-width:768px){ .pt-bottom-cta { padding:44px 28px; } }
     @media(max-width:480px){ .pt-bottom-cta { padding:36px 20px; border-radius:20px; } }
+
+    /* ─── VIDEO DEMOS SECTION ─── */
+    .pt-demos { margin:60px 0; }
+
+    /* Featured player card */
+    .pt-demo-featured {
+      background:var(--glass-bg); border:1px solid var(--border-color);
+      border-radius:24px; overflow:hidden; position:relative; margin-bottom:18px;
+    }
+    .pt-demo-featured::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,#FF6B00,#FF9500);
+    }
+    /* Responsive 16:9 */
+    .pt-video-wrap {
+      position:relative; padding-bottom:56.25%; height:0;
+      overflow:hidden; background:#000;
+    }
+    .pt-video-wrap iframe {
+      position:absolute; top:0; left:0;
+      width:100%; height:100%; border:0;
+    }
+    /* Meta below player */
+    .pt-demo-meta { padding:22px 28px 26px; }
+    @media(max-width:768px){ .pt-demo-meta { padding:16px 20px 20px; } }
+    .pt-demo-meta-top {
+      display:flex; align-items:center; gap:10px;
+      flex-wrap:wrap; margin-bottom:10px;
+    }
+    .pt-demo-live-badge {
+      display:inline-flex; align-items:center; gap:5px;
+      font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em;
+      color:#34C759; background:rgba(52,199,89,0.1); border:1px solid rgba(52,199,89,0.25);
+      padding:3px 10px; border-radius:10px;
+    }
+    .pt-demo-live-dot { width:5px; height:5px; border-radius:50%; background:#34C759; animation:blink-dot 1.2s step-end infinite; }
+    .pt-demo-num-badge {
+      font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em;
+      color:rgba(255,107,0,0.6);
+    }
+    .pt-demo-featured-title {
+      font-size:clamp(1rem,2vw,1.2rem); font-weight:800;
+      color:var(--text-primary); letter-spacing:-0.015em; line-height:1.25;
+      margin-bottom:8px;
+    }
+    .pt-demo-featured-desc {
+      font-size:0.875rem; color:var(--text-secondary); line-height:1.65;
+      margin-bottom:12px;
+    }
+
+    /* Carousel strip */
+    .pt-demo-carousel { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    @media(max-width:680px){ .pt-demo-carousel { grid-template-columns:1fr; } }
+    @media(max-width:900px) and (min-width:681px){ .pt-demo-carousel { grid-template-columns:repeat(3,1fr); } }
+
+    .pt-demo-card {
+      background:var(--glass-bg); border:1px solid var(--border-color);
+      border-radius:16px; overflow:hidden; cursor:pointer;
+      transition:all 0.25s; position:relative;
+    }
+    .pt-demo-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,#FF6B00,#FF9500);
+      opacity:0; transition:opacity 0.25s;
+    }
+    .pt-demo-card.active { border-color:rgba(255,107,0,0.45); box-shadow:0 0 0 2px rgba(255,107,0,0.12); }
+    .pt-demo-card.active::before { opacity:1; }
+    .pt-demo-card:hover:not(.pt-demo-card-soon) { border-color:rgba(255,107,0,0.35); transform:translateY(-3px); box-shadow:0 10px 28px rgba(255,107,0,0.1); }
+    .pt-demo-card:hover:not(.pt-demo-card-soon)::before { opacity:1; }
+    .pt-demo-card-soon { cursor:default; opacity:0.6; }
+
+    /* Thumbnail */
+    .pt-demo-thumb {
+      position:relative; aspect-ratio:16/9;
+      overflow:hidden; background:var(--bg-secondary);
+    }
+    .pt-demo-thumb img { width:100%; height:100%; object-fit:cover; transition:transform 0.35s ease; }
+    .pt-demo-card:hover:not(.pt-demo-card-soon) .pt-demo-thumb img { transform:scale(1.06); }
+    .pt-demo-play-over {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      background:rgba(0,0,0,0.32); transition:background 0.25s;
+    }
+    .pt-demo-play-over i { font-size:2rem; color:white; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5)); transition:transform 0.2s; }
+    .pt-demo-card.active .pt-demo-play-over { background:rgba(255,107,0,0.22); }
+    .pt-demo-card.active .pt-demo-play-over i { color:#FFB347; }
+    .pt-demo-card:hover:not(.pt-demo-card-soon) .pt-demo-play-over i { transform:scale(1.18); }
+
+    /* Placeholder for coming-soon */
+    .pt-demo-thumb-ph {
+      aspect-ratio:16/9; background:linear-gradient(135deg,var(--bg-secondary),var(--bg-tertiary));
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.2rem; color:var(--text-tertiary);
+    }
+
+    /* Card body */
+    .pt-demo-card-body { padding:14px 16px; }
+    .pt-demo-card-num { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,107,0,0.45); margin-bottom:4px; }
+    .pt-demo-card-title { font-size:0.8125rem; font-weight:700; color:var(--text-primary); line-height:1.3; margin-bottom:6px; }
+    .pt-demo-card-tags { display:flex; flex-wrap:wrap; gap:4px; }
+    .pt-demo-card-tag { font-size:9px; font-weight:700; color:var(--text-tertiary); background:var(--bg-secondary); padding:2px 7px; border-radius:7px; }
+    .pt-coming-pill {
+      display:inline-flex; align-items:center; gap:4px;
+      font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em;
+      color:var(--text-tertiary); background:var(--bg-secondary);
+      border:1px solid var(--border-color); padding:2px 9px; border-radius:8px;
+    }
   </style>
 </head>
 <body>
@@ -379,6 +485,35 @@
       cta_btn1: 'Agendar Demostración',
       cta_btn2: 'Enviar Consulta',
       cta_trust: ['Demo en vivo sin compromiso', 'NDA firmado antes del inicio', 'Disponibilidad inmediata', 'Miami, FL · 100% Remoto'],
+
+      /* ── Video demos section ── */
+      demos_eyebrow: 'Demostraciones en Vivo',
+      demos_title: 'Mira PivetTrack',
+      demos_accent: 'en Acción',
+      demos_sub: 'Videos reales del sistema en producción — sin edición, sin staging.',
+      demos: [
+        {
+          id: 'oCA9KzfoIT8', live: true, num: '01',
+          live_lbl: 'Disponible Ahora',
+          title: 'Importación Masiva de SKUs',
+          desc: 'Carga simultánea de cientos de SKUs al sistema con validación automática, detección de duplicados y confirmación instantánea — sin errores manuales ni doble trabajo.',
+          tags: ['Importación Masiva', 'Validación Automática', 'SKU Management'],
+        },
+        {
+          id: null, live: false, num: '02', icon: 'fas fa-warehouse',
+          coming_lbl: 'Próximamente',
+          title: 'Inventario Físico Wall-to-Wall',
+          desc: 'Proceso completo de inventario general sin detener la operación.',
+          tags: ['Wall-to-Wall', 'Inventario Físico'],
+        },
+        {
+          id: null, live: false, num: '03', icon: 'fas fa-boxes',
+          coming_lbl: 'Próximamente',
+          title: 'Operaciones en Turno Real',
+          desc: 'Entradas, salidas y ajustes en tiempo real durante un turno completo.',
+          tags: ['Operaciones', 'Turno en Vivo'],
+        },
+      ],
     },
 
     en: {
@@ -493,6 +628,35 @@
       cta_btn1: 'Schedule a Demo',
       cta_btn2: 'Send Inquiry',
       cta_trust: ['Live demo, no commitment', 'NDA signed before start', 'Immediate availability', 'Miami, FL · 100% Remote'],
+
+      /* ── Video demos section ── */
+      demos_eyebrow: 'Live Demos',
+      demos_title: 'See PivetTrack',
+      demos_accent: 'in Action',
+      demos_sub: 'Real-system videos running in production — no editing, no staging.',
+      demos: [
+        {
+          id: 'oCA9KzfoIT8', live: true, num: '01',
+          live_lbl: 'Available Now',
+          title: 'Bulk SKU Import',
+          desc: 'Simultaneous upload of hundreds of SKUs with automatic validation, duplicate detection, and instant confirmation — no manual errors or double work.',
+          tags: ['Bulk Import', 'Auto Validation', 'SKU Management'],
+        },
+        {
+          id: null, live: false, num: '02', icon: 'fas fa-warehouse',
+          coming_lbl: 'Coming Soon',
+          title: 'Wall-to-Wall Physical Inventory',
+          desc: 'Full general inventory walkthrough without stopping operations.',
+          tags: ['Wall-to-Wall', 'Physical Inventory'],
+        },
+        {
+          id: null, live: false, num: '03', icon: 'fas fa-boxes',
+          coming_lbl: 'Coming Soon',
+          title: 'Real-Shift Operations',
+          desc: 'Entries, exits, and adjustments in real time during a full operations shift.',
+          tags: ['Operations', 'Live Shift'],
+        },
+      ],
     }
   };
 
@@ -575,6 +739,42 @@
         </div>`;
     }
     return '';
+  }
+
+  /* ── Carousel interaction: swap featured player when a live card is clicked ── */
+  function ptSelectDemo(idx) {
+    const d = t[lang];
+    const v = d.demos[idx];
+    if (!v || !v.live) return;
+
+    /* Update iframe src */
+    const player = document.getElementById('pt-yt-player');
+    if (player) {
+      player.src = `https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1&color=white&autoplay=1`;
+      player.title = `PivetTrack WMS — ${v.title}`;
+    }
+
+    /* Update meta panel */
+    const meta = document.getElementById('pt-demo-meta');
+    if (meta) {
+      meta.innerHTML = `
+        <div class="pt-demo-meta-top">
+          <span class="pt-demo-live-badge"><span class="pt-demo-live-dot"></span> ${v.live_lbl}</span>
+          <span class="pt-demo-num-badge">Demo ${v.num}</span>
+        </div>
+        <div class="pt-demo-featured-title">${v.title}</div>
+        <div class="pt-demo-featured-desc">${v.desc}</div>
+        <div class="pt-feat-tags">${v.tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>`;
+    }
+
+    /* Toggle active card */
+    document.querySelectorAll('.pt-demo-card').forEach((card, i) => {
+      card.classList.toggle('active', i === idx);
+    });
+
+    /* Scroll featured into view */
+    const featured = document.getElementById('pt-demo-featured');
+    if (featured) featured.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   /* ── Main render function ── */
@@ -691,7 +891,71 @@
         </div>
       </section>
 
-      <!-- ═══ 4. BOTTOM CTA BANNER ═══ -->
+      <!-- ═══ 4. VIDEO DEMOS ═══ -->
+      <section class="pt-demos" data-aos="fade-up">
+        <div class="pt-section-hdr">
+          <div class="pt-section-eyebrow"><i class="fab fa-youtube" style="color:#FF6B00"></i> ${d.demos_eyebrow}</div>
+          <h2 class="pt-section-title">${d.demos_title} <span class="accent">${d.demos_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;">${d.demos_sub}</p>
+        </div>
+
+        <!-- Featured player — always shows the first live video -->
+        <div class="pt-demo-featured" id="pt-demo-featured">
+          <div class="pt-video-wrap">
+            <iframe
+              id="pt-yt-player"
+              src="https://www.youtube.com/embed/${d.demos[0].id}?rel=0&modestbranding=1&color=white"
+              title="PivetTrack WMS — ${d.demos[0].title}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="pt-demo-meta" id="pt-demo-meta">
+            <div class="pt-demo-meta-top">
+              <span class="pt-demo-live-badge"><span class="pt-demo-live-dot"></span> ${d.demos[0].live_lbl}</span>
+              <span class="pt-demo-num-badge">Demo ${d.demos[0].num}</span>
+            </div>
+            <div class="pt-demo-featured-title">${d.demos[0].title}</div>
+            <div class="pt-demo-featured-desc">${d.demos[0].desc}</div>
+            <div class="pt-feat-tags">${d.demos[0].tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>
+          </div>
+        </div>
+
+        <!-- Carousel strip -->
+        <div class="pt-demo-carousel">
+          ${d.demos.map((v, i) => {
+            if (v.live) {
+              return `
+              <div class="pt-demo-card${i === 0 ? ' active' : ''}" onclick="ptSelectDemo(${i})" data-demo="${i}">
+                <div class="pt-demo-thumb">
+                  <img
+                    src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg"
+                    alt="${v.title}" loading="lazy">
+                  <div class="pt-demo-play-over"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="pt-demo-card-body">
+                  <div class="pt-demo-card-num">Demo ${v.num}</div>
+                  <div class="pt-demo-card-title">${v.title}</div>
+                  <div class="pt-demo-card-tags">${v.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
+                </div>
+              </div>`;
+            } else {
+              return `
+              <div class="pt-demo-card pt-demo-card-soon" data-demo="${i}">
+                <div class="pt-demo-thumb-ph"><i class="${v.icon}"></i></div>
+                <div class="pt-demo-card-body">
+                  <div class="pt-demo-card-num">Demo ${v.num}</div>
+                  <div class="pt-demo-card-title">${v.title}</div>
+                  <div class="pt-demo-card-tags"><span class="pt-coming-pill"><i class="fas fa-clock"></i> ${v.coming_lbl}</span></div>
+                </div>
+              </div>`;
+            }
+          }).join('')}
+        </div>
+      </section>
+
+      <!-- ═══ 5. BOTTOM CTA BANNER ═══ -->
       <section class="pt-bottom-cta" data-aos="fade-up">
         <div class="pt-cta-eyebrow"><i class="fas fa-rocket"></i> ${d.cta_eyebrow}</div>
         <h2 class="pt-cta-h2">
