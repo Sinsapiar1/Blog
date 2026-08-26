@@ -253,10 +253,10 @@
       margin-bottom:12px;
     }
 
-    /* Carousel strip */
-    .pt-demo-carousel { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    @media(max-width:680px){ .pt-demo-carousel { grid-template-columns:1fr; } }
-    @media(max-width:900px) and (min-width:681px){ .pt-demo-carousel { grid-template-columns:repeat(3,1fr); } }
+    /* Carousel strip — 4 columns desktop → 2×2 tablet/mobile */
+    .pt-demo-carousel { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:960px){ .pt-demo-carousel { grid-template-columns:repeat(2,1fr); gap:12px; } }
+    @media(max-width:420px){ .pt-demo-carousel { grid-template-columns:repeat(2,1fr); gap:8px; } }
 
     .pt-demo-card {
       background:var(--glass-bg); border:1px solid var(--border-color);
@@ -507,11 +507,18 @@
           tags: ['Ajuste Masivo', 'Conciliación Automática', 'Stock Update'],
         },
         {
-          id: null, live: false, num: '03', icon: 'fas fa-boxes',
+          id: '_ibHDzSnhC0', live: true, num: '03',
+          live_lbl: 'Disponible Ahora',
+          title: 'Creación de Proveedores y Clientes',
+          desc: 'Configuración completa de la red de proveedores y clientes del WMS — maestro de contactos, categorías y datos operativos listos para vincular a entradas y salidas.',
+          tags: ['Creación de Proveedores', 'Gestión de Clientes', 'Master Data'],
+        },
+        {
+          id: null, live: false, num: '04', icon: 'fas fa-exchange-alt',
           coming_lbl: 'Próximamente',
-          title: 'Operaciones en Turno Real',
-          desc: 'Entradas, salidas y ajustes en tiempo real durante un turno completo.',
-          tags: ['Operaciones', 'Turno en Vivo'],
+          title: 'Entradas, Salidas y Kardex Inmutable',
+          desc: 'Flujo completo: recepción, despacho y trazabilidad con registro sellado e inalterable.',
+          tags: ['Entradas & Salidas', 'Kardex Inmutable'],
         },
       ],
     },
@@ -650,11 +657,18 @@
           tags: ['Bulk Adjustment', 'Auto Reconciliation', 'Stock Update'],
         },
         {
-          id: null, live: false, num: '03', icon: 'fas fa-boxes',
+          id: '_ibHDzSnhC0', live: true, num: '03',
+          live_lbl: 'Available Now',
+          title: 'Supplier and Customer Setup',
+          desc: 'Complete WMS supplier and customer network setup — contact master, categories and operational data ready to link to entries and exits.',
+          tags: ['Supplier Setup', 'Customer Management', 'Master Data'],
+        },
+        {
+          id: null, live: false, num: '04', icon: 'fas fa-exchange-alt',
           coming_lbl: 'Coming Soon',
-          title: 'Real-Shift Operations',
-          desc: 'Entries, exits, and adjustments in real time during a full operations shift.',
-          tags: ['Operations', 'Live Shift'],
+          title: 'Entries, Exits & Immutable Kardex',
+          desc: 'Full operations flow: receiving, dispatch and traceability with a sealed, immutable audit trail.',
+          tags: ['Entries & Exits', 'Immutable Kardex'],
         },
       ],
     }
