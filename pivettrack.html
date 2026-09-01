@@ -253,10 +253,34 @@
       margin-bottom:12px;
     }
 
-    /* Carousel strip — 4 columns desktop → 2×2 tablet/mobile */
-    .pt-demo-carousel { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-    @media(max-width:960px){ .pt-demo-carousel { grid-template-columns:repeat(2,1fr); gap:12px; } }
-    @media(max-width:420px){ .pt-demo-carousel { grid-template-columns:repeat(2,1fr); gap:8px; } }
+    /* ─── CAROUSEL: Asymmetric 5-item grid ─── */
+    /* Desktop ≥961px — Row 1: cards 1-3 (2/6 col each) · Row 2: cards 4-5 (3/6 col each, wider) */
+    .pt-demo-carousel { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+    .pt-demo-carousel > :nth-child(-n+3) { grid-column:span 2; }
+    .pt-demo-carousel > :nth-child(n+4)  { grid-column:span 3; }
+    /* Landscape layout for wide cards (4 & 5) on desktop */
+    @media(min-width:961px){
+      .pt-demo-carousel > .pt-demo-card:nth-child(n+4) { display:grid; grid-template-columns:50% 50%; grid-template-rows:1fr; overflow:hidden; }
+      .pt-demo-carousel > .pt-demo-card:nth-child(n+4) .pt-demo-thumb { aspect-ratio:unset; min-height:164px; }
+      .pt-demo-carousel > .pt-demo-card:nth-child(n+4) .pt-demo-card-body { display:flex; flex-direction:column; justify-content:center; padding:18px 22px; gap:8px; }
+      .pt-demo-carousel > .pt-demo-card:nth-child(5) .pt-demo-card-title { font-size:0.9375rem; font-weight:800; line-height:1.25; }
+      .pt-demo-carousel > .pt-demo-card:nth-child(n+4) .pt-demo-card-desc { display:block; }
+    }
+    /* Tablet 481-960px: 2-col grid, card 5 full-width at bottom */
+    @media(max-width:960px){
+      .pt-demo-carousel { grid-template-columns:repeat(2,1fr); gap:12px; }
+      .pt-demo-carousel > :nth-child(-n+3) { grid-column:span 1; }
+      .pt-demo-carousel > :nth-child(4)    { grid-column:span 1; }
+      .pt-demo-carousel > :nth-child(5)    { grid-column:span 2; }
+    }
+    @media(max-width:480px){ .pt-demo-carousel { gap:8px; } }
+    /* Card desc: hidden by default, revealed on wide cards (desktop rule above) */
+    .pt-demo-card-desc { display:none; font-size:0.8rem; color:var(--text-secondary); line-height:1.55; }
+    /* NEW badge on featured card */
+    .pt-demo-new-badge { display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:#FF6B00; background:linear-gradient(135deg,rgba(255,107,0,0.12),rgba(255,149,0,0.06)); border:1px solid rgba(255,107,0,0.3); padding:2px 9px; border-radius:8px; animation:pill-glow 2.8s ease-in-out infinite; }
+    /* Enhanced hover transitions */
+    .pt-demo-card:not(.pt-demo-card-soon):hover { border-color:rgba(255,107,0,0.45) !important; transform:translateY(-4px); box-shadow:0 16px 38px rgba(255,107,0,0.16); transition:all 0.25s cubic-bezier(0.34,1.1,0.64,1); }
+    .pt-demo-card:not(.pt-demo-card-soon):hover .pt-demo-play-over i { transform:scale(1.2); }
 
     .pt-demo-card {
       background:var(--glass-bg); border:1px solid var(--border-color);
@@ -520,6 +544,14 @@
           desc: 'Flujo completo de entradas y salidas con cálculo automático de PMP, registro sellado e inalterable — cada movimiento trazable y auditable para siempre.',
           tags: ['Entradas y Salidas', 'Kardex', 'Cálculo PMP'],
         },
+        {
+          id: 'u6eK089W1Mo', live: true, num: '05', featured: true,
+          new_badge: '★ NUEVO',
+          live_lbl: 'Disponible Ahora',
+          title: 'Escáner Móvil, Códigos de Barras y Kardex',
+          desc: 'Operaciones en tiempo real con escáner móvil: escaneo de códigos de barras, entradas y salidas sobre la marcha y registro sellado en el Kardex — trazabilidad de nivel enterprise en cada movimiento.',
+          tags: ['Escáner Móvil', 'Código de Barras', 'Kardex Inmutable', 'Trazabilidad'],
+        },
       ],
     },
 
@@ -670,6 +702,14 @@
           desc: 'Complete inbound and outbound flow with automatic PMP calculation, sealed and immutable record — every movement traceable and auditable forever.',
           tags: ['Entries & Exits', 'Kardex', 'PMP Calculation'],
         },
+        {
+          id: 'u6eK089W1Mo', live: true, num: '05', featured: true,
+          new_badge: '★ NEW',
+          live_lbl: 'Available Now',
+          title: 'Mobile Scanner, Barcodes & Kardex',
+          desc: 'Real-time operations with mobile scanner: barcode scanning, on-the-go entries and exits, and sealed Kardex records — enterprise-grade traceability on every single movement.',
+          tags: ['Mobile Scanner', 'Barcodes', 'Immutable Kardex', 'Traceability'],
+        },
       ],
     }
   };
@@ -775,6 +815,7 @@
         <div class="pt-demo-meta-top">
           <span class="pt-demo-live-badge"><span class="pt-demo-live-dot"></span> ${v.live_lbl}</span>
           <span class="pt-demo-num-badge">Demo ${v.num}</span>
+          ${v.new_badge ? `<span class="pt-demo-new-badge">${v.new_badge}</span>` : ''}
         </div>
         <div class="pt-demo-featured-title">${v.title}</div>
         <div class="pt-demo-featured-desc">${v.desc}</div>
@@ -794,6 +835,9 @@
   /* ── Main render function ── */
   function render() {
     const d = t[lang];
+    /* Resolve the featured/default demo (last one with featured:true, or last item) */
+    const _fi = d.demos.reduce((acc, v, i) => v.featured ? i : acc, d.demos.length - 1);
+    const _fd = d.demos[_fi];
     document.title = d.page_title;
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent  = lang === 'es' ? 'English' : 'Español';
@@ -913,13 +957,13 @@
           <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;">${d.demos_sub}</p>
         </div>
 
-        <!-- Featured player — always shows the first live video -->
+        <!-- Featured player — defaults to newest/featured demo -->
         <div class="pt-demo-featured" id="pt-demo-featured">
           <div class="pt-video-wrap">
             <iframe
               id="pt-yt-player"
-              src="https://www.youtube.com/embed/${d.demos[0].id}?rel=0&modestbranding=1&color=white"
-              title="PivetTrack WMS — ${d.demos[0].title}"
+              src="https://www.youtube.com/embed/${_fd.id}?rel=0&modestbranding=1&color=white"
+              title="PivetTrack WMS — ${_fd.title}"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
               loading="lazy">
@@ -927,21 +971,23 @@
           </div>
           <div class="pt-demo-meta" id="pt-demo-meta">
             <div class="pt-demo-meta-top">
-              <span class="pt-demo-live-badge"><span class="pt-demo-live-dot"></span> ${d.demos[0].live_lbl}</span>
-              <span class="pt-demo-num-badge">Demo ${d.demos[0].num}</span>
+              <span class="pt-demo-live-badge"><span class="pt-demo-live-dot"></span> ${_fd.live_lbl}</span>
+              <span class="pt-demo-num-badge">Demo ${_fd.num}</span>
+              ${_fd.new_badge ? `<span class="pt-demo-new-badge">${_fd.new_badge}</span>` : ''}
             </div>
-            <div class="pt-demo-featured-title">${d.demos[0].title}</div>
-            <div class="pt-demo-featured-desc">${d.demos[0].desc}</div>
-            <div class="pt-feat-tags">${d.demos[0].tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>
+            <div class="pt-demo-featured-title">${_fd.title}</div>
+            <div class="pt-demo-featured-desc">${_fd.desc}</div>
+            <div class="pt-feat-tags">${_fd.tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>
           </div>
         </div>
 
         <!-- Carousel strip -->
         <div class="pt-demo-carousel">
           ${d.demos.map((v, i) => {
+            const isActive = i === _fi;
             if (v.live) {
               return `
-              <div class="pt-demo-card${i === 0 ? ' active' : ''}" onclick="ptSelectDemo(${i})" data-demo="${i}">
+              <div class="pt-demo-card${isActive ? ' active' : ''}" onclick="ptSelectDemo(${i})" data-demo="${i}">
                 <div class="pt-demo-thumb">
                   <img
                     src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg"
@@ -949,8 +995,10 @@
                   <div class="pt-demo-play-over"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="pt-demo-card-body">
+                  ${v.new_badge ? `<div class="pt-demo-new-badge">${v.new_badge}</div>` : ''}
                   <div class="pt-demo-card-num">Demo ${v.num}</div>
                   <div class="pt-demo-card-title">${v.title}</div>
+                  <div class="pt-demo-card-desc">${v.desc}</div>
                   <div class="pt-demo-card-tags">${v.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
                 </div>
               </div>`;
