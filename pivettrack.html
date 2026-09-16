@@ -323,6 +323,116 @@
       color:var(--text-tertiary); background:var(--bg-secondary);
       border:1px solid var(--border-color); padding:2px 9px; border-radius:8px;
     }
+
+    /* ═══════════════════════════════════════════════
+       ARCHITECTURE — Folio table visual
+    ═══════════════════════════════════════════════ */
+    .pt-folio-tbl { display:flex; flex-direction:column; gap:5px; width:100%; }
+    .pt-folio-tbl-row { display:grid; grid-template-columns:52px 1fr 1.15fr; gap:8px; align-items:start; padding:9px 12px; border-radius:10px; font-size:11px; }
+    .pt-folio-tbl-row.hdr { background:var(--bg-secondary); color:var(--text-tertiary); font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; border:1px solid var(--border-color); }
+    .pt-folio-tbl-row.data { background:var(--glass-bg); border:1px solid var(--border-color); color:var(--text-secondary); transition:border-color 0.2s; }
+    .pt-folio-tbl-row.data:hover { border-color:rgba(255,107,0,0.3); }
+    .pt-folio-badge { font-family:monospace; font-weight:900; font-size:0.8rem; color:#FF6B00; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.2); padding:2px 7px; border-radius:6px; align-self:center; }
+    .pt-folio-name { font-weight:600; color:var(--text-primary); line-height:1.3; }
+    .pt-folio-guar { font-size:10.5px; color:var(--text-tertiary); line-height:1.4; }
+    /* WAC comparison visual */
+    .pt-wac-wrap { display:flex; flex-direction:column; gap:12px; width:100%; max-width:295px; }
+    .pt-wac-context { font-size:10.5px; color:var(--text-tertiary); line-height:1.55; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:10px; padding:10px 14px; }
+    .pt-wac-cards { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .pt-wac-card { border-radius:14px; padding:16px 12px; text-align:center; }
+    .pt-wac-card.bad  { background:rgba(255,59,48,0.07);  border:1px solid rgba(255,59,48,0.22); }
+    .pt-wac-card.good { background:rgba(52,199,89,0.07);  border:1px solid rgba(52,199,89,0.22); }
+    .pt-wac-lbl { font-size:8.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:7px; }
+    .pt-wac-card.bad  .pt-wac-lbl { color:#FF3B30; }
+    .pt-wac-card.good .pt-wac-lbl { color:#34C759; }
+    .pt-wac-amt { font-size:1.5rem; font-weight:900; letter-spacing:-0.04em; margin-bottom:4px; line-height:1; }
+    .pt-wac-card.bad  .pt-wac-amt { color:#FF3B30; }
+    .pt-wac-card.good .pt-wac-amt { color:#34C759; }
+    .pt-wac-note-txt { font-size:9.5px; color:var(--text-tertiary); line-height:1.5; }
+    /* Modules grid */
+    .pt-modules-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; width:100%; }
+    .pt-mod-item { display:flex; align-items:center; gap:8px; background:var(--glass-bg); border:1px solid var(--border-color); border-radius:10px; padding:9px 12px; font-size:11px; color:var(--text-secondary); transition:border-color 0.2s; }
+    .pt-mod-item:hover { border-color:rgba(255,107,0,0.25); }
+    .pt-mod-item i { font-size:0.8rem; color:#FF6B00; flex-shrink:0; }
+    .pt-mod-item.addon { opacity:0.55; }
+    .pt-mod-item.addon i { color:var(--text-tertiary); }
+
+    /* ═══════════════════════════════════════════════
+       SECURITY SECTION
+    ═══════════════════════════════════════════════ */
+    .pt-security { margin:60px 0; }
+    .pt-stats-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
+    @media(max-width:860px){ .pt-stats-strip { grid-template-columns:repeat(2,1fr); } }
+    .pt-stat-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:20px 14px; text-align:center; transition:border-color 0.25s; }
+    .pt-stat-card:hover { border-color:rgba(255,107,0,0.3); }
+    .pt-stat-num { font-size:clamp(1.4rem,2.6vw,2rem); font-weight:900; letter-spacing:-0.04em; color:#FF6B00; margin-bottom:2px; }
+    .pt-stat-lbl { font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-tertiary); margin-bottom:6px; }
+    .pt-stat-sub { font-size:11px; color:var(--text-secondary); line-height:1.45; }
+    .pt-tenant-note { display:flex; align-items:flex-start; gap:14px; background:linear-gradient(135deg,rgba(255,107,0,0.07),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:14px; padding:16px 22px; margin-bottom:28px; font-size:0.875rem; color:var(--text-secondary); line-height:1.65; }
+    .pt-tenant-note i { color:#FF6B00; font-size:1.1rem; flex-shrink:0; margin-top:2px; }
+    .pt-security-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:860px){ .pt-security-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px){ .pt-security-grid { grid-template-columns:1fr; } }
+    .pt-sec-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:18px; padding:24px 22px; transition:all 0.25s; position:relative; overflow:hidden; }
+    .pt-sec-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#FF6B00,#FF9500); opacity:0; transition:opacity 0.25s; }
+    .pt-sec-card:hover { border-color:rgba(255,107,0,0.3); transform:translateY(-3px); box-shadow:0 12px 32px rgba(255,107,0,0.1); }
+    .pt-sec-card:hover::before { opacity:1; }
+    .pt-sec-icon { width:44px; height:44px; background:linear-gradient(135deg,rgba(255,107,0,0.12),rgba(255,149,0,0.07)); border:1px solid rgba(255,107,0,0.2); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:#FF6B00; margin-bottom:14px; }
+    .pt-sec-title { font-size:0.9375rem; font-weight:800; color:var(--text-primary); margin-bottom:8px; line-height:1.3; }
+    .pt-sec-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.65; }
+
+    /* ═══════════════════════════════════════════════
+       PRICING SECTION
+    ═══════════════════════════════════════════════ */
+    .pt-pricing { margin:60px 0; }
+    .pt-pricing-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:40px; }
+    @media(max-width:700px){ .pt-pricing-grid { grid-template-columns:1fr; } }
+    .pt-plan-card { border-radius:24px; padding:34px 30px; position:relative; overflow:hidden; transition:box-shadow 0.3s,border-color 0.3s; }
+    .pt-plan-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); }
+    .pt-plan-card.setup { background:var(--glass-bg); border:1px solid var(--border-color); }
+    .pt-plan-card.saas  { background:linear-gradient(135deg,rgba(255,107,0,0.09),rgba(255,149,0,0.05)); border:1px solid rgba(255,107,0,0.28); }
+    .pt-plan-card.saas:hover { box-shadow:0 20px 56px rgba(255,107,0,0.14); }
+    .pt-plan-lbl { font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:0.15em; color:#FF6B00; margin-bottom:14px; }
+    .pt-plan-amt { font-size:clamp(2rem,4.5vw,2.8rem); font-weight:900; letter-spacing:-0.05em; color:var(--text-primary); line-height:1; margin-bottom:6px; }
+    .pt-plan-period { font-size:0.8125rem; color:var(--text-tertiary); margin-bottom:24px; }
+    .pt-plan-feats { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+    .pt-plan-feats li { display:flex; align-items:flex-start; gap:8px; font-size:0.875rem; color:var(--text-secondary); line-height:1.5; }
+    .pt-plan-feats li i { color:#34C759; font-size:0.75rem; margin-top:3px; flex-shrink:0; }
+    .pt-why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:26px; }
+    @media(max-width:580px){ .pt-why-grid { grid-template-columns:1fr; } }
+    .pt-why-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:20px 18px; transition:border-color 0.25s; }
+    .pt-why-card:hover { border-color:rgba(255,107,0,0.3); }
+    .pt-why-icon { width:38px; height:38px; background:linear-gradient(135deg,rgba(255,107,0,0.12),rgba(255,149,0,0.07)); border:1px solid rgba(255,107,0,0.18); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:0.9rem; color:#FF6B00; margin-bottom:10px; }
+    .pt-why-title { font-size:0.875rem; font-weight:800; color:var(--text-primary); margin-bottom:5px; }
+    .pt-why-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
+    .pt-tax-note { display:flex; align-items:flex-start; gap:10px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px; padding:14px 18px; font-size:0.8125rem; color:var(--text-tertiary); line-height:1.6; margin-bottom:26px; }
+    .pt-tax-note i { color:#FF9500; flex-shrink:0; margin-top:2px; }
+    .pt-quoted-box { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:24px; }
+    .pt-quoted-lbl { font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-tertiary); margin-bottom:14px; }
+    .pt-quoted-list { display:flex; flex-direction:column; gap:9px; }
+    .pt-quoted-item { display:flex; align-items:flex-start; gap:8px; font-size:0.8125rem; color:var(--text-secondary); line-height:1.5; }
+    .pt-quoted-item i { color:var(--text-tertiary); font-size:0.75rem; margin-top:3px; flex-shrink:0; }
+
+    /* ═══════════════════════════════════════════════
+       NEXT STEPS SECTION
+    ═══════════════════════════════════════════════ */
+    .pt-next-steps { margin:60px 0 0; }
+    .pt-steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:36px; }
+    @media(max-width:860px){ .pt-steps-grid { grid-template-columns:1fr; gap:14px; } }
+    .pt-step-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:20px; padding:28px 24px; position:relative; overflow:hidden; transition:all 0.25s; }
+    .pt-step-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); }
+    .pt-step-card:hover { border-color:rgba(255,107,0,0.3); transform:translateY(-3px); box-shadow:0 14px 38px rgba(255,107,0,0.1); }
+    .pt-step-bg-num { font-size:5rem; font-weight:900; letter-spacing:-0.08em; color:rgba(255,107,0,0.08); line-height:1; position:absolute; top:6px; right:14px; }
+    .pt-step-icon { width:46px; height:46px; background:linear-gradient(135deg,rgba(255,107,0,0.14),rgba(255,149,0,0.08)); border:1px solid rgba(255,107,0,0.22); border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:1.15rem; color:#FF6B00; margin-bottom:14px; }
+    .pt-step-title { font-size:1rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; line-height:1.25; }
+    .pt-step-desc { font-size:0.875rem; color:var(--text-secondary); line-height:1.65; margin-bottom:12px; }
+    .pt-step-badge { display:inline-flex; align-items:center; gap:5px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.1em; color:#FF6B00; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.2); padding:3px 10px; border-radius:8px; }
+    .pt-final-cta { background:linear-gradient(135deg,rgba(255,107,0,0.09),rgba(255,149,0,0.05)); border:1px solid rgba(255,107,0,0.2); border-radius:24px; padding:48px 40px; text-align:center; }
+    @media(max-width:768px){ .pt-final-cta { padding:34px 22px; border-radius:18px; } }
+    .pt-final-cta-h2 { font-size:clamp(1.5rem,3.5vw,2.3rem); font-weight:900; letter-spacing:-0.035em; color:var(--text-primary); line-height:1.15; margin-bottom:14px; }
+    .pt-final-cta-h2 .accent { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .pt-final-cta-sub { font-size:0.9375rem; color:var(--text-secondary); line-height:1.72; max-width:520px; margin:0 auto 28px; }
+    .pt-final-cta-actions { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
   </style>
 </head>
 <body>
@@ -397,10 +507,10 @@
       hero_eyebrow: 'WMS SaaS · PIVET DIGITAL AUTOMATIONS LLC',
       hero_h1a: 'Control Total de tu Bodega.',
       hero_h1b: 'Sin Fugas, Sin Errores.',
-      hero_sub: '<strong>PivetTrack</strong> es un WMS (Warehouse Management System) SaaS blindado, diseñado para empresas logísticas que necesitan <strong>precisión contable y operativa impecable</strong>. Cada movimiento queda registrado, trazado y sellado — permanentemente.',
+      hero_sub: '<strong>PivetTrack</strong> es un sistema de control de inventario de grado industrial para la operación logística del sur de Florida: alta rotación, múltiples bodegas, personal que cambia y una contabilidad que exige <strong>respaldo documental por cada unidad que entra y sale</strong>. Cada movimiento genera un documento. Cada documento, un responsable.',
       hero_cta1: 'Agendar Demostración',
       hero_cta2: 'Ver Funcionalidades',
-      trust: ['Sin instalación requerida', 'Bilingüe EN / ES nativo', 'Marca blanca disponible', 'NDA antes de cualquier demo'],
+      trust: ['Folio correlativo en cada movimiento', 'SLA 99.9% comprometido por contrato', 'Single-Tenant · Instancia aislada', 'NDA antes de cualquier demo'],
 
       /* ── Dashboard mock ── */
       db_title: 'PivetTrack WMS — Kardex Operativo · Bodega Principal',
@@ -421,84 +531,151 @@
       ],
 
       /* ── Pain section ── */
-      pain_eyebrow: 'El Costo Real del Desorden',
-      pain_title: '¿Tu bodega pierde dinero',
-      pain_accent: 'en silencio?',
+      pain_eyebrow: '01 El Diagnóstico',
+      pain_title: 'Los síntomas que están',
+      pain_accent: 'costando dinero real.',
+      pain_sub: 'El costo real no es el faltante que aparece en el conteo. Es la decisión de compra, de precio o de despacho que usted ya tomó creyendo un dato que no era cierto.',
       pain_cards: [
-        {
-          num: '01', icon: 'fas fa-file-excel',
-          tag: 'Dolor #1 · Control de Inventario',
-          title: 'Kardex vulnerables en Excel donde los números "cambian solos"',
-          desc: 'Tu operación descansa sobre planillas que cualquier usuario puede editar, borrar o sobrescribir sin dejar rastro. Un error de turno, una fórmula rota o una simple tecla de más — y el historial contable desaparece para siempre. No es un problema técnico: es un riesgo financiero que crece cada día.',
-        },
-        {
-          num: '02', icon: 'fas fa-random',
-          tag: 'Dolor #2 · Auditorías e Inventarios',
-          title: 'Inventarios caóticos por no poder congelar la operación',
-          desc: 'Realizar un inventario general exige detener la bodega. Mientras cuentas, siguen entrando y saliendo mercancías. El resultado: diferencias imposibles de cerrar, mermas que nadie justifica y un cierre contable que se extiende por días enteros, bloqueando el negocio.',
-        },
-        {
-          num: '03', icon: 'fas fa-language',
-          tag: 'Dolor #3 · Comunicación Operativa',
-          title: 'Barreras de idioma entre la gerencia y los operarios de almacén',
-          desc: 'En South Florida, tu equipo de bodega trabaja en español. Tu gerencia y clientes corporativos necesitan reportes en inglés. Un sistema monolingüe genera errores de transcripción, retrasos en reportes y una barrera invisible que nadie menciona — pero que todos padecen.',
-        },
+        { num: '01', icon: 'fas fa-balance-scale-right', tag: 'Síntoma #1', title: 'El inventario cuadra en el papel, no en la bodega', desc: 'Los ajustes se registran sin documento ni responsable. La diferencia se absorbe en silencio y reaparece, más grande, en el conteo siguiente.' },
+        { num: '02', icon: 'fas fa-history',             tag: 'Síntoma #2', title: 'Nadie puede reconstruir la historia de un SKU',  desc: 'Ante un reclamo o auditoría no existe línea de tiempo verificable de quién movió qué, cuándo y con qué respaldo documental.' },
+        { num: '03', icon: 'fas fa-file-excel',          tag: 'Síntoma #3', title: 'Planillas Excel compartidas como sistema de registro', desc: 'Versiones paralelas del mismo archivo, fórmulas rotas, sin control de acceso y sin garantía de que el dato de hoy sea el de ayer.' },
+        { num: '04', icon: 'fas fa-tachometer-alt',      tag: 'Síntoma #4', title: 'Sistemas lentos justo cuando más se necesitan', desc: 'El cierre de mes coincide con el momento de mayor carga. Si el sistema se arrastra o cae, la operación de bodega se detiene con él.' },
+        { num: '05', icon: 'fas fa-exchange-alt',        tag: 'Síntoma #5', title: 'Devoluciones y mermas registradas "a ojo"', desc: 'Se descuentan al costo promedio vigente, no al costo real del lote devuelto. El inventario remanente queda mal valorizado y el margen de las próximas ventas se calcula sobre una cifra falsa.' },
+        { num: '06', icon: 'fas fa-user-clock',          tag: 'Síntoma #6', title: 'Dependencia de la persona que "sabe cómo está todo"', desc: 'El conocimiento operativo vive en una cabeza, no en el sistema. Una renuncia, licencia médica o vacación se convierte en una crisis de continuidad.' },
       ],
 
-      /* ── Solutions section ── */
-      sol_eyebrow: 'El Blindaje PivetTrack',
-      sol_title: '4 Funcionalidades',
-      sol_accent: 'Asesinas',
+      /* ── Architecture section (replaces Solutions) ── */
+      arch_eyebrow: '02 La Solución: Arquitectura',
+      arch_title: 'Estructuralmente imposible',
+      arch_accent: 'mover sin documentar.',
+      arch_sub: 'PivetTrack no le pide a su equipo que "tenga cuidado" al registrar. Hace estructuralmente imposible mover mercadería sin dejar un documento detrás.',
       features: [
         {
-          step: 'Funcionalidad 01 / 04', icon: 'fas fa-lock', label: 'Inmutabilidad Contable',
-          title: 'El Kardex que no se borra ni se edita — todo movimiento es trazable y auditable',
-          desc: 'Cada movimiento de inventario se registra con un identificador de integridad único, timestamp inmutable y el usuario responsable. Una vez confirmado, ningún operario, supervisor ni administrador puede alterar el registro. La trazabilidad es total y el historial contable, indestructible.',
-          tags: ['Auditoría Total', 'Registro Inmutable', 'Trazabilidad Completa', 'Sin edición posible'],
-          viz_no_edit: 'Sin edición posible — solo lectura',
-          audit_steps: ['Conteo físico completado', '3 diferencias detectadas automáticamente', 'Asientos de ajuste generados', 'Mermas sin resolver → $0'],
-          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
-          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
-          pdf_badges: ['Orden de Recepción', 'Guía de Despacho', 'Reporte de Inventario'],
+          step: 'Arquitectura 01 / 03', icon: 'fas fa-fingerprint', label: 'Trazabilidad Inmutable',
+          title: 'Cada movimiento genera un folio correlativo — sin saltos, sin renumeración, sin edición posible',
+          desc: 'Toda transacción emite un documento con folio correlativo automático generado en el momento del registro. El folio queda estampado en el PDF, en el registro de auditoría y en el Kardex: cualquier línea del historial se rastrea hasta su papel de respaldo en un solo clic.',
+          tags: ['Folio Correlativo', 'Auditoría Total', 'Sin Edición', '100% Trazable'],
+          folio_cols: ['Serie', 'Documento', 'Garantía ante auditoría'],
+          folios: [
+            { prefix: 'ENT-', name: 'Entradas de mercadería',     guarantee: 'Origen, costo unitario y responsable de recepción' },
+            { prefix: 'SAL-', name: 'Salidas y despachos',        guarantee: 'Destino, cantidades y quién autorizó la salida' },
+            { prefix: 'TRA-', name: 'Traspasos entre bodegas',    guarantee: 'Trazabilidad completa del movimiento interno' },
+            { prefix: 'MER-', name: 'Mermas y bajas',             guarantee: 'Motivo documentado y valorización de la pérdida' },
+            { prefix: 'INV-', name: 'Tomas de inventario',        guarantee: 'Conteo físico, diferencia y firma del responsable' },
+            { prefix: 'DPR-', name: 'Devoluciones a proveedor',   guarantee: 'Logística inversa con el costo histórico real' },
+          ],
         },
         {
-          step: 'Funcionalidad 02 / 04', icon: 'fas fa-sync-alt', label: 'Auditorías Wall-to-Wall',
-          title: 'Motor de auto-conciliación que ajusta automáticamente a cero las mermas no detectadas',
-          desc: 'El módulo de inventario general permite ejecutar un conteo Wall-to-Wall sin detener la operación. Al finalizar, el motor de conciliación compara stock teórico vs. físico, identifica todas las diferencias y genera los asientos de ajuste automáticos — llevando el sistema a saldo real sin papeles ni horas de cruce manual.',
-          tags: ['Wall-to-Wall', 'Auto-conciliación', 'Cierre Express', 'Mermas $0'],
-          viz_no_edit: '',
-          audit_steps: ['Conteo físico completado', '3 diferencias detectadas automáticamente', 'Asientos de ajuste generados', 'Mermas sin resolver → $0'],
-          lang_en: '', lang_es: '', pdf_badges: [],
+          step: 'Arquitectura 02 / 03', icon: 'fas fa-shield-alt', label: 'Logística Inversa Quirúrgica',
+          title: 'El PMP del stock remanente no se contamina — cada devolución al costo histórico real del lote',
+          desc: 'Cuando devuelve mercadería a un proveedor, un sistema convencional descuenta al costo promedio vigente. PivetTrack descuenta contra el costo histórico real del lote efectivamente devuelto. Su margen siempre se calcula sobre una cifra verdadera.',
+          tags: ['PMP Exacto', 'Costo Histórico Real', 'Margen Protegido', 'Lote a Lote'],
+          wac_context: '100 u. a US$10 + 100 u. a US$14 → PMP: US$12. Se devuelven las 100 u. del segundo lote.',
+          wac_lbl_bad: 'Sistema Convencional', wac_lbl_good: 'PivetTrack',
+          wac_amt_bad: 'US$ 1,200', wac_amt_good: 'US$ 1,000',
+          wac_note_bad: 'Descuenta al promedio vigente (US$12). Inventario inflado en US$200 sobre un solo SKU.',
+          wac_note_good: 'Descuenta al costo histórico del lote (US$14). Stock remanente exactamente valorizado.',
         },
         {
-          step: 'Funcionalidad 03 / 04', icon: 'fas fa-globe-americas', label: 'Nativo Multiidioma',
-          title: 'Interfaz bilingüe Inglés / Español, ideal para la fuerza laboral del sur de Florida',
-          desc: 'El sistema cambia de idioma en tiempo real sin reinicios ni recargas. Tu operario en el almacén trabaja cómodamente en español. Tu director de operaciones y clientes corporativos reciben todos los reportes y documentos en inglés. Un solo sistema, dos idiomas, cero fricciones ni errores de transcripción.',
-          tags: ['English', 'Español', 'South Florida Ready', 'Cambio en tiempo real'],
-          viz_no_edit: '',
-          audit_steps: [],
-          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
-          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
-          pdf_badges: [],
-        },
-        {
-          step: 'Funcionalidad 04 / 04', icon: 'fas fa-paint-brush', label: 'Custom Branding — Marca Blanca',
-          title: 'Documentación técnica y comprobantes PDF exportables con el logotipo corporativo del cliente',
-          desc: 'Toda la documentación generada por el sistema — órdenes de recepción, guías de despacho, reportes de inventario, comprobantes de ajuste — se exporta en PDF con el logotipo corporativo y los colores de tu empresa. Tu marca, tu operación, tu identidad en cada documento.',
-          tags: ['Exportación PDF', 'Logo Corporativo', 'White Label', 'Marca Blanca'],
-          viz_no_edit: '', audit_steps: [], lang_en: '', lang_es: '',
-          pdf_badges: ['Orden de Recepción', 'Guía de Despacho', 'Reporte de Inventario'],
+          step: 'Arquitectura 03 / 03', icon: 'fas fa-boxes', label: 'Módulos Operativos Incluidos',
+          title: 'El ciclo operativo completo en una sola plataforma — sin módulos adicionales por separado',
+          desc: 'PivetTrack incluye el flujo completo de bodega en el plan SaaS base: entradas, salidas, traspasos, devoluciones, toma de inventario, Kardex valorizado, exportación nativa a Excel y PDFs con identidad visual corporativa.',
+          tags: ['Todo Incluido', 'Sin Módulos Extra', 'Exportación .xlsx', 'PDF Corporativo'],
+          modules: [
+            { icon: 'fas fa-arrow-circle-down', name: 'Entradas, Salidas y Traspasos',             addon: false },
+            { icon: 'fas fa-undo-alt',           name: 'Devoluciones a Proveedor y Mermas',        addon: false },
+            { icon: 'fas fa-clipboard-list',     name: 'Toma de Inventario Wall-to-Wall',          addon: false },
+            { icon: 'fas fa-table',              name: 'Kardex Valorizado (PMP)',                  addon: false },
+            { icon: 'fas fa-file-excel',         name: 'Exportación Nativa a Excel (.xlsx)',       addon: false },
+            { icon: 'fas fa-paint-brush',        name: 'Identidad Visual Corporativa en PDFs',    addon: false },
+            { icon: 'fas fa-barcode',            name: 'Escáner Móvil y Códigos de Barras',       addon: false },
+            { icon: 'fas fa-plug',               name: 'Portal B2B y API ERP (cotización adicional)', addon: true },
+          ],
         },
       ],
 
-      /* ── Bottom CTA ── */
-      cta_eyebrow: 'Digitaliza tu Operación Hoy',
-      cta_h2a: 'Tu bodega merece un sistema',
-      cta_h2b: 'a la altura de tu negocio.',
-      cta_sub: 'PivetTrack no es un template genérico — es un WMS construido desde las operaciones logísticas reales. Agendemos 30 minutos sin costo y te mostramos exactamente cómo blindamos tu inventario hoy mismo.',
+      /* ── Security & Infrastructure ── */
+      security_eyebrow: '03 Continuidad y Resguardo',
+      security_title: 'Infraestructura de',
+      security_accent: 'Nivel Enterprise',
+      security_sub: 'Un sistema de inventario custodia el activo más caro de su balance. La infraestructura que lo sostiene no puede ser un detalle técnico: es parte de la propuesta comercial.',
+      security_tenant_note: 'PivetTrack opera bajo arquitectura single-tenant: cada Cliente recibe una instancia aislada y exclusiva en la nube, con su propia base de datos. Sus datos no conviven en las mismas tablas que los de ninguna otra empresa.',
+      security_kpis: [
+        { num: '99.9%', label: 'SLA',          sub: 'Disponibilidad mensual comprometida por contrato' },
+        { num: '30',    label: 'Concurrentes', sub: 'Operarios certificados en pruebas de carga reales' },
+        { num: '955ms', label: 'Latencia p95', sub: 'En escaneo de picking bajo carga sostenida' },
+        { num: '100%',  label: 'Trazado',      sub: 'De los movimientos con folio correlativo y autor identificado' },
+      ],
+      security_cards: [
+        { icon: 'fas fa-rocket',     title: 'Zero-Downtime',                       desc: 'Las actualizaciones se publican sin detener la operación. Su equipo no pierde un turno de trabajo porque el proveedor liberó una mejora.' },
+        { icon: 'fas fa-database',   title: 'Respaldos Automáticos Gestionados',   desc: 'PostgreSQL administrado con redundancia, respaldo automatizado y failover automático. No depende de que nadie en su equipo se acuerde.' },
+        { icon: 'fas fa-lock',       title: 'Auditoría Inmutable',                 desc: 'El Kardex es un registro histórico inalterable. Las correcciones se emiten como documentos nuevos — la historia no se reescribe, se documenta.' },
+        { icon: 'fas fa-mobile-alt', title: 'Doble Factor de Autenticación (2FA)', desc: 'MFA por TOTP obligatorio para el Súper Administrador, con secreto cifrado en reposo y códigos de respaldo de un solo uso.' },
+        { icon: 'fas fa-shield-alt', title: 'Defensa Perimetral de Cuentas',       desc: 'Bloqueo automático por intentos fallidos, contraseñas mínimo 12 caracteres y tráfico cifrado extremo a extremo (HTTPS/TLS).' },
+        { icon: 'fas fa-sync-alt',   title: 'Mantenimiento de Seguridad Continuo', desc: 'Framework en versión LTS con auditoría automatizada de dependencias. Vulnerabilidades detectadas y corregidas antes de convertirse en incidente.' },
+        { icon: 'fas fa-server',     title: 'Instancia Aislada (Single-Tenant)',   desc: 'Su instancia dedicada en la nube, su propia base de datos, completamente separada de cualquier otro cliente del sistema.' },
+      ],
+
+      /* ── Pricing / Investment ── */
+      pricing_eyebrow: '04 Modelo de Inversión',
+      pricing_title: 'SaaS Transparente.',
+      pricing_accent: 'Sin Sorpresas.',
+      pricing_sub: 'Sin licencias por asiento, sin cargo por usuario adicional y sin inversión en servidores propios.',
+      pricing_setup_label: 'Implementación Inicial',
+      pricing_setup_amount: 'US$ 3,500',
+      pricing_setup_period: 'Pago único · Por adelantado',
+      pricing_setup_features: [
+        'Aprovisionamiento de instancia aislada en la nube',
+        'Migración del catálogo base (hasta 10,000 SKUs desde Excel)',
+        'Configuración de identidad visual corporativa',
+        'Habilitación del módulo de reportabilidad avanzada',
+        'Dos sesiones de capacitación de 2 horas para el equipo operativo',
+        'Entrega del manual de usuario oficial',
+      ],
+      pricing_saas_label: 'Suscripción SaaS Base',
+      pricing_saas_amount: 'US$ 800',
+      pricing_saas_period: 'Mensual · tier único',
+      pricing_saas_features: [
+        'Usuarios ilimitados — sin cargo por asiento',
+        'Totalidad de los módulos funcionales incluidos',
+        'SLA de disponibilidad 99.9% comprometido por contrato',
+        'Soporte técnico del SLA',
+        'Respaldos automáticos gestionados',
+        'Todas las mejoras de producto sin costo adicional',
+      ],
+      pricing_why_title: 'Por qué este modelo conviene',
+      pricing_why: [
+        { icon: 'fas fa-ban',        title: 'Sin CAPEX de infraestructura', desc: 'No compra servidores, no contrata administradores de sistemas, no paga licencias de base de datos.' },
+        { icon: 'fas fa-chart-line', title: 'Costo predecible',            desc: 'Una cifra mensual fija. Si su operación pasa de 8 a 25 usuarios, la factura no cambia.' },
+        { icon: 'fas fa-receipt',    title: 'Gasto operacional, no CAPEX', desc: 'La suscripción se registra como gasto corriente del período — con el tratamiento contable que eso implica.' },
+        { icon: 'fas fa-gift',       title: 'Sin costo de actualización',  desc: 'Cada mejora liberada durante la vigencia del contrato ya está incluida en la suscripción.' },
+      ],
+      pricing_tax_note: 'A la fecha de este documento, la prestación de SaaS no está sujeta al Sales Tax del Estado de Florida. Tarifas en USD, netas.',
+      pricing_quoted_title: 'Se cotiza por separado (por transparencia)',
+      pricing_quoted: [
+        'Desarrollos de software a medida de cualquier tipo',
+        'Integraciones con APIs de sistemas de terceros (ERP, QuickBooks u otro sistema contable)',
+        'Migración de catálogos superiores a 10,000 SKUs',
+        'Add-on de Infraestructura Avanzada para reportería pesada concurrente y catálogos de gran escala',
+      ],
+
+      /* ── Next Steps / CTA ── */
+      steps_eyebrow: '05 Siguiente Paso',
+      steps_title: 'Cómo',
+      steps_accent: 'Avanzamos',
+      steps_sub: 'La forma más rápida de evaluar PivetTrack no es leer sobre él, sino ver su propio catálogo dentro del sistema.',
+      steps: [
+        { num: '01', icon: 'fas fa-play-circle',   title: 'Demostración Ejecutiva',  desc: 'Sesión virtual de 45 minutos con su equipo de operaciones y administración. Recorremos el ciclo completo — entrada, despacho, devolución a proveedor y Kardex — sobre datos que le resulten reconocibles.',                             badge: '45 min · Online · Sin costo' },
+        { num: '02', icon: 'fas fa-file-contract', title: 'Propuesta Formal (SOW)',  desc: 'Emitimos el Alcance de Trabajo con entregables, exclusiones, cronograma y condiciones definitivas, acompañado del Acuerdo de Nivel de Servicio (SLA) y del Acuerdo de Confidencialidad (NDA).', badge: 'SOW + SLA + NDA' },
+        { num: '03', icon: 'fas fa-rocket',        title: 'Implementación',          desc: 'Acreditado el Setup Fee, aprovisionamos su instancia dedicada, migramos su catálogo base y capacitamos a su equipo conforme al cronograma acordado en el SOW.',                                                                           badge: 'Instancia lista · Equipo capacitado' },
+      ],
+      cta_eyebrow: 'Siguiente Paso',
+      cta_h2a: 'Agende su demostración.',
+      cta_h2b: '45 minutos pueden transformar su operación.',
+      cta_sub: 'Sin compromiso. Su catálogo real dentro del sistema en la primera sesión — para que la evaluación sea concreta, no teórica.',
       cta_btn1: 'Agendar Demostración',
       cta_btn2: 'Enviar Consulta',
-      cta_trust: ['Demo en vivo sin compromiso', 'NDA firmado antes del inicio', 'Disponibilidad inmediata', 'Miami, FL · 100% Remoto'],
+      cta_trust: ['Demostración ejecutiva sin costo', 'NDA firmado antes del inicio', 'Instancia single-tenant dedicada', 'Miami, FL · 100% Remoto'],
 
       /* ── Video demos section ── */
       demos_eyebrow: 'Demostraciones en Vivo',
@@ -562,10 +739,10 @@
       hero_eyebrow: 'WMS SaaS · PIVET DIGITAL AUTOMATIONS LLC',
       hero_h1a: 'Total Control Over Your Warehouse.',
       hero_h1b: 'No Leaks, No Errors.',
-      hero_sub: '<strong>PivetTrack</strong> is a hardened WMS (Warehouse Management System) SaaS, built for logistics companies that demand <strong>flawless accounting and operational precision</strong>. Every movement is recorded, traced, and sealed — permanently.',
+      hero_sub: '<strong>PivetTrack</strong> is an industrial-grade inventory control system for South Florida logistics: high turnover, multiple warehouses, rotating staff, and accounting that demands <strong>documented evidence for every unit in and out</strong>. Every movement generates a document. Every document has an accountable party.',
       hero_cta1: 'Schedule a Demo',
       hero_cta2: 'See Features',
-      trust: ['No installation required', 'Bilingual EN / ES native', 'White-label available', 'NDA before any demo'],
+      trust: ['Sequential document on every movement', '99.9% SLA committed by contract', 'Single-Tenant · Isolated instance', 'NDA before any demo'],
 
       /* ── Dashboard mock ── */
       db_title: 'PivetTrack WMS — Operational Log · Main Warehouse',
@@ -586,84 +763,151 @@
       ],
 
       /* ── Pain section ── */
-      pain_eyebrow: 'The Real Cost of Disorder',
-      pain_title: 'Is your warehouse losing money',
-      pain_accent: 'silently?',
+      pain_eyebrow: '01 The Diagnosis',
+      pain_title: 'The symptoms that are',
+      pain_accent: 'costing real money.',
+      pain_sub: 'The real cost is not the shortage that shows up in the count. It\'s the purchasing, pricing, or shipping decision you already made based on a number that wasn\'t true.',
       pain_cards: [
-        {
-          num: '01', icon: 'fas fa-file-excel',
-          tag: 'Pain #1 · Inventory Control',
-          title: 'Vulnerable Excel spreadsheets where numbers "change on their own"',
-          desc: 'Your operation relies on spreadsheets that any user can edit, delete, or overwrite without a trace. One shift error, a broken formula, or a stray keystroke — and your accounting history disappears forever. It\'s not a technical problem: it\'s a financial risk that grows every day.',
-        },
-        {
-          num: '02', icon: 'fas fa-random',
-          tag: 'Pain #2 · Audits & Inventory',
-          title: 'Chaotic inventories because you can\'t freeze operations',
-          desc: 'Running a full inventory count means stopping the warehouse. While you count, goods keep moving in and out. The result: unexplainable discrepancies, unaccounted shrinkage, and an accounting close that drags on for days — blocking the entire business.',
-        },
-        {
-          num: '03', icon: 'fas fa-language',
-          tag: 'Pain #3 · Operational Communication',
-          title: 'Language barriers between management and warehouse staff',
-          desc: 'In South Florida, your warehouse team works in Spanish. Your management and corporate clients need reports in English. A monolingual system creates transcription errors, delayed reports, and an invisible barrier that nobody talks about — but everyone suffers.',
-        },
+        { num: '01', icon: 'fas fa-balance-scale-right', tag: 'Symptom #1', title: 'The inventory balances on paper, not in the warehouse', desc: 'Adjustments are recorded with no document and no accountable party. The discrepancy is absorbed in silence and reappears, larger, in the next count.' },
+        { num: '02', icon: 'fas fa-history',             tag: 'Symptom #2', title: 'Nobody can reconstruct a SKU\'s history',              desc: 'For a claim or audit, there is no verifiable timeline of who moved what, when, and with what backing document.' },
+        { num: '03', icon: 'fas fa-file-excel',          tag: 'Symptom #3', title: 'Shared Excel spreadsheets as the system of record',    desc: 'Parallel versions of the same file, broken formulas, no access control, and no guarantee that today\'s number matches yesterday\'s.' },
+        { num: '04', icon: 'fas fa-tachometer-alt',      tag: 'Symptom #4', title: 'Systems slow down exactly when you need them most',   desc: 'Month-end close coincides with peak load. If the system drags or crashes, the entire warehouse operation stops with it.' },
+        { num: '05', icon: 'fas fa-exchange-alt',        tag: 'Symptom #5', title: 'Returns and shrinkage recorded by eyeball',            desc: 'Deducted at the current average cost, not the real cost of the returned lot. Remaining inventory is mispriced and margin on the next sales is calculated on a false figure.' },
+        { num: '06', icon: 'fas fa-user-clock',          tag: 'Symptom #6', title: 'Dependency on the one person who "knows how everything stands"', desc: 'Operational knowledge lives in one person\'s head, not the system. A resignation, medical leave, or vacation becomes a continuity crisis.' },
       ],
 
-      /* ── Solutions section ── */
-      sol_eyebrow: 'The PivetTrack Shield',
-      sol_title: '4 Killer',
-      sol_accent: 'Features',
+      /* ── Architecture section ── */
+      arch_eyebrow: '02 The Solution: Architecture',
+      arch_title: 'Structurally impossible',
+      arch_accent: 'to move without a document.',
+      arch_sub: 'PivetTrack doesn\'t ask your team to "be careful" when recording. It makes it structurally impossible to move inventory without leaving a document behind.',
       features: [
         {
-          step: 'Feature 01 / 04', icon: 'fas fa-lock', label: 'Accounting Immutability',
-          title: 'The Kardex that can\'t be deleted or edited — every movement is traceable and auditable',
-          desc: 'Every inventory movement is recorded with a unique integrity hash, an immutable timestamp, and the responsible user. Once confirmed, no operator, supervisor, or admin can alter the record. Traceability is total and the accounting history, indestructible.',
-          tags: ['Full Audit Trail', 'Immutable Record', 'Complete Traceability', 'No editing possible'],
-          viz_no_edit: 'No editing possible — read only',
-          audit_steps: ['Physical count completed', '3 discrepancies detected automatically', 'Adjustment entries generated', 'Unresolved shrinkage → $0'],
-          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
-          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
-          pdf_badges: ['Receiving Order', 'Dispatch Guide', 'Inventory Report'],
+          step: 'Architecture 01 / 03', icon: 'fas fa-fingerprint', label: 'Immutable Traceability',
+          title: 'Every movement generates a sequential document number — no gaps, no renaming, no editing',
+          desc: 'Every transaction issues a document with an automatic sequential number generated at the time of recording. The number is stamped on the PDF receipt, the audit log, and the Kardex: any line in the movement history can be traced back to its backing document in one click.',
+          tags: ['Sequential Document', 'Full Audit', 'No Editing', '100% Traceable'],
+          folio_cols: ['Series', 'Document Type', 'Audit Guarantee'],
+          folios: [
+            { prefix: 'ENT-', name: 'Merchandise Entries',      guarantee: 'Origin, unit cost and receiving party' },
+            { prefix: 'SAL-', name: 'Exits & Dispatches',       guarantee: 'Destination, quantities and authorizing party' },
+            { prefix: 'TRA-', name: 'Inter-Warehouse Transfers', guarantee: 'Full traceability of internal movement' },
+            { prefix: 'MER-', name: 'Shrinkage & Write-offs',   guarantee: 'Documented reason and loss valuation' },
+            { prefix: 'INV-', name: 'Inventory Counts',         guarantee: 'Physical count, discrepancy and responsible signatory' },
+            { prefix: 'DPR-', name: 'Supplier Returns',         guarantee: 'Reverse logistics at real historical cost' },
+          ],
         },
         {
-          step: 'Feature 02 / 04', icon: 'fas fa-sync-alt', label: 'Wall-to-Wall Audits',
-          title: 'Auto-reconciliation engine that automatically zeros out undetected shrinkage',
-          desc: 'The general inventory module lets you run a Wall-to-Wall count without stopping operations. When done, the reconciliation engine compares theoretical vs. physical stock, identifies all discrepancies, and automatically generates adjustment entries — bringing the system to real balance with no manual cross-referencing.',
-          tags: ['Wall-to-Wall', 'Auto-Reconciliation', 'Express Close', 'Zero Shrinkage'],
-          viz_no_edit: '',
-          audit_steps: ['Physical count completed', '3 discrepancies detected automatically', 'Adjustment entries generated', 'Unresolved shrinkage → $0'],
-          lang_en: '', lang_es: '', pdf_badges: [],
+          step: 'Architecture 02 / 03', icon: 'fas fa-shield-alt', label: 'Surgical Reverse Logistics',
+          title: 'The remaining stock\'s WAC is never contaminated — every return at the real historical lot cost',
+          desc: 'When a conventional system processes a supplier return, it deducts at the current average cost. PivetTrack deducts at the real historical cost of the lot actually returned. Your margin is always calculated on a true figure.',
+          tags: ['Exact WAC', 'Real Historical Cost', 'Protected Margin', 'Lot by Lot'],
+          wac_context: '100u at US$10 + 100u at US$14 → WAC: US$12. The 100u from the second lot are returned.',
+          wac_lbl_bad: 'Conventional System', wac_lbl_good: 'PivetTrack',
+          wac_amt_bad: 'US$ 1,200', wac_amt_good: 'US$ 1,000',
+          wac_note_bad: 'Deducts at average (US$12). Inventory inflated by US$200 on one SKU, one return.',
+          wac_note_good: 'Deducts at lot\'s historical cost (US$14). Remaining stock at exact purchase cost.',
         },
         {
-          step: 'Feature 03 / 04', icon: 'fas fa-globe-americas', label: 'Native Multilingual',
-          title: 'Bilingual English / Spanish interface, ideal for the South Florida workforce',
-          desc: 'The system switches languages in real time without restarts or reloads. Your warehouse staff works comfortably in Spanish. Your operations director and corporate clients receive all reports and documents in English. One system, two languages, zero friction or transcription errors.',
-          tags: ['English', 'Español', 'South Florida Ready', 'Real-time switch'],
-          viz_no_edit: '',
-          audit_steps: [],
-          lang_en: '"Warehouse Receipt" · "Stock Transfer" · "Dispatch Guide"',
-          lang_es: '"Recepción" · "Traslado de Stock" · "Guía de Despacho"',
-          pdf_badges: [],
-        },
-        {
-          step: 'Feature 04 / 04', icon: 'fas fa-paint-brush', label: 'Custom Branding — White Label',
-          title: 'Technical documentation and PDF receipts exported with the client\'s corporate logo',
-          desc: 'All documentation generated by the system — receiving orders, dispatch guides, inventory reports, adjustment receipts — is exported as PDF with the client\'s corporate logo and brand colors. Your brand, your operation, your identity on every document.',
-          tags: ['PDF Export', 'Corporate Logo', 'White Label', 'Custom Brand'],
-          viz_no_edit: '', audit_steps: [], lang_en: '', lang_es: '',
-          pdf_badges: ['Receiving Order', 'Dispatch Guide', 'Inventory Report'],
+          step: 'Architecture 03 / 03', icon: 'fas fa-boxes', label: 'All Operational Modules Included',
+          title: 'The complete operational cycle on one platform — no extra modules to buy separately',
+          desc: 'PivetTrack includes the full warehouse workflow in the base SaaS plan: entries, exits, transfers, returns, inventory counting, valued Kardex, native Excel export, and PDFs with corporate branding.',
+          tags: ['All Included', 'No Add-ons', '.xlsx Export', 'Corporate PDF'],
+          modules: [
+            { icon: 'fas fa-arrow-circle-down', name: 'Entries, Exits & Transfers',                  addon: false },
+            { icon: 'fas fa-undo-alt',           name: 'Supplier Returns & Shrinkage',               addon: false },
+            { icon: 'fas fa-clipboard-list',     name: 'Wall-to-Wall Inventory Count',               addon: false },
+            { icon: 'fas fa-table',              name: 'Valued Kardex (WAC)',                        addon: false },
+            { icon: 'fas fa-file-excel',         name: 'Native Excel Export (.xlsx)',                addon: false },
+            { icon: 'fas fa-paint-brush',        name: 'Corporate Branding in PDFs',                addon: false },
+            { icon: 'fas fa-barcode',            name: 'Mobile Scanner & Barcodes',                 addon: false },
+            { icon: 'fas fa-plug',               name: 'B2B Portal & ERP API (quoted separately)',  addon: true },
+          ],
         },
       ],
 
-      /* ── Bottom CTA ── */
-      cta_eyebrow: 'Digitize Your Operations Today',
-      cta_h2a: 'Your warehouse deserves a system',
-      cta_h2b: 'that matches your business.',
-      cta_sub: 'PivetTrack is not a generic template — it\'s a WMS built from real logistics operations. Let\'s schedule a free 30-minute call and show you exactly how we protect your inventory today.',
+      /* ── Security & Infrastructure ── */
+      security_eyebrow: '03 Continuity & Security',
+      security_title: 'Enterprise-Grade',
+      security_accent: 'Infrastructure',
+      security_sub: 'An inventory system protects the most valuable asset on your balance sheet. The infrastructure that supports it cannot be a technical footnote: it\'s part of the commercial offer.',
+      security_tenant_note: 'PivetTrack operates on a single-tenant architecture: each Client receives an isolated, dedicated cloud instance with its own database. Your data does not share tables with any other company.',
+      security_kpis: [
+        { num: '99.9%', label: 'SLA',         sub: 'Monthly uptime committed by contract' },
+        { num: '30',    label: 'Concurrent',  sub: 'Operators certified in real load tests' },
+        { num: '955ms', label: 'p95 Latency', sub: 'Picking scan latency under sustained load' },
+        { num: '100%',  label: 'Traced',      sub: 'Of movements with sequential document and identified author' },
+      ],
+      security_cards: [
+        { icon: 'fas fa-rocket',     title: 'Zero-Downtime Deployments',       desc: 'System updates are released without stopping warehouse operations. Your team doesn\'t lose a work shift because the vendor pushed an update.' },
+        { icon: 'fas fa-database',   title: 'Managed Automatic Backups',       desc: 'Enterprise-grade managed PostgreSQL with redundancy, automated backups and automatic failover. No one on your team needs to remember to run a backup.' },
+        { icon: 'fas fa-lock',       title: 'Immutable Audit Trail',           desc: 'The Kardex is a historical record of movements, not an editable spreadsheet. Corrections are issued as new documents — history is not rewritten, it is documented.' },
+        { icon: 'fas fa-mobile-alt', title: 'Two-Factor Authentication (2FA)', desc: 'TOTP MFA mandatory for the Super Administrator, with the secret encrypted at rest and single-use backup codes.' },
+        { icon: 'fas fa-shield-alt', title: 'Perimeter Account Defense',       desc: 'Automatic lockout on failed login attempts, 12-character minimum passwords, and end-to-end encrypted traffic (HTTPS/TLS).' },
+        { icon: 'fas fa-sync-alt',   title: 'Continuous Security Maintenance', desc: 'LTS framework with automated dependency auditing. Known vulnerabilities are detected and remediated before they become incidents.' },
+        { icon: 'fas fa-server',     title: 'Isolated Instance (Single-Tenant)', desc: 'Your own dedicated cloud instance, your own database, completely isolated from any other client on the system.' },
+      ],
+
+      /* ── Pricing / Investment ── */
+      pricing_eyebrow: '04 Investment Model',
+      pricing_title: 'Transparent SaaS.',
+      pricing_accent: 'No Surprises.',
+      pricing_sub: 'No per-seat licenses, no charge for additional users, and no investment in your own servers.',
+      pricing_setup_label: 'Initial Implementation',
+      pricing_setup_amount: 'US$ 3,500',
+      pricing_setup_period: 'One-time payment · Upfront',
+      pricing_setup_features: [
+        'Dedicated cloud instance provisioning',
+        'Base catalog migration (up to 10,000 SKUs from Excel)',
+        'Corporate branding configuration',
+        'Advanced reporting module activation',
+        'Two 2-hour training sessions for your operational team',
+        'Delivery of the official user manual',
+      ],
+      pricing_saas_label: 'Base SaaS Subscription',
+      pricing_saas_amount: 'US$ 800',
+      pricing_saas_period: 'Monthly · single tier',
+      pricing_saas_features: [
+        'Unlimited users — no per-seat charge',
+        'All functional modules included',
+        '99.9% uptime SLA committed by contract',
+        'SLA technical support',
+        'Managed automatic backups included',
+        'All product improvements at no additional cost',
+      ],
+      pricing_why_title: 'Why this model makes sense',
+      pricing_why: [
+        { icon: 'fas fa-ban',        title: 'Zero infrastructure CAPEX', desc: 'No servers to buy, no system administrators to hire, no database licenses to pay.' },
+        { icon: 'fas fa-chart-line', title: 'Predictable cost',          desc: 'A fixed monthly figure. If your operation grows from 8 to 25 users, the invoice doesn\'t change.' },
+        { icon: 'fas fa-receipt',    title: 'OpEx, not CAPEX',           desc: 'The subscription is recorded as a current-period expense — with the accounting treatment that implies.' },
+        { icon: 'fas fa-gift',       title: 'No upgrade costs',          desc: 'Every improvement released during the contract term is already paid for in your subscription.' },
+      ],
+      pricing_tax_note: 'As of this document, SaaS is not subject to Florida State Sales Tax. Prices are in USD, net.',
+      pricing_quoted_title: 'Quoted separately (for transparency)',
+      pricing_quoted: [
+        'Custom software development of any kind',
+        'API integrations with third-party systems (ERP, QuickBooks, or other accounting software)',
+        'Catalog migrations exceeding 10,000 SKUs',
+        'Advanced Infrastructure Add-on for concurrent heavy reporting on large-scale catalogs',
+      ],
+
+      /* ── Next Steps / CTA ── */
+      steps_eyebrow: '05 Next Step',
+      steps_title: 'How We',
+      steps_accent: 'Move Forward',
+      steps_sub: 'The fastest way to evaluate PivetTrack is not to read about it, but to see your own catalog inside the system.',
+      steps: [
+        { num: '01', icon: 'fas fa-play-circle',   title: 'Executive Demo',        desc: 'A 45-minute virtual session with your operations and management team. We walk through the complete cycle — entry, dispatch, supplier return, and Kardex — using data that is familiar to you.',                  badge: '45 min · Online · No cost' },
+        { num: '02', icon: 'fas fa-file-contract', title: 'Formal Proposal (SOW)', desc: 'We issue the Scope of Work with deliverables, exclusions, timeline, and final commercial terms, along with the Service Level Agreement (SLA) and Non-Disclosure Agreement (NDA).', badge: 'SOW + SLA + NDA' },
+        { num: '03', icon: 'fas fa-rocket',        title: 'Implementation',        desc: 'Once the Setup Fee is confirmed, we provision your dedicated instance, migrate your base catalog, and train your team according to the timeline agreed in the SOW.',                  badge: 'Instance ready · Team trained' },
+      ],
+      cta_eyebrow: 'Next Step',
+      cta_h2a: 'Schedule your demo.',
+      cta_h2b: '45 minutes can transform your operation.',
+      cta_sub: 'No commitment. Your real catalog inside the system in the first session — so the evaluation is concrete, not theoretical.',
       cta_btn1: 'Schedule a Demo',
       cta_btn2: 'Send Inquiry',
-      cta_trust: ['Live demo, no commitment', 'NDA signed before start', 'Immediate availability', 'Miami, FL · 100% Remote'],
+      cta_trust: ['Executive demo at no cost', 'NDA signed before start', 'Dedicated single-tenant instance', 'Miami, FL · 100% Remote'],
 
       /* ── Video demos section ── */
       demos_eyebrow: 'Live Demos',
@@ -836,6 +1080,52 @@
     if (featured) featured.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
+  /* ── Architecture visual renderer ── */
+  function renderArchViz(f, idx) {
+    if (idx === 0) {
+      return `
+        <div class="pt-folio-tbl">
+          <div class="pt-folio-tbl-row hdr">
+            ${f.folio_cols.map(c => `<span>${c}</span>`).join('')}
+          </div>
+          ${f.folios.map(r => `
+            <div class="pt-folio-tbl-row data">
+              <span class="pt-folio-badge">${r.prefix}</span>
+              <span class="pt-folio-name">${r.name}</span>
+              <span class="pt-folio-guar">${r.guarantee}</span>
+            </div>`).join('')}
+        </div>`;
+    }
+    if (idx === 1) {
+      return `
+        <div class="pt-wac-wrap">
+          <div class="pt-wac-context"><i class="fas fa-info-circle" style="color:#FF9500;margin-right:6px"></i>${f.wac_context}</div>
+          <div class="pt-wac-cards">
+            <div class="pt-wac-card bad">
+              <div class="pt-wac-lbl">${f.wac_lbl_bad}</div>
+              <div class="pt-wac-amt">${f.wac_amt_bad}</div>
+              <div class="pt-wac-note-txt">${f.wac_note_bad}</div>
+            </div>
+            <div class="pt-wac-card good">
+              <div class="pt-wac-lbl">${f.wac_lbl_good}</div>
+              <div class="pt-wac-amt">${f.wac_amt_good}</div>
+              <div class="pt-wac-note-txt">${f.wac_note_good}</div>
+            </div>
+          </div>
+        </div>`;
+    }
+    if (idx === 2) {
+      return `
+        <div class="pt-modules-grid">
+          ${f.modules.map(m => `
+            <div class="pt-mod-item${m.addon ? ' addon' : ''}">
+              <i class="${m.icon}"></i> ${m.name}
+            </div>`).join('')}
+        </div>`;
+    }
+    return '';
+  }
+
   /* ── Main render function ── */
   function render() {
     const d = t[lang];
@@ -911,15 +1201,16 @@
         </div>
       </section>
 
-      <!-- ═══ 2. PAIN / AGITATION ═══ -->
+      <!-- ═══ 2. EL DIAGNÓSTICO / PAIN ═══ -->
       <section class="pt-pain" data-aos="fade-up">
         <div class="pt-section-hdr">
           <div class="pt-section-eyebrow"><i class="fas fa-exclamation-triangle" style="color:#FF3B30"></i> ${d.pain_eyebrow}</div>
           <h2 class="pt-section-title">${d.pain_title} <span class="accent">${d.pain_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:10px;max-width:680px;margin-left:auto;margin-right:auto;font-style:italic">${d.pain_sub}</p>
         </div>
         <div class="pt-pain-grid">
           ${d.pain_cards.map((c, i) => `
-            <div class="pt-pain-card" data-aos="fade-up" data-aos-delay="${i * 90}">
+            <div class="pt-pain-card" data-aos="fade-up" data-aos-delay="${i * 70}">
               <span class="pt-pain-bg-num">${c.num}</span>
               <div class="pt-pain-icon"><i class="${c.icon}"></i></div>
               <div class="pt-pain-tag">${c.tag}</div>
@@ -929,11 +1220,12 @@
         </div>
       </section>
 
-      <!-- ═══ 3. SOLUTIONS — 4 FEATURES ═══ -->
+      <!-- ═══ 3. ARQUITECTURA ═══ -->
       <section class="pt-solutions" id="pt-solutions" data-aos="fade-up">
         <div class="pt-section-hdr">
-          <div class="pt-section-eyebrow"><i class="fas fa-shield-alt" style="color:#FF6B00"></i> ${d.sol_eyebrow}</div>
-          <h2 class="pt-section-title">${d.sol_title} <span class="accent">${d.sol_accent}</span></h2>
+          <div class="pt-section-eyebrow"><i class="fas fa-fingerprint" style="color:#FF6B00"></i> ${d.arch_eyebrow}</div>
+          <h2 class="pt-section-title">${d.arch_title} <span class="accent">${d.arch_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto">${d.arch_sub}</p>
         </div>
         <div class="pt-feature-list">
           ${d.features.map((f, idx) => `
@@ -947,9 +1239,86 @@
                 <div class="pt-feat-tags">${f.tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>
               </div>
               <div class="pt-feat-visual">
-                ${renderViz(f, idx)}
+                ${renderArchViz(f, idx)}
               </div>
             </div>`).join('')}
+        </div>
+      </section>
+
+      <!-- ═══ 4. SEGURIDAD E INFRAESTRUCTURA ═══ -->
+      <section class="pt-security" data-aos="fade-up">
+        <div class="pt-section-hdr">
+          <div class="pt-section-eyebrow"><i class="fas fa-shield-alt" style="color:#FF6B00"></i> ${d.security_eyebrow}</div>
+          <h2 class="pt-section-title">${d.security_title} <span class="accent">${d.security_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;max-width:620px;margin-left:auto;margin-right:auto">${d.security_sub}</p>
+        </div>
+        <div class="pt-stats-strip">
+          ${d.security_kpis.map(k => `
+            <div class="pt-stat-card">
+              <div class="pt-stat-num">${k.num}</div>
+              <div class="pt-stat-lbl">${k.label}</div>
+              <div class="pt-stat-sub">${k.sub}</div>
+            </div>`).join('')}
+        </div>
+        <div class="pt-tenant-note">
+          <i class="fas fa-server"></i>
+          <span>${d.security_tenant_note}</span>
+        </div>
+        <div class="pt-security-grid">
+          ${d.security_cards.map((c, i) => `
+            <div class="pt-sec-card" data-aos="fade-up" data-aos-delay="${Math.min(i * 60, 300)}">
+              <div class="pt-sec-icon"><i class="${c.icon}"></i></div>
+              <div class="pt-sec-title">${c.title}</div>
+              <div class="pt-sec-desc">${c.desc}</div>
+            </div>`).join('')}
+        </div>
+      </section>
+
+      <!-- ═══ 5. MODELO DE INVERSIÓN ═══ -->
+      <section class="pt-pricing" data-aos="fade-up">
+        <div class="pt-section-hdr">
+          <div class="pt-section-eyebrow"><i class="fas fa-dollar-sign" style="color:#FF6B00"></i> ${d.pricing_eyebrow}</div>
+          <h2 class="pt-section-title">${d.pricing_title} <span class="accent">${d.pricing_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;max-width:560px;margin-left:auto;margin-right:auto">${d.pricing_sub}</p>
+        </div>
+        <div class="pt-pricing-grid">
+          <div class="pt-plan-card setup">
+            <div class="pt-plan-lbl">${d.pricing_setup_label}</div>
+            <div class="pt-plan-amt">${d.pricing_setup_amount}</div>
+            <div class="pt-plan-period">${d.pricing_setup_period}</div>
+            <ul class="pt-plan-feats">
+              ${d.pricing_setup_features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="pt-plan-card saas">
+            <div class="pt-plan-lbl">${d.pricing_saas_label}</div>
+            <div class="pt-plan-amt">${d.pricing_saas_amount}</div>
+            <div class="pt-plan-period">${d.pricing_saas_period}</div>
+            <ul class="pt-plan-feats">
+              ${d.pricing_saas_features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+        <div class="pt-section-hdr" style="margin-bottom:22px;margin-top:0">
+          <div class="pt-section-title" style="font-size:1.2rem">${d.pricing_why_title}</div>
+        </div>
+        <div class="pt-why-grid">
+          ${d.pricing_why.map(w => `
+            <div class="pt-why-card">
+              <div class="pt-why-icon"><i class="${w.icon}"></i></div>
+              <div class="pt-why-title">${w.title}</div>
+              <div class="pt-why-desc">${w.desc}</div>
+            </div>`).join('')}
+        </div>
+        <div class="pt-tax-note">
+          <i class="fas fa-info-circle"></i>
+          <span>${d.pricing_tax_note}</span>
+        </div>
+        <div class="pt-quoted-box">
+          <div class="pt-quoted-lbl">${d.pricing_quoted_title}</div>
+          <div class="pt-quoted-list">
+            ${d.pricing_quoted.map(q => `<div class="pt-quoted-item"><i class="fas fa-minus"></i> ${q}</div>`).join('')}
+          </div>
         </div>
       </section>
 
@@ -1021,24 +1390,36 @@
         </div>
       </section>
 
-      <!-- ═══ 5. BOTTOM CTA BANNER ═══ -->
-      <section class="pt-bottom-cta" data-aos="fade-up">
-        <div class="pt-cta-eyebrow"><i class="fas fa-rocket"></i> ${d.cta_eyebrow}</div>
-        <h2 class="pt-cta-h2">
-          ${d.cta_h2a}<br>
-          <span class="accent">${d.cta_h2b}</span>
-        </h2>
-        <p class="pt-cta-sub">${d.cta_sub}</p>
-        <div class="pt-cta-actions">
-          <a href="contacto.html" class="btn btn-xl">
-            <i class="fas fa-calendar-check"></i> ${d.cta_btn1}
-          </a>
-          <a href="contacto.html" class="btn-outline">
-            <i class="fas fa-envelope"></i> ${d.cta_btn2}
-          </a>
+      <!-- ═══ 7. CÓMO AVANZAMOS + FINAL CTA ═══ -->
+      <section class="pt-next-steps" data-aos="fade-up">
+        <div class="pt-section-hdr">
+          <div class="pt-section-eyebrow"><i class="fas fa-arrow-right" style="color:#FF6B00"></i> ${d.steps_eyebrow}</div>
+          <h2 class="pt-section-title">${d.steps_title} <span class="accent">${d.steps_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;max-width:560px;margin-left:auto;margin-right:auto">${d.steps_sub}</p>
         </div>
-        <div class="pt-cta-trust">
-          ${d.cta_trust.map(item => `<span class="pt-cta-trust-item"><i class="fas fa-check-circle"></i> ${item}</span>`).join('')}
+        <div class="pt-steps-grid">
+          ${d.steps.map(s => `
+            <div class="pt-step-card" data-aos="fade-up">
+              <span class="pt-step-bg-num">${s.num}</span>
+              <div class="pt-step-icon"><i class="${s.icon}"></i></div>
+              <div class="pt-step-title">${s.title}</div>
+              <div class="pt-step-desc">${s.desc}</div>
+              <span class="pt-step-badge"><i class="fas fa-clock"></i> ${s.badge}</span>
+            </div>`).join('')}
+        </div>
+        <div class="pt-final-cta">
+          <h2 class="pt-final-cta-h2">
+            ${d.cta_h2a}<br><span class="accent">${d.cta_h2b}</span>
+          </h2>
+          <p class="pt-final-cta-sub">${d.cta_sub}</p>
+          <div class="pt-final-cta-actions">
+            <a href="contacto.html" class="btn btn-xl">
+              <i class="fas fa-calendar-check"></i> ${d.cta_btn1}
+            </a>
+            <a href="contacto.html" class="btn-outline">
+              <i class="fas fa-envelope"></i> ${d.cta_btn2}
+            </a>
+          </div>
         </div>
       </section>`;
 
