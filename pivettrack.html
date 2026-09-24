@@ -25,25 +25,23 @@
   <meta name="theme-color" content="#FF6B00">
   <meta property="og:title" content="PivetTrack WMS — Control Total de tu Bodega | PIVET DIGITAL AUTOMATIONS LLC">
   <meta property="og:description" content="WMS SaaS blindado para empresas logísticas. Kardex inmutable, auditorías wall-to-wall, interfaz bilingüe y marca blanca. Agendar demostración gratuita.">
+  <meta property="og:image" content="https://www.raulpivet.com/img/gallery/dashboard-negativos.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://www.raulpivet.com/pivettrack.html">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.raulpivet.com/img/gallery/dashboard-negativos.png">
   <link rel="canonical" href="https://www.raulpivet.com/pivettrack.html">
   <title>PivetTrack WMS — Control Total de tu Bodega | PIVET DIGITAL AUTOMATIONS LLC</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ── Language toggle (mismo estilo que index.html / contacto.html) ── */
-    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
-    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
-    .language-flag { font-size:1.25rem; }
-    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
-    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
 
     /* ══════════════════════════════════════════════════
        PIVETTRACK — LANDING PAGE STYLES
@@ -964,85 +962,6 @@
 
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
-  /* ── Render helper: feature visual by index ── */
-  function renderViz(f, idx) {
-    if (idx === 0) {
-      return `
-        <div class="viz-immutable">
-          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0042 · ${lang === 'es' ? 'Entrada' : 'Entry'} <span class="viz-in">+150 u.</span><span class="viz-hash">#a3f7c2</span></div>
-          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0017 · ${lang === 'es' ? 'Salida' : 'Exit'} <span class="viz-out">-30 u.</span><span class="viz-hash">#b91c44</span></div>
-          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0089 · ${lang === 'es' ? 'Entrada' : 'Entry'} <span class="viz-in">+75 u.</span><span class="viz-hash">#c44e81</span></div>
-          <div class="viz-row"><i class="fas fa-lock viz-lock"></i> SKU-0003 · ${lang === 'es' ? 'Salida' : 'Exit'} <span class="viz-out">-12 u.</span><span class="viz-hash">#d52a09</span></div>
-          <div class="viz-sealed-badge"><i class="fas fa-ban"></i> ${f.viz_no_edit}</div>
-        </div>`;
-    }
-    if (idx === 1) {
-      const stepClasses = ['done', 'done', 'done', 'active'];
-      return `
-        <div class="viz-audit">
-          <div class="viz-gauge-wrap">
-            <svg viewBox="0 0 100 100" aria-hidden="true">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="var(--border-color)" stroke-width="8"/>
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#34C759" stroke-width="8"
-                stroke-dasharray="238 251" stroke-dashoffset="63" stroke-linecap="round"/>
-            </svg>
-            <div class="viz-gauge-center">
-              <span class="viz-gauge-num">98%</span>
-              <span class="viz-gauge-lbl">Match</span>
-            </div>
-          </div>
-          <div class="viz-audit-steps">
-            ${f.audit_steps.map((s,i) => `<div class="viz-audit-step ${stepClasses[i]}"><i class="fas fa-check-circle"></i> ${s}</div>`).join('')}
-          </div>
-        </div>`;
-    }
-    if (idx === 2) {
-      return `
-        <div class="viz-multilang">
-          <div class="viz-lang-toggle">
-            <span class="viz-lang-btn on">EN</span>
-            <span class="viz-lang-btn">ES</span>
-          </div>
-          <div class="viz-lang-card active">
-            <span class="viz-lang-flag">🇺🇸</span>
-            <div>
-              <div class="viz-lang-name">English</div>
-              <div class="viz-lang-sample">${f.lang_en}</div>
-            </div>
-            <div class="viz-lang-dot"></div>
-          </div>
-          <div class="viz-lang-card" style="opacity:0.58">
-            <span class="viz-lang-flag">🇪🇸</span>
-            <div>
-              <div class="viz-lang-name">Español</div>
-              <div class="viz-lang-sample">${f.lang_es}</div>
-            </div>
-          </div>
-        </div>`;
-    }
-    if (idx === 3) {
-      return `
-        <div class="viz-branding">
-          <div class="viz-brand-doc">
-            <div class="viz-brand-doc-top">
-              <div class="viz-logo-box">AB</div>
-              <span class="viz-company-name">ACME Logistics Corp.</span>
-              <span class="viz-doc-type"><i class="fas fa-file-pdf"></i> PDF</span>
-            </div>
-            <div class="viz-brand-doc-body">
-              <div class="viz-line w85"></div>
-              <div class="viz-line w65"></div>
-              <div class="viz-line w45"></div>
-            </div>
-          </div>
-          <div class="viz-pdf-badges">
-            ${f.pdf_badges.map(b => `<span class="viz-pdf-badge"><i class="fas fa-file-pdf"></i> ${b}</span>`).join('')}
-          </div>
-        </div>`;
-    }
-    return '';
-  }
-
   /* ── Carousel interaction: swap featured player when a live card is clicked ── */
   function ptSelectDemo(idx) {
     const d = t[lang];
@@ -1428,11 +1347,13 @@
 
   function toggleLang() {
     lang = lang === 'es' ? 'en' : 'es';
+    document.documentElement.lang = lang;
     localStorage.setItem('homeLang', lang);
     render();
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.lang = lang;
     render();
     document.getElementById('languageToggle').addEventListener('click', toggleLang);
   });

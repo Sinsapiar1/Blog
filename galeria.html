@@ -27,25 +27,19 @@
   <meta property="og:description" content="Algunas herramientas pequeñas de mis comienzos, dejadas a disposición de todos. Usalas si te sirven.">
   <meta property="og:url" content="https://www.raulpivet.com/galeria.html">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_AR">
+  <meta property="og:locale" content="es">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Lab — Pequeñas herramientas útiles · PIVET DIGITAL AUTOMATIONS LLC">
   <meta name="twitter:description" content="Herramientas pequeñas de mis comienzos, a disposición de todos. Gratis y listas para usar.">
   <link rel="canonical" href="https://www.raulpivet.com/galeria.html">
   <title>Lab - Pequeñas herramientas útiles | PIVET DIGITAL AUTOMATIONS LLC</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
     /* ── Language toggle — mismo estilo que el resto del sitio ── */
-    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
-    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
-    .language-flag { font-size:1.25rem; }
-    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
-    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
 
     /* ── Lab intro (gift tone) ── */
     .lab-hero {
@@ -540,7 +534,8 @@
   ══════════════════════════════════════════════════════ */
   function toggleLang() {
     lang = lang === 'es' ? 'en' : 'es';
-    localStorage.setItem('homeLang', lang);   // misma clave que el resto del sitio
+    document.documentElement.lang = lang;
+    localStorage.setItem('homeLang', lang);
     renderLab();
   }
 
@@ -548,6 +543,7 @@
      INIT
   ══════════════════════════════════════════════════════ */
   document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.lang = lang;
     renderLab();
     document.getElementById('languageToggle').addEventListener('click', toggleLang);
   });

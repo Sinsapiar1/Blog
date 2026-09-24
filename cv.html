@@ -27,25 +27,19 @@
   <meta property="og:description" content="Curriculum Vitae interactivo de Raul Pivet. 10+ años en logística y tecnología. Fundador de PIVET DIGITAL AUTOMATIONS LLC. Miami, FL.">
   <meta property="og:url" content="https://www.raulpivet.com/cv.html">
   <meta property="og:type" content="profile">
-  <meta property="og:locale" content="es_AR">
+  <meta property="og:locale" content="es">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CV — Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC">
   <meta name="twitter:description" content="CV interactivo. 10+ años en logística, Power BI, Python y automatización. PIVET DIGITAL AUTOMATIONS LLC — Miami, FL.">
   <link rel="canonical" href="https://www.raulpivet.com/cv.html">
   <title>CV - Raul Pivet | PIVET DIGITAL AUTOMATIONS LLC</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
     /* ── Language toggle ── */
-    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
-    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
-    .language-flag { font-size:1.25rem; }
-    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
-    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
 
     /* ══════════════════════════════════════════
        CV HEADER — cinematic, full-bleed
@@ -623,7 +617,7 @@
             <div class="cv-header-name">Raul Pivet</div>
             <div class="cv-header-title">${t.subtitle}</div>
             <div class="cv-contact">
-              <a class="cv-contact-item" href="mailto:jaime.pivet@gmail.com"><i class="fas fa-envelope"></i> jaime.pivet@gmail.com</a>
+              <a class="cv-contact-item" href="mailto:Raul@raulpivet.com"><i class="fas fa-envelope"></i> Raul@raulpivet.com</a>
               <span class="cv-contact-item"><i class="fas fa-phone"></i> +1 (305) 504-6846</span>
               <span class="cv-contact-item"><i class="fas fa-map-marker-alt"></i> Cutler Bay, FL</span>
               <a class="cv-contact-item" href="${t.linkedinUrl}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -727,6 +721,7 @@
 
   function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'es' : 'en';
+    document.documentElement.lang = currentLang;
     localStorage.setItem('cvLanguage', currentLang);
     localStorage.setItem('homeLang', currentLang);
     document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
@@ -735,6 +730,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.lang = currentLang;
     renderCV(currentLang);
     document.getElementById('languageFlag').textContent = currentLang === 'en' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = currentLang === 'en' ? 'English' : 'Español';

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página no encontrada · raulpivet.com</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .err-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .err-box {
+      max-width: 480px;
+      width: 100%;
+    }
+    .err-code {
+      font-size: clamp(5rem, 18vw, 8rem);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      background: linear-gradient(135deg, #FF6B00, #FF9500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    .err-title {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .err-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .err-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 2px solid var(--border-color);
+      border-radius: 9999px;
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: #FF6B00; color: #FF6B00; }
+    .err-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .err-nav a {
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+    .err-nav a:hover { color: #FF6B00; border-color: rgba(255,107,0,0.4); }
+  </style>
+</head>
+<body>
+  <div class="err-wrap">
+    <div class="err-box">
+      <div class="err-code">404</div>
+      <h1 class="err-title">Página no encontrada</h1>
+      <p class="err-sub">
+        El link que seguiste no existe o fue movido.<br>
+        Pero el sitio está aquí — te llevamos de vuelta.
+      </p>
+      <div class="err-actions">
+        <a href="/" class="btn"><i class="fas fa-home"></i> Ir al Inicio</a>
+        <a href="contacto.html" class="btn-outline"><i class="fas fa-envelope"></i> Contacto</a>
+      </div>
+      <nav class="err-nav" aria-label="Navegación rápida">
+        <a href="pivettrack.html"><i class="fas fa-warehouse"></i> PivetTrack WMS</a>
+        <a href="appsheet-demos.html"><i class="fab fa-youtube"></i> AppSheet Demos</a>
+        <a href="sobre-mi.html"><i class="fas fa-user"></i> Nosotros</a>
+        <a href="galeria.html"><i class="fas fa-flask"></i> Lab</a>
+      </nav>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

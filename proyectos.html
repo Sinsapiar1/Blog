@@ -28,18 +28,12 @@
   <link rel="canonical" href="https://www.raulpivet.com/proyectos.html">
   <title>Proyectos - Raul Pivet</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/png" href="favicon-32x32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
     /* ── Language toggle — mismo estilo que el resto del sitio ── */
-    .language-toggle { position:fixed; top:80px; right:24px; z-index:999; display:flex; align-items:center; gap:8px; background:var(--glass-bg); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--glass-border); padding:8px 16px; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); cursor:pointer; transition:all var(--transition-base); }
-    .language-toggle:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
-    .language-flag { font-size:1.25rem; }
-    .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
-    @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
 
     /* ── Badges de proyecto ── */
     .project-badge { display:inline-flex; align-items:center; gap:5px; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px; margin-right:4px; }
@@ -292,6 +286,7 @@
   ══════════════════════════════════════════════════════ */
   function toggleLang() {
     lang = lang === 'es' ? 'en' : 'es';
+    document.documentElement.lang = lang;
     localStorage.setItem('homeLang', lang);
     renderProyectos();
     // Re-inicializar initModals() de script.js sobre el nuevo DOM
@@ -302,6 +297,7 @@
      INIT
   ══════════════════════════════════════════════════════ */
   document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.lang = lang;
     renderProyectos();
     document.getElementById('languageToggle').addEventListener('click', toggleLang);
   });
