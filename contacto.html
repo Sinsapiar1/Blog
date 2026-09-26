@@ -103,10 +103,10 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
-  <div class="language-toggle" id="languageToggle" aria-label="Change language">
+  <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
     <span class="language-flag" id="languageFlag">🇺🇸</span>
     <span class="language-text" id="languageText">English</span>
-  </div>
+  </button>
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -168,13 +168,14 @@
         { icon:"fas fa-share-alt",    text:"Redes sociales auto." },
         { icon:"fas fa-tools",        text:"Herramientas a medida" }
       ],
-      form_h2: "Escribime 👋", form_sub: "Contame de qué se trata. Te respondo personalmente.",
+      form_h2: "Escribime 👋", form_sub: "Contame de qué se trata. Para una demo de PivetTrack WMS, seleccioná esa opción. Te respondo personalmente.",
       label_fname: "Nombre", label_lname: "Apellido", label_email: "Email",
       label_reason: "Motivo de contacto", label_msg: "Mensaje",
       ph_fname: "Tu nombre", ph_lname: "Tu apellido", ph_email: "tu@email.com",
       ph_msg: "Contame en qué puedo ayudarte. Cuanto más detalle, mejor.",
       reason_placeholder: "Seleccioná una opción",
       reasons: [
+        { value:"demo_pivettrack", label:"🏭 Demo PivetTrack WMS (45 min)" },
         { value:"trabajo",      label:"💼 Oferta de trabajo" },
         { value:"freelance",    label:"🚀 Proyecto freelance" },
         { value:"web",          label:"🌐 Desarrollo web" },
@@ -184,7 +185,7 @@
         { value:"otro",         label:"💬 Otro" }
       ],
       btn_send: "Enviar mensaje",
-      disclaimer: "Tu información es privada. Solo la uso para responderte.",
+      disclaimer: "Tu información es privada. Solo la uso para responderte. <a href='privacidad.html' style='color:#FF6B00;text-decoration:underline;'>Política de privacidad</a>.",
       success_h3: "¡Mensaje recibido!",
       success_p: "Ya recibí tu mensaje. Revisá tu bandeja de entrada — deberías tener una respuesta esperándote.",
       chip1: "Recibido al instante", chip2: "Respuesta enviada"
@@ -214,13 +215,14 @@
         { icon:"fas fa-share-alt",    text:"Social media auto." },
         { icon:"fas fa-tools",        text:"Custom tools" }
       ],
-      form_h2: "Write to me 👋", form_sub: "Tell me what it's about. I'll respond personally.",
+      form_h2: "Write to me 👋", form_sub: "Tell me what it's about. To schedule a PivetTrack WMS demo, select that option below. I'll respond personally.",
       label_fname: "First name", label_lname: "Last name", label_email: "Email",
       label_reason: "Reason for contact", label_msg: "Message",
       ph_fname: "Your first name", ph_lname: "Your last name", ph_email: "you@email.com",
       ph_msg: "Tell me how I can help. The more detail, the better.",
       reason_placeholder: "Select an option",
       reasons: [
+        { value:"demo_pivettrack", label:"🏭 PivetTrack WMS Demo (45 min)" },
         { value:"trabajo",      label:"💼 Job offer" },
         { value:"freelance",    label:"🚀 Freelance project" },
         { value:"web",          label:"🌐 Web development" },
@@ -230,7 +232,7 @@
         { value:"otro",         label:"💬 Other" }
       ],
       btn_send: "Send message",
-      disclaimer: "Your information is private. I only use it to respond to you.",
+      disclaimer: "Your information is private. I only use it to respond to you. <a href='privacidad.html' style='color:#FF6B00;text-decoration:underline;'>Privacy policy</a>.",
       success_h3: "Message received!",
       success_p: "I got your message. Check your inbox — you should have a response waiting.",
       chip1: "Received instantly", chip2: "Reply sent"
@@ -280,26 +282,30 @@
         <div class="form-card" data-aos="fade-left">
           <div id="formWrapper">
             <div class="form-header"><h2>${d.form_h2}</h2><p>${d.form_sub}</p></div>
-            <div class="form-row">
-              <div class="form-group"><label>${d.label_fname}</label><input type="text" id="fname" placeholder="${d.ph_fname}" required></div>
-              <div class="form-group"><label>${d.label_lname}</label><input type="text" id="lname" placeholder="${d.ph_lname}"></div>
-            </div>
-            <div class="form-group"><label>${d.label_email}</label><input type="email" id="email" placeholder="${d.ph_email}" required></div>
-            <div class="form-group">
-              <label>${d.label_reason}</label>
-              <div class="select-wrapper">
-                <select id="reason">
-                  <option value="" disabled selected>${d.reason_placeholder}</option>
-                  ${d.reasons.map(r=>`<option value="${r.value}">${r.label}</option>`).join('')}
-                </select>
+            <form id="contactForm" novalidate>
+              <!-- Honeypot antispam: visible sólo para bots -->
+              <input type="text" id="hp_website" name="website" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <div class="form-row">
+                <div class="form-group"><label for="fname">${d.label_fname}</label><input type="text" id="fname" name="fname" autocomplete="given-name" placeholder="${d.ph_fname}" required></div>
+                <div class="form-group"><label for="lname">${d.label_lname}</label><input type="text" id="lname" name="lname" autocomplete="family-name" placeholder="${d.ph_lname}"></div>
               </div>
-            </div>
-            <div class="form-group"><label>${d.label_msg}</label><textarea id="message" placeholder="${d.ph_msg}" required></textarea></div>
-            <button class="btn-submit" id="submitBtn" type="button">
-              <span class="btn-text"><i class="fas fa-paper-plane"></i> ${d.btn_send}</span>
-              <div class="btn-spinner"></div>
-            </button>
-            <div class="form-disclaimer"><i class="fas fa-lock"></i> ${d.disclaimer}</div>
+              <div class="form-group"><label for="email">${d.label_email}</label><input type="email" id="email" name="email" autocomplete="email" placeholder="${d.ph_email}" required></div>
+              <div class="form-group">
+                <label for="reason">${d.label_reason}</label>
+                <div class="select-wrapper">
+                  <select id="reason" name="reason" autocomplete="off">
+                    <option value="" disabled selected>${d.reason_placeholder}</option>
+                    ${d.reasons.map(r=>`<option value="${r.value}">${r.label}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group"><label for="message">${d.label_msg}</label><textarea id="message" name="message" autocomplete="off" placeholder="${d.ph_msg}" required></textarea></div>
+              <button class="btn-submit" id="submitBtn" type="submit">
+                <span class="btn-text"><i class="fas fa-paper-plane"></i> ${d.btn_send}</span>
+                <div class="btn-spinner"></div>
+              </button>
+              <div class="form-disclaimer"><i class="fas fa-lock"></i> ${d.disclaimer}</div>
+            </form>
           </div>
           <div class="success-screen" id="successScreen">
             <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
@@ -321,11 +327,15 @@
   const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/ivr1wib3mxpgytpn8glao7e02a51lcdy';
 
   function bindSubmit() {
-    const submitBtn     = document.getElementById('submitBtn');
-    const formWrapper   = document.getElementById('formWrapper');
+    const form        = document.getElementById('contactForm');
+    const submitBtn   = document.getElementById('submitBtn');
+    const formWrapper = document.getElementById('formWrapper');
     const successScreen = document.getElementById('successScreen');
-    if (!submitBtn) return;
-    submitBtn.addEventListener('click', async () => {
+    if (!form || !submitBtn) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      // Honeypot: si el campo oculto tiene contenido, es un bot
+      if (document.getElementById('hp_website')?.value) return;
       const fname   = document.getElementById('fname').value.trim();
       const lname   = document.getElementById('lname').value.trim();
       const email   = document.getElementById('email').value.trim();

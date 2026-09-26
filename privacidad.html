@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad · raulpivet.com</title>
+  <meta name="description" content="Política de privacidad de raulpivet.com — cómo se recopilan, usan y protegen los datos enviados a través del formulario de contacto.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://www.raulpivet.com/privacidad.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pp-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+    .pp-back { display:inline-flex; align-items:center; gap:8px; color:var(--text-secondary); text-decoration:none; font-size:0.875rem; margin-bottom:32px; transition:color 0.2s; }
+    .pp-back:hover { color:#FF6B00; }
+    .pp-eyebrow { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:#FF6B00; margin-bottom:10px; }
+    .pp-h1 { font-size:clamp(1.6rem,4vw,2.2rem); font-weight:900; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:8px; }
+    .pp-updated { font-size:0.8125rem; color:var(--text-tertiary); margin-bottom:40px; }
+    .pp-section { margin-bottom:36px; }
+    .pp-section h2 { font-size:1.05rem; font-weight:800; color:var(--text-primary); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+    .pp-section h2 i { color:#FF6B00; font-size:0.9rem; }
+    .pp-section p, .pp-section li { font-size:0.9375rem; color:var(--text-secondary); line-height:1.78; }
+    .pp-section ul { padding-left:20px; margin-top:8px; display:flex; flex-direction:column; gap:6px; }
+    .pp-divider { border:none; border-top:1px solid var(--border-color); margin:40px 0; }
+    .pp-lang-switch { display:flex; gap:12px; margin-bottom:40px; }
+    .pp-lang-btn { padding:6px 16px; border-radius:20px; border:1px solid var(--border-color); background:transparent; color:var(--text-secondary); font-size:0.8125rem; font-weight:600; cursor:pointer; transition:all 0.2s; }
+    .pp-lang-btn.active { background:#FF6B00; border-color:#FF6B00; color:white; }
+    [data-lang] { display:none; }
+    [data-lang].visible { display:block; }
+  </style>
+</head>
+<body>
+  <div class="pp-wrap">
+    <a href="javascript:history.back()" class="pp-back">
+      <i class="fas fa-arrow-left"></i> Volver / Go back
+    </a>
+    <div class="pp-lang-switch">
+      <button class="pp-lang-btn active" onclick="showLang('es')">Español</button>
+      <button class="pp-lang-btn" onclick="showLang('en')">English</button>
+    </div>
+
+    <!-- ═══ ESPAÑOL ═══ -->
+    <div data-lang="es" class="visible">
+      <p class="pp-eyebrow"><i class="fas fa-shield-alt"></i> Privacidad</p>
+      <h1 class="pp-h1">Política de Privacidad</h1>
+      <p class="pp-updated"><i class="fas fa-calendar-alt"></i> Última actualización: septiembre 2026</p>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-info-circle"></i> ¿Qué datos recopilamos?</h2>
+        <p>Cuando enviás el formulario de contacto en este sitio, recopilamos los siguientes datos que vos mismo proporcionás voluntariamente:</p>
+        <ul>
+          <li>Nombre y apellido</li>
+          <li>Dirección de correo electrónico</li>
+          <li>Motivo de contacto</li>
+          <li>Contenido del mensaje</li>
+          <li>Fecha y hora del envío (zona horaria EST, Miami FL)</li>
+        </ul>
+        <p style="margin-top:12px">Este sitio no usa cookies de seguimiento propias ni recopila datos de navegación más allá de lo que Google Analytics y Microsoft Clarity registran de forma agregada (ver sección de terceros).</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-cogs"></i> ¿Para qué usamos esos datos?</h2>
+        <p>Los datos del formulario se utilizan exclusivamente para:</p>
+        <ul>
+          <li>Responderte personalmente al correo que indicaste.</li>
+          <li>Coordinar una reunión o demostración si la solicitaste.</li>
+          <li>Ningún otro fin. No hacemos marketing masivo con estos datos.</li>
+        </ul>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-route"></i> ¿Por dónde pasan los datos?</h2>
+        <p>El formulario envía los datos a través del siguiente flujo automatizado:</p>
+        <ul>
+          <li><strong>Make.com (Integromat)</strong> — recibe el formulario vía webhook.</li>
+          <li><strong>Google Gemini AI</strong> — genera un borrador de respuesta automática.</li>
+          <li><strong>Gmail</strong> — envía la respuesta desde Raul@raulpivet.com a tu correo.</li>
+          <li><strong>Google Sheets</strong> — registra el contacto para seguimiento interno.</li>
+        </ul>
+        <p style="margin-top:12px">Todos estos servicios son proveedores de confianza con sus propias políticas de privacidad. Los datos no se venden ni comparten con terceros para ningún otro propósito.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-clock"></i> ¿Cuánto tiempo guardamos los datos?</h2>
+        <p>Los registros de contacto se conservan en Google Sheets durante el tiempo que sea necesario para dar seguimiento a la consulta. Si querés que eliminemos tu información, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a> y lo hacemos en 48 horas hábiles.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-chart-bar"></i> Servicios de analítica de terceros</h2>
+        <p>Este sitio utiliza:</p>
+        <ul>
+          <li><strong>Google Analytics 4</strong> — mide visitas y comportamiento de forma agregada y anonimizada.</li>
+          <li><strong>Microsoft Clarity</strong> — analiza el comportamiento de navegación (mapas de calor, grabaciones de sesión anonimizadas).</li>
+        </ul>
+        <p style="margin-top:12px">Podés optar por no ser rastreado usando extensiones de navegador como uBlock Origin o activando la opción "No rastrear" en tu navegador.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-user-shield"></i> Tus derechos</h2>
+        <p>Tenés derecho a acceder, rectificar o eliminar los datos personales que nos enviaste. Para ejercer cualquiera de estos derechos, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a>.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-building"></i> Responsable del tratamiento</h2>
+        <p><strong>PIVET DIGITAL AUTOMATIONS LLC</strong><br>
+        Raul Pivet — Miami, Florida, Estados Unidos<br>
+        <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a></p>
+      </div>
+    </div>
+
+    <hr class="pp-divider">
+
+    <!-- ═══ ENGLISH ═══ -->
+    <div data-lang="en">
+      <p class="pp-eyebrow"><i class="fas fa-shield-alt"></i> Privacy</p>
+      <h1 class="pp-h1">Privacy Policy</h1>
+      <p class="pp-updated"><i class="fas fa-calendar-alt"></i> Last updated: September 2026</p>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-info-circle"></i> What data do we collect?</h2>
+        <p>When you submit the contact form on this site, we collect the following data that you voluntarily provide:</p>
+        <ul>
+          <li>First and last name</li>
+          <li>Email address</li>
+          <li>Reason for contact</li>
+          <li>Message content</li>
+          <li>Date and time of submission (EST timezone, Miami FL)</li>
+        </ul>
+        <p style="margin-top:12px">This site does not use its own tracking cookies and does not collect browsing data beyond what Google Analytics and Microsoft Clarity record in an aggregated manner (see third-party section).</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-cogs"></i> How do we use your data?</h2>
+        <p>Form data is used exclusively to:</p>
+        <ul>
+          <li>Reply to you personally at the email address you provided.</li>
+          <li>Schedule a meeting or demo if you requested one.</li>
+          <li>No other purpose. We do not send mass marketing with this data.</li>
+        </ul>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-route"></i> Where does your data go?</h2>
+        <p>The form sends data through the following automated workflow:</p>
+        <ul>
+          <li><strong>Make.com (Integromat)</strong> — receives form data via webhook.</li>
+          <li><strong>Google Gemini AI</strong> — generates an automatic reply draft.</li>
+          <li><strong>Gmail</strong> — sends the reply from Raul@raulpivet.com to your email.</li>
+          <li><strong>Google Sheets</strong> — logs the contact for internal follow-up.</li>
+        </ul>
+        <p style="margin-top:12px">All these services are trusted providers with their own privacy policies. Your data is not sold or shared with third parties for any other purpose.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-clock"></i> How long do we keep your data?</h2>
+        <p>Contact records are retained in Google Sheets for as long as needed to follow up on your inquiry. If you want your information deleted, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a> and we will do so within 48 business hours.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-chart-bar"></i> Third-party analytics</h2>
+        <p>This site uses:</p>
+        <ul>
+          <li><strong>Google Analytics 4</strong> — measures visits and behavior in an aggregated, anonymized manner.</li>
+          <li><strong>Microsoft Clarity</strong> — analyzes browsing behavior (heatmaps, anonymized session recordings).</li>
+        </ul>
+        <p style="margin-top:12px">You can opt out of tracking by using browser extensions like uBlock Origin or by enabling the "Do Not Track" option in your browser.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-user-shield"></i> Your rights</h2>
+        <p>You have the right to access, rectify, or delete the personal data you submitted to us. To exercise any of these rights, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a>.</p>
+      </div>
+
+      <div class="pp-section">
+        <h2><i class="fas fa-building"></i> Data controller</h2>
+        <p><strong>PIVET DIGITAL AUTOMATIONS LLC</strong><br>
+        Raul Pivet — Miami, Florida, United States<br>
+        <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a></p>
+      </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+  <script>
+    function showLang(l) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === l);
+      });
+      document.querySelectorAll('.pp-lang-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', (i === 0 && l === 'es') || (i === 1 && l === 'en'));
+      });
+      document.documentElement.lang = l;
+    }
+    // Detect site language from localStorage
+    const siteLang = localStorage.getItem('homeLang') || 'es';
+    if (siteLang === 'en') showLang('en');
+  </script>
+</body>
+</html>

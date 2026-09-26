@@ -159,6 +159,18 @@
       transform: scale(1.4);
     }
 
+    /* ── Responsive: evitar desborde horizontal en móvil ── */
+    @media(max-width:600px) {
+      .hero-eyebrow { flex-wrap: wrap; gap: 8px; }
+      .eyebrow-rotating { font-size: 0.875rem; min-width: 0; }
+    }
+    @media(max-width:400px) {
+      .hero-eyebrow { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .eyebrow-pill { font-size: 9px; padding: 5px 10px; letter-spacing: 0.1em; }
+      .eyebrow-dots { display: none; }
+      .eyebrow-cursor { display: none; }
+    }
+
     .hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800; line-height:1.15; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:16px; }
     .hero h1 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .hero-sub { font-size:1.05rem; color:var(--text-secondary); line-height:1.7; max-width:580px; margin-bottom:28px; }
@@ -314,10 +326,10 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
-  <div class="language-toggle" id="languageToggle" aria-label="Change language">
+  <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
     <span class="language-flag" id="languageFlag">🇺🇸</span>
     <span class="language-text" id="languageText">English</span>
-  </div>
+  </button>
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
