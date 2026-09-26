@@ -266,6 +266,20 @@
       line-height: 1.4; font-style: italic;
     }
 
+    /* ── PivetTrack promo card ── */
+    .ptpromo-card { display:flex; align-items:center; gap:20px; background:linear-gradient(135deg,rgba(255,107,0,0.09),rgba(255,149,0,0.05)); border:1px solid rgba(255,107,0,0.3); border-radius:20px; padding:26px 30px; text-decoration:none; position:relative; overflow:hidden; transition:all 0.25s; margin:32px 0; }
+    .ptpromo-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); }
+    .ptpromo-card:hover { transform:translateY(-3px); box-shadow:0 16px 44px rgba(255,107,0,0.15); border-color:rgba(255,107,0,0.5); }
+    .ptpromo-badge { font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:#FF6B00; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.2); padding:5px 12px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+    .ptpromo-body { flex:1; min-width:0; }
+    .ptpromo-h2 { font-size:1.25rem; font-weight:800; color:var(--text-primary); letter-spacing:-0.02em; margin-bottom:5px; }
+    .ptpromo-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; margin-bottom:12px; }
+    .ptpromo-metrics { display:flex; gap:18px; flex-wrap:wrap; }
+    .ptpromo-metrics span { font-size:0.8rem; color:var(--text-secondary); background:var(--bg-secondary); border:1px solid var(--border-color); padding:3px 10px; border-radius:10px; font-weight:600; }
+    .ptpromo-arrow { width:42px; height:42px; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#FF6B00; font-size:1rem; flex-shrink:0; transition:all 0.25s; }
+    .ptpromo-card:hover .ptpromo-arrow { background:#FF6B00; color:white; transform:translateX(4px); }
+    @media(max-width:600px){ .ptpromo-card { flex-direction:column; align-items:flex-start; padding:20px; gap:12px; } .ptpromo-arrow { display:none; } }
+
     /* ── Resto del sitio sin cambios ── */
     .section-header { margin-bottom:28px; }
     .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
@@ -338,7 +352,7 @@
       <div class="profile">
         <div class="profile-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
         <h2>Raul Pivet</h2>
-        <p id="sidebarSubtitle">Logistics &amp; Tech Solutions</p>
+        <p id="sidebarSubtitle">Founder · PivetTrack WMS</p>
         <span class="company-badge" title="Empresa registrada en el Estado de Florida — Mayo 2026"><i class="fas fa-building"></i> PIVET DIGITAL AUTOMATIONS LLC</span>
       </div>
       <ul class="menu">
@@ -422,21 +436,21 @@
   <script>
   const t = {
     es: {
-      sidebar: "Consultoría Digital",
+      sidebar: "Fundador · PivetTrack WMS",
       nav_home:"Inicio", nav_about:"Nosotros", nav_projects:"Proyectos", nav_contact:"Contacto", nav_demos:"AppSheet Demos",
       footer: "Automatización & Business Intelligence",
-      eyebrow_pill: "🏢 PIVET DIGITAL AUTOMATIONS LLC",
+      eyebrow_pill: "🏭 PIVETTRACK WMS · PIVET DIGITAL AUTOMATIONS LLC",
       eyebrow_phrases: [
-        "¿Su inventario aún se cierra con <span class='highlight'>Excel</span>? Lo digitalizamos.",
+        "Construí <span class='highlight'>PivetTrack WMS</span> — inventario industrial para logística Miami.",
+        "¿Su bodega aún registra en <span class='highlight'>papel o Excel</span>? Lo digitalizamos.",
         "¿Sus reportes llegan cuando <span class='highlight'>ya es tarde</span>? Los automatizamos.",
-        "¿Su equipo pierde horas en tareas <span class='highlight'>repetitivas</span>? Lo resolvemos.",
         "¿Necesita conectar su bodega con su <span class='highlight'>ERP</span>? Lo integramos."
       ],
       h1a: "Automatización Logística",
       h1b: "& Operativa",
-      hero_sub: "Convertimos operaciones manuales en sistemas automáticos. Documentos que tardan horas → entregados en segundos. Apps de inventario, pipelines de datos y flujos inteligentes — para empresas que no pueden permitirse errores ni demoras.",
+      hero_sub: "Creé <strong>PivetTrack WMS</strong> — software de control de inventario de grado industrial para empresas logísticas del sur de Florida. También construyo automatizaciones, dashboards y herramientas operativas a medida para operaciones que no pueden permitirse errores ni demoras.",
       tags: ["WMS Móvil","Power BI","Python","AppSheet","ERP / SAP","Make.com","Power Automate","GitHub Actions","Streamlit","Google Suite","IA Aplicada","SEO Técnico"],
-      btn_talk:"Agendar Demostración", btn_cv:"Casos de Éxito", btn_lab:"Ver Apps en Vivo",
+      btn_talk:"Ver PivetTrack WMS", btn_cv:"Agendar Demo Gratis", btn_lab:"Ver Apps en Vivo",
       stats: [
         { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Años en operaciones logísticas",   sub:"Minería, distribución y logística",     trend:"Trayectoria" },
         { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Reducción de trabajo manual",       sub:"En procesos automatizados",              trend:"Probado" },
@@ -454,7 +468,7 @@
         { num:"03", title:"Control de entradas y salidas", desc:"App móvil para que el equipo registre movimientos en tiempo real, con validaciones automáticas y sin papel." },
         { num:"04", title:"Reportes y documentos automáticos", desc:"El sistema genera y exporta los informes que la empresa necesita — en el formato correcto, sin que nadie tenga que armarlo a mano." }
       ],
-      svc_eyebrow:"Nuestras Soluciones", svc_title:"¿Qué construimos para su empresa?",
+      svc_eyebrow:"Más Soluciones a Medida", svc_title:"¿Necesitás algo específico para tu operación?",
       services: [
         { icon:"fas fa-mobile-alt", title:"Sistema WMS Móvil", desc:"Apps de inventario de grado corporativo en AppSheet. Escaneo en modo ráfaga, validación automática por bodega y reportes listos para ERP. Sin instalación — cualquier smartphone.", tags:["AppSheet","Google Sheets","WMS","ERP"] },
         { icon:"fas fa-file-alt", title:"Automatización Documental", desc:"Eliminamos la emisión manual de documentos logísticos. Órdenes de compra, guías de despacho, informes de recepción — generados y distribuidos automáticamente en segundos.", tags:["Apps Script","Power Automate","Gmail API","PDF"] },
@@ -496,26 +510,31 @@
         tech:["AppSheet","Google Sheets","Apps Script","Gmail API"],
         cta:"Ver Demo en Video"
       },
+      pt_promo_badge:"🏭 Mi Producto Principal",
+      pt_promo_h2:"PivetTrack WMS",
+      pt_promo_desc:"Control de inventario de grado industrial para bodegas logísticas. Folio correlativo en cada movimiento, SLA 99.9% comprometido y precios transparentes.",
+      pt_promo_m1:"US$ 3,500 Setup", pt_promo_m2:"US$ 800 / mes", pt_promo_m3:"Demo gratuita 45 min",
+      pt_promo_cta:"Ver PivetTrack WMS →",
       cta_title:"¿Agendamos 30 minutos sin costo?",
       cta_desc:"Le mostramos exactamente cómo solucionamos su caso con tecnología real, no propuestas genéricas.<br>Trabajo remoto · Disponible de inmediato · Miami, FL · <strong>PIVET DIGITAL AUTOMATIONS LLC</strong>",
       cta_btn1:"Agendar Demostración", cta_btn2:"Ver Demos en Vivo"
     },
     en: {
-      sidebar:"Digital Consulting",
+      sidebar:"Founder · PivetTrack WMS",
       nav_home:"Home", nav_about:"About Us", nav_projects:"Projects", nav_contact:"Contact", nav_demos:"AppSheet Demos",
       footer:"Automation & Business Intelligence",
-      eyebrow_pill: "🏢 PIVET DIGITAL AUTOMATIONS LLC",
+      eyebrow_pill: "🏭 PIVETTRACK WMS · PIVET DIGITAL AUTOMATIONS LLC",
       eyebrow_phrases: [
-        "Is your inventory still closed with <span class='highlight'>Excel</span>? We digitize it.",
+        "I built <span class='highlight'>PivetTrack WMS</span> — industrial-grade inventory for Miami logistics.",
+        "Is your warehouse still on <span class='highlight'>paper or Excel</span>? We digitize it.",
         "Do your reports arrive when it's <span class='highlight'>already too late</span>? We automate them.",
-        "Is your team wasting hours on <span class='highlight'>repetitive tasks</span>? We solve that.",
         "Need to connect your warehouse to your <span class='highlight'>ERP</span>? We integrate it."
       ],
       h1a:"Logistics & Operations",
       h1b:"Automation",
-      hero_sub:"We transform manual operations into automated systems. Documents that take hours → delivered in seconds. Inventory apps, data pipelines and intelligent flows — for companies that can't afford errors or delays.",
+      hero_sub:"I built <strong>PivetTrack WMS</strong> — industrial-grade inventory control software for South Florida logistics companies. I also build custom automations, dashboards, and operational tools for operations that can't afford errors or delays.",
       tags:["Mobile WMS","Power BI","Python","AppSheet","ERP / SAP","Make.com","Power Automate","GitHub Actions","Streamlit","Google Suite","Applied AI","Technical SEO"],
-      btn_talk:"Schedule a Demo", btn_cv:"Case Studies", btn_lab:"See Live Apps",
+      btn_talk:"Explore PivetTrack WMS", btn_cv:"Schedule a Free Demo", btn_lab:"See Live Apps",
       stats: [
         { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Years in logistics operations",    sub:"Mining, distribution & logistics",      trend:"Track record" },
         { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Manual work reduction",            sub:"In automated processes",                trend:"Proven" },
@@ -533,7 +552,7 @@
         { num:"03", title:"Entries and exits control", desc:"A mobile app lets the team record movements in real time, with automatic validations and no paper." },
         { num:"04", title:"Automatic reports and documents", desc:"The system generates and exports the reports the company needs — in the right format, without anyone having to build them manually." }
       ],
-      svc_eyebrow:"Our Solutions", svc_title:"What we build for your company",
+      svc_eyebrow:"More Custom Solutions", svc_title:"Need something specific for your operation?",
       services:[
         { icon:"fas fa-mobile-alt", title:"Mobile WMS System", desc:"Corporate-grade inventory apps on AppSheet. Burst-mode scanning, automatic warehouse validation and ERP-ready reports. No installation — any smartphone.", tags:["AppSheet","Google Sheets","WMS","ERP"] },
         { icon:"fas fa-file-alt", title:"Document Automation", desc:"We eliminate manual logistics document generation. Purchase orders, dispatch guides, receiving reports — automatically generated and distributed in seconds.", tags:["Apps Script","Power Automate","Gmail API","PDF"] },
@@ -575,6 +594,11 @@
         tech:["AppSheet","Google Sheets","Apps Script","Gmail API"],
         cta:"Watch Video Demo"
       },
+      pt_promo_badge:"🏭 My Primary Product",
+      pt_promo_h2:"PivetTrack WMS",
+      pt_promo_desc:"Industrial-grade inventory control for logistics warehouses. Sequential document on every movement, 99.9% SLA commitment and transparent pricing.",
+      pt_promo_m1:"US$ 3,500 Setup", pt_promo_m2:"US$ 800 / month", pt_promo_m3:"Free 45-min demo",
+      pt_promo_cta:"Explore PivetTrack WMS →",
       cta_title:"Ready to talk about your operation?",
       cta_desc:"We'll show you exactly how we solve your case with real technology, not generic proposals.<br>Remote work · Available immediately · Miami, FL · <strong>PIVET DIGITAL AUTOMATIONS LLC</strong>",
       cta_btn1:"Schedule a Demo", cta_btn2:"See Live Demos"
@@ -647,8 +671,8 @@
         <p class="hero-sub">${d.hero_sub}</p>
         <div class="hero-tags">${d.tags.map(tg=>`<span class="hero-tag">${tg}</span>`).join('')}</div>
         <div class="hero-cta">
-          <a href="contacto.html" class="btn"><i class="fas fa-calendar-check"></i> ${d.btn_talk}</a>
-          <a href="appsheet-demos.html" class="btn-outline"><i class="fas fa-play-circle"></i> ${d.btn_cv}</a>
+          <a href="pivettrack.html" class="btn"><i class="fas fa-warehouse"></i> ${d.btn_talk}</a>
+          <a href="contacto.html" class="btn-outline"><i class="fas fa-calendar-check"></i> ${d.btn_cv}</a>
           <a href="galeria.html" class="btn-outline"><i class="fas fa-flask"></i> ${d.btn_lab}</a>
         </div>
       </section>
@@ -666,6 +690,21 @@
             <span class="stat-sublabel">${s.sub}</span>
           </div>`).join('')}
       </div>
+
+      <!-- PivetTrack WMS — producto principal -->
+      <a href="pivettrack.html" class="ptpromo-card" data-aos="fade-up">
+        <div class="ptpromo-badge">${d.pt_promo_badge}</div>
+        <div class="ptpromo-body">
+          <h2 class="ptpromo-h2">${d.pt_promo_h2}</h2>
+          <p class="ptpromo-desc">${d.pt_promo_desc}</p>
+          <div class="ptpromo-metrics">
+            <span>${d.pt_promo_m1}</span>
+            <span>${d.pt_promo_m2}</span>
+            <span>${d.pt_promo_m3}</span>
+          </div>
+        </div>
+        <div class="ptpromo-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+      </a>
 
       <section class="featured-case" data-aos="fade-up">
         <div class="featured-case-card">

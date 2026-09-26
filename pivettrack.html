@@ -431,6 +431,19 @@
     .pt-final-cta-h2 .accent { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .pt-final-cta-sub { font-size:0.9375rem; color:var(--text-secondary); line-height:1.72; max-width:520px; margin:0 auto 28px; }
     .pt-final-cta-actions { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+
+    /* ─── STICKY DEMO CTA ─── */
+    .pt-sticky-cta { position:fixed; bottom:28px; right:28px; z-index:500; display:inline-flex; align-items:center; gap:9px; background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; font-size:0.875rem; font-weight:700; padding:13px 22px; border-radius:var(--radius-full); border:none; text-decoration:none; box-shadow:0 8px 28px rgba(255,107,0,0.45); cursor:pointer; transition:all 0.3s cubic-bezier(0.34,1.1,0.64,1); transform:translateY(80px); opacity:0; pointer-events:none; }
+    .pt-sticky-cta.visible { transform:translateY(0); opacity:1; pointer-events:auto; }
+    .pt-sticky-cta:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(255,107,0,0.55); }
+    @media(max-width:480px){ .pt-sticky-cta { bottom:16px; right:16px; font-size:0.8125rem; padding:11px 16px; } }
+
+    /* ─── YOUTUBE FACADE ─── */
+    .pt-video-facade { position:absolute; inset:0; cursor:pointer; background:#000; display:flex; align-items:center; justify-content:center; }
+    .pt-video-facade img { width:100%; height:100%; object-fit:cover; opacity:0.82; transition:opacity 0.22s; }
+    .pt-video-facade:hover img { opacity:1; }
+    .pt-facade-btn { position:absolute; width:72px; height:72px; background:rgba(255,0,0,0.88); border:none; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.9rem; cursor:pointer; transition:transform 0.2s, background 0.2s; }
+    .pt-video-facade:hover .pt-facade-btn { transform:scale(1.12); background:#ff0000; }
   </style>
 </head>
 <body>
@@ -458,7 +471,7 @@
           <img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy">
         </div>
         <h2>Raul Pivet</h2>
-        <p>Logistics &amp; Tech Solutions</p>
+        <p>Founder · PivetTrack WMS</p>
         <span class="company-badge" title="Empresa registrada en el Estado de Florida — Mayo 2026">
           <i class="fas fa-building"></i> PIVET DIGITAL AUTOMATIONS LLC
         </span>
@@ -486,6 +499,12 @@
     <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
     <p class="footer-registered" id="footerText">PivetTrack WMS — Warehouse Management System · Miami, FL · Registered LLC — Florida</p>
   </footer>
+
+  <!-- Sticky demo CTA — visible after scrolling past hero -->
+  <a href="contacto.html" class="pt-sticky-cta" id="ptStickyCta" aria-label="Solicitar demo de PivetTrack">
+    <i class="fas fa-calendar-check"></i>
+    <span id="ptStickyLabel">Solicitar Demo</span>
+  </a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
@@ -962,15 +981,34 @@
 
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
+  /* ── Load featured player (facade → iframe) ── */
+  function ptLoadFeatured() {
+    const facade = document.getElementById('ptVideoFacade');
+    const player = document.getElementById('pt-yt-player');
+    if (!facade || !player) return;
+    const d = t[lang];
+    const _fi = d.demos.reduce((acc, v, i) => v.featured ? i : acc, d.demos.length - 1);
+    const _fd = d.demos[_fi];
+    facade.style.display = 'none';
+    player.style.display = 'block';
+    if (!player.src || player.src === window.location.href) {
+      player.src = `https://www.youtube.com/embed/${_fd.id}?rel=0&modestbranding=1&color=white&autoplay=1`;
+      player.title = `PivetTrack WMS — ${_fd.title}`;
+    }
+  }
+
   /* ── Carousel interaction: swap featured player when a live card is clicked ── */
   function ptSelectDemo(idx) {
     const d = t[lang];
     const v = d.demos[idx];
     if (!v || !v.live) return;
 
-    /* Update iframe src */
+    /* Update iframe src — hide facade first if still visible */
+    const facade = document.getElementById('ptVideoFacade');
+    if (facade) facade.style.display = 'none';
     const player = document.getElementById('pt-yt-player');
     if (player) {
+      player.style.display = 'block';
       player.src = `https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1&color=white&autoplay=1`;
       player.title = `PivetTrack WMS — ${v.title}`;
     }
@@ -1055,6 +1093,9 @@
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent  = lang === 'es' ? 'English' : 'Español';
     document.getElementById('footerText').textContent    = d.footer_text;
+    // Update sticky CTA label
+    const stickyLabel = document.getElementById('ptStickyLabel');
+    if (stickyLabel) stickyLabel.textContent = lang === 'es' ? 'Solicitar Demo' : 'Request Demo';
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const k = el.getAttribute('data-i18n');
       if (d[k]) el.textContent = d[k];
@@ -1249,16 +1290,25 @@
           <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;">${d.demos_sub}</p>
         </div>
 
-        <!-- Featured player — defaults to newest/featured demo -->
+        <!-- Featured player — facade carga el iframe solo cuando el usuario hace click -->
         <div class="pt-demo-featured" id="pt-demo-featured">
-          <div class="pt-video-wrap">
+          <div class="pt-video-wrap" id="ptVideoWrap">
+            <div class="pt-video-facade" id="ptVideoFacade">
+              <img src="https://img.youtube.com/vi/${_fd.id}/maxresdefault.jpg"
+                   onerror="this.src='https://img.youtube.com/vi/${_fd.id}/mqdefault.jpg'"
+                   alt="${_fd.title}">
+              <button class="pt-facade-btn" onclick="ptLoadFeatured()" aria-label="Reproducir video de PivetTrack">
+                <i class="fab fa-youtube"></i>
+              </button>
+            </div>
             <iframe
               id="pt-yt-player"
-              src="https://www.youtube.com/embed/${_fd.id}?rel=0&modestbranding=1&color=white"
+              src=""
               title="PivetTrack WMS — ${_fd.title}"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
-              loading="lazy">
+              loading="lazy"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:none">
             </iframe>
           </div>
           <div class="pt-demo-meta" id="pt-demo-meta">
@@ -1356,6 +1406,13 @@
     document.documentElement.lang = lang;
     render();
     document.getElementById('languageToggle').addEventListener('click', toggleLang);
+    // Sticky CTA: appears after 500px scroll
+    const stickyCta = document.getElementById('ptStickyCta');
+    if (stickyCta) {
+      window.addEventListener('scroll', () => {
+        stickyCta.classList.toggle('visible', window.scrollY > 500);
+      }, { passive: true });
+    }
   });
   </script>
 </body>
