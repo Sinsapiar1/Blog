@@ -251,76 +251,47 @@
       margin-bottom:12px;
     }
 
-    /* ─── CAROUSEL: Symmetric 3×2 grid ─── */
-    /* Desktop ≥961px — 3 columns × 2 rows */
-    .pt-demo-carousel { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    /* Tablet 481–960px — 2 columns × 3 rows */
-    @media(max-width:960px){
-      .pt-demo-carousel { grid-template-columns:repeat(2,1fr); gap:12px; }
-    }
-    /* Mobile ≤480px — 1 column × 6 rows */
-    @media(max-width:480px){
-      .pt-demo-carousel { grid-template-columns:1fr; gap:8px; }
-    }
-    /* Card desc: hidden by default */
-    .pt-demo-card-desc { display:none; font-size:0.8rem; color:var(--text-secondary); line-height:1.55; }
-    /* NEW badge on featured card */
-    .pt-demo-new-badge { display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:#FF6B00; background:linear-gradient(135deg,rgba(255,107,0,0.12),rgba(255,149,0,0.06)); border:1px solid rgba(255,107,0,0.3); padding:2px 9px; border-radius:8px; animation:pill-glow 2.8s ease-in-out infinite; }
-    /* Enhanced hover transitions */
-    .pt-demo-card:not(.pt-demo-card-soon):hover { border-color:rgba(255,107,0,0.45) !important; transform:translateY(-4px); box-shadow:0 16px 38px rgba(255,107,0,0.16); transition:all 0.25s cubic-bezier(0.34,1.1,0.64,1); }
-    .pt-demo-card:not(.pt-demo-card-soon):hover .pt-demo-play-over i { transform:scale(1.2); }
+    /* ═══════════════════════════════════════════════
+       CAROUSEL — Rich AppSheet-style cards
+    ═══════════════════════════════════════════════ */
+    .pt-demo-carousel { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px; }
+    @media(max-width:480px){ .pt-demo-carousel { grid-template-columns:1fr; } }
 
-    .pt-demo-card {
-      background:var(--glass-bg); border:1px solid var(--border-color);
-      border-radius:16px; overflow:hidden; cursor:pointer;
-      transition:all 0.25s; position:relative;
-    }
-    .pt-demo-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:2px;
-      background:linear-gradient(90deg,#FF6B00,#FF9500);
-      opacity:0; transition:opacity 0.25s;
-    }
-    .pt-demo-card.active { border-color:rgba(255,107,0,0.45); box-shadow:0 0 0 2px rgba(255,107,0,0.12); }
-    .pt-demo-card.active::before { opacity:1; }
-    .pt-demo-card:hover:not(.pt-demo-card-soon) { border-color:rgba(255,107,0,0.35); transform:translateY(-3px); box-shadow:0 10px 28px rgba(255,107,0,0.1); }
-    .pt-demo-card:hover:not(.pt-demo-card-soon)::before { opacity:1; }
-    .pt-demo-card-soon { cursor:default; opacity:0.6; }
+    .pt-demo-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; transition:all 0.3s cubic-bezier(0.34,1,0.64,1); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; position:relative; cursor:pointer; }
+    .pt-demo-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:var(--radius-xl) var(--radius-xl) 0 0; z-index:1; }
+    .pt-demo-card:hover::before, .pt-demo-card.active::before { transform:scaleX(1); }
+    .pt-demo-card:hover:not(.pt-demo-card-soon) { transform:translateY(-7px); box-shadow:0 22px 52px rgba(255,107,0,0.15); border-color:rgba(255,107,0,0.3); }
+    .pt-demo-card.active { border-color:rgba(255,107,0,0.42); box-shadow:0 0 0 2px rgba(255,107,0,0.14); }
+    .pt-demo-card-soon { cursor:default; opacity:0.55; }
 
     /* Thumbnail */
-    .pt-demo-thumb {
-      position:relative; aspect-ratio:16/9;
-      overflow:hidden; background:var(--bg-secondary);
-    }
-    .pt-demo-thumb img { width:100%; height:100%; object-fit:cover; transition:transform 0.35s ease; }
-    .pt-demo-card:hover:not(.pt-demo-card-soon) .pt-demo-thumb img { transform:scale(1.06); }
-    .pt-demo-play-over {
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-      background:rgba(0,0,0,0.32); transition:background 0.25s;
-    }
-    .pt-demo-play-over i { font-size:2rem; color:white; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5)); transition:transform 0.2s; }
-    .pt-demo-card.active .pt-demo-play-over { background:rgba(255,107,0,0.22); }
-    .pt-demo-card.active .pt-demo-play-over i { color:#FFB347; }
-    .pt-demo-card:hover:not(.pt-demo-card-soon) .pt-demo-play-over i { transform:scale(1.18); }
+    .pt-demo-thumb { position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden; }
+    .pt-demo-thumb img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; }
+    .pt-demo-card:hover:not(.pt-demo-card-soon) .pt-demo-thumb img { transform:scale(1.05); }
 
-    /* Placeholder for coming-soon */
-    .pt-demo-thumb-ph {
-      aspect-ratio:16/9; background:linear-gradient(135deg,var(--bg-secondary),var(--bg-tertiary));
-      display:flex; align-items:center; justify-content:center;
-      font-size:2.2rem; color:var(--text-tertiary);
-    }
+    /* Play overlay */
+    .pt-demo-play-over { position:absolute; inset:0; background:rgba(0,0,0,0); display:flex; align-items:center; justify-content:center; opacity:0; transition:all 0.25s; z-index:2; }
+    .pt-demo-card:hover .pt-demo-play-over { background:rgba(0,0,0,0.6); opacity:1; }
+    .pt-demo-card.active .pt-demo-play-over { background:rgba(255,107,0,0.18); opacity:1; }
+    .pt-demo-play-over i { font-size:2.4rem; color:white; filter:drop-shadow(0 3px 10px rgba(0,0,0,0.5)); transition:transform 0.2s; }
+    .pt-demo-card:hover .pt-demo-play-over i { transform:scale(1.18); }
+    .pt-demo-card.active .pt-demo-play-over i { color:#FFB347; }
 
     /* Card body */
-    .pt-demo-card-body { padding:14px 16px; }
-    .pt-demo-card-num { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,107,0,0.45); margin-bottom:4px; }
-    .pt-demo-card-title { font-size:0.8125rem; font-weight:700; color:var(--text-primary); line-height:1.3; margin-bottom:6px; }
-    .pt-demo-card-tags { display:flex; flex-wrap:wrap; gap:4px; }
-    .pt-demo-card-tag { font-size:9px; font-weight:700; color:var(--text-tertiary); background:var(--bg-secondary); padding:2px 7px; border-radius:7px; }
-    .pt-coming-pill {
-      display:inline-flex; align-items:center; gap:4px;
-      font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em;
-      color:var(--text-tertiary); background:var(--bg-secondary);
-      border:1px solid var(--border-color); padding:2px 9px; border-radius:8px;
-    }
+    .pt-demo-card-body { padding:20px 22px 22px; flex:1; display:flex; flex-direction:column; }
+    .pt-demo-card-header { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+    .pt-demo-card-num { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,107,0,0.5); }
+    .pt-demo-new-badge { display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:#FF6B00; background:linear-gradient(135deg,rgba(255,107,0,0.12),rgba(255,149,0,0.06)); border:1px solid rgba(255,107,0,0.3); padding:2px 9px; border-radius:8px; animation:pill-glow 2.8s ease-in-out infinite; }
+    .pt-demo-card-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
+    .pt-demo-card-tag { font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 9px; border-radius:var(--radius-full); background:rgba(255,107,0,0.07); color:#FF6B00; border:1px solid rgba(255,107,0,0.18); }
+    .pt-demo-card-title { font-size:1rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; line-height:1.3; }
+    .pt-demo-card-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.65; flex:1; margin-bottom:14px; }
+    .pt-demo-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:12px; border-top:1px solid var(--border-color); margin-top:auto; }
+    .pt-demo-live-pill { display:flex; align-items:center; gap:6px; font-size:0.75rem; color:var(--text-secondary); font-weight:500; }
+    .pt-demo-live-dot-sm { width:7px; height:7px; border-radius:50%; background:#34C759; box-shadow:0 0 5px rgba(52,199,89,0.6); animation:blink-dot 1.2s step-end infinite; flex-shrink:0; }
+    .pt-demo-yt-link { display:inline-flex; align-items:center; gap:5px; font-size:0.78rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:6px 13px; border-radius:16px; text-decoration:none; box-shadow:0 4px 10px rgba(255,107,0,0.28); transition:all 0.2s; }
+    .pt-demo-yt-link:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,107,0,0.42); }
+    .pt-coming-pill { display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-tertiary); background:var(--bg-secondary); border:1px solid var(--border-color); padding:2px 9px; border-radius:8px; }
 
     /* ═══════════════════════════════════════════════
        ARCHITECTURE — Folio table visual
@@ -736,14 +707,22 @@
           tags: ['Escáner Móvil', 'Código de Barras', 'Kardex Inmutable', 'Trazabilidad'],
         },
         {
-          id: 'jOs8MmPTO3M', live: true, num: '06', featured: true,
-          new_badge: '★ NUEVO',
+          id: 'jOs8MmPTO3M', live: true, num: '06',
           live_lbl: 'Disponible Ahora',
           title: 'API B2B y Portal de Pedidos — Conexión ERP',
           desc: 'Conecta el WMS directamente con el ERP de tus clientes vía API B2B. Pedidos entrantes, confirmaciones de stock y notificaciones en tiempo real — integración total sin fricciones manuales.',
           tags: ['API B2B', 'Portal de Pedidos', 'Conexión ERP', 'Integración'],
         },
+        {
+          id: 'nnSxZhhvdP4', live: true, num: '07', featured: true,
+          new_badge: '★ NUEVO',
+          live_lbl: 'Disponible Ahora',
+          title: 'Portal de Pedidos B2B para Clientes — Cómo Funciona',
+          desc: 'Demo completa del Portal de Pedidos B2B de PivetTrack: cómo los clientes mayoristas colocan pedidos directamente en el sistema, confirmación de stock en tiempo real y seguimiento de estado — sin llamadas ni correos.',
+          tags: ['Portal B2B', 'Pedidos Online', 'Cliente Mayorista', 'Tiempo Real'],
+        },
       ],
+      demos_watch_yt: 'Ver en YouTube',
     },
 
     en: {
@@ -968,14 +947,22 @@
           tags: ['Mobile Scanner', 'Barcodes', 'Immutable Kardex', 'Traceability'],
         },
         {
-          id: 'jOs8MmPTO3M', live: true, num: '06', featured: true,
-          new_badge: '★ NEW',
+          id: 'jOs8MmPTO3M', live: true, num: '06',
           live_lbl: 'Available Now',
           title: 'B2B API & Order Portal — ERP Integration',
           desc: 'Connect the WMS directly to your clients\' ERP via B2B API. Incoming orders, stock confirmations, and real-time notifications — full integration with zero manual friction.',
           tags: ['B2B API', 'Order Portal', 'ERP Integration', 'Sync'],
         },
+        {
+          id: 'nnSxZhhvdP4', live: true, num: '07', featured: true,
+          new_badge: '★ NEW',
+          live_lbl: 'Available Now',
+          title: 'B2B Client Ordering Portal — How It Works',
+          desc: 'Full walkthrough of PivetTrack\'s B2B Client Ordering Portal: how wholesale clients place orders directly in the system, real-time stock confirmation, and status tracking — no calls, no emails needed.',
+          tags: ['B2B Portal', 'Online Orders', 'Wholesale Client', 'Real Time'],
+        },
       ],
+      demos_watch_yt: 'Watch on YouTube',
     }
   };
 
@@ -1329,31 +1316,41 @@
             const isActive = i === _fi;
             if (v.live) {
               return `
-              <div class="pt-demo-card${isActive ? ' active' : ''}" onclick="ptSelectDemo(${i})" data-demo="${i}">
+              <article class="pt-demo-card${isActive ? ' active' : ''}" onclick="ptSelectDemo(${i})" data-demo="${i}" data-aos="fade-up" data-aos-delay="${80 + Math.min(i,5) * 70}">
                 <div class="pt-demo-thumb">
-                  <img
-                    src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg"
-                    alt="${v.title}" loading="lazy">
+                  <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" loading="lazy">
                   <div class="pt-demo-play-over"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="pt-demo-card-body">
-                  ${v.new_badge ? `<div class="pt-demo-new-badge">${v.new_badge}</div>` : ''}
-                  <div class="pt-demo-card-num">Demo ${v.num}</div>
+                  <div class="pt-demo-card-header">
+                    <span class="pt-demo-card-num">Demo ${v.num}</span>
+                    ${v.new_badge ? `<span class="pt-demo-new-badge">${v.new_badge}</span>` : ''}
+                  </div>
+                  <div class="pt-demo-card-tags">${v.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
                   <div class="pt-demo-card-title">${v.title}</div>
                   <div class="pt-demo-card-desc">${v.desc}</div>
-                  <div class="pt-demo-card-tags">${v.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
+                  <div class="pt-demo-card-footer">
+                    <span class="pt-demo-live-pill"><span class="pt-demo-live-dot-sm"></span> ${v.live_lbl}</span>
+                    <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer" class="pt-demo-yt-link" onclick="event.stopPropagation()">
+                      <i class="fab fa-youtube"></i> ${d.demos_watch_yt}
+                    </a>
+                  </div>
                 </div>
-              </div>`;
+              </article>`;
             } else {
               return `
-              <div class="pt-demo-card pt-demo-card-soon" data-demo="${i}">
-                <div class="pt-demo-thumb-ph"><i class="${v.icon}"></i></div>
-                <div class="pt-demo-card-body">
-                  <div class="pt-demo-card-num">Demo ${v.num}</div>
-                  <div class="pt-demo-card-title">${v.title}</div>
-                  <div class="pt-demo-card-tags"><span class="pt-coming-pill"><i class="fas fa-clock"></i> ${v.coming_lbl}</span></div>
+              <article class="pt-demo-card pt-demo-card-soon" data-demo="${i}">
+                <div class="pt-demo-thumb" style="display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--text-tertiary);position:absolute;inset:0;background:linear-gradient(135deg,var(--bg-secondary),var(--bg-tertiary));">
+                  <i class="${v.icon}"></i>
                 </div>
-              </div>`;
+                <div class="pt-demo-card-body" style="padding-top:calc(56.25% + 20px);">
+                  <div class="pt-demo-card-header"><span class="pt-demo-card-num">Demo ${v.num}</span></div>
+                  <div class="pt-demo-card-title">${v.title}</div>
+                  <div class="pt-demo-card-footer">
+                    <span class="pt-coming-pill"><i class="fas fa-clock"></i> ${v.coming_lbl}</span>
+                  </div>
+                </div>
+              </article>`;
             }
           }).join('')}
         </div>
