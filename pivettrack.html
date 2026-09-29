@@ -205,52 +205,6 @@
     /* ─── VIDEO DEMOS SECTION ─── */
     .pt-demos { margin:60px 0; }
 
-    /* Featured player card */
-    .pt-demo-featured {
-      background:var(--glass-bg); border:1px solid var(--border-color);
-      border-radius:24px; overflow:hidden; position:relative; margin-bottom:18px;
-    }
-    .pt-demo-featured::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:3px;
-      background:linear-gradient(90deg,#FF6B00,#FF9500);
-    }
-    /* Responsive 16:9 */
-    .pt-video-wrap {
-      position:relative; padding-bottom:56.25%; height:0;
-      overflow:hidden; background:#000;
-    }
-    .pt-video-wrap iframe {
-      position:absolute; top:0; left:0;
-      width:100%; height:100%; border:0;
-    }
-    /* Meta below player */
-    .pt-demo-meta { padding:22px 28px 26px; }
-    @media(max-width:768px){ .pt-demo-meta { padding:16px 20px 20px; } }
-    .pt-demo-meta-top {
-      display:flex; align-items:center; gap:10px;
-      flex-wrap:wrap; margin-bottom:10px;
-    }
-    .pt-demo-live-badge {
-      display:inline-flex; align-items:center; gap:5px;
-      font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em;
-      color:#34C759; background:rgba(52,199,89,0.1); border:1px solid rgba(52,199,89,0.25);
-      padding:3px 10px; border-radius:10px;
-    }
-    .pt-demo-live-dot { width:5px; height:5px; border-radius:50%; background:#34C759; animation:blink-dot 1.2s step-end infinite; }
-    .pt-demo-num-badge {
-      font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em;
-      color:rgba(255,107,0,0.6);
-    }
-    .pt-demo-featured-title {
-      font-size:clamp(1rem,2vw,1.2rem); font-weight:800;
-      color:var(--text-primary); letter-spacing:-0.015em; line-height:1.25;
-      margin-bottom:8px;
-    }
-    .pt-demo-featured-desc {
-      font-size:0.875rem; color:var(--text-secondary); line-height:1.65;
-      margin-bottom:12px;
-    }
-
     /* ═══════════════════════════════════════════════
        CAROUSEL — Rich AppSheet-style cards
     ═══════════════════════════════════════════════ */
@@ -409,12 +363,85 @@
     .pt-sticky-cta:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(255,107,0,0.55); }
     @media(max-width:480px){ .pt-sticky-cta { bottom:16px; right:16px; font-size:0.8125rem; padding:11px 16px; } }
 
-    /* ─── YOUTUBE FACADE ─── */
-    .pt-video-facade { position:absolute; inset:0; cursor:pointer; background:#000; display:flex; align-items:center; justify-content:center; }
-    .pt-video-facade img { width:100%; height:100%; object-fit:cover; opacity:0.82; transition:opacity 0.22s; }
-    .pt-video-facade:hover img { opacity:1; }
-    .pt-facade-btn { position:absolute; width:72px; height:72px; background:rgba(255,0,0,0.88); border:none; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.9rem; cursor:pointer; transition:transform 0.2s, background 0.2s; }
-    .pt-video-facade:hover .pt-facade-btn { transform:scale(1.12); background:#ff0000; }
+    /* ═══════════════════════════════════════════════
+       DEMO MODAL — AppSheet-style lightbox
+    ═══════════════════════════════════════════════ */
+    .pt-modal { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:16px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+    .pt-modal.open { opacity:1; pointer-events:auto; }
+    .pt-modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+    .pt-modal-box { position:relative; width:100%; max-width:900px; max-height:92vh; overflow-y:auto; overflow-x:hidden; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:24px; display:flex; flex-direction:column; transform:scale(0.92) translateY(24px); transition:transform 0.35s cubic-bezier(0.34,1.1,0.64,1); overscroll-behavior:contain; scrollbar-width:thin; }
+    .pt-modal.open .pt-modal-box { transform:scale(1) translateY(0); }
+    .pt-modal-box::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); border-radius:24px 24px 0 0; z-index:1; pointer-events:none; }
+
+    /* Modal header */
+    .pt-modal-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:22px 24px 18px; border-bottom:1px solid var(--border-color); flex-shrink:0; }
+    .pt-modal-header-left { flex:1; min-width:0; }
+    .pt-modal-header-meta { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
+    .pt-modal-demo-num { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,107,0,0.6); }
+    .pt-modal-live-badge { display:inline-flex; align-items:center; gap:5px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.1em; color:#34C759; background:rgba(52,199,89,0.1); border:1px solid rgba(52,199,89,0.25); padding:2px 9px; border-radius:8px; }
+    .pt-modal-live-dot { width:5px; height:5px; border-radius:50%; background:#34C759; animation:blink-dot 1.2s step-end infinite; }
+    .pt-modal-new-badge { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.1em; color:#FF6B00; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.28); padding:2px 9px; border-radius:8px; animation:pill-glow 2.8s ease-in-out infinite; }
+    .pt-modal-title { font-size:clamp(1rem,2vw,1.25rem); font-weight:800; color:var(--text-primary); letter-spacing:-0.015em; line-height:1.3; }
+    .pt-modal-close { width:36px; height:36px; border-radius:50%; background:var(--glass-bg); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; font-size:0.9rem; color:var(--text-secondary); cursor:pointer; transition:all 0.2s; flex-shrink:0; }
+    .pt-modal-close:hover { background:rgba(255,107,0,0.1); border-color:rgba(255,107,0,0.3); color:#FF6B00; }
+
+    /* Carousel */
+    .pt-modal-carousel { position:relative; background:#000; flex-shrink:0; overflow:hidden; }
+    .pt-modal-carousel-inner { display:flex; transition:transform 0.42s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
+    .pt-modal-slide { flex:0 0 100%; width:100%; }
+    .pt-modal-slide--video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; background:#000; }
+    .pt-modal-slide--video iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    .pt-modal-slide--image { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; background:var(--bg-secondary); }
+    .pt-modal-slide--image img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; }
+
+    /* Slide counter */
+    .pt-modal-slide-counter { position:absolute; top:12px; right:14px; z-index:10; font-size:11px; font-weight:700; color:white; background:rgba(0,0,0,0.65); padding:4px 11px; border-radius:20px; backdrop-filter:blur(6px); letter-spacing:0.04em; }
+
+    /* Carousel arrows */
+    .pt-modal-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:10; width:42px; height:42px; border-radius:50%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; color:white; font-size:0.95rem; cursor:pointer; transition:all 0.2s; backdrop-filter:blur(6px); }
+    .pt-modal-arrow:hover { background:rgba(255,107,0,0.85); border-color:transparent; transform:translateY(-50%) scale(1.08); }
+    .pt-modal-arrow.hidden { opacity:0; pointer-events:none; }
+    .pt-modal-prev-slide { left:12px; }
+    .pt-modal-next-slide { right:12px; }
+
+    /* Indicators / dots */
+    .pt-modal-indicators { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:10; align-items:center; }
+    .pt-modal-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); transition:all 0.25s; cursor:pointer; border:none; }
+    .pt-modal-dot.active { background:#FF6B00; width:20px; border-radius:3px; }
+    .pt-modal-dot:hover:not(.active) { background:rgba(255,255,255,0.75); }
+
+    /* Description + tags */
+    .pt-modal-desc-area { padding:20px 24px 16px; border-bottom:1px solid var(--border-color); flex-shrink:0; }
+    .pt-modal-desc { font-size:0.9375rem; color:var(--text-secondary); line-height:1.72; margin-bottom:12px; }
+    .pt-modal-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .pt-modal-tag { font-size:0.7rem; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.18); padding:3px 10px; border-radius:12px; text-transform:uppercase; letter-spacing:0.06em; }
+
+    /* Footer */
+    .pt-modal-footer { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; gap:10px; flex-shrink:0; flex-wrap:nowrap; }
+    .pt-modal-footer-center { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; flex:1; }
+    .pt-modal-demo-nav { display:flex; align-items:center; gap:7px; font-size:0.8125rem; font-weight:700; color:var(--text-secondary); background:var(--glass-bg); border:1px solid var(--border-color); padding:9px 13px; border-radius:20px; cursor:pointer; transition:all 0.2s; white-space:nowrap; min-width:42px; max-width:130px; overflow:hidden; }
+    .pt-modal-demo-nav span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .pt-modal-demo-nav:hover { border-color:rgba(255,107,0,0.3); color:#FF6B00; background:rgba(255,107,0,0.05); }
+    .pt-modal-demo-nav.hidden { opacity:0; pointer-events:none; }
+    .pt-modal-yt-btn { display:inline-flex; align-items:center; gap:7px; font-size:0.875rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF0000,#CC0000); padding:10px 20px; border-radius:20px; text-decoration:none; box-shadow:0 4px 14px rgba(255,0,0,0.3); transition:all 0.2s; flex-shrink:0; }
+    .pt-modal-yt-btn:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(255,0,0,0.45); }
+    .pt-modal-contact-btn { display:inline-flex; align-items:center; gap:7px; font-size:0.875rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:10px 20px; border-radius:20px; text-decoration:none; box-shadow:0 4px 14px rgba(255,107,0,0.32); transition:all 0.2s; flex-shrink:0; }
+    .pt-modal-contact-btn:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(255,107,0,0.48); }
+
+    /* Responsive */
+    @media(max-width:600px) {
+      .pt-modal { padding:0; align-items:flex-end; }
+      .pt-modal-box { max-width:100%; border-radius:24px 24px 0 0; max-height:96vh; }
+      .pt-modal-header { padding:18px 18px 14px; }
+      .pt-modal-desc-area { padding:14px 18px 12px; }
+      .pt-modal-footer { padding:12px 14px; flex-wrap:wrap; }
+      .pt-modal-footer-center { order:-1; width:100%; }
+      .pt-modal-demo-nav { max-width:100px; font-size:0.75rem; padding:8px 10px; }
+    }
+    @media(max-width:380px) {
+      .pt-modal-demo-nav span { display:none; }
+      .pt-modal-demo-nav { max-width:40px; justify-content:center; padding:9px; }
+    }
   </style>
 </head>
 <body>
@@ -476,6 +503,69 @@
     <i class="fas fa-calendar-check"></i>
     <span id="ptStickyLabel">Solicitar Demo</span>
   </a>
+
+  <!-- ══════ PIVETTRACK DEMO MODAL ══════ -->
+  <div id="ptDemoModal" class="pt-modal" role="dialog" aria-modal="true" aria-labelledby="ptModalTitle">
+    <div class="pt-modal-overlay" onclick="ptCloseModal()"></div>
+    <div class="pt-modal-box">
+
+      <!-- Header -->
+      <div class="pt-modal-header">
+        <div class="pt-modal-header-left">
+          <div class="pt-modal-header-meta">
+            <span class="pt-modal-demo-num" id="ptModalDemoNum">Demo 01</span>
+            <span class="pt-modal-new-badge" id="ptModalNewBadge" style="display:none"></span>
+          </div>
+          <div class="pt-modal-title" id="ptModalTitle"></div>
+        </div>
+        <button class="pt-modal-close" id="ptModalClose" onclick="ptCloseModal()" aria-label="Cerrar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Carousel -->
+      <div class="pt-modal-carousel" id="ptModalCarousel">
+        <div class="pt-modal-slide-counter" id="ptModalSlideCounter" style="display:none">1 / 1</div>
+        <div class="pt-modal-carousel-inner" id="ptModalCarouselInner"></div>
+        <button class="pt-modal-arrow pt-modal-prev-slide hidden" id="ptModalPrevSlide" onclick="ptGoSlide(-1)" aria-label="Slide anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="pt-modal-arrow pt-modal-next-slide hidden" id="ptModalNextSlide" onclick="ptGoSlide(1)" aria-label="Slide siguiente">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="pt-modal-indicators" id="ptModalIndicators"></div>
+      </div>
+
+      <!-- Description + tags -->
+      <div class="pt-modal-desc-area">
+        <div class="pt-modal-desc" id="ptModalDesc"></div>
+        <div class="pt-modal-tags" id="ptModalTags"></div>
+      </div>
+
+      <!-- Footer: demo nav + action buttons -->
+      <div class="pt-modal-footer">
+        <button class="pt-modal-demo-nav hidden" id="ptModalPrevDemo" onclick="ptGoDemo(-1)">
+          <i class="fas fa-chevron-left"></i>
+          <span id="ptModalPrevDemoLabel"></span>
+        </button>
+        <div class="pt-modal-footer-center">
+          <a class="pt-modal-yt-btn" id="ptModalYtBtn" href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+            <span id="ptModalWatchYt">Ver en YouTube</span>
+          </a>
+          <a class="pt-modal-contact-btn" href="contacto.html" id="ptModalContactBtn">
+            <i class="fas fa-calendar-check"></i>
+            <span id="ptModalContactLabel">Solicitar Demo</span>
+          </a>
+        </div>
+        <button class="pt-modal-demo-nav hidden" id="ptModalNextDemo" onclick="ptGoDemo(1)">
+          <span id="ptModalNextDemoLabel"></span>
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
@@ -723,6 +813,10 @@
         },
       ],
       demos_watch_yt: 'Ver en YouTube',
+      modal_watch_yt: 'Ver en YouTube',
+      modal_contact_btn: 'Solicitar Demo',
+      modal_prev_demo: 'Demo anterior',
+      modal_next_demo: 'Siguiente demo',
     },
 
     en: {
@@ -963,65 +1057,199 @@
         },
       ],
       demos_watch_yt: 'Watch on YouTube',
+      modal_watch_yt: 'Watch on YouTube',
+      modal_contact_btn: 'Schedule a Demo',
+      modal_prev_demo: 'Previous demo',
+      modal_next_demo: 'Next demo',
     }
   };
 
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
-  /* ── Load featured player (facade → iframe) ── */
-  function ptLoadFeatured() {
-    const facade = document.getElementById('ptVideoFacade');
-    const player = document.getElementById('pt-yt-player');
-    if (!facade || !player) return;
-    const d = t[lang];
-    const _fi = d.demos.reduce((acc, v, i) => v.featured ? i : acc, d.demos.length - 1);
-    const _fd = d.demos[_fi];
-    facade.style.display = 'none';
-    player.style.display = 'block';
-    if (!player.src || player.src === window.location.href) {
-      player.src = `https://www.youtube.com/embed/${_fd.id}?rel=0&modestbranding=1&color=white&autoplay=1`;
-      player.title = `PivetTrack WMS — ${_fd.title}`;
-    }
+  /* ── PivetTrack Demo Modal — state ── */
+  let ptModalDemoIdx = 0;
+  let ptModalSlideIdx = 0;
+
+  function ptGetSlides(demo) {
+    return (demo.slides && demo.slides.length) ? demo.slides : [{ type: 'video', id: demo.id }];
   }
 
-  /* ── Carousel interaction: swap featured player when a live card is clicked ── */
-  function ptSelectDemo(idx) {
+  function ptOpenModal(idx) {
+    ptModalDemoIdx = idx;
+    ptModalSlideIdx = 0;
+    ptUpdateModal();
+    const modal = document.getElementById('ptDemoModal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = document.getElementById('ptModalClose');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 80);
+  }
+
+  function ptCloseModal() {
+    const modal = document.getElementById('ptDemoModal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    /* Stop any playing video by wiping slides HTML */
+    const inner = document.getElementById('ptModalCarouselInner');
+    if (inner) inner.innerHTML = '';
+  }
+
+  function ptGoToSlide(idx) {
+    const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
+    ptModalSlideIdx = Math.max(0, Math.min(idx, slides.length - 1));
+    ptSyncCarousel();
+  }
+
+  function ptGoSlide(dir) {
+    const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
+    ptModalSlideIdx = Math.max(0, Math.min(ptModalSlideIdx + dir, slides.length - 1));
+    ptSyncCarousel();
+  }
+
+  function ptGoDemo(dir) {
     const d = t[lang];
-    const v = d.demos[idx];
-    if (!v || !v.live) return;
+    const liveIndices = d.demos.map((v, i) => v.live ? i : -1).filter(i => i >= 0);
+    const curPos = liveIndices.indexOf(ptModalDemoIdx);
+    const newPos = curPos + dir;
+    if (newPos < 0 || newPos >= liveIndices.length) return;
+    ptModalDemoIdx = liveIndices[newPos];
+    ptModalSlideIdx = 0;
+    ptUpdateModal();
+    /* Scroll modal box to top */
+    const box = document.querySelector('.pt-modal-box');
+    if (box) box.scrollTop = 0;
+  }
 
-    /* Update iframe src — hide facade first if still visible */
-    const facade = document.getElementById('ptVideoFacade');
-    if (facade) facade.style.display = 'none';
-    const player = document.getElementById('pt-yt-player');
-    if (player) {
-      player.style.display = 'block';
-      player.src = `https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1&color=white&autoplay=1`;
-      player.title = `PivetTrack WMS — ${v.title}`;
+  function ptSyncCarousel() {
+    const inner = document.getElementById('ptModalCarouselInner');
+    if (!inner) return;
+    inner.style.transform = `translateX(-${ptModalSlideIdx * 100}%)`;
+
+    const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
+    const isMulti = slides.length > 1;
+
+    /* Counter */
+    const counter = document.getElementById('ptModalSlideCounter');
+    if (counter) {
+      counter.textContent = `${ptModalSlideIdx + 1} / ${slides.length}`;
+      counter.style.display = isMulti ? '' : 'none';
     }
-
-    /* Update meta panel */
-    const meta = document.getElementById('pt-demo-meta');
-    if (meta) {
-      meta.innerHTML = `
-        <div class="pt-demo-meta-top">
-          <span class="pt-demo-live-badge"><span class="pt-demo-live-dot"></span> ${v.live_lbl}</span>
-          <span class="pt-demo-num-badge">Demo ${v.num}</span>
-          ${v.new_badge ? `<span class="pt-demo-new-badge">${v.new_badge}</span>` : ''}
-        </div>
-        <div class="pt-demo-featured-title">${v.title}</div>
-        <div class="pt-demo-featured-desc">${v.desc}</div>
-        <div class="pt-feat-tags">${v.tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>`;
-    }
-
-    /* Toggle active card */
-    document.querySelectorAll('.pt-demo-card').forEach((card, i) => {
-      card.classList.toggle('active', i === idx);
+    /* Arrows */
+    const prevSlide = document.getElementById('ptModalPrevSlide');
+    const nextSlide = document.getElementById('ptModalNextSlide');
+    if (prevSlide) prevSlide.classList.toggle('hidden', !isMulti || ptModalSlideIdx === 0);
+    if (nextSlide) nextSlide.classList.toggle('hidden', !isMulti || ptModalSlideIdx === slides.length - 1);
+    /* Dots */
+    document.querySelectorAll('#ptModalIndicators .pt-modal-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === ptModalSlideIdx);
     });
+  }
 
-    /* Scroll featured into view */
-    const featured = document.getElementById('pt-demo-featured');
-    if (featured) featured.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  function ptUpdateModal() {
+    const d = t[lang];
+    const demo = d.demos[ptModalDemoIdx];
+    const slides = ptGetSlides(demo);
+    const isMulti = slides.length > 1;
+
+    /* Build slide HTML */
+    const inner = document.getElementById('ptModalCarouselInner');
+    if (inner) {
+      inner.innerHTML = slides.map(slide => {
+        if (slide.type === 'video') {
+          return `<div class="pt-modal-slide pt-modal-slide--video">
+            <iframe
+              src="https://www.youtube.com/embed/${slide.id}?rel=0&modestbranding=1&color=white&autoplay=1"
+              title="PivetTrack WMS — ${demo.title}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen loading="lazy"></iframe>
+          </div>`;
+        }
+        return `<div class="pt-modal-slide pt-modal-slide--image">
+          <img src="${slide.src}" alt="${slide.alt || demo.title}" loading="lazy">
+        </div>`;
+      }).join('');
+      inner.style.transform = 'translateX(0)';
+    }
+
+    /* Build dots */
+    const indicators = document.getElementById('ptModalIndicators');
+    if (indicators) {
+      indicators.innerHTML = slides.map((_, i) =>
+        `<button class="pt-modal-dot${i === 0 ? ' active' : ''}" onclick="ptGoToSlide(${i})" aria-label="Slide ${i + 1}"></button>`
+      ).join('');
+    }
+
+    /* Counter */
+    const counter = document.getElementById('ptModalSlideCounter');
+    if (counter) {
+      counter.textContent = `1 / ${slides.length}`;
+      counter.style.display = isMulti ? '' : 'none';
+    }
+
+    /* Slide arrows */
+    const prevSlide = document.getElementById('ptModalPrevSlide');
+    const nextSlide = document.getElementById('ptModalNextSlide');
+    if (prevSlide) prevSlide.classList.toggle('hidden', !isMulti);
+    if (nextSlide) nextSlide.classList.toggle('hidden', !isMulti);
+
+    /* Header */
+    const numEl = document.getElementById('ptModalDemoNum');
+    if (numEl) numEl.textContent = `Demo ${demo.num}`;
+    const badgeEl = document.getElementById('ptModalNewBadge');
+    if (badgeEl) {
+      if (demo.new_badge) { badgeEl.textContent = demo.new_badge; badgeEl.style.display = ''; }
+      else { badgeEl.style.display = 'none'; }
+    }
+    const titleEl = document.getElementById('ptModalTitle');
+    if (titleEl) titleEl.textContent = demo.title;
+
+    /* Description + tags */
+    const descEl = document.getElementById('ptModalDesc');
+    if (descEl) descEl.textContent = demo.desc;
+    const tagsEl = document.getElementById('ptModalTags');
+    if (tagsEl) {
+      tagsEl.innerHTML = demo.tags.map(tg => `<span class="pt-modal-tag">${tg}</span>`).join('');
+    }
+
+    /* YouTube link — use current video slide id (first video, or demo.id fallback) */
+    const videoSlide = slides.find(s => s.type === 'video');
+    const ytId = videoSlide ? videoSlide.id : demo.id;
+    const ytBtn = document.getElementById('ptModalYtBtn');
+    if (ytBtn) ytBtn.href = `https://www.youtube.com/watch?v=${ytId}`;
+    const ytLbl = document.getElementById('ptModalWatchYt');
+    if (ytLbl) ytLbl.textContent = d.modal_watch_yt;
+    const contactLbl = document.getElementById('ptModalContactLabel');
+    if (contactLbl) contactLbl.textContent = d.modal_contact_btn;
+
+    /* Demo navigation */
+    const liveIndices = d.demos.map((v, i) => v.live ? i : -1).filter(i => i >= 0);
+    const curPos = liveIndices.indexOf(ptModalDemoIdx);
+
+    const prevDemoBtn = document.getElementById('ptModalPrevDemo');
+    const prevDemoLbl = document.getElementById('ptModalPrevDemoLabel');
+    if (prevDemoBtn) {
+      if (curPos > 0) {
+        const prev = d.demos[liveIndices[curPos - 1]];
+        if (prevDemoLbl) prevDemoLbl.textContent = `Demo ${prev.num}`;
+        prevDemoBtn.classList.remove('hidden');
+        prevDemoBtn.title = prev.title;
+      } else {
+        prevDemoBtn.classList.add('hidden');
+      }
+    }
+
+    const nextDemoBtn = document.getElementById('ptModalNextDemo');
+    const nextDemoLbl = document.getElementById('ptModalNextDemoLabel');
+    if (nextDemoBtn) {
+      if (curPos < liveIndices.length - 1) {
+        const next = d.demos[liveIndices[curPos + 1]];
+        if (nextDemoLbl) nextDemoLbl.textContent = `Demo ${next.num}`;
+        nextDemoBtn.classList.remove('hidden');
+        nextDemoBtn.title = next.title;
+      } else {
+        nextDemoBtn.classList.add('hidden');
+      }
+    }
   }
 
   /* ── Architecture visual renderer ── */
@@ -1073,9 +1301,6 @@
   /* ── Main render function ── */
   function render() {
     const d = t[lang];
-    /* Resolve the featured/default demo (last one with featured:true, or last item) */
-    const _fi = d.demos.reduce((acc, v, i) => v.featured ? i : acc, d.demos.length - 1);
-    const _fd = d.demos[_fi];
     document.title = d.page_title;
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent  = lang === 'es' ? 'English' : 'Español';
@@ -1277,46 +1502,12 @@
           <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;">${d.demos_sub}</p>
         </div>
 
-        <!-- Featured player — facade carga el iframe solo cuando el usuario hace click -->
-        <div class="pt-demo-featured" id="pt-demo-featured">
-          <div class="pt-video-wrap" id="ptVideoWrap">
-            <div class="pt-video-facade" id="ptVideoFacade">
-              <img src="https://img.youtube.com/vi/${_fd.id}/maxresdefault.jpg"
-                   onerror="this.src='https://img.youtube.com/vi/${_fd.id}/mqdefault.jpg'"
-                   alt="${_fd.title}">
-              <button class="pt-facade-btn" onclick="ptLoadFeatured()" aria-label="Reproducir video de PivetTrack">
-                <i class="fab fa-youtube"></i>
-              </button>
-            </div>
-            <iframe
-              id="pt-yt-player"
-              src=""
-              title="PivetTrack WMS — ${_fd.title}"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-              style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:none">
-            </iframe>
-          </div>
-          <div class="pt-demo-meta" id="pt-demo-meta">
-            <div class="pt-demo-meta-top">
-              <span class="pt-demo-live-badge"><span class="pt-demo-live-dot"></span> ${_fd.live_lbl}</span>
-              <span class="pt-demo-num-badge">Demo ${_fd.num}</span>
-              ${_fd.new_badge ? `<span class="pt-demo-new-badge">${_fd.new_badge}</span>` : ''}
-            </div>
-            <div class="pt-demo-featured-title">${_fd.title}</div>
-            <div class="pt-demo-featured-desc">${_fd.desc}</div>
-            <div class="pt-feat-tags">${_fd.tags.map(tg => `<span class="pt-feat-tag">${tg}</span>`).join('')}</div>
-          </div>
-        </div>
-
-        <!-- Carousel strip -->
+        <!-- Demo cards grid — click any card to open the modal -->
         <div class="pt-demo-carousel">
           ${d.demos.map((v, i) => {
-            const isActive = i === _fi;
             if (v.live) {
               return `
-              <article class="pt-demo-card${isActive ? ' active' : ''}" onclick="ptSelectDemo(${i})" data-demo="${i}" data-aos="fade-up" data-aos-delay="${80 + Math.min(i,5) * 70}">
+              <article class="pt-demo-card" onclick="ptOpenModal(${i})" data-demo="${i}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')ptOpenModal(${i})" data-aos="fade-up" data-aos-delay="${80 + Math.min(i,5) * 70}">
                 <div class="pt-demo-thumb">
                   <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" loading="lazy">
                   <div class="pt-demo-play-over"><i class="fas fa-play"></i></div>
@@ -1408,6 +1599,41 @@
     if (stickyCta) {
       window.addEventListener('scroll', () => {
         stickyCta.classList.toggle('visible', window.scrollY > 500);
+      }, { passive: true });
+    }
+    // Keyboard navigation for modal
+    document.addEventListener('keydown', e => {
+      const modal = document.getElementById('ptDemoModal');
+      if (!modal || !modal.classList.contains('open')) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        ptCloseModal();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
+        if (slides.length > 1) ptGoSlide(-1); else ptGoDemo(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
+        if (slides.length > 1) ptGoSlide(1); else ptGoDemo(1);
+      }
+    });
+    // Touch swipe support for carousel
+    const ptCarouselEl = document.getElementById('ptModalCarousel');
+    if (ptCarouselEl) {
+      let _tsx = 0, _tsy = 0;
+      ptCarouselEl.addEventListener('touchstart', e => {
+        _tsx = e.touches[0].clientX;
+        _tsy = e.touches[0].clientY;
+      }, { passive: true });
+      ptCarouselEl.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - _tsx;
+        const dy = e.changedTouches[0].clientY - _tsy;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
+          const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
+          if (slides.length > 1) ptGoSlide(dx > 0 ? -1 : 1);
+          else ptGoDemo(dx > 0 ? -1 : 1);
+        }
       }, { passive: true });
     }
   });
