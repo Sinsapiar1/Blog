@@ -104,9 +104,8 @@
     .pt-section-eyebrow { display:inline-flex; align-items:center; gap:7px; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-tertiary); margin-bottom:12px; }
     .pt-section-title { font-size:clamp(1.5rem,3vw,2.15rem); font-weight:800; letter-spacing:-0.03em; color:var(--text-primary); line-height:1.2; }
     .pt-section-title .accent { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .pt-pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    @media(max-width:900px){ .pt-pain-grid { grid-template-columns:1fr; } }
-    @media(max-width:1180px) and (min-width:901px){ .pt-pain-grid { grid-template-columns:1fr 1fr; } }
+    .pt-pain-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    @media(max-width:700px){ .pt-pain-grid { grid-template-columns:1fr; } }
     .pt-pain-card { background:var(--glass-bg); border:1px solid rgba(255,59,48,0.15); border-radius:20px; padding:30px; position:relative; overflow:hidden; transition:all 0.3s cubic-bezier(0.34,1.1,0.64,1); }
     .pt-pain-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF3B30,#FF6B00); }
     .pt-pain-card:hover { border-color:rgba(255,59,48,0.4); transform:translateY(-5px); box-shadow:0 18px 44px rgba(255,59,48,0.1); }
@@ -609,17 +608,15 @@
       ],
 
       /* ── Pain section ── */
-      pain_eyebrow: '01 El Diagnóstico',
-      pain_title: 'Los síntomas que están',
-      pain_accent: 'costando dinero real.',
-      pain_sub: 'El costo real no es el faltante que aparece en el conteo. Es la decisión de compra, de precio o de despacho que usted ya tomó creyendo un dato que no era cierto.',
+      pain_eyebrow: '01 El Dinero que No Aparece',
+      pain_title: 'En una bodega no se pierde dinero de golpe.',
+      pain_accent: 'Se pierde poco a poco.',
+      pain_sub: '¿En cuántas de estas situaciones reconoce su operación?',
       pain_cards: [
-        { num: '01', icon: 'fas fa-balance-scale-right', tag: 'Síntoma #1', title: 'El inventario cuadra en el papel, no en la bodega', desc: 'Los ajustes se registran sin documento ni responsable. La diferencia se absorbe en silencio y reaparece, más grande, en el conteo siguiente.' },
-        { num: '02', icon: 'fas fa-history',             tag: 'Síntoma #2', title: 'Nadie puede reconstruir la historia de un SKU',  desc: 'Ante un reclamo o auditoría no existe línea de tiempo verificable de quién movió qué, cuándo y con qué respaldo documental.' },
-        { num: '03', icon: 'fas fa-file-excel',          tag: 'Síntoma #3', title: 'Planillas Excel compartidas como sistema de registro', desc: 'Versiones paralelas del mismo archivo, fórmulas rotas, sin control de acceso y sin garantía de que el dato de hoy sea el de ayer.' },
-        { num: '04', icon: 'fas fa-tachometer-alt',      tag: 'Síntoma #4', title: 'Sistemas lentos justo cuando más se necesitan', desc: 'El cierre de mes coincide con el momento de mayor carga. Si el sistema se arrastra o cae, la operación de bodega se detiene con él.' },
-        { num: '05', icon: 'fas fa-exchange-alt',        tag: 'Síntoma #5', title: 'Devoluciones y mermas registradas "a ojo"', desc: 'Se descuentan al costo promedio vigente, no al costo real del lote devuelto. El inventario remanente queda mal valorizado y el margen de las próximas ventas se calcula sobre una cifra falsa.' },
-        { num: '06', icon: 'fas fa-user-clock',          tag: 'Síntoma #6', title: 'Dependencia de la persona que "sabe cómo está todo"', desc: 'El conocimiento operativo vive en una cabeza, no en el sistema. Una renuncia, licencia médica o vacación se convierte en una crisis de continuidad.' },
+        { num: '01', icon: 'fas fa-boxes',          tag: 'Dolor #1', title: 'El stock que no aparece',          desc: 'El sistema muestra disponible lo que la bodega no tiene. Los ajustes se hacen sin documento ni responsable. <span style="color:#FF3B30;font-weight:700">Cuesta:</span> pedidos incompletos y clientes que no vuelven.' },
+        { num: '02', icon: 'fas fa-tachometer-alt', tag: 'Dolor #2', title: 'El cierre que se congela',         desc: 'Fin de mes, todo el equipo conectado a la vez. Las pantallas no responden. <span style="color:#FF3B30;font-weight:700">Cuesta:</span> horas de bodega detenida en el día de mayor carga.' },
+        { num: '03', icon: 'fas fa-percentage',     tag: 'Dolor #3', title: 'El margen que miente',            desc: 'Una devolución cargada «a ojo» contamina el costo promedio de su inventario. <span style="color:#FF3B30;font-weight:700">Cuesta:</span> precios y compras decididos sobre datos falsos.' },
+        { num: '04', icon: 'fas fa-user-clock',     tag: 'Dolor #4', title: 'La operación en una sola cabeza', desc: 'Planillas paralelas, fórmulas rotas y una persona que «sabe cómo está todo». <span style="color:#FF3B30;font-weight:700">Cuesta:</span> la continuidad y el control de su activo más caro.' },
       ],
 
       /* ── Architecture section (replaces Solutions) ── */
@@ -648,11 +645,11 @@
           title: 'El PMP del stock remanente no se contamina — cada devolución al costo histórico real del lote',
           desc: 'Cuando devuelve mercadería a un proveedor, un sistema convencional descuenta al costo promedio vigente. PivetTrack descuenta contra el costo histórico real del lote efectivamente devuelto. Su margen siempre se calcula sobre una cifra verdadera.',
           tags: ['PMP Exacto', 'Costo Histórico Real', 'Margen Protegido', 'Lote a Lote'],
-          wac_context: '100 u. a US$10 + 100 u. a US$14 → PMP: US$12. Se devuelven las 100 u. del segundo lote.',
+          wac_context: '200 u. a PMP US$12.00. Un cliente devuelve 100 u. que salieron a US$10.00.',
           wac_lbl_bad: 'Sistema Convencional', wac_lbl_good: 'PivetTrack',
-          wac_amt_bad: 'US$ 1,200', wac_amt_good: 'US$ 1,000',
-          wac_note_bad: 'Descuenta al promedio vigente (US$12). Inventario inflado en US$200 sobre un solo SKU.',
-          wac_note_good: 'Descuenta al costo histórico del lote (US$14). Stock remanente exactamente valorizado.',
+          wac_amt_bad: 'PMP US$12.00', wac_amt_good: 'PMP US$11.33',
+          wac_note_bad: '300 u. · US$3,600 · US$200 de inventario fantasma.',
+          wac_note_good: '300 u. · US$3,400 · Valor exacto al centavo.',
         },
         {
           step: 'Arquitectura 03 / 03', icon: 'fas fa-boxes', label: 'Módulos Operativos Incluidos',
@@ -677,7 +674,7 @@
       security_eyebrow: '03 Rendimiento y Seguridad',
       security_title: '30 Operarios, 0 Errores.',
       security_accent: 'Medido en Carga Real.',
-      security_sub: 'Probado con k6 sobre staging idéntico a producción: 5.000 SKUs, 15.000 registros de stock, 4.716 peticiones, p95 de 179 ms y cero fallos. La infraestructura que custodia el activo más caro de su balance no puede ser una promesa — tiene que ser un número.',
+      security_sub: 'Probado con k6 sobre staging idéntico a producción: 5.000 SKUs en 3 bodegas, ~75.000 movimientos de Kardex, 4.716 peticiones, p95 de 179 ms y cero fallos. Resumen técnico disponible a solicitud. La infraestructura que custodia el activo más caro de su balance no puede ser una promesa — tiene que ser un número.',
       security_tenant_note: 'PivetTrack corre sobre Django (Python) + PostgreSQL gestionado en Supabase (SSL obligatorio), desplegado en Railway: cada cliente tiene su propio servicio y su propia base de datos. Sus datos no comparten tablas, ni base, ni servidor con ninguna otra empresa.',
       security_kpis: [
         { num: '179ms', label: 'Latencia p95',    sub: 'Picking con 30 operarios en simultáneo — medido, no estimado' },
@@ -704,7 +701,7 @@
       pricing_sub: 'Sin licencias por asiento, sin cargo por usuario adicional y sin inversión en servidores propios.',
       pricing_setup_label: 'Implementación Inicial',
       pricing_setup_amount: 'US$ 3,500',
-      pricing_setup_period: 'Pago único · Por adelantado',
+      pricing_setup_period: 'Pago único · Por adelantado · En marcha en 2 a 3 semanas',
       pricing_setup_features: [
         'Aprovisionamiento de instancia aislada en la nube',
         'Configuración inicial de marca blanca en el Portal B2B (logo, color y subdominio)',
@@ -721,7 +718,8 @@
         'Totalidad de los módulos funcionales incluidos',
         'Portal B2B con marca blanca incluido (logo, subdominio y color propios)',
         'Exports a Excel en paralelo (plan base: hasta 2 simultáneos)',
-        'SLA de disponibilidad 99.9% comprometido por contrato',
+        'Catálogo activo cubierto: hasta 5.000 SKUs en el plan base',
+        'SLA de disponibilidad 99.9% comprometido por contrato (con créditos de servicio)',
         'Respaldos automáticos gestionados',
         'Todas las mejoras de producto sin costo adicional',
       ],
@@ -735,10 +733,11 @@
       pricing_tax_note: 'A la fecha de este documento, la prestación de SaaS no está sujeta al Sales Tax del Estado de Florida. Tarifas en USD, netas.',
       pricing_quoted_title: 'Se cotiza por separado (por transparencia)',
       pricing_quoted: [
+        'Add-on de Infraestructura Avanzada: catálogos de más de 5.000 SKU activos o 3 o más informes pesados simultáneos de forma rutinaria',
+        'Portal B2B, API y webhooks: su habilitación y alcance se definen en la propuesta formal',
         'Desarrollos de software a medida de cualquier tipo',
-        'Integraciones con APIs de sistemas de terceros (ERP, QuickBooks u otro sistema contable)',
-        'Migración de catálogos superiores a 10,000 SKUs',
-        'Add-on Enterprise: procesamiento en segundo plano para exports de inventario en alta concurrencia (más de 2 simultáneos) y catálogos de gran escala',
+        'Integraciones con sistemas de terceros (ERP, QuickBooks u otro sistema contable)',
+        'Migraciones de más de 10.000 SKU, de una segunda fuente de datos, o tomas generales de más de 25.000 SKU por documento',
       ],
 
       /* ── Next Steps / CTA ── */
@@ -864,17 +863,15 @@
       ],
 
       /* ── Pain section ── */
-      pain_eyebrow: '01 The Diagnosis',
-      pain_title: 'The symptoms that are',
-      pain_accent: 'costing real money.',
-      pain_sub: 'The real cost is not the shortage that shows up in the count. It\'s the purchasing, pricing, or shipping decision you already made based on a number that wasn\'t true.',
+      pain_eyebrow: '01 The Hidden Cost',
+      pain_title: 'In a warehouse, money isn\'t lost all at once.',
+      pain_accent: 'It disappears little by little.',
+      pain_sub: 'How many of these situations do you recognize in your operation?',
       pain_cards: [
-        { num: '01', icon: 'fas fa-balance-scale-right', tag: 'Symptom #1', title: 'The inventory balances on paper, not in the warehouse', desc: 'Adjustments are recorded with no document and no accountable party. The discrepancy is absorbed in silence and reappears, larger, in the next count.' },
-        { num: '02', icon: 'fas fa-history',             tag: 'Symptom #2', title: 'Nobody can reconstruct a SKU\'s history',              desc: 'For a claim or audit, there is no verifiable timeline of who moved what, when, and with what backing document.' },
-        { num: '03', icon: 'fas fa-file-excel',          tag: 'Symptom #3', title: 'Shared Excel spreadsheets as the system of record',    desc: 'Parallel versions of the same file, broken formulas, no access control, and no guarantee that today\'s number matches yesterday\'s.' },
-        { num: '04', icon: 'fas fa-tachometer-alt',      tag: 'Symptom #4', title: 'Systems slow down exactly when you need them most',   desc: 'Month-end close coincides with peak load. If the system drags or crashes, the entire warehouse operation stops with it.' },
-        { num: '05', icon: 'fas fa-exchange-alt',        tag: 'Symptom #5', title: 'Returns and shrinkage recorded by eyeball',            desc: 'Deducted at the current average cost, not the real cost of the returned lot. Remaining inventory is mispriced and margin on the next sales is calculated on a false figure.' },
-        { num: '06', icon: 'fas fa-user-clock',          tag: 'Symptom #6', title: 'Dependency on the one person who "knows how everything stands"', desc: 'Operational knowledge lives in one person\'s head, not the system. A resignation, medical leave, or vacation becomes a continuity crisis.' },
+        { num: '01', icon: 'fas fa-boxes',          tag: 'Pain #1', title: 'The stock that isn\'t there',         desc: 'The system shows available what the warehouse doesn\'t have. Adjustments are made without a document or an accountable party. <span style="color:#FF3B30;font-weight:700">Costs:</span> incomplete orders and customers who don\'t come back.' },
+        { num: '02', icon: 'fas fa-tachometer-alt', tag: 'Pain #2', title: 'The freeze at month-end',              desc: 'End of month, the whole team connected at once. The screens stop responding. <span style="color:#FF3B30;font-weight:700">Costs:</span> warehouse hours paralyzed on the busiest day of the month.' },
+        { num: '03', icon: 'fas fa-percentage',     tag: 'Pain #3', title: 'The margin that lies',                desc: 'A return recorded by eyeball contaminates your average inventory cost. <span style="color:#FF3B30;font-weight:700">Costs:</span> pricing and purchasing decisions made on false data.' },
+        { num: '04', icon: 'fas fa-user-clock',     tag: 'Pain #4', title: 'The operation in one person\'s head', desc: 'Parallel spreadsheets, broken formulas, and one person who "knows how everything stands." <span style="color:#FF3B30;font-weight:700">Costs:</span> the continuity and control of your most valuable asset.' },
       ],
 
       /* ── Architecture section ── */
@@ -903,11 +900,11 @@
           title: 'The remaining stock\'s WAC is never contaminated — every return at the real historical lot cost',
           desc: 'When a conventional system processes a supplier return, it deducts at the current average cost. PivetTrack deducts at the real historical cost of the lot actually returned. Your margin is always calculated on a true figure.',
           tags: ['Exact WAC', 'Real Historical Cost', 'Protected Margin', 'Lot by Lot'],
-          wac_context: '100u at US$10 + 100u at US$14 → WAC: US$12. The 100u from the second lot are returned.',
+          wac_context: '200u at WAC US$12.00. A customer returns 100u that shipped at US$10.00.',
           wac_lbl_bad: 'Conventional System', wac_lbl_good: 'PivetTrack',
-          wac_amt_bad: 'US$ 1,200', wac_amt_good: 'US$ 1,000',
-          wac_note_bad: 'Deducts at average (US$12). Inventory inflated by US$200 on one SKU, one return.',
-          wac_note_good: 'Deducts at lot\'s historical cost (US$14). Remaining stock at exact purchase cost.',
+          wac_amt_bad: 'WAC US$12.00', wac_amt_good: 'WAC US$11.33',
+          wac_note_bad: '300u · US$3,600 · US$200 in phantom inventory.',
+          wac_note_good: '300u · US$3,400 · Exact value to the cent.',
         },
         {
           step: 'Architecture 03 / 03', icon: 'fas fa-boxes', label: 'All Operational Modules Included',
@@ -932,7 +929,7 @@
       security_eyebrow: '03 Performance & Security',
       security_title: '30 Operators, 0 Errors.',
       security_accent: 'Measured Under Real Load.',
-      security_sub: 'Load-tested with k6 on a staging environment identical to production: 5,000 SKUs, 15,000 stock records, 4,716 requests, 179 ms p95, zero failures. The infrastructure protecting the most valuable asset on your balance sheet cannot be a promise — it has to be a number.',
+      security_sub: 'Load-tested with k6 on a staging environment identical to production: 5,000 SKUs across 3 warehouses, ~75,000 Kardex entries, 4,716 requests, 179 ms p95, zero failures. Technical summary available on request. The infrastructure protecting the most valuable asset on your balance sheet cannot be a promise — it has to be a number.',
       security_tenant_note: 'PivetTrack runs on Django (Python) + managed PostgreSQL on Supabase (mandatory SSL), deployed on Railway: every client has their own service and their own database. Your data does not share tables, databases, or servers with any other company.',
       security_kpis: [
         { num: '179ms',   label: 'p95 Latency',        sub: 'Picking with 30 simultaneous operators — measured, not estimated' },
@@ -959,7 +956,7 @@
       pricing_sub: 'No per-seat licenses, no charge for additional users, and no investment in your own servers.',
       pricing_setup_label: 'Initial Implementation',
       pricing_setup_amount: 'US$ 3,500',
-      pricing_setup_period: 'One-time payment · Upfront',
+      pricing_setup_period: 'One-time payment · Upfront · Live in 2 to 3 weeks',
       pricing_setup_features: [
         'Dedicated cloud instance provisioning',
         'Initial white-label configuration for the B2B Portal (logo, color, and subdomain)',
@@ -976,7 +973,8 @@
         'All functional modules included',
         'White-label B2B Portal included (your logo, subdomain, and colors)',
         'Excel exports in parallel (base plan: up to 2 concurrent)',
-        '99.9% uptime SLA committed by contract',
+        'Active catalog covered: up to 5,000 SKUs in the base plan',
+        '99.9% uptime SLA committed by contract (with service credits)',
         'Managed automatic backups included',
         'All product improvements at no additional cost',
       ],
@@ -990,10 +988,11 @@
       pricing_tax_note: 'As of this document, SaaS is not subject to Florida State Sales Tax. Prices are in USD, net.',
       pricing_quoted_title: 'Quoted separately (for transparency)',
       pricing_quoted: [
+        'Advanced Infrastructure Add-on: catalogs exceeding 5,000 active SKUs or 3+ heavy concurrent reports on a routine basis',
+        'B2B Portal, API & webhooks: enablement and scope defined in the formal proposal',
         'Custom software development of any kind',
-        'API integrations with third-party systems (ERP, QuickBooks, or other accounting software)',
-        'Catalog migrations exceeding 10,000 SKUs',
-        'Enterprise Add-on: background processing for high-concurrency inventory exports (more than 2 simultaneous) and large-scale catalogs',
+        'Integrations with third-party systems (ERP, QuickBooks, or other accounting software)',
+        'Migrations exceeding 10,000 SKUs, from a second data source, or full counts exceeding 25,000 SKUs per document',
       ],
 
       /* ── Next Steps / CTA ── */
