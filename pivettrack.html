@@ -391,6 +391,7 @@
     .pt-sticky-cta.visible { transform:translateY(0); opacity:1; pointer-events:auto; }
     .pt-sticky-cta:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(255,107,0,0.55); }
     @media(max-width:480px){ .pt-sticky-cta { bottom:16px; right:16px; font-size:0.8125rem; padding:11px 16px; } }
+    @media(max-width:480px){ #mainContent { padding-bottom:80px; } }
 
     /* ═══════════════════════════════════════════════
        DEMO MODAL — AppSheet-style lightbox
@@ -614,7 +615,7 @@
       hero_eyebrow: 'WMS Enterprise · Marca Blanca · PIVET DIGITAL AUTOMATIONS LLC',
       hero_h1a: 'WMS Enterprise Marca Blanca.',
       hero_h1b: 'Medido, No Prometido.',
-      hero_sub: '<strong>PivetTrack</strong> es un WMS Enterprise con Portal B2B de marca blanca: el portal que usan tus compradores sale con tu logo, tu nombre y tu subdominio. Probado bajo carga real con <strong>30 operarios en simultáneo, 0 errores y p95 de 179 ms</strong>. Single-tenant de verdad: cada cliente, su propio servidor y su propia base de datos. Cada movimiento genera un documento inmutable. Cada documento, un responsable.',
+      hero_sub: '<strong>PivetTrack</strong> es un WMS Enterprise con Portal B2B de marca blanca: el portal que usan tus compradores sale con tu logo, tu nombre y tu subdominio. Probado <em>en staging</em> con <strong>30 operarios en simultáneo, 0 errores y p95 de 179 ms</strong>. Single-tenant de verdad: cada cliente, su propio servidor y su propia base de datos. Cada movimiento genera un documento inmutable. Cada documento, un responsable.',
       hero_cta1: 'Agendar Demostración',
       hero_cta2: 'Ver Funcionalidades',
       trust: ['30 operarios · 0 errores · p95 de 179 ms', 'Marca blanca: tu logo y subdominio propios', 'Single-Tenant · Base de datos exclusiva', 'NDA antes de cualquier demo'],
@@ -703,7 +704,7 @@
       /* ── Security & Infrastructure ── */
       security_eyebrow: '03 Rendimiento y Seguridad',
       security_title: '30 Operarios, 0 Errores.',
-      security_accent: 'Medido en Carga Real.',
+      security_accent: 'Medido en Staging.',
       security_sub: 'Probado con k6 sobre staging idéntico a producción: 5.000 SKUs en 3 bodegas, ~75.000 movimientos de Kardex, 4.716 peticiones, p95 de 179 ms y cero fallos. Resumen técnico disponible a solicitud. La infraestructura que custodia el activo más caro de su balance no puede ser una promesa — tiene que ser un número.',
       security_tenant_note: 'PivetTrack corre sobre Django (Python) + PostgreSQL gestionado en Supabase (SSL obligatorio), desplegado en Railway: cada cliente tiene su propio servicio y su propia base de datos. Sus datos no comparten tablas, ni base, ni servidor con ninguna otra empresa.',
       security_kpis: [
@@ -885,7 +886,7 @@
       hero_eyebrow: 'Enterprise WMS · White Label · PIVET DIGITAL AUTOMATIONS LLC',
       hero_h1a: 'Enterprise WMS, White Label.',
       hero_h1b: 'Measured, Not Promised.',
-      hero_sub: '<strong>PivetTrack</strong> is an Enterprise WMS with a white-label B2B Portal: the portal your buyers use carries your logo, your name, and your subdomain. Stress-tested under real load with <strong>30 simultaneous operators, 0 errors, and a 179 ms p95 response time</strong>. True single-tenant: every client gets their own server and their own database. Every movement generates an immutable document. Every document has an accountable party.',
+      hero_sub: '<strong>PivetTrack</strong> is an Enterprise WMS with a white-label B2B Portal: the portal your buyers use carries your logo, your name, and your subdomain. Tested <em>on staging</em> with <strong>30 simultaneous operators, 0 errors, and a 179 ms p95 response time</strong>. True single-tenant: every client gets their own server and their own database. Every movement generates an immutable document. Every document has an accountable party.',
       hero_cta1: 'Schedule a Demo',
       hero_cta2: 'See Features',
       trust: ['30 operators · 0 errors · 179 ms p95', 'White label: your logo and your subdomain', 'Single-Tenant · Exclusive database', 'NDA before any demo'],
@@ -974,7 +975,7 @@
       /* ── Security & Infrastructure ── */
       security_eyebrow: '03 Performance & Security',
       security_title: '30 Operators, 0 Errors.',
-      security_accent: 'Measured Under Real Load.',
+      security_accent: 'Measured on Staging.',
       security_sub: 'Load-tested with k6 on a staging environment identical to production: 5,000 SKUs across 3 warehouses, ~75,000 Kardex entries, 4,716 requests, 179 ms p95, zero failures. Technical summary available on request. The infrastructure protecting the most valuable asset on your balance sheet cannot be a promise — it has to be a number.',
       security_tenant_note: 'PivetTrack runs on Django (Python) + managed PostgreSQL on Supabase (mandatory SSL), deployed on Railway: every client has their own service and their own database. Your data does not share tables, databases, or servers with any other company.',
       security_kpis: [
