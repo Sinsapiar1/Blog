@@ -173,442 +173,561 @@
       </div>
     </aside>
 
-    <main class="content" id="mainContent">
-      <div class="legal-content">
-
-        <a href="javascript:history.back()" class="legal-back">
-          <i class="fas fa-arrow-left"></i> Volver
-        </a>
-
-        <!-- Draft banner -->
-        <div class="legal-draft-banner">
-          <i class="fas fa-exclamation-triangle"></i>
-          <p><strong>BORRADOR DE TRABAJO — NO PUBLICAR.</strong> Este documento no es asesoría legal. Debe revisarlo un abogado licenciado en el Estado de Florida antes de publicarse. Los puntos marcados <strong>REVISAR</strong> no están verificados o requieren una decisión legal o comercial.</p>
-        </div>
-
-        <!-- Header -->
-        <p class="legal-eyebrow"><i class="fas fa-shield-alt"></i>&nbsp; Política de Privacidad</p>
-        <h1 class="legal-h1">Política de Privacidad — PivetTrack</h1>
-        <p class="legal-meta-row"><strong>Responsable de esta política:</strong> PIVET DIGITAL AUTOMATIONS LLC («Pivet», «nosotros»), sociedad de responsabilidad limitada organizada bajo las leyes del Estado de Florida, Estados Unidos.</p>
-        <p class="legal-meta-row" style="margin-bottom:32px"><strong>Versión:</strong> 0.1 (borrador) — 19 de octubre de 2026.</p>
-
-        <!-- Section 1 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 1</span>
-            Alcance
-          </h2>
-          <p>Esta política explica qué datos personales trata Pivet en relación con:</p>
-          <ul>
-            <li><strong>PivetTrack</strong>, el sistema de gestión de inventario y almacenes (WMS) que Pivet ofrece como servicio (SaaS) a empresas («Clientes»);</li>
-            <li>el <strong>Portal de Pedidos B2B</strong> de PivetTrack, que un Cliente puede habilitar para que sus propios compradores le envíen pedidos;</li>
-            <li>la <strong>API B2B</strong> de PivetTrack, por la que los sistemas de los compradores de un Cliente se integran con su instancia; y</li>
-            <li>el sitio web público <strong>pivettrack.com</strong>.</li>
-          </ul>
-          <p>PivetTrack se contrata exclusivamente entre empresas. Esta política no regula la relación entre un Cliente y sus propios compradores, empleados o proveedores: esa relación la rige la política de privacidad del propio Cliente.</p>
-        </div>
-
-        <!-- Section 2 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 2</span>
-            Nuestros dos roles: responsable y encargado
-          </h2>
-          <p>Pivet trata datos personales en dos calidades distintas, y conviene distinguirlas.</p>
-          <p><strong>Como encargado del tratamiento (<em>processor</em>).</strong> Todo lo que vive dentro de la instancia de PivetTrack de un Cliente —las cuentas de sus usuarios internos, las cuentas de sus compradores en el Portal B2B, los contactos de sus clientes y proveedores, sus pedidos y sus movimientos de inventario— lo trata Pivet <strong>por cuenta y según las instrucciones del Cliente</strong>, quien es el responsable (<em>controller</em>) de esos datos. Es el mismo criterio del Acuerdo de Nivel de Servicio de PivetTrack, que define a Pivet como custodio técnico (<em>data processor</em>) de los datos del Cliente.</p>
-          <p><strong>El caso del Portal B2B, de forma expresa.</strong> Las personas que usan el Portal de Pedidos B2B <strong>no son clientes de Pivet</strong>: son compradores de nuestros Clientes. Pivet no los elige, no los contacta por cuenta propia y no usa sus datos para ningún fin propio. El Cliente decide a quién da acceso, es quien debe informar a sus compradores sobre el tratamiento de sus datos y contar con una base legal para ello, y es el destinatario de las solicitudes que esas personas quieran ejercer (sección 10). Pivet actúa allí únicamente como encargado del tratamiento.</p>
-          <p><strong>Como responsable del tratamiento (<em>controller</em>).</strong> Pivet decide por sí misma sobre un conjunto acotado de datos: los de los visitantes del sitio web pivettrack.com, los de las personas que nos escriben para conocer el producto, y los datos de contacto y facturación de los representantes de nuestros Clientes, que usamos para administrar la relación comercial.</p>
-        </div>
-
-        <!-- Section 3 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 3</span>
-            Datos que tratamos y para qué
-          </h2>
-
-          <h3 class="legal-section-h3">3.1. Usuarios internos de PivetTrack (personal del Cliente)</h3>
-          <ul>
-            <li><strong>Datos de la cuenta:</strong> nombre de usuario, nombre y apellido, correo electrónico, rol (Súper Administrador, Administrador u Operador), idioma preferido, quién creó la cuenta, fecha de alta y fecha del último ingreso.</li>
-            <li><strong>Contraseña:</strong> se guarda sólo su <em>hash</em>; la contraseña en claro nunca se almacena.</li>
-            <li><strong>Segundo factor de autenticación:</strong> obligatorio para el Súper Administrador y el Administrador, y voluntario para el Operador. El secreto del autenticador se guarda <strong>cifrado</strong>. Además se generan códigos de respaldo de un solo uso.</li>
-          </ul>
-          <p><strong>Finalidad:</strong> identificar a cada usuario, controlar a qué funciones accede según su rol y proteger el acceso a la cuenta.</p>
-
-          <h3 class="legal-section-h3">3.2. Compradores del Portal de Pedidos B2B (en nombre del Cliente)</h3>
-          <ul>
-            <li><strong>Datos de la cuenta:</strong> correo electrónico (que es su identificador de acceso), nombre, idioma preferido, el Cliente al que pertenece la cuenta, fecha de alta, fecha del último ingreso y el usuario interno que dio de alta la cuenta.</li>
-            <li><strong>Contraseña:</strong> sólo su <em>hash</em>. La cuenta se crea sin contraseña utilizable y la persona la define desde un enlace que recibe por correo.</li>
-            <li><strong>Pedidos:</strong> cada pedido que la persona carga o cancela queda atribuido a ella.</li>
-          </ul>
-          <p><strong>Finalidad:</strong> permitir que el comprador envíe y siga sus pedidos al Cliente, y que el Cliente sepa quién cargó cada uno.</p>
-
-          <h3 class="legal-section-h3">3.3. Contactos comerciales que el Cliente registra</h3>
-          <p>Dentro de su instancia, el Cliente puede registrar datos de contacto de sus propios <strong>clientes y proveedores</strong> (razón social, número de identificación tributaria —EIN—, nombre de contacto, teléfono, correo electrónico y dirección postal) y de los <strong>destinatarios autorizados</strong> para recibir traspasos entre almacenes (nombre, correo electrónico y teléfono). Pivet no carga ni verifica estos datos: los ingresa el Cliente.</p>
-          <p><strong>Finalidad:</strong> la operación logística del Cliente (despachos, recepciones, documentos de envío).</p>
-
-          <h3 class="legal-section-h3">3.4. Trazabilidad de la operación</h3>
-          <p>Cada documento operativo y cada movimiento de inventario registra el usuario que lo realizó y la fecha y hora. El registro de movimientos (Kardex) es <strong>inmutable por diseño</strong>: una vez escrito, no se modifica ni se elimina. Las acciones administrativas sensibles —alta, edición, activación y desactivación de usuarios; reinicio de contraseñas y del segundo factor; emisión y revocación de credenciales de API; alta y revocación de webhooks— quedan además en una bitácora de auditoría con el usuario que actuó, la acción, un detalle y la <strong>dirección IP</strong> desde la que se hizo.</p>
-          <p><strong>Finalidad:</strong> integridad y auditabilidad de los registros contables y de inventario del Cliente, y determinar la autoría de cada acción.</p>
-
-          <h3 class="legal-section-h3">3.5. Seguridad y prevención de abuso</h3>
-          <ul>
-            <li><strong>Dirección IP:</strong> la aplicación obtiene la IP real del visitante a partir de la cabecera que escribe el proxy de borde de la infraestructura. La usa para limitar intentos de acceso y peticiones (<em>rate limiting</em>), para bloquear temporalmente ataques de fuerza bruta y para la bitácora de auditoría.</li>
-            <li><strong>Registro de accesos al panel interno:</strong> de cada intento de inicio de sesión, exitoso o fallido, se registran el nombre de usuario, la IP, el agente de usuario (<em>user agent</em>) del navegador, la ruta y la fecha y hora. Tras cinco intentos fallidos el acceso se bloquea temporalmente (30 minutos, según la configuración por defecto).</li>
-            <li><strong>Portal B2B:</strong> los intentos fallidos se cuentan por la combinación de correo electrónico e IP; el contador se guarda bajo una huella (<em>hash</em> SHA‑256) de esa combinación y vence con su ventana de tiempo.</li>
-          </ul>
-          <p><strong>Finalidad:</strong> proteger las cuentas y la plataforma frente a accesos no autorizados.</p>
-
-          <h3 class="legal-section-h3">3.6. Integraciones: API B2B y webhooks</h3>
-          <ul>
-            <li><strong>Credenciales de API:</strong> identificador público (<em>client ID</em>), el secreto <strong>sólo como hash</strong> (se muestra una única vez al emitirse) y la huella del certificado de cliente al que se ata la credencial en producción.</li>
-            <li><strong>Webhooks:</strong> la URL del sistema del comprador que recibe las notificaciones y el secreto de firma, que se guarda <strong>cifrado</strong> porque debe poder leerse para firmar cada envío.</li>
-            <li><strong>Contenido:</strong> el pedido tal como lo envió el sistema del comprador y el contenido de cada notificación enviada.</li>
-          </ul>
-          <p><strong>Finalidad:</strong> autenticar las integraciones, registrar los pedidos recibidos y notificar sus cambios de estado.</p>
-
-          <h3 class="legal-section-h3">3.7. Correos electrónicos transaccionales</h3>
-          <p>PivetTrack envía correos <strong>operativos</strong>, nunca publicitarios: el enlace para definir o restablecer la contraseña (Portal y panel interno), el acuse de recibo de un pedido del Portal, los cambios de estado de un pedido B2B (aprobado, rechazado, cancelado, despachado), el aviso de una toma de inventario confirmada y avisos internos sobre credenciales de API por vencer. Para enviarlos se usan la dirección de correo y el nombre del destinatario.</p>
-
-          <h3 class="legal-section-h3">3.8. Archivos generados y cargados</h3>
-          <ul>
-            <li><strong>Exportaciones:</strong> los archivos Excel grandes que se generan en segundo plano quedan guardados en la base de datos de la instancia para que los descargue quien los pidió. Vencen a las 24 horas y se eliminan con la siguiente exportación que se pida en la instancia. Las exportaciones chicas se generan en el momento y no se guardan.</li>
-            <li><strong>Importaciones:</strong> el archivo Excel que se carga para importar productos o un conteo se guarda mientras se procesa y su contenido se vacía al terminar; se conservan el nombre del archivo y el resultado.</li>
-          </ul>
-
-          <h3 class="legal-section-h3">3.9. Sitio web pivettrack.com y contacto comercial</h3>
-          <ul>
-            <li>
-              <strong>Analítica:</strong> el sitio web usa Google Analytics (etiqueta <em>gtag.js</em>), que recoge datos de navegación como páginas visitadas, dispositivo y una ubicación aproximada.
-              <div class="legal-revisar" style="margin-top:8px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> confirmar en el sitio el ID de medición, si hay aviso o banner de consentimiento, la configuración de retención de Google Analytics y si se activó Google Signals. No se verificó: el sitio vive en otro repositorio.</div>
-              </div>
-            </li>
-            <li><strong>Contacto:</strong> si nos escribe, usamos su nombre, correo electrónico, empresa y el contenido del mensaje para responderle y, si corresponde, preparar una propuesta comercial.</li>
-            <li>
-              <strong>Relación comercial:</strong> de los representantes de nuestros Clientes tratamos nombre, cargo, correo electrónico y datos de facturación.
-              <div class="legal-revisar" style="margin-top:8px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> medio de pago y quién lo procesa; PivetTrack no tiene ningún módulo de pagos ni guarda datos de tarjetas.</div>
-              </div>
-            </li>
-          </ul>
-
-          <h3 class="legal-section-h3">3.10. Lo que no hacemos</h3>
-          <ul>
-            <li>No vendemos ni alquilamos datos personales.</li>
-            <li>No usamos los datos de las instancias de nuestros Clientes con fines publicitarios ni para fines propios.</li>
-            <li>La aplicación PivetTrack (panel interno y Portal B2B) <strong>no carga scripts de terceros ni herramientas de analítica</strong>: su política de seguridad de contenido sólo admite recursos servidos por la propia instancia.</li>
-          </ul>
-        </div>
-
-        <!-- Section 4 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 4</span>
-            Bases legales y normativa aplicable
-          </h2>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> determinar qué normas alcanzan a Pivet y a sus Clientes —por ejemplo, la <em>Florida Digital Bill of Rights</em> (cuyos umbrales de aplicación probablemente no se alcancen), la <em>Florida Information Protection Act</em>, leyes de privacidad de otros estados de EE. UU. si hay usuarios allí, y el RGPD europeo si algún Cliente opera con personas en la UE— y redactar esta sección en consecuencia. Este borrador no afirma cumplimiento de ninguna norma en particular.</div>
-          </div>
-          <p style="margin-top:14px">En términos generales, tratamos los datos para prestar el servicio contratado por el Cliente, para proteger la seguridad de la plataforma y, en el caso del sitio web y del contacto comercial, por nuestro interés en responder consultas y medir el uso del sitio.</p>
-        </div>
-
-        <!-- Section 5 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 5</span>
-            Dónde se alojan los datos: una instancia dedicada por Cliente
-          </h2>
-          <p>PivetTrack es <strong>single-tenant</strong>: cada Cliente recibe su propia instancia aislada, compuesta por un proyecto propio en <strong>Railway</strong> (donde corre la aplicación) y un proyecto propio en <strong>Supabase</strong> (base de datos PostgreSQL). Los datos de un Cliente no comparten base de datos con los de ningún otro: el aislamiento entre Clientes es de infraestructura.</p>
-          <ul>
-            <li>
-              <strong>Ubicación:</strong>
-              <div class="legal-revisar" style="margin-top:6px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> región de los proyectos de Railway y Supabase de cada instancia; no está documentada. Confirmar que es EE. UU. antes de afirmarlo.</div>
-              </div>
-            </li>
-            <li><strong>Cifrado en tránsito:</strong> la aplicación sólo atiende por HTTPS (redirige HTTP y envía la cabecera HSTS).</li>
-            <li>
-              <strong>Cifrado en reposo:</strong> además de los secretos que la aplicación cifra por sí misma (sección 9),
-              <div class="legal-revisar" style="margin-top:6px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> el cifrado en reposo de la base de datos lo provee Supabase; confirmar en su documentación vigente antes de afirmarlo.</div>
-              </div>
-            </li>
-            <li><strong>Respaldos:</strong> la base de datos de cada instancia tiene un respaldo automático diario que se conserva siete (7) días.</li>
-          </ul>
-        </div>
-
-        <!-- Section 6 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 6</span>
-            Proveedores que intervienen (subencargados)
-          </h2>
-          <div class="legal-table-wrap">
-            <table class="legal-table">
-              <thead>
-                <tr>
-                  <th>Proveedor</th>
-                  <th>Para qué</th>
-                  <th>Qué datos ve</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Railway</strong></td>
-                  <td>Ejecutar la aplicación de cada instancia</td>
-                  <td>Todo el tráfico de la aplicación y sus registros de servicio</td>
-                </tr>
-                <tr>
-                  <td><strong>Supabase</strong></td>
-                  <td>Base de datos PostgreSQL de cada instancia y sus respaldos</td>
-                  <td>Todos los datos de la instancia</td>
-                </tr>
-                <tr>
-                  <td><strong>Resend</strong></td>
-                  <td>Envío de los correos transaccionales, en las instancias que lo tienen configurado</td>
-                  <td>Destinatario, nombre y contenido de cada correo</td>
-                </tr>
-                <tr>
-                  <td><strong>Google (Analytics)</strong></td>
-                  <td>Analítica del sitio web pivettrack.com, <strong>sólo</strong> el sitio público</td>
-                  <td>Datos de navegación del sitio web</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> proveedor de DNS y registrador del dominio; si alguna instancia usa otro proveedor de correo; y si nos comprometemos a avisar a los Clientes antes de sumar un subencargado.</div>
-          </div>
-        </div>
-
-        <!-- Section 7 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 7</span>
-            Cookies y almacenamiento local
-          </h2>
-          <p><strong>En la aplicación PivetTrack</strong> (panel interno y Portal B2B) sólo se usan cookies estrictamente necesarias:</p>
-          <div class="legal-table-wrap">
-            <table class="legal-table">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Para qué</th>
-                  <th>Duración</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>sessionid</code></td>
-                  <td>Mantener la sesión iniciada</td>
-                  <td>Vence tras 30 minutos sin actividad (configuración por defecto)</td>
-                </tr>
-                <tr>
-                  <td><code>csrftoken</code></td>
-                  <td>Protección contra falsificación de peticiones (CSRF)</td>
-                  <td>Aproximadamente un año</td>
-                </tr>
-                <tr>
-                  <td><code>django_language</code></td>
-                  <td>Recordar el idioma elegido en el panel interno</td>
-                  <td>Hasta cerrar el navegador</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p>El panel interno guarda además en el almacenamiento local del navegador (<em>localStorage</em>) la hora de la última actividad, para que el cierre de sesión por inactividad funcione igual entre pestañas, y si la barra lateral está abierta o cerrada. No contiene datos personales.</p>
-          <p>
-            <strong>En el sitio web pivettrack.com</strong>, Google Analytics instala sus propias cookies (por ejemplo, <code>_ga</code>).
-          </p>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> listado y duración exactos; si se requiere consentimiento previo.</div>
-          </div>
-        </div>
-
-        <!-- Section 8 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 8</span>
-            Cuánto tiempo conservamos los datos
-          </h2>
-          <ul>
-            <li><strong>Datos de la instancia del Cliente:</strong> mientras el contrato esté vigente. Al terminar, quedan disponibles para exportación durante treinta (30) días calendario, en los términos del Acuerdo de Nivel de Servicio, y luego se eliminan la instancia y su base de datos.
-              <div class="legal-revisar" style="margin-top:8px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> confirmar con Supabase cuánto sobreviven los respaldos tras eliminar un proyecto.</div>
-              </div>
-            </li>
-            <li><strong>Cuentas de usuario:</strong> no se borran, se <strong>desactivan</strong>. Las cuentas quedan vinculadas a los movimientos, pedidos y registros de auditoría que generaron, que son inmutables por diseño; sus datos se eliminan con la instancia.</li>
-            <li><strong>Sesiones:</strong> vencen por inactividad; una tarea programada elimina las vencidas.
-              <div class="legal-revisar" style="margin-top:8px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> frecuencia de esa tarea, configurada en el panel de Railway de cada instancia.</div>
-              </div>
-            </li>
-            <li><strong>Registro de accesos al panel interno y bitácora de auditoría:</strong> hoy se conservan durante toda la vida de la instancia; la aplicación no los purga.
-              <div class="legal-revisar" style="margin-top:8px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> definir un plazo e implementar la purga antes de publicar, o declarar este plazo como definitivo.</div>
-              </div>
-            </li>
-            <li><strong>Contadores anti-fuerza-bruta y de límite de peticiones:</strong> vencen solos, con su ventana de tiempo.</li>
-            <li><strong>Exportaciones:</strong> 24 horas (sección 3.8).</li>
-            <li><strong>Registros de servicio de la infraestructura:</strong>
-              <div class="legal-revisar" style="margin-top:8px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> retención de logs del plan de Railway contratado, y si registran IPs en su borde.</div>
-              </div>
-            </li>
-            <li><strong>Sitio web y contacto comercial:</strong>
-              <div class="legal-revisar" style="margin-top:8px">
-                <i class="fas fa-exclamation-circle"></i>
-                <div><strong>REVISAR:</strong> plazo de retención de Google Analytics y de los correos de contacto comercial.</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Section 9 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 9</span>
-            Seguridad
-          </h2>
-          <p>Entre otras medidas: contraseñas sólo como <em>hash</em>; segundo factor obligatorio para los roles administrativos; secretos del segundo factor y de los webhooks cifrados en la base de datos; secretos de API sólo como <em>hash</em> y atados en producción al certificado del cliente; límite de intentos y bloqueo temporal ante fuerza bruta; cierre de sesión por inactividad; cookies sólo por HTTPS; política de seguridad de contenido restrictiva; control de acceso por rol; y registro inmutable de movimientos y de acciones administrativas.</p>
-          <p>Ningún sistema es infalible. La seguridad del acceso también depende de que cada usuario cuide sus credenciales.</p>
-        </div>
-
-        <!-- Section 10 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 10</span>
-            Derechos de las personas
-          </h2>
-          <p><strong>Si sus datos están en la instancia de un Cliente</strong> —porque usted es usuario interno de una empresa que usa PivetTrack o comprador en su Portal B2B—, la empresa es la responsable de sus datos: dirija a ella sus solicitudes de acceso, rectificación, eliminación u otras. Si nos escribe directamente, trasladaremos su solicitud al Cliente que corresponda y lo asistiremos en lo que nos pida para responderla.</p>
-          <p>Tenga presente que, por diseño, los registros de movimientos y de auditoría no se modifican ni se eliminan, y que las cuentas se desactivan en lugar de borrarse; por eso, la eliminación de algunos datos puede no ser posible mientras la instancia exista.</p>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> compatibilidad de este diseño con los derechos de eliminación que resulten aplicables.</div>
-          </div>
-          <p style="margin-top:14px"><strong>Si sus datos los tratamos como responsables</strong> (sitio web, contacto o relación comercial), puede pedirnos acceso, rectificación o eliminación escribiendo a la dirección de la sección 13.</p>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> plazo de respuesta y cómo verificamos la identidad del solicitante.</div>
-          </div>
-        </div>
-
-        <!-- Section 11 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 11</span>
-            Incidentes de seguridad
-          </h2>
-          <p>Si confirmamos una vulneración de seguridad en la infraestructura bajo nuestro control que exponga datos de un Cliente, se lo notificaremos en un plazo no mayor a setenta y dos (72) horas desde la confirmación, conforme al Acuerdo de Nivel de Servicio. Como responsable de esos datos, el Cliente decide la notificación a las personas afectadas, con la asistencia que razonablemente nos pida.</p>
-        </div>
-
-        <!-- Section 12 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 12</span>
-            Menores de edad
-          </h2>
-          <p>PivetTrack y su sitio web están dirigidos a empresas y no a menores de edad. No recolectamos a sabiendas datos de menores.</p>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> edad de referencia.</div>
-          </div>
-        </div>
-
-        <!-- Section 13 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 13</span>
-            Contacto
-          </h2>
-          <p>PIVET DIGITAL AUTOMATIONS LLC — <a href="mailto:raul@raulpivet.com" style="color:#FF6B00">raul@raulpivet.com</a></p>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> domicilio postal de la sociedad; evaluar una casilla dedicada a privacidad.</div>
-          </div>
-        </div>
-
-        <!-- Section 14 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 14</span>
-            Acuerdo de tratamiento de datos (DPA)
-          </h2>
-          <p>Los Clientes Enterprise pueden solicitar un Acuerdo de Tratamiento de Datos (<em>Data Processing Agreement</em>) que detalle las obligaciones de Pivet como encargado del tratamiento. Ese documento está en preparación (fase 2).</p>
-        </div>
-
-        <!-- Section 15 -->
-        <div class="legal-section">
-          <h2 class="legal-section-h2">
-            <span class="legal-section-num">§ 15</span>
-            Cambios a esta política
-          </h2>
-          <p>Podemos actualizar esta política. La versión vigente estará siempre publicada con su fecha. Si un cambio afecta de forma sustancial el tratamiento de los datos de las instancias, lo avisaremos a los Clientes al correo de contacto que tengan registrado, con antelación razonable.</p>
-          <div class="legal-revisar">
-            <i class="fas fa-exclamation-circle"></i>
-            <div><strong>REVISAR:</strong> plazo de aviso.</div>
-          </div>
-        </div>
-
-        <hr class="legal-divider">
-
-        <div class="legal-final-note">
-          <i class="fas fa-gavel"></i> &nbsp; Requiere revisión legal antes de publicar.
-        </div>
-
-      </div><!-- /.legal-content -->
-    </main>
+    <main class="content" id="mainContent"></main>
   </div><!-- /.container -->
 
   <footer>
     <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
     <p class="footer-registered">PivetTrack WMS · Miami, FL · Registered LLC — Florida</p>
     <p class="footer-legal">
-      <a href="terminos.html">Términos del Servicio</a> &middot;
-      <a href="privacidad.html">Política de Privacidad</a>
+      <a href="terminos.html" id="footerTerms">Términos del Servicio</a> &middot;
+      <a href="privacidad.html" id="footerPrivacy">Política de Privacidad</a>
     </p>
   </footer>
 
   <script src="script.js"></script>
   <script>
-    const tNav = {
-      es: { nav_home:'Inicio', nav_about:'Nosotros', nav_contact:'Contacto', nav_demos:'AppSheet Demos' },
-      en: { nav_home:'Home', nav_about:'About Us', nav_contact:'Contact', nav_demos:'AppSheet Demos' }
-    };
-    let lang = localStorage.getItem('homeLang') || 'es';
-    function renderNav() {
-      const d = tNav[lang];
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.getAttribute('data-i18n');
-        if (d[k]) el.textContent = d[k];
-      });
-      const flag = document.getElementById('languageFlag');
-      const text = document.getElementById('languageText');
-      if (flag) flag.textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
-      if (text) text.textContent = lang === 'es' ? 'English' : 'Español';
+  const t = {
+    es: {
+      nav_home: 'Inicio', nav_about: 'Nosotros', nav_contact: 'Contacto', nav_demos: 'AppSheet Demos',
+      title: 'Política de Privacidad — PivetTrack · PIVET DIGITAL AUTOMATIONS LLC',
+      desc: 'Política de Privacidad — PivetTrack WMS · PIVET DIGITAL AUTOMATIONS LLC',
+      back: 'Volver',
+      review: 'REVISAR',
+      banner: '<strong>BORRADOR DE TRABAJO — NO PUBLICAR.</strong> Este documento no es asesoría legal. Debe revisarlo un abogado licenciado en el Estado de Florida antes de publicarse. Los puntos marcados <strong>REVISAR</strong> no están verificados o requieren una decisión legal o comercial.',
+      eyebrow: 'Política de Privacidad',
+      h1: 'Política de Privacidad — PivetTrack',
+      meta1: '<strong>Responsable de esta política:</strong> PIVET DIGITAL AUTOMATIONS LLC («Pivet», «nosotros»), sociedad de responsabilidad limitada organizada bajo las leyes del Estado de Florida, Estados Unidos.',
+      meta2: '<strong>Versión:</strong> 0.1 (borrador) — 19 de octubre de 2026.',
+      final: 'Requiere revisión legal antes de publicar.',
+      terms: 'Términos del Servicio',
+      privacy: 'Política de Privacidad',
+      sections: (R) => [
+  { title: `Alcance`, body: `
+<p>Esta política explica qué datos personales trata Pivet en relación con:</p>
+<ul>
+  <li><strong>PivetTrack</strong>, el sistema de gestión de inventario y almacenes (WMS) que Pivet ofrece como servicio (SaaS) a empresas («Clientes»);</li>
+  <li>el <strong>Portal de Pedidos B2B</strong> de PivetTrack, que un Cliente puede habilitar para que sus propios compradores le envíen pedidos;</li>
+  <li>la <strong>API B2B</strong> de PivetTrack, por la que los sistemas de los compradores de un Cliente se integran con su instancia; y</li>
+  <li>el sitio web público <strong>pivettrack.com</strong>.</li>
+</ul>
+<p>PivetTrack se contrata exclusivamente entre empresas. Esta política no regula la relación entre un Cliente y sus propios compradores, empleados o proveedores: esa relación la rige la política de privacidad del propio Cliente.</p>
+` },
+  { title: `Nuestros dos roles: responsable y encargado`, body: `
+<p>Pivet trata datos personales en dos calidades distintas, y conviene distinguirlas.</p>
+<p><strong>Como encargado del tratamiento (<em>processor</em>).</strong> Todo lo que vive dentro de la instancia de PivetTrack de un Cliente —las cuentas de sus usuarios internos, las cuentas de sus compradores en el Portal B2B, los contactos de sus clientes y proveedores, sus pedidos y sus movimientos de inventario— lo trata Pivet <strong>por cuenta y según las instrucciones del Cliente</strong>, quien es el responsable (<em>controller</em>) de esos datos. Es el mismo criterio del Acuerdo de Nivel de Servicio de PivetTrack, que define a Pivet como custodio técnico (<em>data processor</em>) de los datos del Cliente.</p>
+<p><strong>El caso del Portal B2B, de forma expresa.</strong> Las personas que usan el Portal de Pedidos B2B <strong>no son clientes de Pivet</strong>: son compradores de nuestros Clientes. Pivet no los elige, no los contacta por cuenta propia y no usa sus datos para ningún fin propio. El Cliente decide a quién da acceso, es quien debe informar a sus compradores sobre el tratamiento de sus datos y contar con una base legal para ello, y es el destinatario de las solicitudes que esas personas quieran ejercer (sección 10). Pivet actúa allí únicamente como encargado del tratamiento.</p>
+<p><strong>Como responsable del tratamiento (<em>controller</em>).</strong> Pivet decide por sí misma sobre un conjunto acotado de datos: los de los visitantes del sitio web pivettrack.com, los de las personas que nos escriben para conocer el producto, y los datos de contacto y facturación de los representantes de nuestros Clientes, que usamos para administrar la relación comercial.</p>
+` },
+  { title: `Datos que tratamos y para qué`, body: `
+<h3 class="legal-section-h3">3.1. Usuarios internos de PivetTrack (personal del Cliente)</h3>
+<ul>
+  <li><strong>Datos de la cuenta:</strong> nombre de usuario, nombre y apellido, correo electrónico, rol (Súper Administrador, Administrador u Operador), idioma preferido, quién creó la cuenta, fecha de alta y fecha del último ingreso.</li>
+  <li><strong>Contraseña:</strong> se guarda sólo su <em>hash</em>; la contraseña en claro nunca se almacena.</li>
+  <li><strong>Segundo factor de autenticación:</strong> obligatorio para el Súper Administrador y el Administrador, y voluntario para el Operador. El secreto del autenticador se guarda <strong>cifrado</strong>. Además se generan códigos de respaldo de un solo uso.</li>
+</ul>
+<p><strong>Finalidad:</strong> identificar a cada usuario, controlar a qué funciones accede según su rol y proteger el acceso a la cuenta.</p>
+
+<h3 class="legal-section-h3">3.2. Compradores del Portal de Pedidos B2B (en nombre del Cliente)</h3>
+<ul>
+  <li><strong>Datos de la cuenta:</strong> correo electrónico (que es su identificador de acceso), nombre, idioma preferido, el Cliente al que pertenece la cuenta, fecha de alta, fecha del último ingreso y el usuario interno que dio de alta la cuenta.</li>
+  <li><strong>Contraseña:</strong> sólo su <em>hash</em>. La cuenta se crea sin contraseña utilizable y la persona la define desde un enlace que recibe por correo.</li>
+  <li><strong>Pedidos:</strong> cada pedido que la persona carga o cancela queda atribuido a ella.</li>
+</ul>
+<p><strong>Finalidad:</strong> permitir que el comprador envíe y siga sus pedidos al Cliente, y que el Cliente sepa quién cargó cada uno.</p>
+
+<h3 class="legal-section-h3">3.3. Contactos comerciales que el Cliente registra</h3>
+<p>Dentro de su instancia, el Cliente puede registrar datos de contacto de sus propios <strong>clientes y proveedores</strong> (razón social, número de identificación tributaria —EIN—, nombre de contacto, teléfono, correo electrónico y dirección postal) y de los <strong>destinatarios autorizados</strong> para recibir traspasos entre almacenes (nombre, correo electrónico y teléfono). Pivet no carga ni verifica estos datos: los ingresa el Cliente.</p>
+<p><strong>Finalidad:</strong> la operación logística del Cliente (despachos, recepciones, documentos de envío).</p>
+
+<h3 class="legal-section-h3">3.4. Trazabilidad de la operación</h3>
+<p>Cada documento operativo y cada movimiento de inventario registra el usuario que lo realizó y la fecha y hora. El registro de movimientos (Kardex) es <strong>inmutable por diseño</strong>: una vez escrito, no se modifica ni se elimina. Las acciones administrativas sensibles —alta, edición, activación y desactivación de usuarios; reinicio de contraseñas y del segundo factor; emisión y revocación de credenciales de API; alta y revocación de webhooks— quedan además en una bitácora de auditoría con el usuario que actuó, la acción, un detalle y la <strong>dirección IP</strong> desde la que se hizo.</p>
+<p><strong>Finalidad:</strong> integridad y auditabilidad de los registros contables y de inventario del Cliente, y determinar la autoría de cada acción.</p>
+
+<h3 class="legal-section-h3">3.5. Seguridad y prevención de abuso</h3>
+<ul>
+  <li><strong>Dirección IP:</strong> la aplicación obtiene la IP real del visitante a partir de la cabecera que escribe el proxy de borde de la infraestructura. La usa para limitar intentos de acceso y peticiones (<em>rate limiting</em>), para bloquear temporalmente ataques de fuerza bruta y para la bitácora de auditoría.</li>
+  <li><strong>Registro de accesos al panel interno:</strong> de cada intento de inicio de sesión, exitoso o fallido, se registran el nombre de usuario, la IP, el agente de usuario (<em>user agent</em>) del navegador, la ruta y la fecha y hora. Tras cinco intentos fallidos el acceso se bloquea temporalmente (30 minutos, según la configuración por defecto).</li>
+  <li><strong>Portal B2B:</strong> los intentos fallidos se cuentan por la combinación de correo electrónico e IP; el contador se guarda bajo una huella (<em>hash</em> SHA‑256) de esa combinación y vence con su ventana de tiempo.</li>
+</ul>
+<p><strong>Finalidad:</strong> proteger las cuentas y la plataforma frente a accesos no autorizados.</p>
+
+<h3 class="legal-section-h3">3.6. Integraciones: API B2B y webhooks</h3>
+<ul>
+  <li><strong>Credenciales de API:</strong> identificador público (<em>client ID</em>), el secreto <strong>sólo como hash</strong> (se muestra una única vez al emitirse) y la huella del certificado de cliente al que se ata la credencial en producción.</li>
+  <li><strong>Webhooks:</strong> la URL del sistema del comprador que recibe las notificaciones y el secreto de firma, que se guarda <strong>cifrado</strong> porque debe poder leerse para firmar cada envío.</li>
+  <li><strong>Contenido:</strong> el pedido tal como lo envió el sistema del comprador y el contenido de cada notificación enviada.</li>
+</ul>
+<p><strong>Finalidad:</strong> autenticar las integraciones, registrar los pedidos recibidos y notificar sus cambios de estado.</p>
+
+<h3 class="legal-section-h3">3.7. Correos electrónicos transaccionales</h3>
+<p>PivetTrack envía correos <strong>operativos</strong>, nunca publicitarios: el enlace para definir o restablecer la contraseña (Portal y panel interno), el acuse de recibo de un pedido del Portal, los cambios de estado de un pedido B2B (aprobado, rechazado, cancelado, despachado), el aviso de una toma de inventario confirmada y avisos internos sobre credenciales de API por vencer. Para enviarlos se usan la dirección de correo y el nombre del destinatario.</p>
+
+<h3 class="legal-section-h3">3.8. Archivos generados y cargados</h3>
+<ul>
+  <li><strong>Exportaciones:</strong> los archivos Excel grandes que se generan en segundo plano quedan guardados en la base de datos de la instancia para que los descargue quien los pidió. Vencen a las 24 horas y se eliminan con la siguiente exportación que se pida en la instancia. Las exportaciones chicas se generan en el momento y no se guardan.</li>
+  <li><strong>Importaciones:</strong> el archivo Excel que se carga para importar productos o un conteo se guarda mientras se procesa y su contenido se vacía al terminar; se conservan el nombre del archivo y el resultado.</li>
+</ul>
+
+<h3 class="legal-section-h3">3.9. Sitio web pivettrack.com y contacto comercial</h3>
+<ul>
+  <li>
+    <strong>Analítica:</strong> el sitio web usa Google Analytics (etiqueta <em>gtag.js</em>), que recoge datos de navegación como páginas visitadas, dispositivo y una ubicación aproximada.
+    ${R(`confirmar en el sitio el ID de medición, si hay aviso o banner de consentimiento, la configuración de retención de Google Analytics y si se activó Google Signals. No se verificó: el sitio vive en otro repositorio.`,8)}
+  </li>
+  <li><strong>Contacto:</strong> si nos escribe, usamos su nombre, correo electrónico, empresa y el contenido del mensaje para responderle y, si corresponde, preparar una propuesta comercial.</li>
+  <li>
+    <strong>Relación comercial:</strong> de los representantes de nuestros Clientes tratamos nombre, cargo, correo electrónico y datos de facturación.
+    ${R(`medio de pago y quién lo procesa; PivetTrack no tiene ningún módulo de pagos ni guarda datos de tarjetas.`,8)}
+  </li>
+</ul>
+
+<h3 class="legal-section-h3">3.10. Lo que no hacemos</h3>
+<ul>
+  <li>No vendemos ni alquilamos datos personales.</li>
+  <li>No usamos los datos de las instancias de nuestros Clientes con fines publicitarios ni para fines propios.</li>
+  <li>La aplicación PivetTrack (panel interno y Portal B2B) <strong>no carga scripts de terceros ni herramientas de analítica</strong>: su política de seguridad de contenido sólo admite recursos servidos por la propia instancia.</li>
+</ul>
+` },
+  { title: `Bases legales y normativa aplicable`, body: `
+${R(`determinar qué normas alcanzan a Pivet y a sus Clientes —por ejemplo, la <em>Florida Digital Bill of Rights</em> (cuyos umbrales de aplicación probablemente no se alcancen), la <em>Florida Information Protection Act</em>, leyes de privacidad de otros estados de EE. UU. si hay usuarios allí, y el RGPD europeo si algún Cliente opera con personas en la UE— y redactar esta sección en consecuencia. Este borrador no afirma cumplimiento de ninguna norma en particular.`)}
+<p style="margin-top:14px">En términos generales, tratamos los datos para prestar el servicio contratado por el Cliente, para proteger la seguridad de la plataforma y, en el caso del sitio web y del contacto comercial, por nuestro interés en responder consultas y medir el uso del sitio.</p>
+` },
+  { title: `Dónde se alojan los datos: una instancia dedicada por Cliente`, body: `
+<p>PivetTrack es <strong>single-tenant</strong>: cada Cliente recibe su propia instancia aislada, compuesta por un proyecto propio en <strong>Railway</strong> (donde corre la aplicación) y un proyecto propio en <strong>Supabase</strong> (base de datos PostgreSQL). Los datos de un Cliente no comparten base de datos con los de ningún otro: el aislamiento entre Clientes es de infraestructura.</p>
+<ul>
+  <li>
+    <strong>Ubicación:</strong>
+    ${R(`región de los proyectos de Railway y Supabase de cada instancia; no está documentada. Confirmar que es EE. UU. antes de afirmarlo.`,6)}
+  </li>
+  <li><strong>Cifrado en tránsito:</strong> la aplicación sólo atiende por HTTPS (redirige HTTP y envía la cabecera HSTS).</li>
+  <li>
+    <strong>Cifrado en reposo:</strong> además de los secretos que la aplicación cifra por sí misma (sección 9),
+    ${R(`el cifrado en reposo de la base de datos lo provee Supabase; confirmar en su documentación vigente antes de afirmarlo.`,6)}
+  </li>
+  <li><strong>Respaldos:</strong> la base de datos de cada instancia tiene un respaldo automático diario que se conserva siete (7) días.</li>
+</ul>
+` },
+  { title: `Proveedores que intervienen (subencargados)`, body: `
+<div class="legal-table-wrap">
+  <table class="legal-table">
+    <thead>
+      <tr>
+        <th>Proveedor</th>
+        <th>Para qué</th>
+        <th>Qué datos ve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Railway</strong></td>
+        <td>Ejecutar la aplicación de cada instancia</td>
+        <td>Todo el tráfico de la aplicación y sus registros de servicio</td>
+      </tr>
+      <tr>
+        <td><strong>Supabase</strong></td>
+        <td>Base de datos PostgreSQL de cada instancia y sus respaldos</td>
+        <td>Todos los datos de la instancia</td>
+      </tr>
+      <tr>
+        <td><strong>Resend</strong></td>
+        <td>Envío de los correos transaccionales, en las instancias que lo tienen configurado</td>
+        <td>Destinatario, nombre y contenido de cada correo</td>
+      </tr>
+      <tr>
+        <td><strong>Google (Analytics)</strong></td>
+        <td>Analítica del sitio web pivettrack.com, <strong>sólo</strong> el sitio público</td>
+        <td>Datos de navegación del sitio web</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+${R(`proveedor de DNS y registrador del dominio; si alguna instancia usa otro proveedor de correo; y si nos comprometemos a avisar a los Clientes antes de sumar un subencargado.`)}
+` },
+  { title: `Cookies y almacenamiento local`, body: `
+<p><strong>En la aplicación PivetTrack</strong> (panel interno y Portal B2B) sólo se usan cookies estrictamente necesarias:</p>
+<div class="legal-table-wrap">
+  <table class="legal-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Para qué</th>
+        <th>Duración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sessionid</code></td>
+        <td>Mantener la sesión iniciada</td>
+        <td>Vence tras 30 minutos sin actividad (configuración por defecto)</td>
+      </tr>
+      <tr>
+        <td><code>csrftoken</code></td>
+        <td>Protección contra falsificación de peticiones (CSRF)</td>
+        <td>Aproximadamente un año</td>
+      </tr>
+      <tr>
+        <td><code>django_language</code></td>
+        <td>Recordar el idioma elegido en el panel interno</td>
+        <td>Hasta cerrar el navegador</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>El panel interno guarda además en el almacenamiento local del navegador (<em>localStorage</em>) la hora de la última actividad, para que el cierre de sesión por inactividad funcione igual entre pestañas, y si la barra lateral está abierta o cerrada. No contiene datos personales.</p>
+<p>
+  <strong>En el sitio web pivettrack.com</strong>, Google Analytics instala sus propias cookies (por ejemplo, <code>_ga</code>).
+</p>
+${R(`listado y duración exactos; si se requiere consentimiento previo.`)}
+` },
+  { title: `Cuánto tiempo conservamos los datos`, body: `
+<ul>
+  <li><strong>Datos de la instancia del Cliente:</strong> mientras el contrato esté vigente. Al terminar, quedan disponibles para exportación durante treinta (30) días calendario, en los términos del Acuerdo de Nivel de Servicio, y luego se eliminan la instancia y su base de datos.
+    ${R(`confirmar con Supabase cuánto sobreviven los respaldos tras eliminar un proyecto.`,8)}
+  </li>
+  <li><strong>Cuentas de usuario:</strong> no se borran, se <strong>desactivan</strong>. Las cuentas quedan vinculadas a los movimientos, pedidos y registros de auditoría que generaron, que son inmutables por diseño; sus datos se eliminan con la instancia.</li>
+  <li><strong>Sesiones:</strong> vencen por inactividad; una tarea programada elimina las vencidas.
+    ${R(`frecuencia de esa tarea, configurada en el panel de Railway de cada instancia.`,8)}
+  </li>
+  <li><strong>Registro de accesos al panel interno y bitácora de auditoría:</strong> hoy se conservan durante toda la vida de la instancia; la aplicación no los purga.
+    ${R(`definir un plazo e implementar la purga antes de publicar, o declarar este plazo como definitivo.`,8)}
+  </li>
+  <li><strong>Contadores anti-fuerza-bruta y de límite de peticiones:</strong> vencen solos, con su ventana de tiempo.</li>
+  <li><strong>Exportaciones:</strong> 24 horas (sección 3.8).</li>
+  <li><strong>Registros de servicio de la infraestructura:</strong>
+    ${R(`retención de logs del plan de Railway contratado, y si registran IPs en su borde.`,8)}
+  </li>
+  <li><strong>Sitio web y contacto comercial:</strong>
+    ${R(`plazo de retención de Google Analytics y de los correos de contacto comercial.`,8)}
+  </li>
+</ul>
+` },
+  { title: `Seguridad`, body: `
+<p>Entre otras medidas: contraseñas sólo como <em>hash</em>; segundo factor obligatorio para los roles administrativos; secretos del segundo factor y de los webhooks cifrados en la base de datos; secretos de API sólo como <em>hash</em> y atados en producción al certificado del cliente; límite de intentos y bloqueo temporal ante fuerza bruta; cierre de sesión por inactividad; cookies sólo por HTTPS; política de seguridad de contenido restrictiva; control de acceso por rol; y registro inmutable de movimientos y de acciones administrativas.</p>
+<p>Ningún sistema es infalible. La seguridad del acceso también depende de que cada usuario cuide sus credenciales.</p>
+` },
+  { title: `Derechos de las personas`, body: `
+<p><strong>Si sus datos están en la instancia de un Cliente</strong> —porque usted es usuario interno de una empresa que usa PivetTrack o comprador en su Portal B2B—, la empresa es la responsable de sus datos: dirija a ella sus solicitudes de acceso, rectificación, eliminación u otras. Si nos escribe directamente, trasladaremos su solicitud al Cliente que corresponda y lo asistiremos en lo que nos pida para responderla.</p>
+<p>Tenga presente que, por diseño, los registros de movimientos y de auditoría no se modifican ni se eliminan, y que las cuentas se desactivan en lugar de borrarse; por eso, la eliminación de algunos datos puede no ser posible mientras la instancia exista.</p>
+${R(`compatibilidad de este diseño con los derechos de eliminación que resulten aplicables.`)}
+<p style="margin-top:14px"><strong>Si sus datos los tratamos como responsables</strong> (sitio web, contacto o relación comercial), puede pedirnos acceso, rectificación o eliminación escribiendo a la dirección de la sección 13.</p>
+${R(`plazo de respuesta y cómo verificamos la identidad del solicitante.`)}
+` },
+  { title: `Incidentes de seguridad`, body: `
+<p>Si confirmamos una vulneración de seguridad en la infraestructura bajo nuestro control que exponga datos de un Cliente, se lo notificaremos en un plazo no mayor a setenta y dos (72) horas desde la confirmación, conforme al Acuerdo de Nivel de Servicio. Como responsable de esos datos, el Cliente decide la notificación a las personas afectadas, con la asistencia que razonablemente nos pida.</p>
+` },
+  { title: `Menores de edad`, body: `
+<p>PivetTrack y su sitio web están dirigidos a empresas y no a menores de edad. No recolectamos a sabiendas datos de menores.</p>
+${R(`edad de referencia.`)}
+` },
+  { title: `Contacto`, body: `
+<p>PIVET DIGITAL AUTOMATIONS LLC — <a href="mailto:raul@raulpivet.com" style="color:#FF6B00">raul@raulpivet.com</a></p>
+${R(`domicilio postal de la sociedad; evaluar una casilla dedicada a privacidad.`)}
+` },
+  { title: `Acuerdo de tratamiento de datos (DPA)`, body: `
+<p>Los Clientes Enterprise pueden solicitar un Acuerdo de Tratamiento de Datos (<em>Data Processing Agreement</em>) que detalle las obligaciones de Pivet como encargado del tratamiento. Ese documento está en preparación (fase 2).</p>
+` },
+  { title: `Cambios a esta política`, body: `
+<p>Podemos actualizar esta política. La versión vigente estará siempre publicada con su fecha. Si un cambio afecta de forma sustancial el tratamiento de los datos de las instancias, lo avisaremos a los Clientes al correo de contacto que tengan registrado, con antelación razonable.</p>
+${R(`plazo de aviso.`)}
+` }
+]
+    },
+    en: {
+      nav_home: 'Home', nav_about: 'About Us', nav_contact: 'Contact', nav_demos: 'AppSheet Demos',
+      title: 'Privacy Policy — PivetTrack · PIVET DIGITAL AUTOMATIONS LLC',
+      desc: 'Privacy Policy — PivetTrack WMS · PIVET DIGITAL AUTOMATIONS LLC',
+      back: 'Back',
+      review: 'REVIEW',
+      banner: '<strong>WORKING DRAFT — DO NOT PUBLISH.</strong> This document is not legal advice. It must be reviewed by an attorney licensed in the State of Florida before publication. Items marked <strong>REVIEW</strong> have not been verified or require a legal or business decision.',
+      eyebrow: 'Privacy Policy',
+      h1: 'Privacy Policy — PivetTrack',
+      meta1: '<strong>Entity responsible for this policy:</strong> PIVET DIGITAL AUTOMATIONS LLC (“Pivet,” “we”), a limited liability company organized under the laws of the State of Florida, United States.',
+      meta2: '<strong>Version:</strong> 0.1 (draft) — October 19, 2026.',
+      final: 'Requires legal review before publication.',
+      terms: 'Terms of Service',
+      privacy: 'Privacy Policy',
+      sections: (R) => [
+  { title: `Scope`, body: `
+<p>This policy explains what personal data Pivet processes in connection with:</p>
+<ul>
+  <li><strong>PivetTrack</strong>, the inventory and warehouse management system (WMS) that Pivet offers as a service (SaaS) to companies (“Clients”);</li>
+  <li>PivetTrack’s <strong>B2B Order Portal</strong>, which a Client may enable so that its own buyers can submit orders to it;</li>
+  <li>PivetTrack’s <strong>B2B API</strong>, through which a Client’s buyers’ systems integrate with its instance; and</li>
+  <li>the public website <strong>pivettrack.com</strong>.</li>
+</ul>
+<p>PivetTrack is contracted exclusively between businesses. This policy does not govern the relationship between a Client and its own buyers, employees, or suppliers: that relationship is governed by the Client’s own privacy policy.</p>
+` },
+  { title: `Our Two Roles: Controller and Processor`, body: `
+<p>Pivet processes personal data in two distinct capacities, and it is important to distinguish between them.</p>
+<p><strong>As a processor.</strong> Everything that lives within a Client’s PivetTrack instance —the accounts of its internal users, the accounts of its buyers on the B2B Portal, the contacts of its customers and suppliers, its orders, and its inventory movements— is processed by Pivet <strong>on behalf of and according to the instructions of the Client</strong>, which is the controller of that data. This is the same approach taken in PivetTrack’s Service Level Agreement, which defines Pivet as the technical custodian (<em>data processor</em>) of the Client’s data.</p>
+<p><strong>The B2B Portal case, expressly.</strong> The people who use the B2B Order Portal <strong>are not Pivet’s customers</strong>: they are buyers of our Clients. Pivet does not choose them, does not contact them on its own initiative, and does not use their data for any purpose of its own. The Client decides whom to grant access to, is responsible for informing its buyers about the processing of their data and for having a legal basis for it, and is the recipient of any requests those individuals wish to exercise (Section 10). In that context, Pivet acts solely as a processor.</p>
+<p><strong>As a controller.</strong> Pivet decides for itself regarding a limited set of data: that of visitors to the pivettrack.com website, that of people who write to us to learn about the product, and the contact and billing details of our Clients’ representatives, which we use to administer the commercial relationship.</p>
+` },
+  { title: `Data We Process and Why`, body: `
+<h3 class="legal-section-h3">3.1. PivetTrack internal users (Client personnel)</h3>
+<ul>
+  <li><strong>Account data:</strong> username, first and last name, email address, role (Super Administrator, Administrator, or Operator), preferred language, who created the account, creation date, and date of last login.</li>
+  <li><strong>Password:</strong> only its <em>hash</em> is stored; the plaintext password is never stored.</li>
+  <li><strong>Two-factor authentication:</strong> mandatory for the Super Administrator and Administrator, and optional for the Operator. The authenticator secret is stored <strong>encrypted</strong>. One-time backup codes are also generated.</li>
+</ul>
+<p><strong>Purpose:</strong> to identify each user, control which functions they can access according to their role, and protect access to the account.</p>
+
+<h3 class="legal-section-h3">3.2. B2B Order Portal buyers (on behalf of the Client)</h3>
+<ul>
+  <li><strong>Account data:</strong> email address (which is their login identifier), name, preferred language, the Client to which the account belongs, creation date, date of last login, and the internal user who created the account.</li>
+  <li><strong>Password:</strong> only its <em>hash</em>. The account is created without a usable password, and the person sets it from a link received by email.</li>
+  <li><strong>Orders:</strong> each order that the person submits or cancels is attributed to them.</li>
+</ul>
+<p><strong>Purpose:</strong> to allow the buyer to submit and track their orders with the Client, and to let the Client know who placed each one.</p>
+
+<h3 class="legal-section-h3">3.3. Business contacts registered by the Client</h3>
+<p>Within its instance, the Client may register contact details of its own <strong>customers and suppliers</strong> (legal name, tax identification number —EIN—, contact name, phone, email address, and postal address) and of <strong>authorized recipients</strong> of inter-warehouse transfers (name, email address, and phone). Pivet does not enter or verify this data: it is entered by the Client.</p>
+<p><strong>Purpose:</strong> the Client’s logistics operations (dispatches, receipts, shipping documents).</p>
+
+<h3 class="legal-section-h3">3.4. Operational traceability</h3>
+<p>Every operational document and every inventory movement records the user who performed it and the date and time. The movement log (Kardex) is <strong>immutable by design</strong>: once written, it is neither modified nor deleted. Sensitive administrative actions —creation, editing, activation, and deactivation of users; resetting of passwords and the second factor; issuance and revocation of API credentials; creation and revocation of webhooks— are also recorded in an audit log with the user who acted, the action, a detail, and the <strong>IP address</strong> from which it was performed.</p>
+<p><strong>Purpose:</strong> integrity and auditability of the Client’s accounting and inventory records, and determining the authorship of each action.</p>
+
+<h3 class="legal-section-h3">3.5. Security and abuse prevention</h3>
+<ul>
+  <li><strong>IP address:</strong> the application obtains the visitor’s real IP from the header written by the infrastructure’s edge proxy. It uses it to limit access attempts and requests (<em>rate limiting</em>), to temporarily block brute-force attacks, and for the audit log.</li>
+  <li><strong>Internal panel access log:</strong> for each login attempt, successful or failed, the username, IP, browser user agent, path, and date and time are recorded. After five failed attempts, access is temporarily blocked (30 minutes, under the default configuration).</li>
+  <li><strong>B2B Portal:</strong> failed attempts are counted by the combination of email address and IP; the counter is stored under a fingerprint (SHA‑256 <em>hash</em>) of that combination and expires with its time window.</li>
+</ul>
+<p><strong>Purpose:</strong> to protect accounts and the platform against unauthorized access.</p>
+
+<h3 class="legal-section-h3">3.6. Integrations: B2B API and webhooks</h3>
+<ul>
+  <li><strong>API credentials:</strong> public identifier (<em>client ID</em>), the secret <strong>only as a hash</strong> (displayed a single time upon issuance), and the fingerprint of the client certificate to which the credential is bound in production.</li>
+  <li><strong>Webhooks:</strong> the URL of the buyer’s system that receives notifications and the signing secret, which is stored <strong>encrypted</strong> because it must be readable in order to sign each delivery.</li>
+  <li><strong>Content:</strong> the order as submitted by the buyer’s system and the content of each notification sent.</li>
+</ul>
+<p><strong>Purpose:</strong> to authenticate integrations, record the orders received, and notify of their status changes.</p>
+
+<h3 class="legal-section-h3">3.7. Transactional emails</h3>
+<p>PivetTrack sends <strong>operational</strong> emails, never promotional ones: the link to set or reset a password (Portal and internal panel), the acknowledgment of receipt of a Portal order, status changes of a B2B order (approved, rejected, cancelled, dispatched), notice of a confirmed inventory count, and internal notices about API credentials nearing expiration. The recipient’s email address and name are used to send them.</p>
+
+<h3 class="legal-section-h3">3.8. Generated and uploaded files</h3>
+<ul>
+  <li><strong>Exports:</strong> large Excel files generated in the background are stored in the instance’s database so that the person who requested them can download them. They expire after 24 hours and are deleted with the next export requested in the instance. Small exports are generated on the spot and are not stored.</li>
+  <li><strong>Imports:</strong> the Excel file uploaded to import products or a count is stored while it is processed and its contents are cleared when finished; the file name and the result are retained.</li>
+</ul>
+
+<h3 class="legal-section-h3">3.9. The pivettrack.com website and business inquiries</h3>
+<ul>
+  <li>
+    <strong>Analytics:</strong> the website uses Google Analytics (<em>gtag.js</em> tag), which collects browsing data such as pages visited, device, and approximate location.
+    ${R(`confirm on the site the measurement ID, whether a consent notice or banner exists, the Google Analytics retention setting, and whether Google Signals was enabled. Not verified: the site lives in another repository.`, 8)}
+  </li>
+  <li><strong>Contact:</strong> if you write to us, we use your name, email address, company, and the content of your message to reply to you and, where appropriate, prepare a commercial proposal.</li>
+  <li>
+    <strong>Commercial relationship:</strong> from our Clients’ representatives we process name, job title, email address, and billing data.
+    ${R(`payment method and who processes it; PivetTrack has no payment module and does not store card data.`, 8)}
+  </li>
+</ul>
+
+<h3 class="legal-section-h3">3.10. What we do not do</h3>
+<ul>
+  <li>We do not sell or rent personal data.</li>
+  <li>We do not use the data in our Clients’ instances for advertising purposes or for our own purposes.</li>
+  <li>The PivetTrack application (internal panel and B2B Portal) <strong>does not load third-party scripts or analytics tools</strong>: its content security policy admits only resources served by the instance itself.</li>
+</ul>
+` },
+  { title: `Legal Bases and Applicable Regulations`, body: `
+${R(`determine which regulations apply to Pivet and its Clients —for example, the Florida Digital Bill of Rights (whose applicability thresholds are probably not met), the Florida Information Protection Act, privacy laws of other U.S. states if there are users there, and the European GDPR if any Client operates with individuals in the EU— and draft this section accordingly. This draft does not assert compliance with any particular regulation.`)}
+<p style="margin-top:14px">In general terms, we process data to provide the service contracted by the Client, to protect the security of the platform and, in the case of the website and business inquiries, out of our interest in answering inquiries and measuring site usage.</p>
+` },
+  { title: `Where Data Is Hosted: A Dedicated Instance per Client`, body: `
+<p>PivetTrack is <strong>single-tenant</strong>: each Client receives its own isolated instance, composed of a dedicated project on <strong>Railway</strong> (where the application runs) and a dedicated project on <strong>Supabase</strong> (PostgreSQL database). One Client’s data does not share a database with any other Client’s: isolation between Clients is infrastructure-level.</p>
+<ul>
+  <li>
+    <strong>Location:</strong>
+    ${R(`region of the Railway and Supabase projects for each instance; not documented. Confirm it is the U.S. before stating so.`, 6)}
+  </li>
+  <li><strong>Encryption in transit:</strong> the application serves traffic only over HTTPS (it redirects HTTP and sends the HSTS header).</li>
+  <li>
+    <strong>Encryption at rest:</strong> in addition to the secrets that the application encrypts itself (Section 9),
+    ${R(`encryption at rest of the database is provided by Supabase; confirm in its current documentation before stating so.`, 6)}
+  </li>
+  <li><strong>Backups:</strong> each instance’s database has an automatic daily backup that is retained for seven (7) days.</li>
+</ul>
+` },
+  { title: `Providers Involved (Sub-processors)`, body: `
+<div class="legal-table-wrap">
+  <table class="legal-table">
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th>Purpose</th>
+        <th>Data it can see</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Railway</strong></td>
+        <td>Running each instance’s application</td>
+        <td>All application traffic and its service logs</td>
+      </tr>
+      <tr>
+        <td><strong>Supabase</strong></td>
+        <td>PostgreSQL database for each instance and its backups</td>
+        <td>All of the instance’s data</td>
+      </tr>
+      <tr>
+        <td><strong>Resend</strong></td>
+        <td>Sending transactional emails, in instances where it is configured</td>
+        <td>Recipient, name, and content of each email</td>
+      </tr>
+      <tr>
+        <td><strong>Google (Analytics)</strong></td>
+        <td>Analytics for the pivettrack.com website, <strong>only</strong> the public site</td>
+        <td>Website browsing data</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+${R(`DNS provider and domain registrar; whether any instance uses a different email provider; and whether we commit to notifying Clients before adding a sub-processor.`)}
+` },
+  { title: `Cookies and Local Storage`, body: `
+<p><strong>In the PivetTrack application</strong> (internal panel and B2B Portal), only strictly necessary cookies are used:</p>
+<div class="legal-table-wrap">
+  <table class="legal-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Purpose</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sessionid</code></td>
+        <td>Keeping the session logged in</td>
+        <td>Expires after 30 minutes of inactivity (default configuration)</td>
+      </tr>
+      <tr>
+        <td><code>csrftoken</code></td>
+        <td>Protection against cross-site request forgery (CSRF)</td>
+        <td>Approximately one year</td>
+      </tr>
+      <tr>
+        <td><code>django_language</code></td>
+        <td>Remembering the language chosen in the internal panel</td>
+        <td>Until the browser is closed</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>The internal panel also stores in the browser’s local storage (<em>localStorage</em>) the time of the last activity, so that inactivity logout works consistently across tabs, and whether the sidebar is open or closed. It contains no personal data.</p>
+<p>
+  <strong>On the pivettrack.com website</strong>, Google Analytics installs its own cookies (for example, <code>_ga</code>).
+</p>
+${R(`exact list and duration; whether prior consent is required.`)}
+` },
+  { title: `How Long We Retain Data`, body: `
+<ul>
+  <li><strong>Client instance data:</strong> for as long as the agreement is in force. Upon termination, it remains available for export for thirty (30) calendar days, on the terms of the Service Level Agreement, and the instance and its database are then deleted.
+    ${R(`confirm with Supabase how long backups survive after a project is deleted.`, 8)}
+  </li>
+  <li><strong>User accounts:</strong> they are not deleted, they are <strong>deactivated</strong>. Accounts remain linked to the movements, orders, and audit records they generated, which are immutable by design; their data is deleted with the instance.</li>
+  <li><strong>Sessions:</strong> they expire through inactivity; a scheduled task deletes expired ones.
+    ${R(`frequency of that task, configured in each instance’s Railway panel.`, 8)}
+  </li>
+  <li><strong>Internal panel access log and audit log:</strong> currently retained for the entire life of the instance; the application does not purge them.
+    ${R(`define a retention period and implement purging before publication, or declare this period as final.`, 8)}
+  </li>
+  <li><strong>Brute-force and rate-limit counters:</strong> they expire on their own, with their time window.</li>
+  <li><strong>Exports:</strong> 24 hours (Section 3.8).</li>
+  <li><strong>Infrastructure service logs:</strong>
+    ${R(`log retention under the contracted Railway plan, and whether they record IPs at their edge.`, 8)}
+  </li>
+  <li><strong>Website and business inquiries:</strong>
+    ${R(`Google Analytics retention period and retention period of business inquiry emails.`, 8)}
+  </li>
+</ul>
+` },
+  { title: `Security`, body: `
+<p>Among other measures: passwords stored only as a <em>hash</em>; mandatory second factor for administrative roles; second-factor and webhook secrets encrypted in the database; API secrets stored only as a <em>hash</em> and bound in production to the client certificate; attempt limits and temporary lockout against brute force; inactivity logout; cookies over HTTPS only; restrictive content security policy; role-based access control; and an immutable record of movements and administrative actions.</p>
+<p>No system is infallible. Access security also depends on each user safeguarding their credentials.</p>
+` },
+  { title: `Individuals’ Rights`, body: `
+<p><strong>If your data is in a Client’s instance</strong> —because you are an internal user of a company that uses PivetTrack or a buyer on its B2B Portal— that company is responsible for your data: direct your access, rectification, deletion, or other requests to it. If you write to us directly, we will forward your request to the relevant Client and will assist you as requested in responding to it.</p>
+<p>Please note that, by design, movement and audit records are neither modified nor deleted, and that accounts are deactivated rather than erased; as a result, the deletion of some data may not be possible while the instance exists.</p>
+${R(`compatibility of this design with any applicable deletion rights.`)}
+<p style="margin-top:14px"><strong>If we process your data as a controller</strong> (website, inquiries, or commercial relationship), you may request access, rectification, or deletion by writing to the address in Section 13.</p>
+${R(`response time and how we verify the requester’s identity.`)}
+` },
+  { title: `Security Incidents`, body: `
+<p>If we confirm a security breach in the infrastructure under our control that exposes a Client’s data, we will notify the Client within no more than seventy-two (72) hours of confirmation, in accordance with the Service Level Agreement. As the controller of that data, the Client decides on notifying the affected individuals, with the assistance we reasonably provide upon request.</p>
+` },
+  { title: `Minors`, body: `
+<p>PivetTrack and its website are directed at businesses and not at minors. We do not knowingly collect data from minors.</p>
+${R(`reference age.`)}
+` },
+  { title: `Contact`, body: `
+<p>PIVET DIGITAL AUTOMATIONS LLC — <a href="mailto:raul@raulpivet.com" style="color:#FF6B00">raul@raulpivet.com</a></p>
+${R(`postal address of the company; consider a dedicated privacy mailbox.`)}
+` },
+  { title: `Data Processing Agreement (DPA)`, body: `
+<p>Enterprise Clients may request a Data Processing Agreement detailing Pivet’s obligations as a processor. That document is in preparation (phase 2).</p>
+` },
+  { title: `Changes to This Policy`, body: `
+<p>We may update this policy. The current version will always be published with its date. If a change substantially affects the processing of instance data, we will notify Clients at the contact email they have on file, with reasonable advance notice.</p>
+${R(`notice period.`)}
+` }
+]
     }
-    function toggleLangNav() {
-      lang = lang === 'es' ? 'en' : 'es';
-      localStorage.setItem('homeLang', lang);
-      renderNav();
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      renderNav();
-      document.getElementById('languageToggle')?.addEventListener('click', toggleLangNav);
-    });
+  };
+
+  let lang = localStorage.getItem('homeLang') === 'en' ? 'en' : 'es';
+
+  function render() {
+    const d = t[lang];
+    const R = (txt, mt) =>
+      `<div class="legal-revisar"${mt ? ` style="margin-top:${mt}px"` : ''}><i class="fas fa-exclamation-circle"></i><div><strong>${d.review}:</strong> ${txt}</div></div>`;
+
+    document.documentElement.lang = lang;
+    document.title = d.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', d.desc);
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
+    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
+    document.getElementById('footerTerms').textContent = d.terms;
+    document.getElementById('footerPrivacy').textContent = d.privacy;
+
+    document.getElementById('mainContent').innerHTML = `
+      <div class="legal-content">
+        <a href="javascript:history.back()" class="legal-back"><i class="fas fa-arrow-left"></i> ${d.back}</a>
+        <div class="legal-draft-banner">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p>${d.banner}</p>
+        </div>
+        <p class="legal-eyebrow"><i class="fas fa-shield-alt"></i>&nbsp; ${d.eyebrow}</p>
+        <h1 class="legal-h1">${d.h1}</h1>
+        <p class="legal-meta-row">${d.meta1}</p>
+        <p class="legal-meta-row" style="margin-bottom:32px">${d.meta2}</p>
+        ${d.sections(R).map((s, i) => `
+        <div class="legal-section">
+          <h2 class="legal-section-h2"><span class="legal-section-num">§ ${i + 1}</span> ${s.title}</h2>
+          ${s.body}
+        </div>`).join('')}
+        <hr class="legal-divider">
+        <div class="legal-final-note"><i class="fas fa-gavel"></i> &nbsp; ${d.final}</div>
+      </div>`;
+  }
+
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    localStorage.setItem('homeLang', lang);
+    render();
+    window.scrollTo({ top: 0 });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    render();
+    document.getElementById('languageToggle').addEventListener('click', toggleLang);
+  });
   </script>
 </body>
 </html>
