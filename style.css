@@ -1927,3 +1927,15 @@ footer .footer-registered {
 .language-flag { font-size:1.25rem; }
 .language-text { font-size:0.875rem; font-weight:500; color:var(--text-primary); }
 @media(max-width:768px){ .language-toggle { top:70px; right:16px; padding:6px 12px; } .language-text { display:none; } }
+
+/* ========================================
+   ⚖️ FOOTER LEGAL LINKS
+   ======================================== */
+.footer-legal { margin-top: 8px; }
+.footer-legal a {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: var(--primary); }

@@ -1,202 +1,614 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S90DFDY6BG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S90DFDY6BG');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xod8no5cxd");
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad · raulpivet.com</title>
-  <meta name="description" content="Política de privacidad de raulpivet.com — cómo se recopilan, usan y protegen los datos enviados a través del formulario de contacto.">
-  <meta name="robots" content="noindex">
-  <link rel="canonical" href="https://www.raulpivet.com/privacidad.html">
+  <meta name="description" content="Política de Privacidad — PivetTrack WMS · PIVET DIGITAL AUTOMATIONS LLC">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="Raul Pivet">
+  <meta name="theme-color" content="#FF6B00">
+  <title>Política de Privacidad — PivetTrack · PIVET DIGITAL AUTOMATIONS LLC</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    .pp-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
-    .pp-back { display:inline-flex; align-items:center; gap:8px; color:var(--text-secondary); text-decoration:none; font-size:0.875rem; margin-bottom:32px; transition:color 0.2s; }
-    .pp-back:hover { color:#FF6B00; }
-    .pp-eyebrow { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:#FF6B00; margin-bottom:10px; }
-    .pp-h1 { font-size:clamp(1.6rem,4vw,2.2rem); font-weight:900; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:8px; }
-    .pp-updated { font-size:0.8125rem; color:var(--text-tertiary); margin-bottom:40px; }
-    .pp-section { margin-bottom:36px; }
-    .pp-section h2 { font-size:1.05rem; font-weight:800; color:var(--text-primary); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
-    .pp-section h2 i { color:#FF6B00; font-size:0.9rem; }
-    .pp-section p, .pp-section li { font-size:0.9375rem; color:var(--text-secondary); line-height:1.78; }
-    .pp-section ul { padding-left:20px; margin-top:8px; display:flex; flex-direction:column; gap:6px; }
-    .pp-divider { border:none; border-top:1px solid var(--border-color); margin:40px 0; }
-    .pp-lang-switch { display:flex; gap:12px; margin-bottom:40px; }
-    .pp-lang-btn { padding:6px 16px; border-radius:20px; border:1px solid var(--border-color); background:transparent; color:var(--text-secondary); font-size:0.8125rem; font-weight:600; cursor:pointer; transition:all 0.2s; }
-    .pp-lang-btn.active { background:#FF6B00; border-color:#FF6B00; color:white; }
-    [data-lang] { display:none; }
-    [data-lang].visible { display:block; }
+    /* ── Legal content ── */
+    .legal-content { padding: 48px 0 80px; }
+
+    .legal-draft-banner {
+      background: rgba(255, 59, 48, 0.08);
+      border: 1px solid rgba(255, 59, 48, 0.28);
+      border-left: 4px solid #FF3B30;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .legal-draft-banner i { color: #FF3B30; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .legal-draft-banner p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.65; margin: 0; }
+    .legal-draft-banner strong { color: #FF3B30; }
+
+    .legal-eyebrow { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #FF6B00; margin-bottom: 8px; }
+    .legal-h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 900; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 8px; line-height: 1.15; }
+    .legal-meta-row { font-size: 0.8125rem; color: var(--text-tertiary); margin-bottom: 4px; }
+
+    .legal-section { margin-bottom: 40px; }
+    .legal-section-h2 {
+      font-size: 1.0rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .legal-section-h3 {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 20px 0 10px;
+    }
+    .legal-section-num {
+      background: linear-gradient(135deg, #FF6B00, #FF9500);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 900;
+      padding: 3px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .legal-section p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.78; margin-bottom: 12px; }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul { padding-left: 22px; margin-bottom: 14px; }
+    .legal-section ul li { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.78; margin-bottom: 8px; }
+    .legal-section strong { color: var(--text-primary); font-weight: 700; }
+
+    .legal-revisar {
+      background: rgba(255, 149, 0, 0.06);
+      border: 1px solid rgba(255, 149, 0, 0.28);
+      border-left: 4px solid #FF9500;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 14px 0 6px;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .legal-revisar i { color: #FF9500; flex-shrink: 0; margin-top: 2px; }
+    .legal-revisar strong { color: #FF9500; font-weight: 800; }
+
+    .legal-divider { border: none; border-top: 1px solid var(--border-color); margin: 36px 0; }
+
+    .legal-table-wrap { overflow-x: auto; margin: 16px 0; }
+    .legal-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .legal-table th { background: var(--bg-secondary); color: var(--text-primary); font-weight: 700; padding: 10px 14px; text-align: left; border: 1px solid var(--border-color); font-size: 0.8125rem; }
+    .legal-table td { padding: 10px 14px; border: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: top; line-height: 1.65; }
+
+    .legal-final-note {
+      background: rgba(255, 59, 48, 0.05);
+      border: 1px solid rgba(255, 59, 48, 0.18);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--text-tertiary);
+      font-style: italic;
+      margin-top: 40px;
+    }
+
+    .legal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .legal-back:hover { color: #FF6B00; }
   </style>
 </head>
 <body>
-  <div class="pp-wrap">
-    <a href="javascript:history.back()" class="pp-back">
-      <i class="fas fa-arrow-left"></i> Volver / Go back
-    </a>
-    <div class="pp-lang-switch">
-      <button class="pp-lang-btn active" onclick="showLang('es')">Español</button>
-      <button class="pp-lang-btn" onclick="showLang('en')">English</button>
-    </div>
+  <div class="loader" id="loader"><div class="loader-circle"></div></div>
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
+  </button>
+  <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
+    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-text" id="languageText">English</span>
+  </button>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 
-    <!-- ═══ ESPAÑOL ═══ -->
-    <div data-lang="es" class="visible">
-      <p class="pp-eyebrow"><i class="fas fa-shield-alt"></i> Privacidad</p>
-      <h1 class="pp-h1">Política de Privacidad</h1>
-      <p class="pp-updated"><i class="fas fa-calendar-alt"></i> Última actualización: septiembre 2026</p>
-
-      <div class="pp-section">
-        <h2><i class="fas fa-info-circle"></i> ¿Qué datos recopilamos?</h2>
-        <p>Cuando enviás el formulario de contacto en este sitio, recopilamos los siguientes datos que vos mismo proporcionás voluntariamente:</p>
-        <ul>
-          <li>Nombre y apellido</li>
-          <li>Dirección de correo electrónico</li>
-          <li>Motivo de contacto</li>
-          <li>Contenido del mensaje</li>
-          <li>Fecha y hora del envío (zona horaria EST, Miami FL)</li>
-        </ul>
-        <p style="margin-top:12px">Este sitio no usa cookies de seguimiento propias ni recopila datos de navegación más allá de lo que Google Analytics y Microsoft Clarity registran de forma agregada (ver sección de terceros).</p>
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <div class="profile">
+        <div class="profile-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
+        <h2>Raul Pivet</h2>
+        <p>Founder · PivetTrack WMS</p>
+        <span class="company-badge" title="Empresa registrada en el Estado de Florida — Mayo 2026">
+          <i class="fas fa-building"></i> PIVET DIGITAL AUTOMATIONS LLC
+        </span>
       </div>
-
-      <div class="pp-section">
-        <h2><i class="fas fa-cogs"></i> ¿Para qué usamos esos datos?</h2>
-        <p>Los datos del formulario se utilizan exclusivamente para:</p>
-        <ul>
-          <li>Responderte personalmente al correo que indicaste.</li>
-          <li>Coordinar una reunión o demostración si la solicitaste.</li>
-          <li>Ningún otro fin. No hacemos marketing masivo con estos datos.</li>
-        </ul>
+      <ul class="menu">
+        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
+        <li class="menu-item"><a href="pivettrack.html"><i class="fas fa-warehouse"></i> PivetTrack WMS</a></li>
+        <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
+        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Nosotros</span></a></li>
+        <li class="menu-item"><a href="appsheet-demos.html"><i class="fab fa-youtube"></i> <span data-i18n="nav_demos">AppSheet Demos</span></a></li>
+        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
+      </ul>
+      <div class="social-links">
+        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
+    </aside>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-route"></i> ¿Por dónde pasan los datos?</h2>
-        <p>El formulario envía los datos a través del siguiente flujo automatizado:</p>
-        <ul>
-          <li><strong>Make.com (Integromat)</strong> — recibe el formulario vía webhook.</li>
-          <li><strong>Google Gemini AI</strong> — genera un borrador de respuesta automática.</li>
-          <li><strong>Gmail</strong> — envía la respuesta desde Raul@raulpivet.com a tu correo.</li>
-          <li><strong>Google Sheets</strong> — registra el contacto para seguimiento interno.</li>
-        </ul>
-        <p style="margin-top:12px">Todos estos servicios son proveedores de confianza con sus propias políticas de privacidad. Los datos no se venden ni comparten con terceros para ningún otro propósito.</p>
-      </div>
+    <main class="content" id="mainContent">
+      <div class="legal-content">
 
-      <div class="pp-section">
-        <h2><i class="fas fa-clock"></i> ¿Cuánto tiempo guardamos los datos?</h2>
-        <p>Los registros de contacto se conservan en Google Sheets durante el tiempo que sea necesario para dar seguimiento a la consulta. Si querés que eliminemos tu información, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a> y lo hacemos en 48 horas hábiles.</p>
-      </div>
+        <a href="javascript:history.back()" class="legal-back">
+          <i class="fas fa-arrow-left"></i> Volver
+        </a>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-chart-bar"></i> Servicios de analítica de terceros</h2>
-        <p>Este sitio utiliza:</p>
-        <ul>
-          <li><strong>Google Analytics 4</strong> — mide visitas y comportamiento de forma agregada y anonimizada.</li>
-          <li><strong>Microsoft Clarity</strong> — analiza el comportamiento de navegación (mapas de calor, grabaciones de sesión anonimizadas).</li>
-        </ul>
-        <p style="margin-top:12px">Podés optar por no ser rastreado usando extensiones de navegador como uBlock Origin o activando la opción "No rastrear" en tu navegador.</p>
-      </div>
+        <!-- Draft banner -->
+        <div class="legal-draft-banner">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p><strong>BORRADOR DE TRABAJO — NO PUBLICAR.</strong> Este documento no es asesoría legal. Debe revisarlo un abogado licenciado en el Estado de Florida antes de publicarse. Los puntos marcados <strong>REVISAR</strong> no están verificados o requieren una decisión legal o comercial.</p>
+        </div>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-user-shield"></i> Tus derechos</h2>
-        <p>Tenés derecho a acceder, rectificar o eliminar los datos personales que nos enviaste. Para ejercer cualquiera de estos derechos, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a>.</p>
-      </div>
+        <!-- Header -->
+        <p class="legal-eyebrow"><i class="fas fa-shield-alt"></i>&nbsp; Política de Privacidad</p>
+        <h1 class="legal-h1">Política de Privacidad — PivetTrack</h1>
+        <p class="legal-meta-row"><strong>Responsable de esta política:</strong> PIVET DIGITAL AUTOMATIONS LLC («Pivet», «nosotros»), sociedad de responsabilidad limitada organizada bajo las leyes del Estado de Florida, Estados Unidos.</p>
+        <p class="legal-meta-row" style="margin-bottom:32px"><strong>Versión:</strong> 0.1 (borrador) — 19 de octubre de 2026.</p>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-building"></i> Responsable del tratamiento</h2>
-        <p><strong>PIVET DIGITAL AUTOMATIONS LLC</strong><br>
-        Raul Pivet — Miami, Florida, Estados Unidos<br>
-        <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a></p>
-      </div>
-    </div>
+        <!-- Section 1 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 1</span>
+            Alcance
+          </h2>
+          <p>Esta política explica qué datos personales trata Pivet en relación con:</p>
+          <ul>
+            <li><strong>PivetTrack</strong>, el sistema de gestión de inventario y almacenes (WMS) que Pivet ofrece como servicio (SaaS) a empresas («Clientes»);</li>
+            <li>el <strong>Portal de Pedidos B2B</strong> de PivetTrack, que un Cliente puede habilitar para que sus propios compradores le envíen pedidos;</li>
+            <li>la <strong>API B2B</strong> de PivetTrack, por la que los sistemas de los compradores de un Cliente se integran con su instancia; y</li>
+            <li>el sitio web público <strong>pivettrack.com</strong>.</li>
+          </ul>
+          <p>PivetTrack se contrata exclusivamente entre empresas. Esta política no regula la relación entre un Cliente y sus propios compradores, empleados o proveedores: esa relación la rige la política de privacidad del propio Cliente.</p>
+        </div>
 
-    <hr class="pp-divider">
+        <!-- Section 2 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 2</span>
+            Nuestros dos roles: responsable y encargado
+          </h2>
+          <p>Pivet trata datos personales en dos calidades distintas, y conviene distinguirlas.</p>
+          <p><strong>Como encargado del tratamiento (<em>processor</em>).</strong> Todo lo que vive dentro de la instancia de PivetTrack de un Cliente —las cuentas de sus usuarios internos, las cuentas de sus compradores en el Portal B2B, los contactos de sus clientes y proveedores, sus pedidos y sus movimientos de inventario— lo trata Pivet <strong>por cuenta y según las instrucciones del Cliente</strong>, quien es el responsable (<em>controller</em>) de esos datos. Es el mismo criterio del Acuerdo de Nivel de Servicio de PivetTrack, que define a Pivet como custodio técnico (<em>data processor</em>) de los datos del Cliente.</p>
+          <p><strong>El caso del Portal B2B, de forma expresa.</strong> Las personas que usan el Portal de Pedidos B2B <strong>no son clientes de Pivet</strong>: son compradores de nuestros Clientes. Pivet no los elige, no los contacta por cuenta propia y no usa sus datos para ningún fin propio. El Cliente decide a quién da acceso, es quien debe informar a sus compradores sobre el tratamiento de sus datos y contar con una base legal para ello, y es el destinatario de las solicitudes que esas personas quieran ejercer (sección 10). Pivet actúa allí únicamente como encargado del tratamiento.</p>
+          <p><strong>Como responsable del tratamiento (<em>controller</em>).</strong> Pivet decide por sí misma sobre un conjunto acotado de datos: los de los visitantes del sitio web pivettrack.com, los de las personas que nos escriben para conocer el producto, y los datos de contacto y facturación de los representantes de nuestros Clientes, que usamos para administrar la relación comercial.</p>
+        </div>
 
-    <!-- ═══ ENGLISH ═══ -->
-    <div data-lang="en">
-      <p class="pp-eyebrow"><i class="fas fa-shield-alt"></i> Privacy</p>
-      <h1 class="pp-h1">Privacy Policy</h1>
-      <p class="pp-updated"><i class="fas fa-calendar-alt"></i> Last updated: September 2026</p>
+        <!-- Section 3 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 3</span>
+            Datos que tratamos y para qué
+          </h2>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-info-circle"></i> What data do we collect?</h2>
-        <p>When you submit the contact form on this site, we collect the following data that you voluntarily provide:</p>
-        <ul>
-          <li>First and last name</li>
-          <li>Email address</li>
-          <li>Reason for contact</li>
-          <li>Message content</li>
-          <li>Date and time of submission (EST timezone, Miami FL)</li>
-        </ul>
-        <p style="margin-top:12px">This site does not use its own tracking cookies and does not collect browsing data beyond what Google Analytics and Microsoft Clarity record in an aggregated manner (see third-party section).</p>
-      </div>
+          <h3 class="legal-section-h3">3.1. Usuarios internos de PivetTrack (personal del Cliente)</h3>
+          <ul>
+            <li><strong>Datos de la cuenta:</strong> nombre de usuario, nombre y apellido, correo electrónico, rol (Súper Administrador, Administrador u Operador), idioma preferido, quién creó la cuenta, fecha de alta y fecha del último ingreso.</li>
+            <li><strong>Contraseña:</strong> se guarda sólo su <em>hash</em>; la contraseña en claro nunca se almacena.</li>
+            <li><strong>Segundo factor de autenticación:</strong> obligatorio para el Súper Administrador y el Administrador, y voluntario para el Operador. El secreto del autenticador se guarda <strong>cifrado</strong>. Además se generan códigos de respaldo de un solo uso.</li>
+          </ul>
+          <p><strong>Finalidad:</strong> identificar a cada usuario, controlar a qué funciones accede según su rol y proteger el acceso a la cuenta.</p>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-cogs"></i> How do we use your data?</h2>
-        <p>Form data is used exclusively to:</p>
-        <ul>
-          <li>Reply to you personally at the email address you provided.</li>
-          <li>Schedule a meeting or demo if you requested one.</li>
-          <li>No other purpose. We do not send mass marketing with this data.</li>
-        </ul>
-      </div>
+          <h3 class="legal-section-h3">3.2. Compradores del Portal de Pedidos B2B (en nombre del Cliente)</h3>
+          <ul>
+            <li><strong>Datos de la cuenta:</strong> correo electrónico (que es su identificador de acceso), nombre, idioma preferido, el Cliente al que pertenece la cuenta, fecha de alta, fecha del último ingreso y el usuario interno que dio de alta la cuenta.</li>
+            <li><strong>Contraseña:</strong> sólo su <em>hash</em>. La cuenta se crea sin contraseña utilizable y la persona la define desde un enlace que recibe por correo.</li>
+            <li><strong>Pedidos:</strong> cada pedido que la persona carga o cancela queda atribuido a ella.</li>
+          </ul>
+          <p><strong>Finalidad:</strong> permitir que el comprador envíe y siga sus pedidos al Cliente, y que el Cliente sepa quién cargó cada uno.</p>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-route"></i> Where does your data go?</h2>
-        <p>The form sends data through the following automated workflow:</p>
-        <ul>
-          <li><strong>Make.com (Integromat)</strong> — receives form data via webhook.</li>
-          <li><strong>Google Gemini AI</strong> — generates an automatic reply draft.</li>
-          <li><strong>Gmail</strong> — sends the reply from Raul@raulpivet.com to your email.</li>
-          <li><strong>Google Sheets</strong> — logs the contact for internal follow-up.</li>
-        </ul>
-        <p style="margin-top:12px">All these services are trusted providers with their own privacy policies. Your data is not sold or shared with third parties for any other purpose.</p>
-      </div>
+          <h3 class="legal-section-h3">3.3. Contactos comerciales que el Cliente registra</h3>
+          <p>Dentro de su instancia, el Cliente puede registrar datos de contacto de sus propios <strong>clientes y proveedores</strong> (razón social, número de identificación tributaria —EIN—, nombre de contacto, teléfono, correo electrónico y dirección postal) y de los <strong>destinatarios autorizados</strong> para recibir traspasos entre almacenes (nombre, correo electrónico y teléfono). Pivet no carga ni verifica estos datos: los ingresa el Cliente.</p>
+          <p><strong>Finalidad:</strong> la operación logística del Cliente (despachos, recepciones, documentos de envío).</p>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-clock"></i> How long do we keep your data?</h2>
-        <p>Contact records are retained in Google Sheets for as long as needed to follow up on your inquiry. If you want your information deleted, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a> and we will do so within 48 business hours.</p>
-      </div>
+          <h3 class="legal-section-h3">3.4. Trazabilidad de la operación</h3>
+          <p>Cada documento operativo y cada movimiento de inventario registra el usuario que lo realizó y la fecha y hora. El registro de movimientos (Kardex) es <strong>inmutable por diseño</strong>: una vez escrito, no se modifica ni se elimina. Las acciones administrativas sensibles —alta, edición, activación y desactivación de usuarios; reinicio de contraseñas y del segundo factor; emisión y revocación de credenciales de API; alta y revocación de webhooks— quedan además en una bitácora de auditoría con el usuario que actuó, la acción, un detalle y la <strong>dirección IP</strong> desde la que se hizo.</p>
+          <p><strong>Finalidad:</strong> integridad y auditabilidad de los registros contables y de inventario del Cliente, y determinar la autoría de cada acción.</p>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-chart-bar"></i> Third-party analytics</h2>
-        <p>This site uses:</p>
-        <ul>
-          <li><strong>Google Analytics 4</strong> — measures visits and behavior in an aggregated, anonymized manner.</li>
-          <li><strong>Microsoft Clarity</strong> — analyzes browsing behavior (heatmaps, anonymized session recordings).</li>
-        </ul>
-        <p style="margin-top:12px">You can opt out of tracking by using browser extensions like uBlock Origin or by enabling the "Do Not Track" option in your browser.</p>
-      </div>
+          <h3 class="legal-section-h3">3.5. Seguridad y prevención de abuso</h3>
+          <ul>
+            <li><strong>Dirección IP:</strong> la aplicación obtiene la IP real del visitante a partir de la cabecera que escribe el proxy de borde de la infraestructura. La usa para limitar intentos de acceso y peticiones (<em>rate limiting</em>), para bloquear temporalmente ataques de fuerza bruta y para la bitácora de auditoría.</li>
+            <li><strong>Registro de accesos al panel interno:</strong> de cada intento de inicio de sesión, exitoso o fallido, se registran el nombre de usuario, la IP, el agente de usuario (<em>user agent</em>) del navegador, la ruta y la fecha y hora. Tras cinco intentos fallidos el acceso se bloquea temporalmente (30 minutos, según la configuración por defecto).</li>
+            <li><strong>Portal B2B:</strong> los intentos fallidos se cuentan por la combinación de correo electrónico e IP; el contador se guarda bajo una huella (<em>hash</em> SHA‑256) de esa combinación y vence con su ventana de tiempo.</li>
+          </ul>
+          <p><strong>Finalidad:</strong> proteger las cuentas y la plataforma frente a accesos no autorizados.</p>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-user-shield"></i> Your rights</h2>
-        <p>You have the right to access, rectify, or delete the personal data you submitted to us. To exercise any of these rights, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a>.</p>
-      </div>
+          <h3 class="legal-section-h3">3.6. Integraciones: API B2B y webhooks</h3>
+          <ul>
+            <li><strong>Credenciales de API:</strong> identificador público (<em>client ID</em>), el secreto <strong>sólo como hash</strong> (se muestra una única vez al emitirse) y la huella del certificado de cliente al que se ata la credencial en producción.</li>
+            <li><strong>Webhooks:</strong> la URL del sistema del comprador que recibe las notificaciones y el secreto de firma, que se guarda <strong>cifrado</strong> porque debe poder leerse para firmar cada envío.</li>
+            <li><strong>Contenido:</strong> el pedido tal como lo envió el sistema del comprador y el contenido de cada notificación enviada.</li>
+          </ul>
+          <p><strong>Finalidad:</strong> autenticar las integraciones, registrar los pedidos recibidos y notificar sus cambios de estado.</p>
 
-      <div class="pp-section">
-        <h2><i class="fas fa-building"></i> Data controller</h2>
-        <p><strong>PIVET DIGITAL AUTOMATIONS LLC</strong><br>
-        Raul Pivet — Miami, Florida, United States<br>
-        <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a></p>
-      </div>
-    </div>
+          <h3 class="legal-section-h3">3.7. Correos electrónicos transaccionales</h3>
+          <p>PivetTrack envía correos <strong>operativos</strong>, nunca publicitarios: el enlace para definir o restablecer la contraseña (Portal y panel interno), el acuse de recibo de un pedido del Portal, los cambios de estado de un pedido B2B (aprobado, rechazado, cancelado, despachado), el aviso de una toma de inventario confirmada y avisos internos sobre credenciales de API por vencer. Para enviarlos se usan la dirección de correo y el nombre del destinatario.</p>
 
-  </div>
+          <h3 class="legal-section-h3">3.8. Archivos generados y cargados</h3>
+          <ul>
+            <li><strong>Exportaciones:</strong> los archivos Excel grandes que se generan en segundo plano quedan guardados en la base de datos de la instancia para que los descargue quien los pidió. Vencen a las 24 horas y se eliminan con la siguiente exportación que se pida en la instancia. Las exportaciones chicas se generan en el momento y no se guardan.</li>
+            <li><strong>Importaciones:</strong> el archivo Excel que se carga para importar productos o un conteo se guarda mientras se procesa y su contenido se vacía al terminar; se conservan el nombre del archivo y el resultado.</li>
+          </ul>
+
+          <h3 class="legal-section-h3">3.9. Sitio web pivettrack.com y contacto comercial</h3>
+          <ul>
+            <li>
+              <strong>Analítica:</strong> el sitio web usa Google Analytics (etiqueta <em>gtag.js</em>), que recoge datos de navegación como páginas visitadas, dispositivo y una ubicación aproximada.
+              <div class="legal-revisar" style="margin-top:8px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> confirmar en el sitio el ID de medición, si hay aviso o banner de consentimiento, la configuración de retención de Google Analytics y si se activó Google Signals. No se verificó: el sitio vive en otro repositorio.</div>
+              </div>
+            </li>
+            <li><strong>Contacto:</strong> si nos escribe, usamos su nombre, correo electrónico, empresa y el contenido del mensaje para responderle y, si corresponde, preparar una propuesta comercial.</li>
+            <li>
+              <strong>Relación comercial:</strong> de los representantes de nuestros Clientes tratamos nombre, cargo, correo electrónico y datos de facturación.
+              <div class="legal-revisar" style="margin-top:8px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> medio de pago y quién lo procesa; PivetTrack no tiene ningún módulo de pagos ni guarda datos de tarjetas.</div>
+              </div>
+            </li>
+          </ul>
+
+          <h3 class="legal-section-h3">3.10. Lo que no hacemos</h3>
+          <ul>
+            <li>No vendemos ni alquilamos datos personales.</li>
+            <li>No usamos los datos de las instancias de nuestros Clientes con fines publicitarios ni para fines propios.</li>
+            <li>La aplicación PivetTrack (panel interno y Portal B2B) <strong>no carga scripts de terceros ni herramientas de analítica</strong>: su política de seguridad de contenido sólo admite recursos servidos por la propia instancia.</li>
+          </ul>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 4</span>
+            Bases legales y normativa aplicable
+          </h2>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> determinar qué normas alcanzan a Pivet y a sus Clientes —por ejemplo, la <em>Florida Digital Bill of Rights</em> (cuyos umbrales de aplicación probablemente no se alcancen), la <em>Florida Information Protection Act</em>, leyes de privacidad de otros estados de EE. UU. si hay usuarios allí, y el RGPD europeo si algún Cliente opera con personas en la UE— y redactar esta sección en consecuencia. Este borrador no afirma cumplimiento de ninguna norma en particular.</div>
+          </div>
+          <p style="margin-top:14px">En términos generales, tratamos los datos para prestar el servicio contratado por el Cliente, para proteger la seguridad de la plataforma y, en el caso del sitio web y del contacto comercial, por nuestro interés en responder consultas y medir el uso del sitio.</p>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 5</span>
+            Dónde se alojan los datos: una instancia dedicada por Cliente
+          </h2>
+          <p>PivetTrack es <strong>single-tenant</strong>: cada Cliente recibe su propia instancia aislada, compuesta por un proyecto propio en <strong>Railway</strong> (donde corre la aplicación) y un proyecto propio en <strong>Supabase</strong> (base de datos PostgreSQL). Los datos de un Cliente no comparten base de datos con los de ningún otro: el aislamiento entre Clientes es de infraestructura.</p>
+          <ul>
+            <li>
+              <strong>Ubicación:</strong>
+              <div class="legal-revisar" style="margin-top:6px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> región de los proyectos de Railway y Supabase de cada instancia; no está documentada. Confirmar que es EE. UU. antes de afirmarlo.</div>
+              </div>
+            </li>
+            <li><strong>Cifrado en tránsito:</strong> la aplicación sólo atiende por HTTPS (redirige HTTP y envía la cabecera HSTS).</li>
+            <li>
+              <strong>Cifrado en reposo:</strong> además de los secretos que la aplicación cifra por sí misma (sección 9),
+              <div class="legal-revisar" style="margin-top:6px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> el cifrado en reposo de la base de datos lo provee Supabase; confirmar en su documentación vigente antes de afirmarlo.</div>
+              </div>
+            </li>
+            <li><strong>Respaldos:</strong> la base de datos de cada instancia tiene un respaldo automático diario que se conserva siete (7) días.</li>
+          </ul>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 6</span>
+            Proveedores que intervienen (subencargados)
+          </h2>
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Proveedor</th>
+                  <th>Para qué</th>
+                  <th>Qué datos ve</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Railway</strong></td>
+                  <td>Ejecutar la aplicación de cada instancia</td>
+                  <td>Todo el tráfico de la aplicación y sus registros de servicio</td>
+                </tr>
+                <tr>
+                  <td><strong>Supabase</strong></td>
+                  <td>Base de datos PostgreSQL de cada instancia y sus respaldos</td>
+                  <td>Todos los datos de la instancia</td>
+                </tr>
+                <tr>
+                  <td><strong>Resend</strong></td>
+                  <td>Envío de los correos transaccionales, en las instancias que lo tienen configurado</td>
+                  <td>Destinatario, nombre y contenido de cada correo</td>
+                </tr>
+                <tr>
+                  <td><strong>Google (Analytics)</strong></td>
+                  <td>Analítica del sitio web pivettrack.com, <strong>sólo</strong> el sitio público</td>
+                  <td>Datos de navegación del sitio web</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> proveedor de DNS y registrador del dominio; si alguna instancia usa otro proveedor de correo; y si nos comprometemos a avisar a los Clientes antes de sumar un subencargado.</div>
+          </div>
+        </div>
+
+        <!-- Section 7 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 7</span>
+            Cookies y almacenamiento local
+          </h2>
+          <p><strong>En la aplicación PivetTrack</strong> (panel interno y Portal B2B) sólo se usan cookies estrictamente necesarias:</p>
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Para qué</th>
+                  <th>Duración</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>sessionid</code></td>
+                  <td>Mantener la sesión iniciada</td>
+                  <td>Vence tras 30 minutos sin actividad (configuración por defecto)</td>
+                </tr>
+                <tr>
+                  <td><code>csrftoken</code></td>
+                  <td>Protección contra falsificación de peticiones (CSRF)</td>
+                  <td>Aproximadamente un año</td>
+                </tr>
+                <tr>
+                  <td><code>django_language</code></td>
+                  <td>Recordar el idioma elegido en el panel interno</td>
+                  <td>Hasta cerrar el navegador</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>El panel interno guarda además en el almacenamiento local del navegador (<em>localStorage</em>) la hora de la última actividad, para que el cierre de sesión por inactividad funcione igual entre pestañas, y si la barra lateral está abierta o cerrada. No contiene datos personales.</p>
+          <p>
+            <strong>En el sitio web pivettrack.com</strong>, Google Analytics instala sus propias cookies (por ejemplo, <code>_ga</code>).
+          </p>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> listado y duración exactos; si se requiere consentimiento previo.</div>
+          </div>
+        </div>
+
+        <!-- Section 8 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 8</span>
+            Cuánto tiempo conservamos los datos
+          </h2>
+          <ul>
+            <li><strong>Datos de la instancia del Cliente:</strong> mientras el contrato esté vigente. Al terminar, quedan disponibles para exportación durante treinta (30) días calendario, en los términos del Acuerdo de Nivel de Servicio, y luego se eliminan la instancia y su base de datos.
+              <div class="legal-revisar" style="margin-top:8px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> confirmar con Supabase cuánto sobreviven los respaldos tras eliminar un proyecto.</div>
+              </div>
+            </li>
+            <li><strong>Cuentas de usuario:</strong> no se borran, se <strong>desactivan</strong>. Las cuentas quedan vinculadas a los movimientos, pedidos y registros de auditoría que generaron, que son inmutables por diseño; sus datos se eliminan con la instancia.</li>
+            <li><strong>Sesiones:</strong> vencen por inactividad; una tarea programada elimina las vencidas.
+              <div class="legal-revisar" style="margin-top:8px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> frecuencia de esa tarea, configurada en el panel de Railway de cada instancia.</div>
+              </div>
+            </li>
+            <li><strong>Registro de accesos al panel interno y bitácora de auditoría:</strong> hoy se conservan durante toda la vida de la instancia; la aplicación no los purga.
+              <div class="legal-revisar" style="margin-top:8px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> definir un plazo e implementar la purga antes de publicar, o declarar este plazo como definitivo.</div>
+              </div>
+            </li>
+            <li><strong>Contadores anti-fuerza-bruta y de límite de peticiones:</strong> vencen solos, con su ventana de tiempo.</li>
+            <li><strong>Exportaciones:</strong> 24 horas (sección 3.8).</li>
+            <li><strong>Registros de servicio de la infraestructura:</strong>
+              <div class="legal-revisar" style="margin-top:8px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> retención de logs del plan de Railway contratado, y si registran IPs en su borde.</div>
+              </div>
+            </li>
+            <li><strong>Sitio web y contacto comercial:</strong>
+              <div class="legal-revisar" style="margin-top:8px">
+                <i class="fas fa-exclamation-circle"></i>
+                <div><strong>REVISAR:</strong> plazo de retención de Google Analytics y de los correos de contacto comercial.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Section 9 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 9</span>
+            Seguridad
+          </h2>
+          <p>Entre otras medidas: contraseñas sólo como <em>hash</em>; segundo factor obligatorio para los roles administrativos; secretos del segundo factor y de los webhooks cifrados en la base de datos; secretos de API sólo como <em>hash</em> y atados en producción al certificado del cliente; límite de intentos y bloqueo temporal ante fuerza bruta; cierre de sesión por inactividad; cookies sólo por HTTPS; política de seguridad de contenido restrictiva; control de acceso por rol; y registro inmutable de movimientos y de acciones administrativas.</p>
+          <p>Ningún sistema es infalible. La seguridad del acceso también depende de que cada usuario cuide sus credenciales.</p>
+        </div>
+
+        <!-- Section 10 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 10</span>
+            Derechos de las personas
+          </h2>
+          <p><strong>Si sus datos están en la instancia de un Cliente</strong> —porque usted es usuario interno de una empresa que usa PivetTrack o comprador en su Portal B2B—, la empresa es la responsable de sus datos: dirija a ella sus solicitudes de acceso, rectificación, eliminación u otras. Si nos escribe directamente, trasladaremos su solicitud al Cliente que corresponda y lo asistiremos en lo que nos pida para responderla.</p>
+          <p>Tenga presente que, por diseño, los registros de movimientos y de auditoría no se modifican ni se eliminan, y que las cuentas se desactivan en lugar de borrarse; por eso, la eliminación de algunos datos puede no ser posible mientras la instancia exista.</p>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> compatibilidad de este diseño con los derechos de eliminación que resulten aplicables.</div>
+          </div>
+          <p style="margin-top:14px"><strong>Si sus datos los tratamos como responsables</strong> (sitio web, contacto o relación comercial), puede pedirnos acceso, rectificación o eliminación escribiendo a la dirección de la sección 13.</p>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> plazo de respuesta y cómo verificamos la identidad del solicitante.</div>
+          </div>
+        </div>
+
+        <!-- Section 11 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 11</span>
+            Incidentes de seguridad
+          </h2>
+          <p>Si confirmamos una vulneración de seguridad en la infraestructura bajo nuestro control que exponga datos de un Cliente, se lo notificaremos en un plazo no mayor a setenta y dos (72) horas desde la confirmación, conforme al Acuerdo de Nivel de Servicio. Como responsable de esos datos, el Cliente decide la notificación a las personas afectadas, con la asistencia que razonablemente nos pida.</p>
+        </div>
+
+        <!-- Section 12 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 12</span>
+            Menores de edad
+          </h2>
+          <p>PivetTrack y su sitio web están dirigidos a empresas y no a menores de edad. No recolectamos a sabiendas datos de menores.</p>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> edad de referencia.</div>
+          </div>
+        </div>
+
+        <!-- Section 13 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 13</span>
+            Contacto
+          </h2>
+          <p>PIVET DIGITAL AUTOMATIONS LLC — <a href="mailto:raul@raulpivet.com" style="color:#FF6B00">raul@raulpivet.com</a></p>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> domicilio postal de la sociedad; evaluar una casilla dedicada a privacidad.</div>
+          </div>
+        </div>
+
+        <!-- Section 14 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 14</span>
+            Acuerdo de tratamiento de datos (DPA)
+          </h2>
+          <p>Los Clientes Enterprise pueden solicitar un Acuerdo de Tratamiento de Datos (<em>Data Processing Agreement</em>) que detalle las obligaciones de Pivet como encargado del tratamiento. Ese documento está en preparación (fase 2).</p>
+        </div>
+
+        <!-- Section 15 -->
+        <div class="legal-section">
+          <h2 class="legal-section-h2">
+            <span class="legal-section-num">§ 15</span>
+            Cambios a esta política
+          </h2>
+          <p>Podemos actualizar esta política. La versión vigente estará siempre publicada con su fecha. Si un cambio afecta de forma sustancial el tratamiento de los datos de las instancias, lo avisaremos a los Clientes al correo de contacto que tengan registrado, con antelación razonable.</p>
+          <div class="legal-revisar">
+            <i class="fas fa-exclamation-circle"></i>
+            <div><strong>REVISAR:</strong> plazo de aviso.</div>
+          </div>
+        </div>
+
+        <hr class="legal-divider">
+
+        <div class="legal-final-note">
+          <i class="fas fa-gavel"></i> &nbsp; Requiere revisión legal antes de publicar.
+        </div>
+
+      </div><!-- /.legal-content -->
+    </main>
+  </div><!-- /.container -->
+
+  <footer>
+    <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
+    <p class="footer-registered">PivetTrack WMS · Miami, FL · Registered LLC — Florida</p>
+    <p class="footer-legal">
+      <a href="terminos.html">Términos del Servicio</a> &middot;
+      <a href="privacidad.html">Política de Privacidad</a>
+    </p>
+  </footer>
+
   <script src="script.js"></script>
   <script>
-    function showLang(l) {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.classList.toggle('visible', el.dataset.lang === l);
+    const tNav = {
+      es: { nav_home:'Inicio', nav_about:'Nosotros', nav_contact:'Contacto', nav_demos:'AppSheet Demos' },
+      en: { nav_home:'Home', nav_about:'About Us', nav_contact:'Contact', nav_demos:'AppSheet Demos' }
+    };
+    let lang = localStorage.getItem('homeLang') || 'es';
+    function renderNav() {
+      const d = tNav[lang];
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (d[k]) el.textContent = d[k];
       });
-      document.querySelectorAll('.pp-lang-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', (i === 0 && l === 'es') || (i === 1 && l === 'en'));
-      });
-      document.documentElement.lang = l;
+      const flag = document.getElementById('languageFlag');
+      const text = document.getElementById('languageText');
+      if (flag) flag.textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+      if (text) text.textContent = lang === 'es' ? 'English' : 'Español';
     }
-    // Detect site language from localStorage
-    const siteLang = localStorage.getItem('homeLang') || 'es';
-    if (siteLang === 'en') showLang('en');
+    function toggleLangNav() {
+      lang = lang === 'es' ? 'en' : 'es';
+      localStorage.setItem('homeLang', lang);
+      renderNav();
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNav();
+      document.getElementById('languageToggle')?.addEventListener('click', toggleLangNav);
+    });
   </script>
 </body>
 </html>
