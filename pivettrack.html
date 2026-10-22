@@ -627,7 +627,7 @@
         { label: 'Stock Actual',          num: '4,812',   sub: 'unidades en bodega',       color: 'orange' },
         { label: 'Precisión Inventario',  num: '99.8%',   sub: 'exactitud contable',        color: 'green'  },
         { label: 'Movimientos Hoy',       num: '247',     sub: 'entradas + salidas',        color: 'blue'   },
-        { label: 'Mermas sin resolver',   num: '$0',      sub: 'ajuste automático activo',  color: 'amber'  },
+        { label: 'Mermas sin resolver',   num: '$0',      sub: 'toda baja queda documentada',  color: 'amber'  },
       ],
       ledger_title: 'Kardex de Movimientos',
       immutable_lbl: 'Inmutable · Solo Lectura',
@@ -685,7 +685,7 @@
         {
           step: 'Arquitectura 03 / 03', icon: 'fas fa-boxes', label: 'Módulos Operativos Incluidos',
           title: 'El ciclo operativo completo — más Portal B2B con tu marca, subdominio y color propios',
-          desc: 'PivetTrack incluye el flujo completo de bodega en el plan SaaS base, más un Portal B2B de marca blanca: el portal que usan tus compradores mayoristas sale con tu logo, tu nombre y tu subdominio (ej. pedidos.tuempresa.com). Los correos al comprador también salen con tu marca. Rentabilidad exacta por cliente y por producto incluida.',
+          desc: 'PivetTrack incluye el flujo completo de bodega en el plan SaaS base, y ofrece un Portal B2B de marca blanca: el portal que usan tus compradores mayoristas sale con tu logo, tu nombre y tu subdominio (ej. pedidos.tuempresa.com). Los correos al comprador también salen con tu marca. Rentabilidad exacta por cliente y por producto incluida. La habilitación del Portal B2B, la API y los webhooks, y su alcance, se definen en la propuesta formal.',
           tags: ['Marca Blanca', 'Portal B2B', 'Exportación .xlsx', 'Rentabilidad'],
           modules: [
             { icon: 'fas fa-arrow-circle-down', name: 'Entradas, Salidas y Traspasos',             addon: false },
@@ -696,7 +696,7 @@
             { icon: 'fas fa-tag',                name: 'Marca Blanca: logo, color y subdominio',   addon: false },
             { icon: 'fas fa-file-excel',         name: 'Export a Excel (plan base: hasta 2 simultáneos)', addon: false },
             { icon: 'fas fa-barcode',            name: 'Escáner Móvil y Códigos de Barras',       addon: false },
-            { icon: 'fas fa-plug',               name: 'Portal B2B y API ERP (cotización adicional)', addon: true },
+            { icon: 'fas fa-plug',               name: 'Portal B2B y API ERP (alcance en la propuesta formal)', addon: true },
           ],
         },
       ],
@@ -714,11 +714,11 @@
         { num: '+1.000', label: 'Tests Automáticos', sub: 'Cada actualización validada antes de llegar a su operación' },
       ],
       security_cards: [
-        { icon: 'fas fa-tachometer-alt', title: 'Sin Caídas Bajo Pico de Demanda',      desc: 'En las pruebas de carga el servidor nunca devolvió un error 502 ni 504. Ante un exceso de demanda el sistema se ralentiza — pero no se cae. La operación de su equipo no se detiene.' },
+        { icon: 'fas fa-tachometer-alt', title: 'Sin Caídas Bajo Pico de Demanda',      desc: 'En la serie base de picking el servidor no devolvió ni un solo error en 4.716 peticiones. Ante un exceso de demanda el sistema se ralentiza — pero no se cae. La operación de su equipo no se detiene.' },
         { icon: 'fas fa-bolt',           title: '179 ms en el Piso del Almacén',        desc: 'El operario escanea y avanza: p95 de 179 ms en picking con 30 concurrentes sobre los mismos SKUs, sobre el mismo inventario, sin un solo descuadre en las 422 confirmaciones de despacho.' },
         { icon: 'fas fa-code-branch',    title: '+1.000 Tests Automatizados',           desc: 'Versión 1.0 cerrada en octubre de 2026 con más de 1.000 tests automatizados. Cada actualización pasa por el conjunto completo de pruebas antes de llegar a su operación.' },
         { icon: 'fas fa-lock',           title: 'Auditoría Inmutable',                  desc: 'El Kardex es un registro histórico inalterable. Las correcciones se emiten como documentos nuevos — la historia no se reescribe, se documenta.' },
-        { icon: 'fas fa-mobile-alt',     title: 'MFA/TOTP Obligatorio',                desc: 'Segundo factor TOTP obligatorio para el Súper Administrador, secreto cifrado en reposo y códigos de respaldo de un solo uso. Bloqueo automático por intentos fallidos.' },
+        { icon: 'fas fa-mobile-alt',     title: 'MFA/TOTP Obligatorio',                desc: 'Segundo factor TOTP obligatorio para el Súper Administrador y el Administrador, secreto cifrado en reposo y códigos de respaldo de un solo uso. Bloqueo automático por intentos fallidos.' },
         { icon: 'fas fa-shield-alt',     title: 'Seguridad de Nivel Enterprise',        desc: 'Content-Security-Policy estricta (bloquea XSS), contraseñas mínimo 12 caracteres (NIST SP 800-63B), exports de Excel blindados contra inyección de fórmulas y tráfico cifrado HTTPS/TLS.' },
         { icon: 'fas fa-server',         title: 'Instancia Aislada (Single-Tenant)',    desc: 'Cada cliente tiene su propio servicio y su propia base de datos en Railway + Supabase. Sus datos no comparten base, tablas ni servidor con ninguna otra empresa.' },
         { icon: 'fas fa-plug',           title: 'API Idempotente · Webhooks HMAC-SHA256', desc: 'Un pedido reenviado por corte de red nunca se duplica. Su ERP recibe cada despacho confirmado vía webhook firmado: puede verificar la autenticidad y ningún aviso se pierde ni sale por una operación que no se concretó.' },
@@ -751,9 +751,9 @@
       pricing_setup_period: 'Pago único · Por adelantado · En marcha en 2 a 3 semanas',
       pricing_setup_features: [
         'Aprovisionamiento de instancia aislada en la nube',
-        'Configuración inicial de marca blanca en el Portal B2B (logo, color y subdominio)',
-        'Migración del catálogo base (hasta 10,000 SKUs desde Excel)',
-        'Habilitación del módulo de reportabilidad avanzada',
+        'Configuración inicial de marca blanca (logo y color en la interfaz y los comprobantes)',
+        'Carga asistida de su catálogo completo desde Excel o desde una exportación de su ERP, sin tope de SKU',
+        'Informes y Kardex valorizado activos desde el día uno',
         'Dos sesiones de capacitación de 2 horas para el equipo operativo',
         'Entrega del manual de usuario oficial',
       ],
@@ -763,9 +763,9 @@
       pricing_saas_features: [
         'Usuarios ilimitados — sin cargo por asiento',
         'Totalidad de los módulos funcionales incluidos',
-        'Portal B2B con marca blanca incluido (logo, subdominio y color propios)',
+        'Su logo y su marca en la interfaz y en todos los comprobantes PDF',
         'Exports a Excel en paralelo (plan base: hasta 2 simultáneos)',
-        'Catálogo activo cubierto: hasta 5.000 SKUs en el plan base',
+        'Sin tope de SKU en el contrato: su catálogo puede pasar de 5.000 a 150.000 SKU y la factura no cambia',
         'SLA de disponibilidad 99.9% comprometido por contrato (con créditos de servicio)',
         'Respaldos automáticos gestionados',
         'Todas las mejoras de producto sin costo adicional',
@@ -780,11 +780,11 @@
       pricing_tax_note: 'A la fecha de este documento, la prestación de SaaS no está sujeta al Sales Tax del Estado de Florida. Tarifas en USD, netas.',
       pricing_quoted_title: 'Se cotiza por separado (por transparencia)',
       pricing_quoted: [
-        'Add-on de Infraestructura Avanzada: catálogos de más de 5.000 SKU activos o 3 o más informes pesados simultáneos de forma rutinaria',
+        'Add-on de Infraestructura Avanzada (Plan Enterprise): 3 o más informes pesados simultáneos, o 3 o más procesos de gran volumen en simultáneo, de forma rutinaria',
         'Portal B2B, API y webhooks: su habilitación y alcance se definen en la propuesta formal',
         'Desarrollos de software a medida de cualquier tipo',
         'Integraciones con sistemas de terceros (ERP, QuickBooks u otro sistema contable)',
-        'Migraciones de más de 10.000 SKU, de una segunda fuente de datos, o tomas generales de más de 25.000 SKU por documento',
+        'Migraciones desde una segunda fuente de datos, o con depuración de los datos de origen',
       ],
 
       /* ── Next Steps / CTA ── */
@@ -809,7 +809,7 @@
       demos_eyebrow: 'Demostraciones en Vivo',
       demos_title: 'Mira PivetTrack',
       demos_accent: 'en Acción',
-      demos_sub: 'Videos reales del sistema en producción — sin edición, sin staging.',
+      demos_sub: 'Videos reales del sistema, sin edición.',
       demos: [
         {
           id: 'oCA9KzfoIT8', live: true, num: '01',
@@ -898,7 +898,7 @@
         { label: 'Current Stock',         num: '4,812',   sub: 'units in warehouse',        color: 'orange' },
         { label: 'Inventory Accuracy',    num: '99.8%',   sub: 'accounting precision',       color: 'green'  },
         { label: 'Movements Today',       num: '247',     sub: 'entries + exits',            color: 'blue'   },
-        { label: 'Unresolved Shrinkage',  num: '$0',      sub: 'auto-adjustment active',     color: 'amber'  },
+        { label: 'Unresolved Shrinkage',  num: '$0',      sub: 'every write-off is documented',     color: 'amber'  },
       ],
       ledger_title: 'Movement Log',
       immutable_lbl: 'Immutable · Read Only',
@@ -956,7 +956,7 @@
         {
           step: 'Architecture 03 / 03', icon: 'fas fa-boxes', label: 'All Operational Modules Included',
           title: 'The complete operational cycle — plus a white-label B2B Portal with your logo, subdomain, and colors',
-          desc: 'PivetTrack includes the full warehouse workflow in the base SaaS plan, plus a white-label B2B Portal: the portal your wholesale buyers use carries your logo, your name, and your subdomain (e.g. orders.yourcompany.com). Buyer emails also go out in your brand. Exact profitability by customer and by product included.',
+          desc: 'PivetTrack includes the full warehouse workflow in the base SaaS plan, and offers a white-label B2B Portal: the portal your wholesale buyers use carries your logo, your name, and your subdomain (e.g. orders.yourcompany.com). Buyer emails also go out in your brand. Exact profitability by customer and by product included. Enablement and scope of the B2B Portal, the API and the webhooks are defined in the formal proposal.',
           tags: ['White Label', 'B2B Portal', '.xlsx Export', 'Profitability'],
           modules: [
             { icon: 'fas fa-arrow-circle-down', name: 'Entries, Exits & Transfers',                  addon: false },
@@ -967,7 +967,7 @@
             { icon: 'fas fa-tag',                name: 'White Label: logo, colors & subdomain',     addon: false },
             { icon: 'fas fa-file-excel',         name: 'Excel Export (base plan: up to 2 concurrent)', addon: false },
             { icon: 'fas fa-barcode',            name: 'Mobile Scanner & Barcodes',                 addon: false },
-            { icon: 'fas fa-plug',               name: 'B2B Portal & ERP API (quoted separately)',  addon: true },
+            { icon: 'fas fa-plug',               name: 'B2B Portal & ERP API (scope in the formal proposal)',  addon: true },
           ],
         },
       ],
@@ -985,11 +985,11 @@
         { num: '+1,000',  label: 'Automated Tests',     sub: 'Every update validated before it reaches your operation' },
       ],
       security_cards: [
-        { icon: 'fas fa-tachometer-alt', title: 'No Crashes Under Peak Load',          desc: 'In load tests the server never returned a 502 or 504 error. Under excessive demand the system slows down — but it does not go down. Your team\'s operation keeps moving.' },
+        { icon: 'fas fa-tachometer-alt', title: 'No Crashes Under Peak Load',          desc: 'In the base picking series the server did not return a single error across 4,716 requests. Under excessive demand the system slows down — but it does not go down. Your team\'s operation keeps moving.' },
         { icon: 'fas fa-bolt',           title: '179 ms on the Warehouse Floor',       desc: 'Operators scan and move on: 179 ms p95 during picking with 30 concurrent users on the same SKUs, same inventory, with zero stock discrepancies across all 422 dispatch confirmations.' },
         { icon: 'fas fa-code-branch',    title: '+1,000 Automated Tests',              desc: 'Version 1.0 closed in October 2026 with over 1,000 automated tests. Every update passes the full test suite before reaching your operation.' },
         { icon: 'fas fa-lock',           title: 'Immutable Audit Trail',               desc: 'The Kardex is a historical record of movements, not an editable spreadsheet. Corrections are issued as new documents — history is not rewritten, it is documented.' },
-        { icon: 'fas fa-mobile-alt',     title: 'Mandatory MFA/TOTP',                 desc: 'TOTP second factor mandatory for the Super Administrator, secret encrypted at rest, single-use backup codes, and automatic lockout on failed login attempts.' },
+        { icon: 'fas fa-mobile-alt',     title: 'Mandatory MFA/TOTP',                 desc: 'TOTP second factor mandatory for the Super Administrator and the Administrator, secret encrypted at rest, single-use backup codes, and automatic lockout on failed login attempts.' },
         { icon: 'fas fa-shield-alt',     title: 'Enterprise-Level Security',           desc: 'Strict Content-Security-Policy (blocks XSS injection), 12-character minimum passwords (NIST SP 800-63B), Excel exports protected against formula injection, and end-to-end HTTPS/TLS.' },
         { icon: 'fas fa-server',         title: 'Isolated Instance (Single-Tenant)',   desc: 'Every client has their own service and their own database on Railway + Supabase. Your data shares no tables, no database, and no server with any other company.' },
         { icon: 'fas fa-plug',           title: 'Idempotent API · HMAC-SHA256 Webhooks', desc: 'A request resent after a network cut is never duplicated. Your ERP receives every confirmed dispatch via signed webhook, can verify its authenticity, and no notification is lost or sent for an incomplete operation.' },
@@ -1022,9 +1022,9 @@
       pricing_setup_period: 'One-time payment · Upfront · Live in 2 to 3 weeks',
       pricing_setup_features: [
         'Dedicated cloud instance provisioning',
-        'Initial white-label configuration for the B2B Portal (logo, color, and subdomain)',
-        'Base catalog migration (up to 10,000 SKUs from Excel)',
-        'Advanced reporting module activation',
+        'Initial white-label configuration (logo and colors on the interface and PDF documents)',
+        'Assisted load of your complete catalog from Excel or an export of your ERP, with no SKU cap',
+        'Reports and valued Kardex active from day one',
         'Two 2-hour training sessions for your operational team',
         'Delivery of the official user manual',
       ],
@@ -1034,9 +1034,9 @@
       pricing_saas_features: [
         'Unlimited users — no per-seat charge',
         'All functional modules included',
-        'White-label B2B Portal included (your logo, subdomain, and colors)',
+        'Your logo and brand on the interface and on every PDF document',
         'Excel exports in parallel (base plan: up to 2 concurrent)',
-        'Active catalog covered: up to 5,000 SKUs in the base plan',
+        'No contractual SKU cap: your catalog can grow from 5,000 to 150,000 SKUs and the invoice doesn\'t change',
         '99.9% uptime SLA committed by contract (with service credits)',
         'Managed automatic backups included',
         'All product improvements at no additional cost',
@@ -1051,11 +1051,11 @@
       pricing_tax_note: 'As of this document, SaaS is not subject to Florida State Sales Tax. Prices are in USD, net.',
       pricing_quoted_title: 'Quoted separately (for transparency)',
       pricing_quoted: [
-        'Advanced Infrastructure Add-on: catalogs exceeding 5,000 active SKUs or 3+ heavy concurrent reports on a routine basis',
+        'Advanced Infrastructure Add-on (Enterprise Plan): 3 or more heavy reports at once, or 3 or more high-volume processes running simultaneously, on a routine basis',
         'B2B Portal, API & webhooks: enablement and scope defined in the formal proposal',
         'Custom software development of any kind',
         'Integrations with third-party systems (ERP, QuickBooks, or other accounting software)',
-        'Migrations exceeding 10,000 SKUs, from a second data source, or full counts exceeding 25,000 SKUs per document',
+        'Migrations from a second data source, or requiring cleansing of the source data',
       ],
 
       /* ── Next Steps / CTA ── */
@@ -1080,7 +1080,7 @@
       demos_eyebrow: 'Live Demos',
       demos_title: 'See PivetTrack',
       demos_accent: 'in Action',
-      demos_sub: 'Real-system videos running in production — no editing, no staging.',
+      demos_sub: 'Real videos of the system, unedited.',
       demos: [
         {
           id: 'oCA9KzfoIT8', live: true, num: '01',
