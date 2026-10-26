@@ -283,6 +283,14 @@
        SECURITY SECTION
     ═══════════════════════════════════════════════ */
     .pt-security { margin:60px 0; }
+    .pt-trace { margin:60px 0; }
+    .pt-qbo-map { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+    @media(max-width:860px){ .pt-qbo-map { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px){ .pt-qbo-map { grid-template-columns:1fr; } }
+    .pt-qbo-map-item { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:18px 16px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px; }
+    .pt-qbo-map-from { font-size:0.8125rem; color:var(--text-secondary); line-height:1.4; flex:1; }
+    .pt-qbo-map-arrow { color:#FF6B00; font-size:0.9rem; }
+    .pt-qbo-map-to { font-size:0.9375rem; font-weight:800; color:#FF6B00; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.2); padding:5px 14px; border-radius:12px; }
     .pt-stats-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
     @media(max-width:860px){ .pt-stats-strip { grid-template-columns:repeat(2,1fr); } }
     .pt-stat-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:20px 14px; text-align:center; transition:border-color 0.25s; }
@@ -615,7 +623,7 @@
       hero_eyebrow: 'WMS Enterprise · Marca Blanca · PIVET DIGITAL AUTOMATIONS LLC',
       hero_h1a: 'WMS Enterprise Marca Blanca.',
       hero_h1b: 'Medido, No Prometido.',
-      hero_sub: '<strong>PivetTrack</strong> es un WMS Enterprise de marca blanca: su logo y su marca en la interfaz, en cada comprobante PDF y en el Portal B2B de sus compradores mayoristas. Probado <em>en staging</em> con <strong>30 operarios en simultáneo, 0 errores y p95 de 179 ms</strong>. Single-tenant de verdad: cada cliente, su propio servidor y su propia base de datos. Cada movimiento genera un documento inmutable. Cada documento, un responsable.',
+      hero_sub: '<strong>Sepa en minutos qué cliente recibió cada lote.</strong> PivetTrack sigue cada lote hasta su cliente, despacha primero lo que vence primero y lleva cada operación a su QuickBooks Online, sin cargar nada dos veces. <strong>PivetTrack</strong> es un WMS Enterprise de marca blanca: su logo y su marca en la interfaz, en cada comprobante PDF y en el Portal B2B de sus compradores mayoristas. Probado <em>en staging</em> con <strong>30 operarios en simultáneo, 0 errores y p95 de 179 ms</strong>. Single-tenant de verdad: cada cliente, su propio servidor y su propia base de datos. Cada movimiento genera un documento inmutable. Cada documento, un responsable.',
       hero_cta1: 'Agendar Demostración',
       hero_cta2: 'Ver Funcionalidades',
       trust: ['30 operarios · 0 errores · p95 de 179 ms', 'Marca blanca: tu logo en la interfaz y los PDF', 'Single-Tenant · Base de datos exclusiva', 'NDA antes de cualquier demo'],
@@ -688,6 +696,8 @@
           desc: 'PivetTrack incluye el flujo completo de bodega en el plan SaaS base, y ofrece un Portal B2B de marca blanca: el portal que usan tus compradores mayoristas sale con tu logo, tu nombre y tu subdominio (ej. pedidos.tuempresa.com). Los correos al comprador también salen con tu marca. Rentabilidad exacta por cliente y por producto incluida. La habilitación del Portal B2B, la API y los webhooks, y su alcance, se definen en la propuesta formal.',
           tags: ['Marca Blanca', 'Portal B2B', 'Exportación .xlsx', 'Rentabilidad'],
           modules: [
+            { icon: 'fas fa-boxes',              name: 'Lotes, FEFO y recall',                     addon: false },
+            { icon: 'fas fa-book',               name: 'QuickBooks Online',                        addon: false },
             { icon: 'fas fa-arrow-circle-down', name: 'Entradas, Salidas y Traspasos',             addon: false },
             { icon: 'fas fa-undo-alt',           name: 'Devoluciones a Proveedor y Mermas',        addon: false },
             { icon: 'fas fa-clipboard-list',     name: 'Toma de Inventario Wall-to-Wall',          addon: false },
@@ -699,6 +709,39 @@
             { icon: 'fas fa-plug',               name: 'Portal B2B y API ERP (alcance en la propuesta formal)', addon: true },
           ],
         },
+      ],
+
+      /* ── Lot traceability & QuickBooks Online ── */
+      lots_eyebrow: 'Trazabilidad por Lote',
+      lots_title: 'Un proveedor le avisa de un lote con problemas.',
+      lots_accent: '¿Cuánto tarda en saber a quién se lo vendió?',
+      lots_sub: 'En PivetTrack, un clic. Cada unidad entra con su lote y su vencimiento, y cada despacho queda atado al lote que salió. La lista para un retiro (recall) está lista antes de colgar el teléfono.',
+      lots_cards: [
+        { icon: 'fas fa-hourglass-half', title: 'FEFO automático', desc: 'Sale primero el lote que vence primero. Un despacho a cliente nunca toma un lote vencido.' },
+        { icon: 'fas fa-calendar-times', title: 'Vencimientos a la vista', desc: 'Informe de próximos a vencer, con días de aviso por producto y alerta en el Panel.' },
+        { icon: 'fas fa-clipboard-check', title: 'Recepción ciega en dos pasos', desc: 'La oficina carga la factura; el piso declara lotes y cantidades sin ver lo esperado.' },
+        { icon: 'fas fa-balance-scale', title: 'Faltantes con doble chequeo', desc: 'Cada diferencia la verifica otro Administrador y se cierra con nota de crédito, reposición o baja.' },
+        { icon: 'fas fa-undo-alt', title: 'Devoluciones a su lote', desc: 'Lo que devuelve un cliente vuelve a su lote; lo que se devuelve al proveedor sale del lote con que entró.' },
+        { icon: 'fas fa-book', title: 'Kardex por lote', desc: 'Cada movimiento del lote, con su documento, su autor y su saldo.' },
+      ],
+      lots_note: 'PivetTrack registra la trazabilidad a partir de los datos que carga su equipo y apoya sus procesos de retiro de productos. No sustituye sus obligaciones ante la FDA ni ante otras normas sanitarias: su cumplimiento es responsabilidad de su empresa.',
+      qbo_eyebrow: 'Contabilidad sin Doble Carga',
+      qbo_title: 'Cada despacho llega a su QuickBooks.',
+      qbo_accent: 'Nadie lo vuelve a tipear.',
+      qbo_sub: 'PivetTrack es el puente automatizado entre su bodega y su contabilidad: cada operación confirmada llega a su QuickBooks Online como el documento contable que le corresponde. Su cuenta sigue siendo suya y la administra su contador.',
+      qbo_map: [
+        { from: 'Salida a cliente', to: 'Invoice' },
+        { from: 'Entrada de proveedor', to: 'Bill' },
+        { from: 'Devolución de cliente', to: 'Credit Memo' },
+        { from: 'Devolución a proveedor o faltante con nota de crédito', to: 'Vendor Credit' },
+      ],
+      qbo_cards: [
+        { icon: 'fas fa-user-tie', title: 'Su cuenta, su contador', desc: 'La empresa de QuickBooks, el plan de cuentas y toda decisión contable siguen siendo suyos.' },
+        { icon: 'fas fa-long-arrow-alt-right', title: 'Un solo sentido', desc: 'PivetTrack crea los documentos; no modifica ni borra lo que ya está en QuickBooks.' },
+        { icon: 'fas fa-clone', title: 'Sin duplicados', desc: 'Cada documento se manda una sola vez; si QuickBooks no responde, queda en cola y se reintenta solo.' },
+        { icon: 'fas fa-lock', title: 'Precios bajo llave', desc: 'Enviada la factura, sus precios quedan bloqueados en PivetTrack: los dos sistemas no se desalinean.' },
+        { icon: 'fas fa-eye', title: 'Todo a la vista', desc: 'Lo enviado, lo pendiente y el motivo de cada error, en una sola pantalla.' },
+        { icon: 'fas fa-handshake', title: 'Puesta en marcha con su contador', desc: 'Conectamos su empresa, elegimos las cuentas con su contador y revisamos juntos los primeros documentos.' },
       ],
 
       /* ── Security & Infrastructure ── */
@@ -782,8 +825,9 @@
       pricing_quoted: [
         'Add-on de Infraestructura Avanzada (Plan Enterprise): 3 o más informes pesados simultáneos, o 3 o más procesos de gran volumen en simultáneo, de forma rutinaria',
         'Portal B2B, API y webhooks: su habilitación y alcance se definen en la propuesta formal',
+        'Integración opcional con QuickBooks Online: US$500 de configuración + US$200/mes',
         'Desarrollos de software a medida de cualquier tipo',
-        'Integraciones con sistemas de terceros (ERP, QuickBooks u otro sistema contable)',
+        'Integraciones con otros sistemas (QuickBooks Desktop u otro ERP)',
         'Migraciones desde una segunda fuente de datos, o con depuración de los datos de origen',
       ],
 
@@ -886,7 +930,7 @@
       hero_eyebrow: 'Enterprise WMS · White Label · PIVET DIGITAL AUTOMATIONS LLC',
       hero_h1a: 'Enterprise WMS, White Label.',
       hero_h1b: 'Measured, Not Promised.',
-      hero_sub: '<strong>PivetTrack</strong> is a white-label Enterprise WMS: your logo and your brand on the interface, on every PDF document, and on your wholesale buyers\' B2B Portal. Tested <em>on staging</em> with <strong>30 simultaneous operators, 0 errors, and a 179 ms p95 response time</strong>. True single-tenant: every client gets their own server and their own database. Every movement generates an immutable document. Every document has an accountable party.',
+      hero_sub: '<strong>Know in minutes which customer got every lot.</strong> PivetTrack follows every lot to your customer, ships what expires first and sends every transaction to your QuickBooks Online, with nothing keyed twice. <strong>PivetTrack</strong> is a white-label Enterprise WMS: your logo and your brand on the interface, on every PDF document, and on your wholesale buyers\' B2B Portal. Tested <em>on staging</em> with <strong>30 simultaneous operators, 0 errors, and a 179 ms p95 response time</strong>. True single-tenant: every client gets their own server and their own database. Every movement generates an immutable document. Every document has an accountable party.',
       hero_cta1: 'Schedule a Demo',
       hero_cta2: 'See Features',
       trust: ['30 operators · 0 errors · 179 ms p95', 'White label: your logo on the interface and PDFs', 'Single-Tenant · Exclusive database', 'NDA before any demo'],
@@ -959,6 +1003,8 @@
           desc: 'PivetTrack includes the full warehouse workflow in the base SaaS plan, and offers a white-label B2B Portal: the portal your wholesale buyers use carries your logo, your name, and your subdomain (e.g. orders.yourcompany.com). Buyer emails also go out in your brand. Exact profitability by customer and by product included. Enablement and scope of the B2B Portal, the API and the webhooks are defined in the formal proposal.',
           tags: ['White Label', 'B2B Portal', '.xlsx Export', 'Profitability'],
           modules: [
+            { icon: 'fas fa-boxes',              name: 'Lots, FEFO & recall',                        addon: false },
+            { icon: 'fas fa-book',               name: 'QuickBooks Online',                          addon: false },
             { icon: 'fas fa-arrow-circle-down', name: 'Entries, Exits & Transfers',                  addon: false },
             { icon: 'fas fa-undo-alt',           name: 'Supplier Returns & Shrinkage',               addon: false },
             { icon: 'fas fa-clipboard-list',     name: 'Wall-to-Wall Inventory Count',               addon: false },
@@ -970,6 +1016,39 @@
             { icon: 'fas fa-plug',               name: 'B2B Portal & ERP API (scope in the formal proposal)',  addon: true },
           ],
         },
+      ],
+
+      /* ── Lot traceability & QuickBooks Online ── */
+      lots_eyebrow: 'Lot Traceability',
+      lots_title: 'A supplier flags a bad lot.',
+      lots_accent: 'How long does it take you to know who you sold it to?',
+      lots_sub: 'In PivetTrack, one click. Every unit comes in with its lot and expiration date, and every shipment is tied to the lot it left from. Your recall list is ready before you hang up the phone.',
+      lots_cards: [
+        { icon: 'fas fa-hourglass-half', title: 'Automatic FEFO', desc: 'The lot that expires first ships first. A customer shipment never takes an expired lot.' },
+        { icon: 'fas fa-calendar-times', title: 'Expirations in sight', desc: 'A nearing-expiration report, with warning days per product and an alert on the Dashboard.' },
+        { icon: 'fas fa-clipboard-check', title: 'Blind two-step receiving', desc: 'The office enters the invoice; the floor declares lots and quantities without seeing what was expected.' },
+        { icon: 'fas fa-balance-scale', title: 'Double-checked shortages', desc: 'Every difference is verified by a second Administrator and closed with a credit note, a replacement or a write-off.' },
+        { icon: 'fas fa-undo-alt', title: 'Returns to their lot', desc: 'A customer return goes back to its lot; a supplier return leaves from the lot it came in with.' },
+        { icon: 'fas fa-book', title: 'Ledger by lot', desc: 'Every movement of the lot, with its document, its author and its balance.' },
+      ],
+      lots_note: 'PivetTrack records traceability from the data your team enters and supports your product recall processes. It does not replace your obligations to the FDA or under other health regulations: complying with them is your company\'s responsibility.',
+      qbo_eyebrow: 'Accounting without Double Entry',
+      qbo_title: 'Every shipment lands in your QuickBooks.',
+      qbo_accent: 'Nobody types it again.',
+      qbo_sub: 'PivetTrack is the automated bridge between your warehouse and your books: every confirmed transaction reaches your QuickBooks Online as the matching accounting document. Your account stays yours, managed by your accountant.',
+      qbo_map: [
+        { from: 'Customer shipment', to: 'Invoice' },
+        { from: 'Supplier receipt', to: 'Bill' },
+        { from: 'Customer return', to: 'Credit Memo' },
+        { from: 'Supplier return or shortage with a credit note', to: 'Vendor Credit' },
+      ],
+      qbo_cards: [
+        { icon: 'fas fa-user-tie', title: 'Your account, your accountant', desc: 'The QuickBooks company, the chart of accounts and every accounting decision remain yours.' },
+        { icon: 'fas fa-long-arrow-alt-right', title: 'One direction only', desc: 'PivetTrack creates the documents; it never changes or deletes what is already in QuickBooks.' },
+        { icon: 'fas fa-clone', title: 'No duplicates', desc: 'Each document is sent exactly once; if QuickBooks does not answer, it waits in a queue and retries on its own.' },
+        { icon: 'fas fa-lock', title: 'Prices under lock', desc: 'Once the invoice is sent, its prices are locked in PivetTrack, so the two systems never drift apart.' },
+        { icon: 'fas fa-eye', title: 'Everything in view', desc: 'What was sent, what is pending and the reason for each error, on one screen.' },
+        { icon: 'fas fa-handshake', title: 'Set up with your accountant', desc: 'We connect your company, choose the accounts with your accountant and review the first documents together.' },
       ],
 
       /* ── Security & Infrastructure ── */
@@ -1053,8 +1132,9 @@
       pricing_quoted: [
         'Advanced Infrastructure Add-on (Enterprise Plan): 3 or more heavy reports at once, or 3 or more high-volume processes running simultaneously, on a routine basis',
         'B2B Portal, API & webhooks: enablement and scope defined in the formal proposal',
+        'Optional QuickBooks Online integration: US$500 setup + US$200/month',
         'Custom software development of any kind',
-        'Integrations with third-party systems (ERP, QuickBooks, or other accounting software)',
+        'Integrations with other systems (QuickBooks Desktop or another ERP)',
         'Migrations from a second data source, or requiring cleansing of the source data',
       ],
 
@@ -1497,6 +1577,52 @@
               <div class="pt-feat-visual">
                 ${renderArchViz(f, idx)}
               </div>
+            </div>`).join('')}
+        </div>
+      </section>
+
+      <!-- ═══ 3b. TRAZABILIDAD POR LOTE ═══ -->
+      <section class="pt-trace" id="pt-lots" data-aos="fade-up">
+        <div class="pt-section-hdr">
+          <div class="pt-section-eyebrow"><i class="fas fa-boxes" style="color:#FF6B00"></i> ${d.lots_eyebrow}</div>
+          <h2 class="pt-section-title">${d.lots_title} <span class="accent">${d.lots_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;max-width:680px;margin-left:auto;margin-right:auto">${d.lots_sub}</p>
+        </div>
+        <div class="pt-security-grid">
+          ${d.lots_cards.map((c, i) => `
+            <div class="pt-sec-card" data-aos="fade-up" data-aos-delay="${Math.min(i * 60, 300)}">
+              <div class="pt-sec-icon"><i class="${c.icon}"></i></div>
+              <div class="pt-sec-title">${c.title}</div>
+              <div class="pt-sec-desc">${c.desc}</div>
+            </div>`).join('')}
+        </div>
+        <div class="pt-tenant-note" style="margin-top:20px;margin-bottom:0">
+          <i class="fas fa-info-circle"></i>
+          <span>${d.lots_note}</span>
+        </div>
+      </section>
+
+      <!-- ═══ 3c. QUICKBOOKS ONLINE ═══ -->
+      <section class="pt-trace" id="pt-qbo" data-aos="fade-up">
+        <div class="pt-section-hdr">
+          <div class="pt-section-eyebrow"><i class="fas fa-book" style="color:#FF6B00"></i> ${d.qbo_eyebrow}</div>
+          <h2 class="pt-section-title">${d.qbo_title} <span class="accent">${d.qbo_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;max-width:680px;margin-left:auto;margin-right:auto">${d.qbo_sub}</p>
+        </div>
+        <div class="pt-qbo-map">
+          ${d.qbo_map.map(m => `
+            <div class="pt-qbo-map-item">
+              <div class="pt-qbo-map-from">${m.from}</div>
+              <div class="pt-qbo-map-arrow"><i class="fas fa-arrow-down"></i></div>
+              <div class="pt-qbo-map-to">${m.to}</div>
+            </div>`).join('')}
+        </div>
+        <div class="pt-security-grid">
+          ${d.qbo_cards.map((c, i) => `
+            <div class="pt-sec-card" data-aos="fade-up" data-aos-delay="${Math.min(i * 60, 300)}">
+              <div class="pt-sec-icon"><i class="${c.icon}"></i></div>
+              <div class="pt-sec-title">${c.title}</div>
+              <div class="pt-sec-desc">${c.desc}</div>
             </div>`).join('')}
         </div>
       </section>
