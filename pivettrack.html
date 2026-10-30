@@ -207,34 +207,36 @@
     /* ═══════════════════════════════════════════════
        CAROUSEL — Rich AppSheet-style cards
     ═══════════════════════════════════════════════ */
-    .pt-demo-carousel { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px; }
-    @media(max-width:480px){ .pt-demo-carousel { grid-template-columns:1fr; } }
+    .pt-demo-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:1000px; margin:0 auto; }
+    @media(max-width:760px){ .pt-demo-grid { grid-template-columns:1fr; } }
 
     .pt-demo-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; transition:all 0.3s cubic-bezier(0.34,1,0.64,1); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; position:relative; cursor:pointer; }
     .pt-demo-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:var(--radius-xl) var(--radius-xl) 0 0; z-index:1; }
-    .pt-demo-card:hover::before, .pt-demo-card.active::before { transform:scaleX(1); }
-    .pt-demo-card:hover:not(.pt-demo-card-soon) { transform:translateY(-7px); box-shadow:0 22px 52px rgba(255,107,0,0.15); border-color:rgba(255,107,0,0.3); }
-    .pt-demo-card.active { border-color:rgba(255,107,0,0.42); box-shadow:0 0 0 2px rgba(255,107,0,0.14); }
-    .pt-demo-card-soon { cursor:default; opacity:0.55; }
+    .pt-demo-card:hover::before { transform:scaleX(1); }
+    .pt-demo-card:hover { transform:translateY(-7px); box-shadow:0 22px 52px rgba(255,107,0,0.15); border-color:rgba(255,107,0,0.3); }
 
     /* Thumbnail */
     .pt-demo-thumb { position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden; }
     .pt-demo-thumb img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; }
-    .pt-demo-card:hover:not(.pt-demo-card-soon) .pt-demo-thumb img { transform:scale(1.05); }
+    .pt-demo-card:hover .pt-demo-thumb img { transform:scale(1.05); }
+    .pt-demo-thumb iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    .pt-demo-play-btn { position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; background:#000; cursor:pointer; display:block; }
+    .pt-demo-play-btn:focus-visible { outline:3px solid #FF9500; outline-offset:-3px; }
 
     /* Play overlay */
-    .pt-demo-play-over { position:absolute; inset:0; background:rgba(0,0,0,0); display:flex; align-items:center; justify-content:center; opacity:0; transition:all 0.25s; z-index:2; }
-    .pt-demo-card:hover .pt-demo-play-over { background:rgba(0,0,0,0.6); opacity:1; }
-    .pt-demo-card.active .pt-demo-play-over { background:rgba(255,107,0,0.18); opacity:1; }
-    .pt-demo-play-over i { font-size:2.4rem; color:white; filter:drop-shadow(0 3px 10px rgba(0,0,0,0.5)); transition:transform 0.2s; }
-    .pt-demo-card:hover .pt-demo-play-over i { transform:scale(1.18); }
-    .pt-demo-card.active .pt-demo-play-over i { color:#FFB347; }
+    .pt-demo-play-over { position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center; transition:background 0.25s; z-index:2; }
+    .pt-demo-play-btn:hover .pt-demo-play-over { background:rgba(0,0,0,0.45); }
+    .pt-demo-play-over i { width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; font-size:1.5rem; display:flex; align-items:center; justify-content:center; padding-left:4px; box-shadow:0 8px 28px rgba(255,107,0,0.5); transition:transform 0.2s; }
+    .pt-demo-play-btn:hover .pt-demo-play-over i { transform:scale(1.12); }
+    .pt-demo-vlang { margin-left:auto; display:inline-flex; border:1px solid var(--border-color); border-radius:var(--radius-full); overflow:hidden; }
+    .pt-demo-vlang-btn { font:inherit; font-size:0.7rem; font-weight:800; letter-spacing:0.08em; padding:5px 12px; min-height:30px; border:0; background:transparent; color:var(--text-tertiary); cursor:pointer; transition:background 0.2s,color 0.2s; }
+    .pt-demo-vlang-btn.active { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; }
+    .pt-demo-vlang-btn:not(.active):hover { color:#FF6B00; }
 
     /* Card body */
     .pt-demo-card-body { padding:20px 22px 22px; flex:1; display:flex; flex-direction:column; }
     .pt-demo-card-header { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
     .pt-demo-card-num { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,107,0,0.5); }
-    .pt-demo-new-badge { display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:#FF6B00; background:linear-gradient(135deg,rgba(255,107,0,0.12),rgba(255,149,0,0.06)); border:1px solid rgba(255,107,0,0.3); padding:2px 9px; border-radius:8px; animation:pill-glow 2.8s ease-in-out infinite; }
     .pt-demo-card-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
     .pt-demo-card-tag { font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 9px; border-radius:var(--radius-full); background:rgba(255,107,0,0.07); color:#FF6B00; border:1px solid rgba(255,107,0,0.18); }
     .pt-demo-card-title { font-size:1rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; line-height:1.3; }
@@ -244,7 +246,6 @@
     .pt-demo-live-dot-sm { width:7px; height:7px; border-radius:50%; background:#34C759; box-shadow:0 0 5px rgba(52,199,89,0.6); animation:blink-dot 1.2s step-end infinite; flex-shrink:0; }
     .pt-demo-yt-link { display:inline-flex; align-items:center; gap:5px; font-size:0.78rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:6px 13px; border-radius:16px; text-decoration:none; box-shadow:0 4px 10px rgba(255,107,0,0.28); transition:all 0.2s; }
     .pt-demo-yt-link:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,107,0,0.42); }
-    .pt-coming-pill { display:inline-flex; align-items:center; gap:4px; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-tertiary); background:var(--bg-secondary); border:1px solid var(--border-color); padding:2px 9px; border-radius:8px; }
 
     /* ═══════════════════════════════════════════════
        ARCHITECTURE — Folio table visual
@@ -409,86 +410,6 @@
     .pt-sticky-cta:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(255,107,0,0.55); }
     @media(max-width:480px){ .pt-sticky-cta { bottom:16px; right:16px; font-size:0.8125rem; padding:11px 16px; } }
     @media(max-width:480px){ #mainContent { padding-bottom:80px; } }
-
-    /* ═══════════════════════════════════════════════
-       DEMO MODAL — AppSheet-style lightbox
-    ═══════════════════════════════════════════════ */
-    .pt-modal { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:16px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
-    .pt-modal.open { opacity:1; pointer-events:auto; }
-    .pt-modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
-    .pt-modal-box { position:relative; width:100%; max-width:900px; max-height:92vh; overflow-y:auto; overflow-x:hidden; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:24px; display:flex; flex-direction:column; transform:scale(0.92) translateY(24px); transition:transform 0.35s cubic-bezier(0.34,1.1,0.64,1); overscroll-behavior:contain; scrollbar-width:thin; }
-    .pt-modal.open .pt-modal-box { transform:scale(1) translateY(0); }
-    .pt-modal-box::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); border-radius:24px 24px 0 0; z-index:1; pointer-events:none; }
-
-    /* Modal header */
-    .pt-modal-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:22px 24px 18px; border-bottom:1px solid var(--border-color); flex-shrink:0; }
-    .pt-modal-header-left { flex:1; min-width:0; }
-    .pt-modal-header-meta { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
-    .pt-modal-demo-num { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,107,0,0.6); }
-    .pt-modal-live-badge { display:inline-flex; align-items:center; gap:5px; font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.1em; color:#34C759; background:rgba(52,199,89,0.1); border:1px solid rgba(52,199,89,0.25); padding:2px 9px; border-radius:8px; }
-    .pt-modal-live-dot { width:5px; height:5px; border-radius:50%; background:#34C759; animation:blink-dot 1.2s step-end infinite; }
-    .pt-modal-new-badge { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.1em; color:#FF6B00; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.28); padding:2px 9px; border-radius:8px; animation:pill-glow 2.8s ease-in-out infinite; }
-    .pt-modal-title { font-size:clamp(1rem,2vw,1.25rem); font-weight:800; color:var(--text-primary); letter-spacing:-0.015em; line-height:1.3; }
-    .pt-modal-close { width:36px; height:36px; border-radius:50%; background:var(--glass-bg); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; font-size:0.9rem; color:var(--text-secondary); cursor:pointer; transition:all 0.2s; flex-shrink:0; }
-    .pt-modal-close:hover { background:rgba(255,107,0,0.1); border-color:rgba(255,107,0,0.3); color:#FF6B00; }
-
-    /* Carousel */
-    .pt-modal-carousel { position:relative; background:#000; flex-shrink:0; overflow:hidden; }
-    .pt-modal-carousel-inner { display:flex; transition:transform 0.42s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
-    .pt-modal-slide { flex:0 0 100%; width:100%; }
-    .pt-modal-slide--video { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; background:#000; }
-    .pt-modal-slide--video iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
-    .pt-modal-slide--image { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; background:var(--bg-secondary); }
-    .pt-modal-slide--image img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; }
-
-    /* Slide counter */
-    .pt-modal-slide-counter { position:absolute; top:12px; right:14px; z-index:10; font-size:11px; font-weight:700; color:white; background:rgba(0,0,0,0.65); padding:4px 11px; border-radius:20px; backdrop-filter:blur(6px); letter-spacing:0.04em; }
-
-    /* Carousel arrows */
-    .pt-modal-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:10; width:42px; height:42px; border-radius:50%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; color:white; font-size:0.95rem; cursor:pointer; transition:all 0.2s; backdrop-filter:blur(6px); }
-    .pt-modal-arrow:hover { background:rgba(255,107,0,0.85); border-color:transparent; transform:translateY(-50%) scale(1.08); }
-    .pt-modal-arrow.hidden { opacity:0; pointer-events:none; }
-    .pt-modal-prev-slide { left:12px; }
-    .pt-modal-next-slide { right:12px; }
-
-    /* Indicators / dots */
-    .pt-modal-indicators { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:10; align-items:center; }
-    .pt-modal-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); transition:all 0.25s; cursor:pointer; border:none; }
-    .pt-modal-dot.active { background:#FF6B00; width:20px; border-radius:3px; }
-    .pt-modal-dot:hover:not(.active) { background:rgba(255,255,255,0.75); }
-
-    /* Description + tags */
-    .pt-modal-desc-area { padding:20px 24px 16px; border-bottom:1px solid var(--border-color); flex-shrink:0; }
-    .pt-modal-desc { font-size:0.9375rem; color:var(--text-secondary); line-height:1.72; margin-bottom:12px; }
-    .pt-modal-tags { display:flex; flex-wrap:wrap; gap:6px; }
-    .pt-modal-tag { font-size:0.7rem; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.18); padding:3px 10px; border-radius:12px; text-transform:uppercase; letter-spacing:0.06em; }
-
-    /* Footer */
-    .pt-modal-footer { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; gap:10px; flex-shrink:0; flex-wrap:nowrap; }
-    .pt-modal-footer-center { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; flex:1; }
-    .pt-modal-demo-nav { display:flex; align-items:center; gap:7px; font-size:0.8125rem; font-weight:700; color:var(--text-secondary); background:var(--glass-bg); border:1px solid var(--border-color); padding:9px 13px; border-radius:20px; cursor:pointer; transition:all 0.2s; white-space:nowrap; min-width:42px; max-width:130px; overflow:hidden; }
-    .pt-modal-demo-nav span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .pt-modal-demo-nav:hover { border-color:rgba(255,107,0,0.3); color:#FF6B00; background:rgba(255,107,0,0.05); }
-    .pt-modal-demo-nav.hidden { opacity:0; pointer-events:none; }
-    .pt-modal-yt-btn { display:inline-flex; align-items:center; gap:7px; font-size:0.875rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF0000,#CC0000); padding:10px 20px; border-radius:20px; text-decoration:none; box-shadow:0 4px 14px rgba(255,0,0,0.3); transition:all 0.2s; flex-shrink:0; }
-    .pt-modal-yt-btn:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(255,0,0,0.45); }
-    .pt-modal-contact-btn { display:inline-flex; align-items:center; gap:7px; font-size:0.875rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:10px 20px; border-radius:20px; text-decoration:none; box-shadow:0 4px 14px rgba(255,107,0,0.32); transition:all 0.2s; flex-shrink:0; }
-    .pt-modal-contact-btn:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(255,107,0,0.48); }
-
-    /* Responsive */
-    @media(max-width:600px) {
-      .pt-modal { padding:0; align-items:flex-end; }
-      .pt-modal-box { max-width:100%; border-radius:24px 24px 0 0; max-height:96vh; }
-      .pt-modal-header { padding:18px 18px 14px; }
-      .pt-modal-desc-area { padding:14px 18px 12px; }
-      .pt-modal-footer { padding:12px 14px; flex-wrap:wrap; }
-      .pt-modal-footer-center { order:-1; width:100%; }
-      .pt-modal-demo-nav { max-width:100px; font-size:0.75rem; padding:8px 10px; }
-    }
-    @media(max-width:380px) {
-      .pt-modal-demo-nav span { display:none; }
-      .pt-modal-demo-nav { max-width:40px; justify-content:center; padding:9px; }
-    }
   </style>
 </head>
 <body>
@@ -550,69 +471,6 @@
     <i class="fas fa-calendar-check"></i>
     <span id="ptStickyLabel">Solicitar Demo</span>
   </a>
-
-  <!-- ══════ PIVETTRACK DEMO MODAL ══════ -->
-  <div id="ptDemoModal" class="pt-modal" role="dialog" aria-modal="true" aria-labelledby="ptModalTitle">
-    <div class="pt-modal-overlay" onclick="ptCloseModal()"></div>
-    <div class="pt-modal-box">
-
-      <!-- Header -->
-      <div class="pt-modal-header">
-        <div class="pt-modal-header-left">
-          <div class="pt-modal-header-meta">
-            <span class="pt-modal-demo-num" id="ptModalDemoNum">Demo 01</span>
-            <span class="pt-modal-new-badge" id="ptModalNewBadge" style="display:none"></span>
-          </div>
-          <div class="pt-modal-title" id="ptModalTitle"></div>
-        </div>
-        <button class="pt-modal-close" id="ptModalClose" onclick="ptCloseModal()" aria-label="Cerrar">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-
-      <!-- Carousel -->
-      <div class="pt-modal-carousel" id="ptModalCarousel">
-        <div class="pt-modal-slide-counter" id="ptModalSlideCounter" style="display:none">1 / 1</div>
-        <div class="pt-modal-carousel-inner" id="ptModalCarouselInner"></div>
-        <button class="pt-modal-arrow pt-modal-prev-slide hidden" id="ptModalPrevSlide" onclick="ptGoSlide(-1)" aria-label="Slide anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="pt-modal-arrow pt-modal-next-slide hidden" id="ptModalNextSlide" onclick="ptGoSlide(1)" aria-label="Slide siguiente">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        <div class="pt-modal-indicators" id="ptModalIndicators"></div>
-      </div>
-
-      <!-- Description + tags -->
-      <div class="pt-modal-desc-area">
-        <div class="pt-modal-desc" id="ptModalDesc"></div>
-        <div class="pt-modal-tags" id="ptModalTags"></div>
-      </div>
-
-      <!-- Footer: demo nav + action buttons -->
-      <div class="pt-modal-footer">
-        <button class="pt-modal-demo-nav hidden" id="ptModalPrevDemo" onclick="ptGoDemo(-1)">
-          <i class="fas fa-chevron-left"></i>
-          <span id="ptModalPrevDemoLabel"></span>
-        </button>
-        <div class="pt-modal-footer-center">
-          <a class="pt-modal-yt-btn" id="ptModalYtBtn" href="#" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-youtube"></i>
-            <span id="ptModalWatchYt">Ver en YouTube</span>
-          </a>
-          <a class="pt-modal-contact-btn" href="contacto.html" id="ptModalContactBtn">
-            <i class="fas fa-calendar-check"></i>
-            <span id="ptModalContactLabel">Solicitar Demo</span>
-          </a>
-        </div>
-        <button class="pt-modal-demo-nav hidden" id="ptModalNextDemo" onclick="ptGoDemo(1)">
-          <span id="ptModalNextDemoLabel"></span>
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-
-    </div>
-  </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
@@ -886,68 +744,22 @@
       demos_sub: 'Videos reales del sistema, sin edición.',
       demos: [
         {
-          id: 'oCA9KzfoIT8', live: true, num: '01',
-          live_lbl: 'Disponible Ahora',
-          title: 'Importación Masiva de SKUs',
-          desc: 'Carga simultánea de cientos de SKUs al sistema con validación automática, detección de duplicados y confirmación instantánea — sin errores manuales ni doble trabajo.',
-          tags: ['Importación Masiva', 'Validación Automática', 'SKU Management'],
+          key: 'maestra-productos',
+          title: 'Importación de la maestra de productos',
+          desc: 'Los 164,382 productos de la maestra, cargados desde un solo Excel. La importación corre en segundo plano, su equipo sigue trabajando y el resultado aparece al terminar.',
+          tags: ['Importación Masiva', 'Maestra de Productos', 'Excel'],
         },
         {
-          id: 'rFzqcf6VzhI', live: true, num: '02',
-          live_lbl: 'Disponible Ahora',
-          title: 'Ajuste Masivo de Inventario',
-          desc: 'Ajuste simultáneo de 10.000 SKUs en segundos con conciliación automática, validación de diferencias y actualización instantánea de stock — sin errores manuales ni tiempos muertos.',
-          tags: ['Ajuste Masivo', 'Conciliación Automática', 'Stock Update'],
-        },
-        {
-          id: '_ibHDzSnhC0', live: true, num: '03',
-          live_lbl: 'Disponible Ahora',
-          title: 'Creación de Proveedores y Clientes',
-          desc: 'Configuración completa de la red de proveedores y clientes del WMS — maestro de contactos, categorías y datos operativos listos para vincular a entradas y salidas.',
-          tags: ['Creación de Proveedores', 'Gestión de Clientes', 'Master Data'],
-        },
-        {
-          id: 'RxH61VwcFeg', live: true, num: '04',
-          live_lbl: 'Disponible Ahora',
-          title: 'Operaciones y Kardex Inmutable',
-          desc: 'Flujo completo de entradas y salidas con cálculo automático de PMP, registro sellado e inalterable — cada movimiento trazable y auditable para siempre.',
-          tags: ['Entradas y Salidas', 'Kardex', 'Cálculo PMP'],
-        },
-        {
-          id: 'u6eK089W1Mo', live: true, num: '05',
-          live_lbl: 'Disponible Ahora',
-          title: 'Escáner Móvil, Códigos de Barras y Kardex',
-          desc: 'Operaciones en tiempo real con escáner móvil: escaneo de códigos de barras, entradas y salidas sobre la marcha y registro sellado en el Kardex — trazabilidad de nivel enterprise en cada movimiento.',
-          tags: ['Escáner Móvil', 'Código de Barras', 'Kardex Inmutable', 'Trazabilidad'],
-        },
-        {
-          id: 'jOs8MmPTO3M', live: true, num: '06',
-          live_lbl: 'Disponible Ahora',
-          title: 'API B2B y Portal de Pedidos — Conexión ERP',
-          desc: 'Conecta el WMS directamente con el ERP de tus clientes vía API B2B. Pedidos entrantes, confirmaciones de stock y notificaciones en tiempo real — integración total sin fricciones manuales.',
-          tags: ['API B2B', 'Portal de Pedidos', 'Conexión ERP', 'Integración'],
-        },
-        {
-          id: 'nnSxZhhvdP4', live: true, num: '07',
-          live_lbl: 'Disponible Ahora',
-          title: 'Portal de Pedidos B2B para Clientes — Cómo Funciona',
-          desc: 'Demo completa del Portal de Pedidos B2B de PivetTrack: cómo los clientes mayoristas colocan pedidos directamente en el sistema, confirmación de stock en tiempo real y seguimiento de estado — sin llamadas ni correos.',
-          tags: ['Portal B2B', 'Pedidos Online', 'Cliente Mayorista', 'Tiempo Real'],
-        },
-        {
-          id: 'MV8MpWjw9vI', live: true, num: '08', featured: true,
-          new_badge: '★ NUEVO',
-          live_lbl: 'Disponible Ahora',
-          title: 'Motor de Ventas: Packing List, Kardex y Rentabilidad en un Clic',
-          desc: 'Descubre el poderoso motor de PivetTrack: generación ágil de packing list, descuento de inventario con un solo clic, Kardex actualizado en tiempo real y medición exacta de la rentabilidad por venta.',
-          tags: ['Packing List', 'Descuento Automático', 'Kardex', 'Rentabilidad'],
+          key: 'toma-inventario',
+          title: 'Toma de inventario físico y ajuste',
+          desc: '164,397 líneas contadas y un solo ajuste. La toma se confirma por tandas, con el porcentaje de avance a la vista, y las diferencias se ajustan automáticamente en el Kardex.',
+          tags: ['Toma de Inventario', 'Ajuste Automático', 'Kardex'],
         },
       ],
+      demos_live_lbl: 'Disponible Ahora',
       demos_watch_yt: 'Ver en YouTube',
-      modal_watch_yt: 'Ver en YouTube',
-      modal_contact_btn: 'Solicitar Demo',
-      modal_prev_demo: 'Demo anterior',
-      modal_next_demo: 'Siguiente demo',
+      demos_play_lbl: 'Reproducir video',
+      demos_vlang_lbl: 'Idioma del video',
     },
 
     en: {
@@ -1214,257 +1026,74 @@
       demos_sub: 'Real videos of the system, unedited.',
       demos: [
         {
-          id: 'oCA9KzfoIT8', live: true, num: '01',
-          live_lbl: 'Available Now',
-          title: 'Bulk SKU Import',
-          desc: 'Simultaneous upload of hundreds of SKUs with automatic validation, duplicate detection, and instant confirmation — no manual errors or double work.',
-          tags: ['Bulk Import', 'Auto Validation', 'SKU Management'],
+          key: 'maestra-productos',
+          title: 'Product master import',
+          desc: 'All 164,382 products of the master, loaded from a single Excel file. The import runs in the background, your team keeps working and the result appears when it finishes.',
+          tags: ['Bulk Import', 'Product Master', 'Excel'],
         },
         {
-          id: 'rFzqcf6VzhI', live: true, num: '02',
-          live_lbl: 'Available Now',
-          title: 'Bulk Inventory Adjustment',
-          desc: 'Simultaneous adjustment of 10,000 SKUs in seconds with automatic reconciliation, discrepancy validation, and instant stock update — no manual errors, no downtime.',
-          tags: ['Bulk Adjustment', 'Auto Reconciliation', 'Stock Update'],
-        },
-        {
-          id: '_ibHDzSnhC0', live: true, num: '03',
-          live_lbl: 'Available Now',
-          title: 'Supplier and Customer Setup',
-          desc: 'Complete WMS supplier and customer network setup — contact master, categories and operational data ready to link to entries and exits.',
-          tags: ['Supplier Setup', 'Customer Management', 'Master Data'],
-        },
-        {
-          id: 'RxH61VwcFeg', live: true, num: '04',
-          live_lbl: 'Available Now',
-          title: 'Operations & Immutable Kardex',
-          desc: 'Complete inbound and outbound flow with automatic PMP calculation, sealed and immutable record — every movement traceable and auditable forever.',
-          tags: ['Entries & Exits', 'Kardex', 'PMP Calculation'],
-        },
-        {
-          id: 'u6eK089W1Mo', live: true, num: '05',
-          live_lbl: 'Available Now',
-          title: 'Mobile Scanner, Barcodes & Kardex',
-          desc: 'Real-time operations with mobile scanner: barcode scanning, on-the-go entries and exits, and sealed Kardex records — enterprise-grade traceability on every single movement.',
-          tags: ['Mobile Scanner', 'Barcodes', 'Immutable Kardex', 'Traceability'],
-        },
-        {
-          id: 'jOs8MmPTO3M', live: true, num: '06',
-          live_lbl: 'Available Now',
-          title: 'B2B API & Order Portal — ERP Integration',
-          desc: 'Connect the WMS directly to your clients\' ERP via B2B API. Incoming orders, stock confirmations, and real-time notifications — full integration with zero manual friction.',
-          tags: ['B2B API', 'Order Portal', 'ERP Integration', 'Sync'],
-        },
-        {
-          id: 'nnSxZhhvdP4', live: true, num: '07',
-          live_lbl: 'Available Now',
-          title: 'B2B Client Ordering Portal — How It Works',
-          desc: 'Full walkthrough of PivetTrack\'s B2B Client Ordering Portal: how wholesale clients place orders directly in the system, real-time stock confirmation, and status tracking — no calls, no emails needed.',
-          tags: ['B2B Portal', 'Online Orders', 'Wholesale Client', 'Real Time'],
-        },
-        {
-          id: 'MV8MpWjw9vI', live: true, num: '08', featured: true,
-          new_badge: '★ NEW',
-          live_lbl: 'Available Now',
-          title: 'Sales Engine: Packing List, Kardex & Profitability in One Click',
-          desc: 'Discover PivetTrack\'s powerful sales engine: fast packing list generation, one-click inventory deduction, real-time Kardex updates, and exact profitability measurement per sale.',
-          tags: ['Packing List', 'Auto Deduction', 'Kardex', 'Profitability'],
+          key: 'toma-inventario',
+          title: 'Physical inventory count and adjustment',
+          desc: '164,397 lines counted and a single adjustment. A large count is confirmed in batches, with the progress percentage on screen, and the differences post to the stock ledger automatically.',
+          tags: ['Inventory Count', 'Automatic Adjustment', 'Stock Ledger'],
         },
       ],
+      demos_live_lbl: 'Available Now',
       demos_watch_yt: 'Watch on YouTube',
-      modal_watch_yt: 'Watch on YouTube',
-      modal_contact_btn: 'Schedule a Demo',
-      modal_prev_demo: 'Previous demo',
-      modal_next_demo: 'Next demo',
+      demos_play_lbl: 'Play video',
+      demos_vlang_lbl: 'Video language',
     }
   };
 
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
-  /* ── PivetTrack Demo Modal — state ── */
-  let ptModalDemoIdx = 0;
-  let ptModalSlideIdx = 0;
+  /* Cada demo guarda sus dos videos (ES/EN). Para sumar un demo nuevo: una entrada aquí
+     y una tarjeta con la misma `key` en t.es.demos y en t.en.demos. */
+  const PT_DEMO_VIDEOS = {
+    'maestra-productos': { es: 'n-uSypcPdNM', en: 't2VPoftd7AU' },
+    'toma-inventario':   { es: 'rIYmruKthoE', en: 'atoKa7NFN5s' },
+  };
+  const ptDemoLangOverride = {};
 
-  function ptGetSlides(demo) {
-    return (demo.slides && demo.slides.length) ? demo.slides : [{ type: 'video', id: demo.id }];
+  function ptDemoVideoLang(key) { return ptDemoLangOverride[key] || lang; }
+
+  function ptDemoThumbHTML(key, title, vlang) {
+    const id = PT_DEMO_VIDEOS[key][vlang];
+    return `<button type="button" class="pt-demo-play-btn" onclick="ptPlayDemo('${key}')" aria-label="${t[lang].demos_play_lbl}: ${title}">
+      <img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${id}/hqdefault.jpg'" alt="" loading="lazy">
+      <span class="pt-demo-play-over"><i class="fas fa-play"></i></span>
+    </button>`;
   }
 
-  function ptOpenModal(idx) {
-    ptModalDemoIdx = idx;
-    ptModalSlideIdx = 0;
-    ptUpdateModal();
-    const modal = document.getElementById('ptDemoModal');
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    const closeBtn = document.getElementById('ptModalClose');
-    if (closeBtn) setTimeout(() => closeBtn.focus(), 80);
+  function ptDemoCard(key) {
+    return document.querySelector(`.pt-demo-card[data-demo-key="${key}"]`);
   }
 
-  function ptCloseModal() {
-    const modal = document.getElementById('ptDemoModal');
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-    /* Stop any playing video by wiping slides HTML */
-    const inner = document.getElementById('ptModalCarouselInner');
-    if (inner) inner.innerHTML = '';
+  function ptPlayDemo(key) {
+    const card = ptDemoCard(key);
+    if (!card) return;
+    const vlang = ptDemoVideoLang(key);
+    const demo = t[lang].demos.find(v => v.key === key);
+    const id = PT_DEMO_VIDEOS[key][vlang];
+    card.querySelector('.pt-demo-thumb').innerHTML = `<iframe
+      src="https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&autoplay=1&hl=${vlang}"
+      title="PivetTrack WMS — ${demo.title} (${vlang.toUpperCase()})"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>`;
   }
 
-  function ptGoToSlide(idx) {
-    const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
-    ptModalSlideIdx = Math.max(0, Math.min(idx, slides.length - 1));
-    ptSyncCarousel();
-  }
-
-  function ptGoSlide(dir) {
-    const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
-    ptModalSlideIdx = Math.max(0, Math.min(ptModalSlideIdx + dir, slides.length - 1));
-    ptSyncCarousel();
-  }
-
-  function ptGoDemo(dir) {
-    const d = t[lang];
-    const liveIndices = d.demos.map((v, i) => v.live ? i : -1).filter(i => i >= 0);
-    const curPos = liveIndices.indexOf(ptModalDemoIdx);
-    const newPos = curPos + dir;
-    if (newPos < 0 || newPos >= liveIndices.length) return;
-    ptModalDemoIdx = liveIndices[newPos];
-    ptModalSlideIdx = 0;
-    ptUpdateModal();
-    /* Scroll modal box to top */
-    const box = document.querySelector('.pt-modal-box');
-    if (box) box.scrollTop = 0;
-  }
-
-  function ptSyncCarousel() {
-    const inner = document.getElementById('ptModalCarouselInner');
-    if (!inner) return;
-    inner.style.transform = `translateX(-${ptModalSlideIdx * 100}%)`;
-
-    const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
-    const isMulti = slides.length > 1;
-
-    /* Counter */
-    const counter = document.getElementById('ptModalSlideCounter');
-    if (counter) {
-      counter.textContent = `${ptModalSlideIdx + 1} / ${slides.length}`;
-      counter.style.display = isMulti ? '' : 'none';
-    }
-    /* Arrows */
-    const prevSlide = document.getElementById('ptModalPrevSlide');
-    const nextSlide = document.getElementById('ptModalNextSlide');
-    if (prevSlide) prevSlide.classList.toggle('hidden', !isMulti || ptModalSlideIdx === 0);
-    if (nextSlide) nextSlide.classList.toggle('hidden', !isMulti || ptModalSlideIdx === slides.length - 1);
-    /* Dots */
-    document.querySelectorAll('#ptModalIndicators .pt-modal-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === ptModalSlideIdx);
+  function ptSetDemoLang(key, vlang) {
+    ptDemoLangOverride[key] = vlang;
+    const card = ptDemoCard(key);
+    if (!card) return;
+    const demo = t[lang].demos.find(v => v.key === key);
+    card.querySelector('.pt-demo-thumb').innerHTML = ptDemoThumbHTML(key, demo.title, vlang);
+    card.querySelector('.pt-demo-yt-link').href = `https://www.youtube.com/watch?v=${PT_DEMO_VIDEOS[key][vlang]}`;
+    card.querySelectorAll('.pt-demo-vlang-btn').forEach(b => {
+      const on = b.dataset.vlang === vlang;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on);
     });
-  }
-
-  function ptUpdateModal() {
-    const d = t[lang];
-    const demo = d.demos[ptModalDemoIdx];
-    const slides = ptGetSlides(demo);
-    const isMulti = slides.length > 1;
-
-    /* Build slide HTML */
-    const inner = document.getElementById('ptModalCarouselInner');
-    if (inner) {
-      inner.innerHTML = slides.map(slide => {
-        if (slide.type === 'video') {
-          return `<div class="pt-modal-slide pt-modal-slide--video">
-            <iframe
-              src="https://www.youtube.com/embed/${slide.id}?rel=0&modestbranding=1&color=white&autoplay=1"
-              title="PivetTrack WMS — ${demo.title}"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen loading="lazy"></iframe>
-          </div>`;
-        }
-        return `<div class="pt-modal-slide pt-modal-slide--image">
-          <img src="${slide.src}" alt="${slide.alt || demo.title}" loading="lazy">
-        </div>`;
-      }).join('');
-      inner.style.transform = 'translateX(0)';
-    }
-
-    /* Build dots */
-    const indicators = document.getElementById('ptModalIndicators');
-    if (indicators) {
-      indicators.innerHTML = slides.map((_, i) =>
-        `<button class="pt-modal-dot${i === 0 ? ' active' : ''}" onclick="ptGoToSlide(${i})" aria-label="Slide ${i + 1}"></button>`
-      ).join('');
-    }
-
-    /* Counter */
-    const counter = document.getElementById('ptModalSlideCounter');
-    if (counter) {
-      counter.textContent = `1 / ${slides.length}`;
-      counter.style.display = isMulti ? '' : 'none';
-    }
-
-    /* Slide arrows */
-    const prevSlide = document.getElementById('ptModalPrevSlide');
-    const nextSlide = document.getElementById('ptModalNextSlide');
-    if (prevSlide) prevSlide.classList.toggle('hidden', !isMulti);
-    if (nextSlide) nextSlide.classList.toggle('hidden', !isMulti);
-
-    /* Header */
-    const numEl = document.getElementById('ptModalDemoNum');
-    if (numEl) numEl.textContent = `Demo ${demo.num}`;
-    const badgeEl = document.getElementById('ptModalNewBadge');
-    if (badgeEl) {
-      if (demo.new_badge) { badgeEl.textContent = demo.new_badge; badgeEl.style.display = ''; }
-      else { badgeEl.style.display = 'none'; }
-    }
-    const titleEl = document.getElementById('ptModalTitle');
-    if (titleEl) titleEl.textContent = demo.title;
-
-    /* Description + tags */
-    const descEl = document.getElementById('ptModalDesc');
-    if (descEl) descEl.textContent = demo.desc;
-    const tagsEl = document.getElementById('ptModalTags');
-    if (tagsEl) {
-      tagsEl.innerHTML = demo.tags.map(tg => `<span class="pt-modal-tag">${tg}</span>`).join('');
-    }
-
-    /* YouTube link — use current video slide id (first video, or demo.id fallback) */
-    const videoSlide = slides.find(s => s.type === 'video');
-    const ytId = videoSlide ? videoSlide.id : demo.id;
-    const ytBtn = document.getElementById('ptModalYtBtn');
-    if (ytBtn) ytBtn.href = `https://www.youtube.com/watch?v=${ytId}`;
-    const ytLbl = document.getElementById('ptModalWatchYt');
-    if (ytLbl) ytLbl.textContent = d.modal_watch_yt;
-    const contactLbl = document.getElementById('ptModalContactLabel');
-    if (contactLbl) contactLbl.textContent = d.modal_contact_btn;
-
-    /* Demo navigation */
-    const liveIndices = d.demos.map((v, i) => v.live ? i : -1).filter(i => i >= 0);
-    const curPos = liveIndices.indexOf(ptModalDemoIdx);
-
-    const prevDemoBtn = document.getElementById('ptModalPrevDemo');
-    const prevDemoLbl = document.getElementById('ptModalPrevDemoLabel');
-    if (prevDemoBtn) {
-      if (curPos > 0) {
-        const prev = d.demos[liveIndices[curPos - 1]];
-        if (prevDemoLbl) prevDemoLbl.textContent = `Demo ${prev.num}`;
-        prevDemoBtn.classList.remove('hidden');
-        prevDemoBtn.title = prev.title;
-      } else {
-        prevDemoBtn.classList.add('hidden');
-      }
-    }
-
-    const nextDemoBtn = document.getElementById('ptModalNextDemo');
-    const nextDemoLbl = document.getElementById('ptModalNextDemoLabel');
-    if (nextDemoBtn) {
-      if (curPos < liveIndices.length - 1) {
-        const next = d.demos[liveIndices[curPos + 1]];
-        if (nextDemoLbl) nextDemoLbl.textContent = `Demo ${next.num}`;
-        nextDemoBtn.classList.remove('hidden');
-        nextDemoBtn.title = next.title;
-      } else {
-        nextDemoBtn.classList.add('hidden');
-      }
-    }
   }
 
   /* ── Architecture visual renderer ── */
@@ -1801,7 +1430,7 @@
         </div>
       </section>
 
-      <!-- ═══ 4. VIDEO DEMOS ═══ -->
+      <!-- ═══ VIDEO DEMOS ═══ -->
       <section class="pt-demos" data-aos="fade-up">
         <div class="pt-section-hdr">
           <div class="pt-section-eyebrow"><i class="fab fa-youtube" style="color:#FF6B00"></i> ${d.demos_eyebrow}</div>
@@ -1809,47 +1438,30 @@
           <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;">${d.demos_sub}</p>
         </div>
 
-        <!-- Demo cards grid — click any card to open the modal -->
-        <div class="pt-demo-carousel">
+        <div class="pt-demo-grid">
           ${d.demos.map((v, i) => {
-            if (v.live) {
-              return `
-              <article class="pt-demo-card" onclick="ptOpenModal(${i})" data-demo="${i}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')ptOpenModal(${i})" data-aos="fade-up" data-aos-delay="${80 + Math.min(i,5) * 70}">
-                <div class="pt-demo-thumb">
-                  <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" loading="lazy">
-                  <div class="pt-demo-play-over"><i class="fas fa-play"></i></div>
-                </div>
+            const vl = ptDemoVideoLang(v.key);
+            return `
+              <article class="pt-demo-card" data-demo-key="${v.key}" data-aos="fade-up" data-aos-delay="${80 + i * 70}">
+                <div class="pt-demo-thumb">${ptDemoThumbHTML(v.key, v.title, vl)}</div>
                 <div class="pt-demo-card-body">
                   <div class="pt-demo-card-header">
-                    <span class="pt-demo-card-num">Demo ${v.num}</span>
-                    ${v.new_badge ? `<span class="pt-demo-new-badge">${v.new_badge}</span>` : ''}
+                    <span class="pt-demo-card-num">Demo ${String(i + 1).padStart(2, '0')}</span>
+                    <div class="pt-demo-vlang" role="group" aria-label="${d.demos_vlang_lbl}">
+                      ${['es', 'en'].map(l => `<button type="button" class="pt-demo-vlang-btn${l === vl ? ' active' : ''}" data-vlang="${l}" aria-pressed="${l === vl}" onclick="ptSetDemoLang('${v.key}','${l}')">${l.toUpperCase()}</button>`).join('')}
+                    </div>
                   </div>
                   <div class="pt-demo-card-tags">${v.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
                   <div class="pt-demo-card-title">${v.title}</div>
                   <div class="pt-demo-card-desc">${v.desc}</div>
                   <div class="pt-demo-card-footer">
-                    <span class="pt-demo-live-pill"><span class="pt-demo-live-dot-sm"></span> ${v.live_lbl}</span>
-                    <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener noreferrer" class="pt-demo-yt-link" onclick="event.stopPropagation()">
+                    <span class="pt-demo-live-pill"><span class="pt-demo-live-dot-sm"></span> ${d.demos_live_lbl}</span>
+                    <a href="https://www.youtube.com/watch?v=${PT_DEMO_VIDEOS[v.key][vl]}" target="_blank" rel="noopener noreferrer" class="pt-demo-yt-link">
                       <i class="fab fa-youtube"></i> ${d.demos_watch_yt}
                     </a>
                   </div>
                 </div>
               </article>`;
-            } else {
-              return `
-              <article class="pt-demo-card pt-demo-card-soon" data-demo="${i}">
-                <div class="pt-demo-thumb" style="display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--text-tertiary);position:absolute;inset:0;background:linear-gradient(135deg,var(--bg-secondary),var(--bg-tertiary));">
-                  <i class="${v.icon}"></i>
-                </div>
-                <div class="pt-demo-card-body" style="padding-top:calc(56.25% + 20px);">
-                  <div class="pt-demo-card-header"><span class="pt-demo-card-num">Demo ${v.num}</span></div>
-                  <div class="pt-demo-card-title">${v.title}</div>
-                  <div class="pt-demo-card-footer">
-                    <span class="pt-coming-pill"><i class="fas fa-clock"></i> ${v.coming_lbl}</span>
-                  </div>
-                </div>
-              </article>`;
-            }
           }).join('')}
         </div>
       </section>
@@ -1897,6 +1509,7 @@
     lang = lang === 'es' ? 'en' : 'es';
     document.documentElement.lang = lang;
     localStorage.setItem('homeLang', lang);
+    Object.keys(ptDemoLangOverride).forEach(k => delete ptDemoLangOverride[k]);
     render();
   }
 
@@ -1909,41 +1522,6 @@
     if (stickyCta) {
       window.addEventListener('scroll', () => {
         stickyCta.classList.toggle('visible', window.scrollY > 500);
-      }, { passive: true });
-    }
-    // Keyboard navigation for modal
-    document.addEventListener('keydown', e => {
-      const modal = document.getElementById('ptDemoModal');
-      if (!modal || !modal.classList.contains('open')) return;
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        ptCloseModal();
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
-        if (slides.length > 1) ptGoSlide(-1); else ptGoDemo(-1);
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
-        if (slides.length > 1) ptGoSlide(1); else ptGoDemo(1);
-      }
-    });
-    // Touch swipe support for carousel
-    const ptCarouselEl = document.getElementById('ptModalCarousel');
-    if (ptCarouselEl) {
-      let _tsx = 0, _tsy = 0;
-      ptCarouselEl.addEventListener('touchstart', e => {
-        _tsx = e.touches[0].clientX;
-        _tsy = e.touches[0].clientY;
-      }, { passive: true });
-      ptCarouselEl.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - _tsx;
-        const dy = e.changedTouches[0].clientY - _tsy;
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
-          const slides = ptGetSlides(t[lang].demos[ptModalDemoIdx]);
-          if (slides.length > 1) ptGoSlide(dx > 0 ? -1 : 1);
-          else ptGoDemo(dx > 0 ? -1 : 1);
-        }
       }, { passive: true });
     }
   });
