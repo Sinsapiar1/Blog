@@ -312,7 +312,7 @@
     .pt-sec-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.65; }
     /* ── Series label above KPI strip ── */
     .pt-kpi-series-lbl { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.13em; color:var(--text-tertiary); text-align:center; margin-bottom:10px; }
-    /* ── A/B performance strip ── */
+    /* ── Scale strip (29 Oct run) ── */
     .pt-ab-strip { background:linear-gradient(135deg,rgba(255,107,0,0.06),rgba(255,59,48,0.03)); border:1px solid rgba(255,107,0,0.18); border-radius:20px; padding:26px 26px 20px; margin:26px 0; }
     .pt-ab-series-lbl { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.13em; color:#FF9500; margin-bottom:7px; }
     .pt-ab-title { font-size:1rem; font-weight:800; color:var(--text-primary); line-height:1.35; margin-bottom:8px; }
@@ -332,6 +332,15 @@
     .pt-ab-p95-lbl { font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-tertiary); margin-bottom:8px; }
     .pt-ab-scenario-label { font-size:0.78rem; font-weight:700; color:var(--text-primary); margin-bottom:5px; line-height:1.3; }
     .pt-ab-ops { font-size:10px; color:var(--text-tertiary); background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:6px; padding:2px 7px; display:inline-block; }
+    .pt-floor-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
+    .pt-floor-grid .pt-sec-card { flex:0 1 calc(33.333% - 11px); min-width:0; }
+    @media(max-width:860px){ .pt-floor-grid .pt-sec-card { flex-basis:calc(50% - 8px); } }
+    @media(max-width:480px){ .pt-floor-grid .pt-sec-card { flex-basis:100%; } }
+    .pt-ab-facts { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px; }
+    @media(max-width:860px){ .pt-ab-facts { grid-template-columns:repeat(2,1fr); } }
+    .pt-ab-fact { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:14px; padding:14px 12px; text-align:center; }
+    .pt-ab-fact-num { font-size:clamp(1.15rem,2.2vw,1.55rem); font-weight:900; letter-spacing:-0.04em; color:#FF6B00; }
+    .pt-ab-fact-lbl { font-size:0.74rem; color:var(--text-secondary); line-height:1.4; margin-top:3px; }
     .pt-ab-threshold { font-size:0.8125rem; color:#FF9500; font-weight:700; display:flex; align-items:center; gap:6px; margin-bottom:12px; }
     .pt-ab-threshold i { font-size:0.8rem; }
     .pt-ab-methodology { font-size:0.78rem; color:var(--text-tertiary); line-height:1.65; border-top:1px solid var(--border-color); padding-top:12px; }
@@ -697,6 +706,8 @@
           tags: ['Marca Blanca', 'Portal B2B', 'Exportación .xlsx', 'Rentabilidad'],
           modules: [
             { icon: 'fas fa-boxes',              name: 'Lotes, FEFO y recall',                     addon: false },
+            { icon: 'fas fa-map-marker-alt',     name: 'Pasillos y ubicaciones',                   addon: false },
+            { icon: 'fas fa-barcode',            name: 'Preparación por escaneo',                  addon: false },
             { icon: 'fas fa-book',               name: 'QuickBooks Online',                        addon: false },
             { icon: 'fas fa-arrow-circle-down', name: 'Entradas, Salidas y Traspasos',             addon: false },
             { icon: 'fas fa-undo-alt',           name: 'Devoluciones a Proveedor y Mermas',        addon: false },
@@ -705,6 +716,7 @@
             { icon: 'fas fa-chart-line',         name: 'Rentabilidad por cliente y por producto',  addon: false },
             { icon: 'fas fa-tag',                name: 'Marca Blanca: logo y color en interfaz y PDF',   addon: false },
             { icon: 'fas fa-file-excel',         name: 'Export a Excel (plan base: hasta 2 simultáneos)', addon: false },
+            { icon: 'fas fa-cubes',              name: 'Unidad, caja y pallet',                    addon: false },
             { icon: 'fas fa-barcode',            name: 'Escáner Móvil y Códigos de Barras',       addon: false },
             { icon: 'fas fa-plug',               name: 'Portal B2B y API ERP (alcance en la propuesta formal)', addon: true },
           ],
@@ -720,7 +732,7 @@
         { icon: 'fas fa-hourglass-half', title: 'FEFO automático', desc: 'Sale primero el lote que vence primero. Un despacho a cliente nunca toma un lote vencido.' },
         { icon: 'fas fa-calendar-times', title: 'Vencimientos a la vista', desc: 'Informe de próximos a vencer, con días de aviso por producto y alerta en el Panel.' },
         { icon: 'fas fa-clipboard-check', title: 'Recepción ciega en dos pasos', desc: 'La oficina carga la factura; el piso declara lotes y cantidades sin ver lo esperado.' },
-        { icon: 'fas fa-balance-scale', title: 'Faltantes con doble chequeo', desc: 'Cada diferencia la verifica otro Administrador y se cierra con nota de crédito, reposición o baja.' },
+        { icon: 'fas fa-balance-scale', title: 'Faltantes con doble chequeo', desc: 'Cada diferencia la verifica otro Administrador, desde su cuenta o co-firmando con su código de autenticación, y se cierra con nota de crédito, reposición o baja.' },
         { icon: 'fas fa-undo-alt', title: 'Devoluciones a su lote', desc: 'Lo que devuelve un cliente vuelve a su lote; lo que se devuelve al proveedor sale del lote con que entró.' },
         { icon: 'fas fa-book', title: 'Kardex por lote', desc: 'Cada movimiento del lote, con su documento, su autor y su saldo.' },
       ],
@@ -744,6 +756,18 @@
         { icon: 'fas fa-handshake', title: 'Puesta en marcha con su contador', desc: 'Conectamos su empresa, elegimos las cuentas con su contador y revisamos juntos los primeros documentos.' },
       ],
 
+      floor_eyebrow: 'Hecho para el Piso de la Bodega',
+      floor_title: 'Toda su bodega en una pantalla.',
+      floor_accent: 'Y en el bolsillo del operario.',
+      floor_sub: 'Su equipo no necesita «tener cuidado» al registrar: PivetTrack hace estructuralmente imposible mover mercadería sin dejar un documento detrás.',
+      floor_cards: [
+        { icon: 'fas fa-barcode', title: 'Preparación por escaneo', desc: 'El operario escanea el producto o su caja (EAN, UPC o ITF) con el celular o una pistola. Saltear el escaneo exige la co-firma de un Administrador.' },
+        { icon: 'fas fa-map-marker-alt', title: 'Pasillos y ubicaciones', desc: 'Al recibir, cada cosa se guarda en su pasillo. El stock se ve por ubicación, cada reubicación deja su movimiento y cada pasillo se recuenta a ciegas.' },
+        { icon: 'fas fa-cubes', title: 'Unidad, caja y pallet', desc: 'Se compra en una presentación y se vende en otra. En el Portal B2B usted decide en qué presentación vende cada producto (unidad, caja o pallet), y la API B2B v1.4.0 recibe pedidos por unidad, caja o pallet, con idempotencia.' },
+        { icon: 'fas fa-file-pdf', title: 'Informe con folio de auditoría', desc: '«Exportar PDF» arma un informe en hoja Carta con las mismas cifras del panel. Su folio queda en la Auditoría: quién lo emitió, cuándo y con qué filtros.' },
+        { icon: 'fas fa-copy', title: 'Factura duplicada, bloqueada', desc: 'La segunda carga de una misma factura muestra qué entrada ya la tiene.' },
+      ],
+
       /* ── Security & Infrastructure ── */
       security_eyebrow: '03 Rendimiento y Seguridad',
       security_title: '30 Operarios, 0 Errores.',
@@ -761,26 +785,32 @@
         { icon: 'fas fa-bolt',           title: '179 ms en el Piso del Almacén',        desc: 'El operario escanea y avanza: p95 de 179 ms en picking con 30 concurrentes sobre los mismos SKUs, sobre el mismo inventario, sin un solo descuadre en las 422 confirmaciones de despacho.' },
         { icon: 'fas fa-code-branch',    title: '+1.000 Tests Automatizados',           desc: 'Versión 1.0 cerrada en octubre de 2026 con más de 1.000 tests automatizados. Cada actualización pasa por el conjunto completo de pruebas antes de llegar a su operación.' },
         { icon: 'fas fa-lock',           title: 'Auditoría Inmutable',                  desc: 'El Kardex es un registro histórico inalterable. Las correcciones se emiten como documentos nuevos — la historia no se reescribe, se documenta.' },
-        { icon: 'fas fa-mobile-alt',     title: 'MFA/TOTP Obligatorio',                desc: 'Segundo factor TOTP obligatorio para el Súper Administrador y el Administrador, secreto cifrado en reposo y códigos de respaldo de un solo uso. Bloqueo automático por intentos fallidos.' },
+        { icon: 'fas fa-mobile-alt',     title: 'MFA/TOTP Obligatorio',                desc: 'Segundo factor TOTP obligatorio para el Súper Administrador y el Administrador, secreto cifrado en reposo y códigos de respaldo de un solo uso. Bloqueo automático por intentos fallidos. En el Portal B2B, opcional o exigido por cliente.' },
         { icon: 'fas fa-shield-alt',     title: 'Seguridad de Nivel Enterprise',        desc: 'Content-Security-Policy estricta (bloquea XSS), contraseñas mínimo 12 caracteres (NIST SP 800-63B), exports de Excel blindados contra inyección de fórmulas y tráfico cifrado HTTPS/TLS.' },
         { icon: 'fas fa-server',         title: 'Instancia Aislada (Single-Tenant)',    desc: 'Cada cliente tiene su propio servicio y su propia base de datos en Railway + Supabase. Sus datos no comparten base, tablas ni servidor con ninguna otra empresa.' },
         { icon: 'fas fa-plug',           title: 'API Idempotente · Webhooks HMAC-SHA256', desc: 'Un pedido reenviado por corte de red nunca se duplica. Su ERP recibe cada despacho confirmado vía webhook firmado: puede verificar la autenticidad y ningún aviso se pierde ni sale por una operación que no se concretó.' },
         { icon: 'fas fa-key',            title: 'Credenciales B2B con Vencimiento y Aviso', desc: 'El secreto de la integración se entrega una sola vez y se guarda como hash irreversible. Aviso automático 14 días antes del vencimiento, revocación inmediata en el acto y límite de peticiones por credencial.' },
       ],
 
-      /* ── A/B performance series ── */
+      /* ── Scale strip (29 Oct run) ── */
       security_kpis_label: 'Serie base · picking con 30 operarios — staging',
-      security_ab_eyebrow: 'Serie A/B · Staging · corridas únicas',
-      security_ab_title: 'Comportamiento del picking con 20 operarios bajo cierres de mes simultáneos',
+      security_ab_eyebrow: 'Corrida del 29 de octubre · Staging · corridas únicas',
+      security_ab_title: 'Toma general de 167.382 líneas cerrada en 229 s con 20 operarios despachando',
       security_ab_note: 'Medido en staging (corridas únicas, sin garantía contractual). Umbral de degradación: 2.000 ms.',
       security_ab_scenarios: [
-        { label: 'Sin cierres en curso',                   p95: '~310 ms', color: 'green'  },
-        { label: '1 cierre en curso<br>(164.382 líneas)',  p95: '376 ms',  color: 'yellow' },
-        { label: '2 cierres simultáneos<br>(328.764 líneas)', p95: '602 ms', color: 'red' },
+        { label: 'Un cierre en curso', p95: '219 ms', color: 'green' },
+        { label: 'Dos cierres a la vez', p95: '235 ms', color: 'green' },
+        { label: 'El peor minuto', p95: '268 ms', color: 'green' },
+      ],
+      security_ab_facts: [
+        { num: '167.382', label: 'líneas en una toma general (15.526 con lote)' },
+        { num: '229 s', label: 'para cerrar las 167.382 líneas, en un solo intento' },
+        { num: '0 / 6.176', label: 'pedidos fallidos durante la corrida' },
+        { num: '165.382', label: 'SKU en el catálogo con stock' },
       ],
       security_ab_threshold: 'Umbral de degradación: 2.000 ms',
       security_ab_ops: '20 operarios',
-      security_ab_methodology: '<strong>Corrida A:</strong> 1 cierre de 164.382 líneas en 105 s — picking a p95 376 ms, 0% errores.<br><strong>Corrida B:</strong> 2 cierres simultáneos (328.764 líneas) en 199 s (~3,3 min) — picking a p95 602 ms, 0,07% errores (único 502 durante reciclado de worker, no un fallo de la aplicación).',
+      security_ab_methodology: 'Staging con PostgreSQL; cada cifra, una sola corrida. 29 de octubre, catálogo de 165.382 SKU con stock: 20 operarios de picking simulados con k6 y, al minuto 3, el cierre de una toma general con diferencia en cada línea: 229 s, 0 fallidos en 6.176 peticiones. Dos tomas así a la vez: 356 s, 0 fallidos en 6.196. Abrir una salida nueva durante el cierre: 0,2 s de p95.',
       brochure_dl_label: 'Descargar folleto (PDF)',
       brochure_dl_href: 'docs/PivetTrack_Folleto_ES.pdf',
 
@@ -930,7 +960,7 @@
       hero_eyebrow: 'Enterprise WMS · White Label · PIVET DIGITAL AUTOMATIONS LLC',
       hero_h1a: 'Enterprise WMS, White Label.',
       hero_h1b: 'Measured, Not Promised.',
-      hero_sub: '<strong>Know in minutes which customer got every lot.</strong> PivetTrack follows every lot to your customer, ships what expires first and sends every transaction to your QuickBooks Online, with nothing keyed twice. <strong>PivetTrack</strong> is a white-label Enterprise WMS: your logo and your brand on the interface, on every PDF document, and on your wholesale buyers\' B2B Portal. Tested <em>on staging</em> with <strong>30 simultaneous operators, 0 errors, and a 179 ms p95 response time</strong>. True single-tenant: every client gets their own server and their own database. Every movement generates an immutable document. Every document has an accountable party.',
+      hero_sub: '<strong>Know in minutes which customer got every lot.</strong> PivetTrack follows every lot to your customer, ships the earliest-expiring lot first and sends every transaction to your QuickBooks Online, with nothing keyed twice. <strong>PivetTrack</strong> is a white-label Enterprise WMS: your logo and your brand on the interface, on every PDF document, and on your wholesale buyers\' B2B Portal. Tested <em>on staging</em> with <strong>30 simultaneous operators, 0 errors, and a 179 ms p95 response time</strong>. True single-tenant: every client gets their own server and their own database. Every movement generates an immutable document. Every document has an accountable party.',
       hero_cta1: 'Schedule a Demo',
       hero_cta2: 'See Features',
       trust: ['30 operators · 0 errors · 179 ms p95', 'White label: your logo on the interface and PDFs', 'Single-Tenant · Exclusive database', 'NDA before any demo'],
@@ -1004,6 +1034,8 @@
           tags: ['White Label', 'B2B Portal', '.xlsx Export', 'Profitability'],
           modules: [
             { icon: 'fas fa-boxes',              name: 'Lots, FEFO & recall',                        addon: false },
+            { icon: 'fas fa-map-marker-alt',     name: 'Aisles & locations',                         addon: false },
+            { icon: 'fas fa-barcode',            name: 'Scan-to-pick',                               addon: false },
             { icon: 'fas fa-book',               name: 'QuickBooks Online',                          addon: false },
             { icon: 'fas fa-arrow-circle-down', name: 'Entries, Exits & Transfers',                  addon: false },
             { icon: 'fas fa-undo-alt',           name: 'Supplier Returns & Shrinkage',               addon: false },
@@ -1012,6 +1044,7 @@
             { icon: 'fas fa-chart-line',         name: 'Profitability by Customer & by Product',    addon: false },
             { icon: 'fas fa-tag',                name: 'White Label: logo and colors on interface and PDFs',     addon: false },
             { icon: 'fas fa-file-excel',         name: 'Excel Export (base plan: up to 2 concurrent)', addon: false },
+            { icon: 'fas fa-cubes',              name: 'Each, case & pallet',                        addon: false },
             { icon: 'fas fa-barcode',            name: 'Mobile Scanner & Barcodes',                 addon: false },
             { icon: 'fas fa-plug',               name: 'B2B Portal & ERP API (scope in the formal proposal)',  addon: true },
           ],
@@ -1027,7 +1060,7 @@
         { icon: 'fas fa-hourglass-half', title: 'Automatic FEFO', desc: 'The lot that expires first ships first. A customer shipment never takes an expired lot.' },
         { icon: 'fas fa-calendar-times', title: 'Expirations in sight', desc: 'A nearing-expiration report, with warning days per product and an alert on the Dashboard.' },
         { icon: 'fas fa-clipboard-check', title: 'Blind two-step receiving', desc: 'The office enters the invoice; the floor declares lots and quantities without seeing what was expected.' },
-        { icon: 'fas fa-balance-scale', title: 'Double-checked shortages', desc: 'Every difference is verified by a second Administrator and closed with a credit note, a replacement or a write-off.' },
+        { icon: 'fas fa-balance-scale', title: 'Double-checked shortages', desc: 'Every difference is verified by another Administrator, in their own session or co-signing with their 2FA code, then closed with a credit, a replacement or a write-off.' },
         { icon: 'fas fa-undo-alt', title: 'Returns to their lot', desc: 'A customer return goes back to its lot; a supplier return leaves from the lot it came in with.' },
         { icon: 'fas fa-book', title: 'Ledger by lot', desc: 'Every movement of the lot, with its document, its author and its balance.' },
       ],
@@ -1051,6 +1084,18 @@
         { icon: 'fas fa-handshake', title: 'Set up with your accountant', desc: 'We connect your company, choose the accounts with your accountant and review the first documents together.' },
       ],
 
+      floor_eyebrow: 'Built for the Warehouse Floor',
+      floor_title: 'Your whole warehouse on one screen.',
+      floor_accent: 'And in your picker\'s pocket.',
+      floor_sub: 'Your team doesn\'t need to "be careful" when entering transactions: PivetTrack makes it structurally impossible to move goods without leaving a document behind.',
+      floor_cards: [
+        { icon: 'fas fa-barcode', title: 'Scan-to-pick', desc: 'The picker scans the item or its case (EAN, UPC or ITF) with a phone or a handheld scanner. Skipping the scan requires an Administrator\'s co-signature.' },
+        { icon: 'fas fa-map-marker-alt', title: 'Aisles and locations', desc: 'On receiving, everything is put away to its aisle. Stock is tracked by location, every move leaves a record and each aisle can be blind-recounted.' },
+        { icon: 'fas fa-cubes', title: 'Each, case & pallet', desc: 'Bought in one presentation, sold in another. On the B2B Portal you decide how each product is sold (each, case or pallet), and the B2B API v1.4.0 takes orders by the each, case or pallet, with idempotency.' },
+        { icon: 'fas fa-file-pdf', title: 'An audit-numbered report', desc: '"Export PDF" produces a Letter-size report with the same figures as the dashboard. Its serial number is logged in the audit trail: who issued it, when and with which filters.' },
+        { icon: 'fas fa-copy', title: 'Duplicate invoices, blocked', desc: 'Entered twice? The second user sees which receipt already has it.' },
+      ],
+
       /* ── Security & Infrastructure ── */
       security_eyebrow: '03 Performance & Security',
       security_title: '30 Operators, 0 Errors.',
@@ -1068,26 +1113,32 @@
         { icon: 'fas fa-bolt',           title: '179 ms on the Warehouse Floor',       desc: 'Operators scan and move on: 179 ms p95 during picking with 30 concurrent users on the same SKUs, same inventory, with zero stock discrepancies across all 422 dispatch confirmations.' },
         { icon: 'fas fa-code-branch',    title: '+1,000 Automated Tests',              desc: 'Version 1.0 closed in October 2026 with over 1,000 automated tests. Every update passes the full test suite before reaching your operation.' },
         { icon: 'fas fa-lock',           title: 'Immutable Audit Trail',               desc: 'The Kardex is a historical record of movements, not an editable spreadsheet. Corrections are issued as new documents — history is not rewritten, it is documented.' },
-        { icon: 'fas fa-mobile-alt',     title: 'Mandatory MFA/TOTP',                 desc: 'TOTP second factor mandatory for the Super Administrator and the Administrator, secret encrypted at rest, single-use backup codes, and automatic lockout on failed login attempts.' },
+        { icon: 'fas fa-mobile-alt',     title: 'Mandatory MFA/TOTP',                 desc: 'TOTP second factor mandatory for the Super Administrator and the Administrator, secret encrypted at rest, single-use backup codes, and automatic lockout on failed login attempts. On the B2B Portal, optional or required per customer.' },
         { icon: 'fas fa-shield-alt',     title: 'Enterprise-Level Security',           desc: 'Strict Content-Security-Policy (blocks XSS injection), 12-character minimum passwords (NIST SP 800-63B), Excel exports protected against formula injection, and end-to-end HTTPS/TLS.' },
         { icon: 'fas fa-server',         title: 'Isolated Instance (Single-Tenant)',   desc: 'Every client has their own service and their own database on Railway + Supabase. Your data shares no tables, no database, and no server with any other company.' },
         { icon: 'fas fa-plug',           title: 'Idempotent API · HMAC-SHA256 Webhooks', desc: 'A request resent after a network cut is never duplicated. Your ERP receives every confirmed dispatch via signed webhook, can verify its authenticity, and no notification is lost or sent for an incomplete operation.' },
         { icon: 'fas fa-key',            title: 'B2B Credentials with Expiry & Early Warning', desc: 'The integration secret is delivered once and stored as an irreversible hash. Automatic 14-day advance notice before expiry, immediate revocation on demand, and per-credential rate limits.' },
       ],
 
-      /* ── A/B performance series ── */
+      /* ── Scale strip (29 Oct run) ── */
       security_kpis_label: 'Base series · picking with 30 operators — staging',
-      security_ab_eyebrow: 'Series A/B · Staging · single runs',
-      security_ab_title: 'Picking behavior with 20 operators under simultaneous month-end closes',
+      security_ab_eyebrow: 'Oct. 29 run · Staging · single runs',
+      security_ab_title: 'A 167,382-line full count closed in 229 s with 20 operators shipping',
       security_ab_note: 'Measured on staging (single runs, no contractual guarantee). Degradation threshold: 2,000 ms.',
       security_ab_scenarios: [
-        { label: 'No closes in progress',                      p95: '~310 ms', color: 'green'  },
-        { label: '1 close in progress<br>(164,382 lines)',     p95: '376 ms',  color: 'yellow' },
-        { label: '2 simultaneous closes<br>(328,764 lines)',   p95: '602 ms',  color: 'red'    },
+        { label: 'One close in progress', p95: '219 ms', color: 'green' },
+        { label: 'Two closes at once', p95: '235 ms', color: 'green' },
+        { label: 'Worst minute', p95: '268 ms', color: 'green' },
+      ],
+      security_ab_facts: [
+        { num: '167,382', label: 'lines in one full count (15,526 with lots)' },
+        { num: '229 s', label: 'to close all 167,382 lines, in a single attempt' },
+        { num: '0 / 6,176', label: 'failed requests during the run' },
+        { num: '165,382', label: 'SKUs in the catalog with stock' },
       ],
       security_ab_threshold: 'Degradation threshold: 2,000 ms',
       security_ab_ops: '20 operators',
-      security_ab_methodology: '<strong>Run A:</strong> 1 close of 164,382 lines in 105 s — picking at p95 376 ms, 0% errors.<br><strong>Run B:</strong> 2 simultaneous closes (328,764 lines) in 199 s (~3.3 min) — picking at p95 602 ms, 0.07% errors (one 502 during worker recycle, not an application failure).',
+      security_ab_methodology: 'Staging on PostgreSQL; each figure, a single run. Oct. 29, a catalog of 165,382 SKUs in stock: 20 picking operators simulated in k6 and, at minute 3, the close of a full count with a difference on every line: 229 s, 0 failures in 6,176 requests. Two such counts at once: 356 s, 0 failures in 6,196. Opening a new shipment during the close: 0.2 s p95.',
       brochure_dl_label: 'Download brochure (PDF)',
       brochure_dl_href: 'docs/PivetTrack_Brochure_EN.pdf',
 
@@ -1627,6 +1678,23 @@
         </div>
       </section>
 
+      <!-- ═══ 3d. PISO DE LA BODEGA ═══ -->
+      <section class="pt-trace" id="pt-floor" data-aos="fade-up">
+        <div class="pt-section-hdr">
+          <div class="pt-section-eyebrow"><i class="fas fa-warehouse" style="color:#FF6B00"></i> ${d.floor_eyebrow}</div>
+          <h2 class="pt-section-title">${d.floor_title} <span class="accent">${d.floor_accent}</span></h2>
+          <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;max-width:680px;margin-left:auto;margin-right:auto">${d.floor_sub}</p>
+        </div>
+        <div class="pt-floor-grid">
+          ${d.floor_cards.map((c, i) => `
+            <div class="pt-sec-card" data-aos="fade-up" data-aos-delay="${Math.min(i * 60, 300)}">
+              <div class="pt-sec-icon"><i class="${c.icon}"></i></div>
+              <div class="pt-sec-title">${c.title}</div>
+              <div class="pt-sec-desc">${c.desc}</div>
+            </div>`).join('')}
+        </div>
+      </section>
+
       <!-- ═══ 4. SEGURIDAD E INFRAESTRUCTURA ═══ -->
       <section class="pt-security" data-aos="fade-up">
         <div class="pt-section-hdr">
@@ -1647,6 +1715,13 @@
           <div class="pt-ab-series-lbl"><i class="fas fa-chart-bar"></i>&nbsp; ${d.security_ab_eyebrow}</div>
           <div class="pt-ab-title">${d.security_ab_title}</div>
           <div class="pt-ab-note"><i class="fas fa-info-circle"></i> ${d.security_ab_note}</div>
+          <div class="pt-ab-facts">
+            ${d.security_ab_facts.map(f => `
+              <div class="pt-ab-fact">
+                <div class="pt-ab-fact-num">${f.num}</div>
+                <div class="pt-ab-fact-lbl">${f.label}</div>
+              </div>`).join('')}
+          </div>
           <div class="pt-ab-scenario-grid">
             ${d.security_ab_scenarios.map(s => `
               <div class="pt-ab-scenario ${s.color}">
