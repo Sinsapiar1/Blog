@@ -207,8 +207,9 @@
     /* ═══════════════════════════════════════════════
        CAROUSEL — Rich AppSheet-style cards
     ═══════════════════════════════════════════════ */
-    .pt-demo-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:1000px; margin:0 auto; }
-    @media(max-width:760px){ .pt-demo-grid { grid-template-columns:1fr; } }
+    .pt-demo-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:24px; max-width:1000px; margin:0 auto; }
+    .pt-demo-grid .pt-demo-card { flex:0 1 calc(50% - 12px); min-width:0; }
+    @media(max-width:760px){ .pt-demo-grid .pt-demo-card { flex-basis:100%; } }
 
     .pt-demo-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; transition:all 0.3s cubic-bezier(0.34,1,0.64,1); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; position:relative; cursor:pointer; }
     .pt-demo-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:var(--radius-xl) var(--radius-xl) 0 0; z-index:1; }
@@ -755,6 +756,12 @@
           desc: '164,397 líneas contadas y un solo ajuste. La toma se confirma por tandas, con el porcentaje de avance a la vista, y las diferencias se ajustan automáticamente en el Kardex.',
           tags: ['Toma de Inventario', 'Ajuste Automático', 'Kardex'],
         },
+        {
+          key: 'recepcion-mercancia',
+          title: 'Recepción de mercancías: 120 facturadas, 114 recibidas',
+          desc: 'La oficina carga la factura (120 cajas) y el piso cuenta sin verla en su pantalla: declara lote, vencimiento, cantidad y pasillo. Contó 114: el sistema abre la discrepancia, otro administrador la verifica y el reclamo al proveedor sale listo por $230.40. Hasta verificarla, la mercancía queda en cuarentena: no se vende ni se despacha.',
+          tags: ['Recepción ciega', 'Lotes y vencimiento', 'Reclamo al proveedor'],
+        },
       ],
       demos_live_lbl: 'Disponible Ahora',
       demos_watch_yt: 'Ver en YouTube',
@@ -1037,6 +1044,12 @@
           desc: '164,397 lines counted and a single adjustment. A large count is confirmed in batches, with the progress percentage on screen, and the differences post to the stock ledger automatically.',
           tags: ['Inventory Count', 'Automatic Adjustment', 'Stock Ledger'],
         },
+        {
+          key: 'recepcion-mercancia',
+          title: 'Warehouse receiving: invoiced 120, received 114',
+          desc: 'The office enters the supplier invoice (120 cases) and the floor counts without seeing it on screen, entering lot, expiration date, quantity and aisle. They counted 114: the system opens the discrepancy, a different administrator verifies it, and the supplier claim comes out ready for $230.40. Until verified, the goods stay in quarantine: not sold, not shipped.',
+          tags: ['Blind receiving', 'Lot & expiry', 'Supplier claim'],
+        },
       ],
       demos_live_lbl: 'Available Now',
       demos_watch_yt: 'Watch on YouTube',
@@ -1052,6 +1065,7 @@
   const PT_DEMO_VIDEOS = {
     'maestra-productos': { es: 'n-uSypcPdNM', en: 't2VPoftd7AU' },
     'toma-inventario':   { es: 'rIYmruKthoE', en: 'atoKa7NFN5s' },
+    'recepcion-mercancia': { es: '3PiGwlWnzxg', en: 'ZZEZ0hmPiMM' },
   };
   const ptDemoLangOverride = {};
 
