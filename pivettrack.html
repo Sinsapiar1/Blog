@@ -762,6 +762,12 @@
           desc: 'La oficina carga la factura (120 cajas) y el piso cuenta sin verla en su pantalla: declara lote, vencimiento, cantidad y pasillo. Contó 114: el sistema abre la discrepancia, otro administrador la verifica y el reclamo al proveedor sale listo por $230.40. Hasta verificarla, la mercancía queda en cuarentena: no se vende ni se despacha.',
           tags: ['Recepción ciega', 'Lotes y vencimiento', 'Reclamo al proveedor'],
         },
+        {
+          key: 'retiro-recall',
+          title: 'Retiro de producto: ¿a quién se le vendió el lote?',
+          desc: 'El proveedor retira un lote y hay que responder ya: se escribe el número del lote y aparece la lista de clientes que lo recibieron, salida por salida y neta de devoluciones, lista para exportar a Excel. En el mismo flujo, el lote vencido no sale: el disponible ya no lo cuenta (88, no 94) y el picking pide primero lo que vence antes (FEFO).',
+          tags: ['Trazabilidad por lote', 'FEFO', 'Control de vencimientos'],
+        },
       ],
       demos_live_lbl: 'Disponible Ahora',
       demos_watch_yt: 'Ver en YouTube',
@@ -1050,6 +1056,12 @@
           desc: 'The office enters the supplier invoice (120 cases) and the floor counts without seeing it on screen, entering lot, expiration date, quantity and aisle. They counted 114: the system opens the discrepancy, a different administrator verifies it, and the supplier claim comes out ready for $230.40. Until verified, the goods stay in quarantine: not sold, not shipped.',
           tags: ['Blind receiving', 'Lot & expiry', 'Supplier claim'],
         },
+        {
+          key: 'retiro-recall',
+          title: 'Product recall: who did you sell the lot to?',
+          desc: 'A supplier recalls a lot and you need the answer now: type the lot number and get the list of customers who received it, shipment by shipment and net of returns, ready to export to Excel. In the same flow, the expired lot never ships: availability no longer counts it (88, not 94) and picking takes the earliest-expiring lot first (FEFO).',
+          tags: ['Lot traceability', 'FEFO', 'Expiry control'],
+        },
       ],
       demos_live_lbl: 'Available Now',
       demos_watch_yt: 'Watch on YouTube',
@@ -1066,6 +1078,7 @@
     'maestra-productos': { es: 'n-uSypcPdNM', en: 't2VPoftd7AU' },
     'toma-inventario':   { es: 'rIYmruKthoE', en: 'atoKa7NFN5s' },
     'recepcion-mercancia': { es: '3PiGwlWnzxg', en: 'ZZEZ0hmPiMM' },
+    'retiro-recall': { es: 'kpgcN7WiMH0', en: 'KB21Psvt4G0' },
   };
   const ptDemoLangOverride = {};
 
