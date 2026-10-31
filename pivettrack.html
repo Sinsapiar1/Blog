@@ -205,48 +205,61 @@
     .pt-demos { margin:60px 0; }
 
     /* ═══════════════════════════════════════════════
-       CAROUSEL — Rich AppSheet-style cards
+       DEMOS — escenario + índice
     ═══════════════════════════════════════════════ */
-    .pt-demo-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:24px; max-width:1000px; margin:0 auto; }
-    .pt-demo-grid .pt-demo-card { flex:0 1 calc(50% - 12px); min-width:0; }
-    @media(max-width:760px){ .pt-demo-grid .pt-demo-card { flex-basis:100%; } }
+    .pt-demo-showcase { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; align-items:start; }
+    @media(min-width:1024px){ .pt-demo-showcase { grid-template-columns:minmax(0,62fr) minmax(0,38fr); } }
+    .pt-demo-stage-col, .pt-demo-index-col { min-width:0; }
 
-    .pt-demo-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; transition:all 0.3s cubic-bezier(0.34,1,0.64,1); box-shadow:var(--shadow-sm); display:flex; flex-direction:column; position:relative; cursor:pointer; }
-    .pt-demo-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:var(--radius-xl) var(--radius-xl) 0 0; z-index:1; }
-    .pt-demo-card:hover::before { transform:scaleX(1); }
-    .pt-demo-card:hover { transform:translateY(-7px); box-shadow:0 22px 52px rgba(255,107,0,0.15); border-color:rgba(255,107,0,0.3); }
+    .pt-demo-stage-col { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-sm); position:relative; }
+    .pt-demo-stage-col::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); z-index:3; }
 
-    /* Thumbnail */
+    /* Escenario 16:9 */
     .pt-demo-thumb { position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden; }
-    .pt-demo-thumb img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; }
-    .pt-demo-card:hover .pt-demo-thumb img { transform:scale(1.05); }
+    .pt-demo-thumb img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
     .pt-demo-thumb iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
     .pt-demo-play-btn { position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; background:#000; cursor:pointer; display:block; }
     .pt-demo-play-btn:focus-visible { outline:3px solid #FF9500; outline-offset:-3px; }
-
-    /* Play overlay */
     .pt-demo-play-over { position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center; transition:background 0.25s; z-index:2; }
     .pt-demo-play-btn:hover .pt-demo-play-over { background:rgba(0,0,0,0.45); }
     .pt-demo-play-over i { width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; font-size:1.5rem; display:flex; align-items:center; justify-content:center; padding-left:4px; box-shadow:0 8px 28px rgba(255,107,0,0.5); transition:transform 0.2s; }
     .pt-demo-play-btn:hover .pt-demo-play-over i { transform:scale(1.12); }
-    .pt-demo-vlang { margin-left:auto; display:inline-flex; border:1px solid var(--border-color); border-radius:var(--radius-full); overflow:hidden; }
-    .pt-demo-vlang-btn { font:inherit; font-size:0.7rem; font-weight:800; letter-spacing:0.08em; padding:5px 12px; min-height:30px; border:0; background:transparent; color:var(--text-tertiary); cursor:pointer; transition:background 0.2s,color 0.2s; }
-    .pt-demo-vlang-btn.active { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; }
-    .pt-demo-vlang-btn:not(.active):hover { color:#FF6B00; }
 
-    /* Card body */
-    .pt-demo-card-body { padding:20px 22px 22px; flex:1; display:flex; flex-direction:column; }
-    .pt-demo-card-header { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
-    .pt-demo-card-num { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,107,0,0.5); }
-    .pt-demo-card-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
+    /* Epígrafe */
+    .pt-demo-caption { padding:20px 22px 22px; }
+    .pt-demo-cap-num { display:block; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:#FF6B00; margin-bottom:6px; }
+    .pt-demo-cap-title { font-size:1.15rem; font-weight:800; color:var(--text-primary); letter-spacing:-0.01em; line-height:1.3; margin-bottom:8px; }
+    .pt-demo-cap-desc { font-size:0.875rem; color:var(--text-secondary); line-height:1.65; margin-bottom:14px; }
+    .pt-demo-cap-desc strong { color:var(--text-primary); font-weight:700; }
+    .pt-demo-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
     .pt-demo-card-tag { font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 9px; border-radius:var(--radius-full); background:rgba(255,107,0,0.07); color:#FF6B00; border:1px solid rgba(255,107,0,0.18); }
-    .pt-demo-card-title { font-size:1rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; line-height:1.3; }
-    .pt-demo-card-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.65; flex:1; margin-bottom:14px; }
-    .pt-demo-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:12px; border-top:1px solid var(--border-color); margin-top:auto; }
+    .pt-demo-cap-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-top:12px; border-top:1px solid var(--border-color); }
     .pt-demo-live-pill { display:flex; align-items:center; gap:6px; font-size:0.75rem; color:var(--text-secondary); font-weight:500; }
     .pt-demo-live-dot-sm { width:7px; height:7px; border-radius:50%; background:#34C759; box-shadow:0 0 5px rgba(52,199,89,0.6); animation:blink-dot 1.2s step-end infinite; flex-shrink:0; }
     .pt-demo-yt-link { display:inline-flex; align-items:center; gap:5px; font-size:0.78rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:6px 13px; border-radius:16px; text-decoration:none; box-shadow:0 4px 10px rgba(255,107,0,0.28); transition:all 0.2s; }
     .pt-demo-yt-link:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,107,0,0.42); }
+    .pt-demo-yt-link:focus-visible, .pt-demo-playlist:focus-visible { outline:3px solid #FF9500; outline-offset:2px; }
+
+    /* Índice */
+    .pt-demo-vlang-bar { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
+    .pt-demo-vlang-lbl { font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-tertiary); }
+    .pt-demo-vlang { display:inline-flex; border:1px solid var(--border-color); border-radius:var(--radius-full); overflow:hidden; }
+    .pt-demo-vlang-btn { font:inherit; font-size:0.7rem; font-weight:800; letter-spacing:0.08em; padding:5px 12px; min-height:30px; border:0; background:transparent; color:var(--text-tertiary); cursor:pointer; transition:background 0.2s,color 0.2s; }
+    .pt-demo-vlang-btn.active { background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; }
+    .pt-demo-vlang-btn:not(.active):hover { color:#FF6B00; }
+    .pt-demo-vlang-btn:focus-visible { outline:3px solid #FF9500; outline-offset:-3px; }
+    .pt-demo-index { display:flex; flex-direction:column; gap:8px; }
+    .pt-demo-row { font:inherit; text-align:left; display:flex; align-items:flex-start; gap:12px; width:100%; min-height:48px; padding:12px 14px; background:var(--glass-bg); border:1px solid var(--glass-border); border-left:3px solid transparent; border-radius:var(--radius-lg, 14px); cursor:pointer; color:var(--text-primary); transition:background 0.2s,border-color 0.2s,transform 0.2s; }
+    .pt-demo-row:hover { border-color:rgba(255,107,0,0.3); border-left-color:rgba(255,107,0,0.5); }
+    .pt-demo-row:focus-visible { outline:3px solid #FF9500; outline-offset:2px; }
+    .pt-demo-row[aria-current="true"] { background:rgba(255,107,0,0.09); border-color:rgba(255,107,0,0.35); border-left-color:#FF6B00; }
+    .pt-demo-row-num { flex-shrink:0; font-size:0.8rem; font-weight:900; letter-spacing:0.04em; color:rgba(255,107,0,0.6); padding-top:1px; min-width:22px; }
+    .pt-demo-row[aria-current="true"] .pt-demo-row-num { color:#FF6B00; }
+    .pt-demo-row-txt { display:flex; flex-direction:column; gap:2px; min-width:0; }
+    .pt-demo-row-title { font-size:0.85rem; font-weight:700; line-height:1.3; }
+    .pt-demo-row-hook { font-size:0.76rem; color:var(--text-secondary); line-height:1.4; }
+    .pt-demo-playlist { display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-size:0.82rem; font-weight:700; color:#FF6B00; text-decoration:none; min-height:48px; }
+    .pt-demo-playlist:hover { text-decoration:underline; }
 
     /* ═══════════════════════════════════════════════
        ARCHITECTURE — Folio table visual
@@ -748,38 +761,51 @@
         {
           key: 'maestra-productos',
           title: 'Importación de la maestra de productos',
+          hook: '164.382 productos. Un solo Excel.',
           desc: 'Los 164.382 productos de la maestra, cargados desde un solo Excel. La importación corre en segundo plano, su equipo sigue trabajando y el resultado aparece al terminar.',
           tags: ['Importación Masiva', 'Maestra de Productos', 'Excel'],
         },
         {
           key: 'toma-inventario',
           title: 'Toma de inventario físico y ajuste',
+          hook: '164.397 líneas. Un solo ajuste.',
           desc: '164.397 líneas contadas y un solo ajuste. La toma se confirma por tandas, con el porcentaje de avance a la vista, y las diferencias se ajustan automáticamente en el Kardex.',
           tags: ['Toma de Inventario', 'Ajuste Automático', 'Kardex'],
         },
         {
           key: 'recepcion-mercancia',
           title: 'Recepción de mercancías: 120 facturadas, 114 recibidas',
+          hook: '$230.40 reclamados al proveedor.',
           desc: 'La oficina carga la factura (120 cajas) y el piso cuenta sin verla en su pantalla: declara lote, vencimiento, cantidad y pasillo. Contó 114: el sistema abre la discrepancia, otro administrador la verifica y el reclamo al proveedor sale listo por $230.40. Hasta verificarla, la mercancía queda en cuarentena: no se vende ni se despacha.',
           tags: ['Recepción ciega', 'Lotes y vencimiento', 'Reclamo al proveedor'],
         },
         {
           key: 'retiro-recall',
           title: 'Retiro de producto: ¿a quién se le vendió el lote?',
+          hook: '60 cajas retiradas. ¿Quién las tiene?',
           desc: 'El proveedor retira un lote y hay que responder ya: se escribe el número del lote y aparece la lista de clientes que lo recibieron, salida por salida y neta de devoluciones, lista para exportar a Excel. En el mismo flujo, el lote vencido no sale: el disponible ya no lo cuenta (88, no 94) y el picking pide primero lo que vence antes (FEFO).',
           tags: ['Trazabilidad por lote', 'FEFO', 'Control de vencimientos'],
         },
         {
           key: 'portal-b2b',
           title: 'Portal de pedidos B2B: su cliente pide solo',
+          hook: 'El stock se mueve al aprobar, no al pedir.',
           desc: 'Sus clientes (restaurantes, hoteles, mercados) piden desde el teléfono, con su número de orden y solo los productos que usted les habilitó. El pedido llega al depósito tal como lo escribieron, junto a los que entran por la API: nadie lo vuelve a tipear desde un WhatsApp. El stock se mueve recién al aprobar — si algo no alcanza (pidió 12 cajas, hay 8), se despacha lo que hay y la diferencia queda registrada, línea por línea, a la vista del cliente.',
           tags: ['Portal de pedidos', 'Buzón B2B y API', 'Aprobación antes de despachar'],
+        },
+        {
+          key: 'stock-pasillo',
+          title: 'Stock por pasillo y picking',
+          hook: '¿En qué pasillo está cada lote?',
+          desc: 'El stock se consulta por pasillo y ubicación: cada lote dice dónde está parado, y la orden de picking sale en orden de recorrido por la bodega, sin vueltas.',
+          tags: ['Pasillos y ubicaciones', 'Picking por escaneo', 'Stock por lote'],
         },
       ],
       demos_live_lbl: 'Disponible Ahora',
       demos_watch_yt: 'Ver en YouTube',
       demos_play_lbl: 'Reproducir video',
       demos_vlang_lbl: 'Idioma del video',
+      demos_playlist_lbl: 'Serie completa en YouTube',
     },
 
     en: {
@@ -1049,89 +1075,132 @@
         {
           key: 'maestra-productos',
           title: 'Product master import',
+          hook: '164,382 products. One single Excel.',
           desc: 'All 164,382 products of the master, loaded from a single Excel file. The import runs in the background, your team keeps working and the result appears when it finishes.',
           tags: ['Bulk Import', 'Product Master', 'Excel'],
         },
         {
           key: 'toma-inventario',
           title: 'Physical inventory count and adjustment',
+          hook: '164,397 lines. One single adjustment.',
           desc: '164,397 lines counted and a single adjustment. A large count is confirmed in batches, with the progress percentage on screen, and the differences post to the stock ledger automatically.',
           tags: ['Inventory Count', 'Automatic Adjustment', 'Stock Ledger'],
         },
         {
           key: 'recepcion-mercancia',
           title: 'Warehouse receiving: invoiced 120, received 114',
+          hook: '$230.40 claimed back from the supplier.',
           desc: 'The office enters the supplier invoice (120 cases) and the floor counts without seeing it on screen, entering lot, expiration date, quantity and aisle. They counted 114: the system opens the discrepancy, a different administrator verifies it, and the supplier claim comes out ready for $230.40. Until verified, the goods stay in quarantine: not sold, not shipped.',
           tags: ['Blind receiving', 'Lot & expiry', 'Supplier claim'],
         },
         {
           key: 'retiro-recall',
           title: 'Product recall: who did you sell the lot to?',
+          hook: '60 cases withdrawn. Who has them?',
           desc: 'A supplier recalls a lot and you need the answer now: type the lot number and get the list of customers who received it, shipment by shipment and net of returns, ready to export to Excel. In the same flow, the expired lot never ships: availability no longer counts it (88, not 94) and picking takes the earliest-expiring lot first (FEFO).',
           tags: ['Lot traceability', 'FEFO', 'Expiry control'],
         },
         {
           key: 'portal-b2b',
           title: 'B2B ordering portal: customers order on their own',
+          hook: 'Stock moves on approval, not on order.',
           desc: 'Your customers (restaurants, hotels, markets) order from their phone, with their own order number and only the products you enabled for them. The order reaches the warehouse exactly as written, alongside the ones arriving through the API: nobody retypes it from a WhatsApp message. Stock moves only on approval — if something runs short (12 cases ordered, 8 on hand), what exists ships and the difference stays on record, line by line, visible to the customer.',
           tags: ['Ordering portal', 'B2B inbox & API', 'Approval before shipping'],
+        },
+        {
+          key: 'stock-pasillo',
+          title: 'Stock by aisle and picking',
+          hook: 'Which aisle is each lot in?',
+          desc: 'Stock is looked up by aisle and location: every lot says where it sits, and the picking order comes out in travel order through the warehouse, with no backtracking.',
+          tags: ['Aisles & locations', 'Scan picking', 'Lot stock'],
         },
       ],
       demos_live_lbl: 'Available Now',
       demos_watch_yt: 'Watch on YouTube',
       demos_play_lbl: 'Play video',
       demos_vlang_lbl: 'Video language',
+      demos_playlist_lbl: 'Full series on YouTube',
     }
   };
 
   let lang = localStorage.getItem('homeLang') || localStorage.getItem('aboutLang') || 'es';
 
   /* Cada demo guarda sus dos videos (ES/EN). Para sumar un demo nuevo: una entrada aquí
-     y una tarjeta con la misma `key` en t.es.demos y en t.en.demos. */
+     y una entrada con la misma `key` en t.es.demos y en t.en.demos. */
   const PT_DEMO_VIDEOS = {
     'maestra-productos': { es: 'n-uSypcPdNM', en: 't2VPoftd7AU' },
     'toma-inventario':   { es: 'rIYmruKthoE', en: 'atoKa7NFN5s' },
     'recepcion-mercancia': { es: '3PiGwlWnzxg', en: 'ZZEZ0hmPiMM' },
     'retiro-recall': { es: 'kpgcN7WiMH0', en: 'KB21Psvt4G0' },
     'portal-b2b': { es: 'GD9ILcFErqc', en: 'sbU0n6oCEGI' },
+    'stock-pasillo': { es: '0SdlN4aqQEg', en: 'XlMnljQjzWU' },
   };
-  const ptDemoLangOverride = {};
 
-  function ptDemoVideoLang(key) { return ptDemoLangOverride[key] || lang; }
+  let ptActiveDemo = 'maestra-productos';
+  let ptVideoLang = null;
+  const PT_PLAYLIST_URL = 'https://www.youtube.com/@raulpivet4462/videos';
 
-  function ptDemoThumbHTML(key, title, vlang) {
+  function ptVLang() { return ptVideoLang || lang; }
+
+  function ptActiveEntry() {
+    const demos = t[lang].demos;
+    const i = Math.max(0, demos.findIndex(v => v.key === ptActiveDemo));
+    return { demo: demos[i], index: i };
+  }
+
+  function ptThumbHTML(key, title, vlang) {
     const id = PT_DEMO_VIDEOS[key][vlang];
-    return `<button type="button" class="pt-demo-play-btn" onclick="ptPlayDemo('${key}')" aria-label="${t[lang].demos_play_lbl}: ${title}">
+    return `<button type="button" class="pt-demo-play-btn" onclick="ptPlayStage()" aria-label="${t[lang].demos_play_lbl}: ${title}">
       <img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${id}/hqdefault.jpg'" alt="" loading="lazy">
       <span class="pt-demo-play-over"><i class="fas fa-play"></i></span>
     </button>`;
   }
 
-  function ptDemoCard(key) {
-    return document.querySelector(`.pt-demo-card[data-demo-key="${key}"]`);
+  function ptCaptionHTML(demo, index) {
+    const d = t[lang];
+    return `
+      <span class="pt-demo-cap-num">Demo ${String(index + 1).padStart(2, '0')}</span>
+      <h3 class="pt-demo-cap-title">${demo.title}</h3>
+      <p class="pt-demo-cap-desc"><strong>${demo.hook}</strong> ${demo.desc}</p>
+      <div class="pt-demo-tags">${demo.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
+      <div class="pt-demo-cap-footer">
+        <span class="pt-demo-live-pill"><span class="pt-demo-live-dot-sm"></span> ${d.demos_live_lbl}</span>
+        <a href="https://www.youtube.com/watch?v=${PT_DEMO_VIDEOS[demo.key][ptVLang()]}" target="_blank" rel="noopener noreferrer" class="pt-demo-yt-link" id="ptStageYt">
+          <i class="fab fa-youtube"></i> ${d.demos_watch_yt}
+        </a>
+      </div>`;
   }
 
-  function ptPlayDemo(key) {
-    const card = ptDemoCard(key);
-    if (!card) return;
-    const vlang = ptDemoVideoLang(key);
-    const demo = t[lang].demos.find(v => v.key === key);
-    const id = PT_DEMO_VIDEOS[key][vlang];
-    card.querySelector('.pt-demo-thumb').innerHTML = `<iframe
+  function ptRefreshStage() {
+    const { demo, index } = ptActiveEntry();
+    document.getElementById('ptStage').innerHTML = ptThumbHTML(demo.key, demo.title, ptVLang());
+    document.getElementById('ptCaption').innerHTML = ptCaptionHTML(demo, index);
+  }
+
+  function ptSelectDemo(key) {
+    ptActiveDemo = key;
+    ptRefreshStage();
+    document.querySelectorAll('.pt-demo-row').forEach(r => {
+      if (r.dataset.demoKey === key) r.setAttribute('aria-current', 'true');
+      else r.removeAttribute('aria-current');
+    });
+  }
+
+  function ptPlayStage() {
+    const { demo } = ptActiveEntry();
+    const vlang = ptVLang();
+    const id = PT_DEMO_VIDEOS[demo.key][vlang];
+    document.getElementById('ptStage').innerHTML = `<iframe
       src="https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&autoplay=1&hl=${vlang}"
       title="PivetTrack WMS — ${demo.title} (${vlang.toUpperCase()})"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen></iframe>`;
   }
 
-  function ptSetDemoLang(key, vlang) {
-    ptDemoLangOverride[key] = vlang;
-    const card = ptDemoCard(key);
-    if (!card) return;
-    const demo = t[lang].demos.find(v => v.key === key);
-    card.querySelector('.pt-demo-thumb').innerHTML = ptDemoThumbHTML(key, demo.title, vlang);
-    card.querySelector('.pt-demo-yt-link').href = `https://www.youtube.com/watch?v=${PT_DEMO_VIDEOS[key][vlang]}`;
-    card.querySelectorAll('.pt-demo-vlang-btn').forEach(b => {
+  function ptSetVideoLang(vlang) {
+    ptVideoLang = vlang;
+    ptRefreshStage();
+    document.querySelectorAll('.pt-demo-vlang-btn').forEach(b => {
       const on = b.dataset.vlang === vlang;
       b.classList.toggle('active', on);
       b.setAttribute('aria-pressed', on);
@@ -1481,32 +1550,36 @@
           <p style="font-size:0.9375rem;color:var(--text-secondary);margin-top:8px;">${d.demos_sub}</p>
         </div>
 
-        <div class="pt-demo-grid">
-          ${d.demos.map((v, i) => {
-            const vl = ptDemoVideoLang(v.key);
-            return `
-              <article class="pt-demo-card" data-demo-key="${v.key}" data-aos="fade-up" data-aos-delay="${80 + i * 70}">
-                <div class="pt-demo-thumb">${ptDemoThumbHTML(v.key, v.title, vl)}</div>
-                <div class="pt-demo-card-body">
-                  <div class="pt-demo-card-header">
-                    <span class="pt-demo-card-num">Demo ${String(i + 1).padStart(2, '0')}</span>
-                    <div class="pt-demo-vlang" role="group" aria-label="${d.demos_vlang_lbl}">
-                      ${['es', 'en'].map(l => `<button type="button" class="pt-demo-vlang-btn${l === vl ? ' active' : ''}" data-vlang="${l}" aria-pressed="${l === vl}" onclick="ptSetDemoLang('${v.key}','${l}')">${l.toUpperCase()}</button>`).join('')}
-                    </div>
-                  </div>
-                  <div class="pt-demo-card-tags">${v.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
-                  <div class="pt-demo-card-title">${v.title}</div>
-                  <div class="pt-demo-card-desc">${v.desc}</div>
-                  <div class="pt-demo-card-footer">
-                    <span class="pt-demo-live-pill"><span class="pt-demo-live-dot-sm"></span> ${d.demos_live_lbl}</span>
-                    <a href="https://www.youtube.com/watch?v=${PT_DEMO_VIDEOS[v.key][vl]}" target="_blank" rel="noopener noreferrer" class="pt-demo-yt-link">
-                      <i class="fab fa-youtube"></i> ${d.demos_watch_yt}
-                    </a>
-                  </div>
-                </div>
-              </article>`;
-          }).join('')}
-        </div>
+        ${(() => {
+          const { demo: act, index: actIdx } = ptActiveEntry();
+          const vl = ptVLang();
+          return `
+        <div class="pt-demo-showcase">
+          <div class="pt-demo-stage-col">
+            <div class="pt-demo-stage pt-demo-thumb" id="ptStage">${ptThumbHTML(act.key, act.title, vl)}</div>
+            <div class="pt-demo-caption" id="ptCaption" aria-live="polite">${ptCaptionHTML(act, actIdx)}</div>
+          </div>
+          <div class="pt-demo-index-col">
+            <div class="pt-demo-vlang-bar">
+              <span class="pt-demo-vlang-lbl">${d.demos_vlang_lbl}</span>
+              <div class="pt-demo-vlang" role="group" aria-label="${d.demos_vlang_lbl}">
+                ${['es', 'en'].map(l => `<button type="button" class="pt-demo-vlang-btn${l === vl ? ' active' : ''}" data-vlang="${l}" aria-pressed="${l === vl}" onclick="ptSetVideoLang('${l}')">${l.toUpperCase()}</button>`).join('')}
+              </div>
+            </div>
+            <div class="pt-demo-index">
+              ${d.demos.map((v, i) => `
+              <button type="button" class="pt-demo-row" data-demo-key="${v.key}"${v.key === act.key ? ' aria-current="true"' : ''} onclick="ptSelectDemo('${v.key}')">
+                <span class="pt-demo-row-num">${String(i + 1).padStart(2, '0')}</span>
+                <span class="pt-demo-row-txt">
+                  <span class="pt-demo-row-title">${v.title}</span>
+                  <span class="pt-demo-row-hook">${v.hook}</span>
+                </span>
+              </button>`).join('')}
+            </div>
+            <a href="${PT_PLAYLIST_URL}" target="_blank" rel="noopener noreferrer" class="pt-demo-playlist"><i class="fab fa-youtube"></i> ${d.demos_playlist_lbl}</a>
+          </div>
+        </div>`;
+        })()}
       </section>
 
       <!-- ═══ 7. CÓMO AVANZAMOS + FINAL CTA ═══ -->
@@ -1552,7 +1625,7 @@
     lang = lang === 'es' ? 'en' : 'es';
     document.documentElement.lang = lang;
     localStorage.setItem('homeLang', lang);
-    Object.keys(ptDemoLangOverride).forEach(k => delete ptDemoLangOverride[k]);
+    ptVideoLang = null;
     render();
   }
 
