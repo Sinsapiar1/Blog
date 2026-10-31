@@ -33,6 +33,13 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    .pt-contact-card { margin-bottom: 28px; border-color: rgba(255,107,0,0.3); background: linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); }
+    .pt-contact-card h2 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 10px; }
+    .pt-contact-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
+    .pt-contact-data { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+    .pt-contact-data a { color: var(--text-primary); text-decoration: none; }
+    .pt-contact-data a:hover { color: #FF6B00; }
+    .pt-contact-data .pt-contact-link { color: #FF6B00; }
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.65fr; gap: 28px; align-items: start; }
     @media(max-width:960px){ .contact-wrap { grid-template-columns:1fr; } }
     .contact-panel { display: flex; flex-direction: column; gap: 16px; }
@@ -144,6 +151,9 @@
     es: {
       nav_home:"Inicio", nav_about:"Nosotros", nav_projects:"Proyectos", nav_contact:"Contacto",
       page_title: "Contacto - Raul Pivet",
+      pt_card_h2: "Demo de PivetTrack WMS",
+      pt_card_p: "Para una demo de PivetTrack o el diagnóstico de 15 minutos sobre tu operación, escribinos directo:",
+      pt_card_link: "Ver PivetTrack",
       header_h1: "Contacto",
       header_sub: "Contame tu problema — trabajamos en la solución",
       intro_eyebrow: "👋 Hola, soy Raul",
@@ -192,6 +202,9 @@
     en: {
       nav_home:"Home", nav_about:"About Us", nav_projects:"Projects", nav_contact:"Contact",
       page_title: "Contact - Raul Pivet",
+      pt_card_h2: "PivetTrack WMS Demo",
+      pt_card_p: "For a PivetTrack demo or a 15-minute diagnosis of your operation, write to us directly:",
+      pt_card_link: "See PivetTrack",
       header_h1: "Contact", header_sub: "Tell me your problem — we'll work on the solution",
       intro_eyebrow: "👋 Hi, I'm Raul",
       intro_h2a: "Got an idea,",
@@ -258,6 +271,17 @@
       <header class="header" data-aos="fade-down">
         <h1>${d.header_h1}</h1><p>${d.header_sub}</p>
       </header>
+      <div class="c-card pt-contact-card" data-aos="fade-up">
+        <h2>${d.pt_card_h2}</h2>
+        <p>${d.pt_card_p}</p>
+        <div class="pt-contact-data">
+          <a href="mailto:raul@raulpivet.com">raul@raulpivet.com</a>
+          <span>·</span>
+          <a href="tel:+13055406846">+1 (305) 540 6846</a>
+          <span>·</span>
+          <a href="pivettrack.html" class="pt-contact-link">${d.pt_card_link}</a>
+        </div>
+      </div>
       <div class="contact-wrap">
         <div class="contact-panel">
           <div class="c-card intro-card" data-aos="fade-right">

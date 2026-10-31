@@ -464,6 +464,7 @@
   <footer>
     <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
     <p class="footer-registered" id="footerText">PivetTrack WMS — Warehouse Management System · Miami, FL · Registered LLC — Florida</p>
+    <p class="footer-registered" id="footerLegal">PivetTrack es un producto de PIVET DIGITAL AUTOMATIONS LLC · Miami, Florida</p>
   </footer>
 
   <!-- Sticky demo CTA — visible after scrolling past hero -->
@@ -485,6 +486,7 @@
       nav_home: 'Inicio', nav_about: 'Nosotros', nav_demos: 'AppSheet Demos', nav_contact: 'Contacto',
       page_title: 'PivetTrack WMS — Control Total de tu Bodega | PIVET DIGITAL AUTOMATIONS LLC',
       footer_text: 'PivetTrack WMS — Warehouse Management System · Miami, FL · Registered LLC — Florida',
+      footer_legal: 'PivetTrack es un producto de PIVET DIGITAL AUTOMATIONS LLC · Miami, Florida',
 
       /* ── Hero ── */
       hero_eyebrow: 'WMS Enterprise · Marca Blanca · PIVET DIGITAL AUTOMATIONS LLC',
@@ -746,13 +748,13 @@
         {
           key: 'maestra-productos',
           title: 'Importación de la maestra de productos',
-          desc: 'Los 164,382 productos de la maestra, cargados desde un solo Excel. La importación corre en segundo plano, su equipo sigue trabajando y el resultado aparece al terminar.',
+          desc: 'Los 164.382 productos de la maestra, cargados desde un solo Excel. La importación corre en segundo plano, su equipo sigue trabajando y el resultado aparece al terminar.',
           tags: ['Importación Masiva', 'Maestra de Productos', 'Excel'],
         },
         {
           key: 'toma-inventario',
           title: 'Toma de inventario físico y ajuste',
-          desc: '164,397 líneas contadas y un solo ajuste. La toma se confirma por tandas, con el porcentaje de avance a la vista, y las diferencias se ajustan automáticamente en el Kardex.',
+          desc: '164.397 líneas contadas y un solo ajuste. La toma se confirma por tandas, con el porcentaje de avance a la vista, y las diferencias se ajustan automáticamente en el Kardex.',
           tags: ['Toma de Inventario', 'Ajuste Automático', 'Kardex'],
         },
         {
@@ -785,6 +787,7 @@
       nav_home: 'Home', nav_about: 'About Us', nav_demos: 'AppSheet Demos', nav_contact: 'Contact',
       page_title: 'PivetTrack WMS — Total Warehouse Control | PIVET DIGITAL AUTOMATIONS LLC',
       footer_text: 'PivetTrack WMS — Warehouse Management System · Miami, FL · Registered LLC — Florida',
+      footer_legal: 'PivetTrack is a product of PIVET DIGITAL AUTOMATIONS LLC · Miami, Florida',
 
       /* ── Hero ── */
       hero_eyebrow: 'Enterprise WMS · White Label · PIVET DIGITAL AUTOMATIONS LLC',
@@ -1188,6 +1191,7 @@
     document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent  = lang === 'es' ? 'English' : 'Español';
     document.getElementById('footerText').textContent    = d.footer_text;
+    document.getElementById('footerLegal').textContent   = d.footer_legal;
     // Update sticky CTA label
     const stickyLabel = document.getElementById('ptStickyLabel');
     if (stickyLabel) stickyLabel.textContent = lang === 'es' ? 'Solicitar Demo' : 'Request Demo';
