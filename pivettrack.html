@@ -768,6 +768,12 @@
           desc: 'El proveedor retira un lote y hay que responder ya: se escribe el número del lote y aparece la lista de clientes que lo recibieron, salida por salida y neta de devoluciones, lista para exportar a Excel. En el mismo flujo, el lote vencido no sale: el disponible ya no lo cuenta (88, no 94) y el picking pide primero lo que vence antes (FEFO).',
           tags: ['Trazabilidad por lote', 'FEFO', 'Control de vencimientos'],
         },
+        {
+          key: 'portal-b2b',
+          title: 'Portal de pedidos B2B: su cliente pide solo',
+          desc: 'Sus clientes (restaurantes, hoteles, mercados) piden desde el teléfono, con su número de orden y solo los productos que usted les habilitó. El pedido llega al depósito tal como lo escribieron, junto a los que entran por la API: nadie lo vuelve a tipear desde un WhatsApp. El stock se mueve recién al aprobar — si algo no alcanza (pidió 12 cajas, hay 8), se despacha lo que hay y la diferencia queda registrada, línea por línea, a la vista del cliente.',
+          tags: ['Portal de pedidos', 'Buzón B2B y API', 'Aprobación antes de despachar'],
+        },
       ],
       demos_live_lbl: 'Disponible Ahora',
       demos_watch_yt: 'Ver en YouTube',
@@ -1062,6 +1068,12 @@
           desc: 'A supplier recalls a lot and you need the answer now: type the lot number and get the list of customers who received it, shipment by shipment and net of returns, ready to export to Excel. In the same flow, the expired lot never ships: availability no longer counts it (88, not 94) and picking takes the earliest-expiring lot first (FEFO).',
           tags: ['Lot traceability', 'FEFO', 'Expiry control'],
         },
+        {
+          key: 'portal-b2b',
+          title: 'B2B ordering portal: customers order on their own',
+          desc: 'Your customers (restaurants, hotels, markets) order from their phone, with their own order number and only the products you enabled for them. The order reaches the warehouse exactly as written, alongside the ones arriving through the API: nobody retypes it from a WhatsApp message. Stock moves only on approval — if something runs short (12 cases ordered, 8 on hand), what exists ships and the difference stays on record, line by line, visible to the customer.',
+          tags: ['Ordering portal', 'B2B inbox & API', 'Approval before shipping'],
+        },
       ],
       demos_live_lbl: 'Available Now',
       demos_watch_yt: 'Watch on YouTube',
@@ -1079,6 +1091,7 @@
     'toma-inventario':   { es: 'rIYmruKthoE', en: 'atoKa7NFN5s' },
     'recepcion-mercancia': { es: '3PiGwlWnzxg', en: 'ZZEZ0hmPiMM' },
     'retiro-recall': { es: 'kpgcN7WiMH0', en: 'KB21Psvt4G0' },
+    'portal-b2b': { es: 'GD9ILcFErqc', en: 'sbU0n6oCEGI' },
   };
   const ptDemoLangOverride = {};
 
