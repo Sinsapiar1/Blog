@@ -328,6 +328,17 @@
     /* ── Series label above KPI strip ── */
     .pt-kpi-series-lbl { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.13em; color:var(--text-tertiary); text-align:center; margin-bottom:10px; }
     /* ── Scale strip (29 Oct run) ── */
+    .pt-cap-ladder { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:18px 20px; margin:18px 0 0; }
+    .pt-cap-ladder-title { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.13em; color:var(--text-tertiary); text-align:center; margin-bottom:12px; }
+    .pt-cap-ladder-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    @media(max-width:700px){ .pt-cap-ladder-steps { grid-template-columns:repeat(2,1fr); } }
+    .pt-cap-step { background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px; padding:12px 10px; text-align:center; }
+    .pt-cap-step-ops { font-size:1rem; font-weight:900; color:var(--text-primary); }
+    .pt-cap-step-ops span { font-size:0.68rem; font-weight:700; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.06em; }
+    .pt-cap-step-p95 { font-size:1.2rem; font-weight:900; color:#FF6B00; letter-spacing:-0.03em; margin-top:2px; }
+    .pt-cap-step-note { font-size:0.68rem; color:var(--text-tertiary); line-height:1.35; margin-top:4px; }
+    .pt-cap-contract { display:flex; align-items:flex-start; justify-content:center; gap:8px; margin-top:14px; font-size:0.82rem; font-weight:700; color:var(--text-primary); line-height:1.45; text-align:center; }
+    .pt-cap-contract i { color:#FF6B00; margin-top:2px; }
     .pt-ab-strip { background:linear-gradient(135deg,rgba(255,107,0,0.06),rgba(255,59,48,0.03)); border:1px solid rgba(255,107,0,0.18); border-radius:20px; padding:26px 26px 20px; margin:26px 0; }
     .pt-ab-series-lbl { font-size:9px; font-weight:900; text-transform:uppercase; letter-spacing:0.13em; color:#FF9500; margin-bottom:7px; }
     .pt-ab-title { font-size:1rem; font-weight:800; color:var(--text-primary); line-height:1.35; margin-bottom:8px; }
@@ -643,19 +654,28 @@
 
       /* ── Security & Infrastructure ── */
       security_eyebrow: '03 Rendimiento y Seguridad',
-      security_title: '30 Operarios, 0 Errores.',
+      security_title: '160 Operarios, 0 Errores.',
       security_accent: 'Medido en Staging.',
-      security_sub: 'Probado con k6 sobre staging idéntico a producción: 5.000 SKUs en 3 bodegas, ~75.000 movimientos de Kardex, 4.716 peticiones, p95 de 179 ms y cero fallos. Resumen técnico disponible a solicitud. La infraestructura que custodia el activo más caro de su balance no puede ser una promesa — tiene que ser un número.',
+      security_sub: 'Corrida de capacidad del 1 de noviembre de 2026 sobre staging: 160 operarios de picking activos a la vez, con un historial de más de 300.000 salidas, p95 de 376 ms (con 120 operarios: 311 ms) y cero errores. Resumen técnico disponible a solicitud. La infraestructura que custodia el activo más caro de su balance no puede ser una promesa — tiene que ser un número.',
       security_tenant_note: 'PivetTrack corre sobre Django (Python) + PostgreSQL gestionado en Supabase (SSL obligatorio), desplegado en Railway: cada cliente tiene su propio servicio y su propia base de datos. Sus datos no comparten tablas, ni base, ni servidor con ninguna otra empresa.',
       security_kpis: [
-        { num: '179ms', label: 'Latencia p95',    sub: 'Picking con 30 operarios en simultáneo — medido, no estimado' },
-        { num: '30',    label: 'Concurrentes',    sub: '0 errores en 4.716 peticiones bajo carga sostenida' },
-        { num: '422/422', label: 'Despachos',     sub: 'Confirmaciones sin un solo descuadre de stock por concurrencia' },
+        { num: '376ms', label: 'Latencia p95',    sub: 'Picking con 160 operarios activos — medido, no estimado' },
+        { num: '160',   label: 'Concurrentes',    sub: '0 errores con un historial de más de 300.000 salidas' },
+        { num: '311ms', label: 'Con 120 operarios', sub: 'p95 de picking en la misma corrida' },
         { num: '+1.000', label: 'Tests Automáticos', sub: 'Cada actualización validada antes de llegar a su operación' },
       ],
+      security_ladder_title: 'La escalera completa de la corrida · p95 de picking',
+      security_ladder: [
+        { ops: '120', p95: '311 ms' },
+        { ops: '160', p95: '376 ms' },
+        { ops: '200', p95: '861 ms' },
+        { ops: '240', p95: '1,56 s', note: 'el techo de un despliegue estándar, ya con cola' },
+      ],
+      security_ladder_ops: 'operarios',
+      security_contract: 'Por contrato: hasta 120 usuarios simultáneos, con p95 de hasta 0,5 s en picking, con condiciones',
       security_cards: [
-        { icon: 'fas fa-tachometer-alt', title: 'Sin Caídas Bajo Pico de Demanda',      desc: 'En la serie base de picking el servidor no devolvió ni un solo error en 4.716 peticiones. Ante un exceso de demanda el sistema se ralentiza — pero no se cae. La operación de su equipo no se detiene.' },
-        { icon: 'fas fa-bolt',           title: '179 ms en el Piso del Almacén',        desc: 'El operario escanea y avanza: p95 de 179 ms en picking con 30 concurrentes sobre los mismos SKUs, sobre el mismo inventario, sin un solo descuadre en las 422 confirmaciones de despacho.' },
+        { icon: 'fas fa-tachometer-alt', title: 'Sin Caídas Bajo Pico de Demanda',      desc: 'En la corrida de capacidad el servidor no devolvió ni un solo error con 160 operarios de picking activos. Ante un exceso de demanda el sistema se ralentiza — pero no se cae. La operación de su equipo no se detiene.' },
+        { icon: 'fas fa-bolt',           title: '376 ms en el Piso del Almacén',        desc: 'El operario escanea y avanza: p95 de 376 ms en picking con 160 operarios activos a la vez (311 ms con 120), con un historial de más de 300.000 salidas.' },
         { icon: 'fas fa-code-branch',    title: '+1.000 Tests Automatizados',           desc: 'Versión 1.0 cerrada en octubre de 2026 con más de 1.000 tests automatizados. Cada actualización pasa por el conjunto completo de pruebas antes de llegar a su operación.' },
         { icon: 'fas fa-lock',           title: 'Auditoría Inmutable',                  desc: 'El Kardex es un registro histórico inalterable. Las correcciones se emiten como documentos nuevos — la historia no se reescribe, se documenta.' },
         { icon: 'fas fa-mobile-alt',     title: 'MFA/TOTP Obligatorio',                desc: 'Segundo factor TOTP obligatorio para el Súper Administrador y el Administrador, secreto cifrado en reposo y códigos de respaldo de un solo uso. Bloqueo automático por intentos fallidos. En el Portal B2B, opcional o exigido por cliente.' },
@@ -666,7 +686,7 @@
       ],
 
       /* ── Scale strip (29 Oct run) ── */
-      security_kpis_label: 'Serie base · picking con 30 operarios — staging',
+      security_kpis_label: 'Medido en staging, corrida única (1 nov 2026)',
       security_ab_eyebrow: 'Corrida del 29 de octubre · Staging · corridas únicas',
       security_ab_title: 'Toma general de 167.382 líneas cerrada en 229 s con 20 operarios despachando',
       security_ab_note: 'Medido en staging (corridas únicas, sin garantía contractual). Umbral de degradación: 2.000 ms.',
@@ -957,19 +977,28 @@
 
       /* ── Security & Infrastructure ── */
       security_eyebrow: '03 Performance & Security',
-      security_title: '30 Operators, 0 Errors.',
+      security_title: '160 Operators, 0 Errors.',
       security_accent: 'Measured on Staging.',
-      security_sub: 'Load-tested with k6 on a staging environment identical to production: 5,000 SKUs across 3 warehouses, ~75,000 Kardex entries, 4,716 requests, 179 ms p95, zero failures. Technical summary available on request. The infrastructure protecting the most valuable asset on your balance sheet cannot be a promise — it has to be a number.',
+      security_sub: 'Capacity run of November 1, 2026 on staging: 160 picking operators active at once, with a history of more than 300,000 shipments, 376 ms p95 (with 120 operators: 311 ms) and zero errors. Technical summary available on request. The infrastructure protecting the most valuable asset on your balance sheet cannot be a promise — it has to be a number.',
       security_tenant_note: 'PivetTrack runs on Django (Python) + managed PostgreSQL on Supabase (mandatory SSL), deployed on Railway: every client has their own service and their own database. Your data does not share tables, databases, or servers with any other company.',
       security_kpis: [
-        { num: '179ms',   label: 'p95 Latency',        sub: 'Picking with 30 simultaneous operators — measured, not estimated' },
-        { num: '30',      label: 'Concurrent',          sub: '0 errors across 4,716 requests under sustained load' },
-        { num: '422/422', label: 'Dispatches',          sub: 'Confirmed without a single stock discrepancy from concurrency' },
+        { num: '376ms',   label: 'p95 Latency',        sub: 'Picking with 160 active operators — measured, not estimated' },
+        { num: '160',     label: 'Concurrent',          sub: '0 errors with a history of more than 300,000 shipments' },
+        { num: '311ms',   label: 'With 120 operators',  sub: 'Picking p95 in the same run' },
         { num: '+1,000',  label: 'Automated Tests',     sub: 'Every update validated before it reaches your operation' },
       ],
+      security_ladder_title: 'The full ladder of the run · picking p95',
+      security_ladder: [
+        { ops: '120', p95: '311 ms' },
+        { ops: '160', p95: '376 ms' },
+        { ops: '200', p95: '861 ms' },
+        { ops: '240', p95: '1.56 s', note: 'the ceiling of a standard deployment, already queuing' },
+      ],
+      security_ladder_ops: 'operators',
+      security_contract: 'By contract: up to 120 simultaneous users, with a picking p95 of up to 0.5 s, under conditions',
       security_cards: [
-        { icon: 'fas fa-tachometer-alt', title: 'No Crashes Under Peak Load',          desc: 'In the base picking series the server did not return a single error across 4,716 requests. Under excessive demand the system slows down — but it does not go down. Your team\'s operation keeps moving.' },
-        { icon: 'fas fa-bolt',           title: '179 ms on the Warehouse Floor',       desc: 'Operators scan and move on: 179 ms p95 during picking with 30 concurrent users on the same SKUs, same inventory, with zero stock discrepancies across all 422 dispatch confirmations.' },
+        { icon: 'fas fa-tachometer-alt', title: 'No Crashes Under Peak Load',          desc: 'In the capacity run the server did not return a single error with 160 picking operators active. Under excessive demand the system slows down — but it does not go down. Your team\'s operation keeps moving.' },
+        { icon: 'fas fa-bolt',           title: '376 ms on the Warehouse Floor',       desc: 'Operators scan and move on: 376 ms p95 during picking with 160 operators active at once (311 ms with 120), with a history of more than 300,000 shipments.' },
         { icon: 'fas fa-code-branch',    title: '+1,000 Automated Tests',              desc: 'Version 1.0 closed in October 2026 with over 1,000 automated tests. Every update passes the full test suite before reaching your operation.' },
         { icon: 'fas fa-lock',           title: 'Immutable Audit Trail',               desc: 'The Kardex is a historical record of movements, not an editable spreadsheet. Corrections are issued as new documents — history is not rewritten, it is documented.' },
         { icon: 'fas fa-mobile-alt',     title: 'Mandatory MFA/TOTP',                 desc: 'TOTP second factor mandatory for the Super Administrator and the Administrator, secret encrypted at rest, single-use backup codes, and automatic lockout on failed login attempts. On the B2B Portal, optional or required per customer.' },
@@ -980,7 +1009,7 @@
       ],
 
       /* ── Scale strip (29 Oct run) ── */
-      security_kpis_label: 'Base series · picking with 30 operators — staging',
+      security_kpis_label: 'Measured on staging, single run (Nov 1, 2026)',
       security_ab_eyebrow: 'Oct. 29 run · Staging · single runs',
       security_ab_title: 'A 167,382-line full count closed in 229 s with 20 operators shipping',
       security_ab_note: 'Measured on staging (single runs, no contractual guarantee). Degradation threshold: 2,000 ms.',
@@ -1451,6 +1480,18 @@
               <div class="pt-stat-lbl">${k.label}</div>
               <div class="pt-stat-sub">${k.sub}</div>
             </div>`).join('')}
+        </div>
+        <div class="pt-cap-ladder">
+          <div class="pt-cap-ladder-title">${d.security_ladder_title}</div>
+          <div class="pt-cap-ladder-steps">
+            ${d.security_ladder.map(st => `
+              <div class="pt-cap-step">
+                <div class="pt-cap-step-ops">${st.ops} <span>${d.security_ladder_ops}</span></div>
+                <div class="pt-cap-step-p95">${st.p95}</div>
+                ${st.note ? `<div class="pt-cap-step-note">${st.note}</div>` : ''}
+              </div>`).join('')}
+          </div>
+          <div class="pt-cap-contract"><i class="fas fa-file-contract"></i> ${d.security_contract}</div>
         </div>
         <div class="pt-ab-strip" data-aos="fade-up">
           <div class="pt-ab-series-lbl"><i class="fas fa-chart-bar"></i>&nbsp; ${d.security_ab_eyebrow}</div>
