@@ -714,8 +714,8 @@
     <nav class="menu" aria-label="Principal">
       <a href="pivettrack.html">PivetTrack</a>
       <a href="appsheet-demos.html" aria-current="page">Micro apps</a>
-      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
-      <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+      <a href="pivettrack.html#precios"><span data-l="es">Precios</span><span data-l="en">Pricing</span></a>
+      <a class="menu__accion" href="contacto.html?motivo=demo_pivettrack"><span data-l="es">Agendar diagnóstico</span><span data-l="en">Book a diagnostic</span></a>
       <button class="idioma" type="button" onclick="document.getElementById('languageToggle').click()" aria-label="Cambiar idioma / Change language"><span data-l="es">English</span><span data-l="en">Español</span></button>
     </nav>
   </div>
@@ -824,7 +824,7 @@
           id: 'ghiOKoppKp4',
           title: 'WMS Recepción de Camiones',
           desc: 'Sistema completo de gestión de almacén para operaciones de alimentos. Recepción, salidas, control de stock, vencimientos y trazabilidad total.',
-          desc_long: 'Sistema WMS construido con AppSheet y Google Sheets para operación de alimentos en Hialeah, FL. Incluye:\n\n• Recepción de camiones con validación de temperatura y checklist digital\n• Control automático de lotes y fechas de vencimiento\n• Alertas por email cuando hay productos próximos a vencer\n• Generación automática de documentos PDF (etiquetas, informes de trazabilidad)\n• Dashboard de rentabilidad con cálculo de PMP (Precio Medio Ponderado)\n• Exportación de reportes a Excel para análisis\n• 100% funcional desde celular, sin instalación de apps\n\nImplementado en operación real con 20+ usuarios, turno 7x7, CERO papel desde el primer mes.',
+          desc_long: 'Sistema WMS construido con AppSheet y Google Sheets para una operación de alimentos. Incluye:\n\n• Recepción de camiones con validación de temperatura y checklist digital\n• Control automático de lotes y fechas de vencimiento\n• Alertas por email cuando hay productos próximos a vencer\n• Generación automática de documentos PDF (etiquetas, informes de trazabilidad)\n• Dashboard de rentabilidad con cálculo de PMP (Precio Medio Ponderado)\n• Exportación de reportes a Excel para análisis\n• 100% funcional desde celular, sin instalación de apps\n\nImplementado en operación real con 20+ usuarios, turno 7x7, CERO papel desde el primer mes.',
           tags: ['AppSheet', 'Google Sheets', 'WMS', 'Inventario'],
           screenshots: [
             'https://i.imgur.com/bBYwgRi.png',
@@ -852,7 +852,7 @@
           id: 'lXj1kYlz8XY',
           title: 'WMS Mobile — Auditoría de Inventarios',
           desc: 'Módulo móvil que convierte cualquier smartphone en un escáner industrial. Escaneo en ráfaga sin fricción, bloqueo automático de errores por bodega y cuadratura en tiempo real. Un clic genera el reporte ejecutivo listo para SAP, Oracle o cualquier ERP.',
-          desc_long: 'El módulo WMS Mobile resuelve el problema más costoso del inventario físico: detener la operación y gastar miles en equipos de escaneo.\n\n⏱Escaneo «Modo Ametralladora» — Ahorro de tiempo real\nEl operador escanea el código y el sistema salta automáticamente al campo de cantidad. Guarda y reabre en milisegundos. Lo que antes tomaba horas de digitación, ahora se hace al ritmo que el operador camine por el pasillo.\n\nSistema «Antibobos» por Bodega — Cero errores\nSi está contando la Bodega 3, el sistema filtra mágicamente y solo permite validar SKUs de esa bodega. Escanear algo ajeno lo bloquea al instante. Imposible contaminar datos entre ubicaciones.\n\nCuadratura en Tiempo Real — Ahorro de dinero\nAunque un producto haya sido contado en tres pallets distintos, los scripts en segundo plano consolidan al vuelo. El gerente ve un Dashboard en vivo con alertas rojas mostrando exactamente qué sobra y qué falta — puede corregir antes de que el equipo salga de la bodega.\n\nCierre del Inventario en 1 Segundo\nUn solo botón «Cerrar Inventario» dispara un Bot en la nube que genera un correo ejecutivo en HTML con plantilla de Excel filtrada dinámicamente (Inventario General o Parcial). Listo en segundos para inyectar a SAP, Oracle o cualquier ERP — sin manipulación manual.',
+          desc_long: 'El módulo WMS Mobile resuelve el problema más costoso del inventario físico: detener la operación y gastar miles en equipos de escaneo.\n\n⏱Escaneo «Modo Ametralladora» — Ahorro de tiempo real\nEl operador escanea el código y el sistema salta automáticamente al campo de cantidad. Guarda y reabre en milisegundos. Lo que antes tomaba horas de digitación, ahora se hace al ritmo que el operador camine por el pasillo.\n\nSistema «Antibobos» por Bodega — Bloquea el error al escanear\nSi está contando la Bodega 3, el sistema filtra mágicamente y solo permite validar SKUs de esa bodega. Escanear algo ajeno lo bloquea al instante. Imposible contaminar datos entre ubicaciones.\n\nCuadratura en Tiempo Real — Ahorro de dinero\nAunque un producto haya sido contado en tres pallets distintos, los scripts en segundo plano consolidan al vuelo. El gerente ve un Dashboard en vivo con alertas rojas mostrando exactamente qué sobra y qué falta — puede corregir antes de que el equipo salga de la bodega.\n\nCierre del Inventario en 1 Segundo\nUn solo botón «Cerrar Inventario» dispara un Bot en la nube que genera un correo ejecutivo en HTML con plantilla de Excel filtrada dinámicamente (Inventario General o Parcial). Listo en segundos para inyectar a SAP, Oracle o cualquier ERP — sin manipulación manual.',
           tags: ['AppSheet', 'WMS', 'Inventario', 'Auditoría', 'ERP'],
           screenshots: [
             'https://i.imgur.com/M9PapZS.png',
@@ -886,7 +886,7 @@
           id: 'ghiOKoppKp4',
           title: 'Truck Reception WMS',
           desc: 'Complete warehouse management system for food operations. Reception, exits, stock control, expiration tracking and full traceability.',
-          desc_long: 'WMS system built with AppSheet and Google Sheets for food operations in Hialeah, FL. Includes:\n\n• Truck reception with temperature validation and digital checklist\n• Automatic batch and expiration date control\n• Email alerts for products nearing expiration\n• Automatic PDF document generation (labels, traceability reports)\n• Profitability dashboard with weighted average price calculation\n• Excel report export for analysis\n• 100% functional from mobile, no app installation required\n\nDeployed in real operation with 20+ users, 7x7 shifts, ZERO paper from month one.',
+          desc_long: 'WMS system built with AppSheet and Google Sheets for food operations. Includes:\n\n• Truck reception with temperature validation and digital checklist\n• Automatic batch and expiration date control\n• Email alerts for products nearing expiration\n• Automatic PDF document generation (labels, traceability reports)\n• Profitability dashboard with weighted average price calculation\n• Excel report export for analysis\n• 100% functional from mobile, no app installation required\n\nDeployed in real operation with 20+ users, 7x7 shifts, ZERO paper from month one.',
           tags: ['AppSheet', 'Google Sheets', 'WMS', 'Inventory'],
           screenshots: [
             'https://i.imgur.com/bBYwgRi.png',
@@ -1231,7 +1231,7 @@
   <div class="marco pie__fila">
     <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
     <nav class="pie__enlaces" aria-label="Secundaria">
-      <a href="cv.html">CV</a>
+      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
       <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
       <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
       <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>

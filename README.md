@@ -14,7 +14,6 @@ HTML estático publicado con GitHub Pages desde `main`; sin compilación ni depe
 | `appsheet-demos.html` | Micro apps hechas con AppSheet |
 | `proyectos.html`, `galeria.html` | Redirigen a Micro apps, para no romper enlaces viejos |
 | `en/` | Portada, PivetTrack y Sobre mí en inglés |
-| `cv.html` | CV con descarga en PDF |
 | `privacidad.html` | Política de privacidad del sitio |
 | `legal/` | Documentos legales; se generan desde `docs/comercial/scripts/publicar_legal_blog.py` en el repositorio de PivetTrack |
 
