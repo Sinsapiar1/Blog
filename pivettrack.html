@@ -19,11 +19,11 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PivetTrack: inventario por lote y vencimiento para distribuidores de alimentos. FEFO, retiro de lotes, picking por escaneo y QuickBooks Online incluido. Miami, FL.">
+  <meta name="description" content="PivetTrack: inventario por lote y vencimiento para distribuidores y mayoristas. FEFO, retiro de lotes, picking por escaneo y QuickBooks Online incluido. Miami, FL.">
   <meta name="author" content="Raul Pivet">
   <meta name="theme-color" content="#3c3cae">
-  <meta property="og:title" content="WMS para distribuidores de alimentos: lotes y FEFO | PivetTrack">
-  <meta property="og:description" content="PivetTrack: inventario por lote y vencimiento para distribuidores de alimentos. FEFO, retiro de lotes, picking por escaneo y QuickBooks Online incluido. Miami, FL.">
+  <meta property="og:title" content="WMS para distribuidores y mayoristas: lotes y FEFO | PivetTrack">
+  <meta property="og:description" content="PivetTrack: inventario por lote y vencimiento para distribuidores y mayoristas. FEFO, retiro de lotes, picking por escaneo y QuickBooks Online incluido. Miami, FL.">
   <meta property="og:image" content="https://www.raulpivet.com/img/og_es.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -36,7 +36,7 @@
   <link rel="alternate" hreflang="es" href="https://www.raulpivet.com/pivettrack.html">
   <link rel="alternate" hreflang="en" href="https://www.raulpivet.com/en/pivettrack.html">
   <link rel="alternate" hreflang="x-default" href="https://www.raulpivet.com/pivettrack.html">
-  <title>WMS para distribuidores de alimentos: lotes y FEFO | PivetTrack</title>
+  <title>WMS para distribuidores y mayoristas: lotes y FEFO | PivetTrack</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script type="application/ld+json">
   {
@@ -73,7 +73,7 @@
         "url": "https://www.raulpivet.com/pivettrack.html",
         "image": "https://www.raulpivet.com/img/og_es.jpg",
         "inLanguage": ["es", "en"],
-        "description": "PivetTrack: inventario por lote y vencimiento para distribuidores de alimentos. FEFO, retiro de lotes, picking por escaneo y QuickBooks Online incluido. Miami, FL.",
+        "description": "PivetTrack: inventario por lote y vencimiento para distribuidores y mayoristas. FEFO, retiro de lotes, picking por escaneo y QuickBooks Online incluido. Miami, FL.",
         "publisher": { "@id": "https://www.raulpivet.com/#organization" },
         "offers": {
           "@type": "Offer",
@@ -114,6 +114,7 @@
       <a class="idioma" href="/en/pivettrack.html" hreflang="en" lang="en" onclick="try{localStorage.setItem('homeLang','en')}catch(e){}">English</a>
     </nav>
   </div>
+  <nav class="indice" aria-label="En esta página"><div class="marco indice__fila"><a href="#recorrido">Recorrido</a><a href="#gerencia">Gerencia y portal</a><a href="#medido">Medición</a><a href="#videos">Videos</a><a href="#seguridad">Seguridad</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a><span class="indice__marca" aria-hidden="true"></span></div></nav>
 </header>
 
 <main id="contenido">
@@ -121,7 +122,7 @@
   <div class="marco">
     <h1>Sepa en minutos qué cliente recibió cada lote.</h1>
     <div class="pt-entrada">
-      <p class="grande">PivetTrack sigue cada caja desde su muelle hasta su cliente. Abajo está el recorrido completo de un lote de yogur, con pantallas reales del sistema.</p>
+      <p class="grande">PivetTrack sigue cada caja desde su muelle hasta su cliente. Como ejemplo, abajo está el recorrido de un lote de yogur, con pantallas reales del sistema. En ferretería, perfumería o repuestos es el mismo camino.</p>
       
       <div class="portada__acciones">
         <a class="boton" href="contacto.html?motivo=demo_pivettrack">Agendar una sesión de diagnóstico</a>
@@ -133,7 +134,7 @@
 </section>
 <div class="cinta" aria-hidden="true"></div>
 
-<section class="tramo marco">
+<section class="tramo marco" id="recorrido">
   <h2 class="pt-titulo">El recorrido de un lote</h2>
   <ol class="recorrido">
     <li class="parada">
@@ -191,7 +192,7 @@
   </ol>
 </section>
 
-<section class="tramo fondo-hormigon">
+<section class="tramo fondo-hormigon" id="gerencia">
   <div class="marco dos pt-gerencia">
     <div>
       <h2>Decida con los números de hoy.</h2>
@@ -210,13 +211,13 @@
     </div>
     <div>
       <h2>Sus clientes piden en su portal, con su logo.</h2>
-      <p class="parrafo">Restaurantes, hoteles y mercados piden desde el teléfono, con los productos que usted les habilita. También hay una API para conectar otros sistemas. El alcance del portal y de la API se define en la propuesta formal.</p>
+      <p class="parrafo">Sus clientes piden desde el teléfono, con los productos que usted les habilita. También hay una API para conectar otros sistemas. El alcance del portal y de la API se define en la propuesta formal.</p>
       
     </div>
   </div>
 </section>
 
-<section class="tramo medido">
+<section class="tramo medido" id="medido">
   <div class="marco">
     <h2>Cualquier proveedor dice que su sistema es rápido. Aquí está la medición.</h2>
     <table class="medicion">
@@ -228,7 +229,7 @@
       <tbody>
         <tr>
           <td>120 operarios haciendo picking a la vez durante 15 minutos, con más de 300,000 salidas en el historial. 4,243 de 4,243 salidas confirmadas y ningún error de servidor en 46,904 peticiones.</td>
-          <td><div class="medicion__valor">293 ms</div>p95: 95 de cada 100 respuestas, o menos</td>
+          <td><div class="medicion__valor">293 ms</div>p95: 95 de cada 100 respuestas, o menos<div class="medidor" aria-hidden="true"><span></span></div><div class="medidor__pie">De un máximo de 0.5 s por contrato, con condiciones</div></td>
           <td class="medicion__fecha">3 nov 2026</td>
         </tr>
         <tr>
@@ -248,7 +249,7 @@
   </div>
 </section>
 
-<section class="tramo marco">
+<section class="tramo marco" id="videos">
   <h2 class="pt-titulo">Véalo funcionando</h2>
   <div class="videos" data-videos>
     <div class="video">
@@ -267,7 +268,7 @@
   <p class="videos__canal"><a class="enlace" href="https://www.youtube.com/@raulpivet4462/videos" rel="noopener noreferrer">Ver todos los videos en YouTube</a></p>
 </section>
 
-<section class="tramo fondo-hormigon">
+<section class="tramo fondo-hormigon" id="seguridad">
   <div class="marco dos">
     <div>
       <h2>Una instancia exclusiva para su empresa.</h2>
@@ -319,18 +320,19 @@
   
 </section>
 
-<section class="tramo fondo-hormigon">
+<section class="tramo fondo-hormigon" id="preguntas">
   <div class="marco dos">
     <div>
       <h2>Antes de cambiar de sistema, conviene preguntar esto.</h2>
       <p class="grande sm-mt">Si su duda no está aquí, la vemos en la sesión de diagnóstico.</p>
     </div>
     <div class="dudas">
+      <details class="duda"><summary>¿Sirve si no vendo alimentos?</summary><p>Sí. Cada producto se configura por separado: con lote, con lote y vencimiento, o sin ninguno de los dos. Así funciona para ferretería, perfumería o repuestos. Hoy no lleva número de serie unidad por unidad ni compatibilidad por vehículo; si su operación los necesita, lo vemos en la sesión de diagnóstico.</p></details>
       <details class="duda"><summary>¿Cuánto tarda la puesta en marcha?</summary><p>Son 2 a 3 semanas. Nosotros cargamos su catálogo desde un Excel o una exportación de su sistema, y su equipo recibe dos capacitaciones de 2 horas.</p></details>
       <details class="duda"><summary>Ya tengo QuickBooks. ¿Para qué necesito esto?</summary><p>QuickBooks lleva la contabilidad, pero no sabe qué lote está en qué estante ni a quién se lo despachó. PivetTrack lleva el piso y le envía a QuickBooks lo que ya pasó, sin doble carga. La integración con QuickBooks Online está incluida. Si usa Desktop, PivetTrack funciona igual sin integración, y conectarlo se cotiza aparte.</p></details>
       <details class="duda"><summary>¿Quién toca mi contabilidad?</summary><p>Nadie de nuestro lado. En la implementación conectamos su empresa y elegimos las cuentas con su contador. Después, PivetTrack sólo crea documentos nuevos y nunca modifica ni borra lo que ya está en QuickBooks.</p></details>
       <details class="duda"><summary>¿Aguanta mi volumen?</summary><p>Lo medimos: con 165,382 SKU, una toma general de 167,382 líneas se cerró en 229 segundos mientras 20 operarios seguían despachando, y ningún pedido falló de 6,176. Son corridas en un entorno de prueba, no una garantía. Su SLA es el del contrato.</p></details>
-      <details class="duda"><summary>¿Cómo ayuda con la trazabilidad que pide FSMA 204?</summary><p>PivetTrack registra el lote, el vencimiento y el destino de cada movimiento, y arma la lista de un retiro en un clic. Eso apoya sus procesos de trazabilidad. Cumplir la norma sigue siendo responsabilidad de su empresa, y no se lo vamos a prometer.</p></details>
+      <details class="duda"><summary>Si distribuyo alimentos, ¿cómo ayuda con FSMA 204?</summary><p>PivetTrack registra el lote, el vencimiento y el destino de cada movimiento, y arma la lista de un retiro en un clic. Eso apoya sus procesos de trazabilidad. Cumplir la norma sigue siendo responsabilidad de su empresa, y no se lo vamos a prometer.</p></details>
       <details class="duda"><summary>¿Y si después quiero irme?</summary><p>Durante el contrato puede exportar a Excel cuando quiera: Stock Actual, Kardex, próximos a vencer, trazabilidad de un lote y el comprobante de la Toma. Al terminar, si está al día con los pagos, sus datos siguen disponibles para exportar durante 30 días. Lo que ya está en QuickBooks queda en su QuickBooks.</p></details>
       <details class="duda"><summary>¿Mis datos están seguros?</summary><p>Su empresa tiene su propia instancia y su propia base de datos, que no comparte con nadie, con doble factor para los administradores, respaldos diarios y un compromiso de disponibilidad del 99.9% por contrato.</p></details>
     </div>
