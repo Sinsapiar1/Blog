@@ -49,12 +49,38 @@
     var lista = etiqueta.querySelector('.retiro');
     lista.hidden = true;
     boton.setAttribute('aria-expanded', 'false');
-    boton.addEventListener('click', function () {
-      var mostrar = lista.hidden;
+    var escritorio = window.matchMedia('(min-width: 961px)');
+    function retirar(mostrar) {
       lista.hidden = !mostrar;
       etiqueta.classList.toggle('retirado', mostrar);
       boton.setAttribute('aria-expanded', String(mostrar));
-    });
+      /* Con la lista abierta la etiqueta puede no caber en la ventana: se sube para que se lea el final. */
+      var sobra = window.innerHeight - etiqueta.offsetHeight - 24;
+      etiqueta.style.top = mostrar && escritorio.matches && sobra < 16 ? sobra + 'px' : '';
+    }
+    var alPasar = false;
+    boton.addEventListener('click', function () { alPasar = false; retirar(lista.hidden); });
+
+    /* El lote que viaja: un sello cae de golpe, por eso va con una clase y no atado al scroll. */
+    var etapas = Array.prototype.slice.call(document.querySelectorAll('.etapa'));
+    if (etapas.length && 'IntersectionObserver' in window) {
+      etiqueta.parentNode.classList.add('viaje--vivo');
+      /* Se recalculan todas: un salto largo (Inicio, Fin) cruza etapas sin avisar por cada una. */
+      var observador = new IntersectionObserver(function () {
+        var linea = window.innerHeight * 0.62;
+        etapas.forEach(function (etapa, i) {
+          var puesta = etapa.getBoundingClientRect().top < linea;
+          etapa.querySelector('.timbre').classList.toggle('puesto', puesta);
+          var sello = etiqueta.querySelector('[data-timbre="' + i + '"]');
+          if (sello) { sello.classList.toggle('puesto', puesta); }
+          if (i === etapas.length - 1 && escritorio.matches) {
+            if (puesta && lista.hidden) { alPasar = true; retirar(true); }
+            if (!puesta && alPasar) { alPasar = false; retirar(false); }
+          }
+        });
+      }, { rootMargin: '0px 0px -38% 0px' });
+      etapas.concat([document.querySelector('.portada__texto'), document.querySelector('.viaje')]).forEach(function (e) { observador.observe(e); });
+    }
   }
   /* Videos: la imagen de YouTube carga primero; el reproductor, sólo al pulsar. */
   var videos = document.querySelector('[data-videos]');

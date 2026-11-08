@@ -125,8 +125,8 @@
 
 <main id="contenido">
 <section class="portada">
-  <div class="marco portada__rejilla">
-    <div>
+  <div class="marco portada__rejilla portada__rejilla--viaje">
+    <div class="portada__texto">
       <h1>¿Quién recibió ese lote?</h1>
       <p class="grande">PivetTrack es el sistema de inventario para distribuidores de alimentos del sur de Florida. Sigue cada lote hasta su cliente, despacha primero lo que vence primero y lleva cada operación a su QuickBooks Online.</p>
       
@@ -152,7 +152,10 @@
       </div>
       <svg viewBox="0 0 145 60" preserveAspectRatio="none" role="img" aria-label="Código de barras del lote GC-26-1014"><rect x="0" width="2" height="60"/><rect x="3" width="1" height="60"/><rect x="6" width="1" height="60"/><rect x="11" width="2" height="60"/><rect x="14" width="1" height="60"/><rect x="18" width="1" height="60"/><rect x="22" width="1" height="60"/><rect x="26" width="1" height="60"/><rect x="30" width="2" height="60"/><rect x="33" width="1" height="60"/><rect x="36" width="2" height="60"/><rect x="39" width="3" height="60"/><rect x="44" width="2" height="60"/><rect x="48" width="3" height="60"/><rect x="53" width="1" height="60"/><rect x="55" width="2" height="60"/><rect x="59" width="3" height="60"/><rect x="63" width="1" height="60"/><rect x="66" width="1" height="60"/><rect x="69" width="2" height="60"/><rect x="72" width="3" height="60"/><rect x="77" width="1" height="60"/><rect x="80" width="3" height="60"/><rect x="85" width="2" height="60"/><rect x="88" width="1" height="60"/><rect x="91" width="3" height="60"/><rect x="95" width="2" height="60"/><rect x="99" width="1" height="60"/><rect x="102" width="3" height="60"/><rect x="107" width="2" height="60"/><rect x="110" width="2" height="60"/><rect x="114" width="1" height="60"/><rect x="117" width="3" height="60"/><rect x="121" width="1" height="60"/><rect x="124" width="1" height="60"/><rect x="127" width="4" height="60"/><rect x="132" width="2" height="60"/><rect x="137" width="3" height="60"/><rect x="141" width="1" height="60"/><rect x="143" width="2" height="60"/></svg>
       <div class="etiqueta__codigo">GC-26-1014</div>
-      <div class="sello" aria-hidden="true">RETIRO</div>
+      <div class="timbre timbre--recibido" data-timbre="0" aria-hidden="true">RECIBIDO<small>RECEIVED</small></div>
+      <div class="timbre timbre--pasillo" data-timbre="1" aria-hidden="true">PASILLO 4-B<small>AISLE 4-B</small></div>
+      <div class="timbre timbre--despachado" data-timbre="2" aria-hidden="true">DESPACHADO<small>SHIPPED</small></div>
+      <div class="sello" aria-hidden="true">RETIRO<small>RECALL</small></div>
       <button class="etiqueta__boton" type="button">Retirar este lote</button>
       <div class="retiro" aria-live="polite">
         <p class="retiro__titulo">Lo recibieron 4 clientes</p>
@@ -169,6 +172,18 @@
         
       </div>
     </article>
+
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true"><filter id="tinta-sello"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="r"/><feDisplacementMap in="SourceGraphic" in2="r" scale="2.2"/></filter></svg>
+    <div class="viaje">
+      <h2 class="oculto">El recorrido de un lote</h2>
+      <ol>
+        <li class="etapa"><div class="timbre " aria-hidden="true">RECIBIDO<small>RECEIVED</small></div><h3>Entran 60 cajas por la puerta.</h3><p>Cada una se registra con su lote y su vencimiento, contra el documento del proveedor. Si faltan cajas, la diferencia queda anotada.</p></li>
+        <li class="etapa"><div class="timbre " aria-hidden="true">PASILLO 4-B<small>AISLE 4-B</small></div><h3>El sistema sabe en qué pasillo quedó.</h3><p>Lote por lote y ubicación por ubicación. Nadie tiene que recorrer la bodega para encontrarlo.</p></li>
+        <li class="etapa"><div class="timbre " aria-hidden="true">DESPACHADO<small>SHIPPED</small></div><h3>Sale primero lo que vence primero.</h3><p>52 cajas salen a 4 clientes. Cada despacho queda unido a su cliente, su lote y su fecha.</p></li>
+        <li class="etapa"><div class="timbre " aria-hidden="true">RETIRO<small>RECALL</small></div><h3>Un día hay que retirarlo.</h3><p>Un clic y tiene la lista: quién lo recibió, cuántas cajas y cuántas siguen en su bodega.</p></li>
+      </ol>
+      <div class="viaje__cierre"><a class="boton" href="contacto.html?motivo=demo_pivettrack">Agendar una sesión de diagnóstico</a><p class="portada__aclara">Etiqueta y cifras de demostración.</p></div>
+    </div>
   </div>
 </section>
 <div class="cinta" aria-hidden="true"></div>

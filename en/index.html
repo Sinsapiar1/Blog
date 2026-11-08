@@ -125,8 +125,8 @@
 
 <main id="contenido">
 <section class="portada">
-  <div class="marco portada__rejilla">
-    <div>
+  <div class="marco portada__rejilla portada__rejilla--viaje">
+    <div class="portada__texto">
       <h1>Who got that lot?</h1>
       
       <p class="grande">PivetTrack is the inventory system for South Florida food distributors. It follows every lot to your customer, ships the earliest-expiring lot first and sends every transaction to your QuickBooks Online.</p>
@@ -152,7 +152,10 @@
       </div>
       <svg viewBox="0 0 145 60" preserveAspectRatio="none" role="img" aria-label="Barcode for lot GC-26-1014"><rect x="0" width="2" height="60"/><rect x="3" width="1" height="60"/><rect x="6" width="1" height="60"/><rect x="11" width="2" height="60"/><rect x="14" width="1" height="60"/><rect x="18" width="1" height="60"/><rect x="22" width="1" height="60"/><rect x="26" width="1" height="60"/><rect x="30" width="2" height="60"/><rect x="33" width="1" height="60"/><rect x="36" width="2" height="60"/><rect x="39" width="3" height="60"/><rect x="44" width="2" height="60"/><rect x="48" width="3" height="60"/><rect x="53" width="1" height="60"/><rect x="55" width="2" height="60"/><rect x="59" width="3" height="60"/><rect x="63" width="1" height="60"/><rect x="66" width="1" height="60"/><rect x="69" width="2" height="60"/><rect x="72" width="3" height="60"/><rect x="77" width="1" height="60"/><rect x="80" width="3" height="60"/><rect x="85" width="2" height="60"/><rect x="88" width="1" height="60"/><rect x="91" width="3" height="60"/><rect x="95" width="2" height="60"/><rect x="99" width="1" height="60"/><rect x="102" width="3" height="60"/><rect x="107" width="2" height="60"/><rect x="110" width="2" height="60"/><rect x="114" width="1" height="60"/><rect x="117" width="3" height="60"/><rect x="121" width="1" height="60"/><rect x="124" width="1" height="60"/><rect x="127" width="4" height="60"/><rect x="132" width="2" height="60"/><rect x="137" width="3" height="60"/><rect x="141" width="1" height="60"/><rect x="143" width="2" height="60"/></svg>
       <div class="etiqueta__codigo">GC-26-1014</div>
-      <div class="sello" aria-hidden="true">RECALL</div>
+      <div class="timbre timbre--recibido" data-timbre="0" aria-hidden="true">RECEIVED<small>RECIBIDO</small></div>
+      <div class="timbre timbre--pasillo" data-timbre="1" aria-hidden="true">AISLE 4-B<small>PASILLO 4-B</small></div>
+      <div class="timbre timbre--despachado" data-timbre="2" aria-hidden="true">SHIPPED<small>DESPACHADO</small></div>
+      <div class="sello" aria-hidden="true">RECALL<small>RETIRO</small></div>
       <button class="etiqueta__boton" type="button">Recall this lot</button>
       <div class="retiro" aria-live="polite">
         
@@ -169,6 +172,18 @@
         <p class="retiro__aclara">Demo data. In the app, this list goes to Excel in one click.</p>
       </div>
     </article>
+
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true"><filter id="tinta-sello"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="r"/><feDisplacementMap in="SourceGraphic" in2="r" scale="2.2"/></filter></svg>
+    <div class="viaje">
+      <h2 class="oculto">The journey of a lot</h2>
+      <ol>
+        <li class="etapa"><div class="timbre " aria-hidden="true">RECEIVED<small>RECIBIDO</small></div><h3>60 cases come through the door.</h3><p>Each one is logged with its lot and expiry date, against the supplier's document. If cases are missing, the difference is on record.</p></li>
+        <li class="etapa"><div class="timbre " aria-hidden="true">AISLE 4-B<small>PASILLO 4-B</small></div><h3>The system knows which aisle it's in.</h3><p>Lot by lot, location by location. Nobody has to walk the warehouse looking for it.</p></li>
+        <li class="etapa"><div class="timbre " aria-hidden="true">SHIPPED<small>DESPACHADO</small></div><h3>What expires first ships first.</h3><p>52 cases go out to 4 customers. Each shipment stays tied to its customer, its lot and its date.</p></li>
+        <li class="etapa"><div class="timbre " aria-hidden="true">RECALL<small>RETIRO</small></div><h3>Then one day you have to pull it back.</h3><p>One click and you have the list: who received it, how many cases, and how many are still in your warehouse.</p></li>
+      </ol>
+      <div class="viaje__cierre"><a class="boton" href="/contacto.html?motivo=demo_pivettrack">Book a diagnostic session</a><p class="portada__aclara">Demo label and figures.</p></div>
+    </div>
   </div>
 </section>
 <div class="cinta" aria-hidden="true"></div>
