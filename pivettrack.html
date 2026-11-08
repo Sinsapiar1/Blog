@@ -622,9 +622,9 @@
         },
         {
           step: 'Arquitectura 02 / 03', icon: 'fas fa-shield-alt', label: 'Logística Inversa Quirúrgica',
-          title: 'El PMP del stock remanente no se contamina — cada devolución al costo histórico real del lote',
-          desc: 'Cuando devuelve mercadería a un proveedor, un sistema convencional descuenta al costo promedio vigente. PivetTrack descuenta contra el costo histórico real del lote efectivamente devuelto. Su margen siempre se calcula sobre una cifra verdadera.',
-          tags: ['PMP Exacto', 'Costo Histórico Real', 'Margen Protegido', 'Lote a Lote'],
+          title: 'Una devolución de cliente reingresa a su costo real, no al promedio del día',
+          desc: 'Cuando un cliente devuelve mercadería, PivetTrack la reingresa al costo con que salió y recalcula el PMP. La devolución a proveedor queda en el Kardex al costo de su factura, para cuadrar la nota de crédito, y no modifica el PMP.',
+          tags: ['PMP Recalculado', 'Costo de la Salida', 'Nota de Crédito', 'Sin Planillas'],
           wac_context: '200 u. a PMP US$12.00. Un cliente devuelve 100 u. que salieron a US$10.00.',
           wac_lbl_bad: 'Sistema Convencional', wac_lbl_good: 'PivetTrack',
           wac_amt_bad: 'PMP US$12.00', wac_amt_good: 'PMP US$11.33',
@@ -775,6 +775,7 @@
         'SLA de disponibilidad 99.9% comprometido por contrato (con créditos de servicio)',
         'Respaldos automáticos gestionados',
         'Todas las mejoras de producto sin costo adicional',
+        'Integración opcional con QuickBooks Online, sin cargo adicional',
       ],
       pricing_why_title: 'Por qué este modelo conviene',
       pricing_why: [
@@ -788,7 +789,6 @@
       pricing_quoted: [
         'Add-on de Infraestructura Avanzada (Plan Enterprise): 3 o más informes pesados simultáneos, o 3 o más procesos de gran volumen en simultáneo, de forma rutinaria',
         'Portal B2B, API y webhooks: su habilitación y alcance se definen en la propuesta formal',
-        'Integración opcional con QuickBooks Online: US$500 de configuración + US$200/mes',
         'Desarrollos de software a medida de cualquier tipo',
         'Integraciones con otros sistemas (QuickBooks Desktop u otro ERP)',
         'Migraciones desde una segunda fuente de datos, o con depuración de los datos de origen',
@@ -937,9 +937,9 @@
         },
         {
           step: 'Architecture 02 / 03', icon: 'fas fa-shield-alt', label: 'Surgical Reverse Logistics',
-          title: 'The remaining stock\'s WAC is never contaminated — every return at the real historical lot cost',
-          desc: 'When a conventional system processes a supplier return, it deducts at the current average cost. PivetTrack deducts at the real historical cost of the lot actually returned. Your margin is always calculated on a true figure.',
-          tags: ['Exact WAC', 'Real Historical Cost', 'Protected Margin', 'Lot by Lot'],
+          title: 'A customer return goes back in at its real cost, not today\'s average',
+          desc: 'When a customer returns goods, PivetTrack puts them back at the cost they shipped at and recalculates the WAC. A supplier return is recorded in the ledger at its invoice cost, to match the credit memo, and does not change the WAC.',
+          tags: ['Recalculated WAC', 'Shipped Cost', 'Credit Memo', 'No Spreadsheets'],
           wac_context: '200u at WAC US$12.00. A customer returns 100u that shipped at US$10.00.',
           wac_lbl_bad: 'Conventional System', wac_lbl_good: 'PivetTrack',
           wac_amt_bad: 'WAC US$12.00', wac_amt_good: 'WAC US$11.33',
@@ -1090,6 +1090,7 @@
         '99.9% uptime SLA committed by contract (with service credits)',
         'Managed automatic backups included',
         'All product improvements at no additional cost',
+        'Optional QuickBooks Online integration, at no additional charge',
       ],
       pricing_why_title: 'Why this model makes sense',
       pricing_why: [
@@ -1103,7 +1104,6 @@
       pricing_quoted: [
         'Advanced Infrastructure Add-on (Enterprise Plan): 3 or more heavy reports at once, or 3 or more high-volume processes running simultaneously, on a routine basis',
         'B2B Portal, API & webhooks: enablement and scope defined in the formal proposal',
-        'Optional QuickBooks Online integration: US$500 setup + US$200/month',
         'Custom software development of any kind',
         'Integrations with other systems (QuickBooks Desktop or another ERP)',
         'Migrations from a second data source, or requiring cleansing of the source data',
