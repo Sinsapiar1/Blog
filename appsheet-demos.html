@@ -19,11 +19,11 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Micro apps construidas con AppSheet y Google Sheets para recepción de camiones, control de asistencia y auditoría de inventario. Demostraciones en video.">
+  <meta name="description" content="Micro apps a medida con AppSheet y Google Sheets para recepción de camiones, control de asistencia y auditoría de inventario. Se cotizan según cada operación.">
   <meta name="author" content="Raul Pivet">
   <meta name="theme-color" content="#3c3cae">
   <meta property="og:title" content="Micro apps con AppSheet | Raúl Pivet">
-  <meta property="og:description" content="Micro apps construidas con AppSheet y Google Sheets para recepción de camiones, control de asistencia y auditoría de inventario. Demostraciones en video.">
+  <meta property="og:description" content="Micro apps a medida con AppSheet y Google Sheets para recepción de camiones, control de asistencia y auditoría de inventario. Se cotizan según cada operación.">
   <meta property="og:url" content="https://www.raulpivet.com/appsheet-demos.html">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.raulpivet.com/appsheet-demos.html">
@@ -810,7 +810,8 @@
       archive_text: 'Una micro app resuelve un problema puntual. Para inventario por lote y vencimiento, picking por escaneo y QuickBooks Online, mi producto es <strong>PivetTrack</strong>.',
       archive_link: 'Conocer PivetTrack',
       h1a: 'Micro apps', h1b: 'con AppSheet',
-      hero_sub: 'Aplicaciones móviles construidas con AppSheet y Google Sheets para resolver un problema puntual: recepción de camiones, control de asistencia y auditoría de inventario.',
+      hero_sub: 'Aplicaciones móviles construidas con AppSheet y Google Sheets para resolver un problema puntual: recepción de camiones, control de asistencia y auditoría de inventario. Cada una se cotiza según su operación.',
+      quote_btn: 'Pedir una cotización',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventario', 'Logística', 'WhatsApp', 'Drive'],
       videos_eyebrow: '',
       videos_title: 'Tres demostraciones en video',
@@ -873,7 +874,8 @@
       archive_text: 'A micro app solves one specific problem. For lot and expiration inventory, scan-to-pick and QuickBooks Online, my product is <strong>PivetTrack</strong>.',
       archive_link: 'See PivetTrack',
       h1a: 'Micro apps', h1b: 'built on AppSheet',
-      hero_sub: 'Mobile apps built on AppSheet and Google Sheets to solve one specific problem: truck receiving, attendance control and inventory audits.',
+      hero_sub: 'Mobile apps built on AppSheet and Google Sheets to solve one specific problem: truck receiving, attendance control and inventory audits. Each one is quoted for your operation.',
+      quote_btn: 'Request a quote',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventory', 'Logistics', 'WhatsApp', 'Drive'],
       videos_eyebrow: '',
       videos_title: 'Three video demos',
@@ -982,6 +984,7 @@
         <h1>${d.h1a}<br><span>${d.h1b}</span></h1>
         <p class="demos-hero-sub">${d.hero_sub}</p>
         <div class="demos-hero-tags">${d.hero_tags.map(t => `<span class="demos-hero-tag">${t}</span>`).join('')}</div>
+        <a class="boton" href="contacto.html?motivo=freelance">${d.quote_btn}</a>
       </section>
 
       <div class="demos-section-header" data-aos="fade-up">
