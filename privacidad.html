@@ -11,28 +11,48 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/secundarias.css">
   <style>
     .pp-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
     .pp-back { display:inline-flex; align-items:center; gap:8px; color:var(--text-secondary); text-decoration:none; font-size:0.875rem; margin-bottom:32px; transition:color 0.2s; }
-    .pp-back:hover { color:#FF6B00; }
-    .pp-eyebrow { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:#FF6B00; margin-bottom:10px; }
+    .pp-back:hover { color:#3c3cae; }
+    .pp-eyebrow { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:#3c3cae; margin-bottom:10px; }
     .pp-h1 { font-size:clamp(1.6rem,4vw,2.2rem); font-weight:900; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:8px; }
     .pp-updated { font-size:0.8125rem; color:var(--text-tertiary); margin-bottom:40px; }
     .pp-section { margin-bottom:36px; }
     .pp-section h2 { font-size:1.05rem; font-weight:800; color:var(--text-primary); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
-    .pp-section h2 i { color:#FF6B00; font-size:0.9rem; }
+    .pp-section h2 i { color:#3c3cae; font-size:0.9rem; }
     .pp-section p, .pp-section li { font-size:0.9375rem; color:var(--text-secondary); line-height:1.78; }
     .pp-section ul { padding-left:20px; margin-top:8px; display:flex; flex-direction:column; gap:6px; }
     .pp-divider { border:none; border-top:1px solid var(--border-color); margin:40px 0; }
     .pp-lang-switch { display:flex; gap:12px; margin-bottom:40px; }
     .pp-lang-btn { padding:6px 16px; border-radius:20px; border:1px solid var(--border-color); background:transparent; color:var(--text-secondary); font-size:0.8125rem; font-weight:600; cursor:pointer; transition:all 0.2s; }
-    .pp-lang-btn.active { background:#FF6B00; border-color:#FF6B00; color:white; }
+    .pp-lang-btn.active { background:#3c3cae; border-color:#3c3cae; color:white; }
     [data-lang] { display:none; }
     [data-lang].visible { display:block; }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/legado.css">
+  <script>(function(){var l;try{l=localStorage.getItem('homeLang')}catch(e){}document.documentElement.lang=l==='en'?'en':'es'})();</script>
+  <script src="assets/site.js" defer></script>
+  <script>try{localStorage.setItem('theme','light')}catch(e){}</script>
 </head>
 <body>
+<header class="barra">
+  <div class="marco barra__fila">
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
+    <nav class="menu" aria-label="Principal">
+      <a href="pivettrack.html">PivetTrack</a>
+      <a href="proyectos.html"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+    </nav>
+  </div>
+</header>
   <div class="pp-wrap">
     <a href="javascript:history.back()" class="pp-back">
       <i class="fas fa-arrow-left"></i> Volver / Go back
@@ -50,7 +70,7 @@
 
       <div class="pp-section">
         <h2><i class="fas fa-info-circle"></i> ¿Qué datos recopilamos?</h2>
-        <p>Cuando enviás el formulario de contacto en este sitio, recopilamos los siguientes datos que vos mismo proporcionás voluntariamente:</p>
+        <p>Cuando envía el formulario de contacto en este sitio, recopilamos los siguientes datos que usted mismo proporciona voluntariamente:</p>
         <ul>
           <li>Nombre y apellido</li>
           <li>Dirección de correo electrónico</li>
@@ -77,7 +97,7 @@
         <ul>
           <li><strong>Make.com (Integromat)</strong> — recibe el formulario vía webhook.</li>
           <li><strong>Google Gemini AI</strong> — genera un borrador de respuesta automática.</li>
-          <li><strong>Gmail</strong> — envía la respuesta desde Raul@raulpivet.com a tu correo.</li>
+          <li><strong>Gmail</strong> — envía la respuesta desde Raul@raulpivet.com a su correo.</li>
           <li><strong>Google Sheets</strong> — registra el contacto para seguimiento interno.</li>
         </ul>
         <p style="margin-top:12px">Todos estos servicios son proveedores de confianza con sus propias políticas de privacidad. Los datos no se venden ni comparten con terceros para ningún otro propósito.</p>
@@ -85,7 +105,7 @@
 
       <div class="pp-section">
         <h2><i class="fas fa-clock"></i> ¿Cuánto tiempo guardamos los datos?</h2>
-        <p>Los registros de contacto se conservan en Google Sheets durante el tiempo que sea necesario para dar seguimiento a la consulta. Si querés que eliminemos tu información, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a> y lo hacemos en 48 horas hábiles.</p>
+        <p>Los registros de contacto se conservan en Google Sheets durante el tiempo que sea necesario para dar seguimiento a la consulta. Si quiere que eliminemos su información, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#3c3cae">Raul@raulpivet.com</a> y lo hacemos en 48 horas hábiles.</p>
       </div>
 
       <div class="pp-section">
@@ -95,19 +115,19 @@
           <li><strong>Google Analytics 4</strong> — mide visitas y comportamiento de forma agregada y anonimizada.</li>
           <li><strong>Microsoft Clarity</strong> — analiza el comportamiento de navegación (mapas de calor, grabaciones de sesión anonimizadas).</li>
         </ul>
-        <p style="margin-top:12px">Podés optar por no ser rastreado usando extensiones de navegador como uBlock Origin o activando la opción "No rastrear" en tu navegador.</p>
+        <p style="margin-top:12px">Puede optar por no ser rastreado usando extensiones de navegador como uBlock Origin o activando la opción "No rastrear" en su navegador.</p>
       </div>
 
       <div class="pp-section">
-        <h2><i class="fas fa-user-shield"></i> Tus derechos</h2>
-        <p>Tenés derecho a acceder, rectificar o eliminar los datos personales que nos enviaste. Para ejercer cualquiera de estos derechos, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a>.</p>
+        <h2><i class="fas fa-user-shield"></i> Sus derechos</h2>
+        <p>Tiene derecho a acceder, rectificar o eliminar los datos personales que nos enviaste. Para ejercer cualquiera de estos derechos, escribinos a <a href="mailto:Raul@raulpivet.com" style="color:#3c3cae">Raul@raulpivet.com</a>.</p>
       </div>
 
       <div class="pp-section">
         <h2><i class="fas fa-building"></i> Responsable del tratamiento</h2>
         <p><strong>PIVET DIGITAL AUTOMATIONS LLC</strong><br>
         Raul Pivet — Miami, Florida, Estados Unidos<br>
-        <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a></p>
+        <a href="mailto:Raul@raulpivet.com" style="color:#3c3cae">Raul@raulpivet.com</a></p>
       </div>
     </div>
 
@@ -156,7 +176,7 @@
 
       <div class="pp-section">
         <h2><i class="fas fa-clock"></i> How long do we keep your data?</h2>
-        <p>Contact records are retained in Google Sheets for as long as needed to follow up on your inquiry. If you want your information deleted, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a> and we will do so within 48 business hours.</p>
+        <p>Contact records are retained in Google Sheets for as long as needed to follow up on your inquiry. If you want your information deleted, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#3c3cae">Raul@raulpivet.com</a> and we will do so within 48 business hours.</p>
       </div>
 
       <div class="pp-section">
@@ -171,14 +191,14 @@
 
       <div class="pp-section">
         <h2><i class="fas fa-user-shield"></i> Your rights</h2>
-        <p>You have the right to access, rectify, or delete the personal data you submitted to us. To exercise any of these rights, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a>.</p>
+        <p>You have the right to access, rectify, or delete the personal data you submitted to us. To exercise any of these rights, write to us at <a href="mailto:Raul@raulpivet.com" style="color:#3c3cae">Raul@raulpivet.com</a>.</p>
       </div>
 
       <div class="pp-section">
         <h2><i class="fas fa-building"></i> Data controller</h2>
         <p><strong>PIVET DIGITAL AUTOMATIONS LLC</strong><br>
         Raul Pivet — Miami, Florida, United States<br>
-        <a href="mailto:Raul@raulpivet.com" style="color:#FF6B00">Raul@raulpivet.com</a></p>
+        <a href="mailto:Raul@raulpivet.com" style="color:#3c3cae">Raul@raulpivet.com</a></p>
       </div>
     </div>
 
@@ -198,5 +218,20 @@
     const siteLang = localStorage.getItem('homeLang') || 'es';
     if (siteLang === 'en') showLang('en');
   </script>
+<footer class="pie">
+  <div class="marco pie__fila">
+    <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
+    <nav class="pie__enlaces" aria-label="Secundaria">
+      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
+      <a href="appsheet-demos.html">AppSheet</a>
+      <a href="cv.html">CV</a>
+      <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
+      <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
+      <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@raulpivet4462" rel="noopener noreferrer">YouTube</a>
+    </nav>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
 </body>
 </html>

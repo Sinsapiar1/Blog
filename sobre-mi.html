@@ -22,7 +22,7 @@
   <meta name="description" content="Raul Pivet, fundador de PivetTrack — WMS marca blanca para distribuidoras, importadoras y 3PL: inventario por lote y vencimiento, picking por escaneo, portal B2B y QuickBooks Online. PIVET DIGITAL AUTOMATIONS LLC, Miami, FL.">
   <meta name="keywords" content="PivetTrack, WMS marca blanca, PIVET DIGITAL AUTOMATIONS LLC, QuickBooks Online, inventario por lote, Miami, Nosotros">
   <meta name="author" content="Raul Pivet">
-  <meta name="theme-color" content="#FF6B00">
+  <meta name="theme-color" content="#3c3cae">
   <meta property="og:title" content="Nosotros — PIVET DIGITAL AUTOMATIONS LLC">
   <meta property="og:description" content="Fundador de PivetTrack: WMS marca blanca para distribuidoras, importadoras y 3PL. Medido, no prometido.">
   <meta property="og:url" content="https://www.raulpivet.com/sobre-mi.html">
@@ -34,590 +34,117 @@
   <link rel="canonical" href="https://www.raulpivet.com/sobre-mi.html">
   <title>Nosotros - PIVET DIGITAL AUTOMATIONS LLC | Consultoría Tecnológica</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="style.css">
-  <style>
-
-    /* ── HERO ── */
-    .about-hero {
-      display: grid;
-      grid-template-columns: 0.95fr 1.35fr;
-      gap: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255,107,0,0.12), transparent 55%),
-        radial-gradient(ellipse 50% 40% at 0% 100%, rgba(255,149,0,0.06), transparent 50%),
-        var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      margin-bottom: 48px;
-    }
-    .about-hero-img { position: relative; min-height: 440px; }
-    .about-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .about-hero-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, transparent 45%, var(--glass-bg) 98%);
-    }
-    .about-hero-content {
-      padding: 44px 40px 44px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .about-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,107,0,0.1); border: 1px solid rgba(255,107,0,0.25);
-      color: #FF6B00; font-size: 11px; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.12em; padding: 5px 12px; border-radius: 20px;
-      margin-bottom: 18px; width: fit-content;
-    }
-    .about-hero-content h1 {
-      font-size: clamp(1.65rem, 3.2vw, 2.35rem);
-      font-weight: 800; color: var(--text-primary);
-      margin-bottom: 10px; letter-spacing: -0.03em; line-height: 1.15;
-    }
-    .about-hero-content h1 span {
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .about-role {
-      font-size: 0.9rem; font-weight: 600; color: #FF6B00;
-      margin-bottom: 18px; line-height: 1.45;
-    }
-    .about-hero-content > p {
-      font-size: 0.95rem; color: var(--text-secondary);
-      line-height: 1.75; margin-bottom: 12px; max-width: 38rem;
-    }
-    .about-hero-content > p strong { color: var(--text-primary); }
-    .about-hero-actions {
-      display: flex; flex-wrap: wrap; gap: 12px;
-      margin: 22px 0 18px;
-    }
-    .about-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-    .about-badge {
-      display: flex; align-items: center; gap: 6px;
-      background: var(--bg-secondary); border: 1px solid var(--border-color);
-      padding: 6px 12px; border-radius: 20px;
-      font-size: 12px; font-weight: 600; color: var(--text-secondary);
-    }
-    .about-badge i { color: #FF6B00; font-size: 11px; }
-    @media (max-width: 900px) {
-      .about-hero { grid-template-columns: 1fr; }
-      .about-hero-img { min-height: 260px; max-height: 320px; }
-      .about-hero-content { padding: 28px; }
-      .about-hero-img-overlay {
-        background: linear-gradient(to top, var(--glass-bg) 0%, transparent 55%);
-      }
-    }
-
-    /* ── PULLQUOTE ── */
-    .pullquote {
-      background: linear-gradient(135deg, rgba(255,107,0,0.06), rgba(255,149,0,0.03));
-      border-left: 4px solid #FF6B00;
-      border-radius: 0 12px 12px 0;
-      padding: 24px 28px;
-      margin: 8px 0 48px;
-    }
-    .pullquote p {
-      font-size: 1.08rem; font-style: italic;
-      color: var(--text-primary); line-height: 1.7; margin: 0;
-    }
-    .pullquote cite {
-      display: block; font-size: 0.8rem; color: var(--text-tertiary);
-      margin-top: 10px; font-style: normal; font-weight: 600;
-    }
-
-    /* ── SECTION HEADERS ── */
-    .section-eyebrow {
-      font-size: 11px; font-weight: 800; color: #FF6B00;
-      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px;
-    }
-    .section-title {
-      font-size: clamp(1.35rem, 2.5vw, 1.7rem);
-      font-weight: 700; color: var(--text-primary);
-      letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.25;
-    }
-    .section-lead {
-      font-size: 0.95rem; color: var(--text-secondary);
-      line-height: 1.7; max-width: 40rem; margin-bottom: 32px;
-    }
-
-    /* ── CAPABILITIES ── */
-    .capabilities-section { margin: 8px 0 56px; }
-    .cap-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-top: 1px solid var(--border-color);
-    }
-    .cap-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 16px;
-      align-items: start;
-      padding: 26px 22px 26px 0;
-      border-bottom: 1px solid var(--border-color);
-      transition: background 0.25s ease, padding-left 0.25s ease;
-    }
-    .cap-item:nth-child(odd) { padding-right: 28px; }
-    .cap-item:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--border-color); }
-    .cap-item:hover { background: rgba(255,107,0,0.03); }
-    .cap-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(145deg, rgba(255,107,0,0.16), rgba(255,149,0,0.06));
-      color: #FF6B00; font-size: 1.1rem; flex-shrink: 0;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .cap-item:hover .cap-icon {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(255,107,0,0.18);
-    }
-    .cap-body h3 {
-      font-size: 1rem; font-weight: 700; color: var(--text-primary);
-      margin-bottom: 6px; letter-spacing: -0.01em;
-    }
-    .cap-body p {
-      font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; margin: 0;
-    }
-    .cap-formats {
-      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
-    }
-    .cap-format {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
-      color: #FF6B00; background: rgba(255,107,0,0.08);
-      border: 1px solid rgba(255,107,0,0.18);
-      padding: 3px 8px; border-radius: 6px;
-    }
-    @media (max-width: 800px) {
-      .cap-list { grid-template-columns: 1fr; }
-      .cap-item:nth-child(odd),
-      .cap-item:nth-child(even) {
-        padding-left: 0; padding-right: 0; border-left: none;
-      }
-    }
-
-    /* ── BEFORE / AFTER ── */
-    .contrast-section { margin: 8px 0 56px; }
-    .contrast-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      position: relative;
-    }
-    .contrast-panel {
-      border-radius: 18px;
-      padding: 28px 26px;
-      position: relative;
-      overflow: hidden;
-    }
-    .contrast-panel--before {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border-color);
-    }
-    .contrast-panel--after {
-      background:
-        linear-gradient(160deg, rgba(255,107,0,0.12), rgba(255,149,0,0.04) 55%, transparent);
-      border: 1px solid rgba(255,107,0,0.28);
-    }
-    .contrast-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.14em; margin-bottom: 16px;
-    }
-    .contrast-panel--before .contrast-label { color: var(--text-tertiary); }
-    .contrast-panel--after .contrast-label { color: #FF6B00; }
-    .contrast-panel h3 {
-      font-size: 1.15rem; font-weight: 700; color: var(--text-primary);
-      margin-bottom: 18px; letter-spacing: -0.02em; line-height: 1.3;
-    }
-    .contrast-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
-    .contrast-list li {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 0.875rem; line-height: 1.55; color: var(--text-secondary);
-    }
-    .contrast-list li i { margin-top: 3px; flex-shrink: 0; font-size: 0.85rem; }
-    .contrast-panel--before .contrast-list li i { color: #FF453A; }
-    .contrast-panel--after .contrast-list li i { color: #34C759; }
-    @media (max-width: 800px) {
-      .contrast-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── VALUE / METHOD ── */
-    .values-section { margin: 8px 0 56px; }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-    .value-row {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 16px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--border-color);
-      transition: opacity 0.25s ease;
-    }
-    .value-row:nth-child(-n+2) { border-top: 1px solid var(--border-color); }
-    .value-num {
-      font-size: 1.6rem; font-weight: 800; color: rgba(255,107,0,0.35);
-      line-height: 1; letter-spacing: -1px; min-width: 2.2rem;
-    }
-    .value-row h3 {
-      font-size: 0.98rem; font-weight: 700; color: var(--text-primary);
-      margin-bottom: 6px; line-height: 1.3;
-    }
-    .value-guarantee {
-      display: inline-block; font-size: 10px; font-weight: 800;
-      color: #FF6B00; text-transform: uppercase; letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-    .value-row p {
-      font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; margin: 0;
-    }
-    @media (max-width: 800px) {
-      .values-grid { grid-template-columns: 1fr; }
-      .value-row:nth-child(-n+2) { border-top: none; }
-      .value-row:first-child { border-top: 1px solid var(--border-color); }
-    }
-
-    /* ── CREDIBILITY ── */
-    .credibility {
-      margin: 8px 0 40px;
-      padding: 22px 26px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,107,0,0.18);
-      background: linear-gradient(90deg, rgba(255,107,0,0.07), transparent 70%);
-      display: flex; flex-wrap: wrap; align-items: center;
-      justify-content: space-between; gap: 14px;
-    }
-    .credibility p {
-      margin: 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55;
-      max-width: 42rem;
-    }
-    .credibility p strong { color: var(--text-primary); }
-    .credibility-link {
-      font-size: 0.85rem; font-weight: 700; color: #FF6B00;
-      text-decoration: none; white-space: nowrap;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: opacity 0.2s;
-    }
-    .credibility-link:hover { opacity: 0.8; }
-
-    /* ── CTA ── */
-    .about-cta {
-      margin: 24px 0 48px;
-      background:
-        radial-gradient(ellipse 70% 80% at 50% 0%, rgba(255,107,0,0.14), transparent 60%),
-        linear-gradient(135deg, rgba(255,107,0,0.06), rgba(255,149,0,0.03));
-      border: 1px solid rgba(255,107,0,0.22);
-      border-radius: 20px; padding: 44px 36px; text-align: center;
-    }
-    .about-cta h2 {
-      font-size: clamp(1.3rem, 2.5vw, 1.55rem);
-      font-weight: 800; color: var(--text-primary);
-      margin-bottom: 10px; letter-spacing: -0.02em;
-    }
-    .about-cta p { color: var(--text-secondary); margin-bottom: 24px; line-height: 1.65; max-width: 34rem; margin-left: auto; margin-right: auto; }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border: 2px solid var(--border-color);
-      border-radius: 50px; color: var(--text-primary);
-      font-weight: 600; font-size: 14px; text-decoration: none;
-      transition: all 0.2s; background: transparent;
-    }
-    .btn-outline:hover { border-color: #FF6B00; color: #FF6B00; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>(function(){var l;try{l=localStorage.getItem('homeLang')}catch(e){}document.documentElement.lang=l==='en'?'en':'es'})();</script>
+  <script src="assets/site.js" defer></script>
 </head>
-<body>
-  <div class="loader" id="loader"><div class="loader-circle"></div></div>
-  <div class="scroll-indicator" id="scrollIndicator"></div>
-  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-    <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
-  </button>
-  <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
-    <span class="language-flag" id="languageFlag">🇺🇸</span>
-    <span class="language-text" id="languageText">English</span>
-  </button>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="container">
-    <aside class="sidebar" id="sidebar">
-      <div class="profile">
-        <div class="profile-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
-        <h2>Raul Pivet</h2>
-        <p id="sidebarSubtitle">Founder · PivetTrack WMS</p>
-        <span class="company-badge" title="Empresa registrada en el Estado de Florida — Mayo 2026"><i class="fas fa-building"></i> PIVET DIGITAL AUTOMATIONS LLC</span>
-      </div>
-      <ul class="menu">
-        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
-        <li class="menu-item"><a href="pivettrack.html"><i class="fas fa-warehouse"></i> PivetTrack WMS</a></li>
-        <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
-        <li class="menu-item active"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Nosotros</span></a></li>
-        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
-      </ul>
-      <div class="social-links">
-        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </aside>
-    <main class="content" id="mainContent"></main>
+<body data-titulo-es="Sobre mí: Raúl Pivet, fundador de PivetTrack" data-titulo-en="About: Raúl Pivet, founder of PivetTrack">
+<a class="saltar" href="#contenido"><span data-l="es">Saltar al contenido</span><span data-l="en">Skip to content</span></a>
+<header class="barra">
+  <div class="marco barra__fila">
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
+    <nav class="menu" aria-label="Principal">
+      <a href="pivettrack.html">PivetTrack</a>
+      <a href="proyectos.html"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="sobre-mi.html" aria-current="page"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+      <button class="idioma" type="button" data-cambiar-idioma aria-label="Cambiar idioma / Change language"><span data-l="es">English</span><span data-l="en">Español</span></button>
+    </nav>
   </div>
-  <footer>
-    <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
-    <p class="footer-registered"><span id="footerText">Todos los derechos reservados.</span> · Miami, FL · Registered LLC — Florida</p>
-  </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
-  <script>
-  const t = {
-    es: {
-      sidebar: "Consultoría Digital",
-      nav_home:"Inicio", nav_about:"Nosotros", nav_projects:"Proyectos", nav_contact:"Contacto",
-      footer: "Todos los derechos reservados.",
-      page_title: "Nosotros - PIVET DIGITAL AUTOMATIONS LLC",
-      eyebrow: "PIVET DIGITAL AUTOMATIONS LLC · Miami, FL",
-      h1: "Fundador de <span>PivetTrack</span>",
-      role: "WMS marca blanca · Lotes y vencimiento · Picking por escaneo · QuickBooks Online",
-      p1: "Construí <strong>PivetTrack</strong>, un WMS marca blanca para distribuidoras, importadoras y 3PL: inventario por lote y vencimiento, picking por escaneo, portal B2B y sincronización con QuickBooks Online. Instancia dedicada por cliente, usuarios ilimitados y rendimiento medido en staging, sin promesas vacías: medido, no prometido.",
-      p2: "En una etapa anterior sistematicé operaciones con Apps AppSheet y Google Sheets; esa experiencia es la base de PivetTrack.",
-      cta_hero1: "Conocer PivetTrack",
-      cta_hero2: "Agendar Demo",
-      badges: [
-        { icon:"fas fa-map-marker-alt", text:"Miami, FL — EE.UU." },
-        { icon:"fas fa-language", text:"Español / English" },
-        { icon:"fas fa-briefcase", text:"Proyectos B2B" },
-        { icon:"fas fa-globe", text:"100% Remoto" }
-      ],
-      quote: "No automatizamos por automatizar. Automatizamos porque sabemos exactamente lo que cuesta operar 12 horas haciendo algo que un sistema puede hacer en 5 segundos.",
-      quote_cite: "— Raul Pivet, Founder · PIVET DIGITAL AUTOMATIONS LLC",
-      cap_eyebrow: "Qué ofrezco hoy",
-      cap_title: "Servicios vigentes",
-      cap_lead: "Lo que ofrezco hoy gira en torno a PivetTrack: el WMS, su integración contable y la sistematización de tu operación.",
-      capabilities: [
-        { icon:"fas fa-warehouse", title:"PivetTrack WMS", desc:"Implementación y puesta en marcha (US$3,500) y suscripción mensual con usuarios ilimitados." },
-        { icon:"fas fa-sync-alt", title:"Integración con QuickBooks Online", desc:"Sincronización de facturas y cuentas por pagar sin retipear." },
-        { icon:"fas fa-sitemap", title:"Sistematización de operaciones", desc:"Trayectoria previa con AppSheet y Google Sheets; hoy aplicada dentro de PivetTrack." }
-      ],
-      contrast_eyebrow: "El cambio real",
-      contrast_title: "De lo manual al sistema que trabaja por vos",
-      contrast_lead: "Un CEO no necesita otro PowerPoint. Necesita ver la diferencia operativa.",
-      before_label: "Antes",
-      before_title: "Cuando todo depende de personas y papel",
-      before: [
-        "Procesos en Excel suelto, WhatsApp y planillas que nadie actualiza igual",
-        "Inventario sin trazabilidad por lote ni vencimiento",
-        "Facturas y cuentas por pagar retipeadas a mano en el sistema contable",
-        "Cero visibilidad en tiempo real para gerencia"
-      ],
-      after_label: "Después",
-      after_title: "Cuando la operación vive en PivetTrack",
-      after: [
-        "Inventario por lote y vencimiento, con picking por escaneo",
-        "Portal B2B de pedidos para tus clientes",
-        "Facturas y cuentas por pagar sincronizadas con QuickBooks Online, sin retipear",
-        "Instancia dedicada por cliente y usuarios ilimitados"
-      ],
-      values_eyebrow: "Nuestra forma de trabajar",
-      values_title: "De la mano con tu empresa, paso a paso",
-      values_lead: "Antes de implementar, entendemos tu operación y definimos qué hace falta.",
-      values: [
-        { num:"01", guarantee:"Diagnóstico", title:"Primero entendemos tu proceso", desc:"Mapeamos qué se hace hoy, dónde se pierde tiempo y dónde aparecen los errores. Sin eso, no hay automatización que sirva." },
-        { num:"02", guarantee:"Implementación", title:"PivetTrack puesto en marcha sobre tu operación", desc:"Implementación y puesta en marcha de PivetTrack en una instancia dedicada para tu empresa." },
-        { num:"03", guarantee:"Entrega útil", title:"Adopción del equipo", desc:"No alcanza con que el sistema “exista”: tiene que usarse y sostenerse en el día a día." },
-        { num:"04", guarantee:"Acompañamiento", title:"Ajustes con vos, no desde una torre de marfil", desc:"Trabajamos junto al dueño o gerente: prioridades claras, demos concretas y mejoras según la operación real." }
-      ],
-      cred_text: "<strong>10+ años en operaciones reales</strong> · AppSheet · Power BI · Python · Miami & remoto. El CV completo está disponible si lo necesitás.",
-      cred_link: "Ver CV",
-      cta_title: "¿Agendamos una demostración?",
-      cta_desc: "Agendá una demostración y te mostramos cómo PivetTrack se aplica a tu operación. Sin propuestas genéricas.",
-      cta_btn1: "Conocer PivetTrack", cta_btn2: "Agendar Demo"
-    },
-    en: {
-      sidebar: "Digital Consulting",
-      nav_home:"Home", nav_about:"About Us", nav_projects:"Projects", nav_contact:"Contact",
-      footer: "All rights reserved.",
-      page_title: "About Us - PIVET DIGITAL AUTOMATIONS LLC",
-      eyebrow: "PIVET DIGITAL AUTOMATIONS LLC · Miami, FL",
-      h1: "Founder of <span>PivetTrack</span>",
-      role: "White-label WMS · Lots and expiry · Scan-to-pick · QuickBooks Online",
-      p1: "I built <strong>PivetTrack</strong>, a white-label WMS for distributors, importers, and 3PLs: inventory by lot and expiry date, scan-to-pick, a B2B portal, and QuickBooks Online sync. A dedicated instance per client, unlimited users, and performance measured in staging, no empty promises: measured, not promised.",
-      p2: "At an earlier stage I systematized operations with AppSheet apps and Google Sheets; that experience is the foundation of PivetTrack.",
-      cta_hero1: "Meet PivetTrack",
-      cta_hero2: "Schedule Demo",
-      badges: [
-        { icon:"fas fa-map-marker-alt", text:"Miami, FL — USA" },
-        { icon:"fas fa-language", text:"Spanish / English" },
-        { icon:"fas fa-briefcase", text:"B2B Projects" },
-        { icon:"fas fa-globe", text:"100% Remote" }
-      ],
-      quote: "We don't automate for the sake of it. We automate because we know exactly what it costs to operate 12 hours doing something a system can do in 5 seconds.",
-      quote_cite: "— Raul Pivet, Founder · PIVET DIGITAL AUTOMATIONS LLC",
-      cap_eyebrow: "What I offer today",
-      cap_title: "Current services",
-      cap_lead: "What I offer today revolves around PivetTrack: the WMS, its accounting integration, and the systematization of your operation.",
-      capabilities: [
-        { icon:"fas fa-warehouse", title:"PivetTrack WMS", desc:"Implementation and go-live (US$3,500) plus a monthly subscription with unlimited users." },
-        { icon:"fas fa-sync-alt", title:"QuickBooks Online integration", desc:"Invoice and accounts payable sync, no retyping." },
-        { icon:"fas fa-sitemap", title:"Operations systematization", desc:"Prior track record with AppSheet and Google Sheets; today applied inside PivetTrack." }
-      ],
-      contrast_eyebrow: "The real shift",
-      contrast_title: "From manual work to a system that works for you",
-      contrast_lead: "A CEO doesn't need another slide deck. They need to see the operational difference.",
-      before_label: "Before",
-      before_title: "When everything depends on people and paper",
-      before: [
-        "Processes stuck in loose Excel files, WhatsApp, and sheets nobody updates the same way",
-        "Inventory with no traceability by lot or expiry date",
-        "Invoices and accounts payable retyped by hand into the accounting system",
-        "No real-time visibility for management"
-      ],
-      after_label: "After",
-      after_title: "When the operation runs on PivetTrack",
-      after: [
-        "Inventory by lot and expiry date, with scan-to-pick",
-        "B2B ordering portal for your customers",
-        "Invoices and accounts payable synced with QuickBooks Online, no retyping",
-        "A dedicated instance per client and unlimited users"
-      ],
-      values_eyebrow: "How we work",
-      values_title: "Side by side with your company, step by step",
-      values_lead: "Before implementing, we understand your operation and define what is needed.",
-      values: [
-        { num:"01", guarantee:"Diagnosis", title:"First we understand your process", desc:"We map what happens today, where time is lost, and where errors show up. Without that, automation won't stick." },
-        { num:"02", guarantee:"Implementation", title:"PivetTrack set up on your operation", desc:"Implementation and go-live of PivetTrack on a dedicated instance for your company." },
-        { num:"03", guarantee:"Useful delivery", title:"Team adoption", desc:"It's not enough for the system to 'exist' — it has to be used and hold up day to day." },
-        { num:"04", guarantee:"Partnership", title:"Adjustments with you, not from an ivory tower", desc:"We work with the owner or manager: clear priorities, concrete demos, and improvements based on real operations." }
-      ],
-      cred_text: "<strong>10+ years in real operations</strong> · AppSheet · Power BI · Python · Miami & remote. The full CV is available if you need it.",
-      cred_link: "View CV",
-      cta_title: "Ready to schedule a demo?",
-      cta_desc: "Schedule a demo and we'll show you how PivetTrack applies to your operation. No generic proposals.",
-      cta_btn1: "Meet PivetTrack", cta_btn2: "Schedule Demo"
-    }
-  };
+</header>
 
-  let lang = localStorage.getItem('aboutLang') || localStorage.getItem('homeLang') || 'es';
-
-  function render() {
-    const d = t[lang];
-    document.title = d.page_title;
-    document.getElementById('sidebarSubtitle').textContent = d.sidebar;
-    document.getElementById('footerText').textContent = d.footer;
-    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
-    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
-    document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
-
-    document.getElementById('mainContent').innerHTML = `
-      <section class="about-hero" data-aos="fade-up">
-        <div class="about-hero-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"><div class="about-hero-img-overlay"></div></div>
-        <div class="about-hero-content">
-          <div class="about-eyebrow"><i class="fas fa-building"></i> ${d.eyebrow}</div>
-          <h1>${d.h1}</h1>
-          <p class="about-role">${d.role}</p>
-          <p>${d.p1}</p>
-          <p>${d.p2}</p>
-          <div class="about-hero-actions">
-            <a href="pivettrack.html" class="btn"><i class="fas fa-warehouse"></i> ${d.cta_hero1}</a>
-            <a href="contacto.html" class="btn-outline"><i class="fas fa-calendar-check"></i> ${d.cta_hero2}</a>
-          </div>
-          <div class="about-badges">${d.badges.map(b=>`<span class="about-badge"><i class="${b.icon}"></i>${b.text}</span>`).join('')}</div>
-        </div>
-      </section>
-
-      <div class="pullquote" data-aos="fade-up"><p>"${d.quote}"</p><cite>${d.quote_cite}</cite></div>
-
-      <section class="capabilities-section" data-aos="fade-up">
-        <p class="section-eyebrow">${d.cap_eyebrow}</p>
-        <h2 class="section-title">${d.cap_title}</h2>
-        <p class="section-lead">${d.cap_lead}</p>
-        <div class="cap-list">
-          ${d.capabilities.map((c,i)=>`
-            <article class="cap-item" data-aos="fade-up" data-aos-delay="${i*50}">
-              <div class="cap-icon"><i class="${c.icon}"></i></div>
-              <div class="cap-body">
-                <h3>${c.title}</h3>
-                <p>${c.desc}</p>
-                ${c.formats ? `<div class="cap-formats">${c.formats.map(f=>`<span class="cap-format">${f}</span>`).join('')}</div>` : ''}
-              </div>
-            </article>`).join('')}
-        </div>
-      </section>
-
-      <section class="contrast-section" data-aos="fade-up">
-        <p class="section-eyebrow">${d.contrast_eyebrow}</p>
-        <h2 class="section-title">${d.contrast_title}</h2>
-        <p class="section-lead">${d.contrast_lead}</p>
-        <div class="contrast-grid">
-          <div class="contrast-panel contrast-panel--before" data-aos="fade-right">
-            <div class="contrast-label"><i class="fas fa-times-circle"></i> ${d.before_label}</div>
-            <h3>${d.before_title}</h3>
-            <ul class="contrast-list">
-              ${d.before.map(item=>`<li><i class="fas fa-times"></i><span>${item}</span></li>`).join('')}
-            </ul>
-          </div>
-          <div class="contrast-panel contrast-panel--after" data-aos="fade-left">
-            <div class="contrast-label"><i class="fas fa-check-circle"></i> ${d.after_label}</div>
-            <h3>${d.after_title}</h3>
-            <ul class="contrast-list">
-              ${d.after.map(item=>`<li><i class="fas fa-check"></i><span>${item}</span></li>`).join('')}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="values-section" data-aos="fade-up">
-        <p class="section-eyebrow">${d.values_eyebrow}</p>
-        <h2 class="section-title">${d.values_title}</h2>
-        <p class="section-lead">${d.values_lead}</p>
-        <div class="values-grid">
-          ${d.values.map((v,i)=>`
-            <div class="value-row" data-aos="fade-up" data-aos-delay="${i*60}">
-              <div class="value-num">${v.num}</div>
-              <div>
-                <span class="value-guarantee">${v.guarantee}</span>
-                <h3>${v.title}</h3>
-                <p>${v.desc}</p>
-              </div>
-            </div>`).join('')}
-        </div>
-      </section>
-
-      <div class="credibility" data-aos="fade-up">
-        <p>${d.cred_text}</p>
-        <a class="credibility-link" href="cv.html"><i class="fas fa-id-card"></i> ${d.cred_link}</a>
+<main id="contenido">
+<section class="portada portada--sm">
+  <div class="marco">
+    <h1><span data-l="es">Empecé descargando camiones en una bodega.</span><span data-l="en">I started out unloading trucks in a warehouse.</span></h1>
+    <div class="sm-entrada">
+      <p class="grande" data-l="es">Soy Raúl Pivet, fundador de PivetTrack. En 2016 recibía mercadería y ordenaba el stock por FIFO y FEFO en una mina del norte de Chile. Hoy construyo el sistema que esa bodega necesitaba.</p>
+      <p class="grande" data-l="en">I’m Raúl Pivet, founder of PivetTrack. In 2016 I was receiving goods and rotating stock by FIFO and FEFO at a mine in northern Chile. Today I build the system that warehouse needed.</p>
+      <div class="portada__acciones">
+        <a class="boton" href="pivettrack.html"><span data-l="es">Conocer PivetTrack</span><span data-l="en">See PivetTrack</span></a>
+        <a class="enlace" href="cv.html"><span data-l="es">Ver el CV completo</span><span data-l="en">View full CV</span></a>
       </div>
+    </div>
+  </div>
+</section>
 
-      <section class="about-cta" data-aos="fade-up">
-        <h2>${d.cta_title}</h2>
-        <p>${d.cta_desc}</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="pivettrack.html" class="btn"><i class="fas fa-warehouse"></i> ${d.cta_btn1}</a>
-          <a href="contacto.html" class="btn-outline"><i class="fas fa-calendar-check"></i> ${d.cta_btn2}</a>
-        </div>
-      </section>`;
+<section class="tramo fondo-hormigon">
+  <div class="marco dos">
+    <div class="sm-fijo">
+      <h2><span data-l="es">Diez años de bodega, en orden.</span><span data-l="en">Ten years of warehouses, in order.</span></h2>
+      <p class="grande sm-mt" data-l="es">Sin saberlo, ahí aprendí todo lo que después automaticé.</p>
+      <p class="grande sm-mt" data-l="en">Without knowing it, that’s where I learned everything I later automated.</p>
+    </div>
+    <ol class="ruta">
+      <li><b>2016</b><div><h3><span data-l="es">Ayudante de bodega</span><span data-l="en">Warehouse helper</span></h3><p data-l="es">Sodexo, Minera Zaldívar. Descarga, recepción contra orden de compra, conteos cíclicos y stock por FIFO y FEFO.</p><p data-l="en">Sodexo, Minera Zaldívar. Unloading, receiving against purchase orders, cycle counts, and stock rotation by FIFO and FEFO.</p></div></li>
+      <li><b>2018</b><div><h3><span data-l="es">Administrativo de bodega</span><span data-l="en">Warehouse administrator</span></h3><p data-l="es">Sodexo, Minera Zaldívar. Control de stock, recepción y despacho en una operación de turno continuo.</p><p data-l="en">Sodexo, Minera Zaldívar. Stock control, receiving and dispatch in a continuous-shift operation.</p></div></li>
+      <li><b>2019</b><div><h3><span data-l="es">Administrativo de bodegas</span><span data-l="en">Warehouse administrator</span></h3><p data-l="es">Sodexo, Minera Escondida. Documentación, stock y análisis semanal de costos.</p><p data-l="en">Sodexo, Minera Escondida. Documentation, stock, and weekly cost analysis.</p></div></li>
+      <li><b>2021</b><div><h3><span data-l="es">Supervisor de bodegas</span><span data-l="en">Warehouse supervisor</span></h3><p data-l="es">Sodexo, Minera Escondida. Primeras apps móviles para recepción de mercadería, para reducir errores de registro.</p><p data-l="en">Sodexo, Minera Escondida. First mobile apps for receiving goods, built to cut recording errors.</p></div></li>
+      <li><b>2022</b><div><h3><span data-l="es">Jefe de bodega</span><span data-l="en">Warehouse manager</span></h3><p data-l="es">Sodexo, Minera Collahuasi. Equipo de 20 personas en turnos 7x7 y 30&nbsp;% menos errores de inventario con una app de control propia.</p><p data-l="en">Sodexo, Minera Collahuasi. A team of 20 on 7x7 shifts and 30% fewer inventory errors with a control app I built.</p></div></li>
+      <li><b>2024</b><div><h3><span data-l="es">Coordinador logístico</span><span data-l="en">Logistics coordinator</span></h3><p data-l="es">Merflex International, Doral, FL. Operaciones China, Miami y Bogotá; apps de recepción y despacho.</p><p data-l="en">Merflex International, Doral, FL. China, Miami and Bogotá operations; receiving and dispatch apps.</p></div></li>
+      <li><b>2025</b><div><h3><span data-l="es">Datos y soluciones logísticas</span><span data-l="en">Data and logistics solutions</span></h3><p data-l="es">Encofrados J. Alsina, Hialeah, FL. Análisis diario de inventario para más de 30 almacenes, con Python y Power BI.</p><p data-l="en">Encofrados J. Alsina, Hialeah, FL. Daily inventory analysis for more than 30 warehouses, with Python and Power BI.</p></div></li>
+      <li class="ruta__hoy"><b><span data-l="es">Hoy</span><span data-l="en">Today</span></b><div><h3>PivetTrack</h3><p data-l="es">Inventario por lote y vencimiento para distribuidores de alimentos, con una instancia dedicada por cliente.</p><p data-l="en">Lot and expiration inventory for food distributors, with a dedicated instance for each client.</p></div></li>
+    </ol>
+  </div>
+</section>
 
-    refreshAOS();
-  }
+<section class="tramo sm-dicho">
+  <div class="marco">
+    <blockquote>
+      <p data-l="es">No automatizamos por automatizar. Automatizamos porque sabemos exactamente lo que cuesta operar 12 horas haciendo algo que un sistema puede hacer en 5 segundos.</p>
+      <p data-l="en">We don’t automate for the sake of it. We automate because we know exactly what it costs to operate 12 hours doing something a system can do in 5 seconds.</p>
+    </blockquote>
+  </div>
+</section>
 
-  function toggleLang() {
-    lang = lang === 'es' ? 'en' : 'es';
-    document.documentElement.lang = lang;
-    localStorage.setItem('aboutLang', lang);
-    localStorage.setItem('homeLang', lang);
-    render();
-  }
+<section class="tramo">
+  <div class="marco dos">
+    <div>
+      <h2><span data-l="es">Lo que ofrezco hoy.</span><span data-l="en">What I offer today.</span></h2>
+    </div>
+    <ul class="oficios">
+      <li><h3>PivetTrack WMS</h3><p data-l="es">Implementación y puesta en marcha por US$3,500, y US$800 al mes con usuarios ilimitados.</p><p data-l="en">Implementation and go-live for US$3,500, then US$800 a month with unlimited users.</p></li>
+      <li><h3><span data-l="es">Integración con QuickBooks Online</span><span data-l="en">QuickBooks Online integration</span></h3><p data-l="es">Facturas y cuentas por pagar sin volver a digitarlas. Incluida, sin cargo adicional.</p><p data-l="en">Invoices and accounts payable with no retyping. Included at no extra charge.</p></li>
+      <li><h3><span data-l="es">Sistematización de operaciones</span><span data-l="en">Operations systematization</span></h3><p data-l="es">Años de trabajo con AppSheet y Google Sheets, hoy aplicados dentro de PivetTrack.</p><p data-l="en">Years of work with AppSheet and Google Sheets, now applied inside PivetTrack.</p></li>
+    </ul>
+  </div>
+</section>
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.documentElement.lang = lang;
-    render();
-    document.getElementById('languageToggle').addEventListener('click', toggleLang);
-  });
-  </script>
+<section class="tramo cierre">
+  <div class="marco">
+    <h2 class="pt-cierre-h"><span data-l="es">Primero entendemos su operación. Después hablamos de sistemas.</span><span data-l="en">First we understand your operation. Then we talk about systems.</span></h2>
+    <ol class="pasos pasos--cuatro">
+      <li><h3><span data-l="es">Diagnóstico</span><span data-l="en">Diagnosis</span></h3><p data-l="es">Qué se hace hoy, dónde se pierde tiempo y dónde aparecen los errores.</p><p data-l="en">What happens today, where time is lost, and where errors show up.</p></li>
+      <li><h3><span data-l="es">Implementación</span><span data-l="en">Implementation</span></h3><p data-l="es">PivetTrack en una instancia dedicada para su empresa.</p><p data-l="en">PivetTrack on a dedicated instance for your company.</p></li>
+      <li><h3><span data-l="es">Adopción</span><span data-l="en">Adoption</span></h3><p data-l="es">No alcanza con que el sistema exista: tiene que usarse todos los días.</p><p data-l="en">It’s not enough for the system to exist: it has to be used every day.</p></li>
+      <li><h3><span data-l="es">Acompañamiento</span><span data-l="en">Ongoing support</span></h3><p data-l="es">Trabajo directo con el dueño o el gerente, con prioridades claras y mejoras según la operación real.</p><p data-l="en">Direct work with the owner or manager, with clear priorities and improvements based on real operations.</p></li>
+    </ol>
+    <div class="pt-cierre-accion">
+      <a class="boton boton--oscuro" href="contacto.html?motivo=demo_pivettrack"><span data-l="es">Agendar una sesión de diagnóstico</span><span data-l="en">Book a diagnostic session</span></a>
+      <a href="mailto:raul@raulpivet.com">raul@raulpivet.com</a>
+      <a href="tel:+13055406846">+1 (305) 540 6846</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pie">
+  <div class="marco pie__fila">
+    <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
+    <nav class="pie__enlaces" aria-label="Secundaria">
+      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
+      <a href="appsheet-demos.html">AppSheet</a>
+      <a href="cv.html">CV</a>
+      <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
+      <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
+      <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@raulpivet4462" rel="noopener noreferrer">YouTube</a>
+    </nav>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
 </body>
 </html>

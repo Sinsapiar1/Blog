@@ -23,7 +23,7 @@
   <meta name="keywords" content="automatización logística, Power BI, Python, Power Automate, AppSheet, Make.com, Data Engineer, Miami, inventario, warehouse management, logistics automation, desarrollo web, HTML, CSS, JavaScript, Firebase, redes sociales, automatización redes sociales, SEO técnico, posicionamiento web">
   <meta name="author" content="Raul Pivet">
   <meta name="google-site-verification" content="OrVjOD_om4dbQjx0cltetvwn8azsGibysYPyv9wRLLI" />
-  <meta name="theme-color" content="#FF6B00">
+  <meta name="theme-color" content="#3c3cae">
   <meta property="og:title" content="Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC — Automatización, BI & Desarrollo Web">
   <meta property="og:description" content="PIVET DIGITAL AUTOMATIONS LLC — Convierto operaciones manuales en sistemas automáticos. Power BI · Python · Web Dev · SEO · Make.com · Automatización Social. Miami, FL.">
   <meta property="og:image" content="https://www.raulpivet.com/img/gallery/dashboard-negativos.png">
@@ -70,780 +70,227 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://www.raulpivet.com/">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://unpkg.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="style.css">
-  <style>
-
-    .hero { padding:48px 0 40px; }
-
-    /* ══════════════════════════════════════════
-       EYEBROW — NEXT GENERATION
-       Banner full-width con texto rotativo typewriter
-       + glow pulsante + borde degradado animado
-    ══════════════════════════════════════════ */
-    .hero-eyebrow-wrap {
-      margin-bottom: 28px;
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      padding: 0;
-      background: transparent;
-      border: none;
-      position: relative;
-    }
-    /* Píldora izquierda — "¿SABÍAS QUE?" fija */
-    .eyebrow-pill {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
-      color: white; font-size: 10px; font-weight: 900;
-      text-transform: uppercase; letter-spacing: 0.15em;
-      padding: 7px 14px; border-radius: 30px;
-      white-space: nowrap; flex-shrink: 0;
-      box-shadow: 0 4px 16px rgba(255,107,0,0.45);
-      animation: pill-glow 2.5s ease-in-out infinite;
-    }
-    @keyframes pill-glow {
-      0%,100% { box-shadow: 0 4px 16px rgba(255,107,0,0.45); }
-      50%      { box-shadow: 0 4px 28px rgba(255,107,0,0.75), 0 0 0 4px rgba(255,107,0,0.12); }
-    }
-    .eyebrow-pill i { font-size: 0.75rem; }
-
-    /* Texto rotativo */
-    .eyebrow-rotating {
-      font-size: 0.9375rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      min-height: 1.4em;
-      display: flex; align-items: center;
-    }
-    .eyebrow-rotating .rotate-text {
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-    .eyebrow-rotating .rotate-text.fade-out { opacity: 0; }
-    .eyebrow-rotating .highlight { color: #FF6B00; }
-
-    /* Cursor parpadeante */
-    .eyebrow-cursor {
-      display: inline-block;
-      width: 2px; height: 1.1em;
-      background: #FF6B00;
-      margin-left: 3px;
-      border-radius: 2px;
-      animation: blink-cursor 0.9s step-end infinite;
-      vertical-align: middle;
-      flex-shrink: 0;
-    }
-    @keyframes blink-cursor {
-      0%,100% { opacity:1; }
-      50%      { opacity:0; }
-    }
-
-    /* Puntos indicadores */
-    .eyebrow-dots {
-      display: flex; gap: 5px; align-items: center; margin-left: 4px;
-    }
-    .eyebrow-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--border-color);
-      transition: background 0.3s, transform 0.3s;
-    }
-    .eyebrow-dot.active {
-      background: #FF6B00;
-      transform: scale(1.4);
-    }
-
-    /* ── Responsive: evitar desborde horizontal en móvil ── */
-    @media(max-width:600px) {
-      .hero-eyebrow { flex-wrap: wrap; gap: 8px; }
-      .eyebrow-rotating { font-size: 0.875rem; min-width: 0; }
-    }
-    @media(max-width:400px) {
-      .hero-eyebrow { flex-direction: column; align-items: flex-start; gap: 6px; }
-      .eyebrow-pill { font-size: 9px; padding: 5px 10px; letter-spacing: 0.1em; }
-      .eyebrow-dots { display: none; }
-      .eyebrow-cursor { display: none; }
-    }
-
-    .hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800; line-height:1.15; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:16px; }
-    .hero h1 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .hero-sub { font-size:1.05rem; color:var(--text-secondary); line-height:1.7; max-width:580px; margin-bottom:28px; }
-    .hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
-    .hero-tag { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-secondary); font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; transition:all 0.2s; }
-    .hero-tag:hover { border-color:#FF6B00; color:#FF6B00; }
-    .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border:2px solid var(--border-color); border-radius:50px; color:var(--text-primary); font-weight:600; font-size:14px; text-decoration:none; transition:all 0.2s; background:transparent; cursor:pointer; }
-    .btn-outline:hover { border-color:#FF6B00; color:#FF6B00; }
-
-    /* ══════════════════════════════════════════
-       STATS BAR — PREMIUM REDESIGN
-       Cards con icono grande, número destacado,
-       barra de progreso visual y sublabel
-    ══════════════════════════════════════════ */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 14px;
-      margin: 40px 0;
-    }
-    @media(max-width:700px){ .stats-bar { grid-template-columns: repeat(2,1fr); } }
-    @media(max-width:400px){ .stats-bar { grid-template-columns: 1fr; } }
-
-    .stat-item {
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 24px 20px 20px;
-      display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.34,1.3,0.64,1);
-      cursor: default;
-    }
-    /* Fondo decorativo — número fantasma grande */
-    .stat-item::before {
-      content: attr(data-ghost);
-      position: absolute;
-      right: -8px; bottom: -14px;
-      font-size: 5rem; font-weight: 900;
-      color: rgba(255,107,0,0.05);
-      line-height: 1;
-      pointer-events: none;
-      transition: color 0.3s;
-    }
-    .stat-item:hover {
-      border-color: rgba(255,107,0,0.4);
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(255,107,0,0.15);
-    }
-    .stat-item:hover::before { color: rgba(255,107,0,0.09); }
-
-    /* Barra superior de color */
-    .stat-item-bar {
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #FF6B00, #FF9500);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
-      border-radius: 20px 20px 0 0;
-    }
-    .stat-item:hover .stat-item-bar { transform: scaleX(1); }
-
-    .stat-icon-row {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 14px;
-    }
-    .stat-icon {
-      width: 40px; height: 40px;
-      background: linear-gradient(135deg, rgba(255,107,0,0.18), rgba(255,149,0,0.08));
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: #FF6B00;
-      border: 1px solid rgba(255,107,0,0.15);
-    }
-    .stat-trend {
-      font-size: 9px; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.1em; color: #34C759;
-      background: rgba(52,199,89,0.1); border: 1px solid rgba(52,199,89,0.2);
-      padding: 3px 8px; border-radius: 10px;
-    }
-    .stat-number {
-      font-size: 2.2rem; font-weight: 900; color: #FF6B00;
-      line-height: 1; letter-spacing: -0.03em;
-      margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: 0.8125rem; font-weight: 700;
-      color: var(--text-primary); line-height: 1.3;
-      margin-bottom: 4px;
-    }
-    .stat-sublabel {
-      font-size: 11px; color: var(--text-tertiary);
-      line-height: 1.4; font-style: italic;
-    }
-
-    /* ── PivetTrack promo card ── */
-    .ptblock { background:linear-gradient(135deg,rgba(255,107,0,0.09),rgba(255,149,0,0.05)); border:1px solid rgba(255,107,0,0.3); border-radius:20px; padding:28px 32px; margin:0 0 32px; }
-    .ptblock h2 { font-size:1.5rem; font-weight:800; color:var(--text-primary); letter-spacing:-0.02em; margin-bottom:8px; }
-    .ptblock p { font-size:0.95rem; color:var(--text-secondary); line-height:1.65; margin-bottom:18px; max-width:620px; }
-    @media(max-width:600px){ .ptblock { padding:22px 20px; } }
-    .ptpromo-card { display:flex; align-items:center; gap:20px; background:linear-gradient(135deg,rgba(255,107,0,0.09),rgba(255,149,0,0.05)); border:1px solid rgba(255,107,0,0.3); border-radius:20px; padding:26px 30px; text-decoration:none; position:relative; overflow:hidden; transition:all 0.25s; margin:32px 0; }
-    .ptpromo-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); }
-    .ptpromo-card:hover { transform:translateY(-3px); box-shadow:0 16px 44px rgba(255,107,0,0.15); border-color:rgba(255,107,0,0.5); }
-    .ptpromo-badge { font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:0.12em; color:#FF6B00; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.2); padding:5px 12px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
-    .ptpromo-body { flex:1; min-width:0; }
-    .ptpromo-h2 { font-size:1.25rem; font-weight:800; color:var(--text-primary); letter-spacing:-0.02em; margin-bottom:5px; }
-    .ptpromo-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; margin-bottom:12px; }
-    .ptpromo-metrics { display:flex; gap:18px; flex-wrap:wrap; }
-    .ptpromo-metrics span { font-size:0.8rem; color:var(--text-secondary); background:var(--bg-secondary); border:1px solid var(--border-color); padding:3px 10px; border-radius:10px; font-weight:600; }
-    .ptpromo-arrow { width:42px; height:42px; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#FF6B00; font-size:1rem; flex-shrink:0; transition:all 0.25s; }
-    .ptpromo-card:hover .ptpromo-arrow { background:#FF6B00; color:white; transform:translateX(4px); }
-    @media(max-width:600px){ .ptpromo-card { flex-direction:column; align-items:flex-start; padding:20px; gap:12px; } .ptpromo-arrow { display:none; } }
-
-    /* ── Resto del sitio sin cambios ── */
-    .section-header { margin-bottom:28px; }
-    .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
-    .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; }
-    .services { margin:48px 0; }
-    .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
-    .service-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:16px; padding:28px; transition:all 0.25s; position:relative; overflow:hidden; }
-    .service-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,107,0,0.04),transparent); opacity:0; transition:opacity 0.25s; }
-    .service-card:hover { border-color:rgba(255,107,0,0.3); transform:translateY(-4px); box-shadow:0 12px 40px rgba(255,107,0,0.1); }
-    .service-card:hover::before { opacity:1; }
-    .service-icon { width:48px; height:48px; background:linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.1)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:#FF6B00; margin-bottom:16px; }
-    .service-title { font-size:1rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; }
-    .service-desc { font-size:0.875rem; color:var(--text-secondary); line-height:1.6; margin-bottom:14px; }
-    .service-tags { display:flex; flex-wrap:wrap; gap:6px; }
-    .service-tag { font-size:10px; font-weight:700; color:#FF6B00; background:rgba(255,107,0,0.08); padding:3px 8px; border-radius:10px; text-transform:uppercase; letter-spacing:0.05em; }
-    .cases { margin:48px 0; }
-    .cases-list { display:flex; flex-direction:column; gap:14px; }
-    .case-item { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:14px; padding:22px 24px; display:flex; gap:18px; align-items:flex-start; transition:all 0.2s; }
-    .case-item:hover { border-color:rgba(255,107,0,0.25); transform:translateX(4px); }
-    .case-icon { width:40px; height:40px; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-size:1rem; flex-shrink:0; }
-    .case-content { flex:1; }
-    .case-title { font-size:0.9375rem; font-weight:700; color:var(--text-primary); margin-bottom:4px; }
-    .case-desc { font-size:0.8125rem; color:var(--text-secondary); line-height:1.6; }
-    .case-badge { font-size:10px; font-weight:800; color:#34C759; background:rgba(52,199,89,0.1); padding:3px 10px; border-radius:10px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
-    .stack { margin:48px 0; }
-    .stack-grid { display:flex; flex-wrap:wrap; gap:10px; }
-    .stack-item { display:flex; align-items:center; gap:8px; background:var(--bg-secondary); border:1px solid var(--border-color); padding:8px 16px; border-radius:30px; font-size:13px; font-weight:600; color:var(--text-secondary); transition:all 0.2s; }
-    .stack-item:hover { border-color:#FF6B00; color:#FF6B00; transform:translateY(-2px); }
-    .stack-item i { font-size:14px; color:#FF6B00; }
-    .cta-section { margin:48px 0; background:linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border:1px solid rgba(255,107,0,0.2); border-radius:20px; padding:40px; text-align:center; }
-    .cta-section h2 { font-size:1.6rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
-    .cta-section p { color:var(--text-secondary); margin-bottom:24px; font-size:1rem; line-height:1.6; }
-    .zero-to-system { margin:48px 0; }
-    .zts-card { background:var(--glass-bg); border:1px solid var(--border-color); border-radius:20px; overflow:hidden; position:relative; }
-    .zts-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500,#FFB800); }
-    .zts-inner { display:grid; grid-template-columns:1fr 1fr; gap:0; }
-    @media(max-width:860px){ .zts-inner { grid-template-columns:1fr; } }
-    .zts-left { padding:40px 36px; border-right:1px solid var(--border-color); display:flex; flex-direction:column; justify-content:center; }
-    @media(max-width:860px){ .zts-left { border-right:none; border-bottom:1px solid var(--border-color); } }
-    .zts-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.25); color:#FF6B00; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; padding:5px 12px; border-radius:20px; margin-bottom:18px; width:fit-content; }
-    .zts-title { font-size:clamp(1.25rem,2.5vw,1.7rem); font-weight:800; color:var(--text-primary); line-height:1.2; letter-spacing:-0.02em; margin-bottom:14px; }
-    .zts-title span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .zts-desc { font-size:0.9375rem; color:var(--text-secondary); line-height:1.75; margin-bottom:24px; }
-    .zts-proof { display:inline-flex; align-items:center; gap:8px; background:rgba(52,199,89,0.08); border:1px solid rgba(52,199,89,0.2); border-radius:10px; padding:10px 14px; font-size:0.8125rem; color:var(--text-secondary); line-height:1.5; }
-    .zts-proof i { color:#34C759; font-size:1rem; flex-shrink:0; }
-    .zts-proof strong { color:var(--text-primary); }
-    .zts-right { padding:40px 36px; display:flex; flex-direction:column; gap:16px; justify-content:center; }
-    .zts-step { display:flex; align-items:flex-start; gap:16px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:14px; padding:18px 20px; transition:border-color 0.2s,transform 0.2s; }
-    .zts-step:hover { border-color:rgba(255,107,0,0.3); transform:translateX(4px); }
-    .zts-step-num { width:32px; height:32px; flex-shrink:0; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:800; color:white; }
-    .zts-step-title { font-size:0.875rem; font-weight:700; color:var(--text-primary); margin-bottom:3px; }
-    .zts-step-desc { font-size:0.8rem; color:var(--text-secondary); line-height:1.55; }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>(function(){var l;try{l=localStorage.getItem('homeLang')}catch(e){}document.documentElement.lang=l==='en'?'en':'es'})();</script>
+  <script src="assets/site.js" defer></script>
 </head>
-<body>
-  <div class="loader" id="loader"><div class="loader-circle"></div></div>
-  <div class="scroll-indicator" id="scrollIndicator"></div>
-  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-    <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
-  </button>
-  <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
-    <span class="language-flag" id="languageFlag">🇺🇸</span>
-    <span class="language-text" id="languageText">English</span>
-  </button>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="container">
-    <aside class="sidebar" id="sidebar">
-      <div class="profile">
-        <div class="profile-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
-        <h2>Raul Pivet</h2>
-        <p id="sidebarSubtitle">Founder · PivetTrack WMS</p>
-        <span class="company-badge" title="Empresa registrada en el Estado de Florida — Mayo 2026"><i class="fas fa-building"></i> PIVET DIGITAL AUTOMATIONS LLC</span>
-      </div>
-      <ul class="menu">
-        <li class="menu-item active"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
-        <li class="menu-item"><a href="pivettrack.html"><i class="fas fa-warehouse"></i> PivetTrack WMS</a></li>
-        <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
-        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Nosotros</span></a></li>
-        <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
-      </ul>
-      <div class="social-links">
-        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </aside>
-    <main class="content" id="mainContent"></main>
+<body data-titulo-es="PivetTrack: inventario por lote para distribuidores de alimentos | Raúl Pivet" data-titulo-en="PivetTrack: lot-level inventory for food distributors | Raúl Pivet">
+<a class="saltar" href="#contenido"><span data-l="es">Saltar al contenido</span><span data-l="en">Skip to content</span></a>
+<header class="barra">
+  <div class="marco barra__fila">
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
+    <nav class="menu" aria-label="Principal">
+      <a href="pivettrack.html">PivetTrack</a>
+      <a href="proyectos.html"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+      <button class="idioma" type="button" data-cambiar-idioma aria-label="Cambiar idioma / Change language"><span data-l="es">English</span><span data-l="en">Español</span></button>
+    </nav>
   </div>
-  <footer>
-    <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
-    <p class="footer-registered"><span id="footerText">Automatización &amp; Business Intelligence</span> · Miami, FL · Registered LLC — Florida</p>
-  </footer>
+</header>
 
-  <div id="storyModal" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
-    <div class="story-overlay" id="storyOverlay"></div>
-    <article class="story-magazine">
-      <div class="story-hero">
-        <img src="img/gallery/paisaje1.jpg" alt="Chichén Itzá al amanecer">
-        <div class="story-hero-gradient"></div>
-        <span class="story-tag">✈️ Viaje &amp; Reflexión</span>
-        <button class="story-close" id="closeStoryBtn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
-        <div class="story-hero-title">
-          <h2 id="storyTitle">Chichén Itzá: Logística, Kilómetros y Maravillas</h2>
-          <div class="story-hero-meta">
-            <span><i class="fas fa-calendar-alt"></i> 2024</span>
-            <span><i class="fas fa-map-marker-alt"></i> Yucatán, México</span>
-            <span><i class="fas fa-clock"></i> 4 min de lectura</span>
-          </div>
-        </div>
+<main id="contenido">
+<section class="portada">
+  <div class="marco portada__rejilla">
+    <div>
+      <h1><span data-l="es">¿Quién recibió ese lote?</span><span data-l="en">Who got that lot?</span></h1>
+      <p class="grande" data-l="es">PivetTrack es el sistema de inventario para distribuidores de alimentos del sur de Florida. Sigue cada lote hasta su cliente, despacha primero lo que vence primero y lleva cada operación a su QuickBooks Online.</p>
+      <p class="grande" data-l="en">PivetTrack is the inventory system for South Florida food distributors. It follows every lot to your customer, ships the earliest-expiring lot first and sends every transaction to your QuickBooks Online.</p>
+      <div class="portada__acciones">
+        <a class="boton" href="contacto.html?motivo=demo_pivettrack"><span data-l="es">Agendar una sesión de diagnóstico</span><span data-l="en">Book a diagnostic session</span></a>
+        <a class="enlace" data-l="es" href="docs/PivetTrack_Folleto_ES.pdf">Descargar el folleto (PDF)</a>
+        <a class="enlace" data-l="en" href="docs/PivetTrack_Brochure_EN.pdf">Download the brochure (PDF)</a>
       </div>
-      <div class="story-body">
-        <p>Hay viajes que simplemente suceden, y hay viajes que te definen.</p>
-        <div class="story-pullquote"><p>"El mismo cerebro que organiza almacenes planificó cada kilómetro de este viaje."</p></div>
-        <p>La logística empezó semanas antes de subir al avión. Rutas, tiempos de traslado, horarios de menor afluencia, alojamientos estratégicamente ubicados.</p>
-        <div class="story-divider">Lugares visitados</div>
-        <div class="story-places">
-          <div class="story-place-chip"><i class="fas fa-monument"></i> Chichén Itzá</div>
-          <div class="story-place-chip"><i class="fas fa-water"></i> Cenotes de Valladolid</div>
-          <div class="story-place-chip"><i class="fas fa-umbrella-beach"></i> Tulum</div>
-          <div class="story-place-chip"><i class="fas fa-tree"></i> Selva Maya</div>
-        </div>
-        <div class="story-divider">Lo que el viaje confirmó</div>
-        <div class="story-skills">
-          <div class="story-skill-item"><i class="fas fa-route" style="color:#007AFF"></i><span>Planificación</span><small>Logística real aplicada</small></div>
-          <div class="story-skill-item"><i class="fas fa-running" style="color:#34C759"></i><span>Disciplina</span><small>Entrenamiento sin excusas</small></div>
-          <div class="story-skill-item"><i class="fas fa-brain" style="color:#5856D6"></i><span>Curiosidad</span><small>Tecnología en la historia</small></div>
-        </div>
-        <div class="story-footer">
-          <div class="story-author"><img src="img/gallery/filo.png" alt="Raul Pivet"><div class="story-author-info"><strong>Raul Pivet</strong><small>Informático &amp; Deportista</small></div></div>
-          <div class="story-share">
-            <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
+      <p class="portada__aclara" data-l="es">45 minutos sobre su operación real, con acuerdo de confidencialidad.</p>
+      <p class="portada__aclara" data-l="en">45 minutes on your real operation, under an NDA.</p>
+    </div>
+
+    <article class="etiqueta" aria-label="Etiqueta de un lote de ejemplo">
+      <div class="etiqueta__arriba"><span>Gulf Coast Foods</span><span data-l="es">60 cajas recibidas</span><span data-l="en">60 cases received</span></div>
+      <p class="etiqueta__producto"><span data-l="es">Yogur griego 32 oz, caja x6</span><span data-l="en">Greek yogurt 32 oz, case of 6</span></p>
+      <div class="etiqueta__caja">
+        <div class="etiqueta__titulo"><span data-l="es">Lote</span><span data-l="en">Lot</span></div>
+        <div class="etiqueta__lote">GC-26-1014</div>
+      </div>
+      <div class="etiqueta__dos">
+        <div><div class="etiqueta__titulo"><span data-l="es">Vence</span><span data-l="en">Expires</span></div><div class="etiqueta__dato"><span data-l="es" data-vence="es">20 nov 2026</span><span data-l="en" data-vence="en">Nov 20, 2026</span></div></div>
+        <div><div class="etiqueta__titulo">SKU</div><div class="etiqueta__dato">YOG-032</div></div>
+      </div>
+      <svg viewBox="0 0 145 60" preserveAspectRatio="none" role="img" aria-label="Código de barras del lote GC-26-1014"><rect x="0" width="2" height="60"/><rect x="3" width="1" height="60"/><rect x="6" width="1" height="60"/><rect x="11" width="2" height="60"/><rect x="14" width="1" height="60"/><rect x="18" width="1" height="60"/><rect x="22" width="1" height="60"/><rect x="26" width="1" height="60"/><rect x="30" width="2" height="60"/><rect x="33" width="1" height="60"/><rect x="36" width="2" height="60"/><rect x="39" width="3" height="60"/><rect x="44" width="2" height="60"/><rect x="48" width="3" height="60"/><rect x="53" width="1" height="60"/><rect x="55" width="2" height="60"/><rect x="59" width="3" height="60"/><rect x="63" width="1" height="60"/><rect x="66" width="1" height="60"/><rect x="69" width="2" height="60"/><rect x="72" width="3" height="60"/><rect x="77" width="1" height="60"/><rect x="80" width="3" height="60"/><rect x="85" width="2" height="60"/><rect x="88" width="1" height="60"/><rect x="91" width="3" height="60"/><rect x="95" width="2" height="60"/><rect x="99" width="1" height="60"/><rect x="102" width="3" height="60"/><rect x="107" width="2" height="60"/><rect x="110" width="2" height="60"/><rect x="114" width="1" height="60"/><rect x="117" width="3" height="60"/><rect x="121" width="1" height="60"/><rect x="124" width="1" height="60"/><rect x="127" width="4" height="60"/><rect x="132" width="2" height="60"/><rect x="137" width="3" height="60"/><rect x="141" width="1" height="60"/><rect x="143" width="2" height="60"/></svg>
+      <div class="etiqueta__codigo">GC-26-1014</div>
+      <div class="sello" aria-hidden="true"><span data-l="es">RETIRO</span><span data-l="en">RECALL</span></div>
+      <button class="etiqueta__boton" type="button"><span data-l="es">Retirar este lote</span><span data-l="en">Recall this lot</span></button>
+      <div class="retiro" aria-live="polite">
+        <p class="retiro__titulo" data-l="es">Lo recibieron 4 clientes</p>
+        <p class="retiro__titulo" data-l="en">4 customers received it</p>
+        <ul>
+          <li><span>Brickell Bistro Group</span><span>14</span></li>
+          <li><span>Coral Gables Catering</span><span>12</span></li>
+          <li><span>Key Biscayne Hotel &amp; Suites</span><span>16</span></li>
+          <li><span>Little Havana Market</span><span>10</span></li>
+        </ul>
+        <p class="retiro__total" data-l="es">52 cajas con clientes, 8 en su bodega.</p>
+        <p class="retiro__total" data-l="en">52 cases with customers, 8 in your warehouse.</p>
+        <p class="retiro__aclara" data-l="es">Datos de demostración. En la app, esta lista sale a Excel con un clic.</p>
+        <p class="retiro__aclara" data-l="en">Demo data. In the app, this list goes to Excel in one click.</p>
       </div>
     </article>
   </div>
-  <div id="comingSoonModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <div class="modal-icon"><i class="fas fa-tools"></i></div>
-      <h3>Proyecto en desarrollo</h3>
-      <p>Estamos trabajando arduamente para completar esta sección.</p>
-      <p class="modal-date">Disponible próximamente — 2026</p>
+</section>
+<div class="cinta" aria-hidden="true"></div>
+
+<section class="tramo marco">
+  <h2 class="perdida__cabeza"><span data-l="es">En una bodega no se pierde dinero de golpe. Se pierde poco a poco.</span><span data-l="en">Warehouses don’t lose money all at once. They lose it little by little.</span></h2>
+  <div class="libro">
+    <div class="libro__fila">
+      <h3><span data-l="es">El stock que no aparece</span><span data-l="en">The stock that isn’t there</span></h3>
+      <p data-l="es">El sistema muestra disponible lo que la bodega no tiene. Los ajustes se hacen sin documento ni responsable, y la diferencia reaparece más grande en el próximo conteo.</p>
+      <p data-l="en">The system shows stock the warehouse doesn’t have. Adjustments happen with no document and no owner, and the gap grows at every count.</p>
+      <p class="libro__cuesta" data-l="es">Pedidos incompletos y clientes que no vuelven.</p>
+      <p class="libro__cuesta" data-l="en">Short orders and customers who don’t come back.</p>
+    </div>
+    <div class="libro__fila">
+      <h3><span data-l="es">El cierre que se congela</span><span data-l="en">The close that freezes</span></h3>
+      <p data-l="es">Fin de mes, todo el equipo conectado a la vez. Las pantallas no responden, los operarios esperan y los camiones esperan.</p>
+      <p data-l="en">Month-end, and the whole team logs in at once. Screens spin, pickers wait and trucks wait.</p>
+      <p class="libro__cuesta" data-l="es">Horas de bodega detenida en el día de mayor carga.</p>
+      <p class="libro__cuesta" data-l="en">Hours of downtime on your busiest day.</p>
+    </div>
+    <div class="libro__fila">
+      <h3><span data-l="es">El margen que miente</span><span data-l="en">The margin that lies</span></h3>
+      <p data-l="es">Una devolución cargada «a ojo» contamina el costo promedio. Desde ahí, el margen de cada venta se calcula sobre un número falso, y nadie en la empresa lo sabe.</p>
+      <p data-l="en">A return booked at a rough guess contaminates your average cost. From then on, every margin is calculated on a false number, and no one knows.</p>
+      <p class="libro__cuesta" data-l="es">Precios y compras decididos sobre datos falsos.</p>
+      <p class="libro__cuesta" data-l="en">Pricing and purchasing decided on bad data.</p>
+    </div>
+    <div class="libro__fila">
+      <h3><span data-l="es">La operación en una sola cabeza</span><span data-l="en">Operations in one person’s head</span></h3>
+      <p data-l="es">Planillas paralelas, fórmulas rotas y una persona que «sabe cómo está todo». Una renuncia o unas vacaciones se convierten en una crisis.</p>
+      <p data-l="en">Parallel spreadsheets, broken formulas and one person who “knows where everything is.” A resignation or a vacation becomes a crisis.</p>
+      <p class="libro__cuesta" data-l="es">Continuidad y control de su activo más caro.</p>
+      <p class="libro__cuesta" data-l="en">Continuity and control of your most expensive asset.</p>
     </div>
   </div>
+</section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script async src="//www.instagram.com/embed.js"></script>
-  <script src="script.js"></script>
-  <script>
-  const t = {
-    es: {
-      sidebar: "Fundador · PivetTrack WMS",
-      nav_home:"Inicio", nav_about:"Nosotros", nav_projects:"Proyectos", nav_contact:"Contacto", nav_demos:"AppSheet Demos",
-      footer: "Automatización & Business Intelligence",
-      eyebrow_pill: "🏭 PIVETTRACK WMS · PIVET DIGITAL AUTOMATIONS LLC",
-      eyebrow_phrases: [
-        "Construí <span class='highlight'>PivetTrack WMS</span> — inventario industrial para logística Miami.",
-        "¿Su bodega aún registra en <span class='highlight'>papel o Excel</span>? Lo digitalizamos.",
-        "¿Sus reportes llegan cuando <span class='highlight'>ya es tarde</span>? Los automatizamos.",
-        "¿Necesita conectar su bodega con su <span class='highlight'>ERP</span>? Lo integramos."
-      ],
-      h1a: "Automatización Logística",
-      h1b: "& Operativa",
-      hero_sub: "Creé <strong>PivetTrack WMS</strong> — software de control de inventario de grado industrial para empresas logísticas del sur de Florida. También construyo automatizaciones, dashboards y herramientas operativas a medida para operaciones que no pueden permitirse errores ni demoras.",
-      tags: ["WMS Móvil","Power BI","Python","AppSheet","ERP / SAP","Make.com","Power Automate","GitHub Actions","Streamlit","Google Suite","IA Aplicada","SEO Técnico"],
-      btn_talk:"Ver PivetTrack WMS", btn_cv:"Agendar Demo Gratis", btn_lab:"Ver Apps en Vivo",
-      stats: [
-        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Años en operaciones logísticas",   sub:"Minería, distribución y logística",     trend:"Trayectoria" },
-        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Reducción de trabajo manual",       sub:"En procesos automatizados",              trend:"Probado" },
-        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"Sistema desde cero (si aplica)",    sub:"Sin sistema previo, arrancamos ahí",     trend:"Sí, podemos" },
-        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"Orientado a ROI",                   sub:"Nada que no genere resultados reales",   trend:"Siempre" }
-      ],
-      zts_eyebrow: "🏗️ Sin sistema previo? No es problema",
-      zts_title_a: "Si su operación no tiene ningún sistema,",
-      zts_title_b: "ese es exactamente el punto de partida.",
-      zts_desc: "Muchas empresas manejan su inventario en papel, en planillas sueltas o en la memoria de las personas. Eso no es un problema técnico — es una oportunidad. Con las herramientas correctas y la experiencia operativa para entender el negocio desde adentro, es posible construir un sistema completo, ordenado y que el equipo realmente use, sin reemplazar lo que ya funciona.",
-      zts_proof_text: "Sistema completo de inventario para operación alimentaria construido con AppSheet: maestro de códigos, entradas, salidas y exportación automática de documentos — implementado en operación real.",
-      zts_steps: [
-        { num:"01", title:"Diagnóstico del flujo real", desc:"Se mapea cómo opera el negocio hoy — qué se registra, cómo, quién lo usa y dónde están los puntos de falla." },
-        { num:"02", title:"Maestro de productos y códigos", desc:"Se crea la base de datos centralizada: cada ítem con su código único, categoría, unidad de medida y parámetros de control." },
-        { num:"03", title:"Control de entradas y salidas", desc:"App móvil para que el equipo registre movimientos en tiempo real, con validaciones automáticas y sin papel." },
-        { num:"04", title:"Reportes y documentos automáticos", desc:"El sistema genera y exporta los informes que la empresa necesita — en el formato correcto, sin que nadie tenga que armarlo a mano." }
-      ],
-      svc_eyebrow:"Más Soluciones a Medida", svc_title:"¿Necesitás algo específico para tu operación?",
-      services: [
-        { icon:"fas fa-mobile-alt", title:"Sistema WMS Móvil", desc:"Apps de inventario de grado corporativo en AppSheet. Escaneo en modo ráfaga, validación automática por bodega y reportes listos para ERP. Sin instalación — cualquier smartphone.", tags:["AppSheet","Google Sheets","WMS","ERP"] },
-        { icon:"fas fa-file-alt", title:"Automatización Documental", desc:"Eliminamos la emisión manual de documentos logísticos. Órdenes de compra, guías de despacho, informes de recepción — generados y distribuidos automáticamente en segundos.", tags:["Apps Script","Power Automate","Gmail API","PDF"] },
-        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Dashboards Power BI con actualización automática vía Query M avanzado y DAX. Conectamos directamente sus fuentes de datos para que el reporte se actualice solo, sin intervención.", tags:["Power BI","DAX","Query M","TypeScript"] },
-        { icon:"fas fa-plug", title:"Integración con ERP / SAP / Oracle", desc:"Conectamos su ecosistema completo: bodega, ERP, CRM, Gmail y Power BI en un solo flujo. Datos que se mueven entre sistemas sin re-digitación ni pérdida de información.", tags:["Make.com","Webhooks","APIs REST","Power Platform"] },
-        { icon:"fas fa-robot", title:"IA Aplicada a Operaciones", desc:"Agentes de IA que detectan anomalías, califican leads, responden consultas y generan alertas proactivas. Automatización cognitiva sin reemplazar al equipo humano.", tags:["Gemini AI","Python","Make.com","Streamlit"] },
-        { icon:"fas fa-database", title:"Pipelines de Datos", desc:"Pipeline completo: correo con Excel → Python procesa → SQLite almacena → GitHub Actions genera → Power Automate distribuye a 50+ destinatarios, cada uno con solo sus datos.", tags:["Python","SQLite","GitHub Actions","Dataverse"] },
-        { icon:"fab fa-html5", title:"Presencia Web Corporativa", desc:"Sitios y landing pages B2B desde cero con SEO técnico desde el día uno. Schema.org, sitemap y Google Search Console para que su empresa aparezca cuando el cliente la busca.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
-        { icon:"fas fa-cogs", title:"Automatización de Procesos", desc:"Cualquier tarea repetitiva que hoy realiza una persona puede automatizarse. Análisis del flujo, diseño del pipeline y entrega funcionando — en semanas, no meses.", tags:["Power Automate","Make.com","Python","GitHub Actions"] }
-      ],
-      cases_eyebrow:"Resultados reales", cases_title:"Problemas que resolvemos en producción",
-      cases: [
-        { icon:"fas fa-envelope-open-text", title:"Su equipo pierde horas enviando el mismo reporte a 50 destinatarios distintos", desc:"Cada semana, alguien descarga un Excel, lo filtra manualmente y lo reenvía. Es tiempo que se repite sin parar. Con un pipeline automatizado, ese proceso ocurre solo — correo entrante → Python → SQLite → GitHub Actions → Power Automate → cada jefe de almacén recibe exactamente sus datos, sin intervención humana.", badge:"✓ En producción" },
-        { icon:"fas fa-chart-line", title:"Los datos están desactualizados justo cuando más se necesitan", desc:"Cada vez que alguien quiere ver el estado real del negocio, tiene que pedir el archivo y esperar. Un dashboard conectado directamente a la fuente, con ventana temporal de 62 días y limpieza automática, se actualiza solo — sin que nadie tenga que hacer nada.", badge:"✓ En producción" },
-        { icon:"fas fa-tags", title:"Crear etiquetas correlativas en Excel le cuesta horas a su equipo", desc:"Un proceso que debería durar segundos se convierte en una tarea que consume la mañana. Una herramienta en Python hace lo mismo en 5 segundos: hasta 1.000 etiquetas con numeración automática, formato profesional y listas para imprimir.", badge:"⚡ 5 segundos" },
-        { icon:"fas fa-bell", title:"Nadie sabe qué está pendiente hasta que ya es tarde para actuar", desc:"Los pendientes se acumulan en correos sin leer. Un sistema con Google Apps Script escanea correos de proveedores, calcula días de antigüedad y envía cada mañana una lista ordenada por urgencia — directo al WhatsApp del equipo.", badge:"📱 Cada mañana" },
-        { icon:"fas fa-warehouse", title:"Los errores de inventario en papel generan pérdidas y problemas de trazabilidad", desc:"Con registros manuales, los errores son inevitables y en operaciones de turno continuo se multiplican. Una app móvil con AppSheet reemplazó completamente el papel en una operación de 20 personas en turnos 7x7, reduciendo errores un 30% desde el primer mes.", badge:"↓ 30% errores" },
-        { icon:"fas fa-search", title:"La empresa existe, pero no aparece en Google cuando un cliente la busca", desc:"Sin SEO técnico, un sitio web no aparece aunque esté bien diseñado. Estructura de metadatos, schema.org, sitemap y Google Search Console son la diferencia entre existir en internet y aparecer cuando alguien busca su servicio.", badge:"🔍 #1 en Google" }
-      ],
-      stack_eyebrow:"Tecnologías", stack_title:"Nuestro stack",
-      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Excel Avanzado"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fas fa-plug","APIs REST"],["fas fa-share-alt","Automatización"],["fas fa-search","SEO Técnico"]],
-      trust_eyebrow:"Confianza & Cumplimiento", trust_title:"Trabajamos bajo estándares corporativos",
-      trust_items:[
-        { icon:"fas fa-file-contract", label:"NDA / Confidencialidad", sub:"Firmamos acuerdo de confidencialidad antes de iniciar cualquier proyecto" },
-        { icon:"fas fa-handshake", label:"SLA Documentado", sub:"Tiempos de respuesta y entregables acordados por contrato" },
-        { icon:"fas fa-building", label:"Entidad Legal — Florida", sub:"PIVET DIGITAL AUTOMATIONS LLC, registrada en el Estado de Florida, EE.UU." },
-        { icon:"fab fa-google", label:"Infraestructura Google Cloud", sub:"Datos en la nube del cliente. Nunca en servidores de terceros no autorizados" },
-        { icon:"fas fa-globe", label:"100% Remoto", sub:"Operamos desde Miami, FL para toda América y EE.UU." },
-        { icon:"fas fa-rocket", label:"Disponibilidad Inmediata", sub:"Proyectos que arrancan en días, no en meses" }
-      ],
-      case_study: {
-        badge:"CASO DE ÉXITO",
-        name:"WMS Móvil para Operación de Distribución Alimentaria",
-        sector:"🏭 Sector Alimentario · Hialeah, FL",
-        metrics:[ { num:"↓30%", label:"Errores de inventario" }, { num:"<30s", label:"Cierre de inventario" }, { num:"0", label:"Papel en operación" } ],
-        problem:"Registro manual en papel. Errores de lote y trazabilidad. Horas cruzando datos en Excel para que el ERP cuadre al cierre de cada turno.",
-        solution:"WMS Móvil con AppSheet + Google Sheets. Escaneo en modo ráfaga, validación automática por bodega, dashboard de auditoría en tiempo real.",
-        result:"20 operadores en turno 7x7. Cero papel desde el primer mes. Cierre del inventario en segundos, listo para inyectar al ERP.",
-        tech:["AppSheet","Google Sheets","Apps Script","Gmail API"],
-        cta:"Ver Demo en Video"
-      },
-      pt_promo_badge:"🏭 Mi Producto Principal",
-      pt_promo_h2:"PivetTrack WMS",
-      pt_promo_desc:"Control de inventario de grado industrial para bodegas logísticas. Folio correlativo en cada movimiento, SLA 99.9% comprometido y precios transparentes.",
-      pt_promo_m1:"US$ 3,500 Setup", pt_promo_m2:"US$ 800 / mes", pt_promo_m3:"Demo gratuita 45 min",
-      pt_promo_cta:"Ver PivetTrack WMS →",
-      pt_block_h2:"PivetTrack — WMS marca blanca",
-      pt_block_p:"Inventario por lote y vencimiento, picking por escaneo, portal B2B y QuickBooks Online. Medido, no prometido.",
-      pt_block_cta:"Conocer PivetTrack",
-      cta_title:"¿Agendamos 30 minutos sin costo?",
-      cta_desc:"Le mostramos exactamente cómo solucionamos su caso con tecnología real, no propuestas genéricas.<br>Trabajo remoto · Disponible de inmediato · Miami, FL · <strong>PIVET DIGITAL AUTOMATIONS LLC</strong>",
-      cta_btn1:"Agendar Demostración", cta_btn2:"Ver Demos en Vivo"
-    },
-    en: {
-      sidebar:"Founder · PivetTrack WMS",
-      nav_home:"Home", nav_about:"About Us", nav_projects:"Projects", nav_contact:"Contact", nav_demos:"AppSheet Demos",
-      footer:"Automation & Business Intelligence",
-      eyebrow_pill: "🏭 PIVETTRACK WMS · PIVET DIGITAL AUTOMATIONS LLC",
-      eyebrow_phrases: [
-        "I built <span class='highlight'>PivetTrack WMS</span> — industrial-grade inventory for Miami logistics.",
-        "Is your warehouse still on <span class='highlight'>paper or Excel</span>? We digitize it.",
-        "Do your reports arrive when it's <span class='highlight'>already too late</span>? We automate them.",
-        "Need to connect your warehouse to your <span class='highlight'>ERP</span>? We integrate it."
-      ],
-      h1a:"Logistics & Operations",
-      h1b:"Automation",
-      hero_sub:"I built <strong>PivetTrack WMS</strong> — industrial-grade inventory control software for South Florida logistics companies. I also build custom automations, dashboards, and operational tools for operations that can't afford errors or delays.",
-      tags:["Mobile WMS","Power BI","Python","AppSheet","ERP / SAP","Make.com","Power Automate","GitHub Actions","Streamlit","Google Suite","Applied AI","Technical SEO"],
-      btn_talk:"Explore PivetTrack WMS", btn_cv:"Schedule a Free Demo", btn_lab:"See Live Apps",
-      stats: [
-        { icon:"fas fa-layer-group",    num:"10",  suffix:"+", label:"Years in logistics operations",    sub:"Mining, distribution & logistics",      trend:"Track record" },
-        { icon:"fas fa-clock",           num:"80",  suffix:"%", label:"Manual work reduction",            sub:"In automated processes",                trend:"Proven" },
-        { icon:"fas fa-cubes",           num:"0",   suffix:"",  label:"System from scratch (if needed)",  sub:"No system? That's where we start",      trend:"Yes, we can" },
-        { icon:"fas fa-check-double",    num:"100", suffix:"%", label:"ROI-driven",                       sub:"Nothing that doesn't generate results",  trend:"Always" }
-      ],
-      zts_eyebrow:"🏗️ No system yet? Not a problem",
-      zts_title_a:"If your operation has no system in place,",
-      zts_title_b:"that's exactly the right starting point.",
-      zts_desc:"Many businesses manage their inventory on paper, scattered spreadsheets, or in people's heads. That's not a technical problem — it's an opportunity. With the right tools and the operational experience to understand the business from the inside, it's possible to build a complete, organized system that the team actually uses, without replacing what already works.",
-      zts_proof_text:"Complete food inventory system built with AppSheet: product master, entries, exits and automatic document export — implemented in a real operation.",
-      zts_steps:[
-        { num:"01", title:"Map the real workflow", desc:"We map how the business operates today — what gets recorded, how, who uses it and where the failure points are." },
-        { num:"02", title:"Product and code master", desc:"A centralized database is created: each item with its unique code, category, unit of measure and control parameters." },
-        { num:"03", title:"Entries and exits control", desc:"A mobile app lets the team record movements in real time, with automatic validations and no paper." },
-        { num:"04", title:"Automatic reports and documents", desc:"The system generates and exports the reports the company needs — in the right format, without anyone having to build them manually." }
-      ],
-      svc_eyebrow:"More Custom Solutions", svc_title:"Need something specific for your operation?",
-      services:[
-        { icon:"fas fa-mobile-alt", title:"Mobile WMS System", desc:"Corporate-grade inventory apps on AppSheet. Burst-mode scanning, automatic warehouse validation and ERP-ready reports. No installation — any smartphone.", tags:["AppSheet","Google Sheets","WMS","ERP"] },
-        { icon:"fas fa-file-alt", title:"Document Automation", desc:"We eliminate manual logistics document generation. Purchase orders, dispatch guides, receiving reports — automatically generated and distributed in seconds.", tags:["Apps Script","Power Automate","Gmail API","PDF"] },
-        { icon:"fas fa-chart-bar", title:"Business Intelligence", desc:"Power BI dashboards with automatic refresh via advanced Query M and DAX. We connect directly to your data sources so the report updates itself without intervention.", tags:["Power BI","DAX","Query M","TypeScript"] },
-        { icon:"fas fa-plug", title:"ERP / SAP / Oracle Integration", desc:"We connect your entire ecosystem: warehouse, ERP, CRM, Gmail and Power BI in one flow. Data that moves between systems without re-entry or information loss.", tags:["Make.com","Webhooks","REST APIs","Power Platform"] },
-        { icon:"fas fa-robot", title:"AI Applied to Operations", desc:"AI agents that detect anomalies, qualify leads, respond to queries and generate proactive alerts. Cognitive automation without replacing your team.", tags:["Gemini AI","Python","Make.com","Streamlit"] },
-        { icon:"fas fa-database", title:"Data Pipelines", desc:"Full pipeline: email with Excel → Python processes → SQLite stores → GitHub Actions generates → Power Automate delivers to 50+ recipients, each with only their own data.", tags:["Python","SQLite","GitHub Actions","Dataverse"] },
-        { icon:"fab fa-html5", title:"Corporate Web Presence", desc:"B2B websites and landing pages from scratch with technical SEO from day one. Schema.org, sitemap, Google Search Console — your company appears when the client searches.", tags:["HTML/CSS","JavaScript","React","Firebase","SEO"] },
-        { icon:"fas fa-cogs", title:"Process Automation", desc:"Any repetitive task someone does today can be automated. Flow analysis, pipeline design and working delivery — in weeks, not months.", tags:["Power Automate","Make.com","Python","GitHub Actions"] }
-      ],
-      cases_eyebrow:"Real results", cases_title:"Problems we solve in production",
-      cases:[
-        { icon:"fas fa-envelope-open-text", title:"Your team wastes hours sending the same report to 50 different recipients", desc:"Every week, someone downloads an Excel file, manually filters it and forwards it to each recipient. With an automated pipeline, the whole process runs by itself — incoming email → Python → SQLite → GitHub Actions → Power Automate → each warehouse manager gets exactly their own data, no human intervention required.", badge:"✓ In production" },
-        { icon:"fas fa-chart-line", title:"Data is always out of date when you need it most", desc:"Every time someone wants to see the real state of the business, they have to ask for the file and wait. A dashboard connected directly to the source, with a 62-day rolling window and automatic cleanup, updates itself — without anyone having to do anything.", badge:"✓ In production" },
-        { icon:"fas fa-tags", title:"Creating sequential labels in Excel takes your team half the morning", desc:"A process that should take seconds turns into a task that eats up hours. A Python tool does exactly the same thing in 5 seconds: up to 1,000 labels with automatic numbering, professional formatting and print-ready output.", badge:"⚡ 5 seconds" },
-        { icon:"fas fa-bell", title:"Nobody knows what's pending until it's already too late to act", desc:"Pending items pile up in unread emails. A Google Apps Script system scans supplier emails, calculates how many days each item has been pending, and sends a priority-sorted list to the team's WhatsApp every morning.", badge:"📱 Every morning" },
-        { icon:"fas fa-warehouse", title:"Paper-based inventory records generate losses and traceability issues", desc:"With manual paper records, errors are inevitable and multiply in shift-based operations. A mobile AppSheet app fully replaced paper in a 20-person operation on 7x7 rotating shifts, reducing inventory errors by 30% from the very first month.", badge:"↓ 30% errors" },
-        { icon:"fas fa-search", title:"Your company exists, but nobody finds it on Google when a client searches", desc:"Without technical SEO, a website won't show up even if it's well designed. Metadata structure, schema.org, sitemap and Google Search Console are the difference between existing and appearing when someone searches for your service.", badge:"🔍 #1 on Google" }
-      ],
-      stack_eyebrow:"Technologies", stack_title:"Our stack",
-      stack:[["fas fa-chart-bar","Power BI"],["fas fa-cogs","Power Automate"],["fas fa-database","Dataverse"],["fab fa-python","Python"],["fas fa-table","Pandas / NumPy"],["fas fa-chart-line","Streamlit"],["fas fa-bolt","Make.com"],["fab fa-google","Google Suite"],["fas fa-fire","AppSheet"],["fab fa-github","GitHub Actions"],["fas fa-file-excel","Advanced Excel"],["fas fa-robot","Gemini AI"],["fab fa-html5","HTML / CSS"],["fab fa-js","JavaScript"],["fab fa-react","React"],["fas fa-fire-alt","Firebase"],["fas fa-code","TypeScript"],["fas fa-warehouse","WMS / ERP"],["fas fa-cubes","SQLite"],["fas fa-project-diagram","Power Apps"],["fas fa-globe","Power Pages"],["fas fa-plug","REST APIs"],["fas fa-share-alt","Automation"],["fas fa-search","Technical SEO"]],
-      trust_eyebrow:"Trust & Compliance", trust_title:"We work under corporate standards",
-      trust_items:[
-        { icon:"fas fa-file-contract", label:"NDA / Confidentiality", sub:"We sign a confidentiality agreement before starting any project" },
-        { icon:"fas fa-handshake", label:"Documented SLA", sub:"Response times and deliverables agreed in writing by contract" },
-        { icon:"fas fa-building", label:"Legal Entity — Florida", sub:"PIVET DIGITAL AUTOMATIONS LLC, registered in the State of Florida, USA" },
-        { icon:"fab fa-google", label:"Google Cloud Infrastructure", sub:"Data stays in the client's cloud. Never on unauthorized third-party servers" },
-        { icon:"fas fa-globe", label:"100% Remote", sub:"Operating from Miami, FL for all of the Americas and the US" },
-        { icon:"fas fa-rocket", label:"Immediate Availability", sub:"Projects that start in days, not months" }
-      ],
-      case_study: {
-        badge:"CASE STUDY",
-        name:"Mobile WMS for Food Distribution Operation",
-        sector:"🏭 Food & Beverage · Hialeah, FL",
-        metrics:[ { num:"↓30%", label:"Inventory errors" }, { num:"<30s", label:"Inventory close" }, { num:"0", label:"Paper in operation" } ],
-        problem:"Manual paper records. Batch and traceability errors. Hours crossing data in Excel so the ERP closes correctly at end of shift.",
-        solution:"Mobile WMS with AppSheet + Google Sheets. Burst scanning, automatic warehouse validation, real-time audit dashboard.",
-        result:"20 operators on 7x7 shifts. Zero paper from month one. Inventory close in seconds, ready to inject into the ERP.",
-        tech:["AppSheet","Google Sheets","Apps Script","Gmail API"],
-        cta:"Watch Video Demo"
-      },
-      pt_promo_badge:"🏭 My Primary Product",
-      pt_promo_h2:"PivetTrack WMS",
-      pt_promo_desc:"Industrial-grade inventory control for logistics warehouses. Sequential document on every movement, 99.9% SLA commitment and transparent pricing.",
-      pt_promo_m1:"US$ 3,500 Setup", pt_promo_m2:"US$ 800 / month", pt_promo_m3:"Free 45-min demo",
-      pt_promo_cta:"Explore PivetTrack WMS →",
-      pt_block_h2:"PivetTrack — White-label WMS",
-      pt_block_p:"Inventory by lot and expiry date, scan-to-pick, B2B portal and QuickBooks Online. Measured, not promised.",
-      pt_block_cta:"Meet PivetTrack",
-      cta_title:"Ready to talk about your operation?",
-      cta_desc:"We'll show you exactly how we solve your case with real technology, not generic proposals.<br>Remote work · Available immediately · Miami, FL · <strong>PIVET DIGITAL AUTOMATIONS LLC</strong>",
-      cta_btn1:"Schedule a Demo", cta_btn2:"See Live Demos"
-    }
-  };
+<section class="tramo fondo-hormigon">
+  <div class="marco">
+    <div class="app__texto">
+      <h2><span data-l="es">Toda su bodega en una pantalla. Y en el bolsillo del operario.</span><span data-l="en">Your whole warehouse on one screen. And in your picker’s pocket.</span></h2>
+      <p data-l="es">Pedidos por aprobar, despachos pendientes y borradores, ordenados por urgencia. El operario escanea con el celular o con una pistola, y no se mueve una caja sin un documento detrás.</p>
+      <p data-l="en">Orders to approve, shipments to dispatch and open drafts, sorted by urgency. Pickers scan with a phone or a handheld, and no case moves without a document behind it.</p>
+    </div>
+    <div class="app__fotos">
+      <img class="captura" data-l="es" src="img/app/es_centro.jpg" width="2000" height="1250" alt="Centro de Operaciones de PivetTrack con las tareas pendientes ordenadas por urgencia" loading="lazy">
+      <img class="captura" data-l="en" src="img/app/en_centro.jpg" width="2000" height="1250" alt="PivetTrack Operations Center with pending tasks sorted by urgency" loading="lazy">
+      <img class="celular" data-l="es" src="img/app/es_movil_centro.jpg" width="900" height="1948" alt="PivetTrack en un celular" loading="lazy">
+      <img class="celular" data-l="en" src="img/app/en_movil_centro.jpg" width="900" height="1948" alt="PivetTrack on a phone" loading="lazy">
+    </div>
+    <div class="app__pie">
+      <a class="enlace" href="pivettrack.html"><span data-l="es">Ver el recorrido completo de un lote en PivetTrack</span><span data-l="en">Follow a lot through PivetTrack, start to finish</span></a>
+    </div>
+  </div>
+</section>
 
-  let lang = localStorage.getItem('homeLang') || 'es';
+<section class="tramo medido">
+  <div class="marco">
+    <h2><span data-l="es">Medido, no prometido.</span><span data-l="en">Measured, not promised.</span></h2>
+    <table class="medicion">
+      <thead><tr>
+        <th scope="col"><span data-l="es">Prueba</span><span data-l="en">Test</span></th>
+        <th scope="col"><span data-l="es">Resultado</span><span data-l="en">Result</span></th>
+        <th scope="col"><span data-l="es">Fecha</span><span data-l="en">Date</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span data-l="es">120 operarios haciendo picking a la vez durante 15 minutos, con más de 300,000 salidas en el historial. Sin un solo error de servidor.</span><span data-l="en">120 operators picking at once for 15 minutes, with more than 300,000 shipments in the history. Zero server errors.</span></td>
+          <td><div class="medicion__valor">293 ms</div><span data-l="es">95 de cada 100 respuestas, o menos</span><span data-l="en">95 of every 100 responses, or faster</span></td>
+          <td class="medicion__fecha"><span data-l="es">3 nov 2026</span><span data-l="en">Nov 3, 2026</span></td>
+        </tr>
+        <tr>
+          <td><span data-l="es">Cierre de una toma general de 167,382 líneas mientras 20 operarios seguían despachando. Ni un pedido falló de 6,176.</span><span data-l="en">Closing a 167,382-line full count while 20 operators kept shipping. Not one of 6,176 requests failed.</span></td>
+          <td><div class="medicion__valor">229 s</div><span data-l="es">En un solo intento</span><span data-l="en">In a single attempt</span></td>
+          <td class="medicion__fecha"><span data-l="es">29 oct 2026</span><span data-l="en">Oct 29, 2026</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="nota" data-l="es">Corridas únicas en un entorno de pruebas clonado de producción, sin usuarios reales. Por contrato: 99.9% de disponibilidad mensual y hasta 120 usuarios simultáneos, con condiciones.</p>
+    <p class="nota" data-l="en">Single runs in a production-identical staging environment, with no real users. By contract: 99.9% monthly uptime and up to 120 simultaneous users, with conditions.</p>
+  </div>
+</section>
 
-  /* ── Typewriter rotativo ── */
-  let rotateIdx = 0;
-  let rotateTimer = null;
+<section class="tramo marco dos">
+  <div class="caso">
+    <h2><span data-l="es">Antes de PivetTrack, una bodega en Hialeah.</span><span data-l="en">Before PivetTrack, a warehouse in Hialeah.</span></h2>
+    <p class="parrafo" data-l="es">Una distribuidora de alimentos llevaba el inventario en papel y pasaba horas cruzando datos en Excel para cerrar el turno. Una app móvil hecha con AppSheet reemplazó el papel para 20 operarios en turnos 7x7.</p>
+    <p class="parrafo" data-l="en">A food distributor kept inventory on paper and spent hours reconciling Excel files at the end of each shift. A mobile app built on AppSheet replaced the paper for 20 operators on 7x7 shifts.</p>
+    <div class="caso__datos">
+      <div><b>20</b><span data-l="es">operarios, sin papel</span><span data-l="en">operators, paperless</span></div>
+      <div><b>30%</b><span data-l="es">menos errores de inventario</span><span data-l="en">fewer inventory errors</span></div>
+    </div>
+  </div>
+  <div>
+    <h3 class="oficios__titulo"><span data-l="es">También construyo, a medida</span><span data-l="en">I also build, to order</span></h3>
+    <ul class="oficios">
+      <li><h3><span data-l="es">Documentos que se generan solos</span><span data-l="en">Documents that write themselves</span></h3><p data-l="es">Órdenes de compra, guías de despacho e informes de recepción.</p><p data-l="en">Purchase orders, dispatch guides and receiving reports.</p></li>
+      <li><h3><span data-l="es">Reportes que se actualizan solos</span><span data-l="en">Reports that refresh themselves</span></h3><p data-l="es">Power BI conectado directamente a sus fuentes de datos.</p><p data-l="en">Power BI wired directly to your data sources.</p></li>
+      <li><h3><span data-l="es">Sistemas que se hablan entre sí</span><span data-l="en">Systems that talk to each other</span></h3><p data-l="es">Bodega, ERP, CRM y correo en un solo flujo, sin volver a tipear.</p><p data-l="en">Warehouse, ERP, CRM and email in one flow, with no re-keying.</p></li>
+      <li><h3><span data-l="es">IA para tareas concretas</span><span data-l="en">AI for specific jobs</span></h3><p data-l="es">Detectar anomalías, clasificar consultas y avisar a tiempo.</p><p data-l="en">Spotting anomalies, sorting inquiries and raising alerts in time.</p></li>
+    </ul>
+    <p class="oficios__mas"><a class="enlace" href="proyectos.html"><span data-l="es">Ver trabajos anteriores</span><span data-l="en">See past work</span></a></p>
+  </div>
+</section>
 
-  function startRotator(phrases) {
-    const textEl  = document.getElementById('eyebrowText');
-    const dotsEl  = document.getElementById('eyebrowDots');
-    if (!textEl || !dotsEl) return;
-    clearInterval(rotateTimer);
-    rotateIdx = 0;
+<section class="tramo fondo-hormigon">
+  <div class="marco dos quien">
+    <h2><span data-l="es">Diez años en bodegas antes de escribir una línea de PivetTrack.</span><span data-l="en">Ten years in warehouses before writing a line of PivetTrack.</span></h2>
+    <div>
+      <p class="grande" data-l="es">Soy Raúl Pivet. Vengo de la logística en minería y distribución, y fundé PIVET DIGITAL AUTOMATIONS LLC en Florida. Si trabaja conmigo, habla directamente con quien construye el sistema.</p>
+      <p class="grande" data-l="en">I’m Raúl Pivet. I come from logistics in mining and distribution, and I founded PIVET DIGITAL AUTOMATIONS LLC in Florida. Work with me and you talk directly to the person who builds the system.</p>
+      <a class="enlace" href="sobre-mi.html"><span data-l="es">Conocer mi historia</span><span data-l="en">Read my story</span></a>
+    </div>
+  </div>
+</section>
 
-    function updateDots() {
-      dotsEl.querySelectorAll('.eyebrow-dot').forEach((d,i) => {
-        d.classList.toggle('active', i === rotateIdx);
-      });
-    }
-
-    function typewrite(html, callback) {
-      textEl.classList.add('fade-out');
-      setTimeout(() => {
-        textEl.innerHTML = html;
-        textEl.classList.remove('fade-out');
-        if (callback) callback();
-      }, 320);
-    }
-
-    typewrite(phrases[0]);
-    updateDots();
-
-    rotateTimer = setInterval(() => {
-      rotateIdx = (rotateIdx + 1) % phrases.length;
-      typewrite(phrases[rotateIdx]);
-      updateDots();
-    }, 3600);
-  }
-
-  function render() {
-    const d = t[lang];
-    document.getElementById('sidebarSubtitle').textContent = d.sidebar;
-    document.getElementById('footerText').textContent = d.footer;
-    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
-    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
-    document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
-
-    const dotsHTML = d.eyebrow_phrases.map((_,i) =>
-      `<span class="eyebrow-dot${i===0?' active':''}"></span>`
-    ).join('');
-
-    document.getElementById('mainContent').innerHTML = `
-      <section class="hero" data-aos="fade-down">
-        <div class="hero-eyebrow-wrap">
-          <div class="hero-eyebrow">
-            <span class="eyebrow-pill">${d.eyebrow_pill}</span>
-            <div class="eyebrow-rotating">
-              <span class="rotate-text" id="eyebrowText">${d.eyebrow_phrases[0]}</span>
-              <span class="eyebrow-cursor"></span>
-            </div>
-            <div class="eyebrow-dots" id="eyebrowDots">${dotsHTML}</div>
-          </div>
-        </div>
-        <h1>${d.h1a}<br><span>${d.h1b}</span></h1>
-        <p class="hero-sub">${d.hero_sub}</p>
-        <div class="hero-tags">${d.tags.map(tg=>`<span class="hero-tag">${tg}</span>`).join('')}</div>
-        <div class="hero-cta">
-          <a href="pivettrack.html" class="btn"><i class="fas fa-warehouse"></i> ${d.btn_talk}</a>
-          <a href="contacto.html" class="btn-outline"><i class="fas fa-calendar-check"></i> ${d.btn_cv}</a>
-          <a href="galeria.html" class="btn-outline"><i class="fas fa-flask"></i> ${d.btn_lab}</a>
-        </div>
-      </section>
-
-      <section class="ptblock" data-aos="fade-up">
-        <h2>${d.pt_block_h2}</h2>
-        <p>${d.pt_block_p}</p>
-        <a href="pivettrack.html" class="btn"><i class="fas fa-warehouse"></i> ${d.pt_block_cta}</a>
-      </section>
-
-      <div class="stats-bar" data-aos="fade-up">
-        ${d.stats.map(s=>`
-          <div class="stat-item" data-ghost="${s.num}${s.suffix}">
-            <div class="stat-item-bar"></div>
-            <div class="stat-icon-row">
-              <div class="stat-icon"><i class="${s.icon}"></i></div>
-              <span class="stat-trend">${s.trend}</span>
-            </div>
-            <span class="stat-number" data-target="${s.num}" data-suffix="${s.suffix}">0</span>
-            <span class="stat-label">${s.label}</span>
-            <span class="stat-sublabel">${s.sub}</span>
-          </div>`).join('')}
+<section class="tramo cierre">
+  <div class="marco cierre__rejilla">
+    <div>
+      <h2><span data-l="es">Dos números. Todo sobre la mesa.</span><span data-l="en">Two numbers. All on the table.</span></h2>
+      <div class="precios">
+        <div class="precio"><b>$3,500</b><span data-l="es">Implementación, pago único</span><span data-l="en">Implementation, one-time</span></div>
+        <div class="precio"><b>$800</b><span data-l="es">Al mes, usuarios ilimitados</span><span data-l="en">Per month, unlimited users</span></div>
       </div>
-
-      <!-- PivetTrack WMS — producto principal -->
-      <a href="pivettrack.html" class="ptpromo-card" data-aos="fade-up">
-        <div class="ptpromo-badge">${d.pt_promo_badge}</div>
-        <div class="ptpromo-body">
-          <h2 class="ptpromo-h2">${d.pt_promo_h2}</h2>
-          <p class="ptpromo-desc">${d.pt_promo_desc}</p>
-          <div class="ptpromo-metrics">
-            <span>${d.pt_promo_m1}</span>
-            <span>${d.pt_promo_m2}</span>
-            <span>${d.pt_promo_m3}</span>
-          </div>
-        </div>
-        <div class="ptpromo-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
-      </a>
-
-      <section class="featured-case" data-aos="fade-up">
-        <div class="featured-case-card">
-          <div class="featured-case-header">
-            <span class="featured-case-badge"><i class="fas fa-check-circle"></i> ${d.case_study.badge}</span>
-            <div class="featured-case-name">${d.case_study.name}</div>
-            <div class="featured-case-sector">${d.case_study.sector}</div>
-          </div>
-          <div class="featured-case-body">
-            <div class="featured-case-metrics">
-              ${d.case_study.metrics.map(m=>`<div class="case-metric"><div class="case-metric-num">${m.num}</div><div class="case-metric-label">${m.label}</div></div>`).join('')}
-            </div>
-            <div class="featured-case-col">
-              <div class="case-col-label">${lang==='es'?'El Problema':'The Problem'}</div>
-              <p class="case-col-text">${d.case_study.problem}</p>
-            </div>
-            <div class="featured-case-col">
-              <div class="case-col-label">${lang==='es'?'La Solución':'The Solution'}</div>
-              <p class="case-col-text">${d.case_study.solution}</p>
-            </div>
-            <div class="featured-case-col">
-              <div class="case-col-label">${lang==='es'?'El Resultado':'The Result'}</div>
-              <p class="case-col-text">${d.case_study.result}</p>
-            </div>
-          </div>
-          <div class="featured-case-footer">
-            <div class="featured-case-stack">
-              ${d.case_study.tech.map(t=>`<span class="featured-case-tech">${t}</span>`).join('')}
-            </div>
-            <a href="pivettrack.html" class="btn-outline"><i class="fas fa-play"></i> ${d.case_study.cta}</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="zero-to-system" data-aos="fade-up">
-        <div class="zts-card">
-          <div class="zts-inner">
-            <div class="zts-left">
-              <span class="zts-eyebrow">${d.zts_eyebrow}</span>
-              <h2 class="zts-title">${d.zts_title_a}<br><span>${d.zts_title_b}</span></h2>
-              <p class="zts-desc">${d.zts_desc}</p>
-              <div class="zts-proof">
-                <i class="fas fa-check-circle"></i>
-                <span><strong>Caso real:</strong> ${d.zts_proof_text}</span>
-              </div>
-            </div>
-            <div class="zts-right">
-              ${d.zts_steps.map((s,i)=>`
-                <div class="zts-step" data-aos="fade-left" data-aos-delay="${i*80}">
-                  <div class="zts-step-num">${s.num}</div>
-                  <div class="zts-step-body">
-                    <div class="zts-step-title">${s.title}</div>
-                    <div class="zts-step-desc">${s.desc}</div>
-                  </div>
-                </div>`).join('')}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="services" data-aos="fade-up">
-        <div class="section-header"><p class="section-eyebrow">${d.svc_eyebrow}</p><h2 class="section-title">${d.svc_title}</h2></div>
-        <div class="services-grid">${d.services.map((s,i)=>`<div class="service-card" data-aos="fade-up" data-aos-delay="${50+i*40}"><div class="service-icon"><i class="${s.icon}"></i></div><h3 class="service-title">${s.title}</h3><p class="service-desc">${s.desc}</p><div class="service-tags">${s.tags.map(tg=>`<span class="service-tag">${tg}</span>`).join('')}</div></div>`).join('')}</div>
-      </section>
-      <section class="trust-section" data-aos="fade-up">
-        <div class="section-header"><p class="section-eyebrow">${d.trust_eyebrow}</p><h2 class="section-title">${d.trust_title}</h2></div>
-        <div class="trust-grid">
-          ${d.trust_items.map(item=>`
-            <div class="trust-item">
-              <div class="trust-icon"><i class="${item.icon}"></i></div>
-              <div><div class="trust-label">${item.label}</div><div class="trust-sub">${item.sub}</div></div>
-            </div>`).join('')}
-        </div>
-      </section>
-
-      <section class="cases" data-aos="fade-up">
-        <div class="section-header"><p class="section-eyebrow">${d.cases_eyebrow}</p><h2 class="section-title">${d.cases_title}</h2></div>
-        <div class="cases-list">${d.cases.map((c,i)=>`<div class="case-item" data-aos="fade-up" data-aos-delay="${50+i*40}"><div class="case-icon"><i class="${c.icon}"></i></div><div class="case-content"><h4 class="case-title">${c.title}</h4><p class="case-desc">${c.desc}</p></div><span class="case-badge">${c.badge}</span></div>`).join('')}</div>
-      </section>
-      <section class="stack" data-aos="fade-up">
-        <div class="section-header"><p class="section-eyebrow">${d.stack_eyebrow}</p><h2 class="section-title">${d.stack_title}</h2></div>
-        <div class="stack-grid">${d.stack.map(([ic,nm])=>`<div class="stack-item"><i class="${ic}"></i> ${nm}</div>`).join('')}</div>
-      </section>
-      <section class="cta-section" data-aos="fade-up">
-        <h2>${d.cta_title}</h2>
-        <p>${d.cta_desc}</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="contacto.html" class="btn"><i class="fas fa-calendar-check"></i> ${d.cta_btn1}</a>
-          <a href="pivettrack.html" class="btn-outline"><i class="fas fa-play-circle"></i> ${d.cta_btn2}</a>
-        </div>
-      </section>`;
-
-    animateCounters();
-    refreshAOS();
-    startRotator(d.eyebrow_phrases);
-  }
-
-  function animateCounters() {
-    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-      const target  = +el.dataset.target;
-      const suffix  = el.dataset.suffix || '';
-      if (target === 0) { el.textContent = '0'; return; }
-      let current = 0;
-      const step = Math.ceil(target / 40);
-      const timer = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = current.toLocaleString() + suffix;
-        if (current >= target) clearInterval(timer);
-      }, 30);
-    });
-  }
-
-  function toggleLang() {
-    lang = lang === 'es' ? 'en' : 'es';
-    document.documentElement.lang = lang;
-    localStorage.setItem('homeLang', lang);
-    render();
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    document.documentElement.lang = lang;
-    render();
-    document.getElementById('languageToggle').addEventListener('click', toggleLang);
-  });
-  </script>
+      <p class="cierre__nota" data-l="es">QuickBooks Online incluido. En dólares, sin impuestos. Las condiciones finales se fijan en la propuesta formal.</p>
+      <p class="cierre__nota" data-l="en">QuickBooks Online included. In U.S. dollars, before taxes. Final terms are set in the formal proposal.</p>
+    </div>
+    <div>
+      <a class="boton boton--oscuro" href="contacto.html?motivo=demo_pivettrack"><span data-l="es">Agendar una sesión de diagnóstico</span><span data-l="en">Book a diagnostic session</span></a>
+      <div class="cierre__contacto">
+        <a href="mailto:raul@raulpivet.com">raul@raulpivet.com</a>
+        <a href="tel:+13055406846">+1 (305) 540 6846</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pie">
+  <div class="marco pie__fila">
+    <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
+    <nav class="pie__enlaces" aria-label="Secundaria">
+      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
+      <a href="appsheet-demos.html">AppSheet</a>
+      <a href="cv.html">CV</a>
+      <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
+      <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
+      <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@raulpivet4462" rel="noopener noreferrer">YouTube</a>
+    </nav>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página no encontrada · raulpivet.com</title>
@@ -8,7 +9,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/secundarias.css">
   <style>
     .err-wrap {
       min-height: 100vh;
@@ -27,7 +28,7 @@
       font-weight: 900;
       letter-spacing: -0.06em;
       line-height: 1;
-      background: linear-gradient(135deg, #FF6B00, #FF9500);
+      background: linear-gradient(135deg, #3c3cae, #3c3cae);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -66,7 +67,7 @@
       transition: all 0.2s;
       background: transparent;
     }
-    .btn-outline:hover { border-color: #FF6B00; color: #FF6B00; }
+    .btn-outline:hover { border-color: #3c3cae; color: #3c3cae; }
     .err-nav {
       display: flex;
       flex-wrap: wrap;
@@ -83,17 +84,37 @@
       border: 1px solid var(--border-color);
       transition: all 0.2s;
     }
-    .err-nav a:hover { color: #FF6B00; border-color: rgba(255,107,0,0.4); }
+    .err-nav a:hover { color: #3c3cae; border-color: rgba(60,60,174,0.4); }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/legado.css">
+  <script>(function(){var l;try{l=localStorage.getItem('homeLang')}catch(e){}document.documentElement.lang=l==='en'?'en':'es'})();</script>
+  <script src="assets/site.js" defer></script>
+  <script>try{localStorage.setItem('theme','light')}catch(e){}</script>
 </head>
 <body>
+<header class="barra">
+  <div class="marco barra__fila">
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
+    <nav class="menu" aria-label="Principal">
+      <a href="pivettrack.html">PivetTrack</a>
+      <a href="proyectos.html"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+    </nav>
+  </div>
+</header>
   <div class="err-wrap">
     <div class="err-box">
       <div class="err-code">404</div>
       <h1 class="err-title">Página no encontrada</h1>
       <p class="err-sub">
         El link que seguiste no existe o fue movido.<br>
-        Pero el sitio está aquí — te llevamos de vuelta.
+        Pero el sitio está aquí — le llevamos de vuelta.
       </p>
       <div class="err-actions">
         <a href="/" class="btn"><i class="fas fa-home"></i> Ir al Inicio</a>
@@ -107,5 +128,20 @@
     </div>
   </div>
   <script src="script.js"></script>
+<footer class="pie">
+  <div class="marco pie__fila">
+    <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
+    <nav class="pie__enlaces" aria-label="Secundaria">
+      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
+      <a href="appsheet-demos.html">AppSheet</a>
+      <a href="cv.html">CV</a>
+      <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
+      <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
+      <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@raulpivet4462" rel="noopener noreferrer">YouTube</a>
+    </nav>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
 </body>
 </html>
