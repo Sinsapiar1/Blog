@@ -315,6 +315,17 @@
     .pt-demo-row-hook { font-size:0.76rem; color:var(--text-secondary); line-height:1.4; }
     .pt-demo-playlist { display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-size:0.82rem; font-weight:700; color:#FF6B00; text-decoration:none; min-height:48px; }
     .pt-demo-playlist:hover { text-decoration:underline; }
+    .pt-topics { margin-top:40px; }
+    .pt-topics-title { font-size:1.15rem; font-weight:800; letter-spacing:-0.01em; color:var(--text-primary); text-align:center; margin-bottom:16px; }
+    .pt-topics-list { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:minmax(0,1fr); gap:10px; }
+    @media(min-width:768px){ .pt-topics-list { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    .pt-topic { background:var(--glass-bg); border:1px solid var(--glass-border); border-left:3px solid rgba(255,107,0,0.35); border-radius:var(--radius-lg, 14px); padding:12px 14px; display:flex; flex-direction:column; gap:8px; }
+    .pt-topic-q { display:flex; align-items:flex-start; gap:10px; min-height:44px; font-size:0.9rem; font-weight:700; line-height:1.4; color:var(--text-primary); text-decoration:none; }
+    .pt-topic-q i { flex-shrink:0; margin-top:3px; font-size:0.7rem; width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,#FF6B00,#FF9500); color:white; display:flex; align-items:center; justify-content:center; }
+    .pt-topic-q:hover span { color:#FF6B00; }
+    .pt-topic-extra { align-self:flex-start; display:inline-flex; align-items:center; gap:6px; margin-left:32px; min-height:32px; font-size:0.78rem; font-weight:700; color:#FF6B00; text-decoration:none; padding:4px 12px; border:1px solid rgba(255,107,0,0.3); border-radius:var(--radius-full); background:rgba(255,107,0,0.06); }
+    .pt-topic-extra:hover { background:rgba(255,107,0,0.14); }
+    .pt-topic-q:focus-visible, .pt-topic-extra:focus-visible { outline:3px solid #FF9500; outline-offset:2px; }
 
     /* ═══════════════════════════════════════════════
        ARCHITECTURE — Folio table visual
@@ -819,7 +830,16 @@
       demos_sub: 'Videos reales del sistema, sin edición.',
       demos: [
         {
+          key: 'cero-a-operando',
+          num: '07',
+          title: 'De cero a operando',
+          hook: 'Una instancia en blanco que el mismo día recibe, despacha y muestra su margen.',
+          desc: 'Tiempo medido en la grabación: 4 min 54 s. Duración del video: 4:07.',
+          tags: ['Instancia en blanco', 'Recepción y despacho', 'Margen'],
+        },
+        {
           key: 'maestra-productos',
+          num: '01',
           title: 'Importación de la maestra de productos',
           hook: '164.382 productos. Un solo Excel.',
           desc: 'Los 164.382 productos de la maestra, cargados desde un solo Excel. La importación corre en segundo plano, su equipo sigue trabajando y el resultado aparece al terminar.',
@@ -827,6 +847,7 @@
         },
         {
           key: 'toma-inventario',
+          num: '02',
           title: 'Toma de inventario físico y ajuste',
           hook: '164.397 líneas. Un solo ajuste.',
           desc: '164.397 líneas contadas y un solo ajuste. La toma se confirma por tandas, con el porcentaje de avance a la vista, y las diferencias se ajustan automáticamente en el Kardex.',
@@ -834,6 +855,7 @@
         },
         {
           key: 'recepcion-mercancia',
+          num: '03',
           title: 'Recepción de mercancías: 120 facturadas, 114 recibidas',
           hook: '$230.40 reclamados al proveedor.',
           desc: 'La oficina carga la factura (120 cajas) y el piso cuenta sin verla en su pantalla: declara lote, vencimiento, cantidad y pasillo. Contó 114: el sistema abre la discrepancia, otro administrador la verifica y el reclamo al proveedor sale listo por $230.40. Hasta verificarla, la mercancía queda en cuarentena: no se vende ni se despacha.',
@@ -841,6 +863,7 @@
         },
         {
           key: 'retiro-recall',
+          num: '04',
           title: 'Retiro de producto: ¿a quién se le vendió el lote?',
           hook: '60 cajas retiradas. ¿Quién las tiene?',
           desc: 'El proveedor retira un lote y hay que responder ya: se escribe el número del lote y aparece la lista de clientes que lo recibieron, salida por salida y neta de devoluciones, lista para exportar a Excel. En el mismo flujo, el lote vencido no sale: el disponible ya no lo cuenta (88, no 94) y el picking pide primero lo que vence antes (FEFO).',
@@ -848,6 +871,7 @@
         },
         {
           key: 'portal-b2b',
+          num: '05',
           title: 'Portal de pedidos B2B: su cliente pide solo',
           hook: 'El stock se mueve al aprobar, no al pedir.',
           desc: 'Sus clientes (restaurantes, hoteles, mercados) piden desde el teléfono, con su número de orden y solo los productos que usted les habilitó. El pedido llega al depósito tal como lo escribieron, junto a los que entran por la API: nadie lo vuelve a tipear desde un WhatsApp. El stock se mueve recién al aprobar — si algo no alcanza (pidió 12 cajas, hay 8), se despacha lo que hay y la diferencia queda registrada, línea por línea, a la vista del cliente.',
@@ -855,6 +879,7 @@
         },
         {
           key: 'stock-pasillo',
+          num: '06',
           title: 'Stock por pasillo y picking',
           hook: '¿En qué pasillo está cada lote?',
           desc: 'El stock se consulta por pasillo y ubicación: cada lote dice dónde está parado, y la orden de picking sale en orden de recorrido por la bodega, sin vueltas.',
@@ -862,6 +887,15 @@
         },
       ],
       demos_live_lbl: 'Disponible Ahora',
+      topics_title: '¿Qué quiere ver?',
+      topics: [
+        { q: '¿Cómo entra mi catálogo completo?', url: 'https://youtu.be/n-uSypcPdNM' },
+        { q: '¿Cómo se cuenta el inventario sin parar el almacén?', url: 'https://youtu.be/rIYmruKthoE' },
+        { q: '¿Qué pasa si el proveedor manda menos de lo facturado?', url: 'https://youtu.be/3PiGwlWnzxg', extra: { label: 'y el faltante cazado en vivo en la 07', url: 'https://youtu.be/Sr28UrYBFiQ?t=62' } },
+        { q: '¿Cómo controlan los vencimientos y un retiro de lote?', url: 'https://youtu.be/kpgcN7WiMH0' },
+        { q: '¿Mis clientes pueden pedir sin que nadie lo vuelva a tipear?', url: 'https://youtu.be/GD9ILcFErqc' },
+        { q: '¿Cuánto toma pasar de cero a operar?', url: 'https://youtu.be/Sr28UrYBFiQ', extra: { label: 'y directo al margen', url: 'https://youtu.be/Sr28UrYBFiQ?t=208' } },
+      ],
       demos_watch_yt: 'Ver en YouTube',
       demos_play_lbl: 'Reproducir video',
       demos_vlang_lbl: 'Idioma del video',
@@ -1134,7 +1168,16 @@
       demos_sub: 'Real videos of the system, unedited.',
       demos: [
         {
+          key: 'cero-a-operando',
+          num: '07',
+          title: 'From zero to operating',
+          hook: 'A blank instance that receives, ships and shows its margin the same day.',
+          desc: 'Measured in the recording: 4 min 51 s. Video length: 4:05.',
+          tags: ['Blank instance', 'Receiving and shipping', 'Margin'],
+        },
+        {
           key: 'maestra-productos',
+          num: '01',
           title: 'Product master import',
           hook: '164,382 products. One single Excel.',
           desc: 'All 164,382 products of the master, loaded from a single Excel file. The import runs in the background, your team keeps working and the result appears when it finishes.',
@@ -1142,6 +1185,7 @@
         },
         {
           key: 'toma-inventario',
+          num: '02',
           title: 'Physical inventory count and adjustment',
           hook: '164,397 lines. One single adjustment.',
           desc: '164,397 lines counted and a single adjustment. A large count is confirmed in batches, with the progress percentage on screen, and the differences post to the stock ledger automatically.',
@@ -1149,6 +1193,7 @@
         },
         {
           key: 'recepcion-mercancia',
+          num: '03',
           title: 'Warehouse receiving: invoiced 120, received 114',
           hook: '$230.40 claimed back from the supplier.',
           desc: 'The office enters the supplier invoice (120 cases) and the floor counts without seeing it on screen, entering lot, expiration date, quantity and aisle. They counted 114: the system opens the discrepancy, a different administrator verifies it, and the supplier claim comes out ready for $230.40. Until verified, the goods stay in quarantine: not sold, not shipped.',
@@ -1156,6 +1201,7 @@
         },
         {
           key: 'retiro-recall',
+          num: '04',
           title: 'Product recall: who did you sell the lot to?',
           hook: '60 cases withdrawn. Who has them?',
           desc: 'A supplier recalls a lot and you need the answer now: type the lot number and get the list of customers who received it, shipment by shipment and net of returns, ready to export to Excel. In the same flow, the expired lot never ships: availability no longer counts it (88, not 94) and picking takes the earliest-expiring lot first (FEFO).',
@@ -1163,6 +1209,7 @@
         },
         {
           key: 'portal-b2b',
+          num: '05',
           title: 'B2B ordering portal: customers order on their own',
           hook: 'Stock moves on approval, not on order.',
           desc: 'Your customers (restaurants, hotels, markets) order from their phone, with their own order number and only the products you enabled for them. The order reaches the warehouse exactly as written, alongside the ones arriving through the API: nobody retypes it from a WhatsApp message. Stock moves only on approval — if something runs short (12 cases ordered, 8 on hand), what exists ships and the difference stays on record, line by line, visible to the customer.',
@@ -1170,6 +1217,7 @@
         },
         {
           key: 'stock-pasillo',
+          num: '06',
           title: 'Stock by aisle and picking',
           hook: 'Which aisle is each lot in?',
           desc: 'Stock is looked up by aisle and location: every lot says where it sits, and the picking order comes out in travel order through the warehouse, with no backtracking.',
@@ -1177,6 +1225,15 @@
         },
       ],
       demos_live_lbl: 'Available Now',
+      topics_title: 'What do you want to see?',
+      topics: [
+        { q: 'How does my full catalog get in?', url: 'https://youtu.be/t2VPoftd7AU' },
+        { q: 'How do you count inventory without stopping the warehouse?', url: 'https://youtu.be/atoKa7NFN5s' },
+        { q: 'What happens if the supplier ships less than invoiced?', url: 'https://youtu.be/ZZEZ0hmPiMM', extra: { label: 'and the shortage caught live in 07', url: 'https://youtu.be/ehIYUGEMroQ?t=61' } },
+        { q: 'How are expiration dates and a lot recall handled?', url: 'https://youtu.be/KB21Psvt4G0' },
+        { q: 'Can my customers order without anyone retyping it?', url: 'https://youtu.be/sbU0n6oCEGI' },
+        { q: 'How long does it take to go from zero to operating?', url: 'https://youtu.be/ehIYUGEMroQ', extra: { label: 'straight to the margin', url: 'https://youtu.be/ehIYUGEMroQ?t=206' } },
+      ],
       demos_watch_yt: 'Watch on YouTube',
       demos_play_lbl: 'Play video',
       demos_vlang_lbl: 'Video language',
@@ -1189,6 +1246,7 @@
   /* Cada demo guarda sus dos videos (ES/EN). Para sumar un demo nuevo: una entrada aquí
      y una entrada con la misma `key` en t.es.demos y en t.en.demos. */
   const PT_DEMO_VIDEOS = {
+    'cero-a-operando': { es: 'Sr28UrYBFiQ', en: 'ehIYUGEMroQ' },
     'maestra-productos': { es: 'n-uSypcPdNM', en: 't2VPoftd7AU' },
     'toma-inventario':   { es: 'rIYmruKthoE', en: 'atoKa7NFN5s' },
     'recepcion-mercancia': { es: '3PiGwlWnzxg', en: 'ZZEZ0hmPiMM' },
@@ -1197,7 +1255,7 @@
     'stock-pasillo': { es: '0SdlN4aqQEg', en: 'XlMnljQjzWU' },
   };
 
-  let ptActiveDemo = 'maestra-productos';
+  let ptActiveDemo = 'cero-a-operando';
   let ptVideoLang = null;
   const PT_PLAYLIST_URL = 'https://www.youtube.com/@raulpivet4462/videos';
 
@@ -1220,7 +1278,7 @@
   function ptCaptionHTML(demo, index) {
     const d = t[lang];
     return `
-      <span class="pt-demo-cap-num">Demo ${String(index + 1).padStart(2, '0')}</span>
+      <span class="pt-demo-cap-num">Demo ${demo.num}</span>
       <h3 class="pt-demo-cap-title">${demo.title}</h3>
       <p class="pt-demo-cap-desc"><strong>${demo.hook}</strong> ${demo.desc}</p>
       <div class="pt-demo-tags">${demo.tags.map(tg => `<span class="pt-demo-card-tag">${tg}</span>`).join('')}</div>
@@ -1633,7 +1691,7 @@
             <div class="pt-demo-index">
               ${d.demos.map((v, i) => `
               <button type="button" class="pt-demo-row" data-demo-key="${v.key}"${v.key === act.key ? ' aria-current="true"' : ''} onclick="ptSelectDemo('${v.key}')">
-                <span class="pt-demo-row-num">${String(i + 1).padStart(2, '0')}</span>
+                <span class="pt-demo-row-num">${v.num}</span>
                 <span class="pt-demo-row-txt">
                   <span class="pt-demo-row-title">${v.title}</span>
                   <span class="pt-demo-row-hook">${v.hook}</span>
@@ -1644,6 +1702,17 @@
           </div>
         </div>`;
         })()}
+
+        <div class="pt-topics">
+          <h3 class="pt-topics-title">${d.topics_title}</h3>
+          <ul class="pt-topics-list">
+            ${d.topics.map(tp => `
+            <li class="pt-topic">
+              <a class="pt-topic-q" href="${tp.url}" target="_blank" rel="noopener noreferrer"><i class="fas fa-play"></i><span>${tp.q}</span></a>
+              ${tp.extra ? `<a class="pt-topic-extra" href="${tp.extra.url}" target="_blank" rel="noopener noreferrer"><i class="fas fa-clock"></i> ${tp.extra.label}</a>` : ''}
+            </li>`).join('')}
+          </ul>
+        </div>
       </section>
 
       <!-- ═══ 7. CÓMO AVANZAMOS + FINAL CTA ═══ -->
