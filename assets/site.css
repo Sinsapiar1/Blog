@@ -83,6 +83,8 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
   font: 500 .9375rem/1 var(--texto); padding: 8px 11px; cursor: pointer;
 }
 .idioma:hover { border-color: var(--papel); }
+.menu a.idioma { font-size: .9375rem; padding: 8px 11px; border: 1px solid rgba(255,255,255,.55); }
+.menu a.idioma:hover { border-color: var(--papel); }
 .abrir-menu { display: none; background: none; border: 0; color: inherit; font: 500 1rem/1 var(--texto); padding: 8px 0; cursor: pointer; }
 
 /* Portada */

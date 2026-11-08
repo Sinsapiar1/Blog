@@ -106,3 +106,5 @@ body { background: #fff !important; color: var(--tinta); font-family: var(--text
 .barra .menu { position: static; width: auto; background: none; }
 .barra .menu a { color: inherit !important; background: none !important; }
 @media (max-width: 760px) { .barra .menu { position: absolute; } }
+
+.section-eyebrow:empty { display: none; }
