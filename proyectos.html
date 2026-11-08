@@ -20,25 +20,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Proyectos de Raul Pivet — Dashboards Power BI, automatización de inventario, apps AppSheet y pipelines Python. Miami, FL.">
-  <meta name="theme-color" content="#FF6B00">
+  <meta name="theme-color" content="#3c3cae">
   <meta property="og:title" content="Proyectos — Raul Pivet">
   <meta property="og:description" content="Dashboards Power BI, automatización de inventario, apps AppSheet y pipelines Python en producción.">
   <meta property="og:url" content="https://www.raulpivet.com/proyectos.html">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.raulpivet.com/proyectos.html">
-  <title>Proyectos - Raul Pivet</title>
+  <title>Trabajos - Raúl Pivet</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/secundarias.css">
   <style>
     /* ── Language toggle — mismo estilo que el resto del sitio ── */
 
     /* ── Badges de proyecto ── */
     .project-badge { display:inline-flex; align-items:center; gap:5px; font-size:0.72rem; font-weight:700; padding:3px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px; margin-right:4px; }
     .badge-live    { background:rgba(52,199,89,0.12);  color:#34C759; border:1px solid rgba(52,199,89,0.3); }
-    .badge-company { background:rgba(255,107,0,0.10);  color:#FF6B00; border:1px solid rgba(255,107,0,0.3); }
+    .badge-company { background:rgba(60,60,174,0.10);  color:#3c3cae; border:1px solid rgba(60,60,174,0.3); }
     .badge-client  { background:rgba(0,122,255,0.10);  color:#007AFF; border:1px solid rgba(0,122,255,0.3); }
     .project-badges { padding:var(--spacing-lg) var(--spacing-lg) 0; }
     .project-img img { object-fit:cover; width:100%; height:100%; }
@@ -48,15 +48,36 @@
     /* ── Preview especial Streamlit ── */
     .ocr-preview { width:100%; height:200px; background:linear-gradient(135deg,#0e1117,#1a1f2e); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
     .ocr-preview-inner { text-align:center; color:white; }
-    .ocr-preview-icon { width:64px; height:64px; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 12px; box-shadow:0 8px 24px rgba(255,107,0,0.4); }
+    .ocr-preview-icon { width:64px; height:64px; background:linear-gradient(135deg,#3c3cae,#3c3cae); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 12px; box-shadow:0 8px 24px rgba(60,60,174,0.4); }
     .ocr-preview h4 { margin:0; font-size:0.9rem; color:rgba(255,255,255,0.9); }
     .ocr-preview p  { margin:4px 0 0; font-size:0.75rem; color:rgba(255,255,255,0.5); }
     .ocr-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:#34C759; margin-right:5px; animation:pulse-green 2s infinite; }
     @keyframes pulse-green { 0%,100%{box-shadow:0 0 0 2px rgba(52,199,89,0.2)}50%{box-shadow:0 0 0 5px rgba(52,199,89,0.05)} }
-    .ocr-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,107,0,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,0,0.05) 1px,transparent 1px); background-size:30px 30px; }
+    .ocr-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(60,60,174,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(60,60,174,0.05) 1px,transparent 1px); background-size:30px 30px; }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/legado.css">
+  <script>(function(){var l;try{l=localStorage.getItem('homeLang')}catch(e){}document.documentElement.lang=l==='en'?'en':'es'})();</script>
+  <script src="assets/site.js" defer></script>
+  <script>try{localStorage.setItem('theme','light')}catch(e){}</script>
 </head>
 <body>
+<header class="barra">
+  <div class="marco barra__fila">
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
+    <nav class="menu" aria-label="Principal">
+      <a href="pivettrack.html">PivetTrack</a>
+      <a href="proyectos.html" aria-current="page"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+      <button class="idioma" type="button" onclick="document.getElementById('languageToggle').click()" aria-label="Cambiar idioma / Change language"><span data-l="es">English</span><span data-l="en">Español</span></button>
+    </nav>
+  </div>
+</header>
   <div class="loader" id="loader"><div class="loader-circle"></div></div>
   <div class="scroll-indicator" id="scrollIndicator"></div>
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
@@ -65,7 +86,7 @@
 
   <!-- Toggle de idioma — mismo que el resto del sitio -->
   <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
-    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-flag" id="languageFlag"></span>
     <span class="language-text" id="languageText">English</span>
   </button>
 
@@ -123,9 +144,9 @@
   const proyTrans = {
     es: {
       nav_home:'Inicio', nav_about:'Nosotros', nav_projects:'Proyectos', nav_contact:'Contacto',
-      page_title: 'Proyectos - Raul Pivet',
-      header_h1: 'Mis Proyectos',
-      header_sub: 'Soluciones tecnológicas que transforman ideas en realidad',
+      page_title: 'Trabajos - Raúl Pivet',
+      header_h1: 'Trabajos',
+      header_sub: 'Sistemas hechos para operaciones reales.',
       footer: '© 2026 Raul Pivet. Todos los derechos reservados.',
       badge_live:    'En vivo',
       badge_company: 'Corporativo',
@@ -138,9 +159,9 @@
       btn_view_detail: 'Ver detalles',
       streamlit_label: 'App activa en Streamlit',
       streamlit_sub:   'Análisis de negativos · Detección de faltantes',
-      cta_h2:  '¿Tenés un proyecto en mente?',
-      cta_p:   'Siempre abierto a nuevos desafíos y colaboraciones.',
-      cta_btn: 'Contactame',
+      cta_h2:  '¿Tiene un proyecto en mente?',
+      cta_p:   'Cuénteme qué necesita y le digo si puedo ayudarle.',
+      cta_btn: 'Escríbame',
       modal_title: 'Documentación en preparación',
       modal_body:  'Estoy preparando la documentación técnica detallada de este proyecto.',
       modal_date:  'Disponible próximamente — 2026',
@@ -154,9 +175,9 @@
     },
     en: {
       nav_home:'Home', nav_about:'About Us', nav_projects:'Projects', nav_contact:'Contact',
-      page_title: 'Projects - Raul Pivet',
-      header_h1: 'My Projects',
-      header_sub: 'Tech solutions that turn ideas into reality',
+      page_title: 'Work - Raúl Pivet',
+      header_h1: 'Work',
+      header_sub: 'Systems built for real operations.',
       footer: '© 2026 Raul Pivet. All rights reserved.',
       badge_live:    'Live',
       badge_company: 'Corporate',
@@ -170,8 +191,8 @@
       streamlit_label: 'Active app on Streamlit',
       streamlit_sub:   'Negative stock analysis · Missing item detection',
       cta_h2:  'Got a project in mind?',
-      cta_p:   'Always open to new challenges and collaborations.',
-      cta_btn: 'Contact me',
+      cta_p:   'Tell me what you need and I’ll tell you whether I can help.',
+      cta_btn: 'Write to me',
       modal_title: 'Documentation in preparation',
       modal_body:  'I am preparing the detailed technical documentation for this project.',
       modal_date:  'Available soon — 2026',
@@ -224,7 +245,7 @@
         <h3>${p.title}</h3>
         <p>${p.desc}</p>
         <div class="project-meta"><strong>${d.tech_label}</strong> ${p.tech}</div>
-        ${p.inDev ? `<div class="project-meta-date"><i class="fas fa-calendar-alt" style="color:#FF6B00"></i> ${d.dev_label}</div>` : ''}
+        ${p.inDev ? `<div class="project-meta-date"><i class="fas fa-calendar-alt" style="color:#3c3cae"></i> ${d.dev_label}</div>` : ''}
         ${buildBtn(p, d)}
       </article>`;
   }
@@ -236,7 +257,7 @@
     document.title = d.page_title;
 
     // Toggle idioma
-    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageFlag').textContent = lang === 'es' ? '' : '';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
 
     // Nav lateral traducible
@@ -301,5 +322,20 @@
     document.getElementById('languageToggle').addEventListener('click', toggleLang);
   });
   </script>
+<footer class="pie">
+  <div class="marco pie__fila">
+    <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
+    <nav class="pie__enlaces" aria-label="Secundaria">
+      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
+      <a href="appsheet-demos.html">AppSheet</a>
+      <a href="cv.html">CV</a>
+      <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
+      <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
+      <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@raulpivet4462" rel="noopener noreferrer">YouTube</a>
+    </nav>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
 </body>
 </html>

@@ -1,0 +1,108 @@
+/* Páginas secundarias: conservan su contenido y su JavaScript, con el diseño del sitio. */
+
+:root {
+  --primary: var(--azul); --primary-dark: var(--azul-hondo); --secondary: var(--azul); --accent: var(--azul);
+  --bg-primary: #fff; --bg-secondary: var(--hormigon); --bg-tertiary: #f4f5f8;
+  --text-primary: var(--tinta); --text-secondary: var(--gris); --text-tertiary: var(--gris);
+  --border-color: var(--linea); --shadow-sm: none; --shadow-md: none; --shadow-lg: none;
+  --glass-bg: #fff; --glass-border: var(--linea); --glass-shadow: none;
+  --radius-sm: 3px; --radius-md: 3px; --radius-lg: 4px; --radius-xl: 4px; --sidebar-width: 0px;
+}
+
+.sidebar, .menu-toggle, .theme-toggle, .language-toggle, .loader, .scroll-indicator, body > footer:not(.pie) { display: none !important; }
+[data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+body { background: #fff !important; color: var(--tinta); font-family: var(--texto) !important; }
+.container { display: block !important; margin: 0 !important; padding: 0 !important; max-width: none !important; }
+.content, main.content, #mainContent {
+  margin: 0 auto !important; width: 100% !important; max-width: var(--ancho) !important;
+  padding: clamp(36px, 5vw, 72px) var(--margen) var(--tramo) !important; background: none !important;
+}
+#mainContent h1, .content h1, .privacy-container h1 {
+  font: 800 clamp(3.25rem, 7.5vw, 6.5rem)/1 var(--cartel) !important; letter-spacing: 0 !important; color: var(--tinta) !important;
+  background: none !important; -webkit-text-fill-color: currentColor !important;
+}
+#mainContent h2, .content h2, .privacy-container h2 {
+  font-family: var(--cartel) !important; font-weight: 800 !important; letter-spacing: 0 !important; line-height: 1.05 !important;
+  background: none !important; -webkit-text-fill-color: currentColor !important;
+}
+#mainContent h1 span, #mainContent h2 span { background: none !important; -webkit-text-fill-color: currentColor !important; color: inherit !important; }
+#mainContent [class*="card"], #mainContent [class*="-box"] { box-shadow: none !important; }
+#mainContent [class*="card"]:hover { transform: none !important; }
+
+/* Botones: el amarillo del sitio */
+.btn, a.btn, button.btn {
+  background: var(--cinta) !important; color: var(--tinta) !important; border: 0 !important; border-radius: 3px !important;
+  box-shadow: none !important; font: 600 1.0625rem/1.2 var(--texto) !important; text-transform: none !important; letter-spacing: 0 !important; transform: none !important;
+}
+.btn:hover { background: #ffd95c !important; }
+.btn-outline, a.btn-outline, .btn-small, a.btn-small {
+  background: none !important; color: var(--tinta) !important; border: 1.5px solid var(--tinta) !important; border-radius: 3px !important; box-shadow: none !important; transform: none !important;
+}
+.btn-outline:hover, .btn-small:hover { background: var(--tinta) !important; color: #fff !important; }
+
+/* Trabajos y laboratorio: portada a la izquierda, sin tarjetas flotantes */
+.header { text-align: left !important; padding: 0 0 clamp(32px, 4vw, 56px) !important; margin: 0 !important; background: none !important; }
+.header p { margin-left: 0 !important; color: var(--gris) !important; font-size: clamp(1.125rem, 1.6vw, 1.375rem) !important; }
+.project-grid { gap: clamp(36px, 4vw, 56px) clamp(24px, 3vw, 40px) !important; }
+.project-card { background: none !important; border: 0 !important; border-top: 3px solid var(--tinta) !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 0 8px !important; transform: none !important; overflow: visible !important; }
+.project-card:hover .project-img img { transform: none !important; }
+.project-img { border-radius: 0 !important; margin: 0 0 14px !important; width: 100% !important; }
+.project-card h3 { font: 800 clamp(1.75rem, 2.4vw, 2.25rem)/1.05 var(--cartel) !important; color: var(--tinta) !important; padding: 0 !important; margin: 8px 0 !important; }
+.project-card > p, .project-meta, .project-meta-date, .project-badges { padding-inline: 0 !important; margin-inline: 0 !important; }
+.project-card .btn-small { margin-inline: 0 !important; }
+.project-badge { background: none !important; border: 0 !important; padding: 0 12px 0 0 !important; color: var(--azul) !important; font: 700 .9375rem/1.2 var(--rotulo) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.project-badge i { display: none !important; }
+.featured { background: var(--cinta) !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; display: block !important; }
+.featured::before, .featured::after { display: none !important; }
+.featured-text { text-align: left !important; }
+.featured-text h2 { font-size: clamp(2.5rem, 5vw, 4.5rem) !important; color: var(--tinta) !important; }
+.featured-text p { color: var(--tinta) !important; }
+.featured .btn { background: var(--tinta) !important; color: #fff !important; display: inline-block !important; width: fit-content !important; align-self: flex-start; padding: 17px 26px 16px !important; }
+.featured .btn:hover { background: var(--azul) !important; }
+.lab-hero { background: none !important; border: 0 !important; padding-inline: 0 !important; box-shadow: none !important; }
+.lab-hero::before, .lab-hero::after { display: none !important; }
+
+/* CV: una hoja corrida, sin tarjetas */
+.cv-header::before, .cv-header::after { display: none !important; }
+.profile-summary { background: none !important; border: 0 !important; border-radius: 0 !important; padding: 0 !important; color: var(--tinta) !important; }
+.cv-header, .cv-section, .cv-tl-card {
+  background: none !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; overflow: visible !important;
+}
+.cv-header-bg, .cv-section-icon, .cv-section-divider, .cv-tl-dot, .skill-icon, .cert-item i, .origin-badge i, .lang-bar-track { display: none !important; }
+.cv-header { padding: 0 0 clamp(28px, 4vw, 48px) !important; margin: 0 !important; }
+.cv-header-inner { display: block !important; padding: 0 !important; text-align: left !important; }
+.cv-header-name { font: 800 clamp(3.25rem, 7.5vw, 6.5rem)/1 var(--cartel) !important; color: var(--tinta) !important; -webkit-text-fill-color: currentColor !important; background: none !important; }
+.cv-header-title { color: var(--gris) !important; font: 500 clamp(1.125rem, 1.6vw, 1.375rem)/1.35 var(--texto) !important; margin-top: 10px; }
+.cv-contact { justify-content: flex-start !important; margin-top: 18px; }
+.cv-contact-item { background: none !important; border: 0 !important; padding: 0 16px 0 0 !important; color: var(--tinta) !important; font-size: 1rem !important; box-shadow: none !important; }
+.cv-section { border-top: 3px solid var(--tinta) !important; padding: 24px 0 clamp(32px, 4vw, 52px) !important; margin: 0 !important; }
+.cv-section-title { display: block !important; margin-bottom: 18px !important; }
+.cv-section-label { font: 800 clamp(2.25rem, 3.6vw, 3.25rem)/1.04 var(--cartel) !important; color: var(--tinta) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.profile-summary { max-width: 70ch; font-size: 1.125rem !important; }
+.profile-summary .highlight { color: inherit !important; font-weight: 600; background: none !important; padding: 0 !important; margin: 0 !important; }
+.cv-timeline { padding: 0 !important; margin: 0 !important; }
+.cv-timeline::before, .cv-timeline::after { display: none !important; }
+.cv-tl-item { padding: 0 !important; margin: 0 !important; }
+.cv-tl-card { border-bottom: 1px solid var(--linea) !important; padding: 20px 0 !important; }
+.cv-tl-title, .cv-edu-title { font: 600 1.1875rem/1.3 var(--texto) !important; color: var(--tinta) !important; }
+.cv-tl-company, .cv-edu-inst { color: var(--gris) !important; font-weight: 400 !important; }
+.cv-tl-date, .cv-edu-date { background: none !important; border: 0 !important; padding: 0 !important; color: var(--azul) !important; font: 700 1rem/1.3 var(--rotulo) !important; white-space: nowrap; }
+.cv-tl-bullets { max-width: 76ch; }
+.cv-tl-bullets li { color: var(--tinta) !important; }
+.cv-tl-bullets strong, .cert-item strong { color: inherit !important; }
+.origin-badge { background: var(--cinta) !important; color: var(--tinta) !important; border: 0 !important; border-radius: 2px !important; font: 700 .875rem/1 var(--rotulo) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.cv-edu-item, .cert-item { background: none !important; border: 0 !important; border-bottom: 1px solid var(--linea) !important; border-radius: 0 !important; padding: 12px 0 !important; box-shadow: none !important; }
+.skills-grid { display: block !important; columns: 3 200px; }
+.skill-item { background: none !important; border: 0 !important; border-radius: 0 !important; padding: 5px 0 !important; text-align: left !important; box-shadow: none !important; transform: none !important; break-inside: avoid; }
+.skill-name { color: var(--tinta) !important; font-size: 1rem !important; font-weight: 400 !important; }
+.lang-item { background: none !important; border: 0 !important; padding: 8px 0 !important; box-shadow: none !important; }
+.lang-pill { background: none !important; border: 0 !important; color: var(--azul) !important; padding: 0 !important; font: 700 1rem/1.3 var(--rotulo) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.lang-name { font-weight: 600 !important; }
+.lang-sublabel { color: var(--gris) !important; }
+
+/* La barra y el pie nuevos, a salvo de las reglas viejas de la hoja anterior */
+.barra, .pie { margin: 0 !important; width: 100% !important; text-align: left; }
+.barra .menu { position: static; width: auto; background: none; }
+.barra .menu a { color: inherit !important; background: none !important; }
+@media (max-width: 760px) { .barra .menu { position: absolute; } }

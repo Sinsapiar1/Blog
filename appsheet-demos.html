@@ -22,7 +22,7 @@
   <meta name="description" content="Archivo histórico de proyectos AppSheet (2025–2026) de Raul Pivet. Ya no se ofrecen como servicio: hoy el producto es PivetTrack, un WMS marca blanca.">
   <meta name="keywords" content="archivo, AppSheet, proyectos anteriores, PivetTrack, Raul Pivet, PIVET DIGITAL AUTOMATIONS LLC">
   <meta name="author" content="Raul Pivet">
-  <meta name="theme-color" content="#FF6B00">
+  <meta name="theme-color" content="#3c3cae">
   <meta property="og:title" content="Archivo de proyectos — AppSheet (2025–2026) — Raul Pivet">
   <meta property="og:description" content="Proyectos anteriores — etapa AppSheet (archivo histórico). Hoy mi producto es PivetTrack.">
   <meta property="og:url" content="https://www.raulpivet.com/appsheet-demos.html">
@@ -34,29 +34,29 @@
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/secundarias.css">
   <style>
     /* ── Language toggle ── */
 
     /* ── Shared section header ── */
-    .section-eyebrow { font-size:11px; font-weight:800; color:#FF6B00; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
+    .section-eyebrow { font-size:11px; font-weight:800; color:#3c3cae; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; }
     .section-title { font-size:1.6rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; }
 
     /* ── Btn secondary outline ── */
     .demos-btn-outline {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 12px 24px;
-      border: 2px solid rgba(255,107,0,0.45);
+      border: 2px solid rgba(60,60,174,0.45);
       border-radius: 50px;
-      color: #FF6B00 !important;
+      color: #3c3cae !important;
       font-weight: 600; font-size: 14px;
       text-decoration: none !important;
       transition: all 0.2s;
       background: transparent; cursor: pointer;
     }
     .demos-btn-outline:hover {
-      border-color: #FF6B00;
-      background: rgba(255,107,0,0.06);
+      border-color: #3c3cae;
+      background: rgba(60,60,174,0.06);
       transform: translateY(-2px);
     }
 
@@ -66,20 +66,20 @@
     .what-is-appsheet-btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 10px 20px;
-      background: rgba(255,107,0,0.08);
-      border: 1.5px solid rgba(255,107,0,0.3);
+      background: rgba(60,60,174,0.08);
+      border: 1.5px solid rgba(60,60,174,0.3);
       border-radius: 50px;
-      color: #FF6B00;
+      color: #3c3cae;
       font-size: 13px; font-weight: 700;
       text-decoration: none; cursor: pointer;
       transition: all 0.25s;
       margin-bottom: 24px;
     }
     .what-is-appsheet-btn:hover {
-      background: rgba(255,107,0,0.15);
-      border-color: #FF6B00;
+      background: rgba(60,60,174,0.15);
+      border-color: #3c3cae;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255,107,0,0.2);
+      box-shadow: 0 4px 12px rgba(60,60,174,0.2);
     }
     .what-is-appsheet-btn i { font-size: 1rem; }
 
@@ -106,21 +106,21 @@
     .modal-header { text-align:center; margin-bottom:32px; }
     .modal-google-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4285F4, #34A853); color: white; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.12em; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3); }
     .modal-header h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:800; color:var(--text-primary); margin-bottom:12px; letter-spacing:-0.02em; }
-    .modal-header h2 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .modal-header h2 span { background:linear-gradient(135deg,#3c3cae,#3c3cae); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .modal-header p { font-size:1.05rem; color:var(--text-secondary); line-height:1.6; max-width:600px; margin:0 auto; }
     .modal-section { margin-bottom:32px; }
     .modal-section-title { font-size:1.1rem; font-weight:700; color:var(--text-primary); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
-    .modal-section-title i { color:#FF6B00; font-size:1.2rem; }
+    .modal-section-title i { color:#3c3cae; font-size:1.2rem; }
     .modal-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:24px; }
     .modal-feature-card { background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:14px; padding:20px; transition:all 0.2s; }
-    .modal-feature-card:hover { border-color:rgba(255,107,0,0.3); transform:translateY(-2px); }
-    .modal-feature-icon { width:40px; height:40px; background:linear-gradient(135deg, rgba(255,107,0,0.15), rgba(255,149,0,0.08)); border-radius:10px; display:flex; align-items:center; justify-content:center; color:#FF6B00; font-size:1.1rem; margin-bottom:12px; }
+    .modal-feature-card:hover { border-color:rgba(60,60,174,0.3); transform:translateY(-2px); }
+    .modal-feature-icon { width:40px; height:40px; background:linear-gradient(135deg, rgba(60,60,174,0.15), rgba(60,60,174,0.08)); border-radius:10px; display:flex; align-items:center; justify-content:center; color:#3c3cae; font-size:1.1rem; margin-bottom:12px; }
     .modal-feature-card h4 { font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:6px; }
     .modal-feature-card p { font-size:0.85rem; color:var(--text-secondary); line-height:1.5; }
     .modal-integrations { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px; }
     .modal-integration-badge { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-secondary); font-size:0.85rem; font-weight:600; padding:8px 14px; border-radius:20px; display:inline-flex; align-items:center; gap:6px; }
-    .modal-integration-badge i { color:#FF6B00; }
-    .modal-cta-box { background:linear-gradient(135deg, rgba(255,107,0,0.1), rgba(255,149,0,0.05)); border:1px solid rgba(255,107,0,0.25); border-radius:16px; padding:28px; text-align:center; }
+    .modal-integration-badge i { color:#3c3cae; }
+    .modal-cta-box { background:linear-gradient(135deg, rgba(60,60,174,0.1), rgba(60,60,174,0.05)); border:1px solid rgba(60,60,174,0.25); border-radius:16px; padding:28px; text-align:center; }
     .modal-cta-box h3 { font-size:1.25rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; }
     .modal-cta-box p { color:var(--text-secondary); margin-bottom:20px; font-size:0.95rem; }
     @media(max-width:768px){
@@ -131,67 +131,67 @@
     /* ══════════════════════════════════════════
        HERO
     ══════════════════════════════════════════ */
-    .archive-strip { display:flex; align-items:flex-start; gap:16px; margin:0 0 32px; padding:18px 22px; background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.3); border-left:4px solid #FF6B00; border-radius:var(--radius-lg, 14px); }
-    .archive-strip-icon { color:#FF6B00; font-size:1.4rem; margin-top:3px; }
+    .archive-strip { display:flex; align-items:flex-start; gap:16px; margin:0 0 32px; padding:18px 22px; background:rgba(60,60,174,0.08); border:1px solid rgba(60,60,174,0.3); border-left:4px solid #3c3cae; border-radius:var(--radius-lg, 14px); }
+    .archive-strip-icon { color:#3c3cae; font-size:1.4rem; margin-top:3px; }
     .archive-strip-title { display:block; font-size:1rem; font-weight:800; color:var(--text-primary); margin-bottom:6px; }
     .archive-strip p { margin:0; color:var(--text-secondary); line-height:1.6; font-size:0.95rem; }
     .archive-strip p strong { color:var(--text-primary); }
-    .archive-strip a { color:#FF6B00; font-weight:700; text-decoration:none; white-space:nowrap; }
+    .archive-strip a { color:#3c3cae; font-weight:700; text-decoration:none; white-space:nowrap; }
     .archive-strip a:hover { text-decoration:underline; }
     @media(min-width:901px){ .archive-strip { padding-right:150px; } }
     @media(max-width:900px){ .archive-strip { margin-top:96px; } }
     @media(max-width:480px){ .archive-strip { padding:16px; gap:12px; } }
     .demos-hero { padding: 24px 0 40px; }
     .demos-hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; }
-    .demos-eyebrow-pill { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg, #FF6B00, #FF9500); color: white; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 7px 14px; border-radius: 30px; white-space: nowrap; box-shadow: 0 4px 16px rgba(255,107,0,0.45); animation: pill-glow 2.5s ease-in-out infinite; }
+    .demos-eyebrow-pill { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg, #3c3cae, #3c3cae); color: white; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; padding: 7px 14px; border-radius: 30px; white-space: nowrap; box-shadow: 0 4px 16px rgba(60,60,174,0.45); animation: pill-glow 2.5s ease-in-out infinite; }
     @keyframes pill-glow {
-      0%,100% { box-shadow: 0 4px 16px rgba(255,107,0,0.45); }
-      50%     { box-shadow: 0 4px 28px rgba(255,107,0,0.75), 0 0 0 4px rgba(255,107,0,0.12); }
+      0%,100% { box-shadow: 0 4px 16px rgba(60,60,174,0.45); }
+      50%     { box-shadow: 0 4px 28px rgba(60,60,174,0.75), 0 0 0 4px rgba(60,60,174,0.12); }
     }
     .demos-eyebrow-pill i { font-size: 0.75rem; }
     .demos-eyebrow-sub { font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); }
     .demos-hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800; line-height:1.15; letter-spacing:-0.03em; color:var(--text-primary); margin-bottom:16px; }
-    .demos-hero h1 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .demos-hero h1 span { background:linear-gradient(135deg,#3c3cae,#3c3cae); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .demos-hero-sub { font-size:1.05rem; color:var(--text-secondary); line-height:1.7; max-width:560px; margin-bottom:28px; }
     .demos-hero-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
     .demos-hero-tag { background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-secondary); font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; transition:all 0.2s; }
-    .demos-hero-tag:hover { border-color:#FF6B00; color:#FF6B00; }
+    .demos-hero-tag:hover { border-color:#3c3cae; color:#3c3cae; }
 
     /* ══════════════════════════════════════════ STATS ══════════════════════════════════════════ */
     .demos-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0 0 48px; }
     @media(max-width:640px){ .demos-stats { grid-template-columns: 1fr; } }
     @media(max-width:900px) and (min-width:641px){ .demos-stats { grid-template-columns: repeat(3,1fr); } }
     .demos-stat { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px 20px 20px; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.34,1.3,0.64,1); }
-    .demos-stat::before { content: attr(data-ghost); position: absolute; right: -8px; bottom: -14px; font-size: 4.5rem; font-weight: 900; color: rgba(255,107,0,0.05); line-height: 1; pointer-events: none; transition: color 0.3s; }
-    .demos-stat:hover { border-color:rgba(255,107,0,0.4); transform:translateY(-6px); box-shadow:0 16px 40px rgba(255,107,0,0.15); }
-    .demos-stat:hover::before { color:rgba(255,107,0,0.09); }
-    .demos-stat-bar { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#FF6B00,#FF9500); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:20px 20px 0 0; }
+    .demos-stat::before { content: attr(data-ghost); position: absolute; right: -8px; bottom: -14px; font-size: 4.5rem; font-weight: 900; color: rgba(60,60,174,0.05); line-height: 1; pointer-events: none; transition: color 0.3s; }
+    .demos-stat:hover { border-color:rgba(60,60,174,0.4); transform:translateY(-6px); box-shadow:0 16px 40px rgba(60,60,174,0.15); }
+    .demos-stat:hover::before { color:rgba(60,60,174,0.09); }
+    .demos-stat-bar { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#3c3cae,#3c3cae); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; border-radius:20px 20px 0 0; }
     .demos-stat:hover .demos-stat-bar { transform:scaleX(1); }
     .demos-stat-icon-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
-    .demos-stat-icon { width:40px; height:40px; background:linear-gradient(135deg,rgba(255,107,0,0.18),rgba(255,149,0,0.08)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1rem; color:#FF6B00; border:1px solid rgba(255,107,0,0.15); }
+    .demos-stat-icon { width:40px; height:40px; background:linear-gradient(135deg,rgba(60,60,174,0.18),rgba(60,60,174,0.08)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1rem; color:#3c3cae; border:1px solid rgba(60,60,174,0.15); }
     .demos-stat-trend { font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:#34C759; background:rgba(52,199,89,0.1); border:1px solid rgba(52,199,89,0.2); padding:3px 8px; border-radius:10px; }
-    .demos-stat-number { font-size:2.2rem; font-weight:900; color:#FF6B00; line-height:1; letter-spacing:-0.03em; margin-bottom:6px; }
+    .demos-stat-number { font-size:2.2rem; font-weight:900; color:#3c3cae; line-height:1; letter-spacing:-0.03em; margin-bottom:6px; }
     .demos-stat-label { font-size:0.8125rem; font-weight:700; color:var(--text-primary); line-height:1.3; margin-bottom:4px; }
     .demos-stat-sub { font-size:11px; color:var(--text-tertiary); line-height:1.4; font-style:italic; }
 
     /* ══════════════════════════════════════════ INTRO CARD ══════════════════════════════════════════ */
     .demos-intro-card { background: var(--glass-bg); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; position: relative; margin-bottom: 48px; }
-    .demos-intro-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, #FF6B00, #FF9500, #FFB800); }
+    .demos-intro-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, #3c3cae, #3c3cae, #FFB800); }
     .demos-intro-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
     @media(max-width:800px){ .demos-intro-inner { grid-template-columns:1fr; } }
     .demos-intro-left { padding: 36px 40px; border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center; }
     @media(max-width:800px){ .demos-intro-left { border-right:none; border-bottom:1px solid var(--border-color); } }
-    .demos-intro-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(255,107,0,0.1); border:1px solid rgba(255,107,0,0.25); color:#FF6B00; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; padding:5px 12px; border-radius:20px; margin-bottom:18px; width:fit-content; }
+    .demos-intro-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(60,60,174,0.1); border:1px solid rgba(60,60,174,0.25); color:#3c3cae; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; padding:5px 12px; border-radius:20px; margin-bottom:18px; width:fit-content; }
     .demos-intro-left h2 { font-size:clamp(1.2rem,2vw,1.55rem); font-weight:800; color:var(--text-primary); line-height:1.25; letter-spacing:-0.02em; margin-bottom:14px; }
-    .demos-intro-left h2 span { background:linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .demos-intro-left h2 span { background:linear-gradient(135deg,#3c3cae,#3c3cae); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .demos-intro-left p { font-size:0.9375rem; color:var(--text-secondary); line-height:1.75; margin-bottom:20px; }
     .demos-proof { display:inline-flex; align-items:center; gap:8px; background:rgba(52,199,89,0.08); border:1px solid rgba(52,199,89,0.2); border-radius:10px; padding:10px 14px; font-size:0.8125rem; color:var(--text-secondary); line-height:1.5; }
     .demos-proof i { color:#34C759; font-size:1rem; flex-shrink:0; }
     .demos-proof strong { color:var(--text-primary); }
     .demos-intro-right { padding: 36px 40px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
     .demos-feature { display: flex; align-items: flex-start; gap: 14px; background: var(--bg-secondary); border:1px solid var(--border-color); border-radius: 14px; padding: 16px 18px; transition: border-color 0.2s, transform 0.2s; }
-    .demos-feature:hover { border-color:rgba(255,107,0,0.3); transform:translateX(4px); }
-    .demos-feature-icon { width:32px; height:32px; flex-shrink:0; background:linear-gradient(135deg,#FF6B00,#FF9500); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:white; }
+    .demos-feature:hover { border-color:rgba(60,60,174,0.3); transform:translateX(4px); }
+    .demos-feature-icon { width:32px; height:32px; flex-shrink:0; background:linear-gradient(135deg,#3c3cae,#3c3cae); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:white; }
     .demos-feature-title { font-size:0.875rem; font-weight:700; color:var(--text-primary); margin-bottom:3px; }
     .demos-feature-desc { font-size:0.8rem; color:var(--text-secondary); line-height:1.55; }
 
@@ -200,29 +200,29 @@
     .demos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; margin-bottom: 56px; }
     @media(max-width:480px){ .demos-grid { grid-template-columns:1fr; } }
     .demo-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition-base); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative; cursor: pointer; }
-    .demo-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg,#FF6B00,#FF9500); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; border-radius: var(--radius-xl) var(--radius-xl) 0 0; z-index: 1; }
+    .demo-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg,#3c3cae,#3c3cae); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; border-radius: var(--radius-xl) var(--radius-xl) 0 0; z-index: 1; }
     .demo-card:hover::before { transform: scaleX(1); }
-    .demo-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(255,107,0,0.16); border-color: rgba(255,107,0,0.3); }
+    .demo-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(60,60,174,0.16); border-color: rgba(60,60,174,0.3); }
     .demo-video-wrap { position: relative; width: 100%; padding-top: 56.25%; background: #000; overflow: hidden; }
     .demo-video-wrap iframe { position: absolute; top:0; left:0; width:100%; height:100%; border:none; pointer-events: none; }
     .demo-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; opacity: 0; transition: all var(--transition-base); z-index: 2; }
     .demo-card:hover .demo-overlay { background: rgba(0,0,0,0.7); opacity: 1; }
-    .demo-overlay-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg,#FF6B00,#FF9500); color: white; border: none; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 24px rgba(255,107,0,0.4); transition: all var(--transition-fast); backdrop-filter: blur(8px); }
-    .demo-overlay-btn:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(255,107,0,0.6); }
+    .demo-overlay-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg,#3c3cae,#3c3cae); color: white; border: none; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 24px rgba(60,60,174,0.4); transition: all var(--transition-fast); backdrop-filter: blur(8px); }
+    .demo-overlay-btn:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(60,60,174,0.6); }
     .demo-card-body { padding: 22px 24px 24px; flex:1; display:flex; flex-direction:column; }
     .demo-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
-    .demo-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:var(--radius-full); background:rgba(255,107,0,0.08); color:#FF6B00; border:1px solid rgba(255,107,0,0.2); }
+    .demo-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:var(--radius-full); background:rgba(60,60,174,0.08); color:#3c3cae; border:1px solid rgba(60,60,174,0.2); }
     .demo-card-body h3 { font-size:1.15rem; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; }
     .demo-card-body p { font-size:0.875rem; color:var(--text-secondary); line-height:1.65; flex:1; margin-bottom:16px; }
     .demo-card-footer { display:flex; align-items:center; justify-content:space-between; padding-top:14px; border-top:1px solid var(--border-color); margin-top:auto; }
     .demo-status { display:flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--text-secondary); font-weight:500; }
     .demo-status-dot { width:8px; height:8px; border-radius:50%; background:var(--success); box-shadow:0 0 6px rgba(52,199,89,0.6); animation:pulse-dot 2s infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:0.4} }
-    .demo-yt-link { display:inline-flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:700; color:white; background:linear-gradient(135deg,#FF6B00,#FF9500); padding:7px 14px; border-radius:20px; text-decoration:none; box-shadow:0 4px 12px rgba(255,107,0,0.3); transition:all var(--transition-fast); }
-    .demo-yt-link:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,107,0,0.45); }
+    .demo-yt-link { display:inline-flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:700; color:white; background:linear-gradient(135deg,#3c3cae,#3c3cae); padding:7px 14px; border-radius:20px; text-decoration:none; box-shadow:0 4px 12px rgba(60,60,174,0.3); transition:all var(--transition-fast); }
+    .demo-yt-link:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(60,60,174,0.45); }
 
     /* ══════════════════════════════════════════ CTA FINAL ══════════════════════════════════════════ */
-    .demos-cta { margin: 8px 0 48px; background: linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); border: 1px solid rgba(255,107,0,0.2); border-radius: 20px; padding: 48px 40px; text-align: center; }
+    .demos-cta { margin: 8px 0 48px; background: linear-gradient(135deg,rgba(60,60,174,0.08),rgba(60,60,174,0.04)); border: 1px solid rgba(60,60,174,0.2); border-radius: 20px; padding: 48px 40px; text-align: center; }
     .demos-cta h2 { font-size:1.6rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
     .demos-cta p { color:var(--text-secondary); margin-bottom:32px; font-size:1rem; line-height:1.6; max-width:520px; margin-left:auto; margin-right:auto; }
     .demos-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
@@ -401,8 +401,8 @@
       padding: 0;
     }
     .lb-carousel-arrow:hover:not(:disabled) {
-      background: rgba(255,107,0,0.85);
-      border-color: #FF6B00;
+      background: rgba(60,60,174,0.85);
+      border-color: #3c3cae;
       transform: translateY(-50%) scale(1.08);
     }
     .lb-carousel-arrow.lb-prev { left: clamp(8px, 1.5vw, 16px); }
@@ -440,7 +440,7 @@
       flex-shrink: 0;
     }
     .lb-carousel-dot.active {
-      background: #FF6B00;
+      background: #3c3cae;
       transform: scale(1.5);
     }
 
@@ -534,20 +534,20 @@
       padding-right: 6px;
     }
     .lb-info-text.expanded p::-webkit-scrollbar { width: 4px; }
-    .lb-info-text.expanded p::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.5); border-radius: 2px; }
+    .lb-info-text.expanded p::-webkit-scrollbar-thumb { background: rgba(60,60,174,0.5); border-radius: 2px; }
 
     .lb-read-more {
       display: none; /* se muestra solo en mobile via @media */
       background: transparent;
       border: none;
-      color: #FF9500;
+      color: #3c3cae;
       font-size: 0.82rem;
       font-weight: 700;
       padding: 6px 0 0;
       cursor: pointer;
       text-align: left;
     }
-    .lb-read-more:hover { color: #FF6B00; text-decoration: underline; }
+    .lb-read-more:hover { color: #3c3cae; text-decoration: underline; }
 
     .lb-actions {
       display: flex;
@@ -571,11 +571,11 @@
       box-sizing: border-box;
     }
     .lb-action-btn.primary {
-      background: linear-gradient(135deg,#FF6B00,#FF9500);
+      background: linear-gradient(135deg,#3c3cae,#3c3cae);
       color: white;
-      box-shadow: 0 4px 16px rgba(255,107,0,0.45);
+      box-shadow: 0 4px 16px rgba(60,60,174,0.45);
     }
-    .lb-action-btn.primary:hover { transform:translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,0,0.6); }
+    .lb-action-btn.primary:hover { transform:translateY(-2px); box-shadow: 0 8px 28px rgba(60,60,174,0.6); }
     .lb-action-btn.secondary {
       background: rgba(255,255,255,0.15);
       color: white;
@@ -698,15 +698,36 @@
       .lb-action-btn { flex: 0 0 auto; }
     }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/legado.css">
+  <script>(function(){var l;try{l=localStorage.getItem('homeLang')}catch(e){}document.documentElement.lang=l==='en'?'en':'es'})();</script>
+  <script src="assets/site.js" defer></script>
+  <script>try{localStorage.setItem('theme','light')}catch(e){}</script>
 </head>
 <body>
+<header class="barra">
+  <div class="marco barra__fila">
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
+    <nav class="menu" aria-label="Principal">
+      <a href="pivettrack.html">PivetTrack</a>
+      <a href="proyectos.html" aria-current="page"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+      <button class="idioma" type="button" onclick="document.getElementById('languageToggle').click()" aria-label="Cambiar idioma / Change language"><span data-l="es">English</span><span data-l="en">Español</span></button>
+    </nav>
+  </div>
+</header>
   <div class="loader" id="loader"><div class="loader-circle"></div></div>
   <div class="scroll-indicator" id="scrollIndicator"></div>
   <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
     <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
   </button>
   <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
-    <span class="language-flag" id="languageFlag">🇺🇸</span>
+    <span class="language-flag" id="languageFlag"></span>
     <span class="language-text" id="languageText">English</span>
   </button>
   <button class="menu-toggle" id="menuToggle" aria-label="Menú">
@@ -832,7 +853,7 @@
           id: 'lXj1kYlz8XY',
           title: 'WMS Mobile — Auditoría de Inventarios',
           desc: 'Módulo móvil que convierte cualquier smartphone en un escáner industrial. Escaneo en ráfaga sin fricción, bloqueo automático de errores por bodega y cuadratura en tiempo real. Un clic genera el reporte ejecutivo listo para SAP, Oracle o cualquier ERP.',
-          desc_long: 'El módulo WMS Mobile resuelve el problema más costoso del inventario físico: detener la operación y gastar miles en equipos de escaneo.\n\n⏱️ Escaneo «Modo Ametralladora» — Ahorro de tiempo real\nEl operador escanea el código y el sistema salta automáticamente al campo de cantidad. Guarda y reabre en milisegundos. Lo que antes tomaba horas de digitación, ahora se hace al ritmo que el operador camine por el pasillo.\n\n🛡️ Sistema «Antibobos» por Bodega — Cero errores\nSi estás contando la Bodega 3, el sistema filtra mágicamente y solo permite validar SKUs de esa bodega. Escanear algo ajeno lo bloquea al instante. Imposible contaminar datos entre ubicaciones.\n\n🧮 Cuadratura en Tiempo Real — Ahorro de dinero\nAunque un producto haya sido contado en tres pallets distintos, los scripts en segundo plano consolidan al vuelo. El gerente ve un Dashboard en vivo con alertas rojas mostrando exactamente qué sobra y qué falta — puede corregir antes de que el equipo salga de la bodega.\n\n⚡ Cierre del Inventario en 1 Segundo\nUn solo botón «Cerrar Inventario» dispara un Bot en la nube que genera un correo ejecutivo en HTML con plantilla de Excel filtrada dinámicamente (Inventario General o Parcial). Listo en segundos para inyectar a SAP, Oracle o cualquier ERP — sin manipulación manual.',
+          desc_long: 'El módulo WMS Mobile resuelve el problema más costoso del inventario físico: detener la operación y gastar miles en equipos de escaneo.\n\n⏱Escaneo «Modo Ametralladora» — Ahorro de tiempo real\nEl operador escanea el código y el sistema salta automáticamente al campo de cantidad. Guarda y reabre en milisegundos. Lo que antes tomaba horas de digitación, ahora se hace al ritmo que el operador camine por el pasillo.\n\nSistema «Antibobos» por Bodega — Cero errores\nSi está contando la Bodega 3, el sistema filtra mágicamente y solo permite validar SKUs de esa bodega. Escanear algo ajeno lo bloquea al instante. Imposible contaminar datos entre ubicaciones.\n\nCuadratura en Tiempo Real — Ahorro de dinero\nAunque un producto haya sido contado en tres pallets distintos, los scripts en segundo plano consolidan al vuelo. El gerente ve un Dashboard en vivo con alertas rojas mostrando exactamente qué sobra y qué falta — puede corregir antes de que el equipo salga de la bodega.\n\nCierre del Inventario en 1 Segundo\nUn solo botón «Cerrar Inventario» dispara un Bot en la nube que genera un correo ejecutivo en HTML con plantilla de Excel filtrada dinámicamente (Inventario General o Parcial). Listo en segundos para inyectar a SAP, Oracle o cualquier ERP — sin manipulación manual.',
           tags: ['AppSheet', 'WMS', 'Inventario', 'Auditoría', 'ERP'],
           screenshots: [
             'https://i.imgur.com/M9PapZS.png',
@@ -846,7 +867,7 @@
           id: 'B9loJoo3k2Q',
           title: 'Generador de HAWB — Despacho Aéreo Cross-Border',
           desc: 'Genera HAWB formato IATA, Carta TSA y FWB en segundos — los mismos documentos que usan Descartes y Champ Cargosystems. Una solución 100% adaptable para cualquier cross-border warehouse que despacha mercadería a Latinoamérica.',
-          desc_long: 'Si tu operación despacha carga aérea hacia Latinoamérica, cada HAWB que emitís a través del ERP cuesta entre 3 y 5 minutos, exige personal capacitado y genera errores que se pagan caros: vuelos retrasados, penalizaciones de aerolínea y documentación rechazada en aduana.\n\nEsta app resuelve eso de raíz.\n\n✈️ HAWB Formato IATA — El Documento del Agente de Carga\nEl documento generado no es un borrador interno: es un House Air Waybill en formato IATA, listo para presentar al cliente, al agente de carga o junto a la documentación del despacho desde el primer intento. El MAWB lo emite la aerolínea; tu app genera el HAWB. Sin retrabajo, sin correcciones de último minuto.\n\n🔒 Carta TSA — Sin Este Papel No Vuela la Carga\nGenera automáticamente la Carta de Certificación TSA (Transport Security Administration), el documento de seguridad obligatorio para cargas con destino o conexión por aeropuertos de EE.UU. Un paso que tu competencia hace manualmente y que aquí sale con un botón.\n\n📡 FWB — El Mensaje que Reportan Descartes y Champ Cargosystems\nEl FWB (Freight Waybill) es el mensaje electrónico estándar de la industria aérea internacional. Empresas como Descartes y Champ Cargosystems lo usan para notificar los vuelos a las aerolíneas y autoridades aduaneras. Esta app lo genera automáticamente, sin operador técnico ni integración costosa.\n\n⚡ Solo 8 Campos — Cualquier Persona lo Opera\nSin pantallas de ERP, sin códigos de aerolínea de memoria, sin capacitación de semanas. 8 campos intuitivos y el documento está listo. Cualquier persona del equipo lo usa desde el primer día.\n\n🌎 100% Adaptable a Cualquier Cross-Border Warehouse\nDiseñada para escalar. Si tu operación cambia rutas, agrega orígenes o crece en volumen, la solución se ajusta sin desarrollo adicional. Es tuya, está en tu Drive y la controlás vos.',
+          desc_long: 'Si su operación despacha carga aérea hacia Latinoamérica, cada HAWB que emite a través del ERP cuesta entre 3 y 5 minutos, exige personal capacitado y genera errores que se pagan caros: vuelos retrasados, penalizaciones de aerolínea y documentación rechazada en aduana.\n\nEsta app resuelve eso de raíz.\n\nHAWB Formato IATA — El Documento del Agente de Carga\nEl documento generado no es un borrador interno: es un House Air Waybill en formato IATA, listo para presentar al cliente, al agente de carga o junto a la documentación del despacho desde el primer intento. El MAWB lo emite la aerolínea; su app genera el HAWB. Sin retrabajo, sin correcciones de último minuto.\n\nCarta TSA — Sin Este Papel No Vuela la Carga\nGenera automáticamente la Carta de Certificación TSA (Transport Security Administration), el documento de seguridad obligatorio para cargas con destino o conexión por aeropuertos de EE.UU. Un paso que su competencia hace manualmente y que aquí sale con un botón.\n\nFWB — El Mensaje que Reportan Descartes y Champ Cargosystems\nEl FWB (Freight Waybill) es el mensaje electrónico estándar de la industria aérea internacional. Empresas como Descartes y Champ Cargosystems lo usan para notificar los vuelos a las aerolíneas y autoridades aduaneras. Esta app lo genera automáticamente, sin operador técnico ni integración costosa.\n\nSolo 8 Campos — Cualquier Persona lo Opera\nSin pantallas de ERP, sin códigos de aerolínea de memoria, sin capacitación de semanas. 8 campos intuitivos y el documento está listo. Cualquier persona del equipo lo usa desde el primer día.\n\n100% Adaptable a Cualquier Cross-Border Warehouse\nDiseñada para escalar. Si su operación cambia rutas, agrega orígenes o crece en volumen, la solución se ajusta sin desarrollo adicional. Es suya, está en su Drive y la controla vos.',
           tags: ['AppSheet', 'HAWB', 'TSA', 'FWB', 'Logística Aérea'],
           screenshots: [
             'https://i.imgur.com/tbGiTpR.png',
@@ -907,7 +928,7 @@
           id: 'lXj1kYlz8XY',
           title: 'WMS Mobile — Inventory Audit Module',
           desc: 'Mobile module that turns any smartphone into an industrial inventory scanner. Burst-mode scanning, automatic warehouse-locked error blocking, and real-time reconciliation. One click generates an executive report ready for SAP, Oracle or any ERP.',
-          desc_long: 'The WMS Mobile module solves the most expensive problem of physical inventory: shutting down operations and spending thousands on scanning equipment.\n\n⏱️ "Machine-Gun" Scan Mode — Real Time Savings\nThe operator scans the code and the system automatically jumps to the quantity field. Saves and reopens in milliseconds. What used to take hours of data entry now happens at the pace the operator walks down the aisle.\n\n🛡️ Warehouse-Locked Error Blocking — Zero Mistakes\nIf you\'re counting Warehouse 3, the system magically filters and only lets you validate SKUs from that warehouse. Scanning something foreign blocks it instantly. Cross-location data contamination is simply impossible.\n\n🧮 Real-Time Reconciliation — Direct Cost Savings\nEven if a product was counted across three different pallets, background math scripts consolidate on the fly. The manager sees a live dashboard with red alerts showing exactly what\'s over and what\'s short — corrections can be made before the team even leaves the warehouse.\n\n⚡ Inventory Close in 1 Second\nA single "Close Inventory" button triggers a cloud bot that generates an HTML executive email with a dynamically filtered Excel template (Full or Partial Inventory). Ready in seconds to inject into SAP, Oracle or any ERP — zero manual work.',
+          desc_long: 'The WMS Mobile module solves the most expensive problem of physical inventory: shutting down operations and spending thousands on scanning equipment.\n\n⏱"Machine-Gun" Scan Mode — Real Time Savings\nThe operator scans the code and the system automatically jumps to the quantity field. Saves and reopens in milliseconds. What used to take hours of data entry now happens at the pace the operator walks down the aisle.\n\nWarehouse-Locked Error Blocking — Zero Mistakes\nIf you\'re counting Warehouse 3, the system magically filters and only lets you validate SKUs from that warehouse. Scanning something foreign blocks it instantly. Cross-location data contamination is simply impossible.\n\nReal-Time Reconciliation — Direct Cost Savings\nEven if a product was counted across three different pallets, background math scripts consolidate on the fly. The manager sees a live dashboard with red alerts showing exactly what\'s over and what\'s short — corrections can be made before the team even leaves the warehouse.\n\nInventory Close in 1 Second\nA single "Close Inventory" button triggers a cloud bot that generates an HTML executive email with a dynamically filtered Excel template (Full or Partial Inventory). Ready in seconds to inject into SAP, Oracle or any ERP — zero manual work.',
           tags: ['AppSheet', 'WMS', 'Inventory', 'Audit', 'ERP'],
           screenshots: [
             'https://i.imgur.com/M9PapZS.png',
@@ -921,7 +942,7 @@
           id: 'B9loJoo3k2Q',
           title: 'HAWB Generator — Cross-Border Air Waybill System',
           desc: 'Generates HAWB (IATA format), TSA Letter and FWB in seconds — the same documents used by Descartes and Champ Cargosystems. A 100% adaptable solution for any cross-border warehouse shipping cargo to Latin America.',
-          desc_long: 'If your operation ships air cargo to Latin America, every HAWB you emit through your ERP costs between 3 and 5 minutes, requires trained staff, and generates errors that are expensive: delayed flights, airline penalties, and documentation rejected at customs.\n\nThis app solves that from the root.\n\n✈️ HAWB IATA Format — The Freight Forwarder\'s Document\nThe generated document is not an internal draft: it is a House Air Waybill in IATA format, ready to submit to the client, freight agent or alongside the shipment paperwork on the first try. The airline issues the MAWB; your app generates the HAWB. No rework, no last-minute corrections.\n\n🔒 TSA Letter — Without This Document the Cargo Doesn\'t Fly\nAutomatically generates the TSA Certification Letter (Transport Security Administration), the mandatory security document for cargo destined to or connecting through U.S. airports. A step your competitors do manually — here it comes out with one button.\n\n📡 FWB — The Message Descartes and Champ Cargosystems Report\nThe FWB (Freight Waybill) is the standard electronic message of the international air cargo industry. Companies like Descartes and Champ Cargosystems use it to report flights to airlines and customs authorities. This app generates it automatically — no technical operator or costly integration needed.\n\n⚡ Only 8 Fields — Anyone on the Team Can Operate It\nNo ERP screens, no airline codes to memorize, no weeks of training. 8 intuitive fields and the document is ready. Any team member uses it from day one.\n\n🌎 100% Adaptable to Any Cross-Border Warehouse\nBuilt to scale. If your operation changes routes, adds origins or grows in volume, the solution adjusts without additional development. It\'s yours, it lives in your Drive, and you control it.',
+          desc_long: 'If your operation ships air cargo to Latin America, every HAWB you emit through your ERP costs between 3 and 5 minutes, requires trained staff, and generates errors that are expensive: delayed flights, airline penalties, and documentation rejected at customs.\n\nThis app solves that from the root.\n\nHAWB IATA Format — The Freight Forwarder\'s Document\nThe generated document is not an internal draft: it is a House Air Waybill in IATA format, ready to submit to the client, freight agent or alongside the shipment paperwork on the first try. The airline issues the MAWB; your app generates the HAWB. No rework, no last-minute corrections.\n\nTSA Letter — Without This Document the Cargo Doesn\'t Fly\nAutomatically generates the TSA Certification Letter (Transport Security Administration), the mandatory security document for cargo destined to or connecting through U.S. airports. A step your competitors do manually — here it comes out with one button.\n\nFWB — The Message Descartes and Champ Cargosystems Report\nThe FWB (Freight Waybill) is the standard electronic message of the international air cargo industry. Companies like Descartes and Champ Cargosystems use it to report flights to airlines and customs authorities. This app generates it automatically — no technical operator or costly integration needed.\n\nOnly 8 Fields — Anyone on the Team Can Operate It\nNo ERP screens, no airline codes to memorize, no weeks of training. 8 intuitive fields and the document is ready. Any team member uses it from day one.\n\n100% Adaptable to Any Cross-Border Warehouse\nBuilt to scale. If your operation changes routes, adds origins or grows in volume, the solution adjusts without additional development. It\'s yours, it lives in your Drive, and you control it.',
           tags: ['AppSheet', 'HAWB', 'TSA', 'FWB', 'Air Logistics'],
           screenshots: [
             'https://i.imgur.com/tbGiTpR.png',
@@ -969,7 +990,7 @@
   function renderDemos() {
     const d = demosTrans[lang];
     document.title = d.page_title;
-    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
+    document.getElementById('languageFlag').textContent = lang === 'es' ? '' : '';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
     document.getElementById('footerText').textContent = d.footer;
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1233,5 +1254,20 @@
     document.getElementById('languageToggle').addEventListener('click', toggleLang);
   });
   </script>
+<footer class="pie">
+  <div class="marco pie__fila">
+    <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
+    <nav class="pie__enlaces" aria-label="Secundaria">
+      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
+      <a href="appsheet-demos.html">AppSheet</a>
+      <a href="cv.html">CV</a>
+      <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
+      <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
+      <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@raulpivet4462" rel="noopener noreferrer">YouTube</a>
+    </nav>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
 </body>
 </html>

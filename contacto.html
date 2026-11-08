@@ -20,7 +20,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contactá a Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC — Automatización, Business Intelligence, Desarrollo Web y redes sociales. Miami, FL.">
-  <meta name="theme-color" content="#FF6B00">
+  <meta name="theme-color" content="#3c3cae">
   <meta property="og:title" content="Contacto — Raul Pivet">
   <meta property="og:description" content="Contame tu problema — automatización, datos, web o redes sociales. Trabajamos en la solución. Miami, FL & Remoto.">
   <meta property="og:url" content="https://www.raulpivet.com/contacto.html">
@@ -28,127 +28,44 @@
   <link rel="canonical" href="https://www.raulpivet.com/contacto.html">
   <title>Contacto - Raul Pivet</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .pt-contact-card { margin-bottom: 28px; border-color: rgba(255,107,0,0.3); background: linear-gradient(135deg,rgba(255,107,0,0.08),rgba(255,149,0,0.04)); }
-    .pt-contact-card h2 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 10px; }
-    .pt-contact-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
-    .pt-contact-data { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
-    .pt-contact-data a { color: var(--text-primary); text-decoration: none; }
-    .pt-contact-data a:hover { color: #FF6B00; }
-    .pt-contact-data .pt-contact-link { color: #FF6B00; }
-    .contact-wrap { display: grid; grid-template-columns: 1fr 1.65fr; gap: 28px; align-items: start; }
-    @media(max-width:960px){ .contact-wrap { grid-template-columns:1fr; } }
-    .contact-panel { display: flex; flex-direction: column; gap: 16px; }
-    .c-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 28px; }
-    .intro-card .intro-eyebrow { font-size: 11px; font-weight: 800; color: #FF6B00; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; }
-    .intro-card h2 { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.25; }
-    .intro-card h2 span { background: linear-gradient(135deg,#FF6B00,#FF9500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .intro-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
-    .avail-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(52,199,89,0.08); border: 1px solid rgba(52,199,89,0.25); border-radius: 20px; padding: 7px 14px; }
-    .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #34C759; box-shadow: 0 0 0 3px rgba(52,199,89,0.2); animation: avail-pulse 2s infinite; flex-shrink: 0; }
-    @keyframes avail-pulse { 0%,100%{ box-shadow:0 0 0 3px rgba(52,199,89,0.2); } 50%{ box-shadow:0 0 0 6px rgba(52,199,89,0.05); } }
-    .avail-text { font-size: 0.8rem; font-weight: 700; color: #34C759; }
-    .info-list { display: flex; flex-direction: column; gap: 0; }
-    .info-item { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border-color); }
-    .info-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .info-icon { width: 38px; height: 38px; background: linear-gradient(135deg,rgba(255,107,0,0.15),rgba(255,149,0,0.08)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #FF6B00; font-size: 0.9rem; flex-shrink: 0; }
-    .info-label { font-size: 10px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
-    .info-value { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
-    .info-value a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
-    .info-value a:hover { color: #FF6B00; }
-    /* Grid 2 columnas — se mantiene con cualquier cantidad de items */
-    .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .help-item { display: flex; align-items: center; gap: 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px 12px; font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); transition: all 0.2s; }
-    .help-item:hover { border-color: rgba(255,107,0,0.3); color: var(--text-primary); }
-    .help-item i { color: #FF6B00; font-size: 0.8rem; width: 14px; text-align: center; flex-shrink: 0; }
-    .help-title { font-size: 11px; font-weight: 800; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-    .form-card { background: var(--glass-bg); backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: 36px; position: relative; overflow: hidden; }
-    .form-card::before { content:''; position:absolute; top:-80px; right:-80px; width:240px; height:240px; background:radial-gradient(circle,rgba(255,107,0,0.06) 0%,transparent 70%); pointer-events:none; }
-    .form-header { margin-bottom: 28px; }
-    .form-header h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 6px; }
-    .form-header p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-row--3 { grid-template-columns: 1fr 1fr 1fr; align-items: end; }
-    @media(min-width:961px) and (max-width:1279px){ .form-row--3 { grid-template-columns: 1fr 1fr; } .form-row--3 .form-group:nth-child(3) { grid-column: 1 / -1; } }
-    @media(max-width:480px){ .form-row { grid-template-columns:1fr; } }
-    @media(max-width:640px){ .form-row--3 { grid-template-columns:1fr; } }
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--bg-secondary); border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 13px 16px; font-size: 0.9375rem; color: var(--text-primary); font-family: inherit; transition: border-color 0.18s, box-shadow 0.18s, background 0.18s; outline: none; appearance: none; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #FF6B00; box-shadow: 0 0 0 3px rgba(255,107,0,0.1); background: var(--bg-primary); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-tertiary); }
-    .form-group textarea { resize: vertical; min-height: 130px; }
-    .select-wrapper { position: relative; }
-    .select-wrapper::after { content:'\f078'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--text-tertiary); pointer-events:none; font-size:0.7rem; }
-    .btn-submit { width: 100%; padding: 15px 24px; background: linear-gradient(135deg,#FF6B00,#FF9500); color: white; border: none; border-radius: var(--radius-full); font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.22s; box-shadow: 0 6px 20px rgba(255,107,0,0.35); letter-spacing: 0.01em; position: relative; overflow: hidden; }
-    .btn-submit::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent); opacity:0; transition:opacity 0.18s; }
-    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,107,0,0.45); }
-    .btn-submit:hover::before { opacity:1; }
-    .btn-submit:active { transform: translateY(0); }
-    .btn-submit:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
-    .btn-spinner { width:18px; height:18px; border:2.5px solid rgba(255,255,255,0.35); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; display:none; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .btn-submit.loading .btn-spinner { display:block; }
-    .btn-submit.loading .btn-text { display:none; }
-    .form-disclaimer { display: flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--text-tertiary); font-size: 0.75rem; }
-    .form-disclaimer i { color: #FF6B00; font-size: 0.8rem; flex-shrink: 0; }
-    .success-screen { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 48px 28px; min-height: 400px; }
-    .success-screen.visible { display:flex; }
-    .success-icon-wrap { width:80px; height:80px; background:linear-gradient(135deg,#34C759,#30D158); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:white; margin-bottom:24px; box-shadow:0 8px 28px rgba(52,199,89,0.4); animation:successPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-    @keyframes successPop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
-    .success-screen h3 { font-size:1.5rem; font-weight:800; color:var(--text-primary); margin-bottom:10px; letter-spacing:-0.02em; }
-    .success-screen p { color:var(--text-secondary); font-size:0.9375rem; line-height:1.65; max-width:340px; margin:0 auto 24px; }
-    .success-chips { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
-    .success-chip { display:flex; align-items:center; gap:6px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:var(--radius-full); padding:7px 14px; font-size:0.78rem; color:var(--text-secondary); font-weight:600; }
-    .success-chip i { color:#34C759; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>(function(){var l;try{l=localStorage.getItem('homeLang')}catch(e){}document.documentElement.lang=l==='en'?'en':'es'})();</script>
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
-  <div class="loader" id="loader"><div class="loader-circle"></div></div>
-  <div class="scroll-indicator" id="scrollIndicator"></div>
-  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-    <div class="theme-toggle-ball"><i class="fas fa-moon"></i></div>
-  </button>
-  <button class="language-toggle" id="languageToggle" aria-label="Cambiar idioma" type="button">
-    <span class="language-flag" id="languageFlag">🇺🇸</span>
-    <span class="language-text" id="languageText">English</span>
-  </button>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="container">
-    <aside class="sidebar" id="sidebar">
-      <div class="profile">
-        <div class="profile-img"><img src="img/gallery/filo.png" alt="Raul Pivet" loading="lazy"></div>
-        <h2>Raul Pivet</h2>
-        <p>Founder · PivetTrack WMS</p>
-        <span class="company-badge" title="Empresa registrada en el Estado de Florida — Mayo 2026"><i class="fas fa-building"></i> PIVET DIGITAL AUTOMATIONS LLC</span>
-      </div>
-      <ul class="menu">
-        <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
-        <li class="menu-item"><a href="pivettrack.html"><i class="fas fa-warehouse"></i> PivetTrack WMS</a></li>
-        <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
-        <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Nosotros</span></a></li>
-        <li class="menu-item active"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
-      </ul>
-      <div class="social-links">
-        <a href="https://instagram.com/Jaimepivet" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com/Sinsapiar1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/raul-pivet-846738187" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </aside>
-    <main class="content" id="mainContent"></main>
+<a class="saltar" href="#mainContent"><span data-l="es">Saltar al contenido</span><span data-l="en">Skip to content</span></a>
+<header class="barra">
+  <div class="marco barra__fila">
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
+    <nav class="menu" aria-label="Principal">
+      <a href="pivettrack.html">PivetTrack</a>
+      <a href="proyectos.html"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
+      <a href="contacto.html" aria-current="page"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
+      <button class="idioma" type="button" id="languageToggle" aria-label="Cambiar idioma / Change language"><span id="languageText">English</span></button>
+    </nav>
   </div>
-  <footer>
-    <p><span class="footer-company">&copy; 2026 Raul Pivet · PIVET DIGITAL AUTOMATIONS LLC</span></p>
-    <p class="footer-registered">Automation &amp; Business Solutions · Miami, FL · Registered LLC — Florida</p>
-  </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
+</header>
+<main id="mainContent"></main>
+<footer class="pie">
+  <div class="marco pie__fila">
+    <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
+    <nav class="pie__enlaces" aria-label="Secundaria">
+      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
+      <a href="appsheet-demos.html">AppSheet</a>
+      <a href="cv.html">CV</a>
+      <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
+      <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>
+      <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.youtube.com/@raulpivet4462" rel="noopener noreferrer">YouTube</a>
+    </nav>
+    <div>&copy; 2026</div>
+  </div>
+</footer>
   <script>
   const t = {
     es: {
@@ -264,91 +181,62 @@
       .trim();
   }
 
+  /* Textos de la página nueva. `reasons` no se toca: su etiqueta llega a Make. */
+  Object.assign(t.es, {"h1": "Hablemos de su operación.", "intro": "Cuénteme cómo trabaja hoy su bodega. Le respondo personalmente.", "horario": "Lunes a viernes, de 9:00 a 18:00 (hora del Este). Miami, Florida.", "form_h2": "Escríbame", "form_sub": "Para una sesión de diagnóstico de PivetTrack, elija esa opción en el motivo.", "ph_msg": "Cuénteme qué necesita. Cuanto más detalle, mejor.", "reason_placeholder": "Elija una opción", "success_h3": "Mensaje recibido", "success_p": "Revise su bandeja de entrada: debería tener una respuesta esperándole.", "page_title": "Contacto | Raúl Pivet", "disclaimer": "Uso sus datos solo para responderle. <a href='privacidad.html'>Política de privacidad</a>.", "btn_send": "Enviar mensaje"});
+  Object.assign(t.en, {"h1": "Let’s talk about your operation.", "intro": "Tell me how your warehouse works today. I answer personally.", "horario": "Monday to Friday, 9:00 a.m. to 6:00 p.m. Eastern. Miami, Florida.", "form_h2": "Write to me", "form_sub": "For a PivetTrack diagnostic session, pick that option as the reason.", "ph_msg": "Tell me what you need. The more detail, the better.", "success_h3": "Message received", "success_p": "Check your inbox: a reply should be waiting for you.", "page_title": "Contact | Raúl Pivet", "disclaimer": "I use your details only to reply to you. <a href='privacidad.html'>Privacy policy</a>.", "btn_send": "Send message"});
+
   function render() {
     const d = t[lang];
     document.title = d.page_title;
-    document.getElementById('languageFlag').textContent = lang === 'es' ? '🇺🇸' : '🇪🇸';
     document.getElementById('languageText').textContent = lang === 'es' ? 'English' : 'Español';
-    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k]) el.textContent = d[k]; });
+    const sinEmoji = s => s.replace(/^[\u{1F000}-\u{1FFFF}☀-⟿]\s*/u, '').trim();
     document.getElementById('mainContent').innerHTML = `
-      <header class="header" data-aos="fade-down">
-        <h1>${d.header_h1}</h1><p>${d.header_sub}</p>
-      </header>
-      <div class="c-card pt-contact-card" data-aos="fade-up">
-        <h2>${d.pt_card_h2}</h2>
-        <p>${d.pt_card_p}</p>
-        <div class="pt-contact-data">
-          <a href="mailto:raul@raulpivet.com">raul@raulpivet.com</a>
-          <span>·</span>
-          <a href="tel:+13055406846">+1 (305) 540 6846</a>
-          <span>·</span>
-          <a href="pivettrack.html" class="pt-contact-link">${d.pt_card_link}</a>
-        </div>
-      </div>
-      <div class="contact-wrap">
-        <div class="contact-panel">
-          <div class="c-card intro-card" data-aos="fade-right">
-            <p class="intro-eyebrow">${d.intro_eyebrow}</p>
-            <h2>${d.intro_h2a}<br>${d.intro_h2b}</h2>
-            <p>${d.intro_p}</p>
-            <div class="avail-badge"><div class="avail-dot"></div><span class="avail-text">${d.avail_text}</span></div>
-          </div>
-          <div class="c-card" data-aos="fade-right" data-aos-delay="80">
-            <div class="info-list">
-              <div class="info-item"><div class="info-icon"><i class="fas fa-envelope"></i></div><div><div class="info-label">${d.info_email_label}</div><div class="info-value"><a href="mailto:Raul@raulpivet.com">Raul@raulpivet.com</a></div></div></div>
-              <div class="info-item"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="info-label">${d.info_loc_label}</div><div class="info-value">${d.info_loc_value}</div></div></div>
-              <div class="info-item"><div class="info-icon"><i class="fas fa-clock"></i></div><div><div class="info-label">${d.info_avail_label}</div><div class="info-value">${d.info_avail_value}</div></div></div>
+      <section class="contacto">
+        <div class="marco contacto__rejilla">
+          <div>
+            <h1>${d.h1}</h1>
+            <p class="grande">${d.intro}</p>
+            <div class="contacto__datos">
+              <a href="mailto:raul@raulpivet.com">raul@raulpivet.com</a>
+              <a href="tel:+13055406846">+1 (305) 540 6846</a>
             </div>
+            <p class="contacto__horario">${d.horario}</p>
           </div>
-          <div class="c-card" data-aos="fade-right" data-aos-delay="160">
-            <p class="help-title">${d.help_title}</p>
-            <div class="help-grid">${d.help.map(item=>`<div class="help-item"><i class="${item.icon}"></i> ${item.text}</div>`).join('')}</div>
-          </div>
-        </div>
-        <div class="form-card" data-aos="fade-left">
-          <div id="formWrapper">
-            <div class="form-header"><h2>${d.form_h2}</h2><p>${d.form_sub}</p></div>
-            <form id="contactForm" novalidate>
-              <!-- Honeypot antispam: visible sólo para bots -->
-              <input type="text" id="hp_website" name="website" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
-              <div class="form-row form-row--3">
-                <div class="form-group"><label for="fname">${d.label_fname}</label><input type="text" id="fname" name="fname" autocomplete="given-name" placeholder="${d.ph_fname}" required></div>
-                <div class="form-group"><label for="lname">${d.label_lname}</label><input type="text" id="lname" name="lname" autocomplete="family-name" placeholder="${d.ph_lname}"></div>
-                <div class="form-group"><label for="company">${d.label_company}</label><input type="text" id="company" name="company" autocomplete="organization" placeholder="${d.ph_company}"></div>
-              </div>
-              <div class="form-group"><label for="email">${d.label_email}</label><input type="email" id="email" name="email" autocomplete="email" placeholder="${d.ph_email}" required></div>
-              <div class="form-group">
-                <label for="reason">${d.label_reason}</label>
-                <div class="select-wrapper">
-                  <select id="reason" name="reason" autocomplete="off">
-                    <option value="" disabled selected>${d.reason_placeholder}</option>
-                    ${d.reasons.map(r=>`<option value="${r.value}">${r.label}</option>`).join('')}
-                  </select>
+          <div class="hoja">
+            <div id="formWrapper">
+              <h2>${d.form_h2}</h2>
+              <p class="hoja__sub">${d.form_sub}</p>
+              <form id="contactForm" novalidate>
+                <input type="text" id="hp_website" name="website" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <div class="campos">
+                  <div class="campo"><label for="fname">${d.label_fname}</label><input type="text" id="fname" name="fname" autocomplete="given-name" required></div>
+                  <div class="campo"><label for="lname">${d.label_lname}</label><input type="text" id="lname" name="lname" autocomplete="family-name"></div>
+                  <div class="campo"><label for="company">${d.label_company}</label><input type="text" id="company" name="company" autocomplete="organization"></div>
+                  <div class="campo"><label for="email">${d.label_email}</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+                  <div class="campo campo--ancho">
+                    <label for="reason">${d.label_reason}</label>
+                    <select id="reason" name="reason" autocomplete="off" required>
+                      <option value="" disabled selected>${d.reason_placeholder}</option>
+                      ${d.reasons.map(r=>`<option value="${r.value}">${sinEmoji(r.label)}</option>`).join('')}
+                    </select>
+                  </div>
+                  <div class="campo campo--ancho"><label for="message">${d.label_msg}</label><textarea id="message" name="message" autocomplete="off" required placeholder="${d.ph_msg}"></textarea></div>
                 </div>
-              </div>
-              <div class="form-group"><label for="message">${d.label_msg}</label><textarea id="message" name="message" autocomplete="off" placeholder="${d.ph_msg}" required></textarea></div>
-              <button class="btn-submit" id="submitBtn" type="submit">
-                <span class="btn-text"><i class="fas fa-paper-plane"></i> ${d.btn_send}</span>
-                <div class="btn-spinner"></div>
-              </button>
-              <div class="form-disclaimer"><i class="fas fa-lock"></i> ${d.disclaimer}</div>
-            </form>
-          </div>
-          <div class="success-screen" id="successScreen">
-            <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
-            <h3>${d.success_h3}</h3><p>${d.success_p}</p>
-            <div class="success-chips">
-              <div class="success-chip"><i class="fas fa-bolt"></i> ${d.chip1}</div>
-              <div class="success-chip"><i class="fas fa-envelope"></i> ${d.chip2}</div>
+                <button class="boton boton--oscuro btn-submit" id="submitBtn" type="submit"><span class="btn-text">${d.btn_send}</span><div class="btn-spinner"></div></button>
+                <p class="hoja__aviso">${d.disclaimer}</p>
+              </form>
+            </div>
+            <div class="success-screen" id="successScreen">
+              <h3>${d.success_h3}</h3>
+              <p>${d.success_p}</p>
             </div>
           </div>
         </div>
-      </div>
-      <div style="border-radius:var(--radius-xl);overflow:hidden;height:300px;margin-top:28px;box-shadow:var(--shadow-md);" data-aos="fade-up">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949595!3d25.78239595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1ses!2s!4v1711669247290!5m2!1ses!2s" width="100%" height="100%" style="border:0;display:block" allowfullscreen loading="lazy" title="Miami, FL"></iframe>
-      </div>`;
+      </section>`;
     bindSubmit();
-    refreshAOS();
+    const motivo = new URLSearchParams(location.search).get('motivo');
+    const sel = document.getElementById('reason');
+    if (motivo && Array.prototype.some.call(sel.options, o => o.value === motivo)) sel.value = motivo;
   }
 
   const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/ivr1wib3mxpgytpn8glao7e02a51lcdy';
@@ -410,7 +298,7 @@
         }, 300);
       } catch(err) {
         submitBtn.classList.remove('loading'); submitBtn.disabled = false;
-        alert('Problema de conexión. Escribime directo a Raul@raulpivet.com');
+        alert(lang === 'es' ? 'No se pudo enviar. Escríbame a raul@raulpivet.com' : 'Could not send. Please email raul@raulpivet.com');
       }
     });
   }
