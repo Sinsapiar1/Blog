@@ -19,16 +19,15 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Archivo histórico de proyectos AppSheet (2025–2026) de Raul Pivet. Ya no se ofrecen como servicio: hoy el producto es PivetTrack, un WMS marca blanca.">
-  <meta name="keywords" content="archivo, AppSheet, proyectos anteriores, PivetTrack, Raul Pivet, PIVET DIGITAL AUTOMATIONS LLC">
+  <meta name="description" content="Micro apps construidas con AppSheet y Google Sheets para recepción de camiones, control de asistencia y auditoría de inventario. Demostraciones en video.">
   <meta name="author" content="Raul Pivet">
   <meta name="theme-color" content="#3c3cae">
-  <meta property="og:title" content="Archivo de proyectos — AppSheet (2025–2026) — Raul Pivet">
-  <meta property="og:description" content="Proyectos anteriores — etapa AppSheet (archivo histórico). Hoy mi producto es PivetTrack.">
+  <meta property="og:title" content="Micro apps con AppSheet | Raúl Pivet">
+  <meta property="og:description" content="Micro apps construidas con AppSheet y Google Sheets para recepción de camiones, control de asistencia y auditoría de inventario. Demostraciones en video.">
   <meta property="og:url" content="https://www.raulpivet.com/appsheet-demos.html">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.raulpivet.com/appsheet-demos.html">
-  <title>Archivo de proyectos — AppSheet (2025–2026) - Raul Pivet</title>
+  <title>Micro apps con AppSheet | Raúl Pivet</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://unpkg.com">
@@ -714,7 +713,7 @@
     <button class="abrir-menu" type="button" aria-expanded="false"><span data-l="es">Menú</span><span data-l="en">Menu</span></button>
     <nav class="menu" aria-label="Principal">
       <a href="pivettrack.html">PivetTrack</a>
-      <a href="proyectos.html" aria-current="page"><span data-l="es">Trabajos</span><span data-l="en">Work</span></a>
+      <a href="appsheet-demos.html" aria-current="page">Micro apps</a>
       <a href="sobre-mi.html"><span data-l="es">Sobre mí</span><span data-l="en">About</span></a>
       <a href="contacto.html"><span data-l="es">Contacto</span><span data-l="en">Contact</span></a>
       <button class="idioma" type="button" onclick="document.getElementById('languageToggle').click()" aria-label="Cambiar idioma / Change language"><span data-l="es">English</span><span data-l="en">Español</span></button>
@@ -744,7 +743,6 @@
       <ul class="menu">
         <li class="menu-item"><a href="index.html"><i class="fas fa-home"></i> <span data-i18n="nav_home">Inicio</span></a></li>
         <li class="menu-item"><a href="pivettrack.html"><i class="fas fa-warehouse"></i> PivetTrack WMS</a></li>
-        <li class="menu-item"><a href="galeria.html"><i class="fas fa-flask"></i> Lab</a></li>
         <li class="menu-item"><a href="sobre-mi.html"><i class="fas fa-user"></i> <span data-i18n="nav_about">Nosotros</span></a></li>
         <li class="menu-item"><a href="contacto.html"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contacto</span></a></li>
       </ul>
@@ -806,17 +804,17 @@
     es: {
       nav_home:'Inicio', nav_about:'Nosotros', nav_projects:'Proyectos',
       nav_contact:'Contacto',
-      page_title: 'Archivo de proyectos — AppSheet (2025–2026) - Raul Pivet',
+      page_title: 'Micro apps con AppSheet | Raúl Pivet',
       footer: '© 2026 Raul Pivet. Todos los derechos reservados.',
-      archive_title: 'Proyectos anteriores — etapa AppSheet (archivo histórico)',
-      archive_text: 'Estas aplicaciones fueron parte de mis comienzos y <strong>ya no se ofrecen como servicio</strong>. Hoy mi producto es <strong>PivetTrack</strong>, un WMS marca blanca medido en producción real:',
-      archive_link: 'Conocer PivetTrack →',
-      h1a: 'Archivo de proyectos —', h1b: 'AppSheet (2025–2026)',
-      hero_sub: 'Registro histórico de aplicaciones móviles construidas con AppSheet y Google Sheets en una etapa anterior. Se conservan aquí solo como referencia.',
+      archive_title: 'Para la operación completa de bodega',
+      archive_text: 'Una micro app resuelve un problema puntual. Para inventario por lote y vencimiento, picking por escaneo y QuickBooks Online, mi producto es <strong>PivetTrack</strong>.',
+      archive_link: 'Conocer PivetTrack',
+      h1a: 'Micro apps', h1b: 'con AppSheet',
+      hero_sub: 'Aplicaciones móviles construidas con AppSheet y Google Sheets para resolver un problema puntual: recepción de camiones, control de asistencia y auditoría de inventario.',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventario', 'Logística', 'WhatsApp', 'Drive'],
-      videos_eyebrow: 'Proyectos archivados',
-      videos_title: 'Registro de aplicaciones anteriores',
-      status_live: 'Archivo', watch_yt: 'Ver en YouTube', view_details: 'Ver Detalles',
+      videos_eyebrow: '',
+      videos_title: 'Tres demostraciones en video',
+      status_live: 'Demo', watch_yt: 'Ver en YouTube', view_details: 'Ver Detalles',
       read_more: 'Leer más', read_less: 'Leer menos',
 
       // ── DEMOS ──
@@ -863,37 +861,23 @@
             'https://i.imgur.com/QaFoWRb.png'
           ]
         },
-        {
-          id: 'B9loJoo3k2Q',
-          title: 'Generador de HAWB — Despacho Aéreo Cross-Border',
-          desc: 'Genera HAWB formato IATA, Carta TSA y FWB en segundos — los mismos documentos que usan Descartes y Champ Cargosystems. Una solución 100% adaptable para cualquier cross-border warehouse que despacha mercadería a Latinoamérica.',
-          desc_long: 'Si su operación despacha carga aérea hacia Latinoamérica, cada HAWB que emite a través del ERP cuesta entre 3 y 5 minutos, exige personal capacitado y genera errores que se pagan caros: vuelos retrasados, penalizaciones de aerolínea y documentación rechazada en aduana.\n\nEsta app resuelve eso de raíz.\n\nHAWB Formato IATA — El Documento del Agente de Carga\nEl documento generado no es un borrador interno: es un House Air Waybill en formato IATA, listo para presentar al cliente, al agente de carga o junto a la documentación del despacho desde el primer intento. El MAWB lo emite la aerolínea; su app genera el HAWB. Sin retrabajo, sin correcciones de último minuto.\n\nCarta TSA — Sin Este Papel No Vuela la Carga\nGenera automáticamente la Carta de Certificación TSA (Transport Security Administration), el documento de seguridad obligatorio para cargas con destino o conexión por aeropuertos de EE.UU. Un paso que su competencia hace manualmente y que aquí sale con un botón.\n\nFWB — El Mensaje que Reportan Descartes y Champ Cargosystems\nEl FWB (Freight Waybill) es el mensaje electrónico estándar de la industria aérea internacional. Empresas como Descartes y Champ Cargosystems lo usan para notificar los vuelos a las aerolíneas y autoridades aduaneras. Esta app lo genera automáticamente, sin operador técnico ni integración costosa.\n\nSolo 8 Campos — Cualquier Persona lo Opera\nSin pantallas de ERP, sin códigos de aerolínea de memoria, sin capacitación de semanas. 8 campos intuitivos y el documento está listo. Cualquier persona del equipo lo usa desde el primer día.\n\n100% Adaptable a Cualquier Cross-Border Warehouse\nDiseñada para escalar. Si su operación cambia rutas, agrega orígenes o crece en volumen, la solución se ajusta sin desarrollo adicional. Es suya, está en su Drive y la controla vos.',
-          tags: ['AppSheet', 'HAWB', 'TSA', 'FWB', 'Logística Aérea'],
-          screenshots: [
-            'https://i.imgur.com/tbGiTpR.png',
-            'https://i.imgur.com/bZPkfcn.png',
-            'https://i.imgur.com/httAlpv.png',
-            'https://i.imgur.com/0fDzft3.png',
-            'https://i.imgur.com/ZNQghjQ.png'
-          ]
-        }
       ]
     },
 
     en: {
       nav_home:'Home', nav_about:'About Us', nav_projects:'Projects',
       nav_contact:'Contact',
-      page_title: 'Project archive — AppSheet (2025–2026) - Raul Pivet',
+      page_title: 'Micro apps built on AppSheet | Raúl Pivet',
       footer: '© 2026 Raul Pivet. All rights reserved.',
-      archive_title: 'Previous projects — AppSheet stage (historical archive)',
-      archive_text: 'These applications were part of my beginnings and <strong>are no longer offered as a service</strong>. Today my product is <strong>PivetTrack</strong>, a white-label WMS measured in real production:',
-      archive_link: 'Meet PivetTrack →',
-      h1a: 'Project archive —', h1b: 'AppSheet (2025–2026)',
-      hero_sub: 'A historical record of mobile applications built with AppSheet and Google Sheets at an earlier stage. They are kept here for reference only.',
+      archive_title: 'For the full warehouse operation',
+      archive_text: 'A micro app solves one specific problem. For lot and expiration inventory, scan-to-pick and QuickBooks Online, my product is <strong>PivetTrack</strong>.',
+      archive_link: 'See PivetTrack',
+      h1a: 'Micro apps', h1b: 'built on AppSheet',
+      hero_sub: 'Mobile apps built on AppSheet and Google Sheets to solve one specific problem: truck receiving, attendance control and inventory audits.',
       hero_tags: ['AppSheet', 'Google Sheets', 'No-Code', 'Inventory', 'Logistics', 'WhatsApp', 'Drive'],
-      videos_eyebrow: 'Archived projects',
-      videos_title: 'Record of previous applications',
-      status_live: 'Archive', watch_yt: 'Watch on YouTube', view_details: 'View Details',
+      videos_eyebrow: '',
+      videos_title: 'Three video demos',
+      status_live: 'Demo', watch_yt: 'Watch on YouTube', view_details: 'View Details',
       read_more: 'Read more', read_less: 'Read less',
       videos: [
         {
@@ -938,20 +922,6 @@
             'https://i.imgur.com/QaFoWRb.png'
           ]
         },
-        {
-          id: 'B9loJoo3k2Q',
-          title: 'HAWB Generator — Cross-Border Air Waybill System',
-          desc: 'Generates HAWB (IATA format), TSA Letter and FWB in seconds — the same documents used by Descartes and Champ Cargosystems. A 100% adaptable solution for any cross-border warehouse shipping cargo to Latin America.',
-          desc_long: 'If your operation ships air cargo to Latin America, every HAWB you emit through your ERP costs between 3 and 5 minutes, requires trained staff, and generates errors that are expensive: delayed flights, airline penalties, and documentation rejected at customs.\n\nThis app solves that from the root.\n\nHAWB IATA Format — The Freight Forwarder\'s Document\nThe generated document is not an internal draft: it is a House Air Waybill in IATA format, ready to submit to the client, freight agent or alongside the shipment paperwork on the first try. The airline issues the MAWB; your app generates the HAWB. No rework, no last-minute corrections.\n\nTSA Letter — Without This Document the Cargo Doesn\'t Fly\nAutomatically generates the TSA Certification Letter (Transport Security Administration), the mandatory security document for cargo destined to or connecting through U.S. airports. A step your competitors do manually — here it comes out with one button.\n\nFWB — The Message Descartes and Champ Cargosystems Report\nThe FWB (Freight Waybill) is the standard electronic message of the international air cargo industry. Companies like Descartes and Champ Cargosystems use it to report flights to airlines and customs authorities. This app generates it automatically — no technical operator or costly integration needed.\n\nOnly 8 Fields — Anyone on the Team Can Operate It\nNo ERP screens, no airline codes to memorize, no weeks of training. 8 intuitive fields and the document is ready. Any team member uses it from day one.\n\n100% Adaptable to Any Cross-Border Warehouse\nBuilt to scale. If your operation changes routes, adds origins or grows in volume, the solution adjusts without additional development. It\'s yours, it lives in your Drive, and you control it.',
-          tags: ['AppSheet', 'HAWB', 'TSA', 'FWB', 'Air Logistics'],
-          screenshots: [
-            'https://i.imgur.com/tbGiTpR.png',
-            'https://i.imgur.com/bZPkfcn.png',
-            'https://i.imgur.com/httAlpv.png',
-            'https://i.imgur.com/0fDzft3.png',
-            'https://i.imgur.com/ZNQghjQ.png'
-          ]
-        }
       ]
     }
   };
@@ -1001,7 +971,7 @@
 
     document.getElementById('mainContent').innerHTML = `
       <aside class="archive-strip" role="note">
-        <i class="fas fa-box-archive archive-strip-icon" aria-hidden="true"></i>
+        <i class="fas fa-warehouse archive-strip-icon" aria-hidden="true"></i>
         <div class="archive-strip-body">
           <strong class="archive-strip-title">${d.archive_title}</strong>
           <p>${d.archive_text} <a href="https://www.raulpivet.com/pivettrack.html">${d.archive_link}</a></p>
@@ -1258,8 +1228,6 @@
   <div class="marco pie__fila">
     <div>PIVET DIGITAL AUTOMATIONS LLC<br><span data-l="es">Registrada en Florida. Miami, FL.</span><span data-l="en">Registered in Florida. Miami, FL.</span></div>
     <nav class="pie__enlaces" aria-label="Secundaria">
-      <a href="galeria.html"><span data-l="es">Laboratorio</span><span data-l="en">Lab</span></a>
-      <a href="appsheet-demos.html">AppSheet</a>
       <a href="cv.html">CV</a>
       <a href="legal/index.html"><span data-l="es">Documentos legales</span><span data-l="en">Legal documents</span></a>
       <a href="privacidad.html"><span data-l="es">Privacidad</span><span data-l="en">Privacy</span></a>

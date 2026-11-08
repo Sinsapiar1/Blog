@@ -11,7 +11,9 @@ HTML estático publicado con GitHub Pages desde `main`; sin compilación ni depe
 | `pivettrack.html` | Producto, mediciones, videos, precios y SLA |
 | `contacto.html` | Formulario de contacto |
 | `sobre-mi.html` | Trayectoria y forma de trabajo |
-| `proyectos.html`, `galeria.html`, `appsheet-demos.html` | Trabajos, laboratorio y archivo de AppSheet |
+| `appsheet-demos.html` | Micro apps hechas con AppSheet |
+| `proyectos.html`, `galeria.html` | Redirigen a Micro apps, para no romper enlaces viejos |
+| `en/` | Portada, PivetTrack y Sobre mí en inglés |
 | `cv.html` | CV con descarga en PDF |
 | `privacidad.html` | Política de privacidad del sitio |
 | `legal/` | Documentos legales; se generan desde `docs/comercial/scripts/publicar_legal_blog.py` en el repositorio de PivetTrack |
@@ -23,7 +25,7 @@ HTML estático publicado con GitHub Pages desde `main`; sin compilación ni depe
 - `assets/legado.css` y `assets/secundarias.css`: llevan a ese diseño las páginas que arman su contenido con JavaScript.
 - `style.css`: lo siguen usando las páginas de `legal/`.
 
-El idioma se guarda en `localStorage` con la clave `homeLang`. En las páginas estáticas cada texto va en un par de elementos `data-l="es"` y `data-l="en"`.
+El idioma se guarda en `localStorage` con la clave `homeLang`. Portada, PivetTrack y Sobre mí tienen una URL por idioma (`/` y `/en/`), unidas con `hreflang`: un cambio de texto hay que hacerlo en las dos. Contacto y las páginas que arman su contenido con JavaScript cambian de idioma en la misma URL.
 
 ## Formulario de contacto
 
