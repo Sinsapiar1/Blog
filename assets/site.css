@@ -32,7 +32,7 @@ body {
 }
 img, svg { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
-a:hover { text-decoration-thickness: 2px; }
+@media (hover: hover) and (pointer: fine) { a:hover { text-decoration-thickness: 2px; } }
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3 { margin: 0; font-weight: 800; }
@@ -65,9 +65,9 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
   border: 0; border-radius: 3px; cursor: pointer;
   transition: background-color .15s;
 }
-.boton:hover { background: #ffd95c; }
+@media (hover: hover) and (pointer: fine) { .boton:hover { background: #ffd95c; } }
 .boton--oscuro { background: var(--tinta); color: var(--papel); }
-.boton--oscuro:hover { background: var(--azul); }
+@media (hover: hover) and (pointer: fine) { .boton--oscuro:hover { background: var(--azul); } }
 .enlace { font-weight: 500; text-underline-offset: .22em; }
 
 /* Barra */
@@ -77,16 +77,17 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
 .marca img { width: 26px; }
 .menu { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 34px); }
 .menu a { text-decoration: none; font-size: 1rem; padding-block: 4px; border-bottom: 2px solid transparent; }
-.menu a:hover, .menu a[aria-current="page"] { border-bottom-color: var(--cinta); }
+.menu a[aria-current="page"] { border-bottom-color: var(--cinta); }
+@media (hover: hover) and (pointer: fine) { .menu a:hover { border-bottom-color: var(--cinta); } }
 .idioma {
   background: none; border: 1px solid rgba(255,255,255,.55); color: inherit; border-radius: 3px;
   font: 500 .9375rem/1 var(--texto); padding: 8px 11px; cursor: pointer;
 }
-.idioma:hover { border-color: var(--papel); }
+@media (hover: hover) and (pointer: fine) { .idioma:hover { border-color: var(--papel); } }
 .menu a.idioma { font-size: .9375rem; padding: 8px 11px; border: 1px solid rgba(255,255,255,.55); }
-.menu a.idioma:hover { border-color: var(--papel); }
+@media (hover: hover) and (pointer: fine) { .menu a.idioma:hover { border-color: var(--papel); } }
 .barra .menu a.menu__accion { background: var(--cinta) !important; color: var(--tinta) !important; font-weight: 600; padding: 9px 14px; border-bottom: 0; border-radius: 3px; }
-.barra .menu a.menu__accion:hover { background: var(--papel) !important; }
+@media (hover: hover) and (pointer: fine) { .barra .menu a.menu__accion:hover { background: var(--papel) !important; } }
 .abrir-menu { display: none; background: none; border: 0; color: inherit; font: 500 1rem/1 var(--texto); padding: 8px 0; cursor: pointer; }
 
 /* Portada */
@@ -122,7 +123,7 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
   width: 100%; margin-top: 16px; padding: 15px; background: #000; color: #fff; border: 0; border-radius: 2px;
   font: 700 1.0625rem/1 var(--rotulo); cursor: pointer;
 }
-.etiqueta__boton:hover { background: var(--retiro); }
+@media (hover: hover) and (pointer: fine) { .etiqueta__boton:hover { background: var(--retiro); } }
 .sello {
   position: absolute; right: 16px; top: 124px; padding: 4px 12px; border: 4px solid var(--retiro); border-radius: 4px;
   color: var(--retiro); font: 800 2.5rem/1 var(--cartel); transform: rotate(-11deg) scale(1); opacity: 0; pointer-events: none;
@@ -215,7 +216,7 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
 .medicion td { padding: 24px 28px 24px 0; border-bottom: 1px solid #4a4d84; vertical-align: top; }
 .medicion__valor { font: 800 clamp(2.5rem, 4.6vw, 4.25rem)/.95 var(--cartel); color: var(--cinta); white-space: nowrap; }
 .medicion__fecha { white-space: nowrap; color: #b6bade; }
-.medido .nota { color: #b6bade; margin-top: 26px; }
+.medido .nota { color: #b6bade; margin-top: 26px; max-width: 70ch; }
 
 /* Caso, otros trabajos, quién */
 .dos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px clamp(40px, 8vw, 128px); align-items: start; }
@@ -258,7 +259,7 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
 .pie__fila { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; padding-block: 44px; }
 .pie__enlaces { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .pie a { text-decoration: none; }
-.pie a:hover { text-decoration: underline; }
+@media (hover: hover) and (pointer: fine) { .pie a:hover { text-decoration: underline; } }
 
 /* PivetTrack */
 .portada--pt h1 { font-size: clamp(3.75rem, 10vw, 9.5rem); max-width: 15ch; padding-top: clamp(30px, 4vw, 60px); margin-bottom: clamp(26px, 3vw, 44px); }
@@ -293,7 +294,7 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
 .videos__lista { border-top: 3px solid var(--tinta); }
 .videos__lista button { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--linea); padding: 13px 8px 13px 12px; font: 400 .9375rem/1.4 var(--texto); color: var(--gris); cursor: pointer; border-left: 5px solid transparent; }
 .videos__lista b { display: block; color: var(--tinta); font-weight: 600; font-size: 1rem; }
-.videos__lista button:hover { background: var(--hormigon); }
+@media (hover: hover) and (pointer: fine) { .videos__lista button:hover { background: var(--hormigon); } }
 .videos__lista button[aria-current="true"] { border-left-color: var(--cinta); background: var(--hormigon); }
 .videos__canal { margin-top: 22px; }
 
@@ -439,7 +440,7 @@ html { scroll-padding-top: calc(var(--alto-barra) + 14px); interpolate-size: all
 .boton, .etiqueta__boton, .idioma, .abrir-menu, .video__poster, .videos__lista button, .imprenta__cabezal button, .recorre__pestanas button {
   transition: transform .16s var(--salida), background-color .15s, color .15s, border-color .15s;
 }
-.boton:active, .etiqueta__boton:active, .idioma:active, .video__poster:active, .imprenta__cabezal button:active, .recorre__pestanas button:active { transform: scale(.97); }
+.boton:active, .etiqueta__boton:active, .idioma:active, .abrir-menu:active, .video__poster:active, .imprenta__cabezal button:active, .recorre__pestanas button:active { transform: scale(.97); }
 .videos__lista button:active { transform: scale(.99); }
 
 /* Cinta de peligro: aparece en el borde del botón */
@@ -552,7 +553,7 @@ html { scroll-padding-top: calc(var(--alto-barra) + 14px); interpolate-size: all
 .recorre__texto { margin-top: 12px; color: var(--gris); font-size: 1rem; max-width: 62ch; padding-right: clamp(40px, 22vw, 300px); min-height: 1.6em; }
 
 /* Videos y preguntas */
-.video__poster img { transition: transform .4s var(--salida); }
+.video__poster img { transition: transform .22s var(--salida); }
 @media (hover: hover) and (pointer: fine) { .video__poster:hover img { transform: scale(1.025); } }
 .videos__lista button { transition: transform .16s var(--salida), background-color .18s, border-left-color .18s; }
 
@@ -580,9 +581,24 @@ html[lang="en"] .success-screen.visible h3::before { content: "RECEIVED"; }
 @view-transition { navigation: auto; }
 ::view-transition-group(barra) { animation: none; }
 ::view-transition-old(root) { animation: none; }
-::view-transition-new(root) { animation: pagina .34s var(--vaiven) both; }
+::view-transition-new(root) { animation: pagina .24s var(--salida) both; }
 @keyframes pagina { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
   .duda::details-content { transition: none; }
+}
+
+/* Dedo: cada control mide al menos 44 px de alto; con cursor nada cambia. */
+@media (pointer: coarse) {
+  .marca, .abrir-menu { min-height: 44px; margin-block: -6px; }
+  .imprenta__cabezal { padding-block: 2px; }
+  .imprenta__cabezal button, .recorre__pestanas button { min-height: 44px; }
+  .enlace, .pie a, .cierre__contacto a, .pt-cierre-accion a:not(.boton) { display: inline-flex; align-items: center; min-height: 44px; }
+  .pie a { min-width: 44px; }
+  .cierre__contacto a { display: flex; }
+  .pie__enlaces { row-gap: 0; }
+  .indice a { min-width: 44px; text-align: center; }
+}
+@media (pointer: coarse) and (max-width: 760px) {
+  .menu a { display: flex; align-items: center; min-height: 44px; }
 }

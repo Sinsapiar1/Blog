@@ -57,6 +57,13 @@
         abrir.setAttribute('aria-expanded', 'false');
       });
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('abierto')) {
+        menu.classList.remove('abierto');
+        abrir.setAttribute('aria-expanded', 'false');
+        abrir.focus();
+      }
+    });
   }
 
   /* La etiqueta: se imprime por rubro y viaja con la lectura. */
@@ -189,8 +196,9 @@
     }
 
     /* Una sola vuelta por los rubros mientras nadie toca nada. */
-    var ciclo = null, pasos = 0;
-    function parar() { clearTimeout(ciclo); ciclo = null; }
+    var ciclo = null, pasos = 0, quieto = false;
+    function pausar() { clearTimeout(ciclo); ciclo = null; }
+    function parar() { quieto = true; pausar(); }
     function seguir() {
       pasos++;
       imprimir((actual + 1) % RUBROS.length);
@@ -198,10 +206,21 @@
     }
     if (mueve) {
       escanear(1250);
-      ciclo = setTimeout(seguir, 3800);
-      window.addEventListener('scroll', function fuera() {
-        if (window.scrollY > 240) { parar(); window.removeEventListener('scroll', fuera); }
-      }, { passive: true });
+      if (escritorio.matches) {
+        ciclo = setTimeout(seguir, 3800);
+        window.addEventListener('scroll', function fuera() {
+          if (window.scrollY > 240) { parar(); window.removeEventListener('scroll', fuera); }
+        }, { passive: true });
+      } else {
+        /* En el celular la etiqueta queda bajo la primera pantalla: el ciclo corre sólo mientras se ve. */
+        new IntersectionObserver(function (avisos) {
+          if (!avisos[avisos.length - 1].isIntersecting) { pausar(); return; }
+          if (!quieto && !ciclo && pasos < RUBROS.length) { ciclo = setTimeout(seguir, 2000); }
+        }, { rootMargin: '-15% 0px -45% 0px' }).observe(imprenta);
+      }
+      /* Al deslizar con el dedo sobre la etiqueta no se cuenta como detenerla; tocar un rubro sí. */
+      imprenta.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') { parar(); } });
+      imprenta.addEventListener('focusin', parar);
       document.addEventListener('visibilitychange', function () { if (document.hidden) { parar(); } });
     }
     botones.forEach(function (b, i) { b.addEventListener('click', function () { parar(); imprimir(i); }); });
@@ -291,11 +310,18 @@
     var pie = tour.querySelector('.recorre__texto');
     var base = tour.getAttribute('data-pantallas');
     var turno = 0, posicion = 0, cargadas = false;
-    var ruta = function (b) { return base + b.getAttribute('data-img') + '.jpg'; };
+    var tamanos = marco.querySelector('img').getAttribute('sizes');
+    /* El marco fija el tamaño de la imagen: alcanza con declarar el ancho mayor. */
+    function fuentes(img, b) {
+      var ruta = base + b.getAttribute('data-img');
+      img.sizes = tamanos;
+      img.srcset = ruta + '-900.jpg 900w, ' + ruta + '.jpg 2000w';
+      img.src = ruta + '.jpg';
+    }
     tour.querySelector('.recorre__pestanas').addEventListener('pointerenter', function () {
       if (cargadas) { return; }
       cargadas = true;
-      pestanas.forEach(function (b) { new Image().src = ruta(b); });
+      pestanas.forEach(function (b) { fuentes(new Image(), b); });
     });
     pestanas.forEach(function (b, i) {
       b.addEventListener('click', function () {
@@ -308,7 +334,7 @@
         var img = new Image();
         img.className = 'captura';
         img.alt = b.getAttribute('data-alt');
-        img.src = ruta(b);
+        fuentes(img, b);
         (img.decode ? img.decode() : Promise.resolve()).catch(function () {}).then(function () {
           if (propio !== turno) { return; }
           var previas = lista$('img', marco);
@@ -339,6 +365,7 @@
       cartel.style.display = '';
       var img = cartel.querySelector('img');
       img.src = 'https://img.youtube.com/vi/' + idVideo() + '/hqdefault.jpg';
+      cartel.setAttribute('aria-label', cartel.querySelector('.video__play').textContent + ': ' + activa.querySelector('b').textContent);
       filas.forEach(function (f) { f.setAttribute('aria-current', String(f === activa)); });
       if (conMovimiento && mueve) {
         cartel.animate([{ opacity: 0.25 }, { opacity: 1 }], { duration: 240, easing: SALIDA });
