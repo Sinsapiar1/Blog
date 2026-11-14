@@ -275,12 +275,16 @@
       <h2>A dedicated instance for your company.</h2>
       
       <p class="parrafo pt-mt">PivetTrack is single-tenant: an application and a database just for you. Your data is never stored alongside anyone else’s and your performance never depends on a neighbor.</p>
+      <p class="nota pt-mt">The code goes through our own security reviews following OWASP guidance; the latest was in November 2026. For your IT team, the security architecture is described in a technical document we send once the NDA is signed.</p>
     </div>
     <ul class="oficios">
       <li><h3>Records that can’t be rewritten</h3><p>No one, in any role, can edit or delete a stock ledger entry.</p></li>
-      <li><h3>Two-factor authentication</h3><p>Required for administrators, with backup codes.</p></li>
+      <li><h3>Two-factor authentication</h3><p>Required for administrators, with backup codes. In the B2B Portal, you decide customer by customer whether their buyers must use it.</p></li>
+      <li><h3>Protected sign-in</h3><p>Accounts lock after 5 failed attempts, passwords are at least 12 characters and idle sessions expire on their own.</p></li>
+      <li><h3>Encrypted connections and keys</h3><p>Everything travels over HTTPS. Two-factor secrets and integration keys are stored encrypted, and screens only run code from your own instance.</p></li>
+      <li><h3>Signed integrations</h3><p>Every system that connects through the API has its own credential, and the notifications PivetTrack sends to your systems (webhooks) are signed.</p></li>
       <li><h3>Full audit trail</h3><p>Who did what and when: every document, cost change and report.</p></li>
-      <li><h3>Managed backups</h3><p>Managed PostgreSQL with automated daily backups and restore.</p></li>
+      <li><h3>Daily backups</h3><p>Managed PostgreSQL with automated daily backups kept for seven days.</p></li>
       <li><h3>99.9% uptime</h3><p>In the contract (SLA), with service credits in your favor if we miss it.</p></li>
     </ul>
   </div>
@@ -335,7 +339,7 @@
       <details class="duda"><summary>Can it handle my volume?</summary><p>We measured it: with 165,382 SKUs, a 167,382-line full count closed in 229 seconds while 20 operators kept shipping, with 0 failed requests out of 6,176. Those are runs in a test environment, not a guarantee. Your SLA is the one in the contract.</p></details>
       <details class="duda"><summary>If I distribute food, how does it help with FSMA 204?</summary><p>PivetTrack records the lot, expiration and destination of every movement, and builds a recall list in one click. That supports your traceability processes. Complying with the rule remains your company’s responsibility, and we won’t promise it.</p></details>
       <details class="duda"><summary>What if I want to leave later?</summary><p>During the contract you can export to Excel at any time: Current Stock, the ledger (Kardex), items near expiry, lot traceability and the count receipt. When the contract ends, if your account is paid up, your data stays available for export for 30 days. What’s already in QuickBooks stays in your QuickBooks.</p></details>
-      <details class="duda"><summary>Is my data safe?</summary><p>Your company gets its own instance and its own database, shared with no one, with two-factor authentication for administrators, daily backups and a contractual 99.9% uptime commitment.</p></details>
+      <details class="duda"><summary>Is my data safe?</summary><p>Your company gets its own instance and its own database, shared with no one. Administrators sign in with two-factor authentication, everything travels over HTTPS and integration keys are stored encrypted. There are daily backups and a contractual 99.9% uptime commitment.</p></details>
     </div>
   </div>
 </section>

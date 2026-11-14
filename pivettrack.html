@@ -274,13 +274,17 @@
     <div>
       <h2>Una instancia exclusiva para su empresa.</h2>
       <p class="parrafo pt-mt">PivetTrack es single-tenant: una aplicación y una base de datos solo para usted. Sus datos no conviven con los de nadie y su rendimiento no depende del vecino.</p>
+      <p class="nota pt-mt">El código pasa por revisiones de seguridad propias según la guía de OWASP; la última, en noviembre de 2026. Para su área de sistemas, la arquitectura de seguridad está descrita en un documento técnico que le enviamos con el acuerdo de confidencialidad firmado.</p>
       
     </div>
     <ul class="oficios">
       <li><h3>Registros que no se reescriben</h3><p>Nadie, en ningún rol, puede editar o borrar un movimiento del Kardex.</p></li>
-      <li><h3>Doble factor (2FA)</h3><p>Obligatorio para los administradores, con códigos de respaldo.</p></li>
+      <li><h3>Doble factor (2FA)</h3><p>Obligatorio para los administradores, con códigos de respaldo. En el Portal B2B, usted decide cliente por cliente si se lo exige a sus compradores.</p></li>
+      <li><h3>Ingreso protegido</h3><p>La cuenta se bloquea tras 5 intentos fallidos, las contraseñas tienen 12 caracteres como mínimo y las sesiones vencen solas por inactividad.</p></li>
+      <li><h3>Conexión y claves cifradas</h3><p>Todo viaja por HTTPS. Los secretos del doble factor y las claves de las integraciones se guardan cifrados, y las pantallas solo ejecutan código de su propia instancia.</p></li>
+      <li><h3>Integraciones firmadas</h3><p>Cada sistema que se conecta por la API tiene su propia credencial, y los avisos que PivetTrack envía a sus sistemas (webhooks) van firmados.</p></li>
       <li><h3>Auditoría completa</h3><p>Quién hizo qué y cuándo: cada documento, cada cambio de costo y cada informe.</p></li>
-      <li><h3>Respaldos gestionados</h3><p>PostgreSQL administrado, con respaldo automático diario y restauración.</p></li>
+      <li><h3>Respaldos diarios</h3><p>PostgreSQL administrado, con respaldo automático diario que se conserva siete días.</p></li>
       <li><h3>99.9% de disponibilidad</h3><p>Por contrato (SLA), con créditos de servicio a su favor si no se cumple.</p></li>
     </ul>
   </div>
@@ -335,7 +339,7 @@
       <details class="duda"><summary>¿Aguanta mi volumen?</summary><p>Lo medimos: con 165,382 SKU, una toma general de 167,382 líneas se cerró en 229 segundos mientras 20 operarios seguían despachando, y ningún pedido falló de 6,176. Son corridas en un entorno de prueba, no una garantía. Su SLA es el del contrato.</p></details>
       <details class="duda"><summary>Si distribuyo alimentos, ¿cómo ayuda con FSMA 204?</summary><p>PivetTrack registra el lote, el vencimiento y el destino de cada movimiento, y arma la lista de un retiro en un clic. Eso apoya sus procesos de trazabilidad. Cumplir la norma sigue siendo responsabilidad de su empresa, y no se lo vamos a prometer.</p></details>
       <details class="duda"><summary>¿Y si después quiero irme?</summary><p>Durante el contrato puede exportar a Excel cuando quiera: Stock Actual, Kardex, próximos a vencer, trazabilidad de un lote y el comprobante de la Toma. Al terminar, si está al día con los pagos, sus datos siguen disponibles para exportar durante 30 días. Lo que ya está en QuickBooks queda en su QuickBooks.</p></details>
-      <details class="duda"><summary>¿Mis datos están seguros?</summary><p>Su empresa tiene su propia instancia y su propia base de datos, que no comparte con nadie, con doble factor para los administradores, respaldos diarios y un compromiso de disponibilidad del 99.9% por contrato.</p></details>
+      <details class="duda"><summary>¿Mis datos están seguros?</summary><p>Su empresa tiene su propia instancia y su propia base de datos, que no comparte con nadie. Los administradores entran con doble factor, todo viaja por HTTPS y las claves de las integraciones se guardan cifradas. Hay respaldo diario y un compromiso de disponibilidad del 99.9% por contrato.</p></details>
     </div>
   </div>
 </section>
