@@ -230,6 +230,8 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
 .oficios p { color: var(--gris); font-size: 1rem; line-height: 1.5; }
 
 .quien .grande { max-width: 50ch; margin-bottom: 20px; }
+.quien .caso__datos { margin: 0 0 24px; }
+.quien__trato { max-width: 50ch; margin-bottom: 12px; }
 .oficios__titulo { margin-bottom: 18px; color: var(--gris); font-weight: 500; }
 .oficios__mas { margin-top: 20px; }
 .caso__acciones { display: flex; flex-wrap: wrap; gap: 10px 28px; }
@@ -240,6 +242,8 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
 .duda summary::-webkit-details-marker { display: none; }
 .duda summary::after { content: "+"; font: 800 1.625rem/1 var(--cartel); color: var(--azul); }
 .duda p { padding-bottom: 18px; font-size: 1rem; line-height: 1.55; max-width: 62ch; }
+.pt-sla { margin-top: 28px; border-top: 1px solid var(--linea); }
+.pt-sla .tabla { margin: 0 0 18px; }
 #precios { scroll-margin-top: 16px; }
 
 /* Cierre amarillo */
@@ -290,7 +294,7 @@ html[lang="es"] [data-l="en"], html[lang="en"] [data-l="es"] { display: none !im
 .video iframe { width: 100%; height: 100%; border: 0; display: block; }
 .video__poster { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
 .video__poster img { width: 100%; height: 100%; object-fit: cover; }
-.video__play { position: absolute; left: 18px; bottom: 18px; padding: 12px 20px; background: var(--cinta); color: var(--tinta); font: 600 1rem/1 var(--texto); border-radius: 3px; }
+.video__play { position: absolute; right: 18px; bottom: 18px; padding: 12px 20px; background: var(--cinta); color: var(--tinta); font: 600 1rem/1 var(--texto); border-radius: 3px; }
 .videos__lista { border-top: 3px solid var(--tinta); }
 .videos__lista button { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--linea); padding: 13px 8px 13px 12px; font: 400 .9375rem/1.4 var(--texto); color: var(--gris); cursor: pointer; border-left: 5px solid transparent; }
 .videos__lista b { display: block; color: var(--tinta); font-weight: 600; font-size: 1rem; }
