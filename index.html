@@ -111,7 +111,7 @@
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 <header class="barra">
   <div class="marco barra__fila">
-    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">PivetTrack</a>
     <button class="abrir-menu" type="button" aria-expanded="false">Menú</button>
     <nav class="menu" aria-label="Principal">
       <a href="pivettrack.html">PivetTrack</a>
@@ -121,7 +121,7 @@
       <a class="idioma" href="/en/" hreflang="en" lang="en" onclick="try{localStorage.setItem('homeLang','en')}catch(e){}">English</a>
     </nav>
   </div>
-  <nav class="indice" aria-label="En esta página"><div class="marco indice__fila"><a href="#recorrido">Recorrido</a><a href="#perdida">Dónde se pierde</a><a href="#app">La app</a><a href="#medido">Medido</a><a href="#micro-apps">Micro apps</a><a href="#precios">Precios</a><span class="indice__marca" aria-hidden="true"></span></div></nav>
+  <nav class="indice" aria-label="En esta página"><div class="marco indice__fila"><a href="#recorrido">Recorrido</a><a href="#perdida">Dónde se pierde</a><a href="#app">La app</a><a href="#medido">Medido</a><a href="#quien">Trayectoria</a><a href="#precios">Precios</a><span class="indice__marca" aria-hidden="true"></span></div></nav>
 </header>
 
 <main id="contenido">
@@ -276,35 +276,17 @@
   </div>
 </section>
 
-<section class="tramo marco dos" id="micro-apps">
-  <div class="caso">
-    <h2>Antes de PivetTrack, una bodega minera en Chile.</h2>
-    <p class="parrafo">Como jefe de bodega de Sodexo en Minera Collahuasi, sistematicé la toma de inventario con una micro app hecha en AppSheet. La información se exportaba en un formato compatible con el ERP de Sodexo.</p>
-    
-    <div class="caso__datos">
-      <div><b>20</b><span>personas en turnos 7x7</span></div>
-      <div><b>30%</b><span>menos errores de inventario</span></div>
-    </div>
-  </div>
-  <div class="caso">
-    <h2>¿Algo más puntual? Una micro app.</h2>
-    <p class="parrafo">Una aplicación pequeña, hecha con AppSheet y Google Sheets, para un solo problema de su operación. Se cotiza según lo que necesite.</p>
-    <ul class="oficios">
-      <li><h3>Recepción de camiones</h3><p>Validación de temperatura, checklist digital y control de lotes y vencimientos.</p></li>
-      <li><h3>Control de asistencia</h3><p>Kiosco con código QR, geofencing GPS y recibos automáticos por WhatsApp.</p></li>
-      <li><h3>Auditoría de inventario</h3><p>Escaneo en ráfaga desde el celular, y un clic genera el reporte.</p></li>
-    </ul>
-    <p class="oficios__mas caso__acciones"><a class="enlace" href="contacto.html?motivo=freelance">Pedir una cotización</a><a class="enlace" href="appsheet-demos.html">Ver las micro apps</a></p>
-  </div>
-</section>
-
-<section class="tramo fondo-hormigon">
+<section class="tramo fondo-hormigon" id="quien">
   <div class="marco dos quien">
-    <h2>Diez años en bodegas antes de escribir una línea de PivetTrack.</h2>
+    <h2>Diez años en bodegas antes de la primera línea de PivetTrack.</h2>
     <div>
-      <p class="grande">Soy Raúl Pivet. Vengo de la logística en minería y distribución, y fundé PIVET DIGITAL AUTOMATIONS LLC en Florida. Si trabaja conmigo, habla directamente con quien construye el sistema.</p>
-      
-      <a class="enlace" href="sobre-mi.html">Conocer mi historia</a>
+      <p class="grande">PivetTrack lo desarrolla PIVET DIGITAL AUTOMATIONS LLC, fundada en Florida por Raúl Pivet después de diez años en la logística de minería y distribución. Como jefe de bodega de Sodexo en Minera Collahuasi, en Chile, sistematizó la toma de inventario con una micro app hecha en AppSheet.</p>
+      <div class="caso__datos">
+        <div><b>20</b><span>personas en turnos 7x7</span></div>
+        <div><b>30%</b><span>menos errores de inventario</span></div>
+      </div>
+      <p class="parrafo quien__trato">Usted trata directamente con quien desarrolla el sistema.</p>
+      <a class="enlace" href="sobre-mi.html">Ver la trayectoria</a>
     </div>
   </div>
 </section>
@@ -327,6 +309,7 @@
         <a href="mailto:raul@raulpivet.com">raul@raulpivet.com</a>
         <a href="tel:+13055406846">+1 (305) 540 6846</a>
       </div>
+      <p class="cierre__nota">¿Algo más puntual? También desarrollamos micro apps con AppSheet para un solo proceso. <a class="enlace" href="appsheet-demos.html">Ver las micro apps</a></p>
     </div>
   </div>
 </section>
@@ -335,7 +318,7 @@
   <div class="marco pie__fila">
     <div>PIVET DIGITAL AUTOMATIONS LLC<br>Registrada en Florida. Miami, FL.</div>
     <nav class="pie__enlaces" aria-label="Secundaria">
-      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="sobre-mi.html">Trayectoria</a>
       <a href="legal/index.html">Documentos legales</a>
       <a href="privacidad.html">Privacidad</a>
       <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>

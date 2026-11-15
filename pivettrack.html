@@ -104,7 +104,7 @@
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 <header class="barra">
   <div class="marco barra__fila">
-    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">Raúl Pivet</a>
+    <a class="marca" href="index.html"><img src="img/logo_mark_dark.png" width="26" height="30" alt="">PivetTrack</a>
     <button class="abrir-menu" type="button" aria-expanded="false">Menú</button>
     <nav class="menu" aria-label="Principal">
       <a href="pivettrack.html" aria-current="page">PivetTrack</a>
@@ -228,14 +228,9 @@
       </tr></thead>
       <tbody>
         <tr>
-          <td>120 operarios haciendo picking a la vez durante 15 minutos, con más de 300,000 salidas en el historial. 4,243 de 4,243 salidas confirmadas y ningún error de servidor en 46,904 peticiones.</td>
+          <td>120 operarios haciendo picking a la vez durante 15 minutos, con más de 300,000 salidas en el historial. Todas las salidas confirmadas y ningún error de servidor.</td>
           <td><div class="medicion__valor">293 ms</div>p95: 95 de cada 100 respuestas, o menos<div class="medidor" aria-hidden="true"><span></span></div><div class="medidor__pie">De un máximo de 0.5 s por contrato, con condiciones</div></td>
           <td class="medicion__fecha">3 nov 2026</td>
-        </tr>
-        <tr>
-          <td>240 operarios, el techo de un despliegue estándar y ya con cola. Sin errores. Entre 120 y 240 los tiempos varían de una corrida a otra, y por eso no los garantizamos.</td>
-          <td><div class="medicion__valor">1.56 s</div><span>p95</span></td>
-          <td class="medicion__fecha">1 nov 2026</td>
         </tr>
         <tr>
           <td>Cierre de una toma general de 167,382 líneas mientras 20 operarios seguían despachando. Ni un pedido falló de 6,176.</td>
@@ -244,7 +239,7 @@
         </tr>
       </tbody>
     </table>
-    <p class="nota">Corridas únicas en un entorno de pruebas clonado de producción, sin usuarios reales. Es un rango, no una cifra fija: el peor minuto de la corrida del 3 de noviembre llegó a 636 ms. Por contrato: hasta 120 usuarios simultáneos y p95 de hasta 0.5 s en picking, con condiciones.</p>
+    <p class="nota">Corridas únicas en un entorno de pruebas clonado de producción, sin usuarios reales; los tiempos varían de una corrida a otra. Por contrato: hasta 120 usuarios simultáneos y p95 de hasta 0.5 s en picking, con condiciones.</p>
     
   </div>
 </section>
@@ -259,11 +254,7 @@
       <li><button type="button" data-es="Sr28UrYBFiQ" data-en="ehIYUGEMroQ"><b>De cero a operando: la demo completa (4:54)</b>Entrada de 350 u., discrepancia y margen de 31.1 %. Datos de demostración.</button></li>
       <li><button type="button" data-es="vOA4orvrH-w" data-en="yNyMWvCkP8E"><b>QuickBooks Online: la factura se crea sola</b>Se confirma la salida y la Invoice llega sola. Nadie la tipea.</button></li>
       <li><button type="button" data-es="kpgcN7WiMH0" data-en="KB21Psvt4G0"><b>Retiro de producto: ¿a quién se le vendió el lote?</b>60 cajas retiradas. ¿Quién las tiene?</button></li>
-      <li><button type="button" data-es="3PiGwlWnzxg" data-en="ZZEZ0hmPiMM"><b>Recepción: 120 facturadas, 114 recibidas</b>$230.40 reclamados al proveedor.</button></li>
-      <li><button type="button" data-es="-pVuU9QexrM" data-en="LDz7JaEWW40"><b>Stock por pasillo y picking</b>¿En qué pasillo está cada lote?</button></li>
       <li><button type="button" data-es="GD9ILcFErqc" data-en="sbU0n6oCEGI"><b>Portal de pedidos: su cliente pide solo</b>El stock se mueve al aprobar, no al pedir.</button></li>
-      <li><button type="button" data-es="rIYmruKthoE" data-en="atoKa7NFN5s"><b>Toma de inventario físico y ajuste</b>164,397 líneas. Un solo ajuste.</button></li>
-      <li><button type="button" data-es="n-uSypcPdNM" data-en="t2VPoftd7AU"><b>Importación de la maestra de productos</b>164,382 productos. Un solo Excel.</button></li>
     </ul>
   </div>
   <p class="videos__canal"><a class="enlace" href="https://www.youtube.com/@raulpivet4462/videos" rel="noopener noreferrer">Ver todos los videos en YouTube</a></p>
@@ -312,16 +303,19 @@
       
     </div>
   </div>
-  <table class="tabla">
-    <caption>Tiempos de respuesta del SLA. Lunes a viernes, 9 a 18 h (hora del Este), salvo feriados federales.</caption>
-    <tbody>
-      <tr><th scope="row">Crítico</th><td>1 hora, 24/7</td><td>Caída total o pérdida de datos</td></tr>
-      <tr><th scope="row">Alto</th><td>4 horas hábiles</td><td>Función esencial caída, sin alternativa</td></tr>
-      <tr><th scope="row">Medio</th><td>1 día hábil</td><td>Un error con alternativa disponible</td></tr>
-      <tr><th scope="row">Bajo</th><td>2 días hábiles</td><td>Consultas y solicitudes de mejora</td></tr>
-    </tbody>
-  </table>
-  <p class="nota pt-mt"><b>Se cotiza aparte:</b> Portal B2B y API, desarrollos a medida, integraciones con otros sistemas (QuickBooks Desktop u otro ERP), una segunda fuente de datos y la depuración de sus datos. <b>Plan Enterprise:</b> para varios procesos masivos a la vez o informes pesados de forma rutinaria; se implementa y se cotiza a medida. Precios en dólares, sin impuestos. A octubre de 2026, la suscripción no está gravada con el Sales Tax de Florida. Las condiciones finales se fijan en el <a href="legal/index.html">SOW y el SLA</a>.</p>
+  <details class="duda pt-sla">
+    <summary>Tiempos de respuesta del soporte (SLA)</summary>
+    <table class="tabla">
+      <caption>Tiempos de respuesta del SLA. Lunes a viernes, 9 a 18 h (hora del Este), salvo feriados federales.</caption>
+      <tbody>
+        <tr><th scope="row">Crítico</th><td>1 hora, 24/7</td><td>Caída total o pérdida de datos</td></tr>
+        <tr><th scope="row">Alto</th><td>4 horas hábiles</td><td>Función esencial caída, sin alternativa</td></tr>
+        <tr><th scope="row">Medio</th><td>1 día hábil</td><td>Un error con alternativa disponible</td></tr>
+        <tr><th scope="row">Bajo</th><td>2 días hábiles</td><td>Consultas y solicitudes de mejora</td></tr>
+      </tbody>
+    </table>
+  </details>
+  <p class="nota pt-mt">Se cotizan aparte el Portal B2B y la API, los desarrollos e integraciones a medida (QuickBooks Desktop u otro ERP) y la depuración de datos. Para varios procesos masivos a la vez existe el Plan Enterprise, a medida. Precios en dólares, sin impuestos. Las condiciones finales se fijan en el <a href="legal/index.html">SOW y el SLA</a>.</p>
   
 </section>
 
@@ -333,11 +327,12 @@
     </div>
     <div class="dudas">
       <details class="duda"><summary>¿Sirve si no vendo alimentos?</summary><p>Sí. Cada producto se configura por separado: con lote, con lote y vencimiento, o sin ninguno de los dos. Así funciona para ferretería, perfumería o repuestos. Hoy no lleva número de serie unidad por unidad ni compatibilidad por vehículo; si su operación los necesita, lo vemos en la sesión de diagnóstico.</p></details>
+      <details class="duda"><summary>¿Puedo comprar por caja o pallet y vender por unidad?</summary><p>Sí. Cada producto lleva su stock en una unidad base y puede tener presentaciones, como la caja o el pallet, cada una con su código de barras y su precio. Se recibe y se despacha en la presentación que corresponda, y el sistema hace la conversión: el stock y el costo quedan siempre en la misma unidad.</p></details>
       <details class="duda"><summary>¿Cuánto tarda la puesta en marcha?</summary><p>Son 2 a 3 semanas. Nosotros cargamos su catálogo desde un Excel o una exportación de su sistema, y su equipo recibe dos capacitaciones de 2 horas.</p></details>
       <details class="duda"><summary>Ya tengo QuickBooks. ¿Para qué necesito esto?</summary><p>QuickBooks lleva la contabilidad, pero no sabe qué lote está en qué estante ni a quién se lo despachó. PivetTrack lleva el piso y le envía a QuickBooks lo que ya pasó, sin doble carga. La integración con QuickBooks Online está incluida. Si usa Desktop, PivetTrack funciona igual sin integración, y conectarlo se cotiza aparte.</p></details>
       <details class="duda"><summary>¿Quién toca mi contabilidad?</summary><p>Nadie de nuestro lado. En la implementación conectamos su empresa y elegimos las cuentas con su contador. Después, PivetTrack sólo crea documentos nuevos y nunca modifica ni borra lo que ya está en QuickBooks.</p></details>
       <details class="duda"><summary>¿Aguanta mi volumen?</summary><p>Lo medimos: con 165,382 SKU, una toma general de 167,382 líneas se cerró en 229 segundos mientras 20 operarios seguían despachando, y ningún pedido falló de 6,176. Son corridas en un entorno de prueba, no una garantía. Su SLA es el del contrato.</p></details>
-      <details class="duda"><summary>Si distribuyo alimentos, ¿cómo ayuda con FSMA 204?</summary><p>PivetTrack registra el lote, el vencimiento y el destino de cada movimiento, y arma la lista de un retiro en un clic. Eso apoya sus procesos de trazabilidad. Cumplir la norma sigue siendo responsabilidad de su empresa, y no se lo vamos a prometer.</p></details>
+      <details class="duda"><summary>Si distribuyo alimentos, ¿cómo ayuda con FSMA 204?</summary><p>PivetTrack registra el lote, el vencimiento y el destino de cada movimiento, y arma la lista de un retiro en un clic. Eso apoya sus procesos de trazabilidad; el cumplimiento de la norma sigue a cargo de su empresa.</p></details>
       <details class="duda"><summary>¿Y si después quiero irme?</summary><p>Durante el contrato puede exportar a Excel cuando quiera: Stock Actual, Kardex, próximos a vencer, trazabilidad de un lote y el comprobante de la Toma. Al terminar, si está al día con los pagos, sus datos siguen disponibles para exportar durante 30 días. Lo que ya está en QuickBooks queda en su QuickBooks.</p></details>
       <details class="duda"><summary>¿Mis datos están seguros?</summary><p>Su empresa tiene su propia instancia y su propia base de datos, que no comparte con nadie. Los administradores entran con doble factor, todo viaja por HTTPS y las claves de las integraciones se guardan cifradas. Hay respaldo diario y un compromiso de disponibilidad del 99.9% por contrato.</p></details>
     </div>
@@ -364,7 +359,7 @@
   <div class="marco pie__fila">
     <div>PIVET DIGITAL AUTOMATIONS LLC<br>Registrada en Florida. Miami, FL.</div>
     <nav class="pie__enlaces" aria-label="Secundaria">
-      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="sobre-mi.html">Trayectoria</a>
       <a href="legal/index.html">Documentos legales</a>
       <a href="privacidad.html">Privacidad</a>
       <a href="https://www.linkedin.com/in/raul-pivet-846738187" rel="noopener noreferrer">LinkedIn</a>
